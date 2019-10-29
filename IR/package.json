@@ -17,14 +17,26 @@
   "keywords": [],
   "authors": [
     {
-      "name": "Giacomo De Liberali",
-      "url": "giacomodeliberali.com",
-      "email": "deliberali.giacomo@gmail.com"
+      "name": "Chiara Baraglia",
+      "email": "c.baraglia@studenti.unipi.it"
     },
     {
       "name": "Aldo D'Aquino",
-      "url": "ald.ooo",
-      "email": "a.daquino@studenti.unipi.it"
+      "email": "a.daquino@studenti.unipi.it",
+      "url": "ald.ooo"
+    },
+    {
+      "name": "Giacomo De Liberali",
+      "email": "deliberali.giacomo@gmail.com",
+      "url": "giacomodeliberali.com"
+    },
+    {
+      "name": "Haris Dukic",
+      "email": "h.dukic@studenti.unipi.it"
+    },
+    {
+      "name": "Pierpaolo Sepe",
+      "email": "pier.sepe94@hotmail.it"
     }
   ],
   "repository": {
