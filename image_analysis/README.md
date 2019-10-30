@@ -1,7 +1,12 @@
-# Start server
+# Start server (linux/mac)
 Start server on port 5000
 ```
-$ env FLASK_APP=flask_test.py flask run
+$ env FLASK_APP=main.py flask run
+```
+# Start server (linux/mac)
+Start server on port 5000
+```
+$ set FLASK_APP=main.py flask run
 ```
 # Client
 ```
