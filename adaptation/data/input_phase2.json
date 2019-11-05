@@ -1,6 +1,6 @@
 {
-	"u_id": 42,
-	"u_tastes": ["history", "description", "legacy"],
+	"uId": 42,
+	"uTastes": ["history", "description", "legacy"],
 	"lang": "en",
 	"results": [{
 		"keywords": ["k1", "k2", "k3"],
