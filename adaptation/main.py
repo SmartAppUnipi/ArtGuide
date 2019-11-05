@@ -11,7 +11,7 @@ from document_adaptation import DocumentAdaptation
 from config import config
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="documentation")
 document_adaptation = DocumentAdaptation()
 
 @app.route('/', methods=["GET","POST"])
