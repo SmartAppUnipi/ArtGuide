@@ -1,5 +1,6 @@
 import { GoogleCustomSearchAPIKey, GoogleCustomSearchEngineId } from "../environment";
 import fetch from 'node-fetch';
+import { GoogleSearchResult } from "../models";
 
 /**
  * Performs Google Search using the api keys defined in the environment (.env) file
@@ -19,7 +20,7 @@ export class GoogleSearch {
      * This api searches the whole web but has a limit of 1k/day. After 5€/1k queries.
      * @param query The query to forward to Google
      */
-    public async queryCustom(query: string) {
+    public async queryCustom(query: string): Promise<GoogleSearchResult> {
         const googleRequest = await fetch(this.googleSearchUrls.custom + query);
         return googleRequest.json();
     }
@@ -29,7 +30,7 @@ export class GoogleSearch {
      * The restricted api has no daily limits, but limited domains defined into the search engine context
      * @param query The query to forward to Google
      */
-    public async queryRestricted(query: string) {
+    public async queryRestricted(query: string): Promise<GoogleSearchResult> {
         const googleRequest = await fetch(this.googleSearchUrls.restricted + query);
         return googleRequest.json();
     }

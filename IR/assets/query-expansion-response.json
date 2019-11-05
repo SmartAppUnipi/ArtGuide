@@ -1,0 +1,23 @@
+####Commento: noi vi mandiamo una lista di oggetti, in numero quanto le parole chiave che ci avete mandato (i gusti dell'utente). Per ognuna di queste keyword vi diamo una lista con ulteriori parole chiave che potrete usare nella quesry expansion.
+{
+	"keywordExpansion": {
+		"history": [
+			"keyword_history1",
+			"keyword_history2"
+		],
+		"description": [
+			"keyword_description1",
+			"keyword_description2"
+		],
+		"legacy": [
+			"keyword_legacy1",
+			"keyword_legacy"
+		]
+	}
+}
+
+
+{
+	"history": "Monna Lisa keyword_history1 keyword_history2",
+	"description": "Monna Lisa keyword_description1 keyword_description2"
+}

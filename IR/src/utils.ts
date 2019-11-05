@@ -1,14 +1,13 @@
 import fetch from "node-fetch"
 
-function post(url: string, body: string) {
-  fetch(url, {
+function post<T>(url: string, body: any): Promise<T> {
+  return fetch(url, {
     method: 'POST',
-    body: body,
+    body: JSON.stringify(body),
     headers: { 'Content-Type': 'application/json' },
-  })
-  .then(res => res.json()).then(console.log)
+  }).then(res => res.json());
 }
 
 export {
-    post
+  post
 }

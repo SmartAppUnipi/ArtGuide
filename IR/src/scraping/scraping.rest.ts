@@ -1,5 +1,5 @@
 import express from 'express';
-import { parse, scrape } from './scraping'
+import { parse } from './scraping'
 
 /**
  * The router that manages all requests to scraping module
