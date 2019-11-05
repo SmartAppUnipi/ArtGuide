@@ -2,7 +2,7 @@
     "port": 4321,
     "languages": ["en","it"],
     "log_file": "log.txt",
-    "doc_api_file": "documentation/doc_api.html",
+    "doc_api_file": "documentation/docs_api.html",
     "debug": true
 
 }
