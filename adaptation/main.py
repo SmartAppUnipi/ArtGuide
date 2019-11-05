@@ -10,6 +10,7 @@ from logging.handlers import RotatingFileHandler
 from document_adaptation import DocumentAdaptation
 from config import config
 
+
 app = Flask(__name__)
 document_adaptation = DocumentAdaptation()
 
@@ -17,7 +18,7 @@ document_adaptation = DocumentAdaptation()
 def hello():
     api_docs = ""
     with open(config.doc_api_file) as f: 
-        api_docs = f
+        api_docs = f.read()
     return api_docs
 
 @app.route('/keywords', methods=["POST"])
