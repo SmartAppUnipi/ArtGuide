@@ -10,6 +10,7 @@
     "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "start": "nodemon --inspect=5858 src/index.ts",
     "build": "tsc",
+    "watch": "tsc -w -p .",
     "clean": "npx rimraf dist && npx rimraf coverage",
     "docs": "npx typedoc",
     "docs:add": "git add ./docs"
@@ -46,25 +47,27 @@
   "license": "MIT",
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.1",
-    "@types/jest": "^24.0.6",
+    "@types/express": "^4.17.2",
+    "@types/jest": "^24.0.21",
     "@types/node-fetch": "^2.5.3",
+    "@types/jsdom": "^12.2.4",
     "@types/supertest": "^2.0.8",
-    "coveralls": "^3.0.3",
+    "coveralls": "^3.0.7",
     "jest": "^24.9.0",
-    "nodemon": "^1.18.10",
+    "nodemon": "^1.19.4",
     "pre-commit": "^1.2.2",
     "supertest": "^4.0.2",
     "ts-jest": "^24.1.0",
-    "ts-node": "^8.0.2",
+    "ts-node": "^8.4.1",
     "typedoc": "^0.15.0",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.6.4"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "jsdom": "^15.2.1"
   },
   "jest": {
     "verbose": true,
