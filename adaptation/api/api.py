@@ -14,10 +14,10 @@ document_adaption = DocumentAdaptation()
 @app.route('/', methods=["GET","POST"])
 def hello():
     documentation = '''
-        POST /keywords REQ:{"u_tastes": ["history", "description", "legacy"]} RES:{"keyword_expansion": {"history":"kh", "description":"kd", "legacy":"kl"]}
-        POST /tailored_text REQ:{"u_tastes": ["history", "description", "legacy"]} RES:{"keyword_expansion": {"history":"kh", "description":"kd", "legacy":"kl"]}
+        <b>POST /keywords</b> <br/>REQ:{"u_tastes": ["history", "description", "legacy"]} RES:{"keyword_expansion": {"history":"kh", "description":"kd", "legacy":"kl"]}<br/>
+        <b>POST /tailored_text</b> </br>REQ:{"results": ....]} RES:{"tailored_text": "Stringa con testo dell'articolo"]}
     '''
-    return 
+    return documentation
 
 @app.route('/keywords', methods=["POST"])
 def keywords():
@@ -41,5 +41,5 @@ def tailored_text():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host= '0.0.0.0', port=4444)
+    app.run(debug=True, host= '0.0.0.0', port=4321)
     
