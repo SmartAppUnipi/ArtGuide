@@ -1,6 +1,6 @@
 # SDAIS = Smart Deep AI for Search 
 # Commentiamo tutte le funzioni e classi seguendo formato Doxygen
-
+from .document_model import DocumentModel
 
 
 class DocumentAdaptation():
@@ -24,8 +24,16 @@ class DocumentAdaptation():
     # Out: articolo filtrato im base alle preferenze dell'utente 
     # Formato output: string
     # Proto: il primo articolo per ora può andare bene
-    def get_tailored_text(self, texts):
+    def get_tailored_text(self, results):
         return "Testo di prova"
-    
+
+        '''if len(results)<=0:
+            return "Content not found"
+        
+        documents =  []      
+        for result in results:
+            documents.append( DocumentModel(results) )
+        return documents[0].plain_text'''
+        
 
     

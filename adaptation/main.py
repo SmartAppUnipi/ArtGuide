@@ -5,28 +5,28 @@ import os
 import sys
 from flask import Flask, jsonify, request
 import json
-sys.path.append(os.path.abspath('../'))
+from logging.handlers import RotatingFileHandler
 
 from document_adaptation import DocumentAdaptation
+from config import config
 
 app = Flask(__name__)
-document_adaption = DocumentAdaptation()
+document_adaptation = DocumentAdaptation()
 
 @app.route('/', methods=["GET","POST"])
 def hello():
-    documentation = '''
-        <b>POST /keywords</b> <br/>REQ:{"uTastes": ["history", "description", "legacy"]} RES:{"keywordExpansion": {"history":"kh", "description":"kd", "legacy":"kl"]}<br/>
-        <b>POST /tailored_text</b> </br>REQ:{"results": ....]} RES:{"tailoredText": "Stringa con testo dell'articolo"]}
-    '''
-    return documentation
+    api_docs = ""
+    with open(config.doc_api_file) as f: 
+        api_docs = f
+    return api_docs
 
 @app.route('/keywords', methods=["POST"])
-def keywords():
+def keywords(): 
     req = request.get_json()
     if not req or 'uTastes' not in req:
         return jsonify({"error":"Input not found"})
     print(req)
-    results = document_adaption.get_keywords(req['uTastes'])
+    results = document_adaptation.get_keywords(req['uTastes'])
     req['keywordExpansion'] = results 
     return jsonify(req)
 
@@ -36,11 +36,11 @@ def tailored_text():
     if not req or 'results' not in req:
         return jsonify({"error":"Input not found"})
 
-    results = document_adaption.get_tailored_text(req['results'])
+    results = document_adaptation.get_tailored_text(req['results'])
     req['tailoredText'] = results
     return jsonify(req)
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host= '0.0.0.0', port=4321)
+    app.run(debug=config.debug, host= '0.0.0.0', port=config.port)
     
