@@ -23,23 +23,23 @@ p {
     float: left;
    }
    .img-circular1{
-      background-image: url('pics/matteo.jpg');
+      background-image: url('/documentation/pics/matteo.jpg');
       /*background: #aaa; /*added to as an alternative to image*/
    }
    .img-circular2{
-      background-image: url('pics/stefano.jpg');
+      background-image: url('/documentation/pics/stefano.jpg');
       /*background: #aaa; /*added to as an alternative to image*/
    }
    .img-circular3{
-      background-image: url('pics/mario.jpg');
+      background-image: url('/documentation/pics/mario.jpg');
       /*background: #aaa; /*added to as an alternative to image*/
    }
    .img-circular4{
-    background-image: url('pics/pietro.jpg');
+    background-image: url('/documentation/pics/pietro.jpg');
     /*background: #aaa; /*added to as an alternative to image*/
  }
  .img-circular5{
-    background-image: url('pics/gemma.jpg');
+    background-image: url('/documentation/pics/gemma.jpg');
        /*background: #aaa; /*added to as an alternative to image*/
  }
    .container1{
