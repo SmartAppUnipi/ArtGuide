@@ -6,6 +6,8 @@ import { buildQuery } from './build-query';
 import { parse } from './scraping/scraping'
 import { AdaptationEndpoint } from "./environment"
 import { post } from "./utils"
+import { ScrapingRouter } from './scraping';
+import { WikiSearchRouter } from './wiki';
 
 // Create a new express application instance
 const app: express.Application = express();
@@ -28,7 +30,10 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 // Initialize Google Search service
 const googleSearch = new GoogleSearch();
 
-app.use("/google-search", GoogleSearchRouter);
+// Use the router defined into that module
+app.use('/google-search', GoogleSearchRouter)
+app.use('/scrape', ScrapingRouter)
+app.use('/wiki-search', WikiSearchRouter)
 
 // Index entry-point 
 app.get("/", (req, res) => res.json({ message: 'App running!' }))
