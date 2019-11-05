@@ -2,7 +2,6 @@ import express from 'express';
 import { GoogleSearchRouter } from './google-search';
 import { ScrapingRouter } from './scraping';
 import { WikiSearchRouter } from './wiki'
-import wiki from 'wikijs';
 
 // Create a new express application instance
 const app: express.Application = express();
