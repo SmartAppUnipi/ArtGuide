@@ -1,4 +1,5 @@
 # PEP8 - 4 spazi
+# Attirbuti JSON - camelCase
 
 import os
 import sys
@@ -14,19 +15,19 @@ document_adaption = DocumentAdaptation()
 @app.route('/', methods=["GET","POST"])
 def hello():
     documentation = '''
-        <b>POST /keywords</b> <br/>REQ:{"u_tastes": ["history", "description", "legacy"]} RES:{"keyword_expansion": {"history":"kh", "description":"kd", "legacy":"kl"]}<br/>
-        <b>POST /tailored_text</b> </br>REQ:{"results": ....]} RES:{"tailored_text": "Stringa con testo dell'articolo"]}
+        <b>POST /keywords</b> <br/>REQ:{"uTastes": ["history", "description", "legacy"]} RES:{"keywordExpansion": {"history":"kh", "description":"kd", "legacy":"kl"]}<br/>
+        <b>POST /tailored_text</b> </br>REQ:{"results": ....]} RES:{"tailoredText": "Stringa con testo dell'articolo"]}
     '''
     return documentation
 
 @app.route('/keywords', methods=["POST"])
 def keywords():
     req = request.get_json()
-    if not req or 'u_tastes' not in req:
+    if not req or 'uTastes' not in req:
         return jsonify({"error":"Input not found"})
     print(req)
-    results = document_adaption.get_keywords(req['u_tastes'])
-    req['keyword_expansion'] = results 
+    results = document_adaption.get_keywords(req['uTastes'])
+    req['keywordExpansion'] = results 
     return jsonify(req)
 
 @app.route('/tailored_text', methods=["POST"])
@@ -36,7 +37,7 @@ def tailored_text():
         return jsonify({"error":"Input not found"})
 
     results = document_adaption.get_tailored_text(req['results'])
-    req['tailored_text'] = results
+    req['tailoredText'] = results
     return jsonify(req)
 
 
