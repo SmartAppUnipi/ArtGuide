@@ -37,6 +37,7 @@ client = vision.ImageAnnotatorClient()
 # ----- ROUTES ----- #
 @app.route('/upload', methods=['POST'])
 def upload():
-    api_res = get_vision(request.files['file'].read())
+    content = request.get_json()
+    api_res = get_vision(content['img'])
     print(api_res)
     return 'Success!'
