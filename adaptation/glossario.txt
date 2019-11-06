@@ -1,9 +1,13 @@
-(*) document si riferisce all'insieme dei dati inerenti ad una pagina web reprerita dal gruppo SDAIS (e.g. titolo, contnuto, sottotitoli, ...)
+(*) "document" si riferisce all'insieme dei dati inerenti ad una pagina web reprerita dal gruppo SDAIS (e.g. titolo, contnuto, sottotitoli, ...)
 
-(*) tastes si riferisce ai "gusti" dell'utente, ovvero gli argomenti per i quali ha espresso interesse al momento della registrazione. Tali parole sono usate anche per classificare tematicamente i documenti che arrivano da SDAIS. I gusti dell'utente sono modellati in due modi: metodo statico, per cui l'utente può scegliere tra un insieme fissato di categorie; metodo dinamico, in cui l'utente può inserire alcuni tag "custom"
+(*) "tastes" si riferisce ai "gusti" dell'utente, ovvero gli argomenti per i quali ha espresso interesse al momento della registrazione. Tali parole sono usate anche per classificare tematicamente i documenti che arrivano da SDAIS. I gusti dell'utente sono modellati in due modi: metodo statico, per cui l'utente può scegliere tra un insieme fissato di categorie; metodo dinamico, in cui l'utente può inserire alcuni tag "custom"
 
-(*) keywords sono le parole chiave (derivate dai gusti dell'utente) che forniamo a SDAIS affinchè possano effettuare la query expansion 
+(*) "keywords" sono le parole chiave (derivate dai gusti dell'utente) che forniamo a SDAIS affinchè possano effettuare la query expansion 
 
-(*) affinity esprime quanto un documento si avvicina ad un certo topic (taste)
+(*) "affinity" esprime quanto un documento si avvicina ad un certo topic (taste)
 
-(*) tailored text è il testo che forniamo in aoutput alla fine di tutta la procedura di adaptation
+(*) "tailored text" è il testo che forniamo in aoutput alla fine di tutta la procedura di adaptation
+
+(*) "salient words" sono le parole estratte dal document usate poi per classificare o trasformare in word embeddings
+
+(*) "salient sentences" sono le frasi estratte dal document usate poi per classfifcare o trasformare in sentence embeddings

@@ -1,5 +1,8 @@
 {
-	"uId": 42,
-	"uTastes": ["history", "description", "legacy"],
-	"lang": "en"
+	"userProfile":{
+		"id": 42,
+		"tastes": ["history", "description", "legacy"],
+		"expertiseLevel": 1, // enum from ["child","novice","knowledgeable","expert"]
+		"language": "en"
+	}
 }
