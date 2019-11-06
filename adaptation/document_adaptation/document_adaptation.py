@@ -30,7 +30,7 @@ class DocumentAdaptation():
         
         documents =  []      
         for result in results:
-            documents.append( DocumentModel(results, user) )
+            documents.append( DocumentModel(result, user) )
         best_document = documents[0]
         # best_document = max(documents.affinity_score())
         return best_document.plain_text
