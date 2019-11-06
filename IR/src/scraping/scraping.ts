@@ -1,4 +1,5 @@
 import { JSDOM } from "jsdom"
+import { PageResult } from '../models';
 
 const urls = [
   "https://www.studenti.it/la-gioconda-leonardo-da-vinci.html",
@@ -16,7 +17,7 @@ const querySelectors = [
   "[class*='container']"
 ]
 
-async function parse(url: string) {
+async function parse(url: string): Promise<PageResult> {
   return JSDOM.fromURL(url).then(dom => {
     // look for a list of preferred query selectors
     let content, nodes, i = 0
@@ -27,23 +28,22 @@ async function parse(url: string) {
     // if is found exactly one node, choose that one
     else if (nodes.length == 1) content = nodes[0]
     // if more nodes are found, pick the one with longest HTML inside
-    else content = [...nodes].reduce((a, b) => a.innerHTML.length > b.innerHTML.length ? a : b )
+    else content = [...nodes].reduce((a, b) => a.innerHTML.length > b.innerHTML.length ? a : b)
     // remove all the redundant spaces
-    const textContent = content.textContent.replace(/\s+/g,' ').trim()
+    const textContent = content.textContent.replace(/\s+/g, ' ').trim()
     return {
-      "url": url,
-      "title": dom.window.document.title,
-      "sections": [
+      url: url,
+      title: dom.window.document.title,
+      sections: [
         {
-          "title": "main",
-          "content": textContent
+          title: "main",
+          content: textContent
         }
-      ]
-    }
+      ],
+      keywords: []
+    };
   })
 }
 
 
-export {
-    parse
-}
+export default parse

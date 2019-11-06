@@ -6,6 +6,8 @@ import {
 } from './query-expansion.models'
 import { UserProfile } from './user-profile.model'
 
+import { PageResult } from './parser.model';
+
 
 export {
     ClassificationResult,
@@ -14,5 +16,7 @@ export {
     QueryExpansionRequest,
     QueryExpansionResponse,
 
-    UserProfile
+    UserProfile,
+
+    PageResult
 }
