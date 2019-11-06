@@ -2,7 +2,7 @@ import requests
 import json
 import os
   
-URL = "http://localhost:4321/keywords"
+URL = "http://cipizio.it:4321/keywords"
 
 path="./adaptation/data/"
 
