@@ -3,6 +3,7 @@ import os
 import json
 import requests
 import base64
+import pprint
 
 from flask import Flask, escape, request
 from google.cloud import vision
@@ -28,8 +29,26 @@ def get_vision(content):
     web_entities = MessageToDict(client.web_detection(image=image))
 
     merge_res = {
-        "label": label,
-        "web_entities": web_entities
+        # TODO: this part should be taken in input from other group
+        "userProfile": {
+            "id": 42,
+            "tastes": [
+                "history",
+                "description",
+                "legacy"],
+            "language": "en"
+        },
+        "classification": {
+            "labels": label['labelAnnotations'],
+            "entities": web_entities['webDetection']['webEntities'],
+            "locations": [],
+            "safeSearch": [],
+            "type": [],
+            "monumentType": [],
+            "period": [],
+            "style": [],
+            "materials": []
+        }
     }
     return merge_res
 
@@ -62,7 +81,7 @@ def upload():
     api_res = get_vision(request.files['file'].read())
 
     # Only visible if run with flask run
-    print((json.dumps(api_res)))
+    pprint.pprint((json.dumps(api_res)))
 
     '''
     Call the second server for testing (server2.py):
@@ -70,17 +89,18 @@ def upload():
         from app.py (app.py:5000, server2:5001 in this example), then
         call the POST to the server which should return the same JSON.
     '''
-    url = 'http://127.0.0.1:5001/upload'
+    # url = 'http://127.0.0.1:5001/upload'
 
     '''
     Otherwise, use the comment API with the right IP address.
     '''
     # url = 'http://10.101.32.26:3000/'
+    url = 'http://srv.ald.ooo:3000/'
 
     # Define the headers (they are needed to make get_json() work)
-    headers = {'Content-type': 'application/json'}
+    head = {'Content-type': 'application/json'}
 
-    r = requests.post(url, json=(json.dumps(api_res)), headers=headers)
+    r = requests.post(url, data=(json.dumps(api_res)), headers=head)
 
     # Only visible if run with flask run
     print("Risultato: ", r.content)
