@@ -3,11 +3,11 @@
 
 import os
 import sys
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 import json
 from logging.handlers import RotatingFileHandler
 
-from document_adaptation import DocumentAdaptation
+from document_adaptation import DocumentAdaptation, User
 from config import config
 
 
@@ -24,20 +24,45 @@ def hello():
 @app.route('/keywords', methods=["POST"])
 def keywords(): 
     req = request.get_json()
-    if not req or 'uTastes' not in req:
-        return jsonify({"error":"Input not found"})
-    print(req)
-    results = document_adaptation.get_keywords(req['uTastes'])
+    req['keywordExpansion'] = []
+    
+    # Errors
+    if not req:
+        return abort(400) # BAD REQUEST
+    if 'userProfile' not in req:
+        req['adaption_error'] = {"userProfile not found"}
+        return jsonify(req)
+    if 'tastes' not in req['userProfile']:
+        req['adaption_error'] = {"userProfile incomplete"}
+        return jsonify(req)
+    
+    # Body
+    user = User(req["userProfile"])
+    results = document_adaptation.get_keywords(user.keywords)
     req['keywordExpansion'] = results 
     return jsonify(req)
 
 @app.route('/tailored_text', methods=["POST"])
 def tailored_text():
     req = request.get_json()
-    if not req or 'results' not in req:
-        return jsonify({"error":"Input not found"})
+    req['tailoredText'] = ''
 
-    results = document_adaptation.get_tailored_text(req['results'])
+    # Errors
+    if not req:
+        return abort(400) # BAD REQUEST
+    if  'results' not in req:
+        req['adaption_error'] = {"results not found"}
+        return jsonify(req)
+    if 'userProfile' not in req:
+        req['adaption_error'] = {"userProfile not found"}
+        return jsonify(req)
+    if 'tastes' not in req['userProfile'] or 'expertiseLevel' not in req['userProfile'] or 'language' not in req['userProfile']:
+        req['adaption_error'] = {"userProfile incomplete"}
+        return jsonify(req)
+       
+    # Body
+    user = User(req["userProfile"])
+    results = document_adaptation.get_tailored_text(req['results'], user)
     req['tailoredText'] = results
     return jsonify(req)
 

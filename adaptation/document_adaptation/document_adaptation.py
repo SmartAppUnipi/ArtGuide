@@ -14,9 +14,9 @@ class DocumentAdaptation():
     #                   "keyword2":["keyword2_expanded_2","keyword2_expanded_3","keyword2_expanded_4"]
     #                   ....
     #                   }
-    def get_keywords(self, u_tastes):
+    def get_keywords(self, tastes):
         res = {}
-        for taste in u_tastes:
+        for taste in tastes:
             res[taste] = [taste]
         return res
 
@@ -24,14 +24,16 @@ class DocumentAdaptation():
     # Out: articolo filtrato im base alle preferenze dell'utente 
     # Formato output: string
     # Proto: il primo articolo per ora può andare bene
-    def get_tailored_text(self, results):
+    def get_tailored_text(self, results, user):
         if len(results)<=0:
             return "Content not found"
         
         documents =  []      
         for result in results:
-            documents.append( DocumentModel(results) )
-        return documents[0].plain_text
+            documents.append( DocumentModel(results, user) )
+        best_document = documents[0]
+        # best_document = max(documents.affinity_score())
+        return best_document.plain_text
         
 
     
