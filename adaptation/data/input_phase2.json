@@ -3,7 +3,7 @@
 	"userProfile":{
 		"id": 42,
 		"tastes": ["history", "description", "legacy"],
-		"expertiseLevel": 1, // enum from ["child","novice","knowledgeable","expert"]
+		"expertiseLevel": 1,
 		"language": "en"
 	},	
 	"results": [{

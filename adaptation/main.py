@@ -38,7 +38,7 @@ def keywords():
     
     # Body
     user = User(req["userProfile"])
-    results = document_adaptation.get_keywords(user.keywords)
+    results = document_adaptation.get_keywords(user.tastes)
     req['keywordExpansion'] = results 
     return jsonify(req)
 

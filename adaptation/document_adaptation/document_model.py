@@ -1,4 +1,5 @@
-import User from User
+from .user import User
+
 class DocumentModel():
     def __init__(self, result, user):
         '''
@@ -15,7 +16,6 @@ class DocumentModel():
         self.title = ''
         self.sections = []
         self.user = user
-
         
         if result:
             self.keywords = result['keywords']
