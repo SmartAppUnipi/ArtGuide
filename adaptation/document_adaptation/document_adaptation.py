@@ -25,15 +25,13 @@ class DocumentAdaptation():
     # Formato output: string
     # Proto: il primo articolo per ora può andare bene
     def get_tailored_text(self, results):
-        return "Testo di prova"
-
-        '''if len(results)<=0:
+        if len(results)<=0:
             return "Content not found"
         
         documents =  []      
         for result in results:
             documents.append( DocumentModel(results) )
-        return documents[0].plain_text'''
+        return documents[0].plain_text
         
 
     

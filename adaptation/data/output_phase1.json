@@ -1,10 +1,13 @@
 {
-	"uId": 42,
-	"uTastes": ["history", "description", "legacy"],
+	"userProfile":{
+		"id": 42,
+		"tastes": ["history", "description", "legacy"],
+		"expertiseLevel": 1,
+		"language": "en"
+	},	
 	"keywordExpansion": [
 		{"history": ["keyword_history1", "keyword_history2"]},
 		{"description": ["keyword_description1", "keyword_description2"]},
 		{"legacy": ["keyword_legacy1", "keyword_legacy"]}
 	],
-	"lang": "en",
 }

@@ -1,6 +1,9 @@
 {
-	"uId": 42,
-	"...": "...",
+	"userProfile":{
+		"id": 42,
+		"tastes": ["history", "description", "legacy"],
+		"expertiseLevel": 1,
+		"language": "en"
+	},	
 	"tailoredText": "lorem ipsum...",
-	"lang": "en",
 }
