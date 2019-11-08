@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { response } from 'express';
 import { WikiSearch } from './wiki.module'
 
 /**
@@ -77,6 +77,13 @@ router.get('/page/*', async (req, res) => {
 
     wiki.getField(query, language, field).then( response => res.json(response));
 
+});
+
+router.get('/wikires/*', async (req, res) => {
+    const query = getAndValidateQuery(req, res) as string;
+    const language = getAndValidateLanguage(req, res) as string;
+
+    wiki.getWikiInfo(query, language).then( response => res.json(response));
 });
 
 
