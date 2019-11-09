@@ -50,14 +50,22 @@ class DocumentModel():
             Float value between 0 (easy to read) and 1 (difficult to read). 
         '''
         import textstat
-        score1 = textstat.flesch_reading_ease(self.plain_text) #[1-100]
-        score2 = textstat.dale_chall_readability_score(self.plain_text) #[1-10]
-        score1 = score1 / 100
-        score2 = score2 / 10
-        score = score1/2 + score2/2
-        expertise_level = self.user.expertise_level # dettagli in input_phase2.json
-        return score
-        pass
+        import os
+
+        for filename in os.listdir("../demo/dataset"):
+            if filename.endswith(".txt"):
+                score = textstat.flesch_reading_ease(open(os.path.join('../demo/dataset', filename),
+                                                          encoding="utf8").read())  # [1-100] alto facile, basso difficile
+                score = score / 100
+                if score > 1 or score < 0:
+                    continue
+                print(filename)
+                print(score)
+                level = 1
+                expertise_level = level / 3  # dettagli in input_phase2.json
+                print(expertise_level)
+                print(abs(expertise_level - score))
+                return abs(expertise_level - score)
 
         
     def topics_affinity_score(self):
@@ -78,4 +86,3 @@ class DocumentModel():
             Float value between 0 (not affine) and 1 (affine). 
         '''
         return (self.user_readability_score() + self.topics_affinity_score())/2
-
