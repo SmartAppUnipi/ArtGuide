@@ -1,18 +1,16 @@
-# ArtGuide
-
-## Adaptation module
+# Adaptation module
 
 The aim of this module is twofold:
 1. Expand the words that represent the user's tastes in order to allow SDAIS module to retrieve better pages
 2. Perform some analyses on the text returned by SDAIS module and send back the most promising result.
 So far, the output text is chosen as follows: all the input texts are labeled with a couple `(difficulty, similarity)` and then sorted by difficulty and then by similarity. Ideally, the fittest text should have the proper lexical and syntactic difficulty and be close to the user's tastes.
 
-### API
+## API
 
 The APIs of this module can be found [here](https:http://cipizio.it:4321/).
 Notice that the adaptation module will receive 2 different json files from the SDAI module in temporal order, which are called `phase1` and `phase2` respectively.
 
-### Folder structure
+## Folder structure
 Inside `adaptation` folder the following directories can be found:
 
 - data folder contains some examples of text (in .txt format) which should be the input of the text-tailoring functions and some json files, to emulate the REST interaction between modules
@@ -21,7 +19,7 @@ Inside `adaptation` folder the following directories can be found:
 - test folder contains two scripts that allow any user to test the module in local
 - document_adaptation folder is the core of the module and provides the functionalities of keword expansion and document adaptation
 
-### Files
+## Files
 
 - `config.json` contains the config information
 - `config.py` reads such file
