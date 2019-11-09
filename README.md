@@ -30,5 +30,5 @@ Inside `adaptation` folder the following directories can be found:
 - `main.py` is the code of the server
 - `requirements.txt` is the usual file for allowing any user to install the modules required by the software
 
-## Run test
+### Run test
 To run some tests locally (and see how adaptation module performs on some sample situations) run `python test_phase1.py --help` (or `python test_phase2.py --help`)

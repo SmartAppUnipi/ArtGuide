@@ -23,7 +23,7 @@ class DocumentAdaptation():
     # Input: json contenente articoli ricevuti da SDAIS 
     # Out: articolo filtrato im base alle preferenze dell'utente 
     # Formato output: string
-    # Proto: il primo articolo per ora può andare bene
+    # Proto: il primo articolo per ora puo' andare bene
     def get_tailored_text(self, results, user):
         if len(results)<=0:
             return "Content not found"
