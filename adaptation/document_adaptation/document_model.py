@@ -49,7 +49,14 @@ class DocumentModel():
         Returns:
             Float value between 0 (easy to read) and 1 (difficult to read). 
         '''
-        # expertise_level = self.user.expertise_level # dettagli in input_phase2.json
+        import textstat
+        score1 = textstat.flesch_reading_ease(self.plain_text) #[1-100]
+        score2 = round(textstat.dale_chall_readability_score(self.plain_text)) #[1-10]
+        score1 = score1 / 100
+        score2 = score2 / 10
+        score = score1/2 + score2/2
+        expertise_level = self.user.expertise_level # dettagli in input_phase2.json
+        return score
         pass
 
         
