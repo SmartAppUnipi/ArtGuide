@@ -51,7 +51,7 @@ class DocumentModel():
         '''
         import textstat
         score1 = textstat.flesch_reading_ease(self.plain_text) #[1-100]
-        score2 = round(textstat.dale_chall_readability_score(self.plain_text)) #[1-10]
+        score2 = textstat.dale_chall_readability_score(self.plain_text) #[1-10]
         score1 = score1 / 100
         score2 = score2 / 10
         score = score1/2 + score2/2
