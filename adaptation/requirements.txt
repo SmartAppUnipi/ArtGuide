@@ -3,3 +3,8 @@ sklearn
 numpy
 glob
 textstat
+sentence-transformers
+scypy
+matplotlib 
+ipython 
+jupyter 
