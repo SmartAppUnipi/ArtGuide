@@ -1,2 +1,2 @@
-from .document_adaptation import DocumentAdaptation
+from .documents_adaptation import DocumentsAdaptation
 from .user import User

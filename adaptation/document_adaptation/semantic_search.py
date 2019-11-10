@@ -12,7 +12,7 @@ class Distance(ABC):
     def multiple_distances(self, sentence, list_keywords):
         pass
 
-class semantic_search():
+class Semantic_Search():
     # class that, given some sentences and some keyword rank the senctances 
     # from the most significant to the less significant in respect to the keyword
     def __init__(self, Dist, K = 4):
@@ -21,7 +21,7 @@ class semantic_search():
         self.Dist = Dist
         self.K = 4
     
-    def find_most_similar_multiple_keywords(self, list_sentences, list_keywords, k = None):
+    def find_most_similar_multiple_keywords(self, list_sentences, list_keywords, k = None, verbose = True):
         # given a list of keywords it returns the most similar sentence for each keyword!
         # this method is usefull in order to compute the embedding of the sentece only once
         k = k if k else self.K
@@ -30,10 +30,19 @@ class semantic_search():
             dist = self.Dist.multiple_distances(sentence, list_keywords)
             for i, d in enumerate(dist):
                 result[list_keywords[i]].append((d, sentence))
-        result[:].sort()
-        return result[:][:min(k, len(list_sentences))]
+        for key in list_keywords:
+            result[key].sort()
+            if verbose:
+                self.show_list(result[key], key)
+        return result
 
-    def find_most_similar_one_keyword(self, list_sentences, keyword, k = None):
+    def show_list(self, list, keyword):
+        print("The keyword is "+ keyword)
+        for l in list:
+            print(l[1]+str(l[0]))
+        
+
+    def find_most_similar_one_keyword(self, list_sentences, keyword, k = None, verbose = True):
         # function that given a list of sentences and a keyword 
         # returns a list which contains the most similar keyword. 
         k = k if k else self.K
@@ -42,7 +51,10 @@ class semantic_search():
             dist =  self.Dist.distance(sentence, keyword)
             ranked_sentences.append((dist, sentence))
         ranked_sentences.sort()
-        return ranked_sentences[:min(k, len(ranked_sentences))]
+        if verbose:
+            self.show_list(ranked_sentences, keyword)
+        return ranked_sentences[len(ranked_sentences)- min(k, len(ranked_sentences)):]
+    
 
 class BERT_distance(Distance):
     def __init__(self, distance_metric = "cosine"):
@@ -55,14 +67,15 @@ class BERT_distance(Distance):
     def multiple_distances(self, sentence, list_keywords):
         # given a set of keyword it returns the distance betwen the sentence and each keyword.
         # this method is usefull in order to compute the embedding of the sentece only once
-        sentence_embeddings = self.embedder.encode(sentence)
+        sentence_embeddings = self.embedder.encode([sentence])
         list_keyword_embeddings = self.embedder.encode(list_keywords)
-        distances = scipy.spatial.distance.cdist(list_keyword_embeddings, sentence_embeddings, self.distance_metric)[0]
+        distances = scipy.spatial.distance.cdist(list_keyword_embeddings, sentence_embeddings, self.distance_metric)
+        distances = [d[0] for d in distances]
         return distances
 
 
     def distance(self, sentence, keyword):
-        sentence_embeddings = self.embedder.encode(sentence)
-        keyword_embeddings = self.embedder.encode(keyword)
-        distance = scipy.spatial.distance.cdist(sentence_embeddings, keyword_embeddings, self.distance_metric)[0]
+        sentence_embeddings = self.embedder.encode([sentence])
+        keyword_embeddings = self.embedder.encode([keyword])
+        distance = scipy.spatial.distance.cdist(sentence_embeddings, keyword_embeddings, self.distance_metric)[0][0]
         return distance
