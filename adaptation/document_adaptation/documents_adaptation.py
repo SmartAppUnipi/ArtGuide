@@ -1,7 +1,7 @@
 # SDAIS = Smart Deep AI for Search 
 # Commentiamo tutte le funzioni e classi seguendo formato Doxygen
 from .document_model import DocumentModel
-from .semantic_search import Semantic_Search, BERT_distance
+from .semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_distance
 import spacy
 
 class DocumentsAdaptation():
@@ -9,7 +9,9 @@ class DocumentsAdaptation():
         self.available_languages = {'en':'en_core_web_sm','de':'de_core_news_sm',
                             'fr':'fr_core_news_sm','es':'es_core_news_sm', 
                             'it':'it_core_news_sm', 'multi':'xx_ent_wiki_sm'}
-        self.distance = BERT_distance()
+        # we can use also BERT distance, but it's slower and does not support multi language
+        # self.distance = BERT_distance()
+        self.distance = BPEmb_Embedding_distance(lang = "en")
         self.search_engine = Semantic_Search(self.distance)
         self.verbose = verbose
 

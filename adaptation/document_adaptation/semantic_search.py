@@ -79,7 +79,7 @@ class BERT_distance(Distance):
         distance = scipy.spatial.distance.cdist(sentence_embeddings, keyword_embeddings, self.distance_metric)[0][0]
         return distance
 
-class BPE_Embedding_distance(Distance):
+class BPEmb_Embedding_distance(Distance):
     # when we init ourn object we have to decide the dimention of vocab size(VS), dimention of the space 
     # dim and the language.
     # For more info https://github.com/bheinzerling/bpemb
