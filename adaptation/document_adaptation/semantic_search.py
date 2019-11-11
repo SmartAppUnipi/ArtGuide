@@ -15,16 +15,14 @@ class Distance(ABC):
 class Semantic_Search():
     # class that, given some sentences and some keyword rank the senctances 
     # from the most significant to the less significant in respect to the keyword
-    def __init__(self, Dist, K = 4):
+    def __init__(self, Dist):
         # distance is a class derived by the class Distance. It have to implement the methond:
         #  multiple_distances() and distance()
         self.Dist = Dist
-        self.K = 4
     
-    def find_most_similar_multiple_keywords(self, list_sentences, list_keywords, k = None, verbose = True):
+    def find_most_similar_multiple_keywords(self, list_sentences, list_keywords, verbose = True):
         # given a list of keywords it returns the most similar sentence for each keyword!
         # this method is usefull in order to compute the embedding of the sentece only once
-        k = k if k else self.K
         result = { i : [] for i in list_keywords }
         for sentence in list_sentences:
             dist = self.Dist.multiple_distances(sentence, list_keywords)
@@ -42,10 +40,9 @@ class Semantic_Search():
             print(l[1]+str(l[0]))
         
 
-    def find_most_similar_one_keyword(self, list_sentences, keyword, k = None, verbose = True):
+    def find_most_similar_one_keyword(self, list_sentences, keyword, verbose = True):
         # function that given a list of sentences and a keyword 
-        # returns a list which contains the most similar keyword. 
-        k = k if k else self.K
+        # returns a list of the sentences which are more similar to the keyword
         ranked_sentences = []
         for sentence in list_sentences:
             dist =  self.Dist.distance(sentence, keyword)
@@ -53,7 +50,7 @@ class Semantic_Search():
         ranked_sentences.sort()
         if verbose:
             self.show_list(ranked_sentences, keyword)
-        return ranked_sentences[len(ranked_sentences)- min(k, len(ranked_sentences)):]
+        return ranked_sentences
     
 
 class BERT_distance(Distance):
