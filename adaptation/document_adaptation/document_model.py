@@ -1,4 +1,6 @@
 import re
+import textstat
+import os
 from .user import User
 from rake_nltk import Rake
 from gensim.summarization.summarizer import summarize
@@ -23,6 +25,8 @@ class DocumentModel():
         self.plain_text = ''
         self.normalized_text = ''
         self.stop_words = stop_words
+        self.readability_score = 0
+        self.affinity_score = 0
         
         if result:
             self.keywords = result['keywords']
@@ -30,7 +34,7 @@ class DocumentModel():
             self.title = result['title']
             self.sections = result['sections']
             self.plain_text = self.get_plain_text(result)
-            self.normalized_text = self.normalized(self.plain_text)
+            self.normalized_text = self.normalize(self.plain_text)
             
 
     def get_plain_text(self, result):
@@ -63,23 +67,14 @@ class DocumentModel():
         Returns:
             Float value between 0 (easy to read) and 1 (difficult to read). 
         '''
-        import textstat
-        import os
-
-        for filename in os.listdir("../demo/dataset"):
-            if filename.endswith(".txt"):
-                score = textstat.flesch_reading_ease(open(os.path.join('../demo/dataset', filename),
-                                                          encoding="utf8").read())  # [1-100] alto facile, basso difficile
-                score = score / 100
-                if score > 1 or score < 0:
-                    continue
-                print(filename)
-                print(score)
-                level = 1
-                expertise_level = level / 3  # dettagli in input_phase2.json
-                print(expertise_level)
-                print(abs(expertise_level - score))
-                return abs(expertise_level - score)
+        score = textstat.flesch_reading_ease(self.plain_text)  # [1-100] alto facile, basso difficile
+        score = score / 100
+        if score > 1 or score < 0:
+            return 0
+        level = self.user.expertise_level
+        expertise_level = level / 3  # dettagli in input_phase2.json
+        self.readability_score = abs(expertise_level - score)
+        return self.readability_score
 
     def rake(self, n_sentences=10):
         # https://pypi.org/project/rake-nltk/
@@ -105,7 +100,7 @@ class DocumentModel():
         salient_sentences += self.textRank()
         return salient_sentences
 
-    def topics_affinity_score(self):
+    def topics_affinity_score(self, results):
       
         '''
         Calculate and return the document affinity scores based on user's tastes.
@@ -113,14 +108,18 @@ class DocumentModel():
         Returns:
             Float value between 0 (not tastes's inherent) and 1 (tastes's inherent). 
         '''
-        return 1
+        self.affinity_score = 0
+        for taste in self.user.tastes: 
+            if taste in results:
+                self.affinity_score += sum([res[0] for res in results[taste]]) / len(results[taste])
+        return self.affinity_score
 
-    def affinity_score(self):
-        '''
-        Calculate and return the final score of document affinity 
-        taking into consideration on user's preferences.
+    # def affinity_score(self):
+    #     '''
+    #     Calculate and return the final score of document affinity 
+    #     taking into consideration on user's preferences.
 
-        Returns:
-            Float value between 0 (not affine) and 1 (affine). 
-        '''
-        return (self.user_readability_score() + self.topics_affinity_score())/2
+    #     Returns:
+    #         Float value between 0 (not affine) and 1 (affine). 
+    #     '''
+    #     return (self.user_readability_score() + self.topics_affinity_score())/2

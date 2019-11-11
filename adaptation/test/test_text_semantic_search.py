@@ -1,6 +1,6 @@
 import sys
 # insert your path here. Sorry I didn't find a better solution :( 
-sys.path.insert(0, "/home/mario/git/ArtGuide/adaptation")
+sys.path.insert(0, "./")
 print(sys.path)
 import document_adaptation.semantic_search
 import time 

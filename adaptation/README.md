@@ -28,5 +28,11 @@ Inside `adaptation` folder the following directories can be found:
 - `main.py` is the code of the server
 - `requirements.txt` is the usual file for allowing any user to install the modules required by the software
 
+## Getting ready
+First of all you need to install the dependencies by running `pip install -r requirements.txt`. 
+Then you need to start the server by moving into the adaptation directory and exporting the environment variable FLASK_APP with the path to main.py (`export FLASK_APP=main.py` or `set FLASK_APP=main.py` for Windows users).
+To start the server you need to run `python -m flask run`.
+Now you are ready to start some tests!
+
 ## Run test
-To run some tests locally (and see how adaptation module performs on some sample situations) run `python test_phase1.py --help` (or `python test_phase2.py --help`)
+To start some tests locally (and see how adaptation module performs on some sample situations) run `python test_phase1.py --help` (or `python test_phase2.py --help`)

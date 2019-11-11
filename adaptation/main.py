@@ -7,12 +7,12 @@ from flask import Flask, jsonify, request, abort
 import json
 from logging.handlers import RotatingFileHandler
 
-from document_adaptation import DocumentAdaptation, User
+from document_adaptation import DocumentsAdaptation, User, semantic_search
 from config import config
 
 
 app = Flask(__name__, static_folder="documentation")
-document_adaptation = DocumentAdaptation()
+document_adaptation = DocumentsAdaptation(verbose=config.debug)
 
 @app.route('/', methods=["GET","POST"])
 def hello():
