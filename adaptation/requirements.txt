@@ -3,6 +3,7 @@ sklearn
 numpy
 textstat
 sentence-transformers
+bpemb
 scipy
 gensim
 nltk

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod 
-from sentence_transformers import SentenceTransformer
 import numpy as np
 import scipy
+
 
 class Distance(ABC):
     @abstractmethod
@@ -55,6 +55,8 @@ class Semantic_Search():
 
 class BERT_distance(Distance):
     def __init__(self, distance_metric = "cosine"):
+        from sentence_transformers import SentenceTransformer
+
         # define the metrics. Could be cosine distance or euclidian distance
         # we can use the metric from 
         # https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cdist.html
@@ -76,3 +78,30 @@ class BERT_distance(Distance):
         keyword_embeddings = self.embedder.encode([keyword])
         distance = scipy.spatial.distance.cdist(sentence_embeddings, keyword_embeddings, self.distance_metric)[0][0]
         return distance
+
+class BPE_Embedding_distance(Distance):
+    # when we init ourn object we have to decide the dimention of vocab size(VS), dimention of the space 
+    # dim and the language.
+    # For more info https://github.com/bheinzerling/bpemb
+    def __init__(self, lang = "en", dim = 200, vs = 200000, distance_metric = "cosine"):
+        from bpemb import BPEmb
+        self.bpemb = BPEmb(lang=lang, dim=dim, vs = vs)
+        self.distance_metric = distance_metric
+
+    def distance(self, sentence, keyword):
+        sentence_embeddings = self.bpemb.embed(sentence)
+        keyword_embeddings = self.bpemb.embed(keyword)
+        # find the distance between them. Again euclidian distance now
+        distance = scipy.spatial.distance.cdist(sentence_embeddings, keyword_embeddings, self.distance_metric)
+        return distance.mean()
+
+    def multiple_distances(self, sentence, list_keywords):
+        sentence_embeddings = self.bpemb.embed(sentence)
+        result = []
+        for keyword in list_keywords:
+            keyword_embeddings = self.bpemb.embed(keyword)
+            distance = scipy.spatial.distance.cdist(sentence_embeddings, keyword_embeddings, self.distance_metric)
+            result.append(distance.mean())
+        return result
+
+
