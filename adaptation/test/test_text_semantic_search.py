@@ -1,11 +1,11 @@
 import sys
 # insert your path here. Sorry I didn't find a better solution :( 
-sys.path.insert(0, "./")
+sys.path.insert(0, "../")
 print(sys.path)
 import document_adaptation.semantic_search
 import time 
 # sentences
-test_text = "data/mona_lisa.txt"
+test_text = "../data/mona_lisa.txt"
 with open(test_text) as file:
   sentences = file.readlines()
 sentences = [x for x in sentences if x != "\n"]
