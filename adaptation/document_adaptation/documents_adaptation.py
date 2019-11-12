@@ -11,8 +11,7 @@ class DocumentsAdaptation():
                             'it':'it_core_news_sm', 'multi':'xx_ent_wiki_sm'}
         # we can use also BERT distance, but it's slower and does not support multi language
         # self.distance = BERT_distance()
-        self.distance = BPEmb_Embedding_distance(lang = "en")
-        self.search_engine = Semantic_Search(self.distance)
+        self.distance = {"en": BPEmb_Embedding_distance(lang = "en"), "it": BPEmb_Embedding_distance(lang = "it")}
         self.verbose = verbose
 
     # Input: json contenente informazioni dell'utente passate dall'applicazione
@@ -44,7 +43,7 @@ class DocumentsAdaptation():
         for taste in tastes:
             res[taste] = [taste]
         if self.verbose:
-            print(f"Expanded keywords: {res}")
+            print("Expanded keywords: ",res)
         return res
 
     # Input: json contenente articoli ricevuti da SDAIS 
@@ -52,6 +51,13 @@ class DocumentsAdaptation():
     # Formato output: string
     # Proto: il primo articolo per ora puo' andare bene
     def get_tailored_text(self, results, user):
+
+        # Loading correct language for BPE embeddings
+        if user.language in self.distance:
+            search_engine = Semantic_Search(self.distance[user.language])
+        else:
+            search_engine = Semantic_Search(self.distance['en'])
+
         stop_words = self.get_language_stopwords(user)
 
         if len(results)<=0:
@@ -60,7 +66,7 @@ class DocumentsAdaptation():
         documents =  list(map(lambda x: DocumentModel(x, user, stop_words=stop_words), results))
         for doc in documents: 
             salient_sentences = doc.salient_sentences()
-            results = self.search_engine.find_most_similar_multiple_keywords(salient_sentences, user.tastes, verbose=False)
+            results = search_engine.find_most_similar_multiple_keywords(salient_sentences, user.tastes, verbose=False)
             doc.topics_affinity_score(results)
             doc.user_readability_score()
         

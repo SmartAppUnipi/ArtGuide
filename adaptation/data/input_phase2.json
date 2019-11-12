@@ -4,7 +4,7 @@
 		"id": 42,
 		"tastes": ["history", "description", "legacy"],
 		"expertiseLevel": 1,
-		"language": "en"
+		"language": "it"
 	},	
 	"results": [{
 		"keywords": ["k1", "k2", "k3"],
