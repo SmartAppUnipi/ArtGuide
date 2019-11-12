@@ -1,13 +1,14 @@
 # OS & IDE
-.DS_Store
+*.DS_Store
 .vscode
 
 # Node
 node_modules
+*.log 
 
 # Output
 dist
 coverage
 
 # Environment
-.env
+*.env

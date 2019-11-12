@@ -3,6 +3,7 @@ import { AdaptationEndpoint } from "../environment"
 import { ClassificationResult, QueryExpansionResponse, QueryBuildResult, PageResult } from "../models"
 import { GoogleSearch } from "./google-search"
 import { Parser } from "../parser"
+import { logger } from "../logger"
 
 /**
  * Perform web searches.
@@ -22,7 +23,9 @@ export class Search {
    */
   private buildBasicQuery(classificationResult: ClassificationResult): string {
     // FIXME: return a meaningful query
-    return classificationResult.classification.entities[0].description
+    const query = classificationResult.classification.entities[0].description
+    logger.silly('[search.ts] Basic query built: ', query)
+    return query
   }
 
 
@@ -33,6 +36,7 @@ export class Search {
   * @returns {Array<QueryBuildResult>} An array of object containing the originalQuery and an array expandedKeywords.
   */
   private extendQuery(query: string, queryExpansion: QueryExpansionResponse): Array<QueryBuildResult> {
+    logger.silly('[search.ts] Query expansion: ', queryExpansion)
     const queries: Array<QueryBuildResult> = []
 
     Object.keys(queryExpansion.keywordExpansion).forEach(keyExpansion => {
@@ -42,6 +46,7 @@ export class Search {
         expandedKeywords: keywords
       })
     })
+    logger.debug('[search.ts] Final queries: ', queries)
 
     return queries
   }
@@ -69,6 +74,20 @@ export class Search {
    * @returns {Array<PageResult>} An array of page result to be sent to the Adaptation module.
    */
   private buildResult(queries: QueryBuildResult[]): Promise<Array<PageResult>> {
+
+
+    /*
+      TODO:
+        For each basic query (eg. "Leaning Tower of Pisa") we perform a Google Search for each 
+        keywords that come from the adaptation group (eg. "Leaning Tower of Pisa Art", "Leaning Tower of Pisa Description", ecc).
+
+        Each google search produces a set of pages that are actually merged regardless 
+        the fact they they could potentially be duplicated.
+
+        We need to merge duplicated results, taking into account that we have to find a way
+        to merge their keywords and produce a a reasonable score index.
+    */
+
     const results: Array<PageResult> = []
 
     return Promise.all(
@@ -77,8 +96,11 @@ export class Search {
         // query Google Search and get the list of results
         return this.googleSearch.queryCustom(q.originalQuery + " " + q.expandedKeywords.join(" ")).then(queryResult => {
           
-          if (queryResult.error) 
-            throw new Error(queryResult.error.message)
+          if (queryResult.error) {
+            const err = new Error(queryResult.error.message)
+            logger.error('[search.ts] Query result error: ', err)
+            throw err
+          }
           
           return Promise.all(
             // for each result
@@ -88,10 +110,11 @@ export class Search {
                 return this.parser.parse(item.link).then(parsedContent => {
                   parsedContent.keywords = q.expandedKeywords
                   results.push(parsedContent)
+                  logger.silly('[search.ts] Parsed link ', item.link)
                 })
               } catch (err) {
                 // FIXME: fix the CSS error inside the parser
-                console.error(err)
+                logger.warn('[search.ts] Parser error: ', err, ". Link: ", item.link)
               }
             })
           )

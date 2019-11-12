@@ -1030,5 +1030,98 @@
                 }
             }
         ]
+    },
+    "Leaning Tower of Pisa keyword_legacy1 keyword_legacy": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Leaning Tower of Pisa keyword_legacy1 keyword_legacy",
+                    "totalResults": "0",
+                    "searchTerms": "Leaning Tower of Pisa keyword_legacy1 keyword_legacy",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017463034707763656111:d7drlzq9tgp"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.453768,
+            "formattedSearchTime": "0.45",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Leaning Tower of Pisa keyword legacy1 keyword legacy",
+            "htmlCorrectedQuery": "Leaning Tower of Pisa <b><i>keyword legacy1</i></b> <b><i>keyword legacy</i></b>"
+        }
+    },
+    "Leaning Tower of Pisa keyword_description1 keyword_description2": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Leaning Tower of Pisa keyword_description1 keyword_description2",
+                    "totalResults": "0",
+                    "searchTerms": "Leaning Tower of Pisa keyword_description1 keyword_description2",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017463034707763656111:d7drlzq9tgp"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.643526,
+            "formattedSearchTime": "0.64",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Leaning Tower of Pisa keyword description keyword description",
+            "htmlCorrectedQuery": "Leaning Tower of Pisa <b><i>keyword description</i></b> <b><i>keyword description</i></b>"
+        }
+    },
+    "Leaning Tower of Pisa keyword_history1 keyword_history2": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Leaning Tower of Pisa keyword_history1 keyword_history2",
+                    "totalResults": "0",
+                    "searchTerms": "Leaning Tower of Pisa keyword_history1 keyword_history2",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017463034707763656111:d7drlzq9tgp"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.439817,
+            "formattedSearchTime": "0.44",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Leaning Tower of Pisa keyword history keyword history2",
+            "htmlCorrectedQuery": "Leaning Tower of Pisa <em>keyword history</em> <em>keyword history2</em>"
+        }
     }
 }

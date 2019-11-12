@@ -1,4 +1,5 @@
 import fetch from "node-fetch"
+import { logger } from './logger'
 
 
 /**
@@ -8,6 +9,7 @@ import fetch from "node-fetch"
  * @returns {Promise<T>} A promise resolved with the received JSON parsed as JS object of type T.
  */
 function post<T = any>(url: string, body: any): Promise<T> {
+  logger.silly('[utils.ts] New post request:' + url)
   return fetch(url, {
     method: 'POST',
     body: JSON.stringify(body),

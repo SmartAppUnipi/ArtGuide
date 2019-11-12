@@ -1,14 +1,14 @@
-import path from 'path'
-import fs from 'fs'
 import express from 'express'
 import bodyParser from 'body-parser'
 import packageJson from '../package.json'
-
+import path from 'path'
 import { ClassificationResult } from "src/models"
 import { AdaptationEndpoint } from "./environment"
 import { post } from "./utils"
 import { Search } from "./search"
-import { Wiki} from "./wiki"
+import { Wiki } from "./wiki"
+import { logger } from './logger';
+import fs from 'fs'
 
 /** Express application instance */
 const app: express.Application = express()
@@ -26,9 +26,7 @@ app.use(bodyParser.json())
 // Error handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
   if (err) {
-    console.error("-----------------ERR-----------------")
-    console.error(err.message, err.stack)
-    console.error("----------------END-ERR---------------")
+    logger.error(`[app.ts] Unhandled error`, err);
     return res.json({ message: err.message, stack: err.stack })
   }
   next()
@@ -40,12 +38,13 @@ app.get("/", (req, res) => res.json({ message: `App version ${packageJson.versio
 // Docs entry-point
 app.use("/docs", express.static(path.join(__dirname, '../docs')))
 
+
+
 // Main entry-point
 app.post('/', async (req, res) => {
 
   try {
-    console.log(`[App.ts] Post request received`);
-
+    logger.debug(`[app.ts] Post request received`);
     /** Parsed Classification result */
     const classificationResult = req.body as ClassificationResult
     if (!classificationResult) {
@@ -60,7 +59,7 @@ app.post('/', async (req, res) => {
       wiki.search(classificationResult)
     ]).then(allResults => [].concat(...allResults))
 
-    console.log(`[App.ts] Google and Wikipedia requests ended`);
+    logger.debug(`[app.ts] Google and Wikipedia requests ended`);
 
     // Call adaptation for summary
     return post(AdaptationEndpoint + "/tailored_text", {
@@ -70,7 +69,7 @@ app.post('/', async (req, res) => {
 
     // Catch any error and inform the caller
   } catch (ex) {
-    console.log({ message: ex.message, stack: ex.stack })
+    logger.error('[app.ts]', ex)
     return res.json({ message: ex.message, stack: ex.stack })
   }
 

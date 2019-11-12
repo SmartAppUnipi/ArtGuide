@@ -2,6 +2,7 @@ import fetch from 'node-fetch'
 import fs from 'fs'
 import path from 'path'
 
+import { logger } from '../logger'
 import { GoogleCustomSearchAPIKey, GoogleCustomSearchEngineId } from "../environment"
 import { GoogleSearchResult } from "../models"
 
@@ -21,20 +22,17 @@ export class GoogleSearch {
 
   private cache = JSON.parse(fs.readFileSync(path.join(__dirname, 'cache.json')).toString())
 
+  // FIXME: async?
   private fetchCache(url: string) {
-
-    const keywords = url.split('&q=')[1];
-
-    if(this.cache[keywords])
-      return Promise.resolve(this.cache[keywords]);
-
+    const keywords = url.split('&q=')[1]
+    if (this.cache[keywords]) {
+      logger.debug('[google.ts] Cache hit:' + keywords)
+      return Promise.resolve(this.cache[keywords])
+    }
     return fetch(url).then(async res => {
-      
       this.cache[keywords] = await res.json()
-      
-      // FIXME: async
       fs.writeFileSync(path.join(__dirname, 'cache.json'), JSON.stringify(this.cache))
-      
+      logger.debug('[google.ts] Cache insert: ' + url)
       return this.cache[keywords]
     })
   }
@@ -46,8 +44,13 @@ export class GoogleSearch {
    * @returns {Promise<GoogleSearchResult>} A Google Search result.
    */
   public queryCustom(query: string): Promise<GoogleSearchResult> {
-    if (!query) throw "[Google Search] Error: empty query."
-    return this.fetchCache(this.googleSearchUrls.custom + query);
+    if (!query) {
+      const err = new Error("Error: empty query.")
+      logger.warn('[google.ts] Empty query: ', err)
+      // TODO: manage this null on the other side
+      return Promise.resolve(null)
+    }
+    return this.fetchCache(this.googleSearchUrls.custom + query)
   }
 
   /**
@@ -57,8 +60,13 @@ export class GoogleSearch {
    * @returns {Promise<GoogleSearchResult>} A Google Search result.
    */
   public queryRestricted(query: string): Promise<GoogleSearchResult> {
-    if (!query) throw "[Google Search] Error: empty query."
-    return this.fetchCache(this.googleSearchUrls.restricted + query);
+    if (!query) {
+      const err = new Error("[Google Search] Error: empty query.")
+      logger.warn('[google.ts] Empty query: ', err)
+      // TODO: manage this null on the other side
+      return Promise.resolve(null)
+    }
+    return this.fetchCache(this.googleSearchUrls.restricted + query)
   }
 
 }
