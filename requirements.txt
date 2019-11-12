@@ -3,5 +3,4 @@ flask_cors
 google-cloud-vision
 sklearn
 pytorch
-tensorflow=1.14
-
+tensorflow
