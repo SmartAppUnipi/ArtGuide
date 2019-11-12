@@ -1,0 +1,9 @@
+
+{
+    "name": "ArtGuide - Information retrieval module",
+    "mode": "file",
+    "out": "docs",
+    "exclude": [
+        "tests/**"
+    ]
+}
