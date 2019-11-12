@@ -12,7 +12,7 @@ from config import config
 
 
 app = Flask(__name__, static_folder="documentation")
-document_adaptation = DocumentsAdaptation(verbose=config.debug)
+document_adaptation = DocumentsAdaptation(max_workers=4, verbose=config.debug)
 
 @app.route('/', methods=["GET","POST"])
 def hello():
