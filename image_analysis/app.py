@@ -1,16 +1,19 @@
 import io
+import re
 import os
 import json
 import requests
 import base64
 import pprint
 
+from flask_cors import CORS
 from flask import Flask, escape, request
 from google.cloud import vision
 from google.cloud.vision import types
 from google.protobuf.json_format import MessageToDict
 from PIL import Image
 
+URL = 'http://srv.ald.ooo:3000/'
 
 # ----- FUNCTION DEFINITION ----- #
 def set_key(key_path='key/vision_api_keys.json'):
@@ -27,82 +30,57 @@ def get_vision(content):
     # Performs label detection on the image file
     label = MessageToDict(client.label_detection(image=image))
     web_entities = MessageToDict(client.web_detection(image=image))
-
-    merge_res = {
-        # TODO: this part should be taken in input from other group
-        "userProfile": {
-            "id": 42,
-            "tastes": [
-                "history",
-                "description",
-                "legacy"],
-            "language": "en"
-        },
-        "classification": {
-            "labels": label['labelAnnotations'],
-            "entities": web_entities['webDetection']['webEntities'],
-            "locations": [],
-            "safeSearch": [],
-            "type": [],
-            "monumentType": [],
-            "period": [],
-            "style": [],
-            "materials": []
-        }
-    }
-    return merge_res
+    
+    return { "label": label, "we": web_entities}
 
 
 # ----- ENVIRONMENT ----- #
 app = Flask(__name__)
+CORS(app, resources=r'/*')
 set_key()
 client = vision.ImageAnnotatorClient()
 
 
 # ----- ROUTES ----- #
+@app.route('/', methods=['GET'])
+def home():
+    return '<h1>hello</h1>'
+
 @app.route('/upload', methods=['POST'])
 def upload():
-
     '''
     For Test.py:
         load the Base64 encoded image with get_json(),
         decode it back to an image and send it to the API
         to retrieve the JSON answer.
     '''
-    #content = json.loads(request.get_json())
-    #imgdata = base64.b64decode(content.get('img'))
-    #image = Image.frombytes(content.get('mode'), content.get('size'), imgdata)
-    #api_res = get_vision(image.tobytes())
+    content = request.get_json()
+    image = content["image"] 
+    image_b64_str = re.sub("^data:image/.+;base64,", "", image)
+    img_b64 = base64.b64decode(image_b64_str)
+    api_res = get_vision(img_b64)
 
-    '''
-    Otherwise, with flask run (the server started by hand):
-        load the image directly and call get_vision.
-    '''
-    api_res = get_vision(request.files['file'].read())
-
-    # Only visible if run with flask run
-    pprint.pprint((json.dumps(api_res)))
-
-    '''
-    Call the second server for testing (server2.py):
-        first start the server2.py with flask run in a different port
-        from app.py (app.py:5000, server2:5001 in this example), then
-        call the POST to the server which should return the same JSON.
-    '''
-    # url = 'http://127.0.0.1:5001/upload'
-
-    '''
-    Otherwise, use the comment API with the right IP address.
-    '''
-    # url = 'http://10.101.32.26:3000/'
-    url = 'http://srv.ald.ooo:3000/'
+    print(f"[DEBUG_0] {api_res} \n")
 
     # Define the headers (they are needed to make get_json() work)
-    head = {'Content-type': 'application/json'}
+    head = {"Content-type": "application/json"}
+    
+    content["classification"] = {
+        "labels": api_res["label"]["labelAnnotations"],
+        "entities": api_res["we"]["webDetection"]["webEntities"],
+        "locations": [],
+        "safeSearch": [],
+        "type": [],
+        "monumentType": [],
+        "period": [],
+        "style": [],
+        "materials": []
+    }
+    del content["image"]
+    json_content = json.dumps(content)
 
-    r = requests.post(url, data=(json.dumps(api_res)), headers=head)
-
-    # Only visible if run with flask run
-    print("Risultato: ", r.content)
-
+    r = requests.post(URL, data=json_content, headers=head)
+    print(f"[DEBUG] {r}")
     return r.content
+
+
