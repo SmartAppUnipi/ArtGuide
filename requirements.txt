@@ -2,5 +2,4 @@ flask
 flask_cors
 google-cloud-vision
 sklearn
-pytorch
 tensorflow
