@@ -11,6 +11,7 @@ class DocumentsAdaptation():
                             'it':'it_core_news_sm', 'multi':'xx_ent_wiki_sm'}
         # we can use also BERT distance, but it's slower and does not support multi language
         # self.distance = BERT_distance()
+        print("Preloading Word Embeddings for supported languages...")
         self.distance = {"en": BPEmb_Embedding_distance(lang = "en"), "it": BPEmb_Embedding_distance(lang = "it")}
         self.verbose = verbose
 
@@ -34,7 +35,7 @@ class DocumentsAdaptation():
             stop_words = spacy_lang.stop_words.STOP_WORDS
         else:
             stop_words = []
-
+        
         return stop_words
 
 
