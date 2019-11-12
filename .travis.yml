@@ -1,5 +1,6 @@
 language: python
 install: pip install -r image_analysis/requirements.txt
+script: image_analysis/app.py
 branches:
   only:
   - master
