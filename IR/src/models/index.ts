@@ -1,22 +1,19 @@
+import { UserProfile } from './user-profile.model'
 import { ClassificationResult } from './classification.models';
 import { GoogleSearchResult } from './google-search.models';
-import {
-    QueryExpansionResponse,
-    QueryExpansionRequest
-} from './query-expansion.models'
-import { UserProfile } from './user-profile.model'
-
-import { PageResult } from './parser.model';
+import { QueryExpansionRequest, QueryExpansionResponse, QueryBuildResult } from './query-expansion.models'
+import { PageResult } from './page-result.model';
 
 
 export {
-    ClassificationResult,
-    GoogleSearchResult,
+  UserProfile,
+  ClassificationResult,
 
-    QueryExpansionRequest,
-    QueryExpansionResponse,
+  GoogleSearchResult,
 
-    UserProfile,
+  QueryExpansionRequest,
+  QueryExpansionResponse,
+  QueryBuildResult,
 
-    PageResult
+  PageResult
 }

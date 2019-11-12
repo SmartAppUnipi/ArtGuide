@@ -3,17 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ArtGuide - Information retrieval module</title>
+	<title>QueryBuildResult | ArtGuide - Information retrieval module</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">ArtGuide - Information retrieval module</a>
+					<a href="../index.html" class="title">ArtGuide - Information retrieval module</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -53,180 +53,206 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="globals.html">Globals</a>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="querybuildresult.html">QueryBuildResult</a>
 				</li>
 			</ul>
-			<h1> ArtGuide - Information retrieval module</h1>
+			<h1>Interface QueryBuildResult</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#artguide" id="artguide" style="color: inherit; text-decoration: none;">
-					<h1>ArtGuide</h1>
-				</a>
-				<a href="#how-to-run" id="how-to-run" style="color: inherit; text-decoration: none;">
-					<h3>How to run</h3>
-				</a>
-				<pre><code class="language-bash">npm i
-npm start</code></pre>
-				<a href="#available-commands" id="available-commands" style="color: inherit; text-decoration: none;">
-					<h3>Available commands</h3>
-				</a>
-				<pre><code class="language-bash">npm i       <span class="hljs-comment"># install dependencies</span>
-npm start   <span class="hljs-comment"># start the server in watch mode</span>
-
-npm run build   <span class="hljs-comment"># compiles src/*.ts in dist/*.js</span>
-npm run watch   <span class="hljs-comment"># automatically compiles ts when the file is saved</span>
-
-npm t               <span class="hljs-comment"># run unit tests</span>
-npm run <span class="hljs-built_in">test</span>:watch  <span class="hljs-comment"># run tests in watch mode</span>
-npm run <span class="hljs-built_in">test</span>:cov    <span class="hljs-comment"># run coverage report</span>
-
-npm run docs    <span class="hljs-comment"># generate the documentation in docs</span></code></pre>
-				<a href="#docker" id="docker" style="color: inherit; text-decoration: none;">
-					<h3>Docker</h3>
-				</a>
-				<pre><code class="language-bash"><span class="hljs-comment"># Build</span>
-sudo docker build -t artguide/ir .
-<span class="hljs-comment"># Run</span>
-sudo docker run -dit --restart=always --name ir -p 3000:3000 artguide/ir
-<span class="hljs-comment"># Stop</span>
-sudo docker stop ir
-sudo docker rm ir</code></pre>
-			</div>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">QueryBuildResult</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="querybuildresult.html#expandedkeywords" class="tsd-kind-icon">expanded<wbr>Keywords</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="querybuildresult.html#originalquery" class="tsd-kind-icon">original<wbr>Query</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="expandedkeywords" class="tsd-anchor"></a>
+					<h3>expanded<wbr>Keywords</h3>
+					<div class="tsd-signature tsd-kind-icon">expanded<wbr>Keywords<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/039c482/IR/src/models/query-expansion.models.ts#L20">src/models/query-expansion.models.ts:20</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="originalquery" class="tsd-anchor"></a>
+					<h3>original<wbr>Query</h3>
+					<div class="tsd-signature tsd-kind-icon">original<wbr>Query<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/039c482/IR/src/models/query-expansion.models.ts#L19">src/models/query-expansion.models.ts:19</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
 					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class">
-						<a href="classes/googlesearch.html" class="tsd-kind-icon">Google<wbr>Search</a>
+						<a href="../classes/googlesearch.html" class="tsd-kind-icon">Google<wbr>Search</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/parser.html" class="tsd-kind-icon">Parser</a>
+						<a href="../classes/parser.html" class="tsd-kind-icon">Parser</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/search.html" class="tsd-kind-icon">Search</a>
+						<a href="../classes/search.html" class="tsd-kind-icon">Search</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/wiki.html" class="tsd-kind-icon">Wiki</a>
+						<a href="../classes/wiki.html" class="tsd-kind-icon">Wiki</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/basicfield.html" class="tsd-kind-icon">Basic<wbr>Field</a>
+						<a href="basicfield.html" class="tsd-kind-icon">Basic<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/basicfieldwithid.html" class="tsd-kind-icon">Basic<wbr>Field<wbr>With<wbr>Id</a>
+						<a href="basicfieldwithid.html" class="tsd-kind-icon">Basic<wbr>Field<wbr>With<wbr>Id</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/classification.html" class="tsd-kind-icon">Classification</a>
+						<a href="classification.html" class="tsd-kind-icon">Classification</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/classificationresult.html" class="tsd-kind-icon">Classification<wbr>Result</a>
+						<a href="classificationresult.html" class="tsd-kind-icon">Classification<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/context.html" class="tsd-kind-icon">Context</a>
+						<a href="context.html" class="tsd-kind-icon">Context</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/cseimage.html" class="tsd-kind-icon">Cse<wbr>Image</a>
+						<a href="cseimage.html" class="tsd-kind-icon">Cse<wbr>Image</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/csethumbnail.html" class="tsd-kind-icon">Cse<wbr>Thumbnail</a>
+						<a href="csethumbnail.html" class="tsd-kind-icon">Cse<wbr>Thumbnail</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/googlesearchresult.html" class="tsd-kind-icon">Google<wbr>Search<wbr>Result</a>
+						<a href="googlesearchresult.html" class="tsd-kind-icon">Google<wbr>Search<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/item.html" class="tsd-kind-icon">Item</a>
+						<a href="item.html" class="tsd-kind-icon">Item</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/keywordexpansion.html" class="tsd-kind-icon">Keyword<wbr>Expansion</a>
+						<a href="keywordexpansion.html" class="tsd-kind-icon">Keyword<wbr>Expansion</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/location.html" class="tsd-kind-icon">Location</a>
+						<a href="location.html" class="tsd-kind-icon">Location</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/metatag.html" class="tsd-kind-icon">Metatag</a>
+						<a href="metatag.html" class="tsd-kind-icon">Metatag</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/nextpage.html" class="tsd-kind-icon">Next<wbr>Page</a>
+						<a href="nextpage.html" class="tsd-kind-icon">Next<wbr>Page</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/pageresult.html" class="tsd-kind-icon">Page<wbr>Result</a>
+						<a href="pageresult.html" class="tsd-kind-icon">Page<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/pagesection.html" class="tsd-kind-icon">Page<wbr>Section</a>
+						<a href="pagesection.html" class="tsd-kind-icon">Page<wbr>Section</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/pagemap.html" class="tsd-kind-icon">Pagemap</a>
+						<a href="pagemap.html" class="tsd-kind-icon">Pagemap</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/period.html" class="tsd-kind-icon">Period</a>
+						<a href="period.html" class="tsd-kind-icon">Period</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/queries.html" class="tsd-kind-icon">Queries</a>
+						<a href="queries.html" class="tsd-kind-icon">Queries</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
+						<a href="querybuildresult.html" class="tsd-kind-icon">Query<wbr>Build<wbr>Result</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="querybuildresult.html#expandedkeywords" class="tsd-kind-icon">expanded<wbr>Keywords</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="querybuildresult.html#originalquery" class="tsd-kind-icon">original<wbr>Query</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface">
+						<a href="queryexpansionrequest.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/querybuildresult.html" class="tsd-kind-icon">Query<wbr>Build<wbr>Result</a>
+						<a href="queryexpansionresponse.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/queryexpansionrequest.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Request</a>
+						<a href="request.html" class="tsd-kind-icon">Request</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/queryexpansionresponse.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Response</a>
+						<a href="safesearch.html" class="tsd-kind-icon">Safe<wbr>Search</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/request.html" class="tsd-kind-icon">Request</a>
+						<a href="searchinformation.html" class="tsd-kind-icon">Search<wbr>Information</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/safesearch.html" class="tsd-kind-icon">Safe<wbr>Search</a>
+						<a href="spelling.html" class="tsd-kind-icon">Spelling</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/searchinformation.html" class="tsd-kind-icon">Search<wbr>Information</a>
+						<a href="url.html" class="tsd-kind-icon">Url</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/spelling.html" class="tsd-kind-icon">Spelling</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/url.html" class="tsd-kind-icon">Url</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/userprofile.html" class="tsd-kind-icon">User<wbr>Profile</a>
+						<a href="userprofile.html" class="tsd-kind-icon">User<wbr>Profile</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#adaptationendpoint" class="tsd-kind-icon">Adaptation<wbr>Endpoint</a>
+						<a href="../globals.html#adaptationendpoint" class="tsd-kind-icon">Adaptation<wbr>Endpoint</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#googlecustomsearchapikey" class="tsd-kind-icon">Google<wbr>Custom<wbr>SearchAPIKey</a>
+						<a href="../globals.html#googlecustomsearchapikey" class="tsd-kind-icon">Google<wbr>Custom<wbr>SearchAPIKey</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#googlecustomsearchengineid" class="tsd-kind-icon">Google<wbr>Custom<wbr>Search<wbr>Engine<wbr>Id</a>
+						<a href="../globals.html#googlecustomsearchengineid" class="tsd-kind-icon">Google<wbr>Custom<wbr>Search<wbr>Engine<wbr>Id</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="globals.html#app" class="tsd-kind-icon">app</a>
+						<a href="../globals.html#app" class="tsd-kind-icon">app</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#result" class="tsd-kind-icon">result</a>
+						<a href="../globals.html#result" class="tsd-kind-icon">result</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#search" class="tsd-kind-icon">search</a>
+						<a href="../globals.html#search" class="tsd-kind-icon">search</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#urls" class="tsd-kind-icon">urls</a>
+						<a href="../globals.html#urls" class="tsd-kind-icon">urls</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#wiki" class="tsd-kind-icon">wiki</a>
+						<a href="../globals.html#wiki" class="tsd-kind-icon">wiki</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-not-exported">
-						<a href="globals.html#post" class="tsd-kind-icon">post</a>
+						<a href="../globals.html#post" class="tsd-kind-icon">post</a>
 					</li>
 				</ul>
 			</nav>
@@ -297,7 +323,7 @@ sudo docker rm ir</code></pre>
 	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

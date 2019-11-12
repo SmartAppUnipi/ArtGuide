@@ -6,7 +6,8 @@
       "description",
       "legacy"
     ],
-    "language": "en"
+    "language": "en",
+    "expertiseLevel": 1
   },
   "classification": {
     "entities": [

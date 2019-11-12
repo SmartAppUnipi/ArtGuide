@@ -1,7 +1,5 @@
-import WikiSearchRouter from './wiki.rest';
-import { WikiSearch } from './wiki.module'
+import { Wiki } from './wiki'
 
 export {
-    WikiSearchRouter,
-    WikiSearch
+    Wiki
 }

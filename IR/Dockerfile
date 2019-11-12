@@ -1,4 +1,4 @@
-FROM node
+FROM node:alpine
 ADD . .
 RUN npm i
 EXPOSE 3000
