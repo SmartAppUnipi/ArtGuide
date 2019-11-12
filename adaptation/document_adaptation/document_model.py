@@ -85,7 +85,10 @@ class DocumentModel():
 
     def textRank(self, ratio=0.3, word_count=None, split=True):
         # https://radimrehurek.com/gensim/summarization/summariser.html
-        summarized_sentences = summarize(self.normalized_text, ratio=ratio, word_count=word_count, split=split)
+        try:
+            summarized_sentences = summarize(self.normalized_text, ratio=ratio, word_count=word_count, split=split)
+        except:
+            summarized_sentences = []
         return summarized_sentences
 
     def salient_sentences(self):
@@ -111,7 +114,9 @@ class DocumentModel():
         self.affinity_score = 0
         for taste in self.user.tastes: 
             if taste in results:
-                self.affinity_score += sum([res[0] for res in results[taste]]) / len(results[taste])
+                affinity = sum([res[0] for res in results[taste]]) 
+                if affinity > 0:
+                    self.affinity_score = affinity / len(results[taste])
         return self.affinity_score
 
     # def affinity_score(self):

@@ -65,6 +65,11 @@ class DocumentsAdaptation():
             return "Content not found"
         
         documents =  list(map(lambda x: DocumentModel(x, user, stop_words=stop_words), results))
+        documents = list(filter(lambda x: bool(x.plain_text), documents))
+
+        if len(documents) <= 0:
+            return "Content not found"
+
         for doc in documents: 
             salient_sentences = doc.salient_sentences()
             results = search_engine.find_most_similar_multiple_keywords(salient_sentences, user.tastes, verbose=False)

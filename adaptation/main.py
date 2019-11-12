@@ -34,7 +34,6 @@ def keywords():
         return jsonify(req)
     if 'tastes' not in req['userProfile']:
         req['adaption_error'] = {"userProfile incomplete"}
-        return jsonify(req)
     
     # Body
     user = User(req["userProfile"])
@@ -58,7 +57,6 @@ def tailored_text():
         return jsonify(req)
     if 'tastes' not in req['userProfile'] or 'expertiseLevel' not in req['userProfile'] or 'language' not in req['userProfile']:
         req['adaption_error'] = {"userProfile incomplete"}
-        return jsonify(req)
        
     # Body
     user = User(req["userProfile"])
