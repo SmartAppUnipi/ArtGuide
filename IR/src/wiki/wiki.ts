@@ -97,13 +97,11 @@ export class Wiki {
     public async getWikiInfo(query: string, language: string) : Promise<PageResult> {
         const title = await this.resultsList(query, language).then(data => data.results[0])
         const url = await this.getPageURL(query, language)
-        const content = await this.getField(query, language, "content")
+        const content: Array<ComposedSection> = await this.getField(query, language, "content")
         let sections : Array<PageSection> = []
         let keywords : Array<string> = []
 
-        let temp : Array<ComposedSection> = JSON.parse(content)
-
-        temp.forEach(element => {
+        content.forEach(element => {
             if(element.hasOwnProperty('items')){
                 // Section with subsections
                 element["items"].forEach(item => {
@@ -122,18 +120,6 @@ export class Wiki {
             "sections": sections,
             "keywords": keywords
         }
-
-
-        // replace all the occurrences of "items"
-        // FIXME: What if "items" occurs in the text? 
-        /*let c = JSON.stringify(content)
-        c = c.replace("items", "sections")
-        return {
-            "url": url.toString(),
-            "title" : title,
-            "sections": JSON.parse(c),
-            "keywords": ["wiki"]
-        }*/
     }
 
     /**

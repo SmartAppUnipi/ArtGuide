@@ -1,4 +1,6 @@
 import fetch from 'node-fetch'
+import fs from 'fs'
+import path from 'path'
 
 import { GoogleCustomSearchAPIKey, GoogleCustomSearchEngineId } from "../environment"
 import { GoogleSearchResult } from "../models"
@@ -17,6 +19,26 @@ export class GoogleSearch {
     custom: `https://www.googleapis.com/customsearch/v1?key=${GoogleCustomSearchAPIKey}&cx=${GoogleCustomSearchEngineId}&q=`
   }
 
+  private cache = JSON.parse(fs.readFileSync(path.join(__dirname, 'cache.json')).toString())
+
+  private fetchCache(url: string) {
+
+    const keywords = url.split('&q=')[1];
+
+    if(this.cache[keywords])
+      return Promise.resolve(this.cache[keywords]);
+
+    return fetch(url).then(async res => {
+      
+      this.cache[keywords] = await res.json()
+      
+      // FIXME: async
+      fs.writeFileSync(path.join(__dirname, 'cache.json'), JSON.stringify(this.cache))
+      
+      return this.cache[keywords]
+    })
+  }
+
   /**
    * Make a call to the CUSTOM Google Search API.
    * This api searches the whole web but has a limit of 1k/day. After 5€/1k queries.
@@ -25,8 +47,7 @@ export class GoogleSearch {
    */
   public queryCustom(query: string): Promise<GoogleSearchResult> {
     if (!query) throw "[Google Search] Error: empty query."
-    return fetch(this.googleSearchUrls.custom + query)
-      .then(googleRequest => googleRequest.json())
+    return this.fetchCache(this.googleSearchUrls.custom + query);
   }
 
   /**
@@ -37,8 +58,7 @@ export class GoogleSearch {
    */
   public queryRestricted(query: string): Promise<GoogleSearchResult> {
     if (!query) throw "[Google Search] Error: empty query."
-    return fetch(this.googleSearchUrls.restricted + query)
-      .then(googleRequest => googleRequest.json())
+    return this.fetchCache(this.googleSearchUrls.restricted + query);
   }
 
 }
