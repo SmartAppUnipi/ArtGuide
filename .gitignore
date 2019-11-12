@@ -1,2 +1,6 @@
-__pycache__
+### GLOBAL GITIGNORE ###
+
+# OS & IDE
+.DS_Store
 .vscode
+__pycache__
