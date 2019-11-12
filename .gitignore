@@ -1,0 +1,5 @@
+### GLOBAL GITIGNORE ###
+
+# OS & IDE
+.DS_Store
+.vscode
