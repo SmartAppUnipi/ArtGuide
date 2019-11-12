@@ -4,10 +4,11 @@
 		"id": 42,
 		"tastes": ["history", "biography"],
 		"expertiseLevel": 1,
-		"language": "en"
+    "language": "en",
+    "commentTest":  "Attribute keywords empty"
 	},	
 	"results": [{
-		"keywords": ["k1", "k2", "k3"],
+		"keywords": [],
 		"url": "www.google.com",
 		"title": "My Title",
 		"sections": [{

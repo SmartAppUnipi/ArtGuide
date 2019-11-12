@@ -1,0 +1,9 @@
+{
+  "userProfile": {
+    "id": 42,
+    "tastes": [ "history", 23, "legacy" ],
+    "expertiseLevel": 1,
+    "language": "en",
+    "commentTest": "Integer value int tastes attribute"
+  }
+}
