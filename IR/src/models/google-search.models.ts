@@ -91,4 +91,5 @@ export interface GoogleSearchResult {
   searchInformation: SearchInformation;
   spelling: Spelling;
   items: Item[];
+  error?: any;
 }

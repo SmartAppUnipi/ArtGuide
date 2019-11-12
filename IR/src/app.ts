@@ -44,6 +44,7 @@ app.use("/docs", express.static(path.join(__dirname, '../docs')))
 app.post('/', async (req, res) => {
 
   try {
+    console.log(`[App.ts] Post request received`);
 
     /** Parsed Classification result */
     const classificationResult = req.body as ClassificationResult
@@ -55,10 +56,11 @@ app.post('/', async (req, res) => {
 
     /** Page Result array */
     const results = await Promise.all([
-      search.search(classificationResult)
-      // TODO: uncomment
-      //wiki.search(classificationResult)
+      search.search(classificationResult),
+      wiki.search(classificationResult)
     ]).then(allResults => [].concat(...allResults))
+
+    console.log(`[App.ts] Google and Wikipedia requests ended`);
 
     // Call adaptation for summary
     return post(AdaptationEndpoint + "/tailored_text", {
@@ -68,6 +70,7 @@ app.post('/', async (req, res) => {
 
     // Catch any error and inform the caller
   } catch (ex) {
+    console.log({ message: ex.message, stack: ex.stack })
     return res.json({ message: ex.message, stack: ex.stack })
   }
 

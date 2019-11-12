@@ -1,6 +1,13 @@
 import wiki from 'wikijs'
 import {Result, Page } from "wikijs"
-import { ClassificationResult, PageResult } from "../models"
+import { ClassificationResult, PageResult} from "../models"
+import { PageSection } from 'src/models/page-result.model';
+
+export class ComposedSection {
+    title: string;
+    content: string;
+    items : Array<PageSection>;
+}
 
 /**
  * Performs Wikipedia Search through the APIs.
@@ -21,7 +28,7 @@ export class Wiki {
      * @param language The Wikipedia subdomain to search in
      * @returns {Promise<Result>} the list of Wikipedia pages associated to the given query.
      */
-    private resultsList(query: string, language: string) : Promise<Result>{
+    private resultsList(query: string, language: string) : Promise<Result> {
         return wiki({ apiUrl: 'https://' + language + '.wikipedia.org/w/api.php' }).search(query);
     }
 
@@ -31,7 +38,7 @@ export class Wiki {
      * @param language The Wikipedia subdomain to search in
      * @returns {Promise<Page>} the Wikipedia page
      */
-    private getPage(query: string, language: string) : Promise<Page>{
+    private getPage(query: string, language: string) : Promise<Page> {
         return this.resultsList(query, language).then(data => wiki({ apiUrl: 'https://' + language + '.wikipedia.org/w/api.php' }).page(data.results[0]));
     }
 
@@ -40,7 +47,7 @@ export class Wiki {
      * @param language The Wikipedia subdomain to search in
      * @returns {Promise<string>} All the sections and subsections of the Wikipedia page, with their title and content.
     */
-    private getContent(query: string, language: string) : Promise<string>{
+    private getContent(query: string, language: string) : Promise<string> {
         return this.getPage(query, language).then(page => page.content());
     }
 
@@ -49,23 +56,23 @@ export class Wiki {
      * @param language The Wikipedia subdomain to search in
      * @returns {Promise<string>} The summary at the top of the Wikipedia page.
     */
-    private getSummary(query: string, language: string) : Promise<string>{
+    private getSummary(query: string, language: string) : Promise<string> {
         return this.getPage(query, language).then(page => page.summary());
     }
 
-    private getReferences(query: string, language: string) {
+    private getReferences(query: string, language: string) : Promise<string[]> {
         return this.getPage(query, language).then(page => page.references());
     }
 
-    private getLinks(query: string, language: string) {
+    private getLinks(query: string, language: string) : Promise<string[]> {
         return this.getPage(query, language).then(page => page.links());
     }
 
-    private getImages(query: string, language: string) {
+    private getImages(query: string, language: string) : Promise<string[]> {
         return this.getPage(query, language).then(page => page.images());
     }
 
-    private getPageURL(query: string, language: string){
+    private getPageURL(query: string, language: string) : Promise<URL>{
         return this.getPage(query, language).then(page => page.url());
     }
 
@@ -90,16 +97,28 @@ export class Wiki {
     public async getWikiInfo(query: string, language: string) : Promise<PageResult> {
         const title = await this.resultsList(query, language).then(data => data.results[0])
         const url = await this.getPageURL(query, language)
-        const content = await this.getField(query, language, "content")
-        // replace all the occurrences of "items"
-        // FIXME: What if "items" occurs in the text? 
-        let c = JSON.stringify(content)
-        c = c.replace("items", "sections")
+        const content: Array<ComposedSection> = await this.getField(query, language, "content")
+        let sections : Array<PageSection> = []
+        let keywords : Array<string> = []
+
+        content.forEach(element => {
+            if(element.hasOwnProperty('items')){
+                // Section with subsections
+                element["items"].forEach(item => {
+                    sections.push(item)
+                    keywords.push(element["title"]);
+                });
+            } else {
+                // Section without subsections
+                sections.push(element)
+            }
+        });
+
         return {
             "url": url.toString(),
             "title" : title,
-            "sections": JSON.parse(c),
-            "keywords": ["wiki"]
+            "sections": sections,
+            "keywords": keywords
         }
     }
 
