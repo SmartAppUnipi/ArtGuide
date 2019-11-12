@@ -60,8 +60,6 @@ def upload():
     img_b64 = base64.b64decode(image_b64_str)
     api_res = get_vision(img_b64)
 
-    print(f"[DEBUG_0] {api_res} \n")
-
     # Define the headers (they are needed to make get_json() work)
     head = {"Content-type": "application/json"}
     
@@ -77,10 +75,10 @@ def upload():
         "materials": []
     }
     del content["image"]
-    json_content = json.dumps(content)
+    pprint.pprint(content)
 
-    r = requests.post(URL, data=json_content, headers=head)
-    print(f"[DEBUG] {r}")
+    json_content = json.dumps(content, sort_keys=True)
+    r = requests.post(URL, json=content, headers=head)
     return r.content
 
 
