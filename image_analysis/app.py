@@ -13,7 +13,8 @@ from google.cloud.vision import types
 from google.protobuf.json_format import MessageToDict
 from PIL import Image
 
-URL = 'http://srv.ald.ooo:3000/'
+# URL = 'http://srv.ald.ooo:3000/'
+URL = "http://10.101.24.97:3000/"
 
 # ----- FUNCTION DEFINITION ----- #
 def set_key(key_path='key/vision_api_keys.json'):
