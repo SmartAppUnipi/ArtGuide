@@ -61,7 +61,6 @@ app.post('/', async (req, res) => {
     /** WikiData metadata */
     const wikidataResponse = await wikidata.search(classificationResult)
     logger.debug(`[app.ts] WikiData request ended.`)
-    logger.silly(`[app.ts] WikiData response: `, wikidataResponse)
 
     /** Page Result array */
     const results = await Promise.all([
@@ -76,7 +75,6 @@ app.post('/', async (req, res) => {
       results: results
     }).then(adaptationResponse => {
       logger.debug(`[app.ts] Adaptation Response received.`)
-      logger.silly(`[app.ts] Adaptation Response: `, adaptationResponse)
       // add wikidata metadata for the Classification module
       adaptationResponse.wikidata = wikidataResponse
       res.send(adaptationResponse)

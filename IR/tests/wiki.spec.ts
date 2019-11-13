@@ -1,15 +1,25 @@
-//import '@types/jest'
-import request from 'supertest'
-import { Wiki} from "../src/wiki"
+/// <reference types="@types/jest"/>
+
+import { Wiki } from "../src/wiki"
 
 const wiki = new Wiki()
 
 
-describe("Function getWikiInfo", () =>{
-    test("it should return a Promise<PageResult>", ()=>{
-        expect(wiki.getWikiInfo("mona lisa", "en")).resolves.toHaveProperty('url');
-        expect(wiki.getWikiInfo("mona lisa", "en")).resolves.toHaveProperty('title');
-        expect(wiki.getWikiInfo("mona lisa", "en")).resolves.toHaveProperty('sections');
-        expect(wiki.getWikiInfo("mona lisa", "en")).resolves.toHaveProperty('keywords');
+describe("Function getWikiInfo", () => {
+    test("it should return a Promise<PageResult>", async () => {
+
+        const result = await wiki.getWikiInfo("mona lisa", "en");
+        
+        expect(result).toBeDefined();
+
+        expect(result).toHaveProperty('url');
+        expect(result).toHaveProperty('title');
+        expect(result).toHaveProperty('sections');
+        expect(result).toHaveProperty('keywords');
+
+        expect(result.title).toBeDefined();
+        expect(result.url).toBeDefined();
+        expect(result.keywords).toBeDefined();
+        expect(result.sections).toHaveLength(14);
     });
 });

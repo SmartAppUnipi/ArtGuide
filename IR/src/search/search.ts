@@ -1,6 +1,6 @@
 import { post } from "../utils"
 import { AdaptationEndpoint } from "../environment"
-import { ClassificationResult, QueryExpansionResponse, QueryBuildResult, PageResult } from "../models"
+import { ClassificationResult, QueryExpansionResponse, Query, PageResult } from "../models"
 import { GoogleSearch } from "./google-search"
 import { Parser } from "../parser"
 import { logger } from "../logger"
@@ -19,36 +19,39 @@ export class Search {
   /**
    * Builds a basic query basing on the Classification module result.
    * @param classificationResult The object received from the Classification module.
-   * @returns {string} A basic query string.
+   * @returns {Array<Query>} An array of Query objects with searchTerms and score.
    */
-  private buildBasicQuery(classificationResult: ClassificationResult): string {
-    // FIXME: return a meaningful query
-    const query = classificationResult.classification.entities[0].description
-    logger.silly('[search.ts] Basic query built: ', query)
-    return query
+  private buildBasicQueries(classificationResult: ClassificationResult): Array<Query> {
+    // TODO: return a meaningful query
+    const queries = classificationResult.classification.entities
+      .slice(0, 3)  // take first 3 // TODO: slice using the first big jump on the score
+      .map(entity => {
+        return {
+          searchTerms: entity.description,
+          score: entity.score,
+          keywords: []
+        }
+      })
+    if (!queries.length) logger.debug("[search.ts] Classification entities are empty")
+    logger.silly('[search.ts] Basic query built: ', queries)
+    return queries
   }
 
 
   /**
   * Extend a query by using the query expansion provided by the Adaptation module.
-  * @param query A string representing basic query.
+  * @param queries An array of Query produced by @function buildBasicQuery.
   * @param queryExpansion The query expansion provided by the Adaptation module.
   * @returns {Array<QueryBuildResult>} An array of object containing the originalQuery and an array expandedKeywords.
   */
-  private extendQuery(query: string, queryExpansion: QueryExpansionResponse): Array<QueryBuildResult> {
+  private extendQuery(queries: Array<Query>, queryExpansion: QueryExpansionResponse): Array<Query> {
     logger.silly('[search.ts] Query expansion: ', queryExpansion)
-    const queries: Array<QueryBuildResult> = []
-
-    Object.keys(queryExpansion.keywordExpansion).forEach(keyExpansion => {
-      const keywords = queryExpansion.keywordExpansion[keyExpansion] as Array<string>
-      queries.push({
-        originalQuery: query,
-        expandedKeywords: keywords
-      })
+    const expandedQueries: Array<Query> = []
+    queries.forEach(query => {
+      for (let key in queryExpansion.keywordExpansion)
+        expandedQueries.push(Object.assign({}, query, { keywords: queryExpansion.keywordExpansion[key] }))
     })
-    logger.debug('[search.ts] Final queries: ', queries)
-
-    return queries
+    return expandedQueries
   }
 
 
@@ -57,14 +60,14 @@ export class Search {
    * @param classificationResult The object received from the Classification module.
    * @returns {Promise<Array<QueryBuildResult>>} A promise resolved with the array of queries of type QueryBuildResult.
    */
-  private buildQuery(classificationResult: ClassificationResult): Promise<Array<QueryBuildResult>> {
+  private buildQueries(classificationResult: ClassificationResult): Promise<Array<Query>> {
     // build the basic query using the Classification result
-    const basicQuery = this.buildBasicQuery(classificationResult)
+    const basicQueries = this.buildBasicQueries(classificationResult)
     // get the query expansion from the Adaptation module
     return post<QueryExpansionResponse>(
       AdaptationEndpoint + "/keywords", classificationResult)
       // extend the basic query with the query expansion
-      .then(queryExpansion => this.extendQuery(basicQuery, queryExpansion))
+      .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
   }
 
 
@@ -73,7 +76,7 @@ export class Search {
    * @param queries The buildQuery result.
    * @returns {Array<PageResult>} An array of page result to be sent to the Adaptation module.
    */
-  private buildResult(queries: QueryBuildResult[]): Promise<Array<PageResult>> {
+  private buildResult(queries: Query[]): Promise<Array<PageResult>> {
 
 
     /*
@@ -94,8 +97,8 @@ export class Search {
       // for each query
       queries.map(async q => {
         // query Google Search and get the list of results
-        return this.googleSearch.queryCustom(q.originalQuery + " " + q.expandedKeywords.join(" ")).then(queryResult => {
-          
+        return this.googleSearch.queryCustom(q.searchTerms + " " + q.keywords.join(" ")).then(queryResult => {
+
           if (queryResult.error) {
             const err = new Error(queryResult.error.message)
             logger.error('[search.ts] Query result error: ', err)
@@ -103,17 +106,17 @@ export class Search {
           }
 
           if (!queryResult.items) {
-            logger.info('[search.ts] No results for query ' + queryResult.queries.request[0].searchTerms)
+            logger.debug('[search.ts] No results for query ' + queryResult.queries.request[0].searchTerms)
             return
           }
-          
+
           return Promise.all(
             // for each result
             queryResult.items.map(item => {
               // Scrape text from results
               try {
                 return this.parser.parse(item.link).then(parsedContent => {
-                  parsedContent.keywords = q.expandedKeywords
+                  parsedContent.keywords = q.keywords
                   results.push(parsedContent)
                   logger.silly('[search.ts] Parsed link ', item.link)
                 })
@@ -135,7 +138,9 @@ export class Search {
    * @returns {Promise<Array<PageResult>>} A list of page results.
    */
   public search(classificationResult: ClassificationResult): Promise<Array<PageResult>> {
-    return this.buildQuery(classificationResult).then(q => this.buildResult(q))
+    return this
+      .buildQueries(classificationResult)
+      .then(q => this.buildResult(q))
   }
 
 }

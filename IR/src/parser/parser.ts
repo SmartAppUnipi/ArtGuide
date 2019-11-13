@@ -28,16 +28,16 @@ export class Parser {
     let positionLastBracket = 0;
     while (i < text.length) {
       if (text[i] == "{") {
-        nOpenBracket ++;
+        nOpenBracket++;
         if (nOpenBracket == 1) {
           positionFirstBracket = i;
         }
       } else if (text[i] == "}") {
-        nClosedBracket ++;
+        nClosedBracket++;
         if (nClosedBracket == nOpenBracket) {
           positionLastBracket = i;
           let deletionText = text.slice(positionFirstBracket, positionLastBracket + 1);
-          text = text.replace(deletionText," ");
+          text = text.replace(deletionText, " ");
           // FIXME: log properly
           // console.log(deletionText);
           nOpenBracket = 0;
@@ -54,60 +54,61 @@ export class Parser {
   }
 
   // This method append all selectors in one string to pass to the query selector
-  public getAllSelectors(): string  {
+  public getAllSelectors(): string {
     let i = 0;
     let allSelectors = "";
-     while (i < this.querySelectors.length - 1) {
-        allSelectors += this.querySelectors[i] + ",";
-        i++;
-     }
+    while (i < this.querySelectors.length - 1) {
+      allSelectors += this.querySelectors[i] + ",";
+      i++;
+    }
 
-     allSelectors += this.querySelectors[this.querySelectors.length - 1]
+    allSelectors += this.querySelectors[this.querySelectors.length - 1]
 
-     return allSelectors
+    return allSelectors
   }
 
- public parse(url: string): Promise<PageResult> {
+  public parse(url: string): Promise<PageResult> {
     return JSDOM.fromURL(url).then(dom => {
-        // look for a list of preferred query selectors
-        var textContent = ""
-        let content, nodes, nodesToRemove, i = 0
-        //nodesToRemove = dom.window.document.querySelectorAll('a')
-        // for (i = 0; i < nodesToRemove.length; i++) {
-        //   console.log(nodesToRemove[i].textContent)
-        //   nodesToRemove[i].textContent = "";
-        // }
-        //i = 0;
-        nodes = dom.window.document.querySelectorAll(this.getAllSelectors())
-       // while (i < this.querySelectors.length) 
-        // if no nodes are found choose the body}
-        if (!nodes.length) {
-            content = dom.window.document.body
-            textContent = content.textContent;
-        }
-        // if more nodes are found, pick the one with longest HTML inside
-        else {
-           nodes.forEach(function(item) {
-               let nodeText = item.textContent.replace(/\s+/g,' ').trim()
-               if (nodeText.length > 40) {
-                 textContent += nodeText
-               }
-           });
-        }
-    
+      // look for a list of preferred query selectors
+      var textContent = ""
+      let content, nodes, nodesToRemove, i = 0
+      //nodesToRemove = dom.window.document.querySelectorAll('a')
+      // for (i = 0; i < nodesToRemove.length; i++) {
+      //   console.log(nodesToRemove[i].textContent)
+      //   nodesToRemove[i].textContent = "";
+      // }
+      //i = 0;
+      nodes = dom.window.document.querySelectorAll(this.getAllSelectors())
+      // while (i < this.querySelectors.length) 
+      // if no nodes are found choose the body}
+      if (!nodes.length) {
+        content = dom.window.document.body
+        textContent = content.textContent;
+      }
+      // if more nodes are found, pick the one with longest HTML inside
+      else {
+        nodes.forEach(function (item) {
+          let nodeText = item.textContent.replace(/\s+/g, ' ').trim()
+          if (nodeText.length > 40) {
+            textContent += nodeText
+          }
+        });
+      }
 
-        return {
+
+      return new PageResult({
         url: url,
         title: dom.window.document.title,
         sections: [
           {
             title: "main",
-            content: this.removeCodeInText(textContent)
-          
+            content: this.removeCodeInText(textContent),
+            tags: [] //FIXME: populate with some logic if possible
           }
         ],
-        keywords: []
-      }
+        keywords: [], // keywords are populated from caller which knows the query object
+        tags: [] //FIXME: populate with some logic (eg metadata keyword tag in html header)
+      })
 
     })
   }

@@ -1,4 +1,5 @@
-//import '@types/jest'
+/// <reference types="@types/jest"/>
+
 import request from 'supertest'
 import app from "../src/app"
 

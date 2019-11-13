@@ -4,7 +4,9 @@ const wdk = require('wikidata-sdk')
 import { logger } from '../logger'
 import { ClassificationResult } from '../models'
 
-
+/**
+ * Retrieve metadata from WikiData using the entityIds.
+ */
 export class WikiData {
 
   /**
@@ -57,15 +59,21 @@ export class WikiData {
         .then(json => {
           // clean data
           return { 
-            "wdid": id, 
-            "descriptionEn": json.entities[id].descriptions.en,
-            "claims": json.entities[id].claims
+            wdid: id, 
+            descriptionEn: json.entities[id].descriptions.en,
+            claims: json.entities[id].claims
           }
         })
     })
   }
 
-  public search(classificationResult : ClassificationResult) {
+  /**
+   * Perform a WikiData search.
+   * @param classificationResult The object received from the Classification module.
+   * @returns {Promise<any>} A list of page results.
+   */
+  // TODO: return an object with type WikiDataResult (to be declared) instead of any
+  public search(classificationResult : ClassificationResult) : Promise<any> {
     if (classificationResult.classification.entities && classificationResult.classification.entities.length)
       return this.queryWikiData(classificationResult.classification.entities[0].entityId)
     return Promise.resolve({})

@@ -15,7 +15,8 @@ export interface QueryExpansionResponse {
   language: string;
 }
 
-export interface QueryBuildResult {
-  originalQuery: string,
-  expandedKeywords: Array<string>
+export interface Query {
+  searchTerms: string,
+  score: number,
+  keywords: Array<string>
 }

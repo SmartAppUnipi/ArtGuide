@@ -22,19 +22,26 @@ export class GoogleSearch {
 
   private cache = JSON.parse(fs.readFileSync(path.join(__dirname, 'cache.json')).toString())
 
-  // FIXME: async?
-  private fetchCache(url: string) {
+  /**
+   * Fetch an url using a cache.
+   * @param url The url to be fetched.
+   * @returns {Promise<GoogleSearchResult>} The cached or fetched GoogleSearchResult corresponding to that url.
+   */
+  private async getFromCacheOrFetch(url: string): Promise<GoogleSearchResult>{
     const keywords = url.split('&q=')[1]
     if (this.cache[keywords]) {
       logger.debug('[google.ts] Cache hit:' + keywords)
       return Promise.resolve(this.cache[keywords])
     }
-    return fetch(url).then(async res => {
-      this.cache[keywords] = await res.json()
-      fs.writeFileSync(path.join(__dirname, 'cache.json'), JSON.stringify(this.cache))
-      logger.debug('[google.ts] Cache insert: ' + url)
-      return this.cache[keywords]
-    })
+    return fetch(url)
+      .then(res => res.json())
+      .then(json => {
+        this.cache[keywords] = json;
+        fs.writeFileSync(path.join(__dirname, 'cache.json'), JSON.stringify(this.cache))
+        logger.debug('[google.ts] Cache insert: ' + url)
+        return this.cache[keywords]
+      })
+
   }
 
   /**
@@ -50,7 +57,7 @@ export class GoogleSearch {
       // TODO: manage this null on the other side
       return Promise.resolve(null)
     }
-    return this.fetchCache(this.googleSearchUrls.custom + query)
+    return this.getFromCacheOrFetch(this.googleSearchUrls.custom + query)
   }
 
   /**
@@ -66,7 +73,7 @@ export class GoogleSearch {
       // TODO: manage this null on the other side
       return Promise.resolve(null)
     }
-    return this.fetchCache(this.googleSearchUrls.restricted + query)
+    return this.getFromCacheOrFetch(this.googleSearchUrls.restricted + query)
   }
 
 }
