@@ -1,15 +1,12 @@
+/// <reference types="@types/jest"/>
+
 import request from 'supertest'
-import { post } from "../src/utils"
 import app from "../src/app"
 import nock from 'nock'
 import { AdaptationEndpoint } from '../src/environment'
 import classificationResult from "../assets/classification-result.json"
 import queryExpansionResponse from "../assets/query-expansion-response.json"
-import {
-    QueryExpansionRequest,
-    QueryExpansionResponse,
-    ClassificationResult
-} from "../src/models"
+
 
 const adaptationScope = nock(AdaptationEndpoint)
 
@@ -23,13 +20,13 @@ adaptationScope
 
 describe("Integration tests", () => {
 
-    it("Should return 200 status code", () => {
+    it("Should respond properly", () => {
         return request(app)
             .post("/")
             .send(classificationResult)
             .then(response => {
-                //assert(response.body.email, 'foo@bar.com')
-                console.error(response.body)
+                expect(response.status).toEqual(200)
+                expect(response.body.message).toEqual('Mock')
             })
     })
 

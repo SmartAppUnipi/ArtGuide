@@ -1,16 +1,5 @@
 import { JSDOM } from "jsdom"
 import { PageResult } from '../models'
-import { parse } from "url"
-import { stringify } from "querystring"
-
-
-// TODO: remove
-const urls = [
-  "https://www.studenti.it/la-gioconda-leonardo-da-vinci.html",
-  "http://www.ansa.it/canale_saluteebenessere/notizie/stili_di_vita/2019/01/09/leffetto-monna-lisa-esiste-ma-non-nella-gioconda_e1b96e6e-cf5b-42c1-a53d-b688e7ffb846.html",
-  "https://www.focus.it/cultura/storia/gioconda-monna-lisa-furto",
-  "https://www.artribune.com/arti-visive/arte-moderna/2019/07/ristrutturazione-sala-ospita-gioconda-tela-spostata/"
-]
 
 
 export class Parser {
@@ -49,7 +38,8 @@ export class Parser {
           positionLastBracket = i;
           let deletionText = text.slice(positionFirstBracket, positionLastBracket + 1);
           text = text.replace(deletionText," ");
-          console.log(deletionText);
+          // FIXME: log properly
+          // console.log(deletionText);
           nOpenBracket = 0;
           nClosedBracket = 0;
           positionLastBracket = 0;
@@ -58,7 +48,8 @@ export class Parser {
       }
       i++;
     }
-    console.log(nOpenBracket)
+    // FIXME: log properly
+    // console.log(nOpenBracket)
     return text
   }
 
@@ -152,4 +143,14 @@ export class Parser {
   // }
 
 }
+
+// FIXME: move tests in tests/parsers.spec.ts
+/*
+const urls = [
+  "https://www.studenti.it/la-gioconda-leonardo-da-vinci.html",
+  "http://www.ansa.it/canale_saluteebenessere/notizie/stili_di_vita/2019/01/09/leffetto-monna-lisa-esiste-ma-non-nella-gioconda_e1b96e6e-cf5b-42c1-a53d-b688e7ffb846.html",
+  "https://www.focus.it/cultura/storia/gioconda-monna-lisa-furto",
+  "https://www.artribune.com/arti-visive/arte-moderna/2019/07/ristrutturazione-sala-ospita-gioconda-tela-spostata/"
+]
 new Parser().parse(urls[0]).then(console.log)
+*/
