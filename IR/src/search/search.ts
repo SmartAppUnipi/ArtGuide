@@ -101,6 +101,11 @@ export class Search {
             logger.error('[search.ts] Query result error: ', err)
             throw err
           }
+
+          if (!queryResult.items) {
+            logger.info('[search.ts] No results for query ' + queryResult.queries.request[0].searchTerms)
+            return
+          }
           
           return Promise.all(
             // for each result

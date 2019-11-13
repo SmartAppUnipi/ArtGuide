@@ -4,7 +4,7 @@
   "description": "Information retrieval module",
   "main": "dist/index.js",
   "scripts": {
-    "test": "node --inspect=5859 node_modules/.bin/jest --runInBand --detectOpenHandles",
+    "test": "node --inspect=5859 node_modules/.bin/jest --runInBand --detectOpenHandles --testTimeout=15000",
     "test:watch": "jest --coverage --watch",
     "test:cov": "jest --coverage",
     "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
@@ -70,6 +70,7 @@
     "express": "^4.17.1",
     "jsdom": "^15.2.1",
     "node-fetch": "^2.6.0",
+    "wikidata-sdk": "^7.0.7",
     "wikijs": "^6.0.1",
     "winston": "^3.2.1"
   },
