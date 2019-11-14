@@ -30,7 +30,8 @@ npm run build       # compiles src/*.ts in dist/*.js
 npm run watch       # automatically compiles ts when the file is saved
 
 npm t               # run unit tests
-npm run test:watch  # run tests in watch mode
+npm t -- filename   # run a specific test file
+npm run test:watch  # run tests in watch mode (TDD)
 npm run test:cov    # run coverage report
 npm tun test:debug  # run tests and attach VS Code debugger
 

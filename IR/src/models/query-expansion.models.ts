@@ -9,10 +9,7 @@ export interface KeywordExpansion {
 }
 
 export interface QueryExpansionResponse {
-    userId: number;
-    userTastes: Array<string>;
     keywordExpansion: KeywordExpansion;
-    language: string;
 }
 
 export interface Query {

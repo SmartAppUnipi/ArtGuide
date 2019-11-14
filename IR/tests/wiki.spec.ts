@@ -8,7 +8,7 @@ const wiki = new Wiki()
 describe("Function getWikiInfo", () => {
     test("it should return a Promise<PageResult>", async () => {
 
-        const result = await wiki.getWikiInfo("mona lisa", "en");
+        const result = await wiki['getWikiInfo']("mona lisa", "en");
         
         expect(result).toBeDefined();
 

@@ -40,7 +40,7 @@ export class Wiki {
      * @returns 
      * @throws {Error} FIXME: write this field
      */
-    public async getWikiInfo(query: string, language: string): Promise<PageResult> {
+    private async getWikiInfo(query: string, language: string): Promise<PageResult> {
         try {
             const title = await this.resultsList(query, language).then(data => data.results[0]);
             const url = await this.getPageURL(query, language);
