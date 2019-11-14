@@ -1,5 +1,5 @@
-import { WikiData } from './wikidata'
+import { WikiData } from "./wikidata";
 
 export {
     WikiData
-}
+};
