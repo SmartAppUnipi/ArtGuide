@@ -68,6 +68,7 @@ export class Parser {
   }
 
   public parse(url: string): Promise<PageResult> {
+    // FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
     return JSDOM.fromURL(url).then(dom => {
       // look for a list of preferred query selectors
       var textContent = ""

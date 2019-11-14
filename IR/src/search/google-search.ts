@@ -27,7 +27,7 @@ export class GoogleSearch {
    * @param url The url to be fetched.
    * @returns {Promise<GoogleSearchResult>} The cached or fetched GoogleSearchResult corresponding to that url.
    */
-  private async getFromCacheOrFetch(url: string): Promise<GoogleSearchResult>{
+  private async getFromCacheOrFetch(url: string): Promise<GoogleSearchResult> {
     const keywords = url.split('&q=')[1]
     if (this.cache[keywords]) {
       logger.debug('[google.ts] Cache hit:' + keywords)
@@ -49,15 +49,25 @@ export class GoogleSearch {
    * This api searches the whole web but has a limit of 1k/day. After 5€/1k queries.
    * @param query The query to forward to Google.
    * @returns {Promise<GoogleSearchResult>} A Google Search result.
+   * @throws {Error} if the Google Search result contains error.
    */
   public queryCustom(query: string): Promise<GoogleSearchResult> {
+    // Handle empty queries
     if (!query) {
       const err = new Error("Error: empty query.")
-      logger.warn('[google.ts] Empty query: ', err)
-      // TODO: manage this null on the other side
+      logger.warn('[google.ts] ', err)
       return Promise.resolve(null)
     }
     return this.getFromCacheOrFetch(this.googleSearchUrls.custom + query)
+      .then(queryResult => {
+        // Handle error in API result
+        if (queryResult.error) {
+          const err = new Error(queryResult.error.message)
+          logger.error('[google.ts] Error in query \"' + query + '\". Query result error: ', err)
+          throw err
+        }
+        return queryResult
+      })
   }
 
   /**
@@ -70,7 +80,6 @@ export class GoogleSearch {
     if (!query) {
       const err = new Error("[Google Search] Error: empty query.")
       logger.warn('[google.ts] Empty query: ', err)
-      // TODO: manage this null on the other side
       return Promise.resolve(null)
     }
     return this.getFromCacheOrFetch(this.googleSearchUrls.restricted + query)

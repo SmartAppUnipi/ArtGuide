@@ -19,7 +19,6 @@ const search = new Search()
 /** WikiPedia module */
 const wiki = new Wiki()
 
-// TODO: use it. And integrate the result in the output for the classification module.
 /** WikiData module */
 const wikidata = new WikiData()
 
@@ -57,6 +56,10 @@ app.post('/', async (req, res) => {
         message: "Missing required body."
       })
     }
+
+    // sort entities and labels in classification result by score
+    classificationResult.classification.entities.sort((e1, e2) => e1.score - e2.score)
+    classificationResult.classification.labels.sort((l1, l2) => l1.score - l2.score)
 
     /** WikiData metadata */
     const wikidataResponse = await wikidata.search(classificationResult)

@@ -4,6 +4,7 @@ import { ClassificationResult, QueryExpansionResponse, Query, PageResult } from 
 import { GoogleSearch } from "./google-search"
 import { Parser } from "../parser"
 import { logger } from "../logger"
+import { query } from "winston"
 
 /**
  * Perform web searches.
@@ -68,6 +69,8 @@ export class Search {
       AdaptationEndpoint + "/keywords", classificationResult)
       // extend the basic query with the query expansion
       .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
+      // return both the basic query and the extended queries in one array
+      .then(extendedQuery => [].concat(basicQueries, extendedQuery))
   }
 
 
@@ -80,7 +83,7 @@ export class Search {
 
 
     /*
-      TODO:
+      TODO: Merge duplicates
         For each basic query (eg. "Leaning Tower of Pisa") we perform a Google Search for each 
         keywords that come from the adaptation group (eg. "Leaning Tower of Pisa Art", "Leaning Tower of Pisa Description", ecc).
 
@@ -96,37 +99,40 @@ export class Search {
     return Promise.all(
       // for each query
       queries.map(async q => {
-        // query Google Search and get the list of results
-        return this.googleSearch.queryCustom(q.searchTerms + " " + q.keywords.join(" ")).then(queryResult => {
+        try {
+          // query Google Search and get the list of results
+          return this.googleSearch.queryCustom(q.searchTerms + " " + q.keywords.join(" ")).then(queryResult => {
 
-          if (queryResult.error) {
-            const err = new Error(queryResult.error.message)
-            logger.error('[search.ts] Query result error: ', err)
-            throw err
-          }
+            if (!queryResult) {
+              const err = new Error("Error: empty query result.")
+              logger.warn('[search.ts] ', err)
+              return
+            }
 
-          if (!queryResult.items) {
-            logger.debug('[search.ts] No results for query ' + queryResult.queries.request[0].searchTerms)
-            return
-          }
+            if (!queryResult.items) {
+              logger.debug('[search.ts] No results for query ' + queryResult.queries.request[0].searchTerms)
+              return
+            }
 
-          return Promise.all(
-            // for each result
-            queryResult.items.map(item => {
-              // Scrape text from results
-              try {
-                return this.parser.parse(item.link).then(parsedContent => {
-                  parsedContent.keywords = q.keywords
-                  results.push(parsedContent)
-                  logger.silly('[search.ts] Parsed link ', item.link)
-                })
-              } catch (err) {
-                // FIXME: fix the CSS error inside the parser
-                logger.warn('[search.ts] Parser error: ', err, ". Link: ", item.link)
-              }
-            })
-          )
-        })
+            return Promise.all(
+              // for each result
+              queryResult.items.map(item => {
+                // Scrape text from results
+                try {
+                  return this.parser.parse(item.link).then(parsedContent => {
+                    parsedContent.keywords = q.keywords
+                    results.push(parsedContent)
+                    logger.silly('[search.ts] Parsed link ', item.link)
+                  })
+                } catch (err) {
+                  logger.warn('[search.ts] Parser error: ', err, ". Link: ", item.link)
+                }
+              })
+            )
+          })
+        } catch (ex) {
+          logger.warn('[search.ts] Caught exception while processing query\"' + q + '\". Error: ', ex)
+        }
       })
     ).then(() => results)
   }

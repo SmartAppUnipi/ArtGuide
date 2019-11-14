@@ -28,11 +28,12 @@ export class Wiki {
    * @param query The searched item
    * @param language The Wikipedia subdomain to search in
    * @returns {Promise<Result>} the list of Wikipedia pages associated to the given query.
+   * @throws {Error} FIXME: write this field
    */
   private resultsList(query: string, language: string): Promise<Result> {
     return wiki({ apiUrl: 'https://' + language + '.wikipedia.org/w/api.php' }).search(query)
       .catch(err => {
-        logger.error("Error while searching for " + query, err);
+        logger.error("[wiki.ts] Error while searching for " + query, err);
         throw err;
       });
   }
@@ -42,19 +43,20 @@ export class Wiki {
    * @param query The searched item
    * @param language The Wikipedia subdomain to search in
    * @returns {Promise<Page>} the Wikipedia page
+   * @throws {Error} FIXME: write this field
    */
   private getPage(query: string, language: string): Promise<Page> {
     return this.resultsList(query, language)
       .then(data => wiki({ apiUrl: 'https://' + language + '.wikipedia.org/w/api.php' })
         .page(data.results[0]))
       .catch(err => {
-        logger.error("Error while retrieving Wikipedia page " + query, err);
+        logger.error("[wiki.ts] Error while retrieving Wikipedia page " + query, err);
         throw err;
       });
   }
 
   /**
-   * TODO: write this line
+   * FIXME: write this line
    * @param query The searched item
    * @param language The Wikipedia subdomain to search in
    * @returns {Promise<string>} All the sections and subsections of the Wikipedia page, with their title and content.
@@ -65,7 +67,7 @@ export class Wiki {
   }
 
   /**
-   * TODO: write this line
+   * FIXME: write this line
    * @param query The searched item
    * @param language The Wikipedia subdomain to search in
    * @returns {Promise<string>} The summary at the top of the Wikipedia page.
@@ -75,7 +77,7 @@ export class Wiki {
   }
 
   /**
-   * TODO: write this doc
+   * FIXME: write this doc
    * @param query 
    * @param language 
    */
@@ -84,7 +86,7 @@ export class Wiki {
   }
 
   /**
-   * TODO: write this doc
+   * FIXME: write this doc
    * @param query 
    * @param language 
    */
@@ -93,7 +95,7 @@ export class Wiki {
   }
 
   /**
-   * TODO: write this doc
+   * FIXME: write this doc
    * @param query 
    * @param language 
    */
@@ -102,7 +104,7 @@ export class Wiki {
   }
 
   /**
-   * TODO: write this doc
+   * FIXME: write this doc
    * @param query 
    * @param language 
    */
@@ -123,10 +125,11 @@ export class Wiki {
   }
 
   /**
-   * TODO: write this line
+   * FIXME: write this line
    * @param query The searched item
    * @param language The Wikipedia subdomain to search in
    * @returns {Promise<PageResult>} 
+   * @throws {Error} FIXME: write this field
    */
   public async getWikiInfo(query: string, language: string): Promise<PageResult> {
     try {
@@ -157,7 +160,7 @@ export class Wiki {
         tags: [] // tags are populated from caller which knows the query object
       }
     } catch (err) {
-      logger.error("Error while getting info from Wikipedia", err);
+      logger.error("[wiki.ts] Error while getting info from Wikipedia", err);
       throw err;
     }
 
@@ -185,7 +188,7 @@ export class Wiki {
     }
     // TODO: build other queries using the WikiData tags.
     const queries = [mainQuery]
-    logger.silly('[search.ts] Basic query built: ', queries)
+    logger.silly('[wiki.ts] Basic query built: ', queries)
     return queries
   }
 
@@ -193,14 +196,15 @@ export class Wiki {
    * Perform a Wikipedia search.
    * @param classificationResult The object received from the Classification module.
    * @returns {Promise<Array<PageResult>>} A list of page results.
+   * @throws {Error} FIXME: write this field
    */
   public search(classificationResult: ClassificationResult): Promise<Array<PageResult>> {
     const queries = this.buildQueries(classificationResult)
-    // TODO: handle inexistent wiki page in that language
+    // FIXME: handle inexistent wiki page in that language
     const lang = classificationResult.userProfile.language.toLocaleLowerCase()
     return Promise.all(queries.map(q => this.getWikiInfo(q.searchTerms, lang)))
       .catch(err => {
-        logger.error("Error in function search.", err);
+        logger.error("[wiki.ts] Error in search: ", err);
         throw err;
       });
   }
