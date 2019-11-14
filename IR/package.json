@@ -6,7 +6,6 @@
   "scripts": {
     "lint": "eslint src/** --ext=ts",
     "lint:fix": "eslint src/** --ext=ts --fix",
-    "pretest": "npm run lint",
     "test": "jest",
     "test:debug": "node --inspect=5859 node_modules/.bin/jest --runInBand --detectOpenHandles",
     "test:watch": "jest --coverage --watch",

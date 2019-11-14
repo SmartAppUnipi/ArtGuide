@@ -1,8 +1,8 @@
+
+import { CacheService } from "./cache.service";
 import fetch from "node-fetch";
-import fs from "fs";
 import { GoogleSearchResult } from "../models";
 import logger from "../logger";
-import path from "path";
 import {
     GoogleCustomSearchAPIKey,
     GoogleCustomSearchEngineId
@@ -23,7 +23,20 @@ export class GoogleSearch {
         custom: `https://www.googleapis.com/customsearch/v1?key=${GoogleCustomSearchAPIKey}&cx=${GoogleCustomSearchEngineId}&q=`
     };
 
-    private cache = JSON.parse(fs.readFileSync(path.join(__dirname, "cache.json")).toString());
+    /**
+     * Performs Google Search using the api keys defined in the environment (.env) file.
+     * 
+     * @param cachePath The cache file path on disk. Default "google-cache.json" in root folder
+     */
+    constructor(public readonly cachePath: string = "google-cache.json") {
+
+    }
+
+    /**
+     * The local cache service
+     */
+    private cacheService: CacheService = new CacheService(this.cachePath);
+
 
     /**
      * Make a call to the a specified Google Search API url.
@@ -34,22 +47,37 @@ export class GoogleSearch {
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    private query(googleSearchUrl: string, query: string): Promise<GoogleSearchResult> {
-        if (!query) {
-            const err = new Error("Error: empty query.");
-            logger.warn("[google.ts] ", err);
+    private async query(googleSearchUrl: string, query: string): Promise<GoogleSearchResult> {
+        if (!query)
             return Promise.resolve(null);
+
+        const url = googleSearchUrl + query;
+        const key = url.split("&q=")[1];
+
+        let queryResult = this.cacheService.get(key);
+
+        if (queryResult === null) {
+            // cache miss
+            queryResult = await fetch(url)
+                .then(res => res.json())
+                .then(result => {
+                    this.cacheService.set(key, result);
+                    logger.debug("[google.ts] Cache insert:" + key);
+                    return result;
+                });
+        } else {
+            // cache hit
+            logger.debug("[google.ts] Cache hit:" + key);
         }
-        return this.getFromCacheOrFetch(googleSearchUrl + query)
-            .then(queryResult => {
-                // Handle error in API result
-                if (queryResult.error) {
-                    const err = new Error(queryResult.error.message);
-                    logger.error("[google.ts] Error in query \"" + query + "\". Query result error: ", err);
-                    throw err;
-                }
-                return queryResult;
-            });
+
+
+        if (queryResult.error) {
+            const err = new Error(queryResult.error.message);
+            logger.error("[google.ts] Error in query \"" + query + "\". Query result error: ", err);
+            // Handle error in API result
+            throw err;
+        }
+        return queryResult;
     }
 
     /**
@@ -74,28 +102,6 @@ export class GoogleSearch {
      */
     public queryRestricted(query: string): Promise<GoogleSearchResult> {
         return this.query(this.googleSearchUrls.restricted, query);
-    }
-
-    /**
-     * Fetch an url using a cache.
-     *
-     * @param url The url to be fetched.
-     * @returns {Promise<GoogleSearchResult>} The cached or fetched GoogleSearchResult corresponding to that url.
-     */
-    private getFromCacheOrFetch(url: string): Promise<GoogleSearchResult> {
-        const keywords = url.split("&q=")[1];
-        if (this.cache[keywords]) {
-            logger.debug("[google.ts] Cache hit:" + keywords);
-            return Promise.resolve(this.cache[keywords]);
-        }
-        return fetch(url)
-            .then(res => res.json())
-            .then(json => {
-                this.cache[keywords] = json;
-                fs.writeFileSync(path.join(__dirname, "cache.json"), JSON.stringify(this.cache));
-                logger.debug("[google.ts] Cache insert: " + url);
-                return this.cache[keywords];
-            });
     }
 
 }
