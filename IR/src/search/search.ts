@@ -16,10 +16,10 @@ import {
 export class Search {
 
     /** Google Search service */
-    private googleSearch = new GoogleSearch()
+    private googleSearch = new GoogleSearch();
 
     /** Parser */
-    private parser = new Parser()
+    private parser = new Parser();
 
     /**
      * Perform a web search.

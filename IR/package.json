@@ -7,12 +7,13 @@
     "lint": "eslint src/** --ext=ts",
     "lint:fix": "eslint src/** --ext=ts --fix",
     "pretest": "npm run lint",
-    "test": "jest --detectOpenHandles --testTimeout=30000",
-    "test:debug": "node --inspect=5859 node_modules/.bin/jest --runInBand --detectOpenHandles --testTimeout=30000",
+    "test": "jest",
+    "test:debug": "node --inspect=5859 node_modules/.bin/jest --runInBand --detectOpenHandles",
     "test:watch": "jest --coverage --watch",
     "test:cov": "jest --coverage",
     "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "start": "nodemon --inspect=5858 src/index.ts",
+    "start": "nodemon src/index.ts",
+    "start:debug": "nodemon --inspect=5858 src/index.ts",
     "build": "tsc",
     "watch": "tsc -w -p .",
     "clean": "npx rimraf dist && npx rimraf coverage",
@@ -52,7 +53,7 @@
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.2",
-    "@types/jest": "^24.0.22",
+    "@types/jest": "^24.0.23",
     "@types/jsdom": "^12.2.4",
     "@types/mocha": "^5.2.7",
     "@types/node-fetch": "^2.5.3",
@@ -70,7 +71,7 @@
     "ts-jest": "^24.1.0",
     "ts-node": "^8.5.0",
     "tslint-eslint-rules": "^5.4.0",
-    "typedoc": "^0.15.0",
+    "typedoc": "^0.15.1",
     "typescript": "^3.7.2"
   },
   "dependencies": {
@@ -85,6 +86,7 @@
   },
   "jest": {
     "verbose": true,
+    "testTimeout": 30000,
     "moduleFileExtensions": [
       "js",
       "json",
@@ -102,6 +104,18 @@
       "/.vscode/"
     ],
     "coverageDirectory": "coverage"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "ignore": [
+      "src/**/*.spec.ts"
+    ],
+    "execMap": {
+      "ts": "node --require ts-node/register"
+    }
   },
   "pre-commit": []
 }

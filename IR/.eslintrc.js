@@ -41,7 +41,8 @@ module.exports = {
                 "ignoreComments": false
             }
         ],
-        "semi": ["warn", "always"],                                 // always require semicolon
+        "semi": "off",                                              // replaced below
+        "@typescript-eslint/semi": ["warn"],                        // always require semicolon
         "curly": ["warn", "multi-or-nest"],                         // use curly braces if more than one line
         "comma-dangle": ["warn", "never"],                          // no comma in last object property
         "space-before-function-paren": ["error", {                  // no space after function definition and parenthesis

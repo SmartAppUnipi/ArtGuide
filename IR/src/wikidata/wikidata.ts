@@ -1,8 +1,9 @@
 import fetch from "node-fetch";
 import logger from "../logger";
 import path from "path";
-import wdk from "wikidata-sdk";
 import { ClassificationResult, WikiDataResult } from "../models";
+// eslint disable
+const wdk = require("wikidata-sdk");
 
 /**
  * Retrieve metadata from WikiData using the entityIds.
