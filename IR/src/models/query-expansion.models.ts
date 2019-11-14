@@ -1,16 +1,16 @@
 export interface QueryExpansionRequest {
     userId: number;
-    userTastes: string[];
+    userTastes: Array<string>;
     language: string;
 }
 
 export interface KeywordExpansion {
-    [keyword: string]: string[];
+    [keyword: string]: Array<string>;
 }
 
 export interface QueryExpansionResponse {
     userId: number;
-    userTastes: string[];
+    userTastes: Array<string>;
     keywordExpansion: KeywordExpansion;
     language: string;
 }
@@ -18,5 +18,5 @@ export interface QueryExpansionResponse {
 export interface Query {
     searchTerms: string;
     score: number;
-    keywords: string[];
+    keywords: Array<string>;
 }

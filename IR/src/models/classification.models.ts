@@ -27,15 +27,15 @@ export interface Period extends BasicField {
 }
 
 export interface Classification {
-    entities: BasicFieldWithId[];
-    labels: BasicFieldWithId[];
-    locations: Location[];
+    entities: Array<BasicFieldWithId>;
+    labels: Array<BasicFieldWithId>;
+    locations: Array<Location>;
     safeSearch: SafeSearch;
-    type: BasicField[];
-    monumentType: BasicField[];
-    period: Period[];
-    style: BasicField[];
-    materials: BasicField[];
+    type: Array<BasicField>;
+    monumentType: Array<BasicField>;
+    period: Array<Period>;
+    style: Array<BasicField>;
+    materials: Array<BasicField>;
 }
 
 export interface ClassificationResult {

@@ -17,7 +17,7 @@ const logger = winston.createLogger({
         new winston.transports.File({
             filename: "trace.log",
             handleExceptions: true,
-            format: winston.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
+            format: winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
         })
     ]
 });

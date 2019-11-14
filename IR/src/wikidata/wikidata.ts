@@ -11,6 +11,7 @@ export class WikiData {
 
     /**
      * Perform a WikiData search.
+     *
      * @param classificationResult The object received from the Classification module.
      * @returns {Promise<WikiDataResult>} A WikiData result or @type {null} if there are no entities.
      */
@@ -28,6 +29,7 @@ export class WikiData {
 
     /**
      * Convert a freebase id in a WikiData id.
+     *
      * @param freebaseId Freebase id from the Google Image Vision API (coming from Classification module).
      * @returns {Promise<string>} The WikiData id.
      */
@@ -61,6 +63,7 @@ export class WikiData {
 
     /**
      * Extract metadata from WikiData.
+     *
      * @param freebaseId freebase id from the Google Image Vision API (coming from Classification module).
      * @returns WikiData output.
      * @throws {Error} if it is not possible to translate the freebase id in a WikiData id.

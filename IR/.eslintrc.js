@@ -3,7 +3,11 @@ module.exports = {
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:jsdoc/recommended"
+    ],
+    plugins: [
+        "jsdoc"
     ],
     parser: '@typescript-eslint/parser',    // Specifies the ESLint parser
     parserOptions: {
@@ -14,6 +18,11 @@ module.exports = {
     env: {
         "node": true,                       // node environment, not browser
         "es6": true                         // es flavour
+    },
+    settings: {
+        jsdoc: {
+            mode: "typescript"
+        }
     },
     rules: {
         "indent": "off",                                            // replaced below
@@ -39,8 +48,8 @@ module.exports = {
             "anonymous": "always",
             "named": "never",
             "asyncArrow": "always"
-        }],           
-        "max-len": ["error", { "code": 120, "tabWidth": 2 }],       // line max len 120 chars
+        }],
+        "max-len": ["warn", { "code": 120, "tabWidth": 2 }],       // line max len 120 chars
         "quote-props": ["error", "as-needed"],                      // require quotes around object literal property names
         "no-console": "off",                                        // no console log
         "spaced-comment": ["warn", "always"],                       // require a whitespace immediately after the initial // or /* of a comment
@@ -84,6 +93,16 @@ module.exports = {
             "ignoreChainWithDepth": 2
         }],
 
-        "arrow-parens": ["error", "as-needed"]                      // arrow functions can omit parentheses when they have exactly one parameter
+        "arrow-parens": ["error", "as-needed"],                     // arrow functions can omit parentheses when they have exactly one parameter
+        "@typescript-eslint/prefer-for-of": "warn",
+        "no-unreachable": "error",
+
+        "@typescript-eslint/array-type": ["error", {                // use always Array<T> instead of T[]
+            "default": "generic",
+            "readonly": "generic"
+        }],
+
+        "jsdoc/require-param-type": "off",                          // avoid redundant types in func params in jsdoc comments
+        "jsdoc/require-returns-type": "off"                         // avoid redundant func return type in jsdoc comments
     }
 };

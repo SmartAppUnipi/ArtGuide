@@ -23,6 +23,7 @@ export class Search {
 
     /**
      * Perform a web search.
+     *
      * @param classificationResult The object received from the Classification module.
      * @returns {Promise<Array<PageResult>>} A list of page results.
      */
@@ -34,6 +35,7 @@ export class Search {
 
     /**
      * Builds a basic query basing on the Classification module result.
+     *
      * @param classificationResult The object received from the Classification module.
      * @returns {Array<Query>} An array of Query objects with searchTerms and score.
      */
@@ -56,9 +58,10 @@ export class Search {
 
     /**
      * Extend a query by using the query expansion provided by the Adaptation module.
+     *
      * @param queries An array of Query produced by @function buildBasicQuery.
      * @param queryExpansion The query expansion provided by the Adaptation module.
-     * @returns {Array<QueryBuildResult>} An array of object containing the originalQuery and an array expandedKeywords.
+     * @returns {Array<Query>} An array of object containing the originalQuery and an array expandedKeywords.
      */
     private extendQuery(queries: Array<Query>, queryExpansion: QueryExpansionResponse): Array<Query> {
         logger.silly("[search.ts] Query expansion: ", queryExpansion);
@@ -73,6 +76,7 @@ export class Search {
 
     /**
      * Build an array of queries using the query expansion provided by the Adaptation module.
+     *
      * @param classificationResult The object received from the Classification module.
      * @returns {Promise<Array<Query>>} A promise resolved with the array of Query.
      */
@@ -91,10 +95,11 @@ export class Search {
 
     /**
      * Build a result object by querying Google Search the provided query.
+     *
      * @param queries The buildQuery result.
      * @returns {Array<PageResult>} An array of page result to be sent to the Adaptation module.
      */
-    private buildResult(queries: Query[]): Promise<Array<PageResult>> {
+    private buildResult(queries: Array<Query>): Promise<Array<PageResult>> {
 
 
         /*

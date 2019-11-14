@@ -1,15 +1,15 @@
 export interface PageSection {
     title: string;
     content: string;
-    tags: string[];
+    tags: Array<string>;
 }
 
 export class PageResult {
     public url: string;
     public title: string;
-    public sections: PageSection[];
-    public keywords: string[];
-    public tags: string[];
+    public sections: Array<PageSection>;
+    public keywords: Array<string>;
+    public tags: Array<string>;
 
     constructor(item: Partial<PageResult>) {
         if (item) {

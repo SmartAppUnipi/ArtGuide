@@ -28,6 +28,7 @@ export class GoogleSearch {
     /**
      * Make a call to the a specified Google Search API url.
      * This api searches the whole web but has a limit of 1k/day. After 5€/1k queries.
+     *
      * @param googleSearchUrl Url of the Google Search API endpoint to be called.
      * @param query The query to forward to Google.
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
@@ -54,6 +55,7 @@ export class GoogleSearch {
     /**
      * Make a call to the CUSTOM Google Search API.
      * This api searches the whole web but has a limit of 1k/day. After 5€/1k queries.
+     *
      * @param query The query to forward to Google.
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
@@ -65,6 +67,7 @@ export class GoogleSearch {
     /**
      * Make a call to the RESTRICTED Google Search API.
      * The restricted api has no daily limits, but limited domains defined into the search engine context
+     *
      * @param query The query to forward to Google.
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
@@ -75,6 +78,7 @@ export class GoogleSearch {
 
     /**
      * Fetch an url using a cache.
+     *
      * @param url The url to be fetched.
      * @returns {Promise<GoogleSearchResult>} The cached or fetched GoogleSearchResult corresponding to that url.
      */

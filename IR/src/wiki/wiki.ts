@@ -6,7 +6,7 @@ import { Page, Result } from "wikijs";
 interface ComposedSection {
     title: string;
     content: string;
-    items: PageSection[];
+    items: Array<PageSection>;
 }
 
 /**
@@ -14,18 +14,11 @@ interface ComposedSection {
  */
 export class Wiki {
 
-    private fields: { [key: string]: any } = {
-        content: this.getContent.bind(this),
-        summary: this.getSummary.bind(this),
-        references: this.getReferences.bind(this),
-        links: this.getLinks.bind(this),
-        images: this.getImages.bind(this)
-    };
-
     /**
      * Perform a Wikipedia search.
+     *
      * @param classificationResult The object received from the Classification module.
-     * @returns {Promise<Array<PageResult>>} A list of page results.
+     * @returns A list of page results.
      * @throws {Error} FIXME: write this field
      */
     public search(classificationResult: ClassificationResult): Promise<Array<PageResult>> {
@@ -36,15 +29,15 @@ export class Wiki {
             .catch(err => {
                 logger.error("[wiki.ts] Error in search: ", err);
                 throw err;
-                return Promise.resolve(null);
             });
     }
 
     /**
      * FIXME: write this line
+     *
      * @param query The searched item
      * @param language The Wikipedia subdomain to search in
-     * @returns {Promise<PageResult>} 
+     * @returns 
      * @throws {Error} FIXME: write this field
      */
     public async getWikiInfo(query: string, language: string): Promise<PageResult> {
@@ -83,6 +76,7 @@ export class Wiki {
 
     /**
      * Get a list of results, given a query and a language
+     *
      * @param query The searched item
      * @param language The Wikipedia subdomain to search in
      * @returns {Promise<Result>} the list of Wikipedia pages associated to the given query.
@@ -98,6 +92,7 @@ export class Wiki {
 
     /**
      * Given a query and a language, it gets the first result on the list and retrieves the corresponding Wikipedia page
+     *
      * @param query The searched item
      * @param language The Wikipedia subdomain to search in
      * @returns {Promise<Page>} the Wikipedia page
@@ -115,6 +110,7 @@ export class Wiki {
 
     /**
      * FIXME: write this line
+     *
      * @param query The searched item
      * @param language The Wikipedia subdomain to search in
      * @returns {Promise<string>} All the sections and subsections of the Wikipedia page, with their title and content.
@@ -126,6 +122,7 @@ export class Wiki {
 
     /**
      * FIXME: write this line
+     *
      * @param query The searched item
      * @param language The Wikipedia subdomain to search in
      * @returns {Promise<string>} The summary at the top of the Wikipedia page.
@@ -136,59 +133,69 @@ export class Wiki {
 
     /**
      * FIXME: write this doc
+     *
      * @param query 
      * @param language 
      */
-    private getReferences(query: string, language: string): Promise<string[]> {
+    private getReferences(query: string, language: string): Promise<Array<string>> {
         return this.getPage(query, language).then(page => page.references());
     }
 
     /**
      * FIXME: write this doc
+     *
      * @param query 
      * @param language 
      */
-    private getLinks(query: string, language: string): Promise<string[]> {
+    private getLinks(query: string, language: string): Promise<Array<string>> {
         return this.getPage(query, language).then(page => page.links());
     }
 
     /**
      * FIXME: write this doc
+     *
      * @param query 
      * @param language 
      */
-    private getImages(query: string, language: string): Promise<string[]> {
+    private getImages(query: string, language: string): Promise<Array<string>> {
         return this.getPage(query, language).then(page => page.images());
     }
 
     /**
      * Given a query and a language, it gets the first result on the list
      * and retrieves the searched field in the Wikipedia page
+     *
      * @param query The searched item
      * @param language The Wikipedia subdomain to search in
      * @param field The specific field to retrieve in the page
      * @returns {Promise<any>} an object containing the requested field from the WikiPedia page. 
      */
-    private getField(query: string, language: string, field: string): any {
-        return this.fields[field].call(this, query, language);
+    private getField(query: string, language: string, field: string): Promise<any> {
+        const functionName = `get${field.substr(0, 1).toUpperCase()}${field.substr(1)}`;
+        const functionToCall: (query: string, language: string) => Promise<any> = (this as any)[functionName];
+        return functionToCall.call(this, query, language);
     }
 
     /**
      * FIXME: write this doc
+     *
      * @param query
      * @param language
      */
     private getPageURL(query: string, language: string): Promise<URL> {
-        return this.getPage(query, language).then(page => page.url());
+        return this
+            .getPage(query, language)
+            .then(page => page.url());
     }
 
     /**
      * Builds a query basing on the Classification module result.
+     *
      * @param classificationResult The object received from the Classification module.
      * @returns {Array<Query>} A list of query.
      * If classification entities is empty an empty array is returned.
      */
-    private buildQueries(classificationResult: ClassificationResult): Query[] {
+    private buildQueries(classificationResult: ClassificationResult): Array<Query> {
 
         if (!classificationResult.classification.entities ||
             !classificationResult.classification.entities.length) {

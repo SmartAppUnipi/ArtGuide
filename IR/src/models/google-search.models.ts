@@ -28,8 +28,8 @@ export interface NextPage {
 }
 
 export interface Queries {
-    request: Request[];
-    nextPage: NextPage[];
+    request: Array<Request>;
+    nextPage: Array<NextPage>;
 }
 
 export interface Context {
@@ -63,9 +63,9 @@ export interface CseImage {
 }
 
 export interface Pagemap {
-    cse_thumbnail: CseThumbnail[];
-    metatags: Metatag[];
-    cse_image: CseImage[];
+    cse_thumbnail: Array<CseThumbnail>;
+    metatags: Array<Metatag>;
+    cse_image: Array<CseImage>;
 }
 
 export interface Item {
@@ -89,6 +89,6 @@ export interface GoogleSearchResult {
     context: Context;
     searchInformation: SearchInformation;
     spelling: Spelling;
-    items: Item[];
+    items: Array<Item>;
     error?: any;
 }
