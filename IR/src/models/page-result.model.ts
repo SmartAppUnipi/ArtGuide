@@ -1,18 +1,20 @@
 export interface PageSection {
-  title: string;
-  content: string;
-  tags: Array<string>;
+    title: string;
+    content: string;
+    tags: string[];
 }
 
 export class PageResult {
-  url: string;
-  title: string;
-  sections: Array<PageSection>;
-  keywords: Array<string>;
-  tags: Array<string>;
+    public url: string;
+    public title: string;
+    public sections: PageSection[];
+    public keywords: string[];
+    public tags: string[];
 
-  constructor(item: Partial<PageResult>) {
-    if (item)
-      Object.assign(this, item);
-  }
+    constructor(item: Partial<PageResult>) {
+        if (item) {
+            // mu
+            Object.assign(this, item);
+        }
+    }
 }
