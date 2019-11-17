@@ -1,0 +1,8 @@
+{
+  "userProfile": {
+    "id": 42,
+    "expertiseLevel": 1,
+    "language": "en",
+    "commentTest": "Missing tastes attribute"
+  }
+}

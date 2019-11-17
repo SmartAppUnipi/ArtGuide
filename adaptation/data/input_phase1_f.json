@@ -1,0 +1,8 @@
+{
+  "userProfile": {
+    "id": 42,
+    "tastes": [ "history", "description", "legacy" ],
+    "expertiseLevel": 1,
+    "commentTest": "Missing languege attribute"
+  }
+}

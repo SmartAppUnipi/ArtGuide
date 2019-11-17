@@ -1,0 +1,18 @@
+{
+	
+	"userProfile":{
+		"id": 42,
+		"tastes": ["history", "biography"],
+		"expertiseLevel": 1,
+    "language": "en",
+    "commentTest":  "No content"
+	},	
+	"results": [{
+		"keywords": ["k1", "k2", "k3"],
+		"url": "www.google.com",
+		"title": "My Title",
+		"sections": [{
+      "title": "Mona Lisa"
+    }]
+	}]
+}

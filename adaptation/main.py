@@ -12,7 +12,7 @@ from config import config
 
 
 app = Flask(__name__, static_folder="documentation")
-document_adaptation = DocumentsAdaptation(verbose=config.debug)
+document_adaptation = DocumentsAdaptation(max_workers=4, verbose=config.debug)
 
 @app.route('/', methods=["GET","POST"])
 def hello():
@@ -34,7 +34,6 @@ def keywords():
         return jsonify(req)
     if 'tastes' not in req['userProfile']:
         req['adaption_error'] = {"userProfile incomplete"}
-        return jsonify(req)
     
     # Body
     user = User(req["userProfile"])
@@ -58,7 +57,6 @@ def tailored_text():
         return jsonify(req)
     if 'tastes' not in req['userProfile'] or 'expertiseLevel' not in req['userProfile'] or 'language' not in req['userProfile']:
         req['adaption_error'] = {"userProfile incomplete"}
-        return jsonify(req)
        
     # Body
     user = User(req["userProfile"])
