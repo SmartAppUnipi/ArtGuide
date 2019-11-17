@@ -69,7 +69,7 @@ def tailored_text():
 def internal_error(exc):
     req = request.get_json()
     #print("\n",exc,"\n")
-    req['adaption_error'] = "500 - Internal Server Error"
+    req['adaptionError'] = "500 - Internal Server Error"
     return jsonify(req)
 
 if __name__ == '__main__':
