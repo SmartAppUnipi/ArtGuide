@@ -1,4 +1,6 @@
 google-cloud-vision
+imagesize==1.1.0
+pandas
 flask
 flask_cors
 tensorflow

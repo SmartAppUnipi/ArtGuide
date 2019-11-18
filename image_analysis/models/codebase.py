@@ -1,6 +1,7 @@
 import os
 
 import cv2
+import math
 import re
 import numpy as np
 import pandas as pd
@@ -9,7 +10,8 @@ import imagesize
 
 import project_types as pt
 
-CROP_SIZE = [256, 256, 3]
+DEBUG = False
+CROP_SIZE = [250, 250, 3]
 
 # Name, ID, StartYear, EndYear
 arch_info = {
@@ -40,12 +42,15 @@ arch_info = {
     'Tudor Revival architecture': [69, 1900, 1920],
 }
 
+def debug_print(s):
+    if DEBUG:
+        print(s)
 
 def size_no_read(t_path):
     try:
         m = magic.from_file(t_path)
     except:
-        print(f'can\'t read {t_path}')
+        debug_print(f'can\'t read {t_path}')
         return [np.nan, np.nan]
     ftype = m.lower().split(' ')[0] 
 
@@ -54,7 +59,7 @@ def size_no_read(t_path):
     elif ftype=='png': 
         str_size = re.findall('(\d+) x (\d+)', magic.from_file(t_path))[0]
     else:
-        print(f'Filetype not supported: {m}')
+        debug_print(f'Filetype not supported: {m}')
         return [np.nan, np.nan]
     return list(map(int, str_size))
 
@@ -115,27 +120,49 @@ def load_data(t_balance=True, min_size=CROP_SIZE[:2], max_size=[]):
 def load_and_reshape(t_path):
     img = cv2.imread(t_path, cv2.COLOR_BGR2RGB)
     if len(img.shape)<3:
+        debug_print(f'Not rgb image {t_path}')
         return np.nan
     if img.shape[0]<CROP_SIZE[0] or img.shape[1]<CROP_SIZE[1]:
+        debug_print(f'Size less than CROP_SIZE {t_path}')
         return np.nan
+    if np.isnan(img).any():
+        raise AttributeError(f'nan value for {t_path}')
+
     t = tf.convert_to_tensor(img, dtype=np.float32)
-    return tf.image.random_crop(img, CROP_SIZE)
+    crop_part = tf.image.random_crop(t, CROP_SIZE)
+    
+    if np.any(np.isnan(crop_part)):
+        raise AttributeError(f'cannot crop {t_path}')
+    return crop_part
 
 
 def load_imgs(samples, drop_abs_path=True):
+    """
+    Note: need one_hot encoding for remaining columns
+    """
     samples_imgs = samples.abs_path.map(load_and_reshape)
     
     if drop_abs_path:
         samples_imsg = samples.drop('abs_path', axis=1, inplace=True)
     samples['img'] = samples_imgs 
-    
     return samples.dropna()
 
+
+def to_tf(samples):
+    # Attributes values to one hot
+    vect_cols = samples.columns.difference(['img'])
+    one_hot_df = pd.get_dummies(samples, columns=vect_cols) 
+    # One hot to tensor
+    vect_cols = one_hot_df.columns.difference(['img'])
+    labels = tf.convert_to_tensor(one_hot_df[vect_cols].values)
+    # Stacking imgs to tensor
+    input_img = tf.stack(samples.img.values.tolist()) / 255
+
+    return input_img, labels
 
 def get_art_or_building(t_arch_df, t_pict_df):
     columns = ['art_class', 'abs_path']
     merged_df = pd.concat([t_arch_df[columns], t_pict_df[columns]]) 
-    
     return merged_df
 
 
