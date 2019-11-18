@@ -9,7 +9,7 @@ import imagesize
 
 import project_types as pt
 
-IMG_SIZE = [256, 256, 3]
+CROP_SIZE = [256, 256, 3]
 
 # Name, ID, StartYear, EndYear
 arch_info = {
@@ -65,7 +65,7 @@ def stratified_sample(t_df, col=None, frac=.1, n=None):
     return t_df.groupby(col, group_keys=False).apply(lambda x: x.sample(n, frac))
 
 
-def load_data(t_balance=True, min_size=[], max_size=[]):
+def load_data(t_balance=True, min_size=CROP_SIZE[:2], max_size=[]):
     arch = pd.DataFrame([], columns=['art_class', 'style', 'year_start', 'year_end', 'abs_path'])
     # loading architecture ----- #
     dir_list = [x for x in os.walk(pt.arch_dset)]
@@ -116,10 +116,10 @@ def load_and_reshape(t_path):
     img = cv2.imread(t_path, cv2.COLOR_BGR2RGB)
     if len(img.shape)<3:
         return np.nan
-    if img.shape[0]<IMG_SIZE[0] or img.shape[1]<IMG_SIZE[1]:
+    if img.shape[0]<CROP_SIZE[0] or img.shape[1]<CROP_SIZE[1]:
         return np.nan
     t = tf.convert_to_tensor(img, dtype=np.float32)
-    return t # tf.image.random_crop(img, IMG_SIZE)
+    return tf.image.random_crop(img, CROP_SIZE)
 
 
 def load_imgs(samples, drop_abs_path=True):
@@ -135,6 +135,7 @@ def load_imgs(samples, drop_abs_path=True):
 def get_art_or_building(t_arch_df, t_pict_df):
     columns = ['art_class', 'abs_path']
     merged_df = pd.concat([t_arch_df[columns], t_pict_df[columns]]) 
+    
     return merged_df
 
 
