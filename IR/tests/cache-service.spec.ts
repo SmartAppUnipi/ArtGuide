@@ -10,7 +10,7 @@ describe("Cache service", () => {
         const cachePath = "tmpCache.json";
         const cacheService = new CacheService(cachePath);
         expect(fs.existsSync(cachePath)).toEqual(true);
-        cacheService.initialize();
+        cacheService.reset();
 
     });
 
@@ -18,7 +18,7 @@ describe("Cache service", () => {
         const cachePath = "tmpCache.json";
         const cacheService = new CacheService(cachePath);
         expect(fs.existsSync(cachePath)).toEqual(true);
-        cacheService.initialize();
+        cacheService.reset();
         expect(fs.existsSync(cachePath)).toEqual(false);
     });
 
@@ -31,7 +31,7 @@ describe("Cache service", () => {
         const cacheContent = JSON.parse(fs.readFileSync(cachePath).toString());
         expect(cacheContent).toEqual({ myKey: { message: "Disk" } });
 
-        cacheService.initialize();
+        cacheService.reset();
     });
 
     it("Should read from disk", () => {
@@ -44,7 +44,7 @@ describe("Cache service", () => {
         const myKey = cacheService.get("myKey");
         expect(myKey.message).toEqual("Existing cache");
 
-        cacheService.initialize();
+        cacheService.reset();
     });
 
 })

@@ -3,6 +3,7 @@
 
 import { GoogleSearch } from '../src/search/google-search';
 import nock from "nock";
+import fs from "fs";
 
 describe("Google search", () => {
 
@@ -20,7 +21,7 @@ describe("Google search", () => {
 
         const googleSearch = new GoogleSearch("tmpCache.json");
         expect(googleSearch.queryCustom("Test entry")).rejects
-        googleSearch["cacheService"].initialize();
+        fs.unlinkSync("tmpCache.json")
     });
 
 })
