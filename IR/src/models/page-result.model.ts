@@ -10,6 +10,7 @@ export class PageResult {
     public sections: Array<PageSection>;
     public keywords: Array<string>;
     public tags: Array<string>;
+    public summary?: string;
 
     constructor(item: Partial<PageResult>) {
         if (item) {
