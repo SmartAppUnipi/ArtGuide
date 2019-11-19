@@ -71,7 +71,7 @@ describe("Test build query", () => {
             expect(pageResult.tags).toBeDefined();
             // must contain at least 1 section
             expect(pageResult.sections.length).toBeGreaterThan(0)
-            console.log(result)
+            // console.log(result)
             // TODO: test
             // - queryResult null
             // - queryResult.items empty or null
