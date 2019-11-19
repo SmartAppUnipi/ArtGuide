@@ -56,7 +56,8 @@ export class Wiki {
         const mainQuery: Query = {
             searchTerms: await wikidata.getWikipediaName(lang, id),
             score: entity.score,
-            keywords: []
+            keywords: [],
+            language: classificationResult.userProfile.language
         };
         // TODO: build other queries using the WikiData tags.
         const queries = [mainQuery];

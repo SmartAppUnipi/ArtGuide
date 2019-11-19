@@ -16,4 +16,5 @@ export interface Query {
     searchTerms: string;
     score: number;
     keywords: Array<string>;
+    language: string;
 }

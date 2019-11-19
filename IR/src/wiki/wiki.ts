@@ -92,14 +92,14 @@ export class Wiki {
       });
   }
 
-   /**
-   * Given a WikiData id and a language, it gets the corresponding Wikipedia page
-   *
-   * @param wikidata_id The searched WikiData id
-   * @param language The Wikipedia subdomain to search in
-   * @returns {Promise<Page>} the Wikipedia page
-   * @throws {Error} FIXME: write this field
-   */
+  /**
+  * Given a WikiData id and a language, it gets the corresponding Wikipedia page
+  *
+  * @param wikidata_id The searched WikiData id
+  * @param language The Wikipedia subdomain to search in
+  * @returns {Promise<Page>} the Wikipedia page
+  * @throws {Error} FIXME: write this field
+  */
 
   private getPageByID(wikidata_id: string, language: string): Promise<Page> {
     return wiki({ apiUrl: "https://" + language + ".wikipedia.org/w/api.php" }).findById(wikidata_id)
@@ -226,7 +226,8 @@ export class Wiki {
     const mainQuery: Query = {
       searchTerms: entity.description,
       score: entity.score,
-      keywords: []
+      keywords: [],
+      language: classificationResult.userProfile.language
     };
     // TODO: build other queries using the WikiData tags.
     const queries = [mainQuery];

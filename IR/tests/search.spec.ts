@@ -12,6 +12,7 @@ const queries: Array<Query> = [
         searchTerms: "mona lisa",
         score: 0.98765432,
         keywords: [],
+        language: "en"
     }
 ]
 
@@ -31,12 +32,14 @@ const extendedQueries: Array<Query> = [
     {
         searchTerms: 'mona lisa',
         score: 0.98765432,
-        keywords: ['history']
+        keywords: ['history'],
+        language: "en"
     },
     {
         searchTerms: 'mona lisa',
         score: 0.98765432,
-        keywords: ['style', 'technique']
+        keywords: ['style', 'technique'],
+        language: "en"
     }
 ]
 

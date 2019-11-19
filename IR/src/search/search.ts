@@ -47,7 +47,8 @@ export class Search {
                 return {
                     searchTerms: entity.description,
                     score: entity.score,
-                    keywords: []
+                    keywords: [],
+                    language: classificationResult.userProfile.language
                 };
             });
         if (!queries.length) logger.debug("[search.ts] Classification entities are empty");
@@ -86,11 +87,11 @@ export class Search {
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
             AdaptationEndpoint + "/keywords", {
-                userProfile: classificationResult.userProfile
-            })
-        // extend the basic query with the query expansion
+            userProfile: classificationResult.userProfile
+        })
+            // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
-        // return both the basic query and the extended queries in one array
+            // return both the basic query and the extended queries in one array
             .then(extendedQuery => basicQueries.concat(extendedQuery));
     }
 
@@ -123,7 +124,7 @@ export class Search {
             // for each query
             queries.map(async q => {
                 // query Google Search and get the list of results
-                return this.googleSearch.queryCustom(q.searchTerms + " " + q.keywords.join(" "))
+                return this.googleSearch.queryCustom(q.searchTerms + " " + q.keywords.join(" "), q.language as "it" | "en")
                     .then(queryResult => {
 
                         if (!queryResult) {
