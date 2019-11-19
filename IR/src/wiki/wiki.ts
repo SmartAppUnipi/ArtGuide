@@ -19,7 +19,7 @@ export class Wiki {
      *
      * @param classificationResult The object received from the Classification module.
      * @returns A list of page results.
-     * @throws {Error} FIXME: write this field
+     * @throws When WikiPedia APIs return an error.
      */
     public search(classificationResult: ClassificationResult): Promise<Array<PageResult>> {
         const queries = this.buildQueries(classificationResult);
@@ -33,11 +33,11 @@ export class Wiki {
     }
 
     /**
-     * FIXME: write this line
+     * Retrieve WikiPedia info for a query string in a specified language.
      *
-     * @param query The searched item
-     * @param language The Wikipedia subdomain to search in
-     * @returns 
+     * @param query The string to be searched.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
+     * @returns The WikiPedia content as PageResult object.
      * @throws {Error} FIXME: write this field
      */
     private async getWikiInfo(query: string, language: string): Promise<PageResult> {
@@ -77,10 +77,10 @@ export class Wiki {
     /**
      * Get a list of results, given a query and a language
      *
-     * @param query The searched item
-     * @param language The Wikipedia subdomain to search in
-     * @returns {Promise<Result>} the list of Wikipedia pages associated to the given query.
-     * @throws {Error} FIXME: write this field
+     * @param query The string to be searched.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
+     * @returns The list of Wikipedia pages associated to the given query.
+     * @throws When the API call fails.
      */
     private resultsList(query: string, language: string): Promise<Result> {
         return wiki({ apiUrl: "https://" + language + ".wikipedia.org/w/api.php" }).search(query)
@@ -93,10 +93,10 @@ export class Wiki {
     /**
      * Given a query and a language, it gets the first result on the list and retrieves the corresponding Wikipedia page
      *
-     * @param query The searched item
-     * @param language The Wikipedia subdomain to search in
-     * @returns {Promise<Page>} the Wikipedia page
-     * @throws {Error} FIXME: write this field
+     * @param query The string to be searched.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
+     * @returns The WikiPedia page.
+     * @throws {Error} When the API call fails.
      */
     private getPage(query: string, language: string): Promise<Page> {
         return this.resultsList(query, language)
