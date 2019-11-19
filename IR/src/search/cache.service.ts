@@ -14,7 +14,7 @@ export class CacheService {
      * @param cachePath The path to the cache file on disk
      */
     constructor(public readonly cachePath: string) {
-    
+
         if (!fs.existsSync(this.cachePath))
             fs.writeFileSync(this.cachePath, {});
 
@@ -28,7 +28,9 @@ export class CacheService {
 
     /**
      * Get an item from the cache if it exists. Return null otherwise.
+     * 
      * @param key The cache key
+     * @returns The item value or null.
      */
     public get<T = any>(key: string): T {
         return this.cache[key] || null;
@@ -40,6 +42,7 @@ export class CacheService {
      * 
      * @param key The cache key
      * @param item The item to set at that key
+     * @returns true if the cache has been written on file, false otherwise
      */
     public set<T>(key: string, item: T): boolean {
 
@@ -59,7 +62,7 @@ export class CacheService {
     /**
      * Deletes the cache file form disk and empty the in-memory cache
      */
-    public initialize(){
+    public initialize(): void {
         fs.unlinkSync(this.cachePath);
         this.cache = {};
     }

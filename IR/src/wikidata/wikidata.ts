@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import logger from "../logger";
 import path from "path";
 import { ClassificationResult, WikiDataResult } from "../models";
-// eslint disable
+// eslint-disable-next-line
 const wdk = require("wikidata-sdk");
 
 /**
