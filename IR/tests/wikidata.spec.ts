@@ -3,6 +3,7 @@
 
 
 import fetch from "node-fetch";
+import wikijs from "wikijs";
 
 // eslint-disable-next-line
 const wbk = require("wikidata-sdk");
@@ -53,5 +54,23 @@ describe("Wikidata", () => {
         expect(simplifiedEntities.InstanceOf).toEqual(["Q200334", "Q570116"]);
         expect(simplifiedEntities.Painting).toEqual([]);
 
+    });
+
+    it("Should return Wikipedia name from Wikidata id", async () => {
+
+        const wikidataId = "Q39054"; // pisa tower
+
+        const url = wbk.getEntities([wikidataId]);
+
+        const content = await fetch(url)
+            .then(r => r.json());
+
+        const lang = "en";
+
+        const wikipediaPageTitle = content.entities[wikidataId].sitelinks[`${lang}wiki`].title
+
+        const page = await wikijs().find(wikipediaPageTitle);
+
+        expect(wikipediaPageTitle).toBe("Leaning Tower of Pisa");
     });
 });
