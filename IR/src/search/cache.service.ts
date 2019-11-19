@@ -62,7 +62,7 @@ export class CacheService {
     /**
      * Deletes the cache file form disk and empty the in-memory cache
      */
-    public initialize(): void {
+    public reset(): void {
         fs.unlinkSync(this.cachePath);
         this.cache = {};
     }

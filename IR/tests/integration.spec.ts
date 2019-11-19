@@ -6,7 +6,7 @@ import nock from 'nock'
 import { AdaptationEndpoint } from '../src/environment'
 import classificationResult from "../assets/classification-result.json"
 import queryExpansionResponse from "../assets/query-expansion-response.json"
-import { ClassificationResult, UserProfile } from '../src/models'
+import { UserProfile } from '../src/models'
 
 
 const adaptationScope = nock(AdaptationEndpoint)
