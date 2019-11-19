@@ -1,14 +1,25 @@
 /// <reference types="@types/jest"/>
 
-import { Wiki } from "../src/wiki"
+import { Wiki } from "../src/wiki/wiki2"
+import wiki from 'wikijs';
 
-const wiki = new Wiki()
+const wikijs = new Wiki()
+
+describe("Infobox content", () => {
+    test("Let's see what's inside the infobox", async () => {
+        return wiki().findById("Q39054").then(page => page.content().then(info => console.log(info)))
+        .catch(err =>
+            console.log("ERROREEEEEE!!"+err));
+
+        //console.log(info);
+    });
+});
 
 
 describe("Function getWikiInfo", () => {
     test("it should return a Promise<PageResult>", async () => {
 
-        const result = await wiki['getWikiInfo']("mona lisa", "en");
+        const result = await wikijs['getWikiInfo']("mona lisa", "en");
         
         expect(result).toBeDefined();
 

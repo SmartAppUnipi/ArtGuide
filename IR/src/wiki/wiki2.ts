@@ -1,6 +1,7 @@
 import logger from "../logger";
 import { Page } from "wikijs";
 import wiki from "wikijs";
+import { WikiData } from "../wikidata"
 import { ClassificationResult, PageResult, PageSection, Query } from "../models";
 
 interface ComposedSection {
@@ -8,6 +9,9 @@ interface ComposedSection {
     content: string;
     items: Array<PageSection>;
 }
+
+/** WikiData module */
+const wikidata = new WikiData();
 
 /**
  * Performs Wikipedia Search through the APIs.
@@ -21,8 +25,8 @@ export class Wiki {
      * @returns A list of page results.
      * @throws When WikiPedia APIs return an error.
      */
-    public search(classificationResult: ClassificationResult): Promise<Array<PageResult>> {
-        const queries = this.buildQueries(classificationResult);
+    public async search(classificationResult: ClassificationResult): Promise<Array<PageResult>> {
+        const queries = await this.buildQueries(classificationResult);
         // FIXME: handle inexistent wiki page in that language
         const lang = classificationResult.userProfile.language.toLocaleLowerCase();
         return Promise.all(queries.map(q => this.getWikiInfo(q.searchTerms, lang)))
@@ -38,7 +42,7 @@ export class Wiki {
      * @param classificationResult The object received from the Classification module.
      * @returns A list of query. If there aren't classification entities an empty array is returned.
      */
-    private buildQueries(classificationResult: ClassificationResult): Array<Query> {
+    private async buildQueries(classificationResult: ClassificationResult): Promise<Array<Query>> {
 
         if (!classificationResult.classification.entities ||
             !classificationResult.classification.entities.length) {
@@ -47,8 +51,10 @@ export class Wiki {
         }
 
         const entity = classificationResult.classification.entities[0];
+        const id = entity.entityId;
+        const lang = classificationResult.userProfile.language;
         const mainQuery: Query = {
-            searchTerms: entity.description,
+            searchTerms: await wikidata.getWikipediaName(lang, id),
             score: entity.score,
             keywords: []
         };

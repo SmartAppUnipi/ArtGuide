@@ -2,8 +2,29 @@ import fetch from "node-fetch";
 import logger from "../logger";
 import path from "path";
 import { ClassificationResult, WikiDataResult } from "../models";
+import 'wikibase-sdk';
+import 'wikidata-sdk';
+
+const wbk = require('wikibase-sdk')({
+    instance: 'https://my-wikibase-instan.se',
+    sparqlEndpoint: 'https://query.my-wikibase-instan.se/sparql'
+})
+
 // eslint-disable-next-line
 const wdk = require("wikidata-sdk");
+
+enum WikiDataIDs {
+    instanceof = "P31",
+    // Painting / statue
+    creator = "P170",
+    genre = "P136",
+    movement = "P135",
+    // Monument
+    architect = "P84",
+    architectural_style = "P149",
+    painting = "Q3305213",
+    sculpture = "Q860861",
+}
 
 /**
  * Retrieve metadata from WikiData using the entityIds.
@@ -89,4 +110,19 @@ export class WikiData {
         });
     }
 
+    public getWikipediaName(lang: string,  freebaseID: string): Promise<string> {
+        return this.getWikiDataId(freebaseID).then(id => {
+            if (!id) {
+                const err = new Error(`Unable to translate ${freebaseID} into WikiData ID`);
+                logger.error("[wikidata.ts] Error: ", err);
+                throw err;
+            }
+            const url = wbk.getEntities([id]);
+
+            return fetch(url)
+            .then(r => r.json())
+            .then(content => content.entities[id].sitelinks[`${lang}wiki`].title);
+        });
+    }
+        
 }
