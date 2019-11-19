@@ -86,12 +86,12 @@ export class Search {
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
             AdaptationEndpoint + "/keywords", {
-            userProfile: classificationResult.userProfile
-        })
+                userProfile: classificationResult.userProfile
+            })
         // extend the basic query with the query expansion
-        .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
+            .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
         // return both the basic query and the extended queries in one array
-        .then(extendedQuery => basicQueries.concat(extendedQuery));
+            .then(extendedQuery => basicQueries.concat(extendedQuery));
     }
 
 
@@ -146,12 +146,14 @@ export class Search {
                                     parsedContent.keywords = q.keywords;
                                     results.push(parsedContent);
                                     logger.silly("[search.ts] Parsed link " + item.link);
-                                }).catch(ex => {
-                                    logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
-                                });
+                                })
+                                    .catch(ex => {
+                                        logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
+                                    });
                             })
                         );
-                    }).catch(ex => logger.warn("[search.ts] Caught exception while processing query\"" + q +
+                    })
+                    .catch(ex => logger.warn("[search.ts] Caught exception while processing query\"" + q +
                         "\". Error: ", ex));
             })
         ).then(() => results);
