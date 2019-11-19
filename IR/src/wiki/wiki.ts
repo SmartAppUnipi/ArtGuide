@@ -211,7 +211,7 @@ export class Wiki {
         };
         // TODO: build other queries using the WikiData tags.
         const queries = [mainQuery];
-        logger.silly("[search.ts] Basic query built: ", queries);
+        logger.silly("[search.ts] Basic query built: " + queries);
         return queries;
     }
 }

@@ -51,7 +51,7 @@ export class Search {
                 };
             });
         if (!queries.length) logger.debug("[search.ts] Classification entities are empty");
-        logger.silly("[search.ts] Basic query built: ", queries);
+        logger.silly("[search.ts] Basic query built: " + queries);
         return queries;
     }
 
@@ -64,7 +64,7 @@ export class Search {
      * @returns {Array<Query>} An array of object containing the originalQuery and an array expandedKeywords.
      */
     private extendQuery(queries: Array<Query>, queryExpansion: QueryExpansionResponse): Array<Query> {
-        logger.silly("[search.ts] Query expansion: ", queryExpansion);
+        logger.silly("[search.ts] Query expansion: " + queryExpansion);
         const expandedQueries: Array<Query> = [];
         queries.forEach(query => {
             for (const key in queryExpansion.keywordExpansion)
@@ -143,9 +143,9 @@ export class Search {
                                 return this.parser.parse(item.link).then(parsedContent => {
                                     parsedContent.keywords = q.keywords;
                                     results.push(parsedContent);
-                                    logger.silly("[search.ts] Parsed link ", item.link);
+                                    logger.silly("[search.ts] Parsed link " + item.link);
                                 }).catch(ex => {
-                                    logger.warn("[search.ts] Parser error: ", ex, ". Link: ", item.link);
+                                    logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
                                 });
                             })
                         );
