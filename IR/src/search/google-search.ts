@@ -1,9 +1,9 @@
 
 import { CacheService } from "./cache.service";
 import fetch from "node-fetch";
+import { GoogleSearchConfig } from "../environment";
 import { GoogleSearchResult } from "../models";
 import logger from "../logger";
-import { GoogleSearchConfig } from "../environment";
 
 /**
  * Performs Google Search using the api keys defined in the environment (.env) file.
@@ -49,6 +49,7 @@ export class GoogleSearch {
      *
      * @param googleSearchUrl Url of the Google Search API endpoint to be called.
      * @param query The query to forward to Google.
+     * @param language The language to use as key in the cache.
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */

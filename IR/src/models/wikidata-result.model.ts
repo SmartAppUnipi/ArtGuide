@@ -6,9 +6,9 @@ export interface WikiDataResult {
 
 export interface WikiDataFields {
     instanceof: [];
-    creator ?: string;
-    genre ?: string;
-    movement ?: string;
-    architect ?: string;
-    architectural_style ?: string;
+    creator?: string;
+    genre?: string;
+    movement?: string;
+    architect?: string;
+    architectural_style?: string;
 }
