@@ -98,9 +98,22 @@ class DocumentModel():
         Returns:
             List of strings
         '''
-        self.rake_sentences = self.rake()
+        # we try to use only sentence from summarization!
+        #self.rake_sentences = self.rake()
         self.summarized_sentences = self.textRank()
-        return self.raked_sentences + self.summarized_sentences
+        return self.summarized_sentences
+
+    def affinity_score_single_sentence(self, results, affinity):
+        sentences = []
+        not_completed = 1
+        for keyword in results.values():
+            for i in range(len(keyword)):
+                if not_completed:
+                    sentences.append([keyword[i][1], affinity, [keyword[i][0]]])
+                else:
+                    sentences[i][2] += [keyword[i][0]]
+            not_completed = 0
+        return sentences
 
     def topics_affinity_score(self, results):
       

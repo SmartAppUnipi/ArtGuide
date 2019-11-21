@@ -82,23 +82,24 @@ class DocumentsAdaptation():
         def calc_document_affinity(document):
             salient_sentences = document.salient_sentences()
             results = search_engine.find_most_similar_multiple_keywords(salient_sentences, user.tastes, verbose=False)
-            document.topics_affinity_score(results)
-            document.user_readability_score()
-            return document
+            read_score = document.user_readability_score()
+            sentences_scored = document.affinity_score_single_sentence(results, read_score)
+            return sentences_scored
 
         with PoolExecutor(max_workers=self.max_workers) as executor:
             futures = executor.map(calc_document_affinity, documents) 
-        documents = list(futures)
+        salient_sentences = list(futures)
+        salient_sentences = [x for s in salient_sentences for x in s]
         
         # Policy da cambiare
-        documents.sort(key=lambda x: (x.readability_score*10000)+x.affinity_score, reverse=True )
+        # documents.sort(key=lambda x: (x.readability_score*10000)+x.affinity_score, reverse=True )
 
         if self.verbose:
             print("Ordered documents")
             print([{"title":doc.title, "url":doc.url, "affinity_score":doc.affinity_score, 'readability_score':doc.readability_score} for index, doc in enumerate(documents)])
         
-        best_document = documents[0]
-        return best_document.plain_text
+        best_document = salient_sentences[0][0]
+        return best_document
         
 
     

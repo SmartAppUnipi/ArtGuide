@@ -29,7 +29,6 @@ class Semantic_Search():
             for i, d in enumerate(dist):
                 result[list_keywords[i]].append((d, sentence))
         for key in list_keywords:
-            result[key].sort()
             if verbose:
                 self.show_list(result[key], key)
         return result
@@ -47,7 +46,6 @@ class Semantic_Search():
         for sentence in list_sentences:
             dist =  self.Dist.distance(sentence, keyword)
             ranked_sentences.append((dist, sentence))
-        ranked_sentences.sort()
         if verbose:
             self.show_list(ranked_sentences, keyword)
         return ranked_sentences

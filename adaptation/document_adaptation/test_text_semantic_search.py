@@ -13,8 +13,11 @@ sentences = [x for x in sentences if x != "\n"]
 # keyword
 keywords_list = ["history", "science", "biography", "fun fact", "art movement", "techniques"]
 # models
-BERT_distance = semantic_search.BPEmb_Embedding_distance()
-search_engine = semantic_search.Semantic_Search(BERT_distance)
+# BERT for distance
+BERT_distance = semantic_search.BERT_distance()
+# BPEmb embedding for distance
+BPEmb_distance = semantic_search.BPEmb_Embedding_distance()
+search_engine = semantic_search.Semantic_Search(BPEmb_distance)
 # result 
 start = time.time()
 search_engine.find_most_similar_one_keyword(sentences, keywords_list[0])
