@@ -15,3 +15,6 @@ arch_dset = datasets / 'arcDataset'
 pict_dset = datasets / 'train_1'
 pict_info = datasets / 'all_data_info.csv'
 
+# ----- tensorflow dataset ----- #
+tf_archstyle = str(arch_style / '*')
+tf_pictstyle = str(pict_dset / '*')
