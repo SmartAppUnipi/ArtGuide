@@ -98,10 +98,9 @@ class DocumentModel():
         Returns:
             List of strings
         '''
-        salient_sentences = []
-        salient_sentences += self.rake()
-        salient_sentences += self.textRank()
-        return salient_sentences
+        self.rake_sentences = self.rake()
+        self.summarized_sentences = self.textRank()
+        return self.raked_sentences + self.summarized_sentences
 
     def topics_affinity_score(self, results):
       

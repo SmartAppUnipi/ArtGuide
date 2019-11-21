@@ -13,7 +13,9 @@ class DocumentsAdaptation():
         # we can use also BERT distance, but it's slower and does not support multi language
         # self.distance = BERT_distance()
         print("Preloading Word Embeddings for supported languages...")
-        self.distance = {"en": BPEmb_Embedding_distance(lang = "en"), "it": BPEmb_Embedding_distance(lang = "it")}
+        # list of the language we want to suppport
+        language = ["en", "it"]
+        self.distance = {l:BPEmb_Embedding_distance(lang = l) for l in language}
         self.verbose = verbose
         self.max_workers = max_workers
 
@@ -79,7 +81,7 @@ class DocumentsAdaptation():
         # Parallel function for evaluate the document's affinity 
         def calc_document_affinity(document):
             salient_sentences = document.salient_sentences()
-            search_engine.find_most_similar_multiple_keywords(salient_sentences, user.tastes, verbose=False)
+            results = search_engine.find_most_similar_multiple_keywords(salient_sentences, user.tastes, verbose=False)
             document.topics_affinity_score(results)
             document.user_readability_score()
             return document
