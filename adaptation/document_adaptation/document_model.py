@@ -1,7 +1,7 @@
 import re
 import textstat
 import os
-from .user import User
+from user import User
 from rake_nltk import Rake
 from gensim.summarization.summarizer import summarize
 
