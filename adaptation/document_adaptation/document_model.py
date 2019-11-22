@@ -1,7 +1,7 @@
 import re
 import textstat
 import os
-from user import User
+from .user import User
 from rake_nltk import Rake
 from gensim.summarization.summarizer import summarize
 
@@ -63,7 +63,6 @@ class DocumentModel():
         ''' 
         Calculate the readability score based on the user expertise level.
         Description.....  
-
         Returns:
             Float value between 0 (easy to read) and 1 (difficult to read). 
         '''

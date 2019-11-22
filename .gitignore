@@ -4,3 +4,4 @@ venv/
 *.pyc
 *.pyd
 *.pyo
+.ipynb_checkpoints/

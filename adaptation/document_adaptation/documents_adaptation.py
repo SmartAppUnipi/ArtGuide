@@ -1,8 +1,8 @@
 # SDAIS = Smart Deep AI for Search 
 # Commentiamo tutte le funzioni e classi seguendo formato Doxygen
 from concurrent.futures import ThreadPoolExecutor as PoolExecutor
-from document_model import DocumentModel
-from semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_distance
+from .document_model import DocumentModel
+from .semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_distance
 import spacy
 
 class DocumentsAdaptation():
