@@ -102,13 +102,20 @@ class DocumentModel():
         self.summarized_sentences = self.textRank()
         return self.summarized_sentences
 
-    def affinity_score_single_sentence(self, results, affinity):
+    def affinity_score_single_sentence(self, results, readibility):
+        '''
+        Given the results of semantic search {"keyword":[[score, sentence, embeddin]]}
+        This function returns a list of the sentences with the score for each keyword and the embedding
+        ["sentence", ]
+        '''
         sentences = []
         not_completed = 1
         for keyword in results.values():
             for i in range(len(keyword)):
                 if not_completed:
-                    sentences.append([keyword[i][1], affinity, [keyword[i][0]]])
+                    # keyword[i][1] is the sentence, readibility is the readibility  score 
+                    # keyword[i][0] is the distance between the sentence embedding and the keyword
+                    sentences.append([keyword[i][1], readibility, [keyword[i][0]], keyword[i][2]])
                 else:
                     sentences[i][2] += [keyword[i][0]]
             not_completed = 0

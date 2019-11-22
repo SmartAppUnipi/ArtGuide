@@ -25,9 +25,9 @@ class Semantic_Search():
         # this method is usefull in order to compute the embedding of the sentece only once
         result = { i : [] for i in list_keywords }
         for sentence in list_sentences:
-            dist = self.Dist.multiple_distances(sentence, list_keywords)
+            dist, sentence_embedded = self.Dist.multiple_distances(sentence, list_keywords)
             for i, d in enumerate(dist):
-                result[list_keywords[i]].append((d, sentence))
+                result[list_keywords[i]].append([d, sentence, sentence_embedded])
         for key in list_keywords:
             if verbose:
                 self.show_list(result[key], key)
@@ -68,7 +68,7 @@ class BERT_distance(Distance):
         list_keyword_embeddings = self.embedder.encode(list_keywords)
         distances = scipy.spatial.distance.cdist(list_keyword_embeddings, sentence_embeddings, self.distance_metric)
         distances = [d[0] for d in distances]
-        return distances
+        return distances, sentence_embeddings
 
 
     def distance(self, sentence, keyword):
@@ -100,6 +100,6 @@ class BPEmb_Embedding_distance(Distance):
             keyword_embeddings = self.bpemb.embed(keyword)
             distance = scipy.spatial.distance.cdist(sentence_embeddings, keyword_embeddings, self.distance_metric)
             result.append(distance.mean())
-        return result
+        return result, sentence_embeddings
 
 

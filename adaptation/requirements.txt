@@ -1,6 +1,7 @@
 flask
 sklearn
 numpy
+matplotlib
 textstat
 sentence-transformers
 bpemb

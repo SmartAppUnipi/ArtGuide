@@ -9,7 +9,7 @@ from scipy import spatial
 
 # Lettura frasi
 document_adaptation = DocumentsAdaptation(max_workers=4, verbose=0)
-test_text = r"../data/mona_lisa.txt"
+test_text = "adaptation/data/mona_lisa.txt"
 with open(test_text, encoding="utf8") as file:
     sentences = file.readlines()
 sentences = [x for x in sentences if x != "\n"]
@@ -33,7 +33,7 @@ start = time.time()
 search_engine.find_most_similar_multiple_keywords(sentences, keywords_list)
 print("It took %.2f ms" %(time.time() - start))
 
-data = r"../data/input_phase2_a.json"
+data = "adaptation/data/input_phase2_a.json"
 
 with open(data, 'r', encoding="utf8") as f:
     json_query = json.load(f)
