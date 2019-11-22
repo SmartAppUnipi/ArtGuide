@@ -1,8 +1,8 @@
 # SDAIS = Smart Deep AI for Search 
 # Commentiamo tutte le funzioni e classi seguendo formato Doxygen
 from concurrent.futures import ThreadPoolExecutor as PoolExecutor
-from .document_model import DocumentModel
-from .semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_distance
+from document_model import DocumentModel
+from semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_distance
 import spacy
 
 class DocumentsAdaptation():
@@ -67,7 +67,7 @@ class DocumentsAdaptation():
 
         stop_words = self.get_language_stopwords(user)        
         # Map result in DocumentModel object
-        documents =  list(map(lambda x: DocumentModel(x, user, stop_words=stop_words), results))
+        documents = list(map(lambda x: DocumentModel(x, user, stop_words=stop_words), results))
         # Remove document without content
         documents = list(filter(lambda x: bool(x.plain_text), documents))
 
@@ -97,9 +97,5 @@ class DocumentsAdaptation():
         if self.verbose:
             print("Ordered documents")
             print([{"title":doc.title, "url":doc.url, "affinity_score":doc.affinity_score, 'readability_score':doc.readability_score} for index, doc in enumerate(documents)])
-        
-        best_document = salient_sentences[0][0]
-        return best_document
-        
 
-    
+        return salient_sentences
