@@ -1,0 +1,15 @@
+{
+	"auto":{
+		"zero_par": ["Saltando di palo in frasca, ", "Cambiando argomento, ", "Bene, cambiamo argomento: "],
+		"one_par":["D'altra parte, non si può descrivere un'opera senza approfondire {}: ", "Una parola la vorrei spendere per {}: ", "Ok, adesso vorrei introdurre {}: "],
+		"two_par":["Adesso basta parlare di {}, vorrei introdurre {}: ", "Avendo chiaro {}, possiamo spostarci verso {}: ", "Non voglio insistere su {}, meglio parlare di {}: "]
+	},
+	"man": {
+		"history":["Storicamente parlando, ","Dal punto di vista storico possiamo dire che ","Per quanto riguarda la storia dell'opera ","Non dimentichiamoci di inserire questo pezzo nel suo contesto storico, ","Contestualizzando quest'opera nel periodo in cui si colloca, "],
+		"science":["Adesso parliamo della scienza di questo pezzo, ", "Scavando nel dettaglio della scienza su quest'opera, ", "La scienza dietro quest'opera ci dice che ", "Non vorrei dimenticarmi di parlare della scienza alla base di questo pezzo: ", "In aggiunta a quanto detto finora, in ambito scientifico possiamo dire che "],
+		"biography":["Per quanto riguarda la vita dell'autore, ", "Invece, se parlassimo dell'autore, ", "A questo punto vorrei introdurre l'autore: ", "Portiamo ora l'attenzione sulle vicende personali del genio dietro a quest'opera: ", "Spostiamoci sull'autore: "],
+		"fun_facts":["La leggenda narra che ", "Su quest'opera bisogna sapere che ", "Degno di nota è il fatto che ", "Qualcuno afferma che ", "È buffo pensare che "],
+		"art_movements":["Per quanto riguarda la corrente artistica, ", "Invece, per quanto riguarda il movimento artistico, possiamo dire che ", "Vorrei adesso parlare del movimento artistico: ", "Fermiamoci un attimo e riflettiamo sul movimento artistico dell'opera, che ", "Interessante invece è il rapporto dell'opera con il suo movimento artistico: "],
+		"techniques":["Vorrei adesso analizzare la tecnica utilizzata per finalizzare questo pezzo: ", "Quindi siamo pronti per parlare di tecnica: ", "Per quello che concerne la tecnica, ", "In relazione alla tecnica invece ", "Per ricollegarmi alla tecnica vorrei aggiungere che "]
+	}
+}
