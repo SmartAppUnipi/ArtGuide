@@ -1,39 +1,14 @@
 import json
 import time 
-import semantic_search
-from user import User
-from documents_adaptation import DocumentsAdaptation
+from document_adaptation import DocumentsAdaptation, User, semantic_search
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import spatial
 
 # Lettura frasi
 document_adaptation = DocumentsAdaptation(max_workers=4, verbose=0)
-test_text = "adaptation/data/mona_lisa.txt"
-with open(test_text, encoding="utf8") as file:
-    sentences = file.readlines()
-sentences = [x for x in sentences if x != "\n"]
 
-# Keyword
-keywords_list = ["history", "science", "biography", "fun fact", "art movement", "techniques"]
-
-# Models
-# BERT for distance
-BERT_distance = semantic_search.BERT_distance()
-# BPEmb embedding for distance
-BPEmb_distance = semantic_search.BPEmb_Embedding_distance()
-search_engine = semantic_search.Semantic_Search(BPEmb_distance)
-
-# Result
-start = time.time()
-search_engine.find_most_similar_one_keyword(sentences, keywords_list[0])
-print("It took %.2f s\n\n" %(time.time() - start))
-
-start = time.time()
-search_engine.find_most_similar_multiple_keywords(sentences, keywords_list)
-print("It took %.2f ms" %(time.time() - start))
-
-data = "adaptation/data/input_phase2_a.json"
+data = "data/input_phase2_a.json"
 
 with open(data, 'r', encoding="utf8") as f:
     json_query = json.load(f)
@@ -41,7 +16,7 @@ with open(data, 'r', encoding="utf8") as f:
 user = User(json_query["userProfile"])  # deve diventare binario su 6 elementi
 results = document_adaptation.get_tailored_text(json_query['results'], user)  # formato giusto
 
-
+'''
 def print_scatter(data, colors):
 
     x = data[:, 1]
@@ -80,3 +55,4 @@ data[:, 2] = scores
 levels = data[:, 1]
 data[:, 1] = abs(data[:, 1]-user_level)
 print_scatter(data, policy(data))
+'''

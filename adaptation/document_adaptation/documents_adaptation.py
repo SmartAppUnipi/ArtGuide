@@ -3,10 +3,13 @@
 from concurrent.futures import ThreadPoolExecutor as PoolExecutor
 from .document_model import DocumentModel
 from .semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_distance
+from .salient_sentences import from_document_to_salient
 import spacy
+from bpemb import BPEmb
 
 class DocumentsAdaptation():
     def __init__(self, max_workers=0, verbose=False):
+
         self.available_languages = {'en':'en_core_web_sm','de':'de_core_news_sm',
                             'fr':'fr_core_news_sm','es':'es_core_news_sm', 
                             'it':'it_core_news_sm', 'multi':'xx_ent_wiki_sm'}
@@ -14,8 +17,10 @@ class DocumentsAdaptation():
         # self.distance = BERT_distance()
         print("Preloading Word Embeddings for supported languages...")
         # list of the language we want to suppport
+        dim = 200
+        vs = 200000
         language = ["en", "it"]
-        self.distance = {l:BPEmb_Embedding_distance(lang = l) for l in language}
+        self.embedder = {l:BPEmb(lang=l, dim=dim, vs = vs) for l in language}
         self.verbose = verbose
         self.max_workers = max_workers
 
@@ -31,7 +36,7 @@ class DocumentsAdaptation():
         if (user.language in self.available_languages):
             spacy_nlp = spacy.load(self.available_languages[user.language])
         else:
-            spacy_nlp =  spacy.load(self.available_languages['multi'])
+            spacy_nlp = spacy.load(self.available_languages['multi'])
 
         spacy_lang = getattr(spacy.lang, user.language, None)
         
@@ -60,10 +65,10 @@ class DocumentsAdaptation():
             return "Content not found"
 
         # Loading correct language for BPE embeddings
-        if user.language in self.distance:
-            search_engine = Semantic_Search(self.distance[user.language])
+        if user.language in self.embedder:
+            embedder = self.embedder[user.language]
         else:
-            search_engine = Semantic_Search(self.distance['en'])
+            embedder = self.embedder['en']
 
         stop_words = self.get_language_stopwords(user)        
         # Map result in DocumentModel object
@@ -80,11 +85,9 @@ class DocumentsAdaptation():
 
         # Parallel function for evaluate the document's affinity 
         def calc_document_affinity(document):
-            salient_sentences = document.salient_sentences()
-            results = search_engine.find_most_similar_multiple_keywords(salient_sentences, user.tastes, verbose=False)
             read_score = document.user_readability_score()
-            sentences_scored = document.affinity_score_single_sentence(results, read_score)
-            return sentences_scored
+            salient_sentences = from_document_to_salient(document, embedder)
+            return salient_sentences
 
         with PoolExecutor(max_workers=self.max_workers) as executor:
             futures = executor.map(calc_document_affinity, documents) 
@@ -98,4 +101,4 @@ class DocumentsAdaptation():
             print("Ordered documents")
             print([{"title":doc.title, "url":doc.url, "affinity_score":doc.affinity_score, 'readability_score':doc.readability_score} for index, doc in enumerate(documents)])
 
-        return salient_sentences[0][0]
+        return salient_sentences[0].sentence

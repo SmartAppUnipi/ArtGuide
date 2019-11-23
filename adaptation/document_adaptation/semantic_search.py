@@ -1,7 +1,14 @@
 from abc import ABC, abstractmethod 
 import numpy as np
 import scipy
+from rake_nltk import Rake
 
+def rake(sentence, stopwords):
+    # https://pypi.org/project/rake-nltk/
+    r = Rake(stopwords=stopwords)
+    r.extract_keywords_from_text(sentence)
+    salient_sentences = r.get_ranked_phrases()
+    return salient_sentences
 
 class Distance(ABC):
     @abstractmethod
@@ -20,12 +27,12 @@ class Semantic_Search():
         #  multiple_distances() and distance()
         self.Dist = Dist
     
-    def find_most_similar_multiple_keywords(self, list_sentences, list_keywords, verbose = True):
+    def find_most_similar_multiple_keywords(self, list_sentences, list_keywords, verbose = True, stop_words = []):
         # given a list of keywords it returns the most similar sentence for each keyword!
         # this method is usefull in order to compute the embedding of the sentece only once
         result = { i : [] for i in list_keywords }
         for sentence in list_sentences:
-            dist, sentence_embedded = self.Dist.multiple_distances(sentence, list_keywords)
+            dist, sentence_embedded = self.Dist.multiple_distances(sentence, list_keywords, stop_words = stop_words)
             for i, d in enumerate(dist):
                 result[list_keywords[i]].append([d, sentence, sentence_embedded])
         for key in list_keywords:
@@ -61,7 +68,7 @@ class BERT_distance(Distance):
         self.distance_metric = distance_metric
         self.embedder = SentenceTransformer('bert-base-nli-mean-tokens')
 
-    def multiple_distances(self, sentence, list_keywords):
+    def multiple_distances(self, sentence, list_keywords, stop_words):
         # given a set of keyword it returns the distance betwen the sentence and each keyword.
         # this method is usefull in order to compute the embedding of the sentece only once
         sentence_embeddings = self.embedder.encode([sentence])
@@ -87,18 +94,22 @@ class BPEmb_Embedding_distance(Distance):
         self.distance_metric = distance_metric
 
     def distance(self, sentence, keyword):
-        sentence_embeddings = self.bpemb.embed(sentence)
+        sentence_raked = rake(sentence, "")
+        # Use the embedding only of the sentence after rake
+        sentence_embeddings = np.concatenate([self.bpemb.embed(s) for s in sentence])
         keyword_embeddings = self.bpemb.embed(keyword)
         # find the distance between them. Again euclidian distance now
         distance = scipy.spatial.distance.cdist(sentence_embeddings, keyword_embeddings, self.distance_metric)
         return distance.mean()
 
-    def multiple_distances(self, sentence, list_keywords):
-        sentence_embeddings = self.bpemb.embed(sentence)
+    def multiple_distances(self, sentence, list_keywords, stop_words):
+        sentence_raked = rake(sentence, stop_words)
+        # Use the embedding only of the sentence after rake
+        sentence_embeddings = np.concatenate([self.bpemb.embed(s) for s in sentence])
         result = []
         for keyword in list_keywords:
             keyword_embeddings = self.bpemb.embed(keyword)
-            distance = scipy.spatial.distance.cdist(sentence_embeddings, keyword_embeddings, self.distance_metric)
+            distance = scipy.spatial.distance.cdist(sentence_embeddings, keyword_embeddings, "cosine")
             result.append(distance.mean())
         return result, sentence_embeddings
 
