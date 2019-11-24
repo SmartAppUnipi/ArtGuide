@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="392fcc8a-9213-439e-a717-6db4e648df47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Utente.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="677d46cf-0f97-4f03-97a4-4029f904ff3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/adaptation/document_adaptation/policy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptation/document_adaptation/document_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/document_adaptation/document_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adaptation/document_adaptation/documents_adaptation.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/document_adaptation/documents_adaptation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptation/document_adaptation/test_text_semantic_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/document_adaptation/test_text_semantic_search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adaptation/document_adaptation/salient_sentences.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/document_adaptation/salient_sentences.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,13 +15,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/test_text_semantic_search.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/policy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="70" column="48" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+            <state relative-caret-position="222">
+              <caret line="103" column="36" lean-forward="true" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="36" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#54#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/salient_sentences.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -32,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/documents_adaptation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1292">
-              <caret line="100" selection-start-line="100" selection-end-line="100" />
+            <state relative-caret-position="85">
+              <caret line="88" column="53" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
               <folding>
                 <element signature="e#102#167#0" expanded="true" />
               </folding>
@@ -42,33 +52,26 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/user.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adaptation/config.json">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/document_model.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+              <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>user</find>
+      <find>rake</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -77,11 +80,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/adaptation/document_adaptation/document_model.py" />
+        <option value="$PROJECT_DIR$/adaptation/document_adaptation/salient_sentences.py" />
+        <option value="$PROJECT_DIR$/adaptation/document_adaptation/policy.py" />
         <option value="$PROJECT_DIR$/adaptation/document_adaptation/documents_adaptation.py" />
-        <option value="$PROJECT_DIR$/adaptation/document_adaptation/user.py" />
-        <option value="$PROJECT_DIR$/adaptation/data/input_phase2_a.json" />
-        <option value="$PROJECT_DIR$/adaptation/document_adaptation/test_text_semantic_search.py" />
+        <option value="$PROJECT_DIR$/adaptation/document_adaptation/document_model.py" />
       </list>
     </option>
   </component>
@@ -112,7 +114,7 @@
               <item name="ArtGuide" type="b2602c69:ProjectViewProjectNode" />
               <item name="ArtGuide" type="462c0819:PsiDirectoryNode" />
               <item name="adaptation" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="document_adaptation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -141,17 +143,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="392fcc8a-9213-439e-a717-6db4e648df47" name="Default Changelist" comment="" />
-      <created>1574356971120</created>
+      <changelist id="677d46cf-0f97-4f03-97a4-4029f904ff3f" name="Default Changelist" comment="" />
+      <created>1574623088668</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1574356971120</updated>
+      <updated>1574623088668</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
@@ -174,46 +175,39 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/document_model.py">
+    <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/policy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adaptation/config.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        <state relative-caret-position="222">
+          <caret line="103" column="36" lean-forward="true" selection-start-line="103" selection-start-column="36" selection-end-line="103" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/documents_adaptation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        <state relative-caret-position="85">
+          <caret line="88" column="53" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
           <folding>
             <element signature="e#102#167#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adaptation/data/input_phase2_a.json">
+    <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/document_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        <state relative-caret-position="51">
+          <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/test_text_semantic_search.py">
+    <entry file="file://$PROJECT_DIR$/adaptation/document_adaptation/salient_sentences.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="70" column="48" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+        <state relative-caret-position="357">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
