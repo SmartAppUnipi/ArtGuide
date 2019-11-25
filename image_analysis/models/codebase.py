@@ -8,7 +8,7 @@ import pandas as pd
 import tensorflow as tf
 import imagesize
 
-import project_types as pt
+from models import project_types as pt
 
 CROP_SIZE = [300, 300, 3]
 
@@ -42,10 +42,12 @@ arch_styles = {
 
 # ----- ----- TENSORFLOW ARCHITECTURE ----- ----- #
 one_hot_arch = tf.one_hot(range(len(arch_styles)), len(arch_styles))
-tflabels_arch = { style: one_hot_arch[idx] for idx, style in enumerate(arch_styles)  }
+tflabels_arch = {style: one_hot_arch[idx] for idx, style in enumerate(arch_styles)}
+
 
 def archstyle2str(tf_vect):
     return arch_styles[tf.math.argmax(tf_vect)]
+
 
 def parse_image_arch(filename):
     fname = tf.strings.split(filename, '/')[-1]
@@ -67,10 +69,12 @@ pictdf = pictdf.dropna(subset=['style'])
 # Getting one hot
 pict_styles = pictdf['style'].unique()
 one_hot_pict = tf.one_hot(range(len(pict_styles)), len(pict_styles))
-tflabels_pict = { style: one_hot_pict[idx] for idx, style in enumerate(pict_styles)  }
+tflabels_pict = {style: one_hot_pict[idx] for idx, style in enumerate(pict_styles)}
+
 
 def pictstyle2str(tf_vect):
     return pict_styles[tf.math.argmax(tf_vect)]
+
 
 def parse_image_pict(filename):
     fname = tf.strings.split(filename, '/')[-1]
@@ -81,7 +85,7 @@ def parse_image_pict(filename):
         print(f'not found {filename}')
         return None, None
     label_tf = tflabels_pict[pictdf_row.style]
-    
+
     image = tf.io.read_file(filename)
     image = tf.image.decode_jpeg(image)
     image = tf.image.convert_image_dtype(image, tf.float32)
