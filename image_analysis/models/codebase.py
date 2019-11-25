@@ -12,7 +12,7 @@ from models import project_types as pt
 
 CROP_SIZE = [300, 300, 3]
 
-arch_styles = {
+arch_styles = [
     'Achaemenid architecture',
     'American Foursquare architecture',
     'American craftsman style',
@@ -38,7 +38,7 @@ arch_styles = {
     'Romanesque architecture',
     'Russian Revival architecture',
     'Tudor Revival architecture',
-}
+]
 
 # ----- ----- TENSORFLOW ARCHITECTURE ----- ----- #
 one_hot_arch = tf.one_hot(range(len(arch_styles)), len(arch_styles))
