@@ -23,7 +23,7 @@ class SalientSentence():
     def __init__(self, sentence, keyword, readibility, bpemb, stopwords = []):
         self.sentence = sentence
         self.readibility = readibility
-        self.sentence_rake_embed(stopwords, bpemb)
+        self.sentence_rake_embed = self.sentence_rake_embed(stopwords, bpemb)
         self.keyword = {k: bpemb.embed(k) for k in keyword}
         
     def sentence_rake_embed(self, stopwords, bpemb):

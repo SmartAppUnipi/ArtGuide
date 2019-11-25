@@ -101,4 +101,4 @@ class DocumentsAdaptation():
             print("Ordered documents")
             print([{"title":doc.title, "url":doc.url, "affinity_score":doc.affinity_score, 'readability_score':doc.readability_score} for index, doc in enumerate(documents)])
 
-        return salient_sentences[0].sentence
+        return salient_sentences
