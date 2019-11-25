@@ -8,7 +8,7 @@ import pandas as pd
 import tensorflow as tf
 import imagesize
 
-from models import project_types as pt
+import project_types as pt
 
 CROP_SIZE = [300, 300, 3]
 
