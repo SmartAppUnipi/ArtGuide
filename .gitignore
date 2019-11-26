@@ -4,4 +4,4 @@
 .DS_Store
 .vscode
 
-tmpCache.json
+__pycache__

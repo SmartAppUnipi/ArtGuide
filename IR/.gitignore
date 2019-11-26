@@ -12,3 +12,5 @@ coverage
 
 # Environment
 *.env
+
+tmpCache.json
