@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+__pycache__
+.vscode
+venv/
+*.pyc
+*.pyd
+*.pyo
+.ipynb_checkpoints/
+=======
 ### GLOBAL GITIGNORE ###
 
 # OS & IDE
@@ -5,3 +14,4 @@
 .vscode
 
 __pycache__
+>>>>>>> 5c818bb4b3949b04f9f778b993d04f17c3e299bb

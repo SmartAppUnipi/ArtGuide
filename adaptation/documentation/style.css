@@ -1,0 +1,51 @@
+h1 {
+    color: grey;
+    font-size: 52px !important;
+    font-family: 'Dosis', sans-serif;
+    text-align: center;
+}
+
+p {
+    color: black;
+}
+
+/*--- Circular images --- */
+.img-circular1, .img-circular2, .img-circular3, .img-circular4, .img-circular5{
+    /*width: 200px;*/
+    /*height: 200px;*/
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    display: block;
+     border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    float: left;
+   }
+   .img-circular1{
+      background-image: url('/documentation/pics/matteo.jpg');
+      /*background: #aaa; /*added to as an alternative to image*/
+   }
+   .img-circular2{
+      background-image: url('/documentation/pics/stefano.jpg');
+      /*background: #aaa; /*added to as an alternative to image*/
+   }
+   .img-circular3{
+      background-image: url('/documentation/pics/mario.jpg');
+      /*background: #aaa; /*added to as an alternative to image*/
+   }
+   .img-circular4{
+    background-image: url('/documentation/pics/pietro.jpg');
+    /*background: #aaa; /*added to as an alternative to image*/
+ }
+ .img-circular5{
+    background-image: url('/documentation/pics/gemma.jpg');
+       /*background: #aaa; /*added to as an alternative to image*/
+ }
+   .container1{
+       left: 25%; 
+       width: 70%; 
+   /* 	float: left;  */
+       height: 300px;
+       position: relative; 
+     }

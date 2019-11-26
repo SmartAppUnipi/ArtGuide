@@ -1,0 +1,15 @@
+{
+	"auto":{
+		"zero_par": ["In addition to what we already discussed, ", "Let me jump from one topic to another and tell you that ", "Beside the point, "],
+		"one_par":["Let me focus on {} now: ", "At this point, I would like to draw your attention to {}: ", "For {}, one could say that "],
+		"two_par":["Done with {}, let's talk about {}: ", "Instead of {} let me move on to {}: ", "{} is fun, but it is now the time to spend some words about {}: "]
+	},
+	"man": {
+		"history":["As far as history is concerned, ", "As long as history is concerned, ", "Now let's talk about history: ", "Let's move on to history", "From an historical point of view we can say that "],
+		"science":["Scientifically speaking, ", "Now, let me introduce the science behind this art piece: ", "We shouldn't forget that behind any art piece there's science: ", "Digging into the details of the science behind this masterpiece, ", "Oh well, science is everywhere, even in this art piece: "],
+		"biography":["Let me stop talking about this masterpiece and let's focus on the author: ", "Now I would like to introduce you the originator, ", "After a warm up, let me tell you the story of the author: ", "Let's go back to the origin of the genius behind the art piece: ", "Are you ready for some insights about the author's life? Let me tell you that "],
+		"fun_facts":["Did you know that ", "Some say that ", "Let us move from boring boring to fun fun: ", "I'm sure that this will be a surprise for you, but ", "A funny thing about this is that "],
+		"art_movements":["Changing the subject, concerning the art movement, we can say that ", "Moving on to art movements", "I don't want to bother you with too many details, so let me now focus on the artistic movements our art piece settles in: ", "On the other hand, for the artistic movement we can say that ", "Now that I've given you a comprehensive picture of such a vast subject, I can swicth to the artistic movement: "],
+		"techniques":["Now, I'm able to discuss the tecniques used for this art piece", "At this point, I wish to speak on the techniques involved in this work: ", "Changing subject, I would like to mention the techniques exploited for the making of this art piece: ", "If you let me, I would like to deal with the techniques involved in this work now: ", "At this point, let me examine the techniques used: "]
+	}
+}

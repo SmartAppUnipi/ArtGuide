@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Adaptation API guide</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/documentation/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <link rel="shortcut icon" href="documentation/pics/favicon.ico" />
+
+</head>
+
+<body>
+    <div class="container">
+        <img src="documentation/pics/unipi.png" width="20%" style="margin-right:50%">
+        <img src="documentation/pics/smartapp1.png" width="28%">
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="title">
+                <h1>Adaptation's API guide</h1>
+            </div>
+            <p style="font-size:13pt">
+
+                <br/>
+                    To send us a phase1 json send a "POST" request to the address <a target="_blank" href="/keywords">http://cipizio.it:4321/keywords</a>
+                <br/>
+                    To send us a phase2 json send a "POST" request to the address <a target="_blank" href="/tailored_text">http://cipizio.it:4321/tailored_text</a>
+                <br/>
+                <br/>
+                    Follows a detailed explanation of the json files required and provided by the Adaptation team.
+                <br/>
+            </p>
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td style="padding-top:2%; padding-bottom:2%; padding-left:2%;">
+                        <img src="documentation/pics/input_phase1v9-11.png" class="img-rounded" alt="Input phase 1" width="100%" />
+                    </td>
+                    <td valign="top" style="color:#505050; font-size: 12pt; line-height:100%; padding-top:2%; padding-right;2%; padding-left:2%; width:50%">
+                        <br/>
+                        <br/>
+                        This is a template of the <code>input_phase1.json</code> file that Adaptation team expects to receive from the Smart Deep AI 4 Search (SDAIS) team.
+                        More in detail, among the information flowing from the Classification module, the Adaptation module expects to find an array of users's tastes and a language tag, as shown aside.
+                    </td>
+                </tr>
+            </table>
+
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td valign="top" style="color:#505050; font-size: 12pt; line-height:100%; padding-top:2%; padding-right;2%; padding-left:2%; width:50%;">
+                        <br/>
+                        <br/>
+                        On the right, an example of <code>output_phase1.json</code>, which the Adaptation module sends through a "POST" request to the SDAIS module as a response to <code>input_phase1.json</code>. 
+                        <br/>
+                        The structure of such file is the following:
+                        <ul>
+                            <li><code>keywordExpansion</code> is a list of objects</li>
+                            <li>Each of such objects represents the semantic augmentation of the meaning of on of the <code>uTastes</code> received through the <code>input_phase1.json</code> and it is represented as a list of keywords.</li>
+                        </ul>
+                    </td>
+                    <td style="padding-top:2%; padding-right:2%; padding-bottom:2%;">
+                        <img src="documentation/pics/output_phase1v9-11.png" class="captionImage; img-rounded" alt="Output phase 1" style="display:block; max-width:100%;" />
+                    </td>
+                </tr>
+            </table>
+
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td style="padding-top:2%; padding-bottom:2%; padding-left:2%;">
+                        <img src="documentation/pics/input_phase2v9-11.png" class="img-rounded" alt="Input phase 2" width="100%" />
+                    </td>
+                    <td valign="top" style="color:#505050; font-size: 12pt; line-height:100%; padding-top:2%; padding-right;2%; padding-left:2%; width:50%">
+                        <br/>
+                        Here an example of what the Adaptation module expects from SDAIS module as an answer to the <code>output_phase1.json</code> "POST" request, namely the most promising results to the personalized user query.
+                        <br/>
+                        The <code>results</code> object is a list of "answer" objects, each of the ones, characterized by the following fields:
+                        <ul>
+                            <li>A list of keywords, those the SDAIS module used to perform the query that led to the retrieval of</li>
+                            <li><code>url</code> field</li>
+                            <li>A title field of the web page (scraped by SDAIS)</li>
+                            <li>The sections present in the text as objects (title and content)</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td valign="top" style="color:#505050; font-size: 12pt; line-height:100%; padding-top:2%; padding-right;2%; padding-left:2%; width:50%;">
+                        <br/>
+                        The Adaptation module provides to SDAIS as final output a json file which contains, in addition to the information already present in the previous messages, the tailored text (<code>tailoredText</code>), which sould be displayed to the user.
+
+                    </td>
+                    <td style="padding-top:2%; padding-right:2%; padding-bottom:2%;">
+                        <img src="documentation/pics/output_phase2v9-11.png" class="captionImage; img-rounded" alt="Output phase 2Forum" style="display:block; max-width:100%;" />
+                    </td>
+                </tr>
+            </table>
+            <p>
+                <br/>
+                Cheers from the Adaptation team
+                <br/>
+                <br/>
+            </p>
+                <div class="container1">
+                    <div class="img-circular1"></div>
+                    <div class="img-circular2"></div>
+                    <div class="img-circular3"></div>
+                    <div class="img-circular4"></div>
+                    <div class="img-circular5"></div>
+                </div>
+        </div>
+    </div>
+</body>
+
+</html>

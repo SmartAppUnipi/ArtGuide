@@ -1,0 +1,30 @@
+TRANSCRIPT
+Hiding a smile in the shadows. I'm Bob Hirshon and this is Science Update.
+Leonardo da Vinci's famous painting has inspired romantic songs and art lovers the world over, who become captivated by the Mona Lisa's
+enigmatic smile.
+The portrait also intrigued Margaret Livingstone, a neurobiologist at Harvard Medical School who studies the human visual system. When she
+looked at the painting a few years ago, Livingstone noticed the Mona Lisa's changing expression.
+Livingstone:
+It was very clear to me that when I looked at her mouth, she wasn't smiling as much as when I looked at her eyes.
+Later, she realized what was happening. Livingstone says our peripheral vision sees blurry images while our central vision sees fine detail.
+When Livingstone blurred the face with a filter, the Mona Lisa looked as if she were smiling cheerfully. But homing in on the fine detail gave her
+a more demure expression.
+So Livingstone says that in his painting, da Vinci achieved an unusual effect: the Mona Lisa's smile changes depending on where you look.
+For the American Association for the Advancement of Science, I'm Bob Hirshon.
+
+MAKING SENSE OF THE RESEARCH
+Artists make a career out of manipulating our perception. Usually, the manipulation is on an emotional and psychological level. But often, artists manipulate
+what we see in strictly physical ways as well: for example, by carefully creating the illusion of 3-D perspective on a flat surface. And as this study shows,
+artists can sometimes manipulate our perception in ways that even they aren't aware of.
+Leonardo da Vinci had a great scientific mind, but even he couldn't have known the real secret behind the Mona Lisa's smile. The proper understanding of
+the human visual system was still centuries away. Still, he knew that he pulled some kind of neat trick; the painting was one of his personal favorites and
+he gave it to the king of France as a gift.
+Livingstone's research is based on differences in spatial frequency perception within the eye. Spatial frequency is basically a measure of how detailed an
+image is. A good example of spatial frequency is right on your computer. Images on a computer screen are made up of pixels (tiny dots of colored light).
+Pictures with higher spatial frequency (in other words, more pixels crammed into every square inch) are sharper and more detailed than pictures with lower
+spatial frequency.
+The tricky concept here is that different parts of your eye are actually "tuned in" to different spatial frequencies. Anything you look at has both high and
+low spatial frequency patterns, layered on top of each other—and what you see depends on how you look at it.
+To get a sense of this, pick an object in the room, like a picture. Look at it out of the corner of your eye. It's kind of blurry, right? Now look straight at it. It
+snaps into focus. That's because you can see high spatial frequencies (fine details) with your central vision, but not low spatial frequencies (broad, blurry
+patterns). The opposite is true of your peripheral vision (the stuff outside the center of your gaze).
