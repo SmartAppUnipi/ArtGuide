@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import logger from "../logger";
 import path from "path";
-import { ClassificationResult, WikiDataResult, WikiDataFields } from "../models";
+import { ClassificationResult, WikiDataResult, WikiDataFields, KnownInstance } from "../models";
 import 'wikibase-sdk';
 import 'wikidata-sdk';
 
@@ -19,6 +19,7 @@ enum WikidataPropertyType {
     Architectural_style = "P149",
     /*painting = "Q3305213",
     sculpture = "Q860861",*/
+    Location = "P625"
 }
 
 /**
@@ -116,6 +117,63 @@ export class WikiData {
             return fetch(url)
             .then(r => r.json())
             .then(content => content.entities[wikidataid].sitelinks[`${lang}wiki`].title);
+    }
+
+    /**
+     * Check if a Freebase id refers to a known instance or not.
+     * @param freebaseId The Google webentities id
+     * @returns {Promise<WikiDataFields>} that is populated if frebaseId refers to a known instance, null otherwise
+    */
+    public getKnownInstance(freebaseId: string): Promise<KnownInstance> {
+        const res : KnownInstance = null;
+
+        return this.getWikiDataId(freebaseId).then(async id => {
+            if (!id) {
+                const err = new Error(`Unable to translate ${freebaseId} into WikiData ID`);
+                logger.error("[wikidata.ts] Error: ", err);
+                throw err;
+            }
+            const url = wbk.getEntities([id]);
+
+            const content = await fetch(url)
+            .then(r => r.json());
+
+            // simplify entities (https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities)
+            content.entities = wbk.simplify.entities(content.entities);
+
+            // contains the key of the enum => ["InstanceOf", "Creator", ...]
+            const properties = Object.keys(WikidataPropertyType).filter(k => Number.isNaN(Number(k)));
+
+
+            /*
+            * Key is the WikiDataPropertyType, values are arrays of wikidata ids
+            */
+            const simplifiedEntities: {
+                [k: string]: Array<string>
+            } = {};
+
+             // for each entity id
+            Object.keys(content.entities).forEach(entityId => {
+
+                // for each property we want to extract
+                properties.forEach(property => {
+                    const simplifiedClaimsForProperty = content.entities[entityId].claims[(WikidataPropertyType as any)[property]]
+                    simplifiedEntities[property] = simplifiedClaimsForProperty || [];
+                });
+            });
+
+            if(simplifiedEntities.Creator.length>0 || simplifiedEntities.Architect.length>0 || simplifiedEntities.Location.length>0){
+                // Known instance
+                res.WikipediaPageTitle = await this.getWikipediaName("en", id); //FIXME: language should be taken from User profile
+                res.Architect = simplifiedEntities.Architect;
+                res.Architectural_style = simplifiedEntities.Architectural_style;
+                res.Creator = simplifiedEntities.Creator;
+                res.Location = simplifiedEntities.Location;
+                res.Movement = simplifiedEntities.Movement;
+            }
+
+            return res;
+        });
     }
 
     /**

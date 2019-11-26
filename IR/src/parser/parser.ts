@@ -1,6 +1,9 @@
 import { JSDOM } from "jsdom";
 import { PageResult } from "../models";
 
+// eslint-disable-next-line
+const rake = require("rake-js").default;
+
 export class Parser {
 
     private querySelectors = [
@@ -14,8 +17,14 @@ export class Parser {
          */
         ".mw-headline",
         "p",
-        "h2"
+        "h1",
+        "h2",
+        "h3"
     ];
+
+    private sectionSelectors = [
+      "p"
+    ]
 
     /*
      * This method is used to remove the code inside { } that could be found in the parse text.
@@ -75,9 +84,116 @@ export class Parser {
         return allSelectors;
     }
 
-    public parse(url: string): Promise<PageResult> {
+    // This method is based on intersection with the merge approacch.
+    // It takes two text that should be similar. 
+    // In our case :
+    // - text1 is the complete text.
+    // - text2 is the text without the titles.
+    // Using the merge approacch when the two text are different means that
+    // we found a word of the title of one section.
+    // In this way we can extract the different sections with their title.
+    public mergeText(text1: string[], text2: string[]) {
+      let i = 0;
+      let areEqual = false
+      var sections = [];
+      var titles = [];
+      let nSections = 0;
+      let index1 = 0;
+      let index2 = 0;
+      let text1Length = text1.length
+      let text2Length = text2.length
+      while( index1 < text1Length ) {
+        if(text1[index1] == text2[index2]) {
+          if (!sections[nSections]) { 
+            sections[nSections] = "";
+        }
+          sections[nSections] += text1[index1] + " ";
+          index1 ++;
+          index2 ++;
+          areEqual = true
+        } else {
+          if (areEqual == true) {
+            nSections ++;
+          }
+          if (!titles[nSections]) { 
+            titles[nSections] = "";
+          }
+          areEqual = false;
+          titles[nSections] += text1[index1] + " ";
+          index1 ++;
+        }
+      }
+      return [titles, sections]
+    }
+
+  
+    // Methods for getting sections and their title
+    public async getTitlesAndSections(url: string) {
+      let testoWithTitle = await this.parseToText(url, this.getAllSelectors())
+      let testoWithoutTitles = await this.parseToText(url, this.sectionSelectors[0])
+      var testoWithTitleTokenized = testoWithTitle.split(" ");
+      var testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
+      var titlesAndSections = this.mergeText(testoWithTitleTokenized,testoWithoutTitlesTokenied);
+      var titles = titlesAndSections[0]
+      var sections = titlesAndSections[1]
+      var sectionsObj = []
+      var i,j = 0;
+      for (i = 0; i < sections.length; i++) { 
+        if (sections[i].length > 20) {
+          sectionsObj[j] = {
+            title: titles[i],
+            content: sections[i],
+            tags: rake(sections[i]).slice(0,10)
+          };
+          j++;
+        }
+      }
+      return sectionsObj
+    }
+
+
+    // Used for extract the text using some defined selectors
+    public parseToText(url: string, selectors: string): Promise<string> {
+      return JSDOM.fromURL(url).then(dom => {
+        // look for a list of preferred query selectors
+        let textContent = "";
+        let content;
+        /*
+         * const i = 0;
+         * nodesToRemove = dom.window.document.querySelectorAll('a')
+         * for (i = 0; i < nodesToRemove.length; i++) {
+         *   console.log(nodesToRemove[i].textContent)
+         *   nodesToRemove[i].textContent = "";
+         * }
+         * i = 0;
+         */
+        const nodes = dom.window.document.querySelectorAll(selectors);
+        /*
+         * while (i < this.querySelectors.length)
+         * if no nodes are found choose the body}
+         */
+        if (!nodes.length) {
+            content = dom.window.document.body;
+            textContent = content.textContent;
+        } else {
+            nodes.forEach(item => {
+                const nodeText = item.textContent.replace(/\s+/g, " ").trim();
+                textContent += nodeText + " ";
+
+            });
+        }
+
+
+        const finalText = this.removeCodeInText(textContent)
+        const keywords = rake(finalText).slice(0,10)
+
+        return finalText
+    })
+  }
+
+    public async parse(url: string): Promise<PageResult> {
         // FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
-        return JSDOM.fromURL(url).then(dom => {
+        return JSDOM.fromURL(url).then(async dom => {
             // look for a list of preferred query selectors
             let textContent = "";
             let content;
@@ -108,22 +224,34 @@ export class Parser {
             }
 
 
-
-            return new PageResult({
+            const finalText = this.removeCodeInText(textContent)
+            const keywords = rake(finalText).slice(0,10)
+            var sectionObject = await this.getTitlesAndSections(url)
+            if (sectionObject.length > 1) {
+              return new PageResult({
+                url,
+                title: dom.window.document.title,
+                sections: sectionObject,
+                keywords: [], // keywords are populated from caller which knows the query object
+                tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
+            });
+            } else {
+              return new PageResult({
                 url,
                 title: dom.window.document.title,
                 sections: [
                     {
                         title: "main",
-                        content: this.removeCodeInText(textContent),
-                        tags: [] // FIXME: populate with some logic if possible
+                        content: finalText,
+                        tags: [keywords] // FIXME: populate with some logic if possible
                     }
                 ],
                 keywords: [], // keywords are populated from caller which knows the query object
                 tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
             });
-
+            }
         });
+      
     }
 
     /*
