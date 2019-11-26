@@ -87,8 +87,8 @@ export class Search {
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
             AdaptationEndpoint.keywords, {
-                userProfile: classificationResult.userProfile
-            })
+            userProfile: classificationResult.userProfile
+        })
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
             // return both the basic query and the extended queries in one array
@@ -144,11 +144,12 @@ export class Search {
                             // for each result
                             queryResult.items.map(item => {
                                 // Scrape text from results
-                                return this.parser.parse(item.link).then(parsedContent => {
-                                    parsedContent.keywords = q.keywords;
-                                    results.push(parsedContent);
-                                    logger.silly("[search.ts] Parsed link " + item.link);
-                                })
+                                return this.parser.parse(item.link)
+                                    .then(parsedContent => {
+                                        parsedContent.keywords = q.keywords;
+                                        results.push(parsedContent);
+                                        logger.silly("[search.ts] Parsed link " + item.link);
+                                    })
                                     .catch(ex => {
                                         logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
                                     });

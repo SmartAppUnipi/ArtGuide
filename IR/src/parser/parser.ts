@@ -226,7 +226,7 @@ export class Parser {
 
             const finalText = this.removeCodeInText(textContent)
             const keywords = rake(finalText).slice(0,10)
-            var sectionObject = await this.getTitlesAndSections(url)
+/*             var sectionObject = await this.getTitlesAndSections(url)
             if (sectionObject.length > 1) {
               return new PageResult({
                 url,
@@ -235,7 +235,7 @@ export class Parser {
                 keywords: [], // keywords are populated from caller which knows the query object
                 tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
             });
-            } else {
+            } else { */
               return new PageResult({
                 url,
                 title: dom.window.document.title,
@@ -249,7 +249,7 @@ export class Parser {
                 keywords: [], // keywords are populated from caller which knows the query object
                 tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
             });
-            }
+            //}
         });
       
     }

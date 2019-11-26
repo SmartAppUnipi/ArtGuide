@@ -18,7 +18,7 @@ const urls = [
 describe("Index module", () => {
 
     it("Should return text", async () => {
-        await new Parser().parse(urls[0]).then(console.log)
+        //await new Parser().parse(urls[0]).then(console.log)
     })
     
 })
