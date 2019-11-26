@@ -35,9 +35,13 @@ _args = {
     "max_pos": 512, 
     "max_tgt_len": 0, # usato per estrarre il target - non serve 
     "min_length": 80, # calcolato in automatico - non serve
+<<<<<<< HEAD
+    "max_length": 500, # 500
+=======
     "max_length": 600, # 500
+>>>>>>> c32b0ed3069ed1de6c19d3f2dd1074ecaacb8f2f
     "mode": 'test', 
-    "model_path": './document_adaption/summarization/models/', 
+    "model_path": './document_adaptation/summarization/models/', 
     "optim": 'adam', 
     "param_init": 0, 
     "param_init_glorot": True, 
