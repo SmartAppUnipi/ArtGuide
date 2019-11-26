@@ -131,11 +131,13 @@ export class Parser {
     public async getTitlesAndSections(url: string) {
       let testoWithTitle = await this.parseToText(url, this.getAllSelectors())
       let testoWithoutTitles = await this.parseToText(url, this.sectionSelectors[0])
-      var testoWithTitleTokenized = testoWithTitle.split(" ");
-      var testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
-      var titlesAndSections = this.mergeText(testoWithTitleTokenized,testoWithoutTitlesTokenied);
-      var titles = titlesAndSections[0]
-      var sections = titlesAndSections[1]
+     // var testoWithTitleTokenized = testoWithTitle.split(" ");
+     // var testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
+      // var titlesAndSections = this.mergeText(testoWithTitleTokenized,testoWithoutTitlesTokenied);
+      // var titles = titlesAndSections[0]
+      // var sections = titlesAndSections[1]
+      var titles = "titolo"
+      var sections = "sezione"
       var sectionsObj = []
       var i,j = 0;
       for (i = 0; i < sections.length; i++) { 
@@ -182,10 +184,7 @@ export class Parser {
 
             });
         }
-
-
         const finalText = this.removeCodeInText(textContent)
-        const keywords = rake(finalText).slice(0,10)
 
         return finalText
     })
@@ -193,6 +192,7 @@ export class Parser {
 
     public async parse(url: string): Promise<PageResult> {
         // FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
+        //var sectionObject = await this.getTitlesAndSections(url)
         return JSDOM.fromURL(url).then(async dom => {
             // look for a list of preferred query selectors
             let textContent = "";
@@ -206,44 +206,90 @@ export class Parser {
              * }
              * i = 0;
              */
-            const nodes = dom.window.document.querySelectorAll(this.getAllSelectors());
+            const nodesWithTitle = dom.window.document.querySelectorAll(this.getAllSelectors());
+            const nodesWithoutTitle = dom.window.document.querySelectorAll(this.sectionSelectors[0]);
+
+            if (!nodesWithTitle.length) {
+                content = dom.window.document.body;
+                textContent = content.textContent;
+            } else {
+              nodesWithTitle.forEach(item => {
+                    const nodeText = item.textContent.replace(/\s+/g, " ").trim();
+                    textContent += nodeText + " ";
+    
+                });
+            }
+            let testoWithTitle = this.removeCodeInText(textContent)
+            //const keywords = rake(finalText).slice(0,10)  
+
+            let textContentWithoutTitle = "";
+            let contentWithoutTitle;
+            if (!nodesWithoutTitle.length) {
+              contentWithoutTitle = dom.window.document.body;
+              textContentWithoutTitle = contentWithoutTitle.textContent;
+            } else {
+              nodesWithoutTitle.forEach(item => {
+                  const nodeTextWithoutTitle = item.textContent.replace(/\s+/g, " ").trim();
+                  textContentWithoutTitle += nodeTextWithoutTitle + " ";
+  
+              });
+            }
+             let testoWithoutTitles = this.removeCodeInText(textContentWithoutTitle)
+             
+             var testoWithTitleTokenized = testoWithTitle.split(" ");
+             var testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
+             var titlesAndSections = this.mergeText(testoWithTitleTokenized,testoWithoutTitlesTokenied);
+             var titles = titlesAndSections[0]
+             var sections = titlesAndSections[1]
+             var sectionsObj = []
+             var i,j = 0;
+             for (i = 0; i < sections.length; i++) { 
+                if (sections[i].length > 20) {
+                   sectionsObj[j] = {
+                      title: titles[i],
+                      content: sections[i],
+                      tags: rake(sections[i]).slice(0,10)
+                  };
+                  j++;
+                }
+              }
+
             /*
              * while (i < this.querySelectors.length)
              * if no nodes are found choose the body}
              */
-            if (!nodes.length) {
-                content = dom.window.document.body;
-                textContent = content.textContent;
-            } else {
-                nodes.forEach(item => {
-                    const nodeText = item.textContent.replace(/\s+/g, " ").trim();
-                    if (nodeText.length > 40)
-                        textContent += nodeText;
+            // if (!nodes.length) {
+            //     content = dom.window.document.body;
+            //     textContent = content.textContent;
+            // } else {
+            //     nodes.forEach(item => {
+            //         const nodeText = item.textContent.replace(/\s+/g, " ").trim();
+            //         if (nodeText.length > 40)
+            //             textContent += nodeText;
 
-                });
-            }
+            //     });
+            // }
 
 
-            const finalText = this.removeCodeInText(textContent)
-            const keywords = rake(finalText).slice(0,10)
-            var sectionObject = await this.getTitlesAndSections(url)
-            if (sectionObject.length > 1) {
+            
+            //var sectionObject = await this.getTitlesAndSections(url)
+            if (sectionsObj.length > 1) {
               return new PageResult({
                 url,
                 title: dom.window.document.title,
-                sections: sectionObject,
+                sections: sectionsObj,
                 keywords: [], // keywords are populated from caller which knows the query object
                 tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
             });
-            } else {
+            } else { 
               return new PageResult({
                 url,
                 title: dom.window.document.title,
                 sections: [
                     {
                         title: "main",
-                        content: finalText,
-                        tags: [keywords] // FIXME: populate with some logic if possible
+                        content: testoWithTitle,
+                        tags: [rake(testoWithTitle).slice(0,10)] // FIXME: populate with some logic if possible
                     }
                 ],
                 keywords: [], // keywords are populated from caller which knows the query object

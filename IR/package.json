@@ -87,7 +87,7 @@
   },
   "jest": {
     "verbose": true,
-    "testTimeout": 30000,
+    "testTimeout": 60000,
     "moduleFileExtensions": [
       "js",
       "json",
