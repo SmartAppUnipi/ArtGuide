@@ -13,8 +13,12 @@ from google.cloud.vision import types
 from google.protobuf.json_format import MessageToDict
 from PIL import Image
 
-# URL = 'http://srv.ald.ooo:3000/'
-URL = "http://10.101.24.97:3000/"
+PORT = 2345
+with open('../../routes.json') as json_path:
+    json = json.load(json_path)
+    OPUS_URL = json["opus"]
+    print(f'> POST TO {OPUS_URL}')
+
 
 # ----- FUNCTION DEFINITION ----- #
 def set_key(key_path='key/vision_api_keys.json'):
@@ -31,8 +35,8 @@ def get_vision(content):
     # Performs label detection on the image file
     label = MessageToDict(client.label_detection(image=image))
     web_entities = MessageToDict(client.web_detection(image=image))
-    
-    return { "label": label, "we": web_entities}
+
+    return {"label": label, "we": web_entities}
 
 
 # ----- ENVIRONMENT ----- #
@@ -47,6 +51,7 @@ client = vision.ImageAnnotatorClient()
 def home():
     return '<h1>hello</h1>'
 
+
 @app.route('/upload', methods=['POST'])
 def upload():
     '''
@@ -56,14 +61,14 @@ def upload():
         to retrieve the JSON answer.
     '''
     content = request.get_json()
-    image = content["image"] 
+    image = content["image"]
     image_b64_str = re.sub("^data:image/.+;base64,", "", image)
     img_b64 = base64.b64decode(image_b64_str)
     api_res = get_vision(img_b64)
 
     # Define the headers (they are needed to make get_json() work)
     head = {"Content-type": "application/json"}
-    
+
     content["classification"] = {
         "labels": api_res["label"]["labelAnnotations"],
         "entities": api_res["we"]["webDetection"]["webEntities"],
@@ -78,8 +83,11 @@ def upload():
     del content["image"]
     pprint.pprint(content)
 
-    json_content = json.dumps(content, sort_keys=True)
-    r = requests.post(URL, json=content, headers=head)
+    r = requests.post(OPUS_URL, json=content, headers=head)
     return r.content
 
 
+if __name__ == '__main__':
+    app.config['DEBUG'] = True
+    print(f'> Opening service on port {PORT}')
+    app.run(host='0.0.0.0', port=PORT)
