@@ -1,21 +1,20 @@
 export interface QueryExpansionRequest {
-  userId: number;
-  userTastes: string[];
-  language: string;
+    userId: number;
+    userTastes: Array<string>;
+    language: string;
 }
 
 export interface KeywordExpansion {
-  [keyword: string]: string[];
+    [keyword: string]: Array<string>;
 }
 
 export interface QueryExpansionResponse {
-  userId: number;
-  userTastes: string[];
-  keywordExpansion: KeywordExpansion;
-  language: string;
+    keywordExpansion: KeywordExpansion;
 }
 
-export interface QueryBuildResult {
-  originalQuery: string,
-  expandedKeywords: Array<string>
+export interface Query {
+    searchTerms: string;
+    score: number;
+    keywords: Array<string>;
+    language: string;
 }
