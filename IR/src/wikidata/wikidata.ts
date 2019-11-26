@@ -5,13 +5,8 @@ import { ClassificationResult, WikiDataResult, WikiDataFields } from "../models"
 import 'wikibase-sdk';
 import 'wikidata-sdk';
 
-const wbk = require('wikibase-sdk')({
-    instance: 'https://my-wikibase-instan.se',
-    sparqlEndpoint: 'https://query.my-wikibase-instan.se/sparql'
-})
-
 // eslint-disable-next-line
-const wdk = require("wikidata-sdk");
+const wbk = require("wikidata-sdk");
 
 enum WikidataPropertyType {
     Instanceof = "P31",
@@ -55,7 +50,7 @@ export class WikiData {
      * @param freebaseId Freebase id from the Google Image Vision API (coming from Classification module).
      * @returns {Promise<string>} The WikiData id.
      */
-    private getWikiDataId(freebaseId: string): Promise<string> {
+    public getWikiDataId(freebaseId: string): Promise<string> {
 
         const sparql = `
     PREFIX wd: <http://www.wikidata.org/entity/>
@@ -69,7 +64,7 @@ export class WikiData {
      }
     }
     LIMIT 1`;
-        const url = wdk.sparqlQuery(sparql);
+        const url = wbk.sparqlQuery(sparql);
 
         try {
             return fetch(url)
@@ -165,7 +160,7 @@ export class WikiData {
             });
 
             const res : WikiDataFields = {
-                Instanceof : simplifiedEntities.InstanceOf,
+                Instanceof : simplifiedEntities.Instanceof,
                 Creator: simplifiedEntities.Creator,
                 Genre: simplifiedEntities.Genre,
                 Movement: simplifiedEntities.Movement,

@@ -2,7 +2,7 @@ import logger from "../logger";
 import { Page } from "wikijs";
 import wiki from "wikijs";
 import { WikiData } from "../wikidata";
-import { ClassificationResult, PageResult, PageSection, Query } from "../models";
+import { ClassificationResult, PageResult, PageSection, Query, WikiDataFields } from "../models";
 
 interface ComposedSection {
     title: string;
@@ -52,9 +52,10 @@ export class Wiki {
 
         const entity = classificationResult.classification.entities[0];
         const id = entity.entityId;
+        const wikidataid = await wikidata.getWikiDataId(id);
         const lang = classificationResult.userProfile.language;
         const mainQuery: Query = {
-            searchTerms: await wikidata.getWikipediaName(lang, id),
+            searchTerms: await wikidata.getWikipediaName(lang, wikidataid),
             score: entity.score,
             keywords: [],
             language: classificationResult.userProfile.language
