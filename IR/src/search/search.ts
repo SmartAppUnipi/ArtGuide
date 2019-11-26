@@ -47,11 +47,12 @@ export class Search {
                 return {
                     searchTerms: entity.description,
                     score: entity.score,
-                    keywords: []
+                    keywords: [],
+                    language: classificationResult.userProfile.language
                 };
             });
         if (!queries.length) logger.debug("[search.ts] Classification entities are empty");
-        logger.silly("[search.ts] Basic query built: ", queries);
+        logger.silly("[search.ts] Basic query built: " + queries);
         return queries;
     }
 
@@ -64,7 +65,7 @@ export class Search {
      * @returns {Array<Query>} An array of object containing the originalQuery and an array expandedKeywords.
      */
     private extendQuery(queries: Array<Query>, queryExpansion: QueryExpansionResponse): Array<Query> {
-        logger.silly("[search.ts] Query expansion: ", queryExpansion);
+        logger.silly("[search.ts] Query expansion: " + queryExpansion);
         const expandedQueries: Array<Query> = [];
         queries.forEach(query => {
             for (const key in queryExpansion.keywordExpansion)
@@ -85,7 +86,9 @@ export class Search {
         const basicQueries = this.buildBasicQueries(classificationResult);
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
-            AdaptationEndpoint + "/keywords", classificationResult)
+            AdaptationEndpoint + "/keywords", {
+                userProfile: classificationResult.userProfile
+            })
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
             // return both the basic query and the extended queries in one array
@@ -121,7 +124,8 @@ export class Search {
             // for each query
             queries.map(async q => {
                 // query Google Search and get the list of results
-                return this.googleSearch.queryCustom(q.searchTerms + " " + q.keywords.join(" "))
+                return this.googleSearch
+                    .queryCustom(q.searchTerms + " " + q.keywords.join(" "), q.language as "it" | "en")
                     .then(queryResult => {
 
                         if (!queryResult) {
@@ -143,13 +147,15 @@ export class Search {
                                 return this.parser.parse(item.link).then(parsedContent => {
                                     parsedContent.keywords = q.keywords;
                                     results.push(parsedContent);
-                                    logger.silly("[search.ts] Parsed link ", item.link);
-                                }).catch(ex => {
-                                    logger.warn("[search.ts] Parser error: ", ex, ". Link: ", item.link);
-                                });
+                                    logger.silly("[search.ts] Parsed link " + item.link);
+                                })
+                                    .catch(ex => {
+                                        logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
+                                    });
                             })
                         );
-                    }).catch(ex => logger.warn("[search.ts] Caught exception while processing query\"" + q +
+                    })
+                    .catch(ex => logger.warn("[search.ts] Caught exception while processing query\"" + q +
                         "\". Error: ", ex));
             })
         ).then(() => results);

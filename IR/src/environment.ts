@@ -6,22 +6,43 @@ const result = dotenv.config();
 if (result.error)
     throw result.error;
 
-/** The Google Custom Search APIs Key */
-const GoogleCustomSearchAPIKey = process.env.GoogleCustomSearchAPIKey_01;
 
-/** The Google Custom Search Engine Id */
-const GoogleCustomSearchEngineId = process.env.GoogleCustomSearchEngineId_01;
+/** The Google Search APIs configuration */
+const GoogleSearchConfig = {
+    /** The Google Custom Search APIs Key */
+    apiKey: process.env.GoogleCustomSearchAPIKey_00,
+    /** The Google Custom Search Engine Id */
+    searchEngineId: {
+        /** The Google Custom Search Engine Id (Italian version) */
+        it: process.env.GoogleCustomSearchEngineId_IT_00,
+        /** The Google Custom Search Engine Id (English version) */
+        en: process.env.GoogleCustomSearchEngineId_EN_00
+    }
+};
 
-/** The logger minimum level */
-const LoggerLevel = process.env.LoggerLevel;
+/** The logger configuration */
+const LoggerConfig = {
+    /** The minimum log level to log */
+    level: process.env.LoggerLevel || "warn",
+    /** The log file where to write. If absent nothing is written on disk. */
+    file: process.env.LogFile,
+    /**
+     * If true the logs on console are written. If a file is
+     * not specified, this cannot be disabled.
+     */
+    enableLogsOnConsole: process.env.EnableLogsOnConsole
+};
+
+/** The port on which express in listening at */
+const ExpressPort = process.env.PORT || 3000;
 
 // ENDPOINTS
 /** The url of the Adaptation module endpoint */
 const AdaptationEndpoint = process.env.AdaptationEndpoint;
 
 export {
-    GoogleCustomSearchAPIKey,
-    GoogleCustomSearchEngineId,
     AdaptationEndpoint,
-    LoggerLevel
+    GoogleSearchConfig,
+    LoggerConfig,
+    ExpressPort
 };

@@ -6,17 +6,41 @@ import nock from 'nock'
 import { AdaptationEndpoint } from '../src/environment'
 import classificationResult from "../assets/classification-result.json"
 import queryExpansionResponse from "../assets/query-expansion-response.json"
+import { UserProfile, PageResult } from '../src/models'
 
 
 const adaptationScope = nock(AdaptationEndpoint)
 
 adaptationScope
     .post('/keywords')
-    .reply(200, queryExpansionResponse)
+    .reply((url, body: { userProfile: UserProfile }, callback) => {
+
+        // verify passes parameters
+        expect(body).not.toHaveProperty("classification");
+        expect(body.userProfile).toBeDefined();
+
+        // reply with 200 status code and the JSON response
+        callback(null, [
+            200,
+            queryExpansionResponse
+        ]);
+    });
 
 adaptationScope
     .post('/tailored_text')
-    .reply(200, { message: "Mock" })
+    .reply((url, body: { userProfile: UserProfile, results: Array<PageResult> }, callback) => {
+
+        // verify passes parameters
+        expect(body).not.toHaveProperty("classification");
+        expect(body.userProfile).toBeDefined();
+        expect(body.results).toBeDefined();
+
+        // reply with 200 status code and a mock JSON response
+        callback(null, [
+            200,
+            { message: "Mock" }
+        ]);
+    });
 
 describe("Integration tests", () => {
 

@@ -1,7 +1,7 @@
 /// <reference types="@types/jest"/>
 
 import { Search } from "../src/search"
-import { Query, PageResult } from "../src/models"
+import { Query, PageResult, GoogleSearchResult } from "../src/models"
 
 
 const search = new Search()
@@ -12,6 +12,7 @@ const queries: Array<Query> = [
         searchTerms: "mona lisa",
         score: 0.98765432,
         keywords: [],
+        language: "en"
     }
 ]
 
@@ -31,20 +32,22 @@ const extendedQueries: Array<Query> = [
     {
         searchTerms: 'mona lisa',
         score: 0.98765432,
-        keywords: ['history']
+        keywords: ['history'],
+        language: "en"
     },
     {
         searchTerms: 'mona lisa',
         score: 0.98765432,
-        keywords: ['style', 'technique']
+        keywords: ['style', 'technique'],
+        language: "en"
     }
 ]
 
 
 describe("Test build query", () => {
 
-    test("extendQuery", async () => {
-        const result = await search['extendQuery'](queries, queryExpansionResponse);
+    test("Should extend the query", () => {
+        const result = search['extendQuery'](queries, queryExpansionResponse);
         // must return an array of (initial queries * #tastes) queries
         expect(result).toBeDefined();
         expect(result).toHaveLength(2);
@@ -58,7 +61,7 @@ describe("Test build query", () => {
         expect(result).toEqual(extendedQueries)
     })
 
-    test("buildResult", async () => {
+    it("Should return valid result object if Google returns valid items", async () => {
         const result = await search['buildResult'](extendedQueries);
         // must return an array of well formed page results
         expect(result).toBeDefined();
@@ -71,12 +74,29 @@ describe("Test build query", () => {
             expect(pageResult.tags).toBeDefined();
             // must contain at least 1 section
             expect(pageResult.sections.length).toBeGreaterThan(0)
-            console.log(result)
-            // TODO: test
-            // - queryResult null
-            // - queryResult.items empty or null
-            // - if google throw error
         })
     })
+
+    it("Should return [] if Google respond in strange ways", async () => {
+
+        const cases = [
+            jest.fn(() => Promise.resolve(null)),
+            jest.fn(() => Promise.reject(null)),
+            jest.fn(() => Promise.resolve({ items: null } as GoogleSearchResult)),
+            jest.fn(() => Promise.resolve({ items: [] } as GoogleSearchResult)),
+            jest.fn(() => Promise.reject(new Error("Google Test Error")))
+        ];
+
+        return Promise.all(cases.map(async mock => {
+            // replace the original function with a mock that return the result to test
+            search['googleSearch'].queryCustom = mock;
+
+            // invoke the mock under the hoods
+            const result = await search['buildResult'](extendedQueries);
+            expect(result).toEqual([]);
+            expect(mock).toHaveBeenCalled();
+        }));
+        
+    });
 
 })

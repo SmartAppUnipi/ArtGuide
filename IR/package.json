@@ -79,8 +79,9 @@
     "express": "^4.17.1",
     "jsdom": "^15.2.1",
     "node-fetch": "^2.6.0",
-    "rake-js": "^0.1.1",
+    "wikibase-sdk": "^7.1.6",
     "wikidata-sdk": "^7.0.7",
+    "rake-js": "0.1.1",
     "wikijs": "^6.0.1",
     "winston": "^3.2.1"
   },

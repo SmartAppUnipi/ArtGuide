@@ -1,12 +1,9 @@
 
 import { CacheService } from "./cache.service";
 import fetch from "node-fetch";
+import { GoogleSearchConfig } from "../environment";
 import { GoogleSearchResult } from "../models";
 import logger from "../logger";
-import {
-    GoogleCustomSearchAPIKey,
-    GoogleCustomSearchEngineId
-} from "../environment";
 
 /**
  * Performs Google Search using the api keys defined in the environment (.env) file.
@@ -17,10 +14,18 @@ export class GoogleSearch {
      * The Google Search REST APIs urls
      */
     private googleSearchUrls = {
-        // eslint-disable-next-line
-        restricted: `https://www.googleapis.com/customsearch/v1/siterestrict?key=${GoogleCustomSearchAPIKey}&cx=${GoogleCustomSearchEngineId}&q=`,
-        // eslint-disable-next-line
-        custom: `https://www.googleapis.com/customsearch/v1?key=${GoogleCustomSearchAPIKey}&cx=${GoogleCustomSearchEngineId}&q=`
+        it: {
+            // eslint-disable-next-line
+            restricted: `https://www.googleapis.com/customsearch/v1/siterestrict?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.it}&q=`,
+            // eslint-disable-next-line
+            custom: `https://www.googleapis.com/customsearch/v1?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.it}&q=`
+        },
+        en: {
+            // eslint-disable-next-line
+            restricted: `https://www.googleapis.com/customsearch/v1/siterestrict?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.en}&q=`,
+            // eslint-disable-next-line
+            custom: `https://www.googleapis.com/customsearch/v1?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.en}&q=`
+        }
     };
 
     /**
@@ -44,15 +49,16 @@ export class GoogleSearch {
      *
      * @param googleSearchUrl Url of the Google Search API endpoint to be called.
      * @param query The query to forward to Google.
+     * @param language The language to use as key in the cache.
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    private async query(googleSearchUrl: string, query: string): Promise<GoogleSearchResult> {
+    private async query(googleSearchUrl: string, query: string, language: "en" | "it"): Promise<GoogleSearchResult> {
         if (!query)
             return Promise.resolve(null);
 
         const url = googleSearchUrl + query;
-        const key = url.split("&q=")[1];
+        const key = `[${language}]-` + url.split("&q=")[1];
 
         let queryResult = this.cacheService.get(key);
 
@@ -85,11 +91,12 @@ export class GoogleSearch {
      * This api searches the whole web but has a limit of 1k/day. After 5€/1k queries.
      *
      * @param query The query to forward to Google.
+     * @param language The language to use in the results.
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    public queryCustom(query: string): Promise<GoogleSearchResult> {
-        return this.query(this.googleSearchUrls.custom, query);
+    public queryCustom(query: string, language: "it" | "en"): Promise<GoogleSearchResult> {
+        return this.query(this.googleSearchUrls[language].custom, query, language);
     }
 
     /**
@@ -97,11 +104,12 @@ export class GoogleSearch {
      * The restricted api has no daily limits, but limited domains defined into the search engine context
      *
      * @param query The query to forward to Google.
+     * @param language The language to use in the results.
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    public queryRestricted(query: string): Promise<GoogleSearchResult> {
-        return this.query(this.googleSearchUrls.restricted, query);
+    public queryRestricted(query: string, language: "it" | "en"): Promise<GoogleSearchResult> {
+        return this.query(this.googleSearchUrls[language].restricted, query, language);
     }
 
 }
