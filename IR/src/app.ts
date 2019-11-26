@@ -71,7 +71,7 @@ app.post("/", async (req, res) => {
         logger.debug("[app.ts] Google and Wikipedia requests ended.");
 
         // Call adaptation for summary
-        return post(AdaptationEndpoint + "/tailored_text", {
+        return post(AdaptationEndpoint.text, {
             userProfile: classificationResult.userProfile,
             results
         }).then(adaptationResponse => {

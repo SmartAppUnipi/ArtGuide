@@ -86,7 +86,7 @@ export class Search {
         const basicQueries = this.buildBasicQueries(classificationResult);
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
-            AdaptationEndpoint + "/keywords", {
+            AdaptationEndpoint.keywords, {
                 userProfile: classificationResult.userProfile
             })
             // extend the basic query with the query expansion

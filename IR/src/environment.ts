@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import * as routesJson from '../../routes.json';
 
 // Load env variables from .env file in the IR folder
 const result = dotenv.config();
@@ -34,11 +35,15 @@ const LoggerConfig = {
 };
 
 /** The port on which express in listening at */
-const ExpressPort = process.env.PORT || 3000;
+const opusUrl = new URL(routesJson.opus);
+const ExpressPort = opusUrl.port || 3000;
 
 // ENDPOINTS
 /** The url of the Adaptation module endpoint */
-const AdaptationEndpoint = process.env.AdaptationEndpoint;
+const AdaptationEndpoint = {
+    text: routesJson.text,
+    keywords: routesJson.keywords
+}
 
 export {
     AdaptationEndpoint,

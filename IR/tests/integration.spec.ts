@@ -9,10 +9,10 @@ import queryExpansionResponse from "../assets/query-expansion-response.json"
 import { UserProfile, PageResult } from '../src/models'
 
 
-const adaptationScope = nock(AdaptationEndpoint)
 
-adaptationScope
-    .post('/keywords')
+const adaptationKeywordUrl = new URL(AdaptationEndpoint.keywords);
+nock(adaptationKeywordUrl.origin)
+    .post(adaptationKeywordUrl.pathname)
     .reply((url, body: { userProfile: UserProfile }, callback) => {
 
         // verify passes parameters
@@ -26,8 +26,9 @@ adaptationScope
         ]);
     });
 
-adaptationScope
-    .post('/tailored_text')
+const adaptationTextUrl = new URL(AdaptationEndpoint.text);
+nock(adaptationTextUrl.origin)
+    .post(adaptationTextUrl.pathname)
     .reply((url, body: { userProfile: UserProfile, results: Array<PageResult> }, callback) => {
 
         // verify passes parameters
