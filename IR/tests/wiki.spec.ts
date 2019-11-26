@@ -1,6 +1,6 @@
 /// <reference types="@types/jest"/>
 
-import { Wiki } from "../src/wiki/wiki2"
+import { Wiki } from "../src/wiki/wiki"
 import wiki from 'wikijs';
 
 const wikijs = new Wiki()
