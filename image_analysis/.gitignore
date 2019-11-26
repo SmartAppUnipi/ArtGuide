@@ -1,7 +1,10 @@
-__pycache__
+**/__pycache__/
 .vscode
 **/.DS_Store
 key/
 resources/
 venv/
 *.pyc
+**/.ipynb_checkpoints/
+models/data/
+models/res/
