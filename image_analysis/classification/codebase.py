@@ -49,7 +49,9 @@ def archstyle2str(tf_vect):
     return arch_styles[tf.math.argmax(tf_vect)]
 
 
-def parse_image_arch(filename):
+def parse_image_arch(filename, linux=True):
+    if not linux:
+        filename = tf.strings.regex_replace(filename, '\\\\', '/')
     fname = tf.strings.split(filename, '/')[-1]
     label = tf.strings.split(fname, '_')[0]
     label_str = str(label.numpy(), 'utf-8')
@@ -76,7 +78,9 @@ def pictstyle2str(tf_vect):
     return pict_styles[tf.math.argmax(tf_vect)]
 
 
-def parse_image_pict(filename):
+def parse_image_pict(filename, linux=True):
+    if not linux:
+        filename = tf.strings.regex_replace(filename, '\\\\', '/')
     fname = tf.strings.split(filename, '/')[-1]
     fname_str = str(fname.numpy(), 'utf-8')
     try:

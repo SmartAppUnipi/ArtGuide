@@ -83,3 +83,8 @@ def upload():
 
     r = requests.post(URL, json=content, headers=head)
     return r.content
+
+
+if __name__ == '__main__':
+    app.config['DEBUG'] = True
+    app.run(host='0.0.0.0', port=8080)
