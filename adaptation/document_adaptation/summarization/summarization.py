@@ -24,6 +24,7 @@ from .preprocess import _format_to_bert
 import stanfordnlp
 from google_drive_downloader import GoogleDriveDownloader as gdd
 
+
 from args import args
 
 args.gpu_ranks = [int(i) for i in range(len(args.visible_gpus.split(',')))]
