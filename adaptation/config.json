@@ -1,5 +1,5 @@
 {
-    "port": 4322,
+    "port": 4321,
     "languages": ["en","it"],
     "log_file": "log.txt",
     "disclaimer_file": "disclaimer.json",
