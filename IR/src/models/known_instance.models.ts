@@ -6,4 +6,5 @@ export interface KnownInstance{
     Architectural_style: Array<string>;
     Location: Array<string>;
     WikipediaPageTitle: string;
+    score: number;
 }

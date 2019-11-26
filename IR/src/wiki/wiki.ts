@@ -2,7 +2,7 @@ import logger from "../logger";
 import { Page } from "wikijs";
 import wiki from "wikijs";
 import { WikiData } from "../wikidata";
-import { ClassificationResult, PageResult, PageSection, Query, WikiDataFields } from "../models";
+import { ClassificationResult, PageResult, PageSection, Query } from "../models";
 
 interface ComposedSection {
     title: string;

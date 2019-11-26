@@ -109,14 +109,37 @@ export class WikiData {
     /**
      * Retrieve Wikipedia name from Wikidata, given the language and the wikidata id
      * @param lang The language chosen by the user, gives the Wikipedia subdomain
-     * @param wikidataid The WikiData id to look for
+     * @param wikidataId The WikiData id to look for
      */
-    public getWikipediaName(lang: string,  wikidataid: string): Promise<string> {
-        const url = wbk.getEntities([wikidataid]);
+    public getWikipediaName(lang: string, wikidataId: string): Promise<string> {
+        const url = wbk.getEntities([wikidataId]);
 
-            return fetch(url)
+        return fetch(url)
             .then(r => r.json())
-            .then(content => content.entities[wikidataid].sitelinks[`${lang}wiki`].title);
+            .then(content => content.entities[wikidataId].sitelinks[`${lang}wiki`].title);
+    }
+
+    public getKnownInstance(classificationResult: ClassificationResult): Promise<KnownInstance> {
+        const language = classificationResult.userProfile.language;
+        return Promise.all(
+            classificationResult.classification.entities.map(entity => {
+                return this.getProperties(entity.entityId, language)
+                    .then(properties => {
+                        // check if is known by looking for the presence of some properties
+                        if (properties.Creator.length > 0 ||
+                            properties.Architect.length > 0 ||
+                            properties.Location.length > 0) {
+                                properties.score = entity.score
+                                return properties as KnownInstance
+                            }
+                        // not a know instance
+                        return null
+                    })
+            })
+        )
+            .then(resArray => resArray.filter(res => res != null))
+            .then(resArray => resArray.sort((a, b) => a.score - b.score))
+            .then(resArray => resArray.length ? resArray[0] : null)
     }
 
     /**
@@ -124,64 +147,54 @@ export class WikiData {
      * @param freebaseId The Google webentities id
      * @returns {Promise<WikiDataFields>} that is populated if frebaseId refers to a known instance, null otherwise
     */
-    public getKnownInstance(freebaseId: string): Promise<KnownInstance> {
-        const res : KnownInstance = null;
+    public getProperties(freebaseId: string, language: string): Promise<any> {
+        // translate freebaseId in WikiData id
+        return this.getWikiDataId(freebaseId)
+            .then(id => {
+                if (!id) {
+                    const err = new Error(`Unable to translate ${freebaseId} into WikiData ID`);
+                    logger.error("[wikidata.ts] Error: ", err);
+                    throw err;
+                }
+                // get the WikiData content for the entity
+                return fetch(wbk.getEntities([id]))
+                    .then(r => r.json())
+                    .then(content => {
+                        // simplify entities (https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities)
+                        content.entities = wbk.simplify.entities(content.entities);
 
-        return this.getWikiDataId(freebaseId).then(async id => {
-            if (!id) {
-                const err = new Error(`Unable to translate ${freebaseId} into WikiData ID`);
-                logger.error("[wikidata.ts] Error: ", err);
-                throw err;
-            }
-            const url = wbk.getEntities([id]);
+                        // contains the key of the enum => ["InstanceOf", "Creator", ...]
+                        const properties = Object.keys(WikidataPropertyType).filter(k => Number.isNaN(Number(k)));
 
-            const content = await fetch(url)
-            .then(r => r.json());
+                        // Key is the WikiDataPropertyType, values are arrays of wikidata ids
+                        const simplifiedEntities: {
+                            [k: string]: Array<string>
+                        } = {};
 
-            // simplify entities (https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities)
-            content.entities = wbk.simplify.entities(content.entities);
+                        // for each entity id
+                        for (let entityId in content.entities) {
+                            // for each property we want to extract
+                            properties.forEach(property => {
+                                simplifiedEntities[property] = content.entities[entityId].claims[(WikidataPropertyType as any)[property]] || [];
+                            });
+                        };
 
-            // contains the key of the enum => ["InstanceOf", "Creator", ...]
-            const properties = Object.keys(WikidataPropertyType).filter(k => Number.isNaN(Number(k)));
+                        // set also the Wikipedia page title
+                        simplifiedEntities.WikipediaPageTitle = content.entities[id].sitelinks[`${language}wiki`].title;
 
-
-            /*
-            * Key is the WikiDataPropertyType, values are arrays of wikidata ids
-            */
-            const simplifiedEntities: {
-                [k: string]: Array<string>
-            } = {};
-
-             // for each entity id
-            Object.keys(content.entities).forEach(entityId => {
-
-                // for each property we want to extract
-                properties.forEach(property => {
-                    const simplifiedClaimsForProperty = content.entities[entityId].claims[(WikidataPropertyType as any)[property]]
-                    simplifiedEntities[property] = simplifiedClaimsForProperty || [];
-                });
+                        return simplifiedEntities;
+                    })
             });
-
-            if(simplifiedEntities.Creator.length>0 || simplifiedEntities.Architect.length>0 || simplifiedEntities.Location.length>0){
-                // Known instance
-                res.WikipediaPageTitle = await this.getWikipediaName("en", id); //FIXME: language should be taken from User profile
-                res.Architect = simplifiedEntities.Architect;
-                res.Architectural_style = simplifiedEntities.Architectural_style;
-                res.Creator = simplifiedEntities.Creator;
-                res.Location = simplifiedEntities.Location;
-                res.Movement = simplifiedEntities.Movement;
-            }
-
-            return res;
-        });
     }
+
+
 
     /**
      * Retrieve expected fields from the WikiData page
      * @param freebaseId The Google webentities id
      * @returns {Promise<WikiDataFields>}
     */
-    public getSimplifiedClaims(freebaseId: string) : Promise<WikiDataFields> {
+    public getSimplifiedClaims(freebaseId: string): Promise<WikiDataFields> {
         return this.getWikiDataId(freebaseId).then(async id => {
             if (!id) {
                 const err = new Error(`Unable to translate ${freebaseId} into WikiData ID`);
@@ -191,7 +204,7 @@ export class WikiData {
             const url = wbk.getEntities([id]);
 
             const content = await fetch(url)
-            .then(r => r.json());
+                .then(r => r.json());
 
             // simplify entities (https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities)
             content.entities = wbk.simplify.entities(content.entities);
@@ -207,7 +220,7 @@ export class WikiData {
                 [k: string]: Array<string>
             } = {};
 
-             // for each entity id
+            // for each entity id
             Object.keys(content.entities).forEach(entityId => {
 
                 // for each property we want to extract
@@ -217,8 +230,8 @@ export class WikiData {
                 });
             });
 
-            const res : WikiDataFields = {
-                Instanceof : simplifiedEntities.Instanceof,
+            const res: WikiDataFields = {
+                Instanceof: simplifiedEntities.Instanceof,
                 Creator: simplifiedEntities.Creator,
                 Genre: simplifiedEntities.Genre,
                 Movement: simplifiedEntities.Movement,
@@ -229,5 +242,5 @@ export class WikiData {
             return res;
         });
     }
-        
+
 }
