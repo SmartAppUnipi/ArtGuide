@@ -1,8 +1,11 @@
 {
-    "port": 4322,
+    "port": 4000,
     "languages": ["en","it"],
     "log_file": "log.txt",
     "disclaimer_file": "disclaimer.json",
     "doc_api_file": "documentation/docs_api.html",
+    "transition_data_path":"data",
+    "max_sentences": 80,
     "debug": true 
+
 }

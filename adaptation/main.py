@@ -65,15 +65,15 @@ def tailored_text():
     req['tailoredText'] = results
     return jsonify(req)
 
-# @app.errorhandler(500)
-# def internal_error(exc):
-#     req = request.get_json()
-#     #print("\n",exc,"\n")
-#     req['adaptionError'] = "500 - Internal Server Error"
-#     return jsonify(req)
+@app.errorhandler(500)
+def internal_error(exc):
+    req = request.get_json()
+    #print("\n",exc,"\n")
+    req['adaptionError'] = "500 - Internal Server Error"
+    return jsonify(req)
 
 if __name__ == '__main__':
-    document_adaptation = DocumentsAdaptation(max_workers=4, verbose=config.debug)
+    document_adaptation = DocumentsAdaptation(config, max_workers=4, verbose=config.debug)
     print("Ready to go!")
     app.run(debug=config.debug, host= '0.0.0.0', port=config.port)
     

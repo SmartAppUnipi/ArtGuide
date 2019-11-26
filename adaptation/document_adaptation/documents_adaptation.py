@@ -6,12 +6,13 @@ from .semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_dis
 from .salient_sentences import from_document_to_salient
 from .policy import Policy
 from .summarization import ModelSummarizer, args
+from .transitions import transitions_handler
 import spacy
 from bpemb import BPEmb
 
 class DocumentsAdaptation():
-    def __init__(self, max_workers=0, verbose=False):
-
+    def __init__(self, config, max_workers=0, verbose=False):
+        self.config = config
         self.available_languages = {'en':'en_core_web_sm','de':'de_core_news_sm',
                             'fr':'fr_core_news_sm','es':'es_core_news_sm', 
                             'it':'it_core_news_sm', 'multi':'xx_ent_wiki_sm'}
@@ -24,10 +25,10 @@ class DocumentsAdaptation():
         language = ["en", "it"]
         self.verbose = verbose
         self.max_workers = max_workers
-        self.model_summarizer = {l:ModelSummarizer(args, lang=l, type="ext", checkpoint_path='./document_adaptation/summarization/checkpoint/', verbose=self.verbose) for l in language}
+        self.transition = {l:transitions_handler(self.config.transition_data_path) for l in language}
+        self.model_summarizer = {l:ModelSummarizer(args, type="ext", lang=l, checkpoint_path='./document_adaptation/summarization/checkpoint/', verbose=self.verbose) for l in language}
         self.embedder = {l:BPEmb(lang=l, dim=dim, vs = vs) for l in language}
        
-
     # Input: json contenente informazioni dell'utente passate dall'applicazione
     # Out: serie di keyword da passare a SDAIS per la generazione di queries specializzate
     # Formato output: {
@@ -125,23 +126,28 @@ class DocumentsAdaptation():
         clusters = []
         for cluster in policy.sentences:
             clusters.append(cluster)
-            batch_sentences.append(''.join( list(map(lambda x :x[1],  policy.sentences[cluster])) ))
+            batch_sentences.append(''.join( list(map(lambda x :x[1],  policy.sentences[cluster][:self.config.max_sentences])) ))
             print("Batch \"{}\" length: {} chars".format(cluster, len(batch_sentences[-1])))
 
-        print("Starting summ")
+        if self.verbose:
+            print("###!-- Starting summarization")
         summaries = self.model_summarizer[user.language].inference(batch_sentences)
-        print("Close summ")
-
-        tailored_result = ''
-        for cluster, summary in zip(clusters, summaries):
-            tailored_result += cluster.upper()+'\n'
-            tailored_result += summary+'\n'
-    
-        # Policy da cambiare
-        # documents.sort(key=lambda x: (x.readability_score*10000)+x.affinity_score, reverse=True )
+        if self.verbose:
+            print("###!-- Starting summarization")
 
         if self.verbose:
             print("####----- Tailored result -----####")
-            print(tailored_result)
+
+        tailored_result = ''
+        for index, res in enumerate(zip(clusters, summaries)):
+            cluster, summary = res
+
+            if self.verbose:
+                print("{}".format(cluster.upper()))
+                print("{}".format(summary))
+
+            if (index>0):
+                tailored_result += self.transition[user.language].extract_transition(user.language, topic=cluster)+'\n'
+            tailored_result += summary+'\n'
 
         return tailored_result

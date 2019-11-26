@@ -37,6 +37,7 @@ class ABS_Summarizer():
         self.lang = lang
         self.shuffle = shuffle if shuffle and type == "ext" else False
         # Setting up Stanford Tokenizer Pipeline
+        stanfordnlp.download(self.lang)
         self.nlp_tokenizer = nlp_tokenizer if nlp_tokenizer else stanfordnlp.Pipeline(
             processors='tokenize', lang=self.lang, tokenize_pretokenized=True)
         # Set device

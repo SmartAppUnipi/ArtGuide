@@ -2,7 +2,7 @@ _args = {
     "accum_count": 1,
     "alpha": 0.9, 
     "batch_size": 3000, 
-    "beam_size": 50, 
+    "beam_size": 3, 
     "beta1": 0.9, 
     "beta2": 0.999, 
     "block_trigram": True, 
@@ -35,7 +35,7 @@ _args = {
     "max_pos": 512, 
     "max_tgt_len": 0, # usato per estrarre il target - non serve 
     "min_length": 80, # calcolato in automatico - non serve
-    "max_length": 1000, # 500
+    "max_length": 600, # 500
     "mode": 'test', 
     "model_path": './document_adaption/summarization/models/', 
     "optim": 'adam', 
