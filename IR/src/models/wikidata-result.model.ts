@@ -5,10 +5,10 @@ export interface WikiDataResult {
 }
 
 export interface WikiDataFields {
-    instanceof: [];
-    creator?: string;
-    genre?: string;
-    movement?: string;
-    architect?: string;
-    architectural_style?: string;
+    Instanceof: Array<string>;
+    Creator: Array<string>;
+    Genre: Array<string>;
+    Movement: Array<string>;
+    Architect: Array<string>;
+    Architectural_style: Array<string>;
 }

@@ -1,7 +1,7 @@
 import { ClassificationResult } from "./classification.models";
 import { GoogleSearchResult } from "./google-search.models";
 import { UserProfile } from "./user-profile.model";
-import { WikiDataResult } from "./wikidata-result.model";
+import { WikiDataResult, WikiDataFields } from "./wikidata-result.model";
 import { PageResult, PageSection } from "./page-result.model";
 import {
     Query,
@@ -18,6 +18,7 @@ export {
     PageSection,
     PageResult,
     WikiDataResult,
+    WikiDataFields,
 
     Query,
     QueryExpansionResponse,

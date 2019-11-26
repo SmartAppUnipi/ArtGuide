@@ -51,6 +51,8 @@ describe("Wikidata", () => {
             });
         });
 
+        console.log(simplifiedEntities)
+
         expect(simplifiedEntities.InstanceOf).toEqual(["Q200334", "Q570116"]);
         expect(simplifiedEntities.Painting).toEqual([]);
 
