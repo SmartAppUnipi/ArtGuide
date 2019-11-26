@@ -75,5 +75,9 @@ def internal_error(exc):
 if __name__ == '__main__':
     document_adaptation = DocumentsAdaptation(config, max_workers=4, verbose=config.debug)
     print("Ready to go!")
-    app.run(debug=config.debug, host= '0.0.0.0', port=config.port)
+    with open('../routes.json') as f:
+    	d = json.load(f)
+    	port = d["text"].split(":")[2][:-15]
+    	#print(port)
+    app.run(debug=config.debug, host= '0.0.0.0', port=port)
     

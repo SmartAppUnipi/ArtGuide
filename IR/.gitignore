@@ -1,0 +1,13 @@
+# OS & IDE
+.DS_Store
+.vscode
+
+# Node
+node_modules
+
+# Output
+dist
+coverage
+
+# Environment
+.env
