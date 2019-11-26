@@ -1,0 +1,9 @@
+{
+  "userProfile": {
+    "id": 42,
+    "tastes": [],
+    "expertiseLevel": 1,
+    "language": "en",
+    "commentTest": "tastes empty"
+  }
+}

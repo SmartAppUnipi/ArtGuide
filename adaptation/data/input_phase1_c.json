@@ -1,0 +1,9 @@
+{
+  "userProfile": {
+    "id": 42,
+    "tastes": [ "bomba" ],
+    "expertiseLevel": 1,
+    "language": "en",
+    "commentTest": "content of tastes not in the list"
+  }
+}
