@@ -1,0 +1,6 @@
+{
+    "ui": "",
+    "classification": "http://localhost:2000",
+    "ir": "http://localhost:3000",
+    "adaptation": "http://localhost:4000"
+}
