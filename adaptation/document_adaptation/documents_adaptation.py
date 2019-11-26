@@ -4,6 +4,8 @@ from concurrent.futures import ThreadPoolExecutor as PoolExecutor
 from .document_model import DocumentModel
 from .semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_distance
 from .salient_sentences import from_document_to_salient
+from .policy import Policy
+from .summarization import ModelSummarizer, args
 import spacy
 from bpemb import BPEmb
 
@@ -20,9 +22,11 @@ class DocumentsAdaptation():
         dim = 200
         vs = 200000
         language = ["en", "it"]
-        self.embedder = {l:BPEmb(lang=l, dim=dim, vs = vs) for l in language}
         self.verbose = verbose
         self.max_workers = max_workers
+        self.model_summarizer = {l:ModelSummarizer(args, lang=l, type="ext", checkpoint_path='./document_adaptation/summarization/checkpoint/', verbose=self.verbose) for l in language}
+        self.embedder = {l:BPEmb(lang=l, dim=dim, vs = vs) for l in language}
+       
 
     # Input: json contenente informazioni dell'utente passate dall'applicazione
     # Out: serie di keyword da passare a SDAIS per la generazione di queries specializzate
@@ -93,12 +97,51 @@ class DocumentsAdaptation():
             futures = executor.map(calc_document_affinity, documents) 
         salient_sentences = list(futures)
         salient_sentences = [x for s in salient_sentences for x in s]
-        
+
+        # Rimuove sentenze non uniche
+        for a in salient_sentences:
+            for b in salient_sentences:
+                if a.sentence == b.sentence:
+                    if a != b:
+                        salient_sentences.remove(b)
+
+        policy = Policy(salient_sentences, user.tastes, user)
+        policy.create_clusters()
+        policy.embed_user_tastes()
+        policy.apply_policy()
+
+        # Filtra le sentences in base alla policy usata
+        for cluster in policy.sentences:
+            policy.sentences[cluster] = sorted(policy.sentences[cluster], key=lambda tup: tup[0])
+
+        if self.verbose:
+            for cluster in policy.sentences:
+                print("Results for "+cluster+" (the lower the number, the better the sentence):")
+                for sentence in policy.sentences[cluster][:30]:
+                    print(str(sentence[0])+": "+sentence[1])
+
+        # create batch of sentences for summarization model 
+        batch_sentences = []
+        clusters = []
+        for cluster in policy.sentences:
+            clusters.append(cluster)
+            batch_sentences.append(''.join( list(map(lambda x :x[1],  policy.sentences[cluster])) ))
+            print("Batch \"{}\" length: {} chars".format(cluster, len(batch_sentences[-1])))
+
+        print("Starting summ")
+        summaries = self.model_summarizer[user.language].inference(batch_sentences)
+        print("Close summ")
+
+        tailored_result = ''
+        for cluster, summary in zip(clusters, summaries):
+            tailored_result += cluster.upper()+'\n'
+            tailored_result += summary+'\n'
+    
         # Policy da cambiare
         # documents.sort(key=lambda x: (x.readability_score*10000)+x.affinity_score, reverse=True )
 
         if self.verbose:
-            print("Ordered documents")
-            print([{"title":doc.title, "url":doc.url, "affinity_score":doc.affinity_score, 'readability_score':doc.readability_score} for index, doc in enumerate(documents)])
+            print("####----- Tailored result -----####")
+            print(tailored_result)
 
-        return salient_sentences
+        return tailored_result
