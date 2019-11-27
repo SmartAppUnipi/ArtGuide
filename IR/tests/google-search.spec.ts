@@ -23,20 +23,27 @@ describe("Google search", () => {
         expect(googleSearch.queryRestricted(null, "en")).resolves.toBeNull();
     });
 
-    it("Should throw error if google throws it", () => {
+    it("Should return null if google throws", async () => {
 
         const interceptor = nock("https://www.googleapis.com")
             .get(/customsearch.*/)
             .once()
             .reply(200, { error: { message: "Mock error message" } })
 
-
         const googleSearch = new GoogleSearch(cacheName);
-        expect(googleSearch.queryCustom("Test error handling", "en")).rejects
-
-        //nock.removeInterceptor(interceptor);
+        expect(googleSearch.queryCustom("Test error handling", "en")).resolves.toBeNull();
     });
 
+    it("Should return null if google throws 400-500", async () => {
+
+        const interceptor = nock("https://www.googleapis.com")
+            .get(/customsearch.*/)
+            .once()
+            .reply(400, { error: { message: "Mock error message" } })
+
+        const googleSearch = new GoogleSearch(cacheName);
+        expect(googleSearch.queryCustom("Test error handling", "en")).resolves.toBeNull();
+    });
 
     it("Should use the provided language", async () => {
 

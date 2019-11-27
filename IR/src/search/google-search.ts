@@ -79,9 +79,8 @@ export class GoogleSearch {
 
         if (queryResult.error) {
             const err = new Error(queryResult.error.message);
-            logger.error("[google.ts] Error in query \"" + query + "\". Query result error: ", err);
-            // Handle error in API result
-            throw err;
+            logger.warn("[google.ts] Error in query \"" + query + "\". Query result error: ", err);
+            return null;
         }
         return queryResult;
     }
