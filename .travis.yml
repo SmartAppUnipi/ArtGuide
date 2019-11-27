@@ -1,11 +1,13 @@
 jobs:
   include:
-    - language: python
+    - name: image_analysis module
+      language: python
       python: 3.5
       script:
       - pip install -r image_analysis/requirements.txt && python main.py
 
-    - language: node_js
+    - name: IR module
+      language: node_js
       node_js: 12
       script:
       - cd IR && npm install && npm test
