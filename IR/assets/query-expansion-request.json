@@ -1,0 +1,9 @@
+{
+	"userId": 42,
+	"userTastes": [
+		"history",
+		"description",
+		"legacy"
+	],
+	"language": "en"
+}

@@ -1,6 +1,4 @@
 from sklearn.metrics.pairwise import cosine_similarity
-from user import User
-from documents_adaptation import DocumentsAdaptation
 import json
 from bpemb import BPEmb
 
@@ -33,7 +31,7 @@ class Policy:
     def policy(self, x):
         r = 1 / 2
         s = 1 / 2
-        return (abs(x.readibility-user.expertise_level) * r) + (self.calculate_similiarity(x, self.user) * s)
+        return (abs(x.readibility-self.user.expertise_level) * r) + (self.calculate_similiarity(x, self.user) * s)
 
     def calculate_similiarity(self, sentence, user):#salient sentence e user
         sent = sentence.sentence_embeddings
@@ -49,7 +47,7 @@ class Policy:
         self.apply_policy()
 
     def embed(self, array):
-        embedder = BPEmb(lang=user.language, dim=200, vs=200000)
+        embedder = BPEmb(lang=self.user.language, dim=200, vs=200000)
         embedded_keywords = []
         for key in array:
             embedded_keywords.append(embedder.embed(key))
@@ -64,6 +62,8 @@ class Policy:
 
 
 if __name__ == "__main__":
+    from user import User
+    from documents_adaptation import DocumentsAdaptation
 
     #Lettura risultati
     document_adaptation = DocumentsAdaptation(max_workers=4, verbose=0)

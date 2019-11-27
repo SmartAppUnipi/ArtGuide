@@ -12,7 +12,7 @@ from config import config
 
 
 app = Flask(__name__, static_folder="documentation")
-document_adaptation = DocumentsAdaptation(max_workers=4, verbose=config.debug)
+document_adaptation = None
 
 @app.route('/', methods=["GET","POST"])
 def hello():
@@ -73,5 +73,11 @@ def internal_error(exc):
     return jsonify(req)
 
 if __name__ == '__main__':
-    app.run(debug=config.debug, host= '0.0.0.0', port=config.port)
+    document_adaptation = DocumentsAdaptation(config, max_workers=4, verbose=config.debug)
+    print("Ready to go!")
+    with open('../routes.json') as f:
+    	d = json.load(f)
+    	port = d["text"].split(":")[2][:-15]
+    	#print(port)
+    app.run(debug=config.debug, host= '0.0.0.0', port=port)
     

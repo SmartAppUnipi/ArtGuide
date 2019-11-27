@@ -1,0 +1,1034 @@
+{
+    "Leaning Tower of Pisa history": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Leaning Tower of Pisa history",
+                    "totalResults": "8850",
+                    "searchTerms": "Leaning Tower of Pisa history",
+                    "count": 10,
+                    "startIndex": 1,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017463034707763656111:d7drlzq9tgp"
+                }
+            ],
+            "nextPage": [
+                {
+                    "title": "Google Custom Search - Leaning Tower of Pisa history",
+                    "totalResults": "8850",
+                    "searchTerms": "Leaning Tower of Pisa history",
+                    "count": 10,
+                    "startIndex": 11,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017463034707763656111:d7drlzq9tgp"
+                }
+            ]
+        },
+        "context": {
+            "title": "GoogleEN"
+        },
+        "searchInformation": {
+            "searchTime": 0.649842,
+            "formattedSearchTime": "0.65",
+            "totalResults": "8850",
+            "formattedTotalResults": "8,850"
+        },
+        "items": [
+            {
+                "kind": "customsearch#result",
+                "title": "Where's the Map?",
+                "htmlTitle": "Where&#39;s the Map?",
+                "link": "https://www.google.com/maps/contrib/109216354109941842081/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "Not many supermarkets in Pisa, and this one was easily accessible and in central \nlocation in ... An amazing historical place and touristic attraction. .... Amazing \nplace to be after years of seeing the Leaning Tower in TV, internet, and \nmagazines.",
+                "htmlSnippet": "Not many supermarkets in <b>Pisa</b>, and this one was easily accessible and in central <br>\nlocation in ... An amazing <b>historical</b> place and touristic attraction. .... Amazing <br>\nplace to be after years of seeing the <b>Leaning Tower</b> in TV, internet, and <br>\nmagazines.",
+                "cacheId": "4NSEKgAAw8wJ",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6AKPxcKCbFW7eGHGdTjCiqmdQQ5IgvK--21nWN8kIjF239s-qTIZ3Jk8T"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by Tomasz Kaczorowski",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 5 Local Guide | 870 Points",
+                            "og:site_name": "Contributions by Tomasz Kaczorowski",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by Tomasz Kaczorowski",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "description": "Level 5 Local Guide | 870 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "domenic briffa",
+                "htmlTitle": "domenic briffa",
+                "link": "https://www.google.com/maps/contrib/111500650368803253153",
+                "displayLink": "www.google.com",
+                "snippet": "56126 Pisa PI, Italy. Dolmenweb. Via Antonio Pesenti, 23, 56124 Pisa PI, Italy. \nLeaning Tower of Pisa. Piazza del Duomo, 56126 Pisa PI, Italy. Collapse side ...",
+                "htmlSnippet": "56126 Pisa PI, Italy. Dolmenweb. Via Antonio Pesenti, 23, 56124 Pisa PI, Italy. <br>\n<b>Leaning Tower of Pisa</b>. Piazza del Duomo, 56126 Pisa PI, Italy. Collapse side&nbsp;...",
+                "cacheId": "9Lrw0K7TeMsJ",
+                "formattedUrl": "https://www.google.com/maps/contrib/111500650368803253153",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/111500650368803253153",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSjsuMXw41HvKt-V5343CUF8T9SctSxlub6gOjFnmpdNLm0us0e5clNujI"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by domenic briffa",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/non_lg.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "528 Contributions",
+                            "og:site_name": "Contributions by domenic briffa",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by domenic briffa",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/non_lg.png",
+                            "description": "528 Contributions"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/non_lg.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Aleksandr Peredereyev",
+                "htmlTitle": "Aleksandr Peredereyev",
+                "link": "https://www.google.com/maps/contrib/105333935469607140200/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "Leaning Tower of Pisa. Piazza del Duomo, 56126 ... is paradise for joggers. \nThere are tons of history here, grab an audio guide and enjoy your time. \nreviewers.",
+                "htmlSnippet": "<b>Leaning Tower of Pisa</b>. Piazza del Duomo, 56126 ... is paradise for joggers. <br>\nThere are tons of <b>history</b> here, grab an audio guide and enjoy your time. <br>\nreviewers.",
+                "cacheId": "nvq9SDRoXYwJ",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6AKPxcKCbFW7eGHGdTjCiqmdQQ5IgvK--21nWN8kIjF239s-qTIZ3Jk8T"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by Aleksandr Peredereyev",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 6 Local Guide | 2,327 Points",
+                            "og:site_name": "Contributions by Aleksandr Peredereyev",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by Aleksandr Peredereyev",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "description": "Level 6 Local Guide | 2,327 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "peregrination of visual antiquity — Google Arts & Culture",
+                "htmlTitle": "peregrination of visual antiquity — Google Arts &amp; Culture",
+                "link": "https://www.google.com/culturalinstitute/beta/usergallery/peregrination-of-visual-antiquity/ZQKiNiRs8a4kJg?hl=en",
+                "displayLink": "www.google.com",
+                "snippet": "This journey throughout some historical art work will take a down a path ... [\nLeaning Tower of Pisa], Fratelli Alinari, 1850s, From the collection of: The J. Paul\n ...",
+                "htmlSnippet": "This journey throughout some <b>historical</b> art work will take a down a path ... [<br>\n<b>Leaning Tower of Pisa</b>], Fratelli Alinari, 1850s, From the collection of: The J. Paul<br>\n&nbsp;...",
+                "cacheId": "SnQO0p8IboEJ",
+                "formattedUrl": "https://www.google.com/culturalinstitute/...of.../ZQKiNiRs8a4kJg?...",
+                "htmlFormattedUrl": "https://www.google.com/culturalinstitute/...of.../ZQKiNiRs8a4kJg?...",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "153",
+                            "height": "330",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTN62NP7hkgvD5RYdEugonZVkiqZEPgA4IZpFFrgfXP0v2522ABejl1ZyY"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1, width=device-width, user-scalable=no, shrink-to-fit=no",
+                            "apple-itunes-app": "app-id=1050970557",
+                            "apple-mobile-web-app-title": "Google Arts & Culture",
+                            "application-name": "Google Arts & Culture",
+                            "google": "notranslate",
+                            "mobile-web-app-capable": "yes",
+                            "theme-color": "#ffffff",
+                            "og:title": "peregrination of visual antiquity - Google Arts & Culture",
+                            "og:description": "Google Arts & Culture features content from over 1200 leading museums and archives who have partnered with the Google Cultural Institute to bring the world's treasures online.",
+                            "og:image": "https://lh3.ggpht.com/ZRnfWm6oRY0x-_k-9pG8JKMTBDkVG6cB821xPnZU603IDIPQku2M5OEmMN4",
+                            "og:locale": "en",
+                            "og:url": "https://artsandculture.google.com/exhibit/peregrination-of-visual-antiquity/ZQKiNiRs8a4kJg",
+                            "og:site_name": "Google Arts & Culture",
+                            "og:type": "article",
+                            "twitter:card": "summary_large_image",
+                            "twitter:site": "@googlearts"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://lh3.ggpht.com/ZRnfWm6oRY0x-_k-9pG8JKMTBDkVG6cB821xPnZU603IDIPQku2M5OEmMN4"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Alexander Osipenko",
+                "htmlTitle": "Alexander Osipenko",
+                "link": "https://www.google.com/maps/contrib/100077392171395640064/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "Leaning Tower of Pisa. Piazza del Duomo, 56126 Pisa PI, Italy - ... Local Guide. \nCitadel of Saint-Tropez Maritime History Museum. 1 Montée de la Citadelle, ...",
+                "htmlSnippet": "<b>Leaning Tower of Pisa</b>. Piazza del Duomo, 56126 Pisa PI, Italy - ... Local Guide. <br>\nCitadel of Saint-Tropez Maritime <b>History</b> Museum. 1 Montée de la Citadelle,&nbsp;...",
+                "cacheId": "TL2UKClV9L8J",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6AKPxcKCbFW7eGHGdTjCiqmdQQ5IgvK--21nWN8kIjF239s-qTIZ3Jk8T"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by Alexander Osipenko",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 5 Local Guide | 768 Points",
+                            "og:site_name": "Contributions by Alexander Osipenko",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by Alexander Osipenko",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "description": "Level 5 Local Guide | 768 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Search — Google Arts & Culture",
+                "htmlTitle": "Search — Google Arts &amp; Culture",
+                "link": "https://www.google.com/culturalinstitute/browse/italy?projectId=art-project",
+                "displayLink": "www.google.com",
+                "snippet": "From ancient monuments to contemporary art, be inspired by the rich history and \nwonders of this incredible country. Theme ..... ExploreLeaning Tower of Pisa.",
+                "htmlSnippet": "From ancient monuments to contemporary art, be inspired by the rich <b>history</b> and <br>\nwonders of this incredible country. Theme ..... Explore<b>Leaning Tower of Pisa</b>.",
+                "cacheId": "8AqlLeredDEJ",
+                "formattedUrl": "https://www.google.com/culturalinstitute/browse/italy?projectId...",
+                "htmlFormattedUrl": "https://www.google.com/culturalinstitute/browse/italy?projectId...",
+                "pagemap": {
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1, width=device-width, user-scalable=no, shrink-to-fit=no",
+                            "apple-itunes-app": "app-id=1050970557",
+                            "apple-mobile-web-app-title": "Google Arts & Culture",
+                            "application-name": "Google Arts & Culture",
+                            "google": "notranslate",
+                            "mobile-web-app-capable": "yes",
+                            "theme-color": "#ffffff"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Eight Views and Nine-Bend Streams of Gyeonggi : Mountains ...",
+                "htmlTitle": "Eight Views and Nine-Bend Streams of Gyeonggi : Mountains ...",
+                "link": "https://www.google.com/culturalinstitute/beta/exhibit/cgJCbPA1nVf5Lw",
+                "displayLink": "www.google.com",
+                "snippet": "Nov 15, 2015 ... ... Pyramids of Egypt, the Leaning Tower of Pisa in Italy, Saint Basil's Cathedral in \nMoscow, windmills in the Netherlands, and the Eiffel Tower in ...",
+                "htmlSnippet": "Nov 15, 2015 <b>...</b> ... Pyramids of Egypt, the <b>Leaning Tower of Pisa</b> in Italy, Saint Basil&#39;s Cathedral in <br>\nMoscow, windmills in the Netherlands, and the Eiffel Tower in&nbsp;...",
+                "cacheId": "CS1ly2EvrBUJ",
+                "formattedUrl": "https://www.google.com/culturalinstitute/beta/.../cgJCbPA1nVf5Lw",
+                "htmlFormattedUrl": "https://www.google.com/culturalinstitute/beta/.../cgJCbPA1nVf5Lw",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "322",
+                            "height": "156",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSP7hyh84UDqel6e4SaNyRAxK7TF_wU2-17T-JUmyyFJhzg4nKcQrLhI54I"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1, width=device-width, user-scalable=no, shrink-to-fit=no",
+                            "apple-itunes-app": "app-id=1050970557",
+                            "apple-mobile-web-app-title": "Google Arts & Culture",
+                            "application-name": "Google Arts & Culture",
+                            "google": "notranslate",
+                            "mobile-web-app-capable": "yes",
+                            "theme-color": "#ffffff",
+                            "og:title": "Eight Views and Nine-Bend Streams of Gyeonggi : Mountains, Rivers, and People - Gyeonggi Museum of Modern Art - Google Arts & Culture",
+                            "og:description": "Google Arts & Culture features content from over 1200 leading museums and archives who have partnered with the Google Cultural Institute to bring the world's treasures online.",
+                            "og:image": "https://lh4.ggpht.com/jk5InL80vPRnNazOo2U0nYjz9G7FOJcfMwR6U7TuPvIJKSfMLcv8HdMTRT2M",
+                            "og:locale": "en",
+                            "og:url": "https://artsandculture.google.com/exhibit/eight-views-and-nine-bend-streams-of-gyeonggi-mountains-rivers-and-people/cgJCbPA1nVf5Lw",
+                            "og:site_name": "Google Arts & Culture",
+                            "og:type": "article",
+                            "twitter:card": "summary_large_image",
+                            "twitter:site": "@googlearts"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://lh4.ggpht.com/jk5InL80vPRnNazOo2U0nYjz9G7FOJcfMwR6U7TuPvIJKSfMLcv8HdMTRT2M"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "EP0115199A1 - Hydraulic jack and method for making the same ...",
+                "htmlTitle": "EP0115199A1 - Hydraulic jack and method for making the same ...",
+                "link": "http://www.google.com/patents/EP0115199A1?cl=en",
+                "displayLink": "www.google.com",
+                "snippet": "The Tower now leans approximately 16 feet from vertical at an approximate ... of \nthis invention to the Leaning Tower of Pisa in Italy to support, move, and properly \n... To date, the heaviest lifting operation in engineering history was that of the ...",
+                "htmlSnippet": "The Tower now leans approximately 16 feet from vertical at an approximate ... of <br>\nthis invention to the <b>Leaning Tower of Pisa</b> in Italy to support, move, and properly <br>\n... To date, the heaviest lifting operation in engineering <b>history</b> was that of the&nbsp;...",
+                "formattedUrl": "www.google.com/patents/EP0115199A1?cl=en",
+                "htmlFormattedUrl": "www.google.com/patents/EP0115199A1?cl=en",
+                "pagemap": {
+                    "metatags": [
+                        {
+                            "viewport": "width=device-width, initial-scale=1",
+                            "referrer": "origin-when-crossorigin",
+                            "dc.type": "patent",
+                            "dc.title": "Hydraulic jack and method for making the same",
+                            "dc.date": "1983-12-23",
+                            "dc.description": "A hydraulic jack (10) comprises an elongated seamless body (11) composed of an impervious, flexible material inflatable with a pressurized hydraulic fluid, preferably water, from a flattened condition to an expanded condition. A first closure (12) includes elongated elastomeric seals (16) for sealing a first end of the body into a flattened form generally conforming to the composite thickness of the body and exhibiting high burst strength and sealing capabilities. A second closure (20), having at least one hydraulic fitting secured thereon, seals the second end of the body. The first closure (12) is formed by punching a plurality of arcuately disposed holes (42) through the body (11), anchoring and stretching the body (11) to dispose the holes in linear relationship, and then clamping and sealing the open, first end of the body with a pair of clamping plates (13).",
+                            "citation_patent_application_number": "EP:83307950A",
+                            "citation_pdf_url": "https://patentimages.storage.googleapis.com/ae/36/e9/b9bbe2196e4dc8/EP0115199A1.pdf",
+                            "citation_patent_publication_number": "EP:0115199:A1",
+                            "dc.contributor": "William O. Holmes",
+                            "dc.relation": "DE:7415621:U"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Where's the Map?",
+                "htmlTitle": "Where&#39;s the Map?",
+                "link": "https://www.google.com/maps/contrib/104695807445216729487/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "Ristorante con ambiente formale e di buon gusto, cibo buonissimo, ideale \nsoprattutto per chi non vuole farsi girare la testa in centro tra centinaia di ristoranti \ned ...",
+                "htmlSnippet": "Ristorante con ambiente formale e di buon gusto, cibo buonissimo, ideale <br>\nsoprattutto per chi non vuole farsi girare la testa in centro tra centinaia di ristoranti <br>\ned&nbsp;...",
+                "cacheId": "KcbmjA_0Ff0J",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6AKPxcKCbFW7eGHGdTjCiqmdQQ5IgvK--21nWN8kIjF239s-qTIZ3Jk8T"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by marco piconeri",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 6 Local Guide | 3,673 Points",
+                            "og:site_name": "Contributions by marco piconeri",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by marco piconeri",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "description": "Level 6 Local Guide | 3,673 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "WO2016079758A2 - Aquatic- in vitro-ex vitro terrarium - Google ...",
+                "htmlTitle": "WO2016079758A2 - Aquatic- in vitro-ex vitro terrarium - Google ...",
+                "link": "https://www.google.com/patents/WO2016079758A2?cl=en",
+                "displayLink": "www.google.com",
+                "snippet": "Exotic location such as Leaning tower of Pisa, Italy; Statue of. Liberty, U.S.A; The \nTaj Mahal, India. • Cartoon characters such as Noddy; Tweety [Figure 10 & 17], ...",
+                "htmlSnippet": "Exotic location such as <b>Leaning tower of Pisa</b>, Italy; Statue of. Liberty, U.S.A; The <br>\nTaj Mahal, India. • Cartoon characters such as Noddy; Tweety [Figure 10 &amp; 17],&nbsp;...",
+                "formattedUrl": "https://www.google.com/patents/WO2016079758A2?cl=en",
+                "htmlFormattedUrl": "https://www.google.com/patents/WO2016079758A2?cl=en",
+                "pagemap": {
+                    "metatags": [
+                        {
+                            "viewport": "width=device-width, initial-scale=1",
+                            "referrer": "origin-when-crossorigin",
+                            "dc.type": "patent",
+                            "dc.title": "Aquatic- in vitro-ex vitro terrarium",
+                            "dc.date": "2015-11-19",
+                            "dc.description": "The product invented belongs to Plant tissue culture field and find its application for aesthetic purpose. The prior art exists as bottle garden/terrarium, but it has be maintained. These days the fast pace of life does not allow people to be in touch with plants. Being in touch with nature is very essential for overall well- being of the human race. So, here, the designed products find their place at various sections of the society such as offices, hotels, restaurants, hospitals, old age homes, residential homes, educational institutes and rehabilitation centers, without taking pain to maintain them. The products can be a replacement for cut flowers and bouquets which do not last forever. Incorporating various decorative elements enhance the aesthetics of the product, thus making a positive impression on the observer. Each product designed has different appearance and thus there is a lot of scope for changing and its personalization. The products thus designed have a lot of scope for commercialization in pla",
+                            "citation_patent_application_number": "PC:T/IN2015/000431",
+                            "citation_pdf_url": "https://patentimages.storage.googleapis.com/ca/f4/c4/64ab246ee341f9/WO2016079758A2.pdf",
+                            "citation_patent_publication_number": "WO:2016079758:A2",
+                            "dc.contributor": "Priya Khetarpal",
+                            "citation_reference": "None"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "Leaning Tower of Pisa description": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Leaning Tower of Pisa description",
+                    "totalResults": "30600",
+                    "searchTerms": "Leaning Tower of Pisa description",
+                    "count": 10,
+                    "startIndex": 1,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017463034707763656111:d7drlzq9tgp"
+                }
+            ],
+            "nextPage": [
+                {
+                    "title": "Google Custom Search - Leaning Tower of Pisa description",
+                    "totalResults": "30600",
+                    "searchTerms": "Leaning Tower of Pisa description",
+                    "count": 10,
+                    "startIndex": 11,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017463034707763656111:d7drlzq9tgp"
+                }
+            ]
+        },
+        "context": {
+            "title": "GoogleEN"
+        },
+        "searchInformation": {
+            "searchTime": 0.56501,
+            "formattedSearchTime": "0.57",
+            "totalResults": "30600",
+            "formattedTotalResults": "30,600"
+        },
+        "items": [
+            {
+                "kind": "customsearch#result",
+                "title": "Leaning Tower of Pisa — Google Arts & Culture",
+                "htmlTitle": "<b>Leaning Tower of Pisa</b> — Google Arts &amp; Culture",
+                "link": "https://www.google.com/culturalinstitute/beta/streetview/leaning-tower-of-pisa/JwEyuJzDSo8FSQ",
+                "displayLink": "www.google.com",
+                "snippet": "Google Arts & Culture features content from over 1200 leading museums and \narchives who have partnered with the Google Cultural Institute to bring the \nworld's ...",
+                "htmlSnippet": "Google Arts &amp; Culture features content from over 1200 leading museums and <br>\narchives who have partnered with the Google Cultural Institute to bring the <br>\nworld&#39;s&nbsp;...",
+                "cacheId": "IDPH-z7KBwIJ",
+                "formattedUrl": "https://www.google.com/.../leaning-tower-of-pisa/JwEyuJzDSo8FSQ",
+                "htmlFormattedUrl": "https://www.google.com/.../<b>leaning</b>-<b>tower-of-pisa</b>/JwEyuJzDSo8FSQ",
+                "pagemap": {
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1, width=device-width, user-scalable=no, shrink-to-fit=no",
+                            "apple-itunes-app": "app-id=1050970557",
+                            "apple-mobile-web-app-title": "Google Arts & Culture",
+                            "application-name": "Google Arts & Culture",
+                            "google": "notranslate",
+                            "mobile-web-app-capable": "yes",
+                            "theme-color": "#ffffff"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Where's the Map?",
+                "htmlTitle": "Where&#39;s the Map?",
+                "link": "https://www.google.com/maps/contrib/114697179663274481246/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "Sculpture Of Leaning Tower of Pisa Seven Wonders Of Kota. Leaning Tower of \nPisa - Miniature, Seven Wonders Park, Kotri Mini Flyover, Ballabhbari, ...",
+                "htmlSnippet": "Sculpture Of <b>Leaning Tower of Pisa</b> Seven Wonders Of Kota. <b>Leaning Tower of</b> <br>\n<b>Pisa</b> - Miniature, Seven Wonders Park, Kotri Mini Flyover, Ballabhbari,&nbsp;...",
+                "cacheId": "losVE-12BDcJ",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6AKPxcKCbFW7eGHGdTjCiqmdQQ5IgvK--21nWN8kIjF239s-qTIZ3Jk8T"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by i love yato",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 5 Local Guide | 517 Points",
+                            "og:site_name": "Contributions by i love yato",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by i love yato",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "description": "Level 5 Local Guide | 517 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Lesław Ordon",
+                "htmlTitle": "Lesław Ordon",
+                "link": "https://www.google.com/maps/contrib/106572454674119956504",
+                "displayLink": "www.google.com",
+                "snippet": "Piazza dei Cavalieri. 56126 Pisa PI, Italy. Leaning Tower of Pisa. Piazza del \nDuomo, 56126 Pisa PI, Italy. Leaning Tower of Pisa. Piazza del Duomo, 56126 \nPisa ...",
+                "htmlSnippet": "Piazza dei Cavalieri. 56126 Pisa PI, Italy. <b>Leaning Tower of Pisa</b>. Piazza del <br>\nDuomo, 56126 Pisa PI, Italy. <b>Leaning Tower of Pisa</b>. Piazza del Duomo, 56126 <br>\nPisa&nbsp;...",
+                "cacheId": "e6AWafCnFGMJ",
+                "formattedUrl": "https://www.google.com/maps/contrib/106572454674119956504",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/106572454674119956504",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6AKPxcKCbFW7eGHGdTjCiqmdQQ5IgvK--21nWN8kIjF239s-qTIZ3Jk8T"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by Lesław Ordon",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 6 Local Guide | 3,754 Points",
+                            "og:site_name": "Contributions by Lesław Ordon",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by Lesław Ordon",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "description": "Level 6 Local Guide | 3,754 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Vicky Kapadia",
+                "htmlTitle": "Vicky Kapadia",
+                "link": "https://www.google.com/maps/contrib/102401432646260061007/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "Beautiful historic monument! India's equivalent to leaning tower of Pisa. Really \ngood management and clean engineering like environment around the place.",
+                "htmlSnippet": "Beautiful historic monument! India&#39;s equivalent to <b>leaning tower of Pisa</b>. Really <br>\ngood management and clean engineering like environment around the place.",
+                "cacheId": "YznU6zfSGtQJ",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6AKPxcKCbFW7eGHGdTjCiqmdQQ5IgvK--21nWN8kIjF239s-qTIZ3Jk8T"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by Vicky Kapadia",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 8 Local Guide | 17,233 Points",
+                            "og:site_name": "Contributions by Vicky Kapadia",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by Vicky Kapadia",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "description": "Level 8 Local Guide | 17,233 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Where's the Map?",
+                "htmlTitle": "Where&#39;s the Map?",
+                "link": "https://www.google.com/maps/contrib/115941513774899517230",
+                "displayLink": "www.google.com",
+                "snippet": "Leaning Tower of Pisa. Piazza del Duomo, 56126 Pisa PI, Italy. Piazza del \nDuomo. 56126 Pisa PI, Italy. Santa Maria della Spina. Lungarno Gambacorti, \n56125 ...",
+                "htmlSnippet": "<b>Leaning Tower of Pisa</b>. Piazza del Duomo, 56126 Pisa PI, Italy. Piazza del <br>\nDuomo. 56126 Pisa PI, Italy. Santa Maria della Spina. Lungarno Gambacorti, <br>\n56125&nbsp;...",
+                "cacheId": "HZwXKUtM3A0J",
+                "formattedUrl": "https://www.google.com/maps/contrib/115941513774899517230",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/115941513774899517230",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6AKPxcKCbFW7eGHGdTjCiqmdQQ5IgvK--21nWN8kIjF239s-qTIZ3Jk8T"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by Mattia Landi",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 5 Local Guide | 655 Points",
+                            "og:site_name": "Contributions by Mattia Landi",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by Mattia Landi",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "description": "Level 5 Local Guide | 655 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "vaibhav aggarwal",
+                "htmlTitle": "vaibhav aggarwal",
+                "link": "https://www.google.com/maps/contrib/104045879711827211772/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "My family has visited leaning tower of Pisa. It is a beautiful place to visit. It has \nstate of art architecture. I have read about the place in the school books .",
+                "htmlSnippet": "My family has visited <b>leaning tower of Pisa</b>. It is a beautiful place to visit. It has <br>\nstate of art architecture. I have read about the place in the school books .",
+                "cacheId": "RfgkAoKxf1oJ",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSjsuMXw41HvKt-V5343CUF8T9SctSxlub6gOjFnmpdNLm0us0e5clNujI"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by vaibhav aggarwal",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/non_lg.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "985 Contributions",
+                            "og:site_name": "Contributions by vaibhav aggarwal",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by vaibhav aggarwal",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/non_lg.png",
+                            "description": "985 Contributions"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/non_lg.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Where's the Map?",
+                "htmlTitle": "Where&#39;s the Map?",
+                "link": "https://www.google.com/maps/contrib/117971686019371215536/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "Leaning Tower of Pisa. Piazza del Duomo ... Worth climbing the tower to get a \nnew and incredible look at the entire cathedral complex. Not too bad of a climb.",
+                "htmlSnippet": "<b>Leaning Tower of Pisa</b>. Piazza del Duomo ... Worth climbing the tower to get a <br>\nnew and incredible look at the entire cathedral complex. Not too bad of a climb.",
+                "cacheId": "2WoF2SzALj8J",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6AKPxcKCbFW7eGHGdTjCiqmdQQ5IgvK--21nWN8kIjF239s-qTIZ3Jk8T"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by Artur von dem Hagen",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 5 Local Guide | 983 Points",
+                            "og:site_name": "Contributions by Artur von dem Hagen",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by Artur von dem Hagen",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "description": "Level 5 Local Guide | 983 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Where's the Map?",
+                "htmlTitle": "Where&#39;s the Map?",
+                "link": "https://www.google.com/maps/contrib/106481158406550920820/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "Leaning Tower of Pisa ... No.4 Tower Line street, parallel to Subash Nagar, Selva \nVinayagar Kovil St, New Century Colony, Ambattur, Chennai, Tamil Nadu ...",
+                "htmlSnippet": "<b>Leaning Tower of Pisa</b> ... No.4 Tower Line street, parallel to Subash Nagar, Selva <br>\nVinayagar Kovil St, New Century Colony, Ambattur, Chennai, Tamil Nadu&nbsp;...",
+                "cacheId": "1zRCutQc2wwJ",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSnvOWa__nknQDPhRK3biydCez_GcRd6HdMu0Y6vHm6pF4ps-rQyn4wCEiB"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by Vijayanand Vijayanand",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_3.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 3 Local Guide | 115 Points",
+                            "og:site_name": "Contributions by Vijayanand Vijayanand",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by Vijayanand Vijayanand",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_3.png",
+                            "description": "Level 3 Local Guide | 115 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_3.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Where's the Map?",
+                "htmlTitle": "Where&#39;s the Map?",
+                "link": "https://www.google.com/maps/contrib/105194644383608122503/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "Leaning Tower of Pisa. Piazza del Duomo ... Frankly, I enjoyed my walk around \nthe calm town of Pisa a lot more than the plaza itself. The narrow streets and ...",
+                "htmlSnippet": "<b>Leaning Tower of Pisa</b>. Piazza del Duomo ... Frankly, I enjoyed my walk around <br>\nthe calm town of Pisa a lot more than the plaza itself. The narrow streets and&nbsp;...",
+                "cacheId": "ucHi4xw8yBgJ",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgAQEbipHAjFs73lfvi-bsPavrWqBJKXGEfV1ioDjD_bHA1a98qSfqJRZi"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by Ahmed Jaudat Nahian",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_4.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 4 Local Guide | 319 Points",
+                            "og:site_name": "Contributions by Ahmed Jaudat Nahian",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by Ahmed Jaudat Nahian",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_4.png",
+                            "description": "Level 4 Local Guide | 319 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_4.png"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Where's the Map?",
+                "htmlTitle": "Where&#39;s the Map?",
+                "link": "https://www.google.com/maps/contrib/112019949393863468544/reviews",
+                "displayLink": "www.google.com",
+                "snippet": "Leaning Tower of Pisa. Piazza del Duomo, 56126 Pisa PI, Italy -. 3 months ago. \nMaybe it is just a nice view for tourists crazy photoraphers but I liked it very much.",
+                "htmlSnippet": "<b>Leaning Tower of Pisa</b>. Piazza del Duomo, 56126 Pisa PI, Italy -. 3 months ago. <br>\nMaybe it is just a nice view for tourists crazy photoraphers but I liked it very much.",
+                "cacheId": "sJsV-DsRh-oJ",
+                "formattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "htmlFormattedUrl": "https://www.google.com/maps/contrib/.../reviews",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "310",
+                            "height": "163",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS6AKPxcKCbFW7eGHGdTjCiqmdQQ5IgvK--21nWN8kIjF239s-qTIZ3Jk8T"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no",
+                            "google": "notranslate",
+                            "referrer": "origin",
+                            "og:title": "Contributions by Alice Cz.",
+                            "og:image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "og:image:width": "256",
+                            "og:image:height": "256",
+                            "og:description": "Level 7 Local Guide | 5,879 Points",
+                            "og:site_name": "Contributions by Alice Cz.",
+                            "twitter:card": "summary"
+                        }
+                    ],
+                    "place": [
+                        {
+                            "name": "Contributions by Alice Cz.",
+                            "image": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png",
+                            "description": "Level 7 Local Guide | 5,879 Points"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://maps.gstatic.com/tactile/geoprofile/sharing/lg_5.png"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "Leaning Tower of Pisa legacy": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Leaning Tower of Pisa legacy",
+                    "totalResults": "1",
+                    "searchTerms": "Leaning Tower of Pisa legacy",
+                    "count": 1,
+                    "startIndex": 1,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017463034707763656111:d7drlzq9tgp"
+                }
+            ]
+        },
+        "context": {
+            "title": "GoogleEN"
+        },
+        "searchInformation": {
+            "searchTime": 0.664982,
+            "formattedSearchTime": "0.66",
+            "totalResults": "1",
+            "formattedTotalResults": "1"
+        },
+        "items": [
+            {
+                "kind": "customsearch#result",
+                "title": "Patent US20120300974 - Image related methods and systems ...",
+                "htmlTitle": "Patent US20120300974 - Image related methods and systems ...",
+                "link": "https://www.google.com/patents/US20120300974",
+                "displayLink": "www.google.com",
+                "snippet": "Nov 29, 2012 ... The printer then attends to interactions with network infrastructure ... Even old, \nlegacy printers can be accessed through this service, by using an ... of a traveling \ncompanion posed as if supporting the Leaning Tower of Pisa.",
+                "htmlSnippet": "Nov 29, 2012 <b>...</b> The printer then attends to interactions with network infrastructure ... Even old, <br>\n<b>legacy</b> printers can be accessed through this service, by using an ... of a traveling <br>\ncompanion posed as if supporting the <b>Leaning Tower of Pisa</b>.",
+                "formattedUrl": "https://www.google.com/patents/US20120300974",
+                "htmlFormattedUrl": "https://www.google.com/patents/US20120300974",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "88",
+                            "height": "120",
+                            "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQBS3mkQMqqIVd38jGpyobhUbalTzGcBXdy1OtN6L8lODwYzklGE5tY"
+                        }
+                    ],
+                    "book": [
+                        {
+                            "description": "Digital watermark encoding—and associated registry transactions—are made transparent to consumers—performed as built-in features of common image processing operations, such as taking...",
+                            "url": "https://www.google.tt/patents/US20120300974?utm_source=gb-gplus-share",
+                            "name": "Patent US20120300974 - Image related methods and systems",
+                            "image": "https://www.google.tt/patents?id=&printsec=frontcover&img=1&zoom=1"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "dc.type": "Patent",
+                            "dc.title": "Image related methods and systems",
+                            "dc.contributor": "Tony F. Rodriguez",
+                            "dc.date": "2011-5-31",
+                            "dc.description": "Digital watermark encoding—and associated registry transactions—are made transparent to consumers—performed as built-in features of common image processing operations, such as taking a picture, or printing a picture. In one arrangement, a user interacts with buttons and other controls of a graphical user interface on the touchscreen of a printer to author specific experiences that should be triggered by a hardcopy image—such as launching a related video, playing a recorded audio clip, displaying other images in a story narrative to which the hardcopy image relates, etc. The printer then attends to interactions with network infrastructure components needed to give the hardcopy print the user-desired functionality. In another arrangement, the content experience triggered by a printed image is authored automatically, e.g., by reference to data mined from the image's online context (e.g., Facebook photo album). A great variety of other features and arrangements are also detailed.",
+                            "dc.relation": "US:20010040987:A1",
+                            "citation_patent_publication_number": "US:20120300974:A1",
+                            "citation_patent_application_number": "US:13/149,334",
+                            "og:url": "https://www.google.tt/patents/US20120300974",
+                            "title": "Patent US20120300974 - Image related methods and systems",
+                            "og:title": "Patent US20120300974 - Image related methods and systems",
+                            "og:type": "book",
+                            "og:site_name": "Google Books",
+                            "og:image": "https://www.google.tt/patents?id=&printsec=frontcover&img=1&zoom=1"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://patentimages.storage.googleapis.com/thumbnails/US20120300974A1/US20120300974A1-20121129-D00000.png"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

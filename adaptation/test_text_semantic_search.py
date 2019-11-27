@@ -4,6 +4,7 @@ from document_adaptation import DocumentsAdaptation, User, semantic_search
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import spatial
+from config import cofig
 
 # Lettura frasi
 document_adaptation = DocumentsAdaptation(max_workers=4, verbose=0)
