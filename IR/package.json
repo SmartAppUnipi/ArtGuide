@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint src/** --ext=ts",
     "lint:fix": "eslint src/** --ext=ts --fix",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --detectOpenHandles --runInBand",
     "test:debug": "node --inspect=5859 node_modules/.bin/jest --runInBand --detectOpenHandles",
     "test:watch": "jest --coverage --watch",
     "test:cov": "jest --detectOpenHandles --coverage",
