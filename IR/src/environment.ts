@@ -7,7 +7,7 @@ const result = dotenv.config();
 if (result.error)
     console.error(`
         Cannot load environment variables from .env file. Using defaults. \n
-        The Google Search requests are served from cache if available, otherwise
+        The Google Search requests are served from cache (google-cache.json) if available, otherwise
         they will throw an error since the APIs key is missing.
     `)
 
