@@ -14,14 +14,14 @@ from google.protobuf.json_format import MessageToDict
 from PIL import Image
 
 PORT = 2345
-with open('../../routes.json') as json_path:
+with open('./routes.json') as json_path:
     json = json.load(json_path)
     OPUS_URL = json["opus"]
     print(f'> POST TO {OPUS_URL}')
 
 
 # ----- FUNCTION DEFINITION ----- #
-def set_key(key_path='key/vision_api_keys.json'):
+def set_key(key_path='./image_analysis/app/key/vision_api_keys.json'):
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path
 
 
