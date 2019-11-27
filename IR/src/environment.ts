@@ -5,7 +5,11 @@ import * as routesJson from '../../routes.json';
 const result = dotenv.config();
 
 if (result.error)
-    throw result.error;
+    console.error(`
+        Cannot load environment variables from .env file. Using defaults. \n
+        The Google Search requests are served from cache if available, otherwise
+        they will throw an error since the APIs key is missing.
+    `)
 
 
 /** The Google Search APIs configuration */
@@ -24,7 +28,7 @@ const GoogleSearchConfig = {
 /** The logger configuration */
 const LoggerConfig = {
     /** The minimum log level to log */
-    level: process.env.LoggerLevel || "warn",
+    level: process.env.LoggerLevel || "error",
     /** The log file where to write. If absent nothing is written on disk. */
     file: process.env.LogFile,
     /**
