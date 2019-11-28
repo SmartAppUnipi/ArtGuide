@@ -106,27 +106,27 @@ export class Parser {
         const text2Length = text2.length;
         while (index1 < text1Length && index2 < text2Length) {
             if (text1[index1] == text2[index2]) {
-                if (!sections[nSections]) 
+                if (!sections[nSections])
                     sections[nSections] = "";
-                
+
                 sections[nSections] += text1[index1] + " ";
                 index1++;
                 index2++;
                 areEqual = true;
             } else {
-                if (areEqual == true) 
+                if (areEqual == true)
                     nSections++;
-                
-                if (!titles[nSections]) 
+
+                if (!titles[nSections])
                     titles[nSections] = "";
-                
+
                 areEqual = false;
                 titles[nSections] += text1[index1] + " ";
                 index1++;
             }
         }
-        if (titles[0] == null){
-           titles[0] = " ";
+        if (titles[0] == null) {
+            titles[0] = " ";
         }
 
         return [titles, sections];
@@ -135,30 +135,30 @@ export class Parser {
 
     public validURL(str: string): boolean {
         const pattern = new RegExp("^(https?:\\/\\/)?" + // protocol
-        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-        "(\\#[-a-z\\d_]*)?$", "i"); // fragment locator
+            "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+            "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+            "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+            "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+            "(\\#[-a-z\\d_]*)?$", "i"); // fragment locator
         return !!pattern.test(str);
     }
 
-    public parse(url: string): Promise<PageResult> {
+    public async parse(url: string): Promise<PageResult> {
         /*
          *  FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
          * var sectionObject = await this.getTitlesAndSections(url)
          */
-        if (!this.validURL(url)) 
-            return null;
-        
+        if (!this.validURL(url))
+            return Promise.resolve(null);
+
         return JSDOM.fromURL(url).then(dom => {
             // look for a list of preferred query selectors
             let textContent = "";
             let content;
-        
+
             const nodesWithTitle = dom.window.document.querySelectorAll(this.getAllSelectors());
             const nodesWithoutTitle = dom.window.document.querySelectorAll(this.sectionSelectors[0]);
-            
+
             if (!nodesWithTitle.length) {
                 content = dom.window.document.body;
                 textContent = content.textContent;
@@ -233,7 +233,7 @@ export class Parser {
             }
         })
             .catch(ex => {
-                logger.warn("[parser.ts] ", ex);
+                logger.warn("[parser.ts] Error parsing URL", { url: url, exception: ex });
                 return null;
             });
 
