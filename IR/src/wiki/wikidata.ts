@@ -71,7 +71,7 @@ export class WikiData {
             })
         )
             .then(resArray => resArray.filter(res => res != null))
-            .then(resArray => resArray.sort((a, b) => a.score - b.score))
+            .then(resArray => resArray.sort((a, b) => b.score - a.score))
             .then(resArray => resArray.length ? resArray[0] : null);
     }
 
@@ -102,7 +102,7 @@ export class WikiData {
             .then(json => {
                 return path.basename(json.results.bindings[0].s.value);
             })
-            .catch(ex => {
+            .catch(/* istanbul ignore next */ ex => {
                 const err = new Error(`Unable to translate the freebaseId ${freebaseId} into a WikiDataID. ${ex}`);
                 logger.warn("[wikidata.ts] ", err);
                 throw err;
@@ -149,7 +149,7 @@ export class WikiData {
                         return simplifiedEntities;
                     });
             })
-            .catch(ex => {
+            .catch(/* istanbul ignore next */ ex => {
                 logger.warn("[wikidata.ts] ", ex);
                 return Promise.resolve(new WikiDataProperties({}));
             });
