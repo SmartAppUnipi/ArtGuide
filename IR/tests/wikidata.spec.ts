@@ -13,3 +13,16 @@ describe("Wikidata", () => {
     });
 
 });
+
+describe("getProperties(freebaseId)", () => {
+
+    it("Should return InstanceOf, Architect, ArchitecturalStyle", async () => {
+        const properties = await wikidata["getProperties"]("/m/0cn46", "en"); // pisa tower
+        expect(properties).toBeTruthy();
+        expect(properties.Instanceof).toEqual(["Q200334","Q570116"]);
+        expect(properties.Architect).toEqual(["Q892084"]);
+        expect(properties.ArchitecturalStyle).toEqual(["Q46261"]);
+        expect(properties.WikipediaPageTitle).toEqual("Leaning Tower of Pisa");
+    });
+
+});

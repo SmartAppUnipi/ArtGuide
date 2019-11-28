@@ -128,24 +128,23 @@ export class WikiData {
                         // simplify entities (https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities)
                         content.entities = wbk.simplify.entities(content.entities);
 
-                        // contains the key of the enum => ["InstanceOf", "Creator", ...]
-                        const properties = Object.keys(WikidataPropertyType).filter(k => Number.isNaN(Number(k)));
-
                         // Key is the WikiDataPropertyType, values are arrays of wikidata ids
-                        const simplifiedEntities = new WikiDataProperties({});
+                        const simplifiedEntities = new WikiDataProperties();
 
                         // for each entity id
-                        for (const entityId in content.entities) {
+                        for (let entityId in content.entities) {
                             // for each property we want to extract
-                            properties.forEach(property => {
-                                simplifiedEntities[property] =
-                                    content.entities[entityId].claims[(WikidataPropertyType as any)[property]] || [];
-                            });
+                            for (let enumKey in WikidataPropertyType) {
+                                // enum => ["InstanceOf", "Creator", ...]
+                                const claimName = enumKey as keyof typeof WikidataPropertyType;
+                                simplifiedEntities[claimName] =
+                                    content.entities[entityId].claims[WikidataPropertyType[claimName]] || [];
+                            }
                         }
 
                         // set also the Wikipedia page title
                         simplifiedEntities.WikipediaPageTitle =
-                            content.entities[wikidataId].sitelinks[`${language}wiki`].title;
+                            content.entities[wikidataId].sitelinks[`${language}wiki`];
 
                         return simplifiedEntities;
                     });
