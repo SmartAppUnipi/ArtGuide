@@ -5,10 +5,10 @@ import { Parser } from "../parser";
 import { post } from "../utils";
 import {
     ClassificationResult,
+    GoogleSearchResult,
     PageResult,
     Query,
-    QueryExpansionResponse,
-    GoogleSearchResult
+    QueryExpansionResponse
 } from "../models";
 
 /**
@@ -88,8 +88,8 @@ export class Search {
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
             AdaptationEndpoint.keywords, {
-            userProfile: classificationResult.userProfile
-        })
+                userProfile: classificationResult.userProfile
+            })
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
             // return both the basic query and the extended queries in one array
@@ -132,17 +132,17 @@ export class Search {
                             .then(pageResults => {
 
                                 /*
-                                * TODO: Merge duplicates
-                                * For each basic query (eg. "Leaning Tower of Pisa") we perform a Google Search
-                                * for each keywords that come from the adaptation group
-                                * (eg. "Leaning Tower of Pisa Art", "Leaning Tower of Pisa Description", ecc).
-                                *
-                                * Each google search produces a set of pages that are actually merged regardless 
-                                * the fact they they could potentially be duplicated.
-                                *
-                                * We need to merge duplicated results, taking into account that we have to find a way
-                                * to merge their keywords and produce a a reasonable score index.
-                                */
+                                 * TODO: Merge duplicates
+                                 * For each basic query (eg. "Leaning Tower of Pisa") we perform a Google Search
+                                 * for each keywords that come from the adaptation group
+                                 * (eg. "Leaning Tower of Pisa Art", "Leaning Tower of Pisa Description", ecc).
+                                 *
+                                 * Each google search produces a set of pages that are actually merged regardless 
+                                 * the fact they they could potentially be duplicated.
+                                 *
+                                 * We need to merge duplicated results, taking into account that we have to find a way
+                                 * to merge their keywords and produce a a reasonable score index.
+                                 */
                                 results.push(...pageResults);
                             });
                     })
@@ -161,7 +161,7 @@ export class Search {
      * since they cannot be inferred.
      * 
      * @param query The query with the keywords to search on Google.
-     * @param language The language with which search on Google.
+     * @returns An array of PageResults.
      */
     public searchByTerms(query: Query): Promise<Array<PageResult>> {
         return this.googleSearch
@@ -178,7 +178,7 @@ export class Search {
      * 
      * @param googleResult The google search result.
      * @param keywords The keywords associated to the query that produced the google search result.
-     * @return The array of page results corresponding to the parsed pages returned from Google.
+     * @returns The array of page results corresponding to the parsed pages returned from Google.
      */
     private async toPageResults(googleResult: GoogleSearchResult, keywords: Array<string>): Promise<Array<PageResult>> {
         const results: Array<PageResult> = [];

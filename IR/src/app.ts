@@ -1,11 +1,11 @@
 import { AdaptationEndpoint } from "./environment";
 import bodyParser from "body-parser";
-import { ClassificationResult, Query } from "src/models";
 import express from "express";
 import logger from "./logger";
 import packageJson from "../package.json";
 import path from "path";
 import { Search } from "./search";
+import { ClassificationResult, Query } from "./models";
 import { post, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
 
@@ -131,11 +131,11 @@ app.post("/", async (req, res) => {
 
         // 2. slice results.entities and results.labels reducing the number of results
         classificationResult.classification.entities = reduceEntities(classificationResult.classification.entities,
-            config.entityFilter.maxEntityNumber,
-            config.entityFilter.minScore);
+                                                                      config.entityFilter.maxEntityNumber,
+                                                                      config.entityFilter.minScore);
         classificationResult.classification.labels = reduceEntities(classificationResult.classification.labels,
-            config.entityFilter.maxEntityNumber,
-            config.entityFilter.minScore);
+                                                                    config.entityFilter.maxEntityNumber,
+                                                                    config.entityFilter.minScore);
 
         // 3. check if there is a known entity
         const knownInstance = await wikidata.getKnownInstance(classificationResult);
@@ -150,20 +150,14 @@ app.post("/", async (req, res) => {
             logger.debug("[app.ts] Got a known instance.", knownInstance);
             results = await Promise.all([
                 wikipedia.searchKnownInstance(knownInstance, classificationResult.userProfile.language)
-                    .then(results => {
-                        results.forEach(result => {
-                            result.score *= config.weight.wikipedia.known;
-                        });
-                    }),
-                // TODO: Google search for a specific query (bypass build basic query) 
-/*                 search.searchByTerms(new Query({
+                    .then(pageResults => pageResults.forEach(
+                        pageResult => pageResult.score *= config.weight.wikipedia.known)),
+                search.searchByTerms(new Query({
                     language: classificationResult.userProfile.language,
-                    searchTerms: "???",
+                    searchTerms: knownInstance.WikipediaPageTitle,
                     keywords: []
-                })).then(pageResults => pageResults.forEach(pg => pg.score *= config.weight.google.known)), */
-                search.search(classificationResult)
-                    .then(results => results.forEach(
-                        result => result.score *= config.weight.google.known))
+                })).then(pageResults => pageResults.forEach(
+                    pageResult => pageResult.score *= config.weight.google.known))
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
