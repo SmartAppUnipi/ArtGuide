@@ -16,8 +16,7 @@
     "build": "tsc",
     "watch": "tsc -w -p .",
     "clean": "npx rimraf dist && npx rimraf coverage",
-    "docs": "npx typedoc",
-    "docs:add": "git add ./docs"
+    "docs": "npx typedoc"
   },
   "keywords": [],
   "authors": [
@@ -68,7 +67,7 @@
     "pre-commit": "^1.2.2",
     "supertest": "^4.0.2",
     "ts-jest": "^24.2.0",
-    "ts-node": "^8.5.2",
+    "ts-node": "^8.5.4",
     "tslint-eslint-rules": "^5.4.0",
     "typedoc": "^0.15.3",
     "typescript": "^3.7.2"

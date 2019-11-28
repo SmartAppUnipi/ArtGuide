@@ -67,35 +67,46 @@
 				<a href="#artguide" id="artguide" style="color: inherit; text-decoration: none;">
 					<h1>ArtGuide</h1>
 				</a>
-				<a href="#how-to-run" id="how-to-run" style="color: inherit; text-decoration: none;">
-					<h3>How to run</h3>
+				<a href="#adaptation-module" id="adaptation-module" style="color: inherit; text-decoration: none;">
+					<h2>Adaptation module</h2>
 				</a>
-				<pre><code class="language-bash">npm i
-npm start</code></pre>
-				<a href="#available-commands" id="available-commands" style="color: inherit; text-decoration: none;">
-					<h3>Available commands</h3>
+				<p>The aim of this module is twofold:</p>
+				<ol>
+					<li>Expand the words that represent the user&#39;s tastes in order to allow SDAIS module to retrieve better pages</li>
+					<li>Perform some analyses on the text returned by SDAIS module and send back the most promising result.
+					So far, the output text is chosen as follows: all the input texts are labeled with a couple <code>(difficulty, similarity)</code> and then sorted by difficulty and then by similarity. Ideally, the fittest text should have the proper lexical and syntactic difficulty and be close to the user&#39;s tastes.</li>
+				</ol>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h3>API</h3>
 				</a>
-				<pre><code class="language-bash">npm i       <span class="hljs-comment"># install dependencies</span>
-npm start   <span class="hljs-comment"># start the server in watch mode</span>
-
-npm run build   <span class="hljs-comment"># compiles src/*.ts in dist/*.js</span>
-npm run watch   <span class="hljs-comment"># automatically compiles ts when the file is saved</span>
-
-npm t               <span class="hljs-comment"># run unit tests</span>
-npm run <span class="hljs-built_in">test</span>:watch  <span class="hljs-comment"># run tests in watch mode</span>
-npm run <span class="hljs-built_in">test</span>:cov    <span class="hljs-comment"># run coverage report</span>
-
-npm run docs    <span class="hljs-comment"># generate the documentation in docs</span></code></pre>
-				<a href="#docker" id="docker" style="color: inherit; text-decoration: none;">
-					<h3>Docker</h3>
+				<p>The APIs of this module can be found <a href="https:http://cipizio.it:4321/">here</a>.
+				Notice that the adaptation module will receive 2 different json files from the SDAI module in temporal order, which are called <code>phase1</code> and <code>phase2</code> respectively.</p>
+				<a href="#folder-structure" id="folder-structure" style="color: inherit; text-decoration: none;">
+					<h3>Folder structure</h3>
 				</a>
-				<pre><code class="language-bash"><span class="hljs-comment"># Build</span>
-sudo docker build -t artguide/ir .
-<span class="hljs-comment"># Run</span>
-sudo docker run -dit --restart=always --name ir -p 3000:3000 artguide/ir
-<span class="hljs-comment"># Stop</span>
-sudo docker stop ir
-sudo docker rm ir</code></pre>
+				<p>Inside <code>adaptation</code> folder the following directories can be found:</p>
+				<ul>
+					<li>data folder contains some examples of text (in .txt format) which should be the input of the text-tailoring functions and some json files, to emulate the REST interaction between modules</li>
+					<li>demo folder contains some temporary scripts that have been developed by various members of the team, in order to test some libraries for NLP</li>
+					<li>documentation folder contains the source code for the page describing the API</li>
+					<li>test folder contains two scripts that allow any user to test the module in local</li>
+					<li>document_adaptation folder is the core of the module and provides the functionalities of keword expansion and document adaptation</li>
+				</ul>
+				<a href="#files" id="files" style="color: inherit; text-decoration: none;">
+					<h3>Files</h3>
+				</a>
+				<ul>
+					<li><code>config.json</code> contains the config information</li>
+					<li><code>config.py</code> reads such file</li>
+					<li><code>disclaimer.json</code> contains some strings (for the supported language) that alert the user that the content that he is going to receive is not properly tailored to his expertise level</li>
+					<li><code>glossario.txt</code> is thought as an internal file, needed to write code using the same convention for variables and entities</li>
+					<li><code>main.py</code> is the code of the server</li>
+					<li><code>requirements.txt</code> is the usual file for allowing any user to install the modules required by the software</li>
+				</ul>
+				<a href="#run-test" id="run-test" style="color: inherit; text-decoration: none;">
+					<h3>Run test</h3>
+				</a>
+				<p>To run some tests locally (and see how adaptation module performs on some sample situations) run <code>python test_phase1.py --help</code> (or <code>python test_phase2.py --help</code>)</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -108,17 +119,35 @@ sudo docker rm ir</code></pre>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum tsd-is-not-exported">
+						<a href="enums/wikidatapropertytype.html" class="tsd-kind-icon">Wikidata<wbr>Property<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/cacheservice.html" class="tsd-kind-icon">Cache<wbr>Service</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/googlesearch.html" class="tsd-kind-icon">Google<wbr>Search</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/pageresult.html" class="tsd-kind-icon">Page<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/parser.html" class="tsd-kind-icon">Parser</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/query.html" class="tsd-kind-icon">Query</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/search.html" class="tsd-kind-icon">Search</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/wiki.html" class="tsd-kind-icon">Wiki</a>
+						<a href="classes/wikidata.html" class="tsd-kind-icon">Wiki<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/wikidataproperties.html" class="tsd-kind-icon">Wiki<wbr>Data<wbr>Properties</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/wikipedia.html" class="tsd-kind-icon">Wikipedia</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/basicfield.html" class="tsd-kind-icon">Basic<wbr>Field</a>
@@ -131,6 +160,9 @@ sudo docker rm ir</code></pre>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/classificationresult.html" class="tsd-kind-icon">Classification<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/composedsection.html" class="tsd-kind-icon">Composed<wbr>Section</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/context.html" class="tsd-kind-icon">Context</a>
@@ -151,6 +183,9 @@ sudo docker rm ir</code></pre>
 						<a href="interfaces/keywordexpansion.html" class="tsd-kind-icon">Keyword<wbr>Expansion</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/knowninstance.html" class="tsd-kind-icon">Known<wbr>Instance</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/location.html" class="tsd-kind-icon">Location</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -158,9 +193,6 @@ sudo docker rm ir</code></pre>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/nextpage.html" class="tsd-kind-icon">Next<wbr>Page</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/pageresult.html" class="tsd-kind-icon">Page<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/pagesection.html" class="tsd-kind-icon">Page<wbr>Section</a>
@@ -173,9 +205,6 @@ sudo docker rm ir</code></pre>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/queries.html" class="tsd-kind-icon">Queries</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/querybuildresult.html" class="tsd-kind-icon">Query<wbr>Build<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/queryexpansionrequest.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Request</a>
@@ -202,16 +231,19 @@ sudo docker rm ir</code></pre>
 						<a href="interfaces/userprofile.html" class="tsd-kind-icon">User<wbr>Profile</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#adaptationendpoint" class="tsd-kind-icon">Adaptation<wbr>Endpoint</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#googlecustomsearchapikey" class="tsd-kind-icon">Google<wbr>Custom<wbr>SearchAPIKey</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#googlecustomsearchengineid" class="tsd-kind-icon">Google<wbr>Custom<wbr>Search<wbr>Engine<wbr>Id</a>
+						<a href="globals.html#expressport" class="tsd-kind-icon">Express<wbr>Port</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#app" class="tsd-kind-icon">app</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#logger" class="tsd-kind-icon">logger</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#opusurl" class="tsd-kind-icon">opus<wbr>Url</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#rake" class="tsd-kind-icon">rake</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#result" class="tsd-kind-icon">result</a>
@@ -220,13 +252,28 @@ sudo docker rm ir</code></pre>
 						<a href="globals.html#search" class="tsd-kind-icon">search</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#urls" class="tsd-kind-icon">urls</a>
+						<a href="globals.html#wbk" class="tsd-kind-icon">wbk</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#wiki" class="tsd-kind-icon">wiki</a>
+						<a href="globals.html#wikidata" class="tsd-kind-icon">wikidata</a>
 					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-not-exported">
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#wikipedia" class="tsd-kind-icon">wikipedia</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#post" class="tsd-kind-icon">post</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#reduceentities" class="tsd-kind-icon">reduce<wbr>Entities</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#adaptationendpoint" class="tsd-kind-icon">Adaptation<wbr>Endpoint</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#googlesearchconfig" class="tsd-kind-icon">Google<wbr>Search<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="globals.html#loggerconfig" class="tsd-kind-icon">Logger<wbr>Config</a>
 					</li>
 				</ul>
 			</nav>

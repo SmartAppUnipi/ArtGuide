@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Search | ArtGuide - Information retrieval module</title>
+	<title>Wikipedia | ArtGuide - Information retrieval module</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="search.html">Search</a>
+					<a href="wikipedia.html">Wikipedia</a>
 				</li>
 			</ul>
-			<h1>Class Search</h1>
+			<h1>Class Wikipedia</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Perform web searches.</p>
+						<p>Performs Wikipedia Search through the APIs.</p>
 					</div>
 				</div>
 			</section>
@@ -77,7 +77,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Search</span>
+						<span class="target">Wikipedia</span>
 					</li>
 				</ul>
 			</section>
@@ -85,95 +85,21 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="search.html#googlesearch" class="tsd-kind-icon">google<wbr>Search</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="search.html#parser" class="tsd-kind-icon">parser</a></li>
-							</ul>
-						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#buildbasicqueries" class="tsd-kind-icon">build<wbr>Basic<wbr>Queries</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#buildqueries" class="tsd-kind-icon">build<wbr>Queries</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#buildresult" class="tsd-kind-icon">build<wbr>Result</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#extendquery" class="tsd-kind-icon">extend<wbr>Query</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="search.html#search-1" class="tsd-kind-icon">search</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="search.html#searchbyterms" class="tsd-kind-icon">search<wbr>ByTerms</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#topageresults" class="tsd-kind-icon">to<wbr>Page<wbr>Results</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="wikipedia.html#buildqueries" class="tsd-kind-icon">build<wbr>Queries</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="wikipedia.html#buildresult" class="tsd-kind-icon">build<wbr>Result</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="wikipedia.html#getwikiinfo" class="tsd-kind-icon">get<wbr>Wiki<wbr>Info</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wikipedia.html#search" class="tsd-kind-icon">search</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wikipedia.html#searchknowninstance" class="tsd-kind-icon">search<wbr>Known<wbr>Instance</a></li>
 							</ul>
 						</section>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="googlesearch" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> google<wbr>Search</h3>
-					<div class="tsd-signature tsd-kind-icon">google<wbr>Search<span class="tsd-signature-symbol">:</span> <a href="googlesearch.html" class="tsd-signature-type">GoogleSearch</a><span class="tsd-signature-symbol"> =&nbsp;new GoogleSearch()</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/search/search.ts#L21">IR/src/search/search.ts:21</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Google Search service</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="parser" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> parser</h3>
-					<div class="tsd-signature tsd-kind-icon">parser<span class="tsd-signature-symbol">:</span> <a href="parser.html" class="tsd-signature-type">Parser</a><span class="tsd-signature-symbol"> =&nbsp;new Parser()</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/search/search.ts#L24">IR/src/search/search.ts:24</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Parser</p>
-						</div>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="buildbasicqueries" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Basic<wbr>Queries</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">build<wbr>Basic<wbr>Queries<span class="tsd-signature-symbol">(</span>classificationResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/search/search.ts#L44">IR/src/search/search.ts:44</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Builds a basic query basing on the Classification module result.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>classificationResult: <a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The object received from the Classification module.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>An array of Query objects with searchTerms and score.</p>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="buildqueries" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Queries</h3>
@@ -184,12 +110,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/search/search.ts#L86">IR/src/search/search.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/wiki/wikipedia.ts#L61">IR/src/wiki/wikipedia.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Build an array of queries using the query expansion provided by the Adaptation module.</p>
+									<p>Builds a query basing on the Classification result (not a known instance).</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -202,7 +128,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A promise resolved with the array of Query.</p>
+							<p>A list of query. If there aren&#39;t classification entities an empty array is returned.</p>
 						</li>
 					</ul>
 				</section>
@@ -210,74 +136,96 @@
 					<a name="buildresult" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Result</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">build<wbr>Result<span class="tsd-signature-symbol">(</span>queries<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Result<span class="tsd-signature-symbol">(</span>page<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Page</span>, score<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/search/search.ts#L107">IR/src/search/search.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/wiki/wikipedia.ts#L140">IR/src/wiki/wikipedia.ts:140</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Build a result object by querying Google Search the provided query.</p>
+									<p>Given a WikiPedia Page builds a PageResult.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>When WikiPedia APIs returns error.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>queries: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>page: <span class="tsd-signature-type">Page</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The buildQuery result.</p>
+										<p>A WikiPedia page.</p>
+									</div>
+								</li>
+								<li>
+									<h5>score: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The score of the query.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>An array of page result to be sent to the Adaptation module.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A PageResult object without the title field set.</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="extendquery" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> extend<wbr>Query</h3>
+					<a name="getwikiinfo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Wiki<wbr>Info</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">extend<wbr>Query<span class="tsd-signature-symbol">(</span>queries<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span>, queryExpansion<span class="tsd-signature-symbol">: </span><a href="../interfaces/queryexpansionresponse.html" class="tsd-signature-type">QueryExpansionResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Wiki<wbr>Info<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, score<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/search/search.ts#L68">IR/src/search/search.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/wiki/wikipedia.ts#L106">IR/src/wiki/wikipedia.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Extend a query by using the query expansion provided by the Adaptation module.</p>
+									<p>Retrieve WikiPedia info for a query string in a specified language.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>When WikiPedia APIs returns error.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>queries: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>query: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>An array of Query produced by @function buildBasicQuery.</p>
+										<p>The string to be searched.</p>
 									</div>
 								</li>
 								<li>
-									<h5>queryExpansion: <a href="../interfaces/queryexpansionresponse.html" class="tsd-signature-type">QueryExpansionResponse</a></h5>
+									<h5>language: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The query expansion provided by the Adaptation module.</p>
+										<p>The language code, ie. the Wikipedia subdomain to search in.</p>
+									</div>
+								</li>
+								<li>
+									<h5>score: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The score of the query.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>An array of object containing the originalQuery and an array expandedKeywords.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The WikiPedia content as PageResult object.</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="search-1" class="tsd-anchor"></a>
+					<a name="search" class="tsd-anchor"></a>
 					<h3>search</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
 						<li class="tsd-signature tsd-kind-icon">search<span class="tsd-signature-symbol">(</span>classificationResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
@@ -286,13 +234,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/search/search.ts#L32">IR/src/search/search.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/wiki/wikipedia.ts#L28">IR/src/wiki/wikipedia.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Perform a web search.</p>
+									<p>Perform a Wikipedia search give a classification result (not a known instance).</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>When WikiPedia APIs return an error.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -309,78 +262,40 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="searchbyterms" class="tsd-anchor"></a>
-					<h3>search<wbr>ByTerms</h3>
+					<a name="searchknowninstance" class="tsd-anchor"></a>
+					<h3>search<wbr>Known<wbr>Instance</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">search<wbr>ByTerms<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">search<wbr>Known<wbr>Instance<span class="tsd-signature-symbol">(</span>knownInstance<span class="tsd-signature-symbol">: </span><a href="../interfaces/knowninstance.html" class="tsd-signature-type">KnownInstance</a>, language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/search/search.ts#L166">IR/src/search/search.ts:166</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/wiki/wikipedia.ts#L48">IR/src/wiki/wikipedia.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Makes a custom search on google using only the search terms provided, then converts back
-									the result to an array of PageResult.</p>
+									<p>Search for a page assuming that is a known instance.</p>
 								</div>
-								<p>The keywords associated to the PageResult are the one provided by the query
-								since they cannot be inferred.</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>query: <a href="query.html" class="tsd-signature-type">Query</a></h5>
+									<h5>knownInstance: <a href="../interfaces/knowninstance.html" class="tsd-signature-type">KnownInstance</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The query with the keywords to search on Google.</p>
+										<p>The non-null KnownInstance object.</p>
+									</div>
+								</li>
+								<li>
+									<h5>language: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The language code, ie. the Wikipedia subdomain to search in.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>An array of PageResults.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="topageresults" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> to<wbr>Page<wbr>Results</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Page<wbr>Results<span class="tsd-signature-symbol">(</span>googleResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a>, query<span class="tsd-signature-symbol">: </span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/521de24/IR/src/search/search.ts#L183">IR/src/search/search.ts:183</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Given a GoogleSearchResult, for each returned item the parser gets invoked and
-									the text content of the corresponding page is inserted into a PageResult.</p>
-								</div>
-								<p>Since the keywords that are associated to that google result cannot be inferred from the results themselves,
-								they must be explicitly passed by the caller.</p>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>googleResult: <a href="../interfaces/googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The google search result.</p>
-									</div>
-								</li>
-								<li>
-									<h5>query: <a href="query.html" class="tsd-signature-type">Query</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The query that produced the result.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>The array of page results corresponding to the parsed pages returned from Google.</p>
+							<p>An array of PageResult about the piece of art and correlated pages like the author.</p>
 						</li>
 					</ul>
 				</section>
@@ -399,34 +314,22 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="search.html" class="tsd-kind-icon">Search</a>
+						<a href="wikipedia.html" class="tsd-kind-icon">Wikipedia</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="search.html#googlesearch" class="tsd-kind-icon">google<wbr>Search</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="search.html#parser" class="tsd-kind-icon">parser</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="wikipedia.html#buildqueries" class="tsd-kind-icon">build<wbr>Queries</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="search.html#buildbasicqueries" class="tsd-kind-icon">build<wbr>Basic<wbr>Queries</a>
+								<a href="wikipedia.html#buildresult" class="tsd-kind-icon">build<wbr>Result</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="search.html#buildqueries" class="tsd-kind-icon">build<wbr>Queries</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="search.html#buildresult" class="tsd-kind-icon">build<wbr>Result</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="search.html#extendquery" class="tsd-kind-icon">extend<wbr>Query</a>
+								<a href="wikipedia.html#getwikiinfo" class="tsd-kind-icon">get<wbr>Wiki<wbr>Info</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="search.html#search-1" class="tsd-kind-icon">search</a>
+								<a href="wikipedia.html#search" class="tsd-kind-icon">search</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="search.html#searchbyterms" class="tsd-kind-icon">search<wbr>ByTerms</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="search.html#topageresults" class="tsd-kind-icon">to<wbr>Page<wbr>Results</a>
+								<a href="wikipedia.html#searchknowninstance" class="tsd-kind-icon">search<wbr>Known<wbr>Instance</a>
 							</li>
 						</ul>
 					</li>
