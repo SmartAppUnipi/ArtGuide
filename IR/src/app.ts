@@ -136,15 +136,22 @@ app.post("/", async (req, res) => {
              */
             logger.debug("[app.ts] Got a known instance.", knownInstance);
             results = await Promise.all([
-                wikipedia.searchKnownInstance(knownInstance, classificationResult.userProfile.language)
-                    .then(pageResults => pageResults.forEach(
-                        pageResult => pageResult.score *= flowConfig.weight.wikipedia.known)),
-                search.searchByTerms(new Query({
-                    language: classificationResult.userProfile.language,
-                    searchTerms: knownInstance.WikipediaPageTitle,
-                    keywords: []
-                })).then(pageResults => pageResults.forEach(
-                    pageResult => pageResult.score *= flowConfig.weight.google.known))
+                wikipedia
+                    .searchKnownInstance(knownInstance, classificationResult.userProfile.language)
+                    .then(pageResults => {
+                        pageResults.forEach(pageResult =>
+                            pageResult.score *= flowConfig.weight.wikipedia.known);
+                    }),
+                search
+                    .searchByTerms(new Query({
+                        language: classificationResult.userProfile.language,
+                        searchTerms: knownInstance.WikipediaPageTitle,
+                        keywords: []
+                    }))
+                    .then(pageResults => {
+                        pageResults.forEach(pageResult =>
+                            pageResult.score *= flowConfig.weight.google.known);
+                    })
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
@@ -160,11 +167,19 @@ app.post("/", async (req, res) => {
             logger.debug("[app.ts] Not a known instance.");
             results = await Promise.all([
                 wikipedia.search(classificationResult)
-                    .then(results => results.forEach(
-                        result => result.score *= flowConfig.weight.wikipedia.unknown)),
+                    .then(results => {
+                        results.forEach(result =>
+                            result.score *= flowConfig.weight.wikipedia.unknown);
+
+                        return results;
+                    }),
                 search.search(classificationResult)
-                    .then(results => results.forEach(
-                        result => result.score *= flowConfig.weight.google.unknown))
+                    .then(results => {
+                        results.forEach(result =>
+                            result.score *= flowConfig.weight.google.unknown);
+
+                        return results;
+                    })
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         }

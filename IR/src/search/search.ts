@@ -88,8 +88,8 @@ export class Search {
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
             AdaptationEndpoint.keywords, {
-                userProfile: classificationResult.userProfile
-            })
+            userProfile: classificationResult.userProfile
+        })
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
             // return both the basic query and the extended queries in one array
@@ -112,7 +112,7 @@ export class Search {
             queries.map(async q => {
                 // query Google Search and get the list of results
                 return this.googleSearch
-                    .queryCustom(q.searchTerms + " " + q.keywords.join(" "), q.language as "it" | "en")
+                    .queryCustom(q.searchTerms + " " + q.keywords.join(" "), q.language)
                     .then(queryResult => {
 
                         if (!queryResult) {
@@ -128,7 +128,7 @@ export class Search {
                         }
 
                         return this
-                            .toPageResults(queryResult, q.keywords)
+                            .toPageResults(queryResult, q)
                             .then(pageResults => {
 
                                 /*
@@ -166,7 +166,7 @@ export class Search {
     public searchByTerms(query: Query): Promise<Array<PageResult>> {
         return this.googleSearch
             .queryCustom(query.searchTerms, query.language)
-            .then(googleResult => this.toPageResults(googleResult, query.keywords));
+            .then(googleResult => this.toPageResults(googleResult, query));
     }
 
     /**
@@ -180,15 +180,17 @@ export class Search {
      * @param keywords The keywords associated to the query that produced the google search result.
      * @returns The array of page results corresponding to the parsed pages returned from Google.
      */
-    private async toPageResults(googleResult: GoogleSearchResult, keywords: Array<string>): Promise<Array<PageResult>> {
+    private async toPageResults(googleResult: GoogleSearchResult, query: Query): Promise<Array<PageResult>> {
         const results: Array<PageResult> = [];
         await Promise.all(
-            googleResult.items.map(item => {
+            googleResult.items.map((item, index, items) => {
                 // Scrape text from results
                 return this.parser.parse(item.link)
-                    .then(parsedContent => {
-                        parsedContent.keywords = keywords;
-                        results.push(parsedContent);
+                    .then(pageResult => {
+                        pageResult.keywords = query.keywords;
+                        // TODO: assign a score multiplier read from config.json
+                        pageResult.score = query.score + (1 - (index/items.length));
+                        results.push(pageResult);
                         logger.silly("[search.ts] Parsed link " + item.link);
                     })
                     .catch(ex => {
@@ -198,5 +200,4 @@ export class Search {
         );
         return results;
     }
-
 }
