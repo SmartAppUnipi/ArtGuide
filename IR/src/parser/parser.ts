@@ -125,6 +125,10 @@ export class Parser {
                 index1++;
             }
         }
+        if (titles[0] == null){
+           titles[0] = " ";
+        }
+
         return [titles, sections];
     }
 
@@ -145,7 +149,7 @@ export class Parser {
          * var sectionObject = await this.getTitlesAndSections(url)
          */
         if (!this.validURL(url)) 
-            return;
+            return null;
         
         return JSDOM.fromURL(url).then(dom => {
             // look for a list of preferred query selectors
@@ -189,6 +193,7 @@ export class Parser {
             const sections = titlesAndSections[1];
             const sectionsObj = [];
             let i, j = 0;
+
             for (i = 0; i < sections.length; i++) {
                 if (sections[i].length > 20) {
                     const keywords = rake(sections[i]).slice(0, 10);
