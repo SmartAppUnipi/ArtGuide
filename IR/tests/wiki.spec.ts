@@ -5,21 +5,10 @@ import wiki from 'wikijs';
 
 const wikijs = new Wiki()
 
-/*  describe("Infobox content", () => {
-    test("Let's see what's inside the infobox", async () => {
-        return wiki().findById("Q39054").then(page => page.content().then(info => console.log(info)))
-        .catch(err =>
-            console.log("ERROREEEEEE!!"+err));
-
-        //console.log(info);
-    });
-});
-  */
-
 describe("Function getWikiInfo", () => {
     test("it should return a Promise<PageResult>", async () => {
 
-        const result = await wikijs['getWikiInfo']("mona lisa", "en");
+        const result = await wikijs['getWikiInfo']("mona lisa", "en", 0.5);
         
         expect(result).toBeDefined();
 

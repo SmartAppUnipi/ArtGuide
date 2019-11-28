@@ -11,6 +11,7 @@ export class PageResult {
     public keywords: Array<string>;
     public tags: Array<string>;
     public summary?: string;
+    public score: number;
 
     constructor(item: Partial<PageResult>) {
         if (item) {

@@ -2,7 +2,7 @@ import logger from "../logger";
 import { Page } from "wikijs";
 import wiki from "wikijs";
 import { WikiData } from "../wikidata";
-import { ClassificationResult, PageResult, PageSection, Query } from "../models";
+import { ClassificationResult, PageResult, PageSection, Query, KnownInstance } from "../models";
 
 interface ComposedSection {
     title: string;
@@ -29,7 +29,7 @@ export class Wiki {
         const queries = await this.buildQueries(classificationResult);
         // FIXME: handle inexistent wiki page in that language
         const lang = classificationResult.userProfile.language.toLocaleLowerCase();
-        return Promise.all(queries.map(q => this.getWikiInfo(q.searchTerms, lang)))
+        return Promise.all(queries.map(q => this.getWikiInfo(q.searchTerms, lang, q.score)))
             .catch(err => {
                 logger.error("[wiki.ts] Error in search: ", err);
                 throw err;
@@ -49,6 +49,7 @@ export class Wiki {
             logger.debug("[wiki.ts] Classification entities are empty");
             return [];
         }
+
         // TODO: Get more than one entity
         const entity = classificationResult.classification.entities[0];
         const id = entity.entityId;
@@ -66,6 +67,13 @@ export class Wiki {
         return queries;
     }
 
+    public searchKnownInstance(knownInstance: KnownInstance, language: string) {
+        return Promise.all([
+            // TODO: look also for: creator/architect, period, style, movement 
+            this.getWikiInfo(knownInstance.WikipediaPageTitle, language, knownInstance.score)
+        ])
+    }
+
     /**
      * Retrieve WikiPedia info for a query string in a specified language.
      *
@@ -74,7 +82,7 @@ export class Wiki {
      * @returns The WikiPedia content as PageResult object.
      * @throws When WikiPedia APIs returns error.
      */
-    private getWikiInfo(query: string, language: string): Promise<PageResult> {
+    public getWikiInfo(query: string, language: string, score: number): Promise<PageResult> {
         // wiki object initialized with WikiPedia API endpoint
         const wikipedia = wiki({ apiUrl: "https://" + language + ".wikipedia.org/w/api.php" });
         return wikipedia.search(query)
@@ -82,7 +90,7 @@ export class Wiki {
                 const title = resultsList.results[0];
                 // return wikipedia.findById("Q17")
                 return wikipedia.page(title)
-                    .then(page => this.buildResult(page))
+                    .then(page => this.buildResult(page, score))
                     .then(pageResult => {
                         pageResult.title = title;
                         return pageResult;
@@ -105,13 +113,14 @@ export class Wiki {
      * @returns A PageResult object without the title field set.
      * @throws When WikiPedia APIs returns error.
      */
-    private buildResult(page: Page): Promise<PageResult> {
+    private buildResult(page: Page, score: number): Promise<PageResult> {
         // PageResult object to be returned
         const pageResult: PageResult = {
             url: "",
             title: "",      // set by the caller
             sections: [],
             summary: "",
+            score: score,
             keywords: [],   // keywords are populated from caller which knows the query object
             tags: []        // tags are populated from caller which knows the query object
         };
