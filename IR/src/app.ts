@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 // Error handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (err) {
-        logger.error("[app.ts] Unhandled error", err);
+        logger.error("[app.ts] Unhandled error", { exception: err });
         return res.json({ message: err.message, stack: err.stack });
     }
     next();
@@ -44,14 +44,13 @@ app.use("/docs", express.static(path.join(__dirname, "../docs")));
 app.post("/", async (req, res) => {
 
     try {
-        logger.debug("[app.ts] Post request received.");
+
+        logger.debug("[app.ts] Post request received.", { from: req.ip, hostname: req.hostname });
 
         // Parse the classification result json
         const classificationResult = req.body as ClassificationResult;
         if (!classificationResult) {
-            const err = new Error("Missing required body.");
-            console.log(err);
-            return res.json({ message: err.message });
+            return res.json({ error: "Missing required body." });
         }
 
 
@@ -108,6 +107,8 @@ app.post("/", async (req, res) => {
          *          - merge multiple entities?
          */
 
+        logger.debug("[app.ts] Original classification entities and labels.", { classificationEntities: classificationResult.classification.entities, classificationLabels: classificationResult.classification.labels });
+
         // 1. sort results.entities and result.labels by score descending
         classificationResult.classification.entities.sort((e1, e2) => e1.score - e2.score);
         classificationResult.classification.labels.sort((l1, l2) => l1.score - l2.score);
@@ -124,6 +125,8 @@ app.post("/", async (req, res) => {
             flowConfig.entityFilter.minScore
         );
 
+        logger.debug("[app.ts] Reduced classification entities and labels.", { classificationEntities: classificationResult.classification.entities, classificationLabels: classificationResult.classification.labels });
+
         // 3. check if there is a known entity
         const knownInstance = await wikidata.tryGetKnownInstance(classificationResult);
 
@@ -134,7 +137,7 @@ app.post("/", async (req, res) => {
              *  5a. search by entityId on Wikipedia
              *  5b. search for the exact query on Google
              */
-            logger.debug("[app.ts] Got a known instance.", knownInstance);
+            logger.debug("[app.ts] Got a known instance.", { knownInstance });
             results = await Promise.all([
                 wikipedia
                     .searchKnownInstance(knownInstance, classificationResult.userProfile.language)
@@ -164,7 +167,7 @@ app.post("/", async (req, res) => {
              *  5a. search for the top score entities on Wikipedia
              *  5b. build a smart query on Google
              */
-            logger.debug("[app.ts] Not a known instance.");
+            logger.debug("[app.ts] Not a known instance.", { reducedClassificationEntities: classificationResult.classification.entities });
             results = await Promise.all([
                 wikipedia.search(classificationResult)
                     .then(results => {
@@ -194,7 +197,7 @@ app.post("/", async (req, res) => {
             userProfile: classificationResult.userProfile,
             results
         }).then(adaptationResponse => {
-            logger.debug("[app.ts] Adaptation Response received.");
+            logger.debug("[app.ts] Adaptation Response received.", { adaptationResponse });
             res.send(adaptationResponse);
         });
 

@@ -10,7 +10,7 @@ import logger from "./logger";
  * @returns A promise resolved with the received JSON parsed as JS object of type T.
  */
 export function post<T = any>(url: string, body: any): Promise<T> {
-    logger.silly("[utils.ts] New post request:" + url);
+    logger.silly("[utils.ts] New post request", { url });
     return fetch(url, {
         method: "POST",
         body: JSON.stringify(body),
@@ -27,7 +27,7 @@ export function post<T = any>(url: string, body: any): Promise<T> {
  * @returns The list of survived entities.
  */
 export function reduceEntities(entities: Array<BasicFieldWithId>,
-        maxEntityNumber = entities.length, minScore = 0): Array<BasicFieldWithId> {
+    maxEntityNumber = entities.length, minScore = 0): Array<BasicFieldWithId> {
     let maxGap = -1;
     let cutIndex = -1;
 
