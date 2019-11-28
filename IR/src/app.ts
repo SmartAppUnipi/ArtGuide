@@ -8,24 +8,7 @@ import { Search } from "./search";
 import { ClassificationResult, Query } from "./models";
 import { post, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
-
-/** Config for smart search */
-const config = {
-    entityFilter: {
-        maxEntityNumber: 5,
-        minScore: 0.5
-    },
-    weight: {
-        wikipedia: {
-            known: 1,
-            unknown: 0.6
-        },
-        google: {
-            known: 0.75,
-            unknown: 0.9
-        }
-    }
-};
+import { flowConfig } from '../config.json';
 
 /** Search module */
 const search = new Search();
@@ -132,13 +115,13 @@ app.post("/", async (req, res) => {
         // 2. slice results.entities and results.labels reducing the number of results
         classificationResult.classification.entities = reduceEntities(
             classificationResult.classification.entities,
-            config.entityFilter.maxEntityNumber,
-            config.entityFilter.minScore
+            flowConfig.entityFilter.maxEntityNumber,
+            flowConfig.entityFilter.minScore
         );
         classificationResult.classification.labels = reduceEntities(
             classificationResult.classification.labels,
-            config.entityFilter.maxEntityNumber,
-            config.entityFilter.minScore
+            flowConfig.entityFilter.maxEntityNumber,
+            flowConfig.entityFilter.minScore
         );
 
         // 3. check if there is a known entity
@@ -155,13 +138,13 @@ app.post("/", async (req, res) => {
             results = await Promise.all([
                 wikipedia.searchKnownInstance(knownInstance, classificationResult.userProfile.language)
                     .then(pageResults => pageResults.forEach(
-                        pageResult => pageResult.score *= config.weight.wikipedia.known)),
+                        pageResult => pageResult.score *= flowConfig.weight.wikipedia.known)),
                 search.searchByTerms(new Query({
                     language: classificationResult.userProfile.language,
                     searchTerms: knownInstance.WikipediaPageTitle,
                     keywords: []
                 })).then(pageResults => pageResults.forEach(
-                    pageResult => pageResult.score *= config.weight.google.known))
+                    pageResult => pageResult.score *= flowConfig.weight.google.known))
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
@@ -178,10 +161,10 @@ app.post("/", async (req, res) => {
             results = await Promise.all([
                 wikipedia.search(classificationResult)
                     .then(results => results.forEach(
-                        result => result.score *= config.weight.wikipedia.unknown)),
+                        result => result.score *= flowConfig.weight.wikipedia.unknown)),
                 search.search(classificationResult)
                     .then(results => results.forEach(
-                        result => result.score *= config.weight.google.unknown))
+                        result => result.score *= flowConfig.weight.google.unknown))
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         }
