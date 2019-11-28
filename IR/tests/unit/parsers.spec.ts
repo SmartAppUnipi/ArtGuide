@@ -1,6 +1,6 @@
 /// <reference types="@types/jest"/>
 
-import { Parser } from "../src/parser"
+import { Parser } from "../../src/parser"
 
 const urls = [
     "https://www.arteworld.it/notte-stellata-van-gogh-analisi/",
