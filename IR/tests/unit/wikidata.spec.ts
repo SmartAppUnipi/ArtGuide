@@ -1,6 +1,6 @@
 /// <reference types="@types/jest"/>
 
-import { WikiData } from "../src/wiki"
+import { WikiData } from "../../src/wiki"
 
 
 const wikidata = new WikiData()

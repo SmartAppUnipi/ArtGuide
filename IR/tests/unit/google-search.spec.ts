@@ -3,7 +3,7 @@
 
 process.env.NODE_ENV = "production"
 
-import { GoogleSearch } from '../src/search/google-search';
+import { GoogleSearch } from '../../src/search/google-search';
 import nock from "nock";
 import fs from "fs";
 

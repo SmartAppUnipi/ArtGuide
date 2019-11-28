@@ -1,0 +1,18 @@
+{
+    "flowConfig": {
+        "entityFilter": {
+            "maxEntityNumber": 5,
+            "minScore": 0.5
+        },
+        "weight": {
+            "wikipedia": {
+                "known": 1,
+                "unknown": 0.6
+            },
+            "google": {
+                "known": 0.75,
+                "unknown": 0.9
+            }
+        }
+    }
+}

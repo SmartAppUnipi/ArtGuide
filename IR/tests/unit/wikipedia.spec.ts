@@ -1,6 +1,6 @@
 /// <reference types="@types/jest"/>
 
-import { Wikipedia } from "../src/wiki"
+import { Wikipedia } from "../../src/wiki"
 
 const wikijs = new Wikipedia()
 
