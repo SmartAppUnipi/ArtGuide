@@ -53,7 +53,7 @@ export class GoogleSearch {
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    private async query(googleSearchUrl: string, query: string, language: "en" | "it"): Promise<GoogleSearchResult> {
+    private async query(googleSearchUrl: string, query: string, language: string): Promise<GoogleSearchResult> {
         if (!query)
             return Promise.resolve(null);
 
@@ -94,8 +94,8 @@ export class GoogleSearch {
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    public queryCustom(query: string, language: "it" | "en"): Promise<GoogleSearchResult> {
-        return this.query(this.googleSearchUrls[language].custom, query, language);
+    public queryCustom(query: string, language: string): Promise<GoogleSearchResult> {
+        return this.query(this.googleSearchUrls[language as "it" | "en"].custom, query, language);
     }
 
     /**
@@ -107,8 +107,8 @@ export class GoogleSearch {
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    public queryRestricted(query: string, language: "it" | "en"): Promise<GoogleSearchResult> {
-        return this.query(this.googleSearchUrls[language].restricted, query, language);
+    public queryRestricted(query: string, language: string): Promise<GoogleSearchResult> {
+        return this.query(this.googleSearchUrls[language as "it" | "en"].restricted, query, language);
     }
 
 }

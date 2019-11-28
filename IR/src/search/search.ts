@@ -7,7 +7,8 @@ import {
     ClassificationResult,
     PageResult,
     Query,
-    QueryExpansionResponse
+    QueryExpansionResponse,
+    GoogleSearchResult
 } from "../models";
 
 /**
@@ -87,8 +88,8 @@ export class Search {
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
             AdaptationEndpoint.keywords, {
-                userProfile: classificationResult.userProfile
-            })
+            userProfile: classificationResult.userProfile
+        })
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
             // return both the basic query and the extended queries in one array
@@ -103,20 +104,6 @@ export class Search {
      * @returns {Array<PageResult>} An array of page result to be sent to the Adaptation module.
      */
     private buildResult(queries: Array<Query>): Promise<Array<PageResult>> {
-
-
-        /*
-         * TODO: Merge duplicates
-         * For each basic query (eg. "Leaning Tower of Pisa") we perform a Google Search
-         * for each keywords that come from the adaptation group
-         * (eg. "Leaning Tower of Pisa Art", "Leaning Tower of Pisa Description", ecc).
-         *
-         * Each google search produces a set of pages that are actually merged regardless 
-         * the fact they they could potentially be duplicated.
-         *
-         * We need to merge duplicated results, taking into account that we have to find a way
-         * to merge their keywords and produce a a reasonable score index.
-         */
 
         const results: Array<PageResult> = [];
 
@@ -140,26 +127,76 @@ export class Search {
                             return;
                         }
 
-                        return Promise.all(
-                            // for each result
-                            queryResult.items.map(item => {
-                                // Scrape text from results
-                                return this.parser.parse(item.link)
-                                    .then(parsedContent => {
-                                        parsedContent.keywords = q.keywords;
-                                        results.push(parsedContent);
-                                        logger.silly("[search.ts] Parsed link " + item.link);
-                                    })
-                                    .catch(ex => {
-                                        logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
-                                    });
-                            })
-                        );
+                        return this
+                            .toPageResults(queryResult, q.keywords)
+                            .then(pageResults => {
+
+                                /*
+                                * TODO: Merge duplicates
+                                * For each basic query (eg. "Leaning Tower of Pisa") we perform a Google Search
+                                * for each keywords that come from the adaptation group
+                                * (eg. "Leaning Tower of Pisa Art", "Leaning Tower of Pisa Description", ecc).
+                                *
+                                * Each google search produces a set of pages that are actually merged regardless 
+                                * the fact they they could potentially be duplicated.
+                                *
+                                * We need to merge duplicated results, taking into account that we have to find a way
+                                * to merge their keywords and produce a a reasonable score index.
+                                */
+                                results.push(...pageResults);
+                            });
                     })
-                    .catch(ex => logger.warn("[search.ts] Caught exception while processing query\"" + q +
-                        "\". Error: ", ex));
+                    .catch(ex => {
+                        logger.warn("[search.ts] Caught exception while processing query\"" + q + "\". Error: ", ex);
+                    });
             })
         ).then(() => results);
+    }
+
+    /**
+     * Makes a custom search on google using only the search terms provided, then converts back
+     * the result to an array of PageResult. 
+     * 
+     * The keywords associated to the PageResult are the one provided by the query
+     * since they cannot be inferred.
+     * 
+     * @param query The query with the keywords to search on Google.
+     * @param language The language with which search on Google.
+     */
+    public searchByTerms(query: Query): Promise<Array<PageResult>> {
+        return this.googleSearch
+            .queryCustom(query.searchTerms, query.language)
+            .then(googleResult => this.toPageResults(googleResult, query.keywords));
+    }
+
+    /**
+     * Given a GoogleSearchResult, for each returned item the parser gets invoked and
+     * the text content of the corresponding page is inserted into a PageResult. 
+     * 
+     * Since the keywords that are associated to that google result cannot be inferred from the results themselves,
+     * they must be explicitly passed by the caller.
+     * 
+     * @param googleResult The google search result.
+     * @param keywords The keywords associated to the query that produced the google search result.
+     * @return The array of page results corresponding to the parsed pages returned from Google.
+     */
+    private async toPageResults(googleResult: GoogleSearchResult, keywords: Array<string>): Promise<Array<PageResult>> {
+        const results: Array<PageResult> = [];
+        await Promise.all(
+            googleResult.items.map(item => {
+                // Scrape text from results
+                return this.parser.parse(item.link)
+                    .then(parsedContent => {
+                        parsedContent.keywords = keywords;
+                        results.push(parsedContent);
+                        logger.silly("[search.ts] Parsed link " + item.link);
+                    })
+                    .catch(ex => {
+                        logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
+                    });
+            })
+        );
+        return results;
     }
 
 }

@@ -1,6 +1,6 @@
 import { AdaptationEndpoint } from "./environment";
 import bodyParser from "body-parser";
-import { ClassificationResult } from "src/models";
+import { ClassificationResult, Query } from "src/models";
 import express from "express";
 import logger from "./logger";
 import packageJson from "../package.json";
@@ -106,9 +106,9 @@ app.post("/", async (req, res) => {
          *  BRANCH B: not a known entity
          *      4. remove unwanted entity (not art)
          *          - for each entity take the corresponding WikiData entry
-         *              - recursively populate the array instanceOf up to n=3 levels
-         *              - perform a bottom up breadth first visit of the "instance of" graph
-         *                  - discarding the entity if a after real-clock expires
+         *              - recursively populate the array instanceOf/subClassOf 
+         *              - perform a bottom up breadth first visit of the "instance of / subClassOf" graph
+         *                  - discarding the entity if a after real-clock expires (resolved using a single SparQL query)
          *                  - keep the entity if it's instance of one of the following piece of arts
          *                      - painting
          *                      - building
@@ -131,11 +131,11 @@ app.post("/", async (req, res) => {
 
         // 2. slice results.entities and results.labels reducing the number of results
         classificationResult.classification.entities = reduceEntities(classificationResult.classification.entities,
-                                                                      config.entityFilter.maxEntityNumber,
-                                                                      config.entityFilter.minScore);
+            config.entityFilter.maxEntityNumber,
+            config.entityFilter.minScore);
         classificationResult.classification.labels = reduceEntities(classificationResult.classification.labels,
-                                                                    config.entityFilter.maxEntityNumber,
-                                                                    config.entityFilter.minScore);
+            config.entityFilter.maxEntityNumber,
+            config.entityFilter.minScore);
 
         // 3. check if there is a known entity
         const knownInstance = await wikidata.getKnownInstance(classificationResult);
@@ -147,12 +147,20 @@ app.post("/", async (req, res) => {
              *  5a. search by entityId on Wikipedia
              *  5b. search for the exact query on Google
              */
-            logger.debug("[app.ts] Got a known instance.");
+            logger.debug("[app.ts] Got a known instance.", knownInstance);
             results = await Promise.all([
                 wikipedia.searchKnownInstance(knownInstance, classificationResult.userProfile.language)
-                    .then(results => results.forEach(
-                        result => result.score *= config.weight.wikipedia.known)),
-                // TODO: Google search for a specific query (bypass build basic query)
+                    .then(results => {
+                        results.forEach(result => {
+                            result.score *= config.weight.wikipedia.known;
+                        });
+                    }),
+                // TODO: Google search for a specific query (bypass build basic query) 
+/*                 search.searchByTerms(new Query({
+                    language: classificationResult.userProfile.language,
+                    searchTerms: "???",
+                    keywords: []
+                })).then(pageResults => pageResults.forEach(pg => pg.score *= config.weight.google.known)), */
                 search.search(classificationResult)
                     .then(results => results.forEach(
                         result => result.score *= config.weight.google.known))
@@ -194,7 +202,7 @@ app.post("/", async (req, res) => {
             res.send(adaptationResponse);
         });
 
-    // Catch any error and inform the caller
+        // Catch any error and inform the caller
     } catch (ex) {
         logger.error("[app.ts]", ex);
         return res.json({ message: ex.message, stack: ex.stack });

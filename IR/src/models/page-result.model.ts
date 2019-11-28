@@ -13,10 +13,18 @@ export class PageResult {
     public summary?: string;
     public score: number;
 
-    constructor(item: Partial<PageResult>) {
-        if (item) {
-            // mu
-            Object.assign(this, item);
-        }
+    constructor(item?: Partial<PageResult>) {
+
+        const defaults = {
+            keywords: [],
+            score: 0,
+            sections: [],
+            summary: "",
+            tags: [],
+            title: "",
+            url: ""
+        } as PageResult;
+
+        Object.assign(this, defaults, item || {});
     }
 }
