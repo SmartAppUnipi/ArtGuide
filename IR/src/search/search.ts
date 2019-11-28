@@ -147,7 +147,7 @@ export class Search {
                             });
                     })
                     .catch(ex => {
-                        logger.warn("[search.ts] Caught exception while processing query\"" + q + "\". Error: ", ex);
+                        logger.warn("[search.ts] Caught exception while processing query", { query: q, exception: ex });
                     });
             })
         ).then(() => results);
@@ -187,7 +187,7 @@ export class Search {
         return Promise.all(
             googleResult.items
                 .slice(0, itemsLen)
-                .map((item, index, items) => {
+                .map((item, index) => {
                     // Scrape text from results
                     return this.parser.parse(item.link)
                         .then(pageResult => {
