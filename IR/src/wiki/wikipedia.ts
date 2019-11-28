@@ -31,7 +31,7 @@ export class Wikipedia {
                 const lang = classificationResult.userProfile.language.toLocaleLowerCase();
                 return Promise.all(queries.map(query => this.getWikiInfo(query.searchTerms, lang, query.score)));
             })
-            .catch(ex => {
+            .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error in search.",
                              { entities: classificationResult.classification.entities, exception: ex });
                 return Promise.resolve([]);
@@ -73,7 +73,7 @@ export class Wikipedia {
                             language: language
                         });
                     })
-                    .catch(ex => {
+                    .catch(/* istanbul ignore next */ ex => {
                         logger.error("[wikipedia.ts] Error while getting Wikipedia page name.",
                                      { entityId: entity.entityId, exception: ex });
                         return null;
@@ -86,7 +86,7 @@ export class Wikipedia {
                 logger.silly("[wikipedia.ts] Queries built: " + queries);
                 return queries;
             })
-            .catch(ex => {
+            .catch/* istanbul ignore next */ (ex => {
                 logger.error("[wikipedia.ts] Error while building queries.",
                              { entities: classificationResult.classification.entities, exception: ex });
                 return Promise.resolve([]);
@@ -116,13 +116,13 @@ export class Wikipedia {
                         logger.debug("[wikipedia.ts] PageResult correctly build for the query.", { query: query });
                         return pageResult;
                     })
-                    .catch(ex => {
+                    .catch(/* istanbul ignore next */ ex => {
                         logger.error("[wikipedia.ts] Error in getting the page from Wikipedia.",
                                      { title: title, exception: ex });
                         return Promise.resolve(null);
                     });
             })
-            .catch(ex => {
+            .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error while retrieving result from Wikipedia.",
                              { query: query, exception: ex });
                 return Promise.resolve(null);
@@ -160,7 +160,7 @@ export class Wikipedia {
                             pageResult.sections.push(Object.assign({}, element, { tags: [element.title] }));
                     });
                 })
-                .catch(ex => {
+                .catch(/* istanbul ignore next */ ex => {
                     logger.error("[wikipedia.ts] Error in getting the sections from the page.",
                                  { page: pageResult.title, exception: ex });
                 }),
@@ -169,7 +169,7 @@ export class Wikipedia {
                 .then(summary => {
                     pageResult.summary = summary;
                 })
-                .catch(ex => {
+                .catch(/* istanbul ignore next */ ex => {
                     logger.error("[wikipedia.ts] Error in getting the summary from the page.",
                                  { page: pageResult.title, exception: ex });
                 })
