@@ -1,8 +1,8 @@
 import logger from "../logger";
 import { Page } from "wikijs";
 import wiki from "wikijs";
-import { WikiData } from "../wikidata";
 import { ClassificationResult, PageResult, PageSection, Query, KnownInstance } from "../models";
+import { WikiData } from ".";
 
 interface ComposedSection {
     title: string;
@@ -16,7 +16,7 @@ const wikidata = new WikiData();
 /**
  * Performs Wikipedia Search through the APIs.
  */
-export class Wiki {
+export class Wikipedia {
 
     /**
      * Perform a Wikipedia search.

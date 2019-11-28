@@ -1,9 +1,8 @@
 /// <reference types="@types/jest"/>
 
-import { Wiki } from "../src/wiki/wiki"
-import wiki from 'wikijs';
+import { Wikipedia } from "../src/wiki"
 
-const wikijs = new Wiki()
+const wikijs = new Wikipedia()
 
 describe("Function getWikiInfo", () => {
     test("it should return a Promise<PageResult>", async () => {

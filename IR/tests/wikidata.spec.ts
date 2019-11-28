@@ -1,10 +1,7 @@
 /// <reference types="@types/jest"/>
-/// <reference types="@types/node"/>
 
-
-import fetch from "node-fetch";
 import wikijs from "wikijs";
-import { WikiData } from "../src/wikidata"
+import { WikiData } from "../src/wiki"
 import { WikiDataFields } from "../src/models";
 
 const wikidata = new WikiData()

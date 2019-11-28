@@ -8,7 +8,7 @@ import logger from "./logger";
  * @param body A JS object that will be stringified and sent as a JSON.
  * @returns A promise resolved with the received JSON parsed as JS object of type T.
  */
-function post<T = any>(url: string, body: any): Promise<T> {
+export function post<T = any>(url: string, body: any): Promise<T> {
     logger.silly("[utils.ts] New post request:" + url);
     return fetch(url, {
         method: "POST",
@@ -17,6 +17,21 @@ function post<T = any>(url: string, body: any): Promise<T> {
     }).then(res => res.json());
 }
 
-export {
-    post
-};
+export function reduceEntities(entities: Array<any>, maxEntityNumber = entities.length, minScore = 0) {
+    let maxGap = -1;
+    let cutIndex = -1;
+
+    for (let i = 0; i < Math.min(maxEntityNumber, entities.length) - 1; i++) {
+        // stop if the score is too low
+        if (entities[i].score < minScore)
+            break;
+        // find the biggest gap
+        const gap = entities[i].score - entities[i + 1].score;
+        if (gap > maxGap) {
+            maxGap = gap;
+            cutIndex = i + 1;   // cut after this item
+        }
+    }
+
+    return entities.slice(0, cutIndex);
+}
