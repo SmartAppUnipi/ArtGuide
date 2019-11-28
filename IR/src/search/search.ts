@@ -88,8 +88,8 @@ export class Search {
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
             AdaptationEndpoint.keywords, {
-            userProfile: classificationResult.userProfile
-        })
+                userProfile: classificationResult.userProfile
+            })
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
             // return both the basic query and the extended queries in one array
@@ -171,18 +171,19 @@ export class Search {
 
     /**
      * Given a GoogleSearchResult, for each returned item the parser gets invoked and
-     * the text content of the corresponding page is inserted into a PageResult. 
-     * 
-     * Since the keywords that are associated to that google result cannot be inferred from the results themselves,
-     * they must be explicitly passed by the caller.
-     * 
+     *the text content of the corresponding page is inserted into a PageResult.
+     *
+     *Since the keywords that are associated to that google result cannot be inferred from the results themselves,
+     *they must be explicitly passed by the caller.
+     *
      * @param googleResult The google search result.
+     * @param query
      * @param keywords The keywords associated to the query that produced the google search result.
      * @returns The array of page results corresponding to the parsed pages returned from Google.
      */
     private async toPageResults(googleResult: GoogleSearchResult, query: Query): Promise<Array<PageResult>> {
         const results: Array<PageResult> = [];
-        const itemsLen = Math.min(flowConfig.googleSearchResults.maxLimit, googleResult.items.length)
+        const itemsLen = Math.min(flowConfig.googleSearchResults.maxLimit, googleResult.items.length);
         return Promise.all(
             googleResult.items
                 .slice(0, itemsLen)

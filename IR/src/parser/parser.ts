@@ -125,9 +125,9 @@ export class Parser {
                 index1++;
             }
         }
-        if (titles[0] == null){
-           titles[0] = " ";
-        }
+        if (titles[0] == null)
+            titles[0] = " ";
+        
 
         return [titles, sections];
     }
