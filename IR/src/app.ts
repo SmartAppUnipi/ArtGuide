@@ -125,7 +125,7 @@ app.post("/", async (req, res) => {
         );
 
         // 3. check if there is a known entity
-        const knownInstance = await wikidata.getKnownInstance(classificationResult);
+        const knownInstance = await wikidata.tryGetKnownInstance(classificationResult);
 
         let results;
         if (knownInstance) {

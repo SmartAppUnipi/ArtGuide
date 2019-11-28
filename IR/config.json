@@ -1,7 +1,7 @@
 {
     "flowConfig": {
         "entityFilter": {
-            "maxEntityNumber": 5,
+            "maxEntityNumber": 3,
             "minScore": 0.5
         },
         "weight": {
@@ -13,6 +13,9 @@
                 "known": 0.75,
                 "unknown": 0.9
             }
+        },
+        "googleSearchResults": {
+            "maxLimit": 3
         }
     }
 }
