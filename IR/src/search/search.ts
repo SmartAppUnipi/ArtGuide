@@ -117,12 +117,7 @@ export class Search {
                     .queryCustom(q.searchTerms + " " + q.keywords.join(" "), q.language)
                     .then(googleSearchResult => {
 
-                        if (!googleSearchResult) {
-                            logger.warn("[search.ts] Google did not return. ", { query: q });
-                            return;
-                        }
-
-                        if (!googleSearchResult.items) {
+                        if (!googleSearchResult || !googleSearchResult.items) {
                             logger.warn("[search.ts] Google returned no items for query.", { query: q });
                             return;
                         }
