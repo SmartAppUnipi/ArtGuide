@@ -10,6 +10,7 @@ import {
     Query,
     QueryExpansionResponse
 } from "../models";
+import { flowConfig } from "../../config.json";
 
 /**
  * Perform web searches.
@@ -43,14 +44,13 @@ export class Search {
     private buildBasicQueries(classificationResult: ClassificationResult): Array<Query> {
         // TODO: return a meaningful query
         const queries = classificationResult.classification.entities
-            .slice(0, 3)  // take first 3 // TODO: slice using the first big jump on the score
             .map(entity => {
-                return {
+                return new Query({
                     searchTerms: entity.description,
                     score: entity.score,
                     keywords: [],
                     language: classificationResult.userProfile.language
-                };
+                });
             });
         if (!queries.length) logger.debug("[search.ts] Classification entities are empty");
         logger.silly("[search.ts] Basic query built: " + queries);
@@ -182,21 +182,25 @@ export class Search {
      */
     private async toPageResults(googleResult: GoogleSearchResult, query: Query): Promise<Array<PageResult>> {
         const results: Array<PageResult> = [];
+        const itemsLen = Math.min(flowConfig.googleSearchResults.maxLimit, googleResult.items.length)
         await Promise.all(
-            googleResult.items.map((item, index, items) => {
-                // Scrape text from results
-                return this.parser.parse(item.link)
-                    .then(pageResult => {
-                        pageResult.keywords = query.keywords;
-                        // TODO: assign a score multiplier read from config.json
-                        pageResult.score = query.score + (1 - (index/items.length));
-                        results.push(pageResult);
-                        logger.silly("[search.ts] Parsed link " + item.link);
-                    })
-                    .catch(ex => {
-                        logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
-                    });
-            })
+            googleResult.items
+                .slice(0, itemsLen)
+                .map((item, index, items) => {
+                    // Scrape text from results
+                    return this.parser.parse(item.link)
+                        .then(pageResult => {
+
+                            pageResult.keywords = query.keywords;
+                            // TODO: assign a score multiplier read from config.json
+                            pageResult.score = query.score + (1 - (index / itemsLen));
+                            results.push(pageResult);
+                            logger.silly("[search.ts] Parsed link " + item.link);
+                        })
+                        .catch(ex => {
+                            logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
+                        });
+                })
         );
         return results;
     }

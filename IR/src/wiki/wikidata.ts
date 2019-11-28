@@ -51,7 +51,7 @@ export class WikiData {
      * @param classificationResult The classification result, optionally filtered.
      * @returns A KnownInstance object if is a known instance or null otherwise.
      */
-    public getKnownInstance(classificationResult: ClassificationResult): Promise<KnownInstance> {
+    public tryGetKnownInstance(classificationResult: ClassificationResult): Promise<KnownInstance> {
         const language = classificationResult.userProfile.language;
         return Promise.all(
             classificationResult.classification.entities.map(entity => {

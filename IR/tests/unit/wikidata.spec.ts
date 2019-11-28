@@ -35,7 +35,7 @@ describe("Look for known instance", () => {
             userProfile: { language: "en" },
             classification: { entities: entities }
         }
-        const knownInstance = await wikidata.getKnownInstance(classificationResult as ClassificationResult);
+        const knownInstance = await wikidata.tryGetKnownInstance(classificationResult as ClassificationResult);
         expect(knownInstance).toBeDefined();
         expect(knownInstance.WikipediaPageTitle).toBe("Leaning Tower of Pisa")
     });
@@ -59,7 +59,7 @@ describe("Look for known instance", () => {
             userProfile: { language: "en" },
             classification: { entities: entities }
         }
-        const knownInstance = await wikidata.getKnownInstance(classificationResult as ClassificationResult);
+        const knownInstance = await wikidata.tryGetKnownInstance(classificationResult as ClassificationResult);
         expect(knownInstance).toBeDefined();
         expect(knownInstance.WikipediaPageTitle).toBe("Leaning Tower of Pisa")
     });
@@ -79,7 +79,7 @@ describe("Look for known instance", () => {
             userProfile: { language: "en" },
             classification: { entities: entities }
         }
-        const knownInstance = await wikidata.getKnownInstance(classificationResult as ClassificationResult);
+        const knownInstance = await wikidata.tryGetKnownInstance(classificationResult as ClassificationResult);
         expect(knownInstance).toBeNull();
     });
 });
