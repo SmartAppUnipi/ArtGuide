@@ -19,50 +19,23 @@ const wikidata = new WikiData();
 export class Wikipedia {
 
     /**
-     * Perform a Wikipedia search.
+     * Perform a Wikipedia search give a classification result (not a known instance).
      *
      * @param classificationResult The object received from the Classification module.
      * @returns A list of page results.
      * @throws When WikiPedia APIs return an error.
      */
-    public async search(classificationResult: ClassificationResult): Promise<Array<PageResult>> {
-        const queries = await this.buildQueries(classificationResult);
-        // FIXME: handle inexistent wiki page in that language
-        const lang = classificationResult.userProfile.language.toLocaleLowerCase();
-        return Promise.all(queries.map(q => this.getWikiInfo(q.searchTerms, lang, q.score)))
-            .catch(err => {
-                logger.error("[wiki.ts] Error in search: ", err);
-                throw err;
+    public search(classificationResult: ClassificationResult): Promise<Array<PageResult>> {
+        return this.buildQueries(classificationResult)
+            .then(queries => {
+                const lang = classificationResult.userProfile.language.toLocaleLowerCase();
+                return Promise.all(queries.map(query => this.getWikiInfo(query.searchTerms, lang, query.score)));
+            })
+            .catch(ex => {
+                logger.error("[wikipedia.ts] Error in search.",
+                             { entities: classificationResult.classification.entities, exception: ex });
+                return Promise.resolve([]);
             });
-    }
-
-    /**
-     * Builds a query basing on the Classification module result.
-     *
-     * @param classificationResult The object received from the Classification module.
-     * @returns A list of query. If there aren't classification entities an empty array is returned.
-     */
-    private async buildQueries(classificationResult: ClassificationResult): Promise<Array<Query>> {
-
-        if (!classificationResult.classification.entities ||
-            !classificationResult.classification.entities.length) {
-            logger.debug("[wiki.ts] Classification entities are empty");
-            return [];
-        }
-
-        // TODO: Get more than one entity
-        const entity = classificationResult.classification.entities[0];
-        const language = classificationResult.userProfile.language;
-        const mainQuery: Query = {
-            searchTerms: await wikidata.getWikipediaName(entity.entityId, language),
-            score: entity.score,
-            keywords: [],
-            language: language
-        };
-        // TODO: build other queries using the WikiData tags.
-        const queries = [mainQuery];
-        logger.silly("[wiki.ts] Basic query built", { queries });
-        return queries;
     }
 
     /**
@@ -80,6 +53,48 @@ export class Wikipedia {
     }
 
     /**
+     * Builds a query basing on the Classification result (not a known instance).
+     *
+     * @param classificationResult The object received from the Classification module.
+     * @returns A list of query. If there aren't classification entities an empty array is returned.
+     */
+    private buildQueries(classificationResult: ClassificationResult): Promise<Array<Query>> {
+        const language = classificationResult.userProfile.language;
+        // use all the entities
+        return Promise.all(
+            classificationResult.classification.entities.map(entity => {
+                // get the Wikipedia page name from WikiData
+                return wikidata.getWikipediaName(entity.entityId, language)
+                    // build the query
+                    .then(wikipediaName => {
+                        return new Query({
+                            searchTerms: wikipediaName,
+                            score: entity.score,
+                            language: language
+                        });
+                    })
+                    .catch(ex => {
+                        logger.error("[wikipedia.ts] Error while getting Wikipedia page name.",
+                                     { entityId: entity.entityId, exception: ex });
+                        return null;
+                    });
+            })
+        ).then(queries =>
+            queries.filter(query => query != null)
+        )
+            .then(queries => {
+                logger.silly("[wikipedia.ts] Queries built: " + queries);
+                return queries;
+            })
+            .catch(ex => {
+                logger.error("[wikipedia.ts] Error while building queries.",
+                             { entities: classificationResult.classification.entities, exception: ex });
+                return Promise.resolve([]);
+            });
+    }
+
+
+    /**
      * Retrieve WikiPedia info for a query string in a specified language.
      *
      * @param query The string to be searched.
@@ -88,27 +103,29 @@ export class Wikipedia {
      * @returns The WikiPedia content as PageResult object.
      * @throws When WikiPedia APIs returns error.
      */
-    public getWikiInfo(query: string, language: string, score: number): Promise<PageResult> {
+    private getWikiInfo(query: string, language: string, score: number): Promise<PageResult> {
         // wiki object initialized with WikiPedia API endpoint
-        const wikipedia = wiki({ apiUrl: "https://" + language + ".wikipedia.org/w/api.php" });
-        return wikipedia.search(query)
+        const wikijs = wiki({ apiUrl: "https://" + language + ".wikipedia.org/w/api.php" });
+        return wikijs.search(query)
             .then(resultsList => {
                 const title = resultsList.results[0];
-                // return wikipedia.findById("Q17")
-                return wikipedia.page(title)
+                return wikijs.page(title)
                     .then(page => this.buildResult(page, score))
                     .then(pageResult => {
                         pageResult.title = title;
+                        logger.debug("[wikipedia.ts] PageResult correctly build for the query.", { query: query });
                         return pageResult;
                     })
                     .catch(ex => {
-                        logger.error("[wiki.ts] Error in getting the page " + title + " from Wikipedia", ex);
-                        throw ex;
+                        logger.error("[wikipedia.ts] Error in getting the page from Wikipedia.",
+                                     { title: title, exception: ex });
+                        return Promise.resolve(null);
                     });
             })
             .catch(ex => {
-                logger.error("[wiki.ts] Error while retrieving information about " + query + " from Wikipedia", ex);
-                throw ex;
+                logger.error("[wikipedia.ts] Error while retrieving result from Wikipedia.",
+                             { query: query, exception: ex });
+                return Promise.resolve(null);
             });
     }
 
@@ -122,15 +139,7 @@ export class Wikipedia {
      */
     private buildResult(page: Page, score: number): Promise<PageResult> {
         // PageResult object to be returned
-        const pageResult: PageResult = {
-            url: "",
-            title: "",      // set by the caller
-            sections: [],
-            summary: "",
-            score: score,
-            keywords: [],   // keywords are populated from caller which knows the query object
-            tags: []        // tags are populated from caller which knows the query object
-        };
+        const pageResult = new PageResult({ score: score });
         // set url
         pageResult.url = page.url().toString();
         // set sections
@@ -152,9 +161,8 @@ export class Wikipedia {
                     });
                 })
                 .catch(ex => {
-                    logger.error("[wiki.ts] Error in getting the sections from the page " +
-                        pageResult.title + " of Wikipedia", ex);
-                    throw ex;
+                    logger.error("[wikipedia.ts] Error in getting the sections from the page.",
+                                 { page: pageResult.title, exception: ex });
                 }),
             // set summary
             page.summary()
@@ -162,11 +170,14 @@ export class Wikipedia {
                     pageResult.summary = summary;
                 })
                 .catch(ex => {
-                    logger.error("[wiki.ts] Error in getting the summary from the page " +
-                        pageResult.title + " of Wikipedia", ex);
-                    throw ex;
+                    logger.error("[wikipedia.ts] Error in getting the summary from the page.",
+                                 { page: pageResult.title, exception: ex });
                 })
-        ]).then(() => pageResult);
+        ]).then(() => {
+            logger.debug("[wikipedia.ts] PageResult correctly built.",
+                         { pageTitle: pageResult.title, pageUrl: pageResult.url });
+            return pageResult;
+        });
     }
 
 }

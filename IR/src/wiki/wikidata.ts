@@ -132,9 +132,9 @@ export class WikiData {
                         const simplifiedEntities = new WikiDataProperties();
 
                         // for each entity id
-                        for (let entityId in content.entities) {
+                        for (const entityId in content.entities) {
                             // for each property we want to extract
-                            for (let enumKey in WikidataPropertyType) {
+                            for (const enumKey in WikidataPropertyType) {
                                 // enum => ["InstanceOf", "Creator", ...]
                                 const claimName = enumKey as keyof typeof WikidataPropertyType;
                                 simplifiedEntities[claimName] =

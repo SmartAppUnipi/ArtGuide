@@ -1,6 +1,7 @@
 import { AdaptationEndpoint } from "./environment";
 import bodyParser from "body-parser";
 import express from "express";
+import { flowConfig } from "../config.json";
 import logger from "./logger";
 import packageJson from "../package.json";
 import path from "path";
@@ -8,7 +9,6 @@ import { Search } from "./search";
 import { ClassificationResult, Query } from "./models";
 import { post, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
-import { flowConfig } from '../config.json';
 
 /** Search module */
 const search = new Search();
