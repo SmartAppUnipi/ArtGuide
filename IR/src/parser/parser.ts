@@ -105,7 +105,7 @@ export class Parser {
         let index2 = 0;
         const text1Length = text1.length;
         const text2Length = text2.length;
-        while (index1 < text1Length) {
+        while (index1 < text1Length && index2 < text2Length) {
             if (text1[index1] == text2[index2]) {
                 if (!sections[nSections]) 
                     sections[nSections] = "";
@@ -195,11 +195,24 @@ export class Parser {
         });
     }
 
+    public validURL(str: string) {
+      var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+      return !!pattern.test(str);
+    }
+
     public async parse(url: string): Promise<PageResult> {
         /*
          *  FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
          * var sectionObject = await this.getTitlesAndSections(url)
          */
+        if(!this.validURL(url)) {
+          return
+        }
         return JSDOM.fromURL(url).then(async dom => {
             // look for a list of preferred query selectors
             let textContent = "";
@@ -231,6 +244,7 @@ export class Parser {
 
             let textContentWithoutTitle = "";
             let contentWithoutTitle;
+
             if (!nodesWithoutTitle.length) {
                 contentWithoutTitle = dom.window.document.body;
                 textContentWithoutTitle = contentWithoutTitle.textContent;
@@ -252,10 +266,12 @@ export class Parser {
             let i, j = 0;
             for (i = 0; i < sections.length; i++) {
                 if (sections[i].length > 20) {
+                   let keywords = rake(sections[i]).slice(0, 10)
+                   console.log(keywords)
                     sectionsObj[j] = {
                         title: titles[i],
                         content: sections[i],
-                        tags: []// FIXME: rake(sections[i]).slice(0, 10)
+                        tags: [] // FIXME: rake(sections[i]).slice(0, 10)
                     };
                     j++;
                 }
