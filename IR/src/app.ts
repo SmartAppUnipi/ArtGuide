@@ -109,8 +109,8 @@ app.post("/", async (req, res) => {
          */
 
         // 1. sort results.entities and result.labels by score descending
-        classificationResult.classification.entities.sort((e1, e2) => e1.score - e2.score);
-        classificationResult.classification.labels.sort((l1, l2) => l1.score - l2.score);
+        classificationResult.classification.entities.sort((e1, e2) => e2.score - e1.score);
+        classificationResult.classification.labels.sort((l1, l2) => l2.score - l1.score);
 
         // 2. slice results.entities and results.labels reducing the number of results
         classificationResult.classification.entities = reduceEntities(
