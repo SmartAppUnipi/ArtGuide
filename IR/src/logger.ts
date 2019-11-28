@@ -9,7 +9,9 @@ const logger = winston.createLogger({
     format: winston.format.combine(
         winston.format.timestamp({
             format: "YYYY-MM-DD HH:mm:ss"
-        })),
+        }),
+        winston.format.metadata({ fillExcept: ['message', 'level', 'timestamp', 'label'] })
+    ),
     transports: [
     ]
 });
@@ -19,7 +21,19 @@ if (LoggerConfig.file) {
         new winston.transports.File({
             filename: LoggerConfig.file,
             handleExceptions: true,
-            format: winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
+            format: winston.format.combine(
+                // Render in one line in your log file.
+                // If you use prettyPrint() here it will be really
+                // difficult to exploit your logs files afterwards.
+                winston.format.json({
+                    replacer: (key, value) => {
+                        if (value instanceof Error)
+                            return { message: value.message, stack: value.stack }
+                        return value;
+                    },
+                    space: 4
+                })
+            )
         })
     );
 }
