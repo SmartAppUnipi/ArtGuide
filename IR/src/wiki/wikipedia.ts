@@ -52,14 +52,12 @@ export class Wikipedia {
 
         // TODO: Get more than one entity
         const entity = classificationResult.classification.entities[0];
-        const id = entity.entityId;
-        const wikidataid = await wikidata.getWikiDataId(id);
-        const lang = classificationResult.userProfile.language;
+        const language = classificationResult.userProfile.language;
         const mainQuery: Query = {
-            searchTerms: await wikidata.getWikipediaName(lang, wikidataid),
+            searchTerms: await wikidata.getWikipediaName(entity.entityId, language),
             score: entity.score,
             keywords: [],
-            language: classificationResult.userProfile.language
+            language: language
         };
         // TODO: build other queries using the WikiData tags.
         const queries = [mainQuery];

@@ -1,10 +1,9 @@
 import { ClassificationResult } from "./classification.models";
 import { GoogleSearchResult } from "./google-search.models";
-import { KnownInstance } from "./known-instance.models";
 import { UserProfile } from "./user-profile.model";
+import { KnownInstance, WikiDataProperties } from "./wikidata-result.model";
 import { PageResult, PageSection } from "./page-result.model";
 import { Query, QueryExpansionRequest, QueryExpansionResponse } from "./query-expansion.models";
-import { WikiDataFields, WikiDataResult } from "./wikidata-result.model";
 
 export {
     ClassificationResult,
@@ -15,12 +14,10 @@ export {
     QueryExpansionRequest,
 
     KnownInstance,
+    WikiDataProperties,
 
     GoogleSearchResult,
     
-    WikiDataResult,
-    WikiDataFields,
-
     PageSection,
     PageResult
 };

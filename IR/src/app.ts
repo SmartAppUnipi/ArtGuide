@@ -130,12 +130,16 @@ app.post("/", async (req, res) => {
         classificationResult.classification.labels.sort((l1, l2) => l1.score - l2.score);
 
         // 2. slice results.entities and results.labels reducing the number of results
-        classificationResult.classification.entities = reduceEntities(classificationResult.classification.entities,
-                                                                      config.entityFilter.maxEntityNumber,
-                                                                      config.entityFilter.minScore);
-        classificationResult.classification.labels = reduceEntities(classificationResult.classification.labels,
-                                                                    config.entityFilter.maxEntityNumber,
-                                                                    config.entityFilter.minScore);
+        classificationResult.classification.entities = reduceEntities(
+            classificationResult.classification.entities,
+            config.entityFilter.maxEntityNumber,
+            config.entityFilter.minScore
+        );
+        classificationResult.classification.labels = reduceEntities(
+            classificationResult.classification.labels,
+            config.entityFilter.maxEntityNumber,
+            config.entityFilter.minScore
+        );
 
         // 3. check if there is a known entity
         const knownInstance = await wikidata.getKnownInstance(classificationResult);

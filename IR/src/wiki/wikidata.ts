@@ -3,24 +3,21 @@ import "wikidata-sdk";
 import fetch from "node-fetch";
 import logger from "../logger";
 import path from "path";
-import { ClassificationResult, KnownInstance, WikiDataFields, WikiDataResult } from "../models";
+import { ClassificationResult, KnownInstance, WikiDataProperties } from "../models";
 
 // eslint-disable-next-line
 const wbk = require("wikidata-sdk");
 
 enum WikidataPropertyType {
     Instanceof = "P31",
-    // Painting / statue
+    // Painting/monument/statue
     Creator = "P170",
     Genre = "P136",
     Movement = "P135",
-    // Monument
+    // Architecture
     Architect = "P84",
     ArchitecturalStyle = "P149",
-    /*
-     * painting = "Q3305213",
-     *sculpture = "Q860861",
-     */
+    // Architectures and in-museum-located painting and monuments
     Location = "P625"
 }
 
@@ -30,111 +27,43 @@ enum WikidataPropertyType {
 export class WikiData {
 
     /**
-     * Perform a WikiData search.
+     * Retrieve Wikipedia page name from WikiData given the entity id.
      *
-     * @param classificationResult The object received from the Classification module.
-     * @returns {Promise<WikiDataResult>} A WikiData result or @type {null} if there are no entities.
+     * @param freebaseId The freebaseId id to look for.
+     * @param lang The language code, ie. the Wikipedia subdomain to search in.
+     * @returns The Wikipedia page name.
      */
-    public search(classificationResult: ClassificationResult): Promise<WikiDataResult> {
-        if (classificationResult.classification.entities && classificationResult.classification.entities.length) {
-            try {
-                return this.queryWikiData(classificationResult.classification.entities[0].entityId);
-            } catch (ex) {
-                logger.warn("[wikidata.ts] Caught exception: ", ex);
-                return Promise.resolve(null);
-            }
-        }
-        return Promise.resolve(null);
+    public getWikipediaName(freebaseId: string, lang: string): Promise<string> {
+        // translate freebaseId in WikiData id
+        return this.getWikiDataId(freebaseId)
+            .then(wikidataId => {
+                const url = wbk.getEntities([wikidataId]);
+                return fetch(url)
+                    .then(r => r.json())
+                    .then(content => content.entities[wikidataId].sitelinks[`${lang}wiki`].title);
+            });
     }
+
 
     /**
-     * Convert a freebase id in a WikiData id.
-     *
-     * @param freebaseId Freebase id from the Google Image Vision API (coming from Classification module).
-     * @returns {Promise<string>} The WikiData id.
+     * Check if a Freebase id refers to a known instance or not.
+     * 
+     * @param classificationResult The classification result, optionally filtered.
+     * @returns A KnownInstance object if is a known instance or null otherwise.
      */
-    public getWikiDataId(freebaseId: string): Promise<string> {
-
-        const sparql = `
-    PREFIX wd: <http://www.wikidata.org/entity/>
-    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-    PREFIX wikibase: <http://wikiba.se/ontology#>
-    SELECT ?s WHERE {
-     ?s ?p ?o .
-     ?s wdt:P646 "${freebaseId}" .
-     SERVICE wikibase:label {
-       bd:serviceParam wikibase:language "en" .
-     }
-    }
-    LIMIT 1`;
-        const url = wbk.sparqlQuery(sparql);
-
-        try {
-            return fetch(url)
-                .then(response => response.json())
-                .then(json => {
-                    return path.basename(json.results.bindings[0].s.value);
-                });
-        } catch (e) {
-            logger.error("[wikidata.ts] Error: ", e);
-            return null;
-        }
-    }
-
-    /**
-     * Extract metadata from WikiData.
-     *
-     * @param freebaseId freebase id from the Google Image Vision API (coming from Classification module).
-     * @returns WikiData output.
-     * @throws {Error} if it is not possible to translate the freebase id in a WikiData id.
-     */
-    private queryWikiData(freebaseId: string): Promise<WikiDataResult> {
-        return this.getWikiDataId(freebaseId).then(id => {
-            if (!id) {
-                const err = new Error(`Unable to translate ${freebaseId} into WikiData ID`);
-                logger.error("[wikidata.ts] Error: ", err);
-                throw err;
-            }
-            return fetch(`https://www.wikidata.org/w/api.php?action=wbgetentities&ids=${id}&format=json`)
-                .then(response => response.json())
-                .then(json => {
-                    // clean data
-                    return {
-                        id: id,
-                        descriptionEn: json.entities[id].descriptions.en,
-                        claims: json.entities[id].claims
-                    };
-                });
-        });
-    }
-
-    /**
-     * Retrieve Wikipedia name from Wikidata, given the language and the wikidata id
-     *
-     * @param lang The language chosen by the user, gives the Wikipedia subdomain
-     * @param wikidataId The WikiData id to look for.
-     * @returns
-     */
-    public getWikipediaName(lang: string, wikidataId: string): Promise<string> {
-        const url = wbk.getEntities([wikidataId]);
-
-        return fetch(url)
-            .then(r => r.json())
-            .then(content => content.entities[wikidataId].sitelinks[`${lang}wiki`].title);
-    }
-
     public getKnownInstance(classificationResult: ClassificationResult): Promise<KnownInstance> {
         const language = classificationResult.userProfile.language;
         return Promise.all(
             classificationResult.classification.entities.map(entity => {
                 return this.getProperties(entity.entityId, language)
                     .then(properties => {
+                        const knownInstance = properties as any as KnownInstance;
                         // check if is known by looking for the presence of some properties
-                        if (properties.Creator.length > 0 ||
-                            properties.Architect.length > 0 ||
-                            properties.Location.length > 0) {
-                            properties.score = entity.score;
-                            return properties as KnownInstance;
+                        if (knownInstance.Creator.length > 0 ||
+                            knownInstance.Architect.length > 0 ||
+                            knownInstance.Location.length > 0) {
+                            knownInstance.score = entity.score;
+                            return knownInstance;
                         }
                         // not a know instance
                         return null;
@@ -146,26 +75,56 @@ export class WikiData {
             .then(resArray => resArray.length ? resArray[0] : null);
     }
 
+
     /**
-     * Check if a Freebase id refers to a known instance or not.
+     * Convert a freebase id in a WikiData id.
      *
-     * @param freebaseId The Google webentities id
-     * @param language
-     * @returns {Promise<WikiDataFields>} that is populated if frebaseId refers to a known instance, null otherwise
+     * @param freebaseId Freebase id from the Google Image Vision API (coming from Classification module).
+     * @returns {Promise<string>} The WikiData id.
      */
-    public getProperties(freebaseId: string, language: string): Promise<any> {
+    private getWikiDataId(freebaseId: string): Promise<string> {
+        const sparql = `
+            PREFIX wd: <http://www.wikidata.org/entity/>
+            PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+            PREFIX wikibase: <http://wikiba.se/ontology#>
+            SELECT ?s WHERE {
+            ?s ?p ?o .
+            ?s wdt:P646 "${freebaseId}" .
+            SERVICE wikibase:label {
+            bd:serviceParam wikibase:language "en" .
+            }
+            }
+            LIMIT 1
+        `;
+        const url = wbk.sparqlQuery(sparql);
+        return fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                return path.basename(json.results.bindings[0].s.value);
+            })
+            .catch(ex => {
+                const err = new Error(`Unable to translate the freebaseId ${freebaseId} into a WikiDataID. ${ex}`);
+                logger.warn("[wikidata.ts] ", err);
+                throw err;
+            });
+    }
+
+    /**
+     * Return the properties of 
+     *
+     * @param freebaseId The freebaseId id to look for.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
+     * @returns An object with some fields from WikiData.
+     */
+    private getProperties(freebaseId: string, language: string): Promise<WikiDataProperties> {
         // translate freebaseId in WikiData id
         return this.getWikiDataId(freebaseId)
-            .then(id => {
-                if (!id) {
-                    const err = new Error(`Unable to translate ${freebaseId} into WikiData ID`);
-                    logger.error("[wikidata.ts] Error: ", err);
-                    throw err;
-                }
+            .then(wikidataId => {
                 // get the WikiData content for the entity
-                return fetch(wbk.getEntities([id]))
+                return fetch(wbk.getEntities([wikidataId]))
                     .then(r => r.json())
                     .then(content => {
+                        // eslint-disable-next-line
                         // simplify entities (https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities)
                         content.entities = wbk.simplify.entities(content.entities);
 
@@ -173,133 +132,27 @@ export class WikiData {
                         const properties = Object.keys(WikidataPropertyType).filter(k => Number.isNaN(Number(k)));
 
                         // Key is the WikiDataPropertyType, values are arrays of wikidata ids
-                        const simplifiedEntities: {
-                            [k: string]: Array<string>;
-                        } = {};
+                        const simplifiedEntities = new WikiDataProperties({});
 
                         // for each entity id
                         for (const entityId in content.entities) {
                             // for each property we want to extract
                             properties.forEach(property => {
-                                simplifiedEntities[property] = content.entities[entityId].claims[(WikidataPropertyType as any)[property]] || [];
+                                simplifiedEntities[property] =
+                                    content.entities[entityId].claims[(WikidataPropertyType as any)[property]] || [];
                             });
                         }
 
                         // set also the Wikipedia page title
-                        simplifiedEntities.WikipediaPageTitle = content.entities[id].sitelinks[`${language}wiki`].title;
+                        simplifiedEntities.WikipediaPageTitle =
+                            content.entities[wikidataId].sitelinks[`${language}wiki`].title;
 
                         return simplifiedEntities;
                     });
-            });
-    }
-
-
-
-    /**
-     * Retrieve expected fields from the WikiData page
-     *
-     * @param freebaseId The Google webentities id
-     * @returns
-     */
-    public getSimplifiedClaims(freebaseId: string): Promise<WikiDataFields> {
-        return this.getWikiDataId(freebaseId).then(async id => {
-            if (!id) {
-                const err = new Error(`Unable to translate ${freebaseId} into WikiData ID`);
-                logger.error("[wikidata.ts] Error: ", err);
-                throw err;
-            }
-            const url = wbk.getEntities([id]);
-
-            const content = await fetch(url)
-                .then(r => r.json());
-
-            // simplify entities (https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities)
-            content.entities = wbk.simplify.entities(content.entities);
-
-            // contains the key of the enum => ["InstanceOf", "Creator", ...]
-            const properties = Object.keys(WikidataPropertyType).filter(k => Number.isNaN(Number(k)));
-
-
-            /*
-             * Key is the WikiDataPropertyType, values are arrays of wikidata ids
-             */
-            const simplifiedEntities: {
-                [k: string]: Array<string>;
-            } = {};
-
-            // for each entity id
-            Object.keys(content.entities).forEach(entityId => {
-
-                // for each property we want to extract
-                properties.forEach(property => {
-                    const simplifiedClaimsForProperty = content.entities[entityId].claims[(WikidataPropertyType as any)[property]];
-                    simplifiedEntities[property] = simplifiedClaimsForProperty || [];
-                });
-            });
-
-            const res: WikiDataFields = {
-                Instanceof: simplifiedEntities.Instanceof,
-                Creator: simplifiedEntities.Creator,
-                Genre: simplifiedEntities.Genre,
-                Movement: simplifiedEntities.Movement,
-                Architect: simplifiedEntities.Architect,
-                ArchitecturalStyle: simplifiedEntities.ArchitecturalStyle
-            };
-
-            return res;
-        });
-    }
-
-    /**
-     * Given a WikiData entity returns the list of the labels for properties 
-     * 'InstanceOf' (P31) and 'SubClassOf' (P279) until the WikiData root.
-     * 
-     * This function exploits SparQL to perform a single HTTP request.
-     * 
-     *  The returned list is unordered.
-     * 
-     * @param entityId The wikidata entity id (eg. Pisa Tower = Q39054)
-     * @returns An array with the labels corresponding to the properties values 
-     * (eg. for Pisa Tower => `["bell tower", "tower", "architectural structure", "work", "construction", ... ]`)
-     */
-    public async getEntityRootPath(entityId: string): Promise<Array<string>> {
-        /*
-         * InstanceOf = P31
-         * SubClass = P279
-         */
-        const sparql = `
-            SELECT ?entity ?entityLabel WHERE {
-                wd:${entityId} wdt:P31*/wdt:P279* ?val.
-                ?val wdt:P31*/wdt:P279* ?entity
-                SERVICE wikibase:label {
-                    bd:serviceParam wikibase:language "en" .
-                }
-            } group by ?entity ?entityLabel
-        `;
-
-        const url = wbk.sparqlQuery(sparql);
-
-        return fetch(url)
-            .then(r => r.json())
-            .then(tree => {
-
-                const labels = tree.results.bindings
-                    .map((b: any) => b.entityLabel.value) as Array<string>;
-
-                // if the entityId is invalid, the query returns ["entityId"]
-                if (labels &&
-                    labels.length == 1 &&
-                    labels[0] == entityId) {
-                    // I return empty array instead
-                    return [];
-                }
-
-                return labels;
-
             })
             .catch(ex => {
-                logger.error("[wikidata.ts] getEntityRootPath(): Error: ", ex);
-                return null;
+                logger.warn("[wikidata.ts] ", ex);
+                return Promise.resolve(new WikiDataProperties({}));
             });
     }
 
