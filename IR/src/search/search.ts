@@ -53,7 +53,7 @@ export class Search {
                 });
             });
         if (!queries.length) logger.debug("[search.ts] Classification entities are empty");
-        logger.silly("[search.ts] Basic query built: " + queries);
+        logger.silly("[search.ts] Basic query built", { queries });
         return queries;
     }
 
@@ -66,12 +66,13 @@ export class Search {
      * @returns {Array<Query>} An array of object containing the originalQuery and an array expandedKeywords.
      */
     private extendQuery(queries: Array<Query>, queryExpansion: QueryExpansionResponse): Array<Query> {
-        logger.silly("[search.ts] Query expansion: " + queryExpansion);
+        logger.silly("[search.ts] Query expansion request", { queryExpansion });
         const expandedQueries: Array<Query> = [];
         queries.forEach(query => {
             for (const key in queryExpansion.keywordExpansion)
                 expandedQueries.push(Object.assign({}, query, { keywords: queryExpansion.keywordExpansion[key] }));
         });
+        logger.silly("[search.ts] Expanded queries", { queryExpansion });
         return expandedQueries;
     }
 
@@ -113,22 +114,20 @@ export class Search {
                 // query Google Search and get the list of results
                 return this.googleSearch
                     .queryCustom(q.searchTerms + " " + q.keywords.join(" "), q.language)
-                    .then(queryResult => {
+                    .then(googleSearchResult => {
 
-                        if (!queryResult) {
-                            const err = new Error("Error: empty query result.");
-                            logger.warn("[search.ts] ", err);
+                        if (!googleSearchResult) {
+                            logger.warn("[search.ts] Google did not return. ", { query: q });
                             return;
                         }
 
-                        if (!queryResult.items) {
-                            logger.debug("[search.ts] No results for query " +
-                                queryResult.queries.request[0].searchTerms);
+                        if (!googleSearchResult.items) {
+                            logger.warn("[search.ts] Google returned no items for query.", { query: q });
                             return;
                         }
 
                         return this
-                            .toPageResults(queryResult, q)
+                            .toPageResults(googleSearchResult, q)
                             .then(pageResults => {
 
                                 /*
@@ -147,7 +146,7 @@ export class Search {
                             });
                     })
                     .catch(ex => {
-                        logger.warn("[search.ts] Caught exception while processing query", { query: q, exception: ex });
+                        logger.error("[search.ts] Caught exception while processing a query.", { query: q, exception: ex });
                     });
             })
         ).then(() => results);
@@ -200,7 +199,7 @@ export class Search {
                             pageResult.keywords = query.keywords;
 
                             results.push(pageResult);
-                            logger.silly("[search.ts] Parsed link " + item.link);
+                            logger.silly("[search.ts] Parsed link.", { url: item.link });
                         })
                         .catch(ex => {
                             logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);

@@ -68,20 +68,14 @@ export class GoogleSearch {
                 .then(res => res.json())
                 .then(result => {
                     this.cacheService.set(key, result);
-                    logger.debug("[google.ts] Cache insert:" + key);
+                    logger.debug("[google.ts] Cache insert.", { key });
                     return result;
                 });
         } else {
             // cache hit
-            logger.debug("[google.ts] Cache hit:" + key);
+            logger.debug("[google.ts] Cache hit.", { key });
         }
 
-
-        if (queryResult.error) {
-            const err = new Error(queryResult.error.message);
-            logger.warn("[google.ts] Error in query \"" + query + "\". Query result error: ", err);
-            return null;
-        }
         return queryResult;
     }
 
@@ -95,6 +89,7 @@ export class GoogleSearch {
      * @throws {Error} if the error field is set on the API response.
      */
     public queryCustom(query: string, language: string): Promise<GoogleSearchResult> {
+        logger.debug("[google-search.ts] Making query to custom Google", { query: query, language: language });
         return this.query(this.googleSearchUrls[language as "it" | "en"].custom, query, language);
     }
 
@@ -108,6 +103,7 @@ export class GoogleSearch {
      * @throws {Error} if the error field is set on the API response.
      */
     public queryRestricted(query: string, language: string): Promise<GoogleSearchResult> {
+        logger.debug("[google-search.ts] Making query to restricted Google", { query: query, language: language });
         return this.query(this.googleSearchUrls[language as "it" | "en"].restricted, query, language);
     }
 
