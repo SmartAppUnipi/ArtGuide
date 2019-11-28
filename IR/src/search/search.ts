@@ -1,4 +1,5 @@
 import { AdaptationEndpoint } from "../environment";
+import { flowConfig } from "../../config.json";
 import { GoogleSearch } from "./google-search";
 import logger from "../logger";
 import { Parser } from "../parser";
@@ -10,7 +11,6 @@ import {
     Query,
     QueryExpansionResponse
 } from "../models";
-import { flowConfig } from "../../config.json";
 
 /**
  * Perform web searches.
@@ -146,7 +146,8 @@ export class Search {
                             });
                     })
                     .catch(ex => {
-                        logger.error("[search.ts] Caught exception while processing a query.", { query: q, exception: ex });
+                        logger.error("[search.ts] Caught exception while processing a query.",
+                                     { query: q, exception: ex });
                     });
             })
         ).then(() => results);
@@ -176,8 +177,7 @@ export class Search {
      *they must be explicitly passed by the caller.
      *
      * @param googleResult The google search result.
-     * @param query
-     * @param keywords The keywords associated to the query that produced the google search result.
+     * @param query The query that produced the result.
      * @returns The array of page results corresponding to the parsed pages returned from Google.
      */
     private async toPageResults(googleResult: GoogleSearchResult, query: Query): Promise<Array<PageResult>> {

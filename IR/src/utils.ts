@@ -27,7 +27,7 @@ export function post<T = any>(url: string, body: any): Promise<T> {
  * @returns The list of survived entities.
  */
 export function reduceEntities(entities: Array<BasicFieldWithId>,
-    maxEntityNumber = entities.length, minScore = 0): Array<BasicFieldWithId> {
+        maxEntityNumber = entities.length, minScore = 0): Array<BasicFieldWithId> {
     let maxGap = -1;
     let cutIndex = -1;
 
