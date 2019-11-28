@@ -8707,5 +8707,345 @@
                 }
             }
         ]
+    },
+    "[it]-Torre di Pisa": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Torre di Pisa",
+                    "totalResults": "8750",
+                    "searchTerms": "Torre di Pisa",
+                    "count": 10,
+                    "startIndex": 1,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ],
+            "nextPage": [
+                {
+                    "title": "Google Custom Search - Torre di Pisa",
+                    "totalResults": "8750",
+                    "searchTerms": "Torre di Pisa",
+                    "count": 10,
+                    "startIndex": 11,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ]
+        },
+        "context": {
+            "title": "SmartApps-Art-IT"
+        },
+        "searchInformation": {
+            "searchTime": 0.489318,
+            "formattedSearchTime": "0,49",
+            "totalResults": "8750",
+            "formattedTotalResults": "8.750"
+        },
+        "items": [
+            {
+                "kind": "customsearch#result",
+                "title": "Torre di Pisa - Wikipedia",
+                "htmlTitle": "<b>Torre di Pisa</b> - Wikipedia",
+                "link": "https://it.wikipedia.org/wiki/Torre_di_Pisa",
+                "displayLink": "it.wikipedia.org",
+                "snippet": "La torre di Pisa (popolarmente torre pendente e, a Pisa, la Torre) è il campanile \ndella cattedrale di Santa Maria Assunta, nella celeberrima piazza del Duomo di ...",
+                "htmlSnippet": "La <b>torre di Pisa</b> (popolarmente torre pendente e, a Pisa, la Torre) è il campanile <br>\ndella cattedrale di Santa Maria Assunta, nella celeberrima piazza del Duomo di&nbsp;...",
+                "cacheId": "kpVvWl1BWVgJ",
+                "formattedUrl": "https://it.wikipedia.org/wiki/Torre_di_Pisa",
+                "htmlFormattedUrl": "https://it.wikipe<b>dia</b>.org/wiki/<b>Torre</b>_<b>di</b>_<b>Pisa</b>",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "182",
+                            "height": "277",
+                            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFg_lO_n3FYnP7QLD1wMWybZWYe9DUGjM1SVktqLw39Hg2xvkoTsyFVs"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "referrer": "origin",
+                            "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Torre della Muda - Wikipedia",
+                "htmlTitle": "<b>Torre</b> della Muda - Wikipedia",
+                "link": "https://it.wikipedia.org/wiki/Torre_della_Muda",
+                "displayLink": "it.wikipedia.org",
+                "snippet": "La Torre della Muda era un'antica torre medievale di Pisa, nota poiché è stata il \nluogo in cui furono imprigionati e lasciati morire di fame il conte Ugolino della ...",
+                "htmlSnippet": "La <b>Torre</b> della Muda era un&#39;antica <b>torre</b> medievale <b>di Pisa</b>, nota poiché è stata il <br>\nluogo in cui furono imprigionati e lasciati morire <b>di</b> fame il conte Ugolino della&nbsp;...",
+                "cacheId": "Ttwc-ipG6UgJ",
+                "formattedUrl": "https://it.wikipedia.org/wiki/Torre_della_Muda",
+                "htmlFormattedUrl": "https://it.wikipe<b>dia</b>.org/wiki/<b>Torre</b>_<b>del</b>la_Muda",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "187",
+                            "height": "270",
+                            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQfXz77puXc9omKAc9trzedKPmY5Q5SjxB6JJOxxF3hnYO4EokXTLcRCLhH"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "referrer": "origin",
+                            "og:image": "https://upload.wikimedia.org/wikipedia/commons/0/06/Torre_della_Fame%2C_lasinio_Giovanni_Paolo%2C_1865.jpg"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://upload.wikimedia.org/wikipedia/commons/0/06/Torre_della_Fame%2C_lasinio_Giovanni_Paolo%2C_1865.jpg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Rifugio Torre di Pisa - Wikipedia",
+                "htmlTitle": "Rifugio <b>Torre di Pisa</b> - Wikipedia",
+                "link": "https://it.wikipedia.org/wiki/Rifugio_Torre_di_Pisa",
+                "displayLink": "it.wikipedia.org",
+                "snippet": "Il rifugio Torre di Pisa è un rifugio alpino del gruppo del Latemar, esso si trova ad \nuna quota di 2.671 m s.l.m., nel territorio comunale di Predazzo (TN).",
+                "htmlSnippet": "Il rifugio <b>Torre di Pisa</b> è un rifugio alpino del gruppo del Latemar, esso si trova ad <br>\nuna quota di 2.671 m s.l.m., nel territorio comunale di Predazzo (TN).",
+                "cacheId": "qhv_U5K_8KEJ",
+                "formattedUrl": "https://it.wikipedia.org/wiki/Rifugio_Torre_di_Pisa",
+                "htmlFormattedUrl": "https://it.wikipe<b>dia</b>.org/wiki/Rifugio_<b>Torre</b>_<b>di</b>_<b>Pisa</b>",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "259",
+                            "height": "194",
+                            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnwMc7BbM7EgPFMP7uSR18J15MLS5MvPlBLq-vtMvkXWSAHNjRlQUT3aM"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "referrer": "origin",
+                            "og:image": "https://upload.wikimedia.org/wikipedia/it/thumb/6/6d/Rifugio_Torre_di_Pisa_%28Latemar%29_2018.jpg/1200px-Rifugio_Torre_di_Pisa_%28Latemar%29_2018.jpg"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://upload.wikimedia.org/wikipedia/it/thumb/6/6d/Rifugio_Torre_di_Pisa_%28Latemar%29_2018.jpg/1200px-Rifugio_Torre_di_Pisa_%28Latemar%29_2018.jpg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Piazza dei Miracoli - Wikipedia",
+                "htmlTitle": "Piazza <b>dei</b> Miracoli - Wikipedia",
+                "link": "https://it.wikipedia.org/wiki/Piazza_dei_Miracoli",
+                "displayLink": "it.wikipedia.org",
+                "snippet": "La piazza del Duomo è il centro artistico e turistico più importante di Pisa. \nAnnoverata fra i ..... La Torre di Pisa è la più famosa torre pendente del mondo, \nnonché un monumento universalmente noto. Iniziata nel 1173, cominciò a \ninclinarsi sul ...",
+                "htmlSnippet": "La piazza del Duomo è il centro artistico e turistico più importante di Pisa. <br>\nAnnoverata fra i ..... La <b>Torre di Pisa</b> è la più famosa torre pendente del mondo, <br>\nnonché un monumento universalmente noto. Iniziata nel 1173, cominciò a <br>\ninclinarsi sul&nbsp;...",
+                "cacheId": "RzduYk-EWYcJ",
+                "formattedUrl": "https://it.wikipedia.org/wiki/Piazza_dei_Miracoli",
+                "htmlFormattedUrl": "https://it.wikipe<b>dia</b>.org/wiki/Piazza_<b>dei</b>_Miracoli",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "275",
+                            "height": "183",
+                            "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTnZIt0xu1kOK3s4Dmjz98q1fioCLIh9F3ttFUtMXW1uvheU5VWwWXSCWw"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "referrer": "origin",
+                            "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/CampodeiMiracoliPisa_edit.jpg/1200px-CampodeiMiracoliPisa_edit.jpg"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/CampodeiMiracoliPisa_edit.jpg/1200px-CampodeiMiracoliPisa_edit.jpg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Torre di Sant'Agnese - Wikipedia",
+                "htmlTitle": "<b>Torre di</b> Sant&#39;Agnese - Wikipedia",
+                "link": "https://it.wikipedia.org/wiki/Torre_di_Sant%27Agnese",
+                "displayLink": "it.wikipedia.org",
+                "snippet": "La torre di Sant'Agnese a Pisa si trova nelle antiche mura presso via Nicola \nPisano. Di struttura massiccia, presenta una pianta quadrata e fu costruita ...",
+                "htmlSnippet": "La <b>torre di</b> Sant&#39;Agnese <b>a Pisa</b> si trova nelle antiche mura presso via Nicola <br>\nPisano. <b>Di</b> struttura massiccia, presenta una pianta quadrata e fu costruita&nbsp;...",
+                "cacheId": "vIcBwE31UPYJ",
+                "formattedUrl": "https://it.wikipedia.org/wiki/Torre_di_Sant%27Agnese",
+                "htmlFormattedUrl": "https://it.wikipe<b>dia</b>.org/wiki/<b>Torre</b>_<b>di</b>_Sant%27Agnese",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "194",
+                            "height": "259",
+                            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQOoeqWD5PODhyHJgOgoR5pAQU_JYtfr2o_tGiGdF1YqfQLN3foiREqm1g"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "referrer": "origin",
+                            "og:image": "https://upload.wikimedia.org/wikipedia/commons/7/70/Torre_di_Sant%27Agnese.JPG"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://upload.wikimedia.org/wikipedia/commons/7/70/Torre_di_Sant%27Agnese.JPG"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Torre Guelfa - Wikipedia",
+                "htmlTitle": "<b>Torre</b> Guelfa - Wikipedia",
+                "link": "https://it.wikipedia.org/wiki/Torre_Guelfa",
+                "displayLink": "it.wikipedia.org",
+                "snippet": "La Torre Guelfa è una torre di Pisa presso la Cittadella, che risale alla metà del \nXV secolo. Indice. 1 Storia; 2 Note; 3 Voci correlate; 4 Altri progetti ...",
+                "htmlSnippet": "La Torre Guelfa è una <b>torre di Pisa</b> presso la Cittadella, che risale alla metà del <br>\nXV secolo. Indice. 1 Storia; 2 Note; 3 Voci correlate; 4 Altri progetti&nbsp;...",
+                "cacheId": "U2L8Gbo4vTcJ",
+                "formattedUrl": "https://it.wikipedia.org/wiki/Torre_Guelfa",
+                "htmlFormattedUrl": "https://it.wikipe<b>dia</b>.org/wiki/<b>Torre</b>_Guelfa",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "259",
+                            "height": "194",
+                            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRulsoG10PjktxyRUvTOeuZKVZTGZPCCEMiaQDK03x9Brg63h6UYCwqscff"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "referrer": "origin",
+                            "og:image": "https://upload.wikimedia.org/wikipedia/commons/9/9a/433PisaCittadella.JPG"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://upload.wikimedia.org/wikipedia/commons/9/9a/433PisaCittadella.JPG"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Categoria:Torri di Pisa - Wikipedia",
+                "htmlTitle": "Categoria:<b>Torri di Pisa</b> - Wikipedia",
+                "link": "https://it.wikipedia.org/wiki/Categoria:Torri_di_Pisa",
+                "displayLink": "it.wikipedia.org",
+                "snippet": "Pagine nella categoria \"Torri di Pisa\". Questa categoria contiene le 13 pagine \nindicate di seguito, su un totale di 13. C. Torre del Campano. D. Torre De \nCantone ...",
+                "htmlSnippet": "Pagine nella categoria &quot;<b>Torri di Pisa</b>&quot;. Questa categoria contiene le 13 pagine <br>\nindicate di seguito, su un totale di 13. C. Torre del Campano. D. Torre De <br>\nCantone&nbsp;...",
+                "cacheId": "06Wkp1hryuQJ",
+                "formattedUrl": "https://it.wikipedia.org/wiki/Categoria:Torri_di_Pisa",
+                "htmlFormattedUrl": "https://it.wikipe<b>dia</b>.org/wiki/Categoria:<b>Torri</b>_<b>di</b>_<b>Pisa</b>",
+                "pagemap": {
+                    "metatags": [
+                        {
+                            "referrer": "origin"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Torre del Campano - Wikipedia",
+                "htmlTitle": "<b>Torre del</b> Campano - Wikipedia",
+                "link": "https://it.wikipedia.org/wiki/Torre_del_Campano",
+                "displayLink": "it.wikipedia.org",
+                "snippet": "La Torre del Campano è una delle torri medievali meglio conservate di Pisa. \nIndice. 1 Descrizione; 2 La campana; 3 Note; 4 Bibliografia; 5 Altri progetti ...",
+                "htmlSnippet": "La <b>Torre del</b> Campano è una delle <b>torri</b> medievali meglio conservate <b>di Pisa</b>. <br>\nIndice. 1 Descrizione; 2 La campana; 3 Note; 4 Bibliografia; 5 Altri progetti&nbsp;...",
+                "cacheId": "UHA612-drCQJ",
+                "formattedUrl": "https://it.wikipedia.org/wiki/Torre_del_Campano",
+                "htmlFormattedUrl": "https://it.wikipe<b>dia</b>.org/wiki/<b>Torre</b>_<b>del</b>_Campano",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "194",
+                            "height": "259",
+                            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTPXGqs1T7rTH8LOie8htIFuptRCaK0-MpFFvKO3GpJXpu99jWSp07KiQo"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "referrer": "origin",
+                            "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Torre_del_Campano_11.JPG/1200px-Torre_del_Campano_11.JPG"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Torre_del_Campano_11.JPG/1200px-Torre_del_Campano_11.JPG"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Torre De Cantone - Wikipedia",
+                "htmlTitle": "<b>Torre De</b> Cantone - Wikipedia",
+                "link": "https://it.wikipedia.org/wiki/Torre_De_Cantone",
+                "displayLink": "it.wikipedia.org",
+                "snippet": "La Torre de Cantone o Gaetani o della Verga d'oro si trova tra via Santa Maria e \nvia San Nicola a Pisa, collegata da un arco sopra la via con il Palazzo delle ...",
+                "htmlSnippet": "La <b>Torre de</b> Cantone o Gaetani o della Verga d&#39;oro si trova tra via Santa Maria e <br>\nvia San Nicola <b>a Pisa</b>, collegata <b>da</b> un arco sopra la via con il Palazzo delle&nbsp;...",
+                "cacheId": "B38v7CzPxTwJ",
+                "formattedUrl": "https://it.wikipedia.org/wiki/Torre_De_Cantone",
+                "htmlFormattedUrl": "https://it.wikipe<b>dia</b>.org/wiki/<b>Torre</b>_<b>De</b>_Cantone",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "194",
+                            "height": "259",
+                            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRioiDB0Ei9ApOVIIgc08ESbBBGW9pdgQfhE7Ps9E92UF-HOImTrwDcSUVt"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "referrer": "origin",
+                            "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Torre_De_Cantone_12.JPG/1200px-Torre_De_Cantone_12.JPG"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Torre_De_Cantone_12.JPG/1200px-Torre_De_Cantone_12.JPG"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Casa torre di via Ulisse Dini - Wikipedia",
+                "htmlTitle": "Casa <b>torre di</b> via Ulisse Dini - Wikipedia",
+                "link": "https://it.wikipedia.org/wiki/Casa_torre_di_via_Ulisse_Dini",
+                "displayLink": "it.wikipedia.org",
+                "snippet": "La Casa torre di Via Ulisse Dini è un edificio medievale di Pisa ben conservato. \nDescrizione[modifica | modifica wikitesto]. La casa torre di via Ulisse Dini risale ...",
+                "htmlSnippet": "La Casa <b>torre di</b> Via Ulisse Dini è un edificio medievale <b>di Pisa</b> ben conservato. <br>\nDescrizione[modifica | modifica wikitesto]. La casa <b>torre di</b> via Ulisse Dini risale&nbsp;...",
+                "cacheId": "HAHTiWFYHLsJ",
+                "formattedUrl": "https://it.wikipedia.org/wiki/Casa_torre_di_via_Ulisse_Dini",
+                "htmlFormattedUrl": "https://it.wikipe<b>dia</b>.org/wiki/Casa_<b>torre</b>_<b>di</b>_via_Ulisse_Dini",
+                "pagemap": {
+                    "metatags": [
+                        {
+                            "referrer": "origin"
+                        }
+                    ]
+                }
+            }
+        ]
     }
 }

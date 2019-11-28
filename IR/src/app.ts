@@ -150,6 +150,7 @@ app.post("/", async (req, res) => {
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
                             pageResult.score *= flowConfig.weight.wikipedia.known);
+                        return pageResults;
                     }),
                 search
                     .searchByTerms(new Query({
@@ -160,6 +161,7 @@ app.post("/", async (req, res) => {
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
                             pageResult.score *= flowConfig.weight.google.known);
+                        return pageResults;
                     })
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
@@ -174,7 +176,7 @@ app.post("/", async (req, res) => {
              *  5b. build a smart query on Google
              */
             logger.debug("[app.ts] Not a known instance.",
-                         { reducedClassificationEntities: classificationResult.classification.entities });
+                { reducedClassificationEntities: classificationResult.classification.entities });
             results = await Promise.all([
                 wikipedia.search(classificationResult)
                     .then(results => {
@@ -200,6 +202,10 @@ app.post("/", async (req, res) => {
 
 
         // call adaptation for summary and return the result to the caller
+        logger.debug("[app.ts] Call to adaptation text.", {
+            adaptationUrl: AdaptationEndpoint.text,
+            resultsSent: results
+        });
         return post(AdaptationEndpoint.text, {
             userProfile: classificationResult.userProfile,
             results
