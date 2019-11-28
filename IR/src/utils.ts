@@ -1,3 +1,4 @@
+import { BasicFieldWithId } from "./models/classification.models";
 import fetch from "node-fetch";
 import logger from "./logger";
 
@@ -17,7 +18,16 @@ export function post<T = any>(url: string, body: any): Promise<T> {
     }).then(res => res.json());
 }
 
-export function reduceEntities(entities: Array<any>, maxEntityNumber = entities.length, minScore = 0) {
+/**
+ * Reduce the number of entities by cutting on the biggest jump between scores.
+ *
+ * @param entities The list of entities.
+ * @param maxEntityNumber A limit to the number of entities to be kept. Default is all.
+ * @param minScore A minimum score to keep the entity. Default is 0, ie. no min score.
+ * @returns The list of survived entities.
+ */
+export function reduceEntities(entities: Array<BasicFieldWithId>,
+        maxEntityNumber = entities.length, minScore = 0): Array<BasicFieldWithId> {
     let maxGap = -1;
     let cutIndex = -1;
 

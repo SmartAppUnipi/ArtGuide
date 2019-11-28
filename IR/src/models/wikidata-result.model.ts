@@ -10,5 +10,5 @@ export interface WikiDataFields {
     Genre: Array<string>;
     Movement: Array<string>;
     Architect: Array<string>;
-    Architectural_style: Array<string>;
+    ArchitecturalStyle: Array<string>;
 }

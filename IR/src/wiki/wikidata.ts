@@ -1,9 +1,9 @@
+import "wikibase-sdk";
+import "wikidata-sdk";
 import fetch from "node-fetch";
 import logger from "../logger";
 import path from "path";
-import { ClassificationResult, WikiDataResult, WikiDataFields, KnownInstance } from "../models";
-import 'wikibase-sdk';
-import 'wikidata-sdk';
+import { ClassificationResult, KnownInstance, WikiDataFields, WikiDataResult } from "../models";
 
 // eslint-disable-next-line
 const wbk = require("wikidata-sdk");
@@ -16,9 +16,11 @@ enum WikidataPropertyType {
     Movement = "P135",
     // Monument
     Architect = "P84",
-    Architectural_style = "P149",
-    /*painting = "Q3305213",
-    sculpture = "Q860861",*/
+    ArchitecturalStyle = "P149",
+    /*
+     * painting = "Q3305213",
+     *sculpture = "Q860861",
+     */
     Location = "P625"
 }
 
@@ -108,8 +110,10 @@ export class WikiData {
 
     /**
      * Retrieve Wikipedia name from Wikidata, given the language and the wikidata id
+     *
      * @param lang The language chosen by the user, gives the Wikipedia subdomain
-     * @param wikidataId The WikiData id to look for
+     * @param wikidataId The WikiData id to look for.
+     * @returns
      */
     public getWikipediaName(lang: string, wikidataId: string): Promise<string> {
         const url = wbk.getEntities([wikidataId]);
@@ -129,24 +133,26 @@ export class WikiData {
                         if (properties.Creator.length > 0 ||
                             properties.Architect.length > 0 ||
                             properties.Location.length > 0) {
-                            properties.score = entity.score
-                            return properties as KnownInstance
+                            properties.score = entity.score;
+                            return properties as KnownInstance;
                         }
                         // not a know instance
-                        return null
-                    })
+                        return null;
+                    });
             })
         )
             .then(resArray => resArray.filter(res => res != null))
             .then(resArray => resArray.sort((a, b) => a.score - b.score))
-            .then(resArray => resArray.length ? resArray[0] : null)
+            .then(resArray => resArray.length ? resArray[0] : null);
     }
 
     /**
      * Check if a Freebase id refers to a known instance or not.
+     *
      * @param freebaseId The Google webentities id
+     * @param language
      * @returns {Promise<WikiDataFields>} that is populated if frebaseId refers to a known instance, null otherwise
-    */
+     */
     public getProperties(freebaseId: string, language: string): Promise<any> {
         // translate freebaseId in WikiData id
         return this.getWikiDataId(freebaseId)
@@ -168,22 +174,22 @@ export class WikiData {
 
                         // Key is the WikiDataPropertyType, values are arrays of wikidata ids
                         const simplifiedEntities: {
-                            [k: string]: Array<string>
+                            [k: string]: Array<string>;
                         } = {};
 
                         // for each entity id
-                        for (let entityId in content.entities) {
+                        for (const entityId in content.entities) {
                             // for each property we want to extract
                             properties.forEach(property => {
                                 simplifiedEntities[property] = content.entities[entityId].claims[(WikidataPropertyType as any)[property]] || [];
                             });
-                        };
+                        }
 
                         // set also the Wikipedia page title
                         simplifiedEntities.WikipediaPageTitle = content.entities[id].sitelinks[`${language}wiki`].title;
 
                         return simplifiedEntities;
-                    })
+                    });
             });
     }
 
@@ -191,9 +197,10 @@ export class WikiData {
 
     /**
      * Retrieve expected fields from the WikiData page
+     *
      * @param freebaseId The Google webentities id
-     * @returns {Promise<WikiDataFields>}
-    */
+     * @returns
+     */
     public getSimplifiedClaims(freebaseId: string): Promise<WikiDataFields> {
         return this.getWikiDataId(freebaseId).then(async id => {
             if (!id) {
@@ -214,10 +221,10 @@ export class WikiData {
 
 
             /*
-            * Key is the WikiDataPropertyType, values are arrays of wikidata ids
-            */
+             * Key is the WikiDataPropertyType, values are arrays of wikidata ids
+             */
             const simplifiedEntities: {
-                [k: string]: Array<string>
+                [k: string]: Array<string>;
             } = {};
 
             // for each entity id
@@ -225,7 +232,7 @@ export class WikiData {
 
                 // for each property we want to extract
                 properties.forEach(property => {
-                    const simplifiedClaimsForProperty = content.entities[entityId].claims[(WikidataPropertyType as any)[property]]
+                    const simplifiedClaimsForProperty = content.entities[entityId].claims[(WikidataPropertyType as any)[property]];
                     simplifiedEntities[property] = simplifiedClaimsForProperty || [];
                 });
             });
@@ -236,8 +243,8 @@ export class WikiData {
                 Genre: simplifiedEntities.Genre,
                 Movement: simplifiedEntities.Movement,
                 Architect: simplifiedEntities.Architect,
-                Architectural_style: simplifiedEntities.Architectural_style
-            }
+                ArchitecturalStyle: simplifiedEntities.ArchitecturalStyle
+            };
 
             return res;
         });
@@ -256,8 +263,10 @@ export class WikiData {
      * (eg. for Pisa Tower => `["bell tower", "tower", "architectural structure", "work", "construction", ... ]`)
      */
     public async getEntityRootPath(entityId: string): Promise<Array<string>> {
-        // InstanceOf = P31
-        // SubClass = P279
+        /*
+         * InstanceOf = P31
+         * SubClass = P279
+         */
         const sparql = `
             SELECT ?entity ?entityLabel WHERE {
                 wd:${entityId} wdt:P31*/wdt:P279* ?val.
@@ -287,7 +296,8 @@ export class WikiData {
 
                 return labels;
 
-            }).catch(ex => {
+            })
+            .catch(ex => {
                 logger.error("[wikidata.ts] getEntityRootPath(): Error: ", ex);
                 return null;
             });

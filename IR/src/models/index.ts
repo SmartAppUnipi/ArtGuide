@@ -1,29 +1,26 @@
 import { ClassificationResult } from "./classification.models";
 import { GoogleSearchResult } from "./google-search.models";
+import { KnownInstance } from "./known-instance.models";
 import { UserProfile } from "./user-profile.model";
-import { WikiDataResult, WikiDataFields } from "./wikidata-result.model";
 import { PageResult, PageSection } from "./page-result.model";
-import { KnownInstance } from "./known_instance.models";
-import {
-    Query,
-    QueryExpansionRequest,
-    QueryExpansionResponse
-} from "./query-expansion.models";
+import { Query, QueryExpansionRequest, QueryExpansionResponse } from "./query-expansion.models";
+import { WikiDataFields, WikiDataResult } from "./wikidata-result.model";
 
 export {
     ClassificationResult,
     UserProfile,
 
-    GoogleSearchResult,
-
-    PageSection,
-    PageResult,
-    WikiDataResult,
-    WikiDataFields,
+    Query,
+    QueryExpansionResponse,
+    QueryExpansionRequest,
 
     KnownInstance,
 
-    Query,
-    QueryExpansionResponse,
-    QueryExpansionRequest
+    GoogleSearchResult,
+    
+    WikiDataResult,
+    WikiDataFields,
+
+    PageSection,
+    PageResult
 };

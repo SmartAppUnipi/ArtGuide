@@ -25,7 +25,7 @@ export class Parser {
 
     private sectionSelectors = [
         "p"
-    ]
+    ];
 
     /*
      * This method is used to remove the code inside { } that could be found in the parse text.
@@ -85,73 +85,77 @@ export class Parser {
         return allSelectors;
     }
 
-    // This method is based on intersection with the merge approacch.
-    // It takes two text that should be similar. 
-    // In our case :
-    // - text1 is the complete text.
-    // - text2 is the text without the titles.
-    // Using the merge approacch when the two text are different means that
-    // we found a word of the title of one section.
-    // In this way we can extract the different sections with their title.
-    public mergeText(text1: string[], text2: string[]) {
-        let i = 0;
-        let areEqual = false
-        var sections = [];
-        var titles = [];
+    /*
+     * This method is based on intersection with the merge approacch.
+     * It takes two text that should be similar. 
+     * In our case :
+     * - text1 is the complete text.
+     * - text2 is the text without the titles.
+     * Using the merge approacch when the two text are different means that
+     * we found a word of the title of one section.
+     * In this way we can extract the different sections with their title.
+     */
+    public mergeText(text1: Array<string>, text2: Array<string>) {
+        const i = 0;
+        let areEqual = false;
+        const sections = [];
+        const titles = [];
         let nSections = 0;
         let index1 = 0;
         let index2 = 0;
-        let text1Length = text1.length
-        let text2Length = text2.length
+        const text1Length = text1.length;
+        const text2Length = text2.length;
         while (index1 < text1Length) {
             if (text1[index1] == text2[index2]) {
-                if (!sections[nSections]) {
+                if (!sections[nSections]) 
                     sections[nSections] = "";
-                }
+                
                 sections[nSections] += text1[index1] + " ";
                 index1++;
                 index2++;
-                areEqual = true
+                areEqual = true;
             } else {
-                if (areEqual == true) {
+                if (areEqual == true) 
                     nSections++;
-                }
-                if (!titles[nSections]) {
+                
+                if (!titles[nSections]) 
                     titles[nSections] = "";
-                }
+                
                 areEqual = false;
                 titles[nSections] += text1[index1] + " ";
                 index1++;
             }
         }
-        return [titles, sections]
+        return [titles, sections];
     }
 
 
     // Methods for getting sections and their title
     public async getTitlesAndSections(url: string) {
-        let testoWithTitle = await this.parseToText(url, this.getAllSelectors())
-        let testoWithoutTitles = await this.parseToText(url, this.sectionSelectors[0])
-        // var testoWithTitleTokenized = testoWithTitle.split(" ");
-        // var testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
-        // var titlesAndSections = this.mergeText(testoWithTitleTokenized,testoWithoutTitlesTokenied);
-        // var titles = titlesAndSections[0]
-        // var sections = titlesAndSections[1]
-        var titles = "titolo"
-        var sections = "sezione"
-        var sectionsObj = []
-        var i, j = 0;
+        const testoWithTitle = await this.parseToText(url, this.getAllSelectors());
+        const testoWithoutTitles = await this.parseToText(url, this.sectionSelectors[0]);
+        /*
+         * var testoWithTitleTokenized = testoWithTitle.split(" ");
+         * var testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
+         * var titlesAndSections = this.mergeText(testoWithTitleTokenized,testoWithoutTitlesTokenied);
+         * var titles = titlesAndSections[0]
+         * var sections = titlesAndSections[1]
+         */
+        const titles = "titolo";
+        const sections = "sezione";
+        const sectionsObj = [];
+        let i, j = 0;
         for (i = 0; i < sections.length; i++) {
             if (sections[i].length > 20) {
                 sectionsObj[j] = {
                     title: titles[i],
                     content: sections[i],
-                    tags: [] as [] //rake(sections[i]).slice(0, 10)
+                    tags: [] as [] // rake(sections[i]).slice(0, 10)
                 };
                 j++;
             }
         }
-        return sectionsObj
+        return sectionsObj;
     }
 
 
@@ -185,15 +189,17 @@ export class Parser {
 
                 });
             }
-            const finalText = this.removeCodeInText(textContent)
+            const finalText = this.removeCodeInText(textContent);
 
-            return finalText
-        })
+            return finalText;
+        });
     }
 
     public async parse(url: string): Promise<PageResult> {
-        // FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
-        //var sectionObject = await this.getTitlesAndSections(url)
+        /*
+         *  FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
+         * var sectionObject = await this.getTitlesAndSections(url)
+         */
         return JSDOM.fromURL(url).then(async dom => {
             // look for a list of preferred query selectors
             let textContent = "";
@@ -220,8 +226,8 @@ export class Parser {
 
                 });
             }
-            let testoWithTitle = this.removeCodeInText(textContent)
-            //const keywords = rake(finalText).slice(0,10)  
+            const testoWithTitle = this.removeCodeInText(textContent);
+            // const keywords = rake(finalText).slice(0,10)  
 
             let textContentWithoutTitle = "";
             let contentWithoutTitle;
@@ -235,27 +241,27 @@ export class Parser {
 
                 });
             }
-            let testoWithoutTitles = this.removeCodeInText(textContentWithoutTitle)
+            const testoWithoutTitles = this.removeCodeInText(textContentWithoutTitle);
 
-            var testoWithTitleTokenized = testoWithTitle.split(" ");
-            var testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
-            var titlesAndSections = this.mergeText(testoWithTitleTokenized, testoWithoutTitlesTokenied);
-            var titles = titlesAndSections[0]
-            var sections = titlesAndSections[1]
-            var sectionsObj = []
-            var i, j = 0;
+            const testoWithTitleTokenized = testoWithTitle.split(" ");
+            const testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
+            const titlesAndSections = this.mergeText(testoWithTitleTokenized, testoWithoutTitlesTokenied);
+            const titles = titlesAndSections[0];
+            const sections = titlesAndSections[1];
+            const sectionsObj = [];
+            let i, j = 0;
             for (i = 0; i < sections.length; i++) {
                 if (sections[i].length > 20) {
                     sectionsObj[j] = {
                         title: titles[i],
                         content: sections[i],
-                        tags: []//FIXME: rake(sections[i]).slice(0, 10)
+                        tags: []// FIXME: rake(sections[i]).slice(0, 10)
                     };
                     j++;
                 }
             }
 
-            //var sectionObject = await this.getTitlesAndSections(url)
+            // var sectionObject = await this.getTitlesAndSections(url)
             if (sectionsObj.length > 1) {
                 return new PageResult({
                     url,
@@ -272,17 +278,18 @@ export class Parser {
                         {
                             title: "main",
                             content: testoWithTitle,
-                            tags: [] //FIXME: [rake(testoWithTitle).slice(0, 10)]
+                            tags: [] // FIXME: [rake(testoWithTitle).slice(0, 10)]
                         }
                     ],
                     keywords: [], // keywords are populated from caller which knows the query object
                     tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
                 });
             }
-        }).catch(ex => {
-            logger.warn("[parser.ts] ", ex);
-            return null;
-        });
+        })
+            .catch(ex => {
+                logger.warn("[parser.ts] ", ex);
+                return null;
+            });
 
     }
 

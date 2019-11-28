@@ -1,8 +1,8 @@
 import logger from "../logger";
 import { Page } from "wikijs";
 import wiki from "wikijs";
-import { ClassificationResult, PageResult, PageSection, Query, KnownInstance } from "../models";
 import { WikiData } from ".";
+import { ClassificationResult, KnownInstance, PageResult, PageSection, Query } from "../models";
 
 interface ComposedSection {
     title: string;
@@ -67,11 +67,18 @@ export class Wikipedia {
         return queries;
     }
 
-    public searchKnownInstance(knownInstance: KnownInstance, language: string) {
+    /**
+     * Search for a page assuming that is a known instance.
+     *
+     * @param knownInstance The non-null KnownInstance object.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
+     * @returns An array of PageResult about the piece of art and correlated pages like the author.
+     */
+    public searchKnownInstance(knownInstance: KnownInstance, language: string): Promise<Array<PageResult>> {
         return Promise.all([
             // TODO: look also for: creator/architect, period, style, movement 
             this.getWikiInfo(knownInstance.WikipediaPageTitle, language, knownInstance.score)
-        ])
+        ]);
     }
 
     /**
@@ -79,6 +86,7 @@ export class Wikipedia {
      *
      * @param query The string to be searched.
      * @param language The language code, ie. the Wikipedia subdomain to search in.
+     * @param score The score of the query.
      * @returns The WikiPedia content as PageResult object.
      * @throws When WikiPedia APIs returns error.
      */
@@ -110,6 +118,7 @@ export class Wikipedia {
      * Given a WikiPedia Page builds a PageResult.
      *
      * @param page A WikiPedia page.
+     * @param score The score of the query.
      * @returns A PageResult object without the title field set.
      * @throws When WikiPedia APIs returns error.
      */

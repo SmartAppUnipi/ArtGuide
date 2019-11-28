@@ -87,8 +87,8 @@ export class Search {
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
             AdaptationEndpoint.keywords, {
-            userProfile: classificationResult.userProfile
-        })
+                userProfile: classificationResult.userProfile
+            })
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
             // return both the basic query and the extended queries in one array
