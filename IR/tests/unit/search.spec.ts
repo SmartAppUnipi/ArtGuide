@@ -1,7 +1,7 @@
 /// <reference types="@types/jest"/>
 
-import { Search } from "../src/search"
-import { Query, PageResult, GoogleSearchResult } from "../src/models"
+import { Search } from "../../src/search"
+import { Query, PageResult, GoogleSearchResult } from "../../src/models"
 
 
 const search = new Search()

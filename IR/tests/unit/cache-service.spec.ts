@@ -1,7 +1,7 @@
 /// <reference types="@types/jest"/>
 /// <reference types="@types/node"/>
 
-import { CacheService } from '../src/search/cache.service';
+import { CacheService } from '../../src/search/cache.service';
 import fs from "fs";
 
 describe("Cache service", () => {
