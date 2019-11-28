@@ -27,11 +27,11 @@ export function post<T = any>(url: string, body: any): Promise<T> {
  * @returns The list of survived entities.
  */
 export function reduceEntities(entities: Array<BasicFieldWithId>,
-        maxEntityNumber = entities.length, minScore = 0): Array<BasicFieldWithId> {
+    maxEntityNumber = entities.length, minScore = 0): Array<BasicFieldWithId> {
     let maxGap = -1;
     let cutIndex = -1;
 
-    for (let i = 0; i < Math.min(maxEntityNumber, entities.length) - 1; i++) {
+    for (let i = 0; i < entities.length - 1; i++) {
         // stop if the score is too low
         if (entities[i].score < minScore)
             break;
@@ -43,5 +43,9 @@ export function reduceEntities(entities: Array<BasicFieldWithId>,
         }
     }
 
-    return entities.slice(0, cutIndex);
+    return entities
+        // cut according to the calculated jump
+        .slice(0, cutIndex)
+        // slice ensure there are not more than maxEntityNumber entities
+        .slice(0, maxEntityNumber);
 }

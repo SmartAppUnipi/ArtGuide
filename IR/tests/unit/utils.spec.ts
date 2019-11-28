@@ -23,18 +23,21 @@ describe("Utility functions", () => {
 
         it("Should cut on the biggest jump between scores", () => {
             let result = reduceEntities(entities)
+            expect(result.length).toBeLessThanOrEqual(7)
             expect(result[result.length - 1].score).toEqual(0.54)
         })
 
         it("Must take into account the max length admitted", () => {
             let result = reduceEntities(entities, 6)
             expect(result.length).toBeLessThanOrEqual(6)
-            expect(result[result.length - 1].score).toEqual(0.80)
+            expect(result.length).toEqual(6)
+            expect(result[result.length - 1].score).toEqual(0.55)
         })
 
         it("Must take into account the minimum score", () => {
             let result = reduceEntities(entities, entities.length, 0.82)
             expect(result[result.length - 1].score).toBeGreaterThanOrEqual(0.82)
+            expect(result.length).toBeLessThanOrEqual(2)
             expect(result[result.length - 1].score).toEqual(0.95)
         })
     })
