@@ -183,7 +183,7 @@ export class Search {
     private async toPageResults(googleResult: GoogleSearchResult, query: Query): Promise<Array<PageResult>> {
         const results: Array<PageResult> = [];
         const itemsLen = Math.min(flowConfig.googleSearchResults.maxLimit, googleResult.items.length)
-        await Promise.all(
+        return Promise.all(
             googleResult.items
                 .slice(0, itemsLen)
                 .map((item, index, items) => {
@@ -191,9 +191,13 @@ export class Search {
                     return this.parser.parse(item.link)
                         .then(pageResult => {
 
-                            pageResult.keywords = query.keywords;
+                            if (!pageResult)
+                                return;
+
                             // TODO: assign a score multiplier read from config.json
-                            pageResult.score = query.score + (1 - (index / itemsLen));
+                            pageResult.score = query.score * (1 - (index / itemsLen));
+                            pageResult.keywords = query.keywords;
+
                             results.push(pageResult);
                             logger.silly("[search.ts] Parsed link " + item.link);
                         })
@@ -201,7 +205,6 @@ export class Search {
                             logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
                         });
                 })
-        );
-        return results;
+        ).then(() => results);
     }
 }
