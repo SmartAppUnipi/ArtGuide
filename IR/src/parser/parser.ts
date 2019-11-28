@@ -1,6 +1,6 @@
 import { JSDOM } from "jsdom";
-import { PageResult } from "../models";
 import logger from "../logger";
+import { PageResult } from "../models";
 
 // eslint-disable-next-line
 const rake = require("rake-js").default;
@@ -95,8 +95,7 @@ export class Parser {
      * we found a word of the title of one section.
      * In this way we can extract the different sections with their title.
      */
-    public mergeText(text1: Array<string>, text2: Array<string>) {
-        const i = 0;
+    public mergeText(text1: Array<string>, text2: Array<string>): Array<Array<string>> {
         let areEqual = false;
         const sections = [];
         const titles = [];
@@ -130,105 +129,32 @@ export class Parser {
     }
 
 
-    // Methods for getting sections and their title
-    public async getTitlesAndSections(url: string) {
-        const testoWithTitle = await this.parseToText(url, this.getAllSelectors());
-        const testoWithoutTitles = await this.parseToText(url, this.sectionSelectors[0]);
-        /*
-         * var testoWithTitleTokenized = testoWithTitle.split(" ");
-         * var testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
-         * var titlesAndSections = this.mergeText(testoWithTitleTokenized,testoWithoutTitlesTokenied);
-         * var titles = titlesAndSections[0]
-         * var sections = titlesAndSections[1]
-         */
-        const titles = "titolo";
-        const sections = "sezione";
-        const sectionsObj = [];
-        let i, j = 0;
-        for (i = 0; i < sections.length; i++) {
-            if (sections[i].length > 20) {
-                sectionsObj[j] = {
-                    title: titles[i],
-                    content: sections[i],
-                    tags: [] as [] // rake(sections[i]).slice(0, 10)
-                };
-                j++;
-            }
-        }
-        return sectionsObj;
+    public validURL(str: string): boolean {
+        const pattern = new RegExp("^(https?:\\/\\/)?" + // protocol
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+        "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+        "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+        "(\\#[-a-z\\d_]*)?$", "i"); // fragment locator
+        return !!pattern.test(str);
     }
 
-
-    // Used for extract the text using some defined selectors
-    public parseToText(url: string, selectors: string): Promise<string> {
-        return JSDOM.fromURL(url).then(dom => {
-            // look for a list of preferred query selectors
-            let textContent = "";
-            let content;
-            /*
-             * const i = 0;
-             * nodesToRemove = dom.window.document.querySelectorAll('a')
-             * for (i = 0; i < nodesToRemove.length; i++) {
-             *   console.log(nodesToRemove[i].textContent)
-             *   nodesToRemove[i].textContent = "";
-             * }
-             * i = 0;
-             */
-            const nodes = dom.window.document.querySelectorAll(selectors);
-            /*
-             * while (i < this.querySelectors.length)
-             * if no nodes are found choose the body}
-             */
-            if (!nodes.length) {
-                content = dom.window.document.body;
-                textContent = content.textContent;
-            } else {
-                nodes.forEach(item => {
-                    const nodeText = item.textContent.replace(/\s+/g, " ").trim();
-                    textContent += nodeText + " ";
-
-                });
-            }
-            const finalText = this.removeCodeInText(textContent);
-
-            return finalText;
-        });
-    }
-
-    public validURL(str: string) {
-      var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-      return !!pattern.test(str);
-    }
-
-    public async parse(url: string): Promise<PageResult> {
+    public parse(url: string): Promise<PageResult> {
         /*
          *  FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
          * var sectionObject = await this.getTitlesAndSections(url)
          */
-        if(!this.validURL(url)) {
-          return
-        }
-        return JSDOM.fromURL(url).then(async dom => {
+        if (!this.validURL(url)) 
+            return;
+        
+        return JSDOM.fromURL(url).then(dom => {
             // look for a list of preferred query selectors
             let textContent = "";
             let content;
-            /*
-             * const i = 0;
-             * nodesToRemove = dom.window.document.querySelectorAll('a')
-             * for (i = 0; i < nodesToRemove.length; i++) {
-             *   console.log(nodesToRemove[i].textContent)
-             *   nodesToRemove[i].textContent = "";
-             * }
-             * i = 0;
-             */
+        
             const nodesWithTitle = dom.window.document.querySelectorAll(this.getAllSelectors());
             const nodesWithoutTitle = dom.window.document.querySelectorAll(this.sectionSelectors[0]);
-
+            
             if (!nodesWithTitle.length) {
                 content = dom.window.document.body;
                 textContent = content.textContent;
@@ -240,7 +166,6 @@ export class Parser {
                 });
             }
             const testoWithTitle = this.removeCodeInText(textContent);
-            // const keywords = rake(finalText).slice(0,10)  
 
             let textContentWithoutTitle = "";
             let contentWithoutTitle;
@@ -266,12 +191,12 @@ export class Parser {
             let i, j = 0;
             for (i = 0; i < sections.length; i++) {
                 if (sections[i].length > 20) {
-                   let keywords = rake(sections[i]).slice(0, 10)
-                   console.log(keywords)
+                    const keywords = rake(sections[i]).slice(0, 10);
+
                     sectionsObj[j] = {
                         title: titles[i],
                         content: sections[i],
-                        tags: [] // FIXME: rake(sections[i]).slice(0, 10)
+                        tags: keywords // FIXME: rake(sections[i]).slice(0, 10)
                     };
                     j++;
                 }
@@ -294,7 +219,7 @@ export class Parser {
                         {
                             title: "main",
                             content: testoWithTitle,
-                            tags: [] // FIXME: [rake(testoWithTitle).slice(0, 10)]
+                            tags: rake(testoWithTitle).slice(0, 10)
                         }
                     ],
                     keywords: [], // keywords are populated from caller which knows the query object
