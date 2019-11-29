@@ -1,0 +1,8 @@
+{
+  "userProfile": {
+    "tastes": [ "history", "description", "legacy" ],
+    "expertiseLevel": 1,
+    "language": "en",
+    "commentTest":  "Missing id field"
+  }
+}
