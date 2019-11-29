@@ -1,3 +1,11 @@
+| branch               |                                                                                                                                               |
+|----------------------|:---------------------------------------------------------------------------------------------------------------------------------------------:|
+| master               | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=master)](https://travis-ci.com/SmartAppUnipi/ArtGuide)               |
+| ui                   | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=ui)](https://travis-ci.com/SmartAppUnipi/ArtGuide)                   |
+| image_analysis_proto | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=image_analysis_proto)](https://travis-ci.com/SmartAppUnipi/ArtGuide) |
+| ir                   | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=ir)](https://travis-ci.com/SmartAppUnipi/ArtGuide)                   |
+| adaptation_proto     | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=adaptation_proto)](https://travis-ci.com/SmartAppUnipi/ArtGuide)     |
+
 # ArtGuide
 
 ## Adaptation module
