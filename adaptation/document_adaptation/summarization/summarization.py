@@ -22,6 +22,7 @@ from .models.predictor import build_predictor
 from .preprocess import _format_to_bert
 
 import stanfordnlp
+import nltk
 from google_drive_downloader import GoogleDriveDownloader as gdd
 
 
@@ -30,7 +31,7 @@ from args import args
 args.gpu_ranks = [int(i) for i in range(len(args.visible_gpus.split(',')))]
 args.world_size = len(args.gpu_ranks)
 os.environ["CUDA_VISIBLE_DEVICES"] = args.visible_gpus
-
+nltk.download('punkt')
 
 class ABS_Summarizer():
     def __init__(self, args, checkpoint=None, lang="en", shuffle=True, nlp_tokenizer=None):
@@ -159,6 +160,8 @@ class ModelSummarizer():
             print("###--- Settin up model: %s seconds ---###" % (time.time() - start_time))
 
     def load_pretrained(self, checkpoint_path):
+        if not os.path.exists(checkpoint_path):
+            os.mkdir(checkpoint_path)
         if len(os.listdir(checkpoint_path)) == 0:
             print('Chekpoint\'s folder "{}" is empty. Downloading pretrained checkpoints'.format(checkpoint_path))
         else:

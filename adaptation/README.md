@@ -30,8 +30,7 @@ Inside `adaptation` folder the following directories can be found:
 
 ## Getting ready
 First of all you need to install the dependencies by running `pip install -r requirements.txt`. 
-Then you need to start the server by moving into the adaptation directory and exporting the environment variable FLASK_APP with the path to main.py (`export FLASK_APP=main.py` or `set FLASK_APP=main.py` for Windows users).
-To start the server you need to run `python -m flask run`.
+Then you need to start the server by moving into the adaptation directory and to run `python main.py`.
 Now you are ready to start some tests!
 
 ## Run test
