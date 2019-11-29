@@ -14,17 +14,34 @@ from google.protobuf.json_format import MessageToDict
 from PIL import Image
 
 PORT = 2345
-with open('./routes.json') as json_path:
+
+# ----- ----- CONFIGURING ROUTES ----- ----- #
+if not "ROUTES_JSON" in os.environ:
+    print("routes.json path not specified, please set the envir. variable ROUTES_JSON")
+    exit(0)
+routes_path = os.environ["ROUTES_JSON"]
+
+if not os.path.exists(routes_path):
+    print(f"routes file not found: {routes_path}")
+    exit(0)
+
+with open(routes_path) as json_path:
     json = json.load(json_path)
     OPUS_URL = json["opus"]
-    print(f'> POST TO {OPUS_URL}')
+    print(f"> Post to opus service on port {OPUS_URL}")
+
+
+# ----- CONFIGURING API KEY ----- #
+if not "GOOGLE_APPLICATION_CREDENTIALS" in os.environ:
+    print("Google cloud vision API key not provided, please set the envir. variable GOOGLE_APPLICATION_CREDENTIALS")
+    exit(0)
+api_key_path = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
+
+if not os.path.exists(api_key_path):
+    print(f"Google cloud API key file not found: {api_key_path}")
 
 
 # ----- FUNCTION DEFINITION ----- #
-def set_key(key_path='./image_analysis/app/key/vision_api_keys.json'):
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path
-
-
 def get_vision(content):
     # Instantiates a client
     client = vision.ImageAnnotatorClient()
@@ -41,25 +58,24 @@ def get_vision(content):
 
 # ----- ENVIRONMENT ----- #
 app = Flask(__name__)
-CORS(app, resources=r'/*')
-set_key()
+CORS(app, resources=r"/*")
 client = vision.ImageAnnotatorClient()
 
 
 # ----- ROUTES ----- #
-@app.route('/', methods=['GET'])
+@app.route("/", methods=["GET"])
 def home():
-    return '<h1>hello</h1>'
+    return "<h1>Image analysis service</h1>"
 
 
-@app.route('/upload', methods=['POST'])
+@app.route("/upload", methods=["POST"])
 def upload():
-    '''
+    """
     For Test.py:
         load the Base64 encoded image with get_json(),
         decode it back to an image and send it to the API
         to retrieve the JSON answer.
-    '''
+    """
     content = request.get_json()
     image = content["image"]
     image_b64_str = re.sub("^data:image/.+;base64,", "", image)
@@ -87,7 +103,7 @@ def upload():
     return r.content
 
 
-if __name__ == '__main__':
-    app.config['DEBUG'] = True
-    print(f'> Opening service on port {PORT}')
-    app.run(host='0.0.0.0', port=PORT)
+if __name__ == "__main__":
+    app.config["DEBUG"] = True
+    print(f"> Opening service on port {PORT}")
+    app.run(host="0.0.0.0", port=PORT)
