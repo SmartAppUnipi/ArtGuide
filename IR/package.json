@@ -16,7 +16,8 @@
     "build": "tsc",
     "watch": "tsc -w -p .",
     "clean": "npx rimraf dist && npx rimraf coverage",
-    "docs": "npx typedoc"
+    "docs": "npx typedoc",
+    "docs:add": "git add ./docs"
   },
   "keywords": [],
   "authors": [
@@ -119,5 +120,10 @@
       "ts": "node --require ts-node/register"
     }
   },
-  "pre-commit": []
+  "pre-commit": [
+    "lint",
+    "test",
+    "docs",
+    "docs:add"
+  ]
 }
