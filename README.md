@@ -1,3 +1,5 @@
+# ArtGuide
+
 | branch               |                                                                                                                                               |
 |----------------------|:---------------------------------------------------------------------------------------------------------------------------------------------:|
 | master               | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=master)](https://travis-ci.com/SmartAppUnipi/ArtGuide)               |
@@ -6,7 +8,8 @@
 | ir                   | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=ir)](https://travis-ci.com/SmartAppUnipi/ArtGuide)                   |
 | adaptation_proto     | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=adaptation_proto)](https://travis-ci.com/SmartAppUnipi/ArtGuide)     |
 
-# ArtGuide
+## Information Retrieval module
+Please check our [README.md](ir/README.md)
 
 ## Adaptation module
 
@@ -40,3 +43,27 @@ Inside `adaptation` folder the following directories can be found:
 
 ### Run test
 To run some tests locally (and see how adaptation module performs on some sample situations) run `python test_phase1.py --help` (or `python test_phase2.py --help`)
+
+## Docker
+You can use Docker to test communications with other modules.
+
+The [docker-compose.yml](docker-compose.yml) defines the containers settings.  
+At the moment are available the [ia](ia.dockerfile) and [ir](ir.dockerfile) modules.
+
+Before running docker change the adaptation endpoint (keywords and text) to http://cipizio.it:4321 in routes.json.
+
+ENV variables with the API keys are needed, contact the teams to get them and please don't put them under version control.
+
+```bash
+# start
+sudo docker-compose up
+# stop
+sudo docker-compose down
+
+# build and run single images
+sudo docker build -t art/ir -f ir.dockerfile .
+sudo docker build -t art/ia -f ia.dockerfile .
+
+sudo docker run --name ir -p 3000:3000 art/ir
+sudo docker run --name ia -p 2345:2345 art/ia
+```
