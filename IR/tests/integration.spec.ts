@@ -16,10 +16,11 @@ import queryExpansionResponse from "../assets/query-expansion-response.json"
 const mockAdaptationEndpoints = true;
 // ### Flag to mock adaptation server ###
 
-if (!mockAdaptationEndpoints) {
+if (mockAdaptationEndpoints) {
     const adaptationKeywordUrl = new URL(AdaptationEndpoint.keywords);
     nock(adaptationKeywordUrl.origin)
         .post(adaptationKeywordUrl.pathname)
+        .times(100)
         .reply((url, body: { userProfile: UserProfile }, callback) => {
 
             // verify passes parameters
@@ -36,6 +37,7 @@ if (!mockAdaptationEndpoints) {
     const adaptationTextUrl = new URL(AdaptationEndpoint.text);
     nock(adaptationTextUrl.origin)
         .post(adaptationTextUrl.pathname)
+        .times(100)
         .reply((url, body: { userProfile: UserProfile, results: Array<PageResult> }, callback) => {
 
             // verify passes parameters
@@ -46,7 +48,7 @@ if (!mockAdaptationEndpoints) {
             // reply with 200 status code and a mock JSON response
             callback(null, [
                 200,
-                { message: "Mock" }
+                body
             ]);
         });
 }

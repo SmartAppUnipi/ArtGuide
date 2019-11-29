@@ -17017,5 +17017,284 @@
             "correctedQuery": "Painting keyword legacy1 keyword legacy",
             "htmlCorrectedQuery": "Painting <b><i>keyword legacy1</i></b> <b><i>keyword legacy</i></b>"
         }
+    },
+    "[it]-Modern art keyword_description1 keyword_description2": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Modern art keyword_description1 keyword_description2",
+                    "totalResults": "0",
+                    "searchTerms": "Modern art keyword_description1 keyword_description2",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.39725,
+            "formattedSearchTime": "0,40",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Modern art keyword description 1 keyword description 2",
+            "htmlCorrectedQuery": "Modern art <b><i>keyword description 1</i></b> <b><i>keyword description 2</i></b>"
+        }
+    },
+    "[it]-Painting keyword_history1 keyword_history2": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Painting keyword_history1 keyword_history2",
+                    "totalResults": "0",
+                    "searchTerms": "Painting keyword_history1 keyword_history2",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.38962,
+            "formattedSearchTime": "0,39",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Painting keyword history keyword history2",
+            "htmlCorrectedQuery": "Painting <em>keyword history</em> <em>keyword history2</em>"
+        }
+    },
+    "[it]-Painting keyword_legacy1 keyword_legacy": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Painting keyword_legacy1 keyword_legacy",
+                    "totalResults": "0",
+                    "searchTerms": "Painting keyword_legacy1 keyword_legacy",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.151693,
+            "formattedSearchTime": "0,15",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Painting keyword legacy 1 keyword legacy",
+            "htmlCorrectedQuery": "Painting <b><i>keyword legacy 1</i></b> <b><i>keyword legacy</i></b>"
+        }
+    },
+    "[it]-Acrylic paint keyword_description1 keyword_description2": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Acrylic paint keyword_description1 keyword_description2",
+                    "totalResults": "0",
+                    "searchTerms": "Acrylic paint keyword_description1 keyword_description2",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.384324,
+            "formattedSearchTime": "0,38",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Acrylic paint keyword description 1 keyword description 2",
+            "htmlCorrectedQuery": "Acrylic paint <b><i>keyword description 1</i></b> <b><i>keyword description 2</i></b>"
+        }
+    },
+    "[it]-Modern art keyword_legacy1 keyword_legacy": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Modern art keyword_legacy1 keyword_legacy",
+                    "totalResults": "0",
+                    "searchTerms": "Modern art keyword_legacy1 keyword_legacy",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.456991,
+            "formattedSearchTime": "0,46",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Modern art keyword legacy 1 keyword legacy",
+            "htmlCorrectedQuery": "Modern art <b><i>keyword legacy 1</i></b> <b><i>keyword legacy</i></b>"
+        }
+    },
+    "[it]-Painting keyword_description1 keyword_description2": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Painting keyword_description1 keyword_description2",
+                    "totalResults": "0",
+                    "searchTerms": "Painting keyword_description1 keyword_description2",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.391946,
+            "formattedSearchTime": "0,39",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Painting keyword_description1 keyword description 2",
+            "htmlCorrectedQuery": "Painting keyword_description1 <b><i>keyword description 2</i></b>"
+        }
+    },
+    "[it]-Acrylic paint keyword_history1 keyword_history2": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Acrylic paint keyword_history1 keyword_history2",
+                    "totalResults": "0",
+                    "searchTerms": "Acrylic paint keyword_history1 keyword_history2",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.183295,
+            "formattedSearchTime": "0,18",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Acrylic paint keyword history 1 keyword history 2",
+            "htmlCorrectedQuery": "Acrylic paint <b><i>keyword history 1</i></b> <b><i>keyword history 2</i></b>"
+        }
+    },
+    "[it]-Acrylic paint keyword_legacy1 keyword_legacy": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Acrylic paint keyword_legacy1 keyword_legacy",
+                    "totalResults": "0",
+                    "searchTerms": "Acrylic paint keyword_legacy1 keyword_legacy",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.376112,
+            "formattedSearchTime": "0,38",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Acrylic paint keyword legacy 1 keyword legacy",
+            "htmlCorrectedQuery": "Acrylic paint <b><i>keyword legacy 1</i></b> <b><i>keyword legacy</i></b>"
+        }
+    },
+    "[it]-Modern art keyword_history1 keyword_history2": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - Modern art keyword_history1 keyword_history2",
+                    "totalResults": "0",
+                    "searchTerms": "Modern art keyword_history1 keyword_history2",
+                    "count": 10,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:aagjculgj8c"
+                }
+            ]
+        },
+        "searchInformation": {
+            "searchTime": 0.389602,
+            "formattedSearchTime": "0,39",
+            "totalResults": "0",
+            "formattedTotalResults": "0"
+        },
+        "spelling": {
+            "correctedQuery": "Modern art keyword history keyword history2",
+            "htmlCorrectedQuery": "Modern art <em>keyword history</em> <em>keyword history2</em>"
+        }
     }
 }
