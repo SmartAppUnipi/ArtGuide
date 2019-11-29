@@ -76,6 +76,11 @@ export class GoogleSearch {
             logger.debug("[google.ts] Cache hit.", { key });
         }
 
+        if (queryResult.error) {
+            logger.warn("[google-search.ts] Google search returned error", { query, exception: queryResult.error })
+            return null;
+        }
+
         return queryResult;
     }
 
