@@ -3,7 +3,7 @@
 
 import request from 'supertest'
 import app from "../src/app"
-import classificationResult from "../assets/classification-result.json"
+import classificationResult from "../assets/classification-result/known-en.json"
 import fs from "fs";
 
 const skip = true;

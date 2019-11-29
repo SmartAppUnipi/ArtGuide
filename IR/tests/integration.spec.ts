@@ -4,7 +4,7 @@ import request from 'supertest'
 import app from "../src/app"
 import nock from 'nock'
 import { AdaptationEndpoint } from '../src/environment'
-import classificationResult from "../assets/classification-result.json"
+import classificationResult from "../assets/classification-result/known-en.json"
 import queryExpansionResponse from "../assets/query-expansion-response.json"
 import { UserProfile, PageResult } from '../src/models'
 

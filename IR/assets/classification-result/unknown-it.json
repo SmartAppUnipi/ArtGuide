@@ -1,0 +1,158 @@
+{
+  "userProfile": {
+    "id": 42,
+    "tastes": [
+      "history",
+      "style"
+    ],
+    "language": "it",
+    "expertiseLevel": 2
+  },
+  "classification": {
+    "labelAnnotations": [
+      {
+        "description": "Modern art",
+        "mid": "/m/015r61",
+        "score": 0.970688,
+        "topicality": 0.970688
+      },
+      {
+        "description": "Blue",
+        "mid": "/m/01g5v",
+        "score": 0.9649977,
+        "topicality": 0.9649977
+      },
+      {
+        "description": "Painting",
+        "mid": "/m/05qdh",
+        "score": 0.9515138,
+        "topicality": 0.9515138
+      },
+      {
+        "description": "Acrylic paint",
+        "mid": "/m/011lx",
+        "score": 0.9169938,
+        "topicality": 0.9169938
+      },
+      {
+        "description": "Art",
+        "mid": "/m/0jjw",
+        "score": 0.9034871,
+        "topicality": 0.9034871
+      },
+      {
+        "description": "Visual arts",
+        "mid": "/m/0p9xx",
+        "score": 0.7112529,
+        "topicality": 0.7112529
+      },
+      {
+        "description": "Watercolor paint",
+        "mid": "/m/018ktp",
+        "score": 0.70911425,
+        "topicality": 0.70911425
+      },
+      {
+        "description": "Paint",
+        "mid": "/m/05y4t",
+        "score": 0.6789527,
+        "topicality": 0.6789527
+      },
+      {
+        "description": "Artwork",
+        "mid": "/m/0dgsmq8",
+        "score": 0.6381411,
+        "topicality": 0.6381411
+      },
+      {
+        "description": "Electric blue",
+        "mid": "/m/02vwbzz",
+        "score": 0.63793284,
+        "topicality": 0.63793284
+      }
+    ],
+    "safeSearch": {
+      "adult": "VERY_UNLIKELY",
+      "medical": "VERY_UNLIKELY",
+      "racy": "VERY_UNLIKELY",
+      "spoof": "VERY_UNLIKELY",
+      "violence": "VERY_UNLIKELY"
+    },
+    "entities": [
+      {
+        "description": "Modern art",
+        "entityId": "/m/015r61",
+        "score": 1.1544315
+      },
+      {
+        "description": "Painting",
+        "entityId": "/m/05qdh",
+        "score": 0.9854888
+      },
+      {
+        "description": "Acrylic paint",
+        "entityId": "/m/011lx",
+        "score": 0.7806977
+      },
+      {
+        "description": "Art",
+        "entityId": "/m/0jjw",
+        "score": 0.7116
+      },
+      {
+        "description": "painting",
+        "entityId": "/g/120ph51m",
+        "score": 0.4769
+      },
+      {
+        "description": "Abstract art",
+        "entityId": "/m/0197s6",
+        "score": 0.4315
+      },
+      {
+        "description": "Design",
+        "entityId": "/m/02cwm",
+        "score": 0.3993
+      },
+      {
+        "description": "Blue",
+        "entityId": "/m/01g5v",
+        "score": 0.37236315
+      },
+      {
+        "description": "Contemporary art",
+        "entityId": "/m/0h0vk",
+        "score": 0.3607
+      },
+      {
+        "entityId": "/m/0svn6n2",
+        "score": 0.2684
+      },
+      {
+        "description": "Canvas",
+        "entityId": "/m/0jmpt",
+        "score": 0.262
+      },
+      {
+        "description": "Sienna",
+        "entityId": "/m/079xy",
+        "score": 0.2471
+      },
+      {
+        "description": "Paint",
+        "entityId": "/m/05y4t",
+        "score": 0.227
+      },
+      {
+        "description": "Triptych",
+        "entityId": "/m/01tm3n",
+        "score": 0.219
+      },
+      {
+        "description": "mural",
+        "entityId": "/g/120v5ps6",
+        "score": 0.2162
+      }
+    ]
+  }
+}
