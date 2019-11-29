@@ -62,10 +62,10 @@
     "coveralls": "^3.0.9",
     "eslint": "^6.7.1",
     "eslint-plugin-jsdoc": "^18.1.5",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
     "nock": "^11.7.0",
     "nodemon": "^2.0.1",
-    "pre-commit": "^1.2.2",
     "supertest": "^4.0.2",
     "ts-jest": "^24.2.0",
     "ts-node": "^8.5.4",
@@ -120,10 +120,9 @@
       "ts": "node --require ts-node/register"
     }
   },
-  "pre-commit": [
-    "lint",
-    "test",
-    "docs",
-    "docs:add"
-  ]
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test && npm run lint"
+    }
+  }
 }
