@@ -176,7 +176,7 @@ app.post("/", async (req, res) => {
              *  5b. build a smart query on Google
              */
             logger.debug("[app.ts] Not a known instance.",
-                { reducedClassificationEntities: classificationResult.classification.entities });
+                         { reducedClassificationEntities: classificationResult.classification.entities });
             results = await Promise.all([
                 wikipedia.search(classificationResult)
                     .then(results => {

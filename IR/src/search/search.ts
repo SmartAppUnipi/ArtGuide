@@ -46,7 +46,7 @@ export class Search {
         const queries = classificationResult.classification.entities
             .map(entity => {
                 return new Query({
-                    //TODO: entity description must be taken in the user language
+                    // TODO: entity description must be taken in the user language
                     searchTerms: entity.description,
                     score: entity.score,
                     keywords: [],
