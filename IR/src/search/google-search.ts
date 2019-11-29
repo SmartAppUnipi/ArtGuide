@@ -53,7 +53,7 @@ export class GoogleSearch {
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    private async query(googleSearchUrl: string, query: string, language: "en" | "it"): Promise<GoogleSearchResult> {
+    private async query(googleSearchUrl: string, query: string, language: string): Promise<GoogleSearchResult> {
         if (!query)
             return Promise.resolve(null);
 
@@ -68,21 +68,19 @@ export class GoogleSearch {
                 .then(res => res.json())
                 .then(result => {
                     this.cacheService.set(key, result);
-                    logger.debug("[google.ts] Cache insert:" + key);
+                    logger.debug("[google.ts] Cache insert.", { key });
                     return result;
                 });
         } else {
             // cache hit
-            logger.debug("[google.ts] Cache hit:" + key);
+            logger.debug("[google.ts] Cache hit.", { key });
         }
-
 
         if (queryResult.error) {
-            const err = new Error(queryResult.error.message);
-            logger.error("[google.ts] Error in query \"" + query + "\". Query result error: ", err);
-            // Handle error in API result
-            throw err;
+            logger.warn("[google-search.ts] Google search returned error", { query, exception: queryResult.error });
+            return null;
         }
+
         return queryResult;
     }
 
@@ -95,8 +93,9 @@ export class GoogleSearch {
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    public queryCustom(query: string, language: "it" | "en"): Promise<GoogleSearchResult> {
-        return this.query(this.googleSearchUrls[language].custom, query, language);
+    public queryCustom(query: string, language: string): Promise<GoogleSearchResult> {
+        logger.debug("[google-search.ts] Making query to custom Google", { query: query, language: language });
+        return this.query(this.googleSearchUrls[language as "it" | "en"].custom, query, language);
     }
 
     /**
@@ -108,8 +107,9 @@ export class GoogleSearch {
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    public queryRestricted(query: string, language: "it" | "en"): Promise<GoogleSearchResult> {
-        return this.query(this.googleSearchUrls[language].restricted, query, language);
+    public queryRestricted(query: string, language: string): Promise<GoogleSearchResult> {
+        logger.debug("[google-search.ts] Making query to restricted Google", { query: query, language: language });
+        return this.query(this.googleSearchUrls[language as "it" | "en"].restricted, query, language);
     }
 
 }

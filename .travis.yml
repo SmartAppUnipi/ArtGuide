@@ -1,9 +1,19 @@
-language: python
-install: pip install -r image_analysis/requirements.txt
-script: python main.py
-branches:
-  only:
-  - master
+jobs:
+  include:
+    - name: image_analysis module
+      if: branch IN (master, image_analysis_proto)
+      language: python
+      python: 3.7.5
+      script:
+      - pip install -r image_analysis/app/requirements.txt && python image_analysis/app/app.py
+
+    - name: IR module
+      if: branch IN (master, ir)
+      language: node_js
+      node_js: 12
+      script:
+      - cd IR && npm ci && npm t
+
 notifications:
   slack:
     secure: oJKxY9e8CGUM/oEOvVrNNTvy7Yx0IIov1TWv3tyvWW6ILyz/+BuBUuXb1YqIzfC9/lWgFLNCm14XCAiRxWl/CA159vIYR5TuDL5ym6j4yNmEJeAdxCsNQceLIrFZfimxuHMOY+z1ZbJOgoeDJ1/4CX0anXfX8DVYHo47WdKmruJxJx5aN6N0ki8Lm+EKxAdkE5YB5ywojxiaPK/nwN611U4hwx/OHAhKb/NhEbwCmztIi4LkivZk3DzxGk486lY/DOT8a/Yku/c0GarJOnYGvDKhWb4RAwPZQ0UvYuuyva20UNPXgH55nGFZy3XZJMJILuBiJGVMmiO1rMttE9wcjzolGFc4eJimVU0m8OzJifGz5MVfYKgeKMVKMZe1CfagBqVnpy+b2RWx908i5/Dq9NPS/xBHkDrsZilPypbGfCC1JHCX1817DpK0z9urAea0bjDb4iQZ913TLq828RonlVG6qk/K2TcTxXyIPm3sj4MbZei9kHHYXty/X1Nr9Rh1uM/81qPRmYwlvp/U60QMPqyZMG3+zXs7UK0CriZ+sQEgZ1S5Uv3KZ+vcVtF+dxBEi+b+lculY8DUx/hRyPEe98rIAR3s7Shyi48Qu/2JrUAt5zdcMYpo5ta32ARDeYV56NPJ+LiOIinc/coej0244oHLBoX4ASCvh/LoedHu++c=

@@ -1,11 +1,16 @@
+import * as routesJson from "../../routes.json";
 import dotenv from "dotenv";
-import * as routesJson from '../../routes.json';
 
 // Load env variables from .env file in the IR folder
 const result = dotenv.config();
 
-if (result.error)
-    throw result.error;
+if (result.error) {
+    console.error(`
+        Cannot load environment variables from .env file. Using defaults. \n
+        The Google Search requests are served from cache (google-cache.json) if available, otherwise
+        they will throw an error since the APIs key is missing.
+    `);
+}
 
 
 /** The Google Search APIs configuration */
@@ -24,7 +29,7 @@ const GoogleSearchConfig = {
 /** The logger configuration */
 const LoggerConfig = {
     /** The minimum log level to log */
-    level: process.env.LoggerLevel || "warn",
+    level: process.env.LoggerLevel || "error",
     /** The log file where to write. If absent nothing is written on disk. */
     file: process.env.LogFile,
     /**
@@ -43,7 +48,7 @@ const ExpressPort = opusUrl.port || 3000;
 const AdaptationEndpoint = {
     text: routesJson.text,
     keywords: routesJson.keywords
-}
+};
 
 export {
     AdaptationEndpoint,

@@ -1,10 +1,12 @@
 import { AdaptationEndpoint } from "../environment";
+import { flowConfig } from "../../config.json";
 import { GoogleSearch } from "./google-search";
 import logger from "../logger";
 import { Parser } from "../parser";
 import { post } from "../utils";
 import {
     ClassificationResult,
+    GoogleSearchResult,
     PageResult,
     Query,
     QueryExpansionResponse
@@ -42,17 +44,17 @@ export class Search {
     private buildBasicQueries(classificationResult: ClassificationResult): Array<Query> {
         // TODO: return a meaningful query
         const queries = classificationResult.classification.entities
-            .slice(0, 3)  // take first 3 // TODO: slice using the first big jump on the score
             .map(entity => {
-                return {
+                return new Query({
+                    // TODO: entity description must be taken in the user language
                     searchTerms: entity.description,
                     score: entity.score,
                     keywords: [],
                     language: classificationResult.userProfile.language
-                };
+                });
             });
         if (!queries.length) logger.debug("[search.ts] Classification entities are empty");
-        logger.silly("[search.ts] Basic query built: " + queries);
+        logger.silly("[search.ts] Basic query built", { queries });
         return queries;
     }
 
@@ -65,12 +67,13 @@ export class Search {
      * @returns {Array<Query>} An array of object containing the originalQuery and an array expandedKeywords.
      */
     private extendQuery(queries: Array<Query>, queryExpansion: QueryExpansionResponse): Array<Query> {
-        logger.silly("[search.ts] Query expansion: " + queryExpansion);
+        logger.silly("[search.ts] Query expansion request", { queryExpansion });
         const expandedQueries: Array<Query> = [];
         queries.forEach(query => {
             for (const key in queryExpansion.keywordExpansion)
                 expandedQueries.push(Object.assign({}, query, { keywords: queryExpansion.keywordExpansion[key] }));
         });
+        logger.silly("[search.ts] Expanded queries", { queryExpansion });
         return expandedQueries;
     }
 
@@ -87,8 +90,8 @@ export class Search {
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
             AdaptationEndpoint.keywords, {
-            userProfile: classificationResult.userProfile
-        })
+                userProfile: classificationResult.userProfile
+            })
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
             // return both the basic query and the extended queries in one array
@@ -104,20 +107,6 @@ export class Search {
      */
     private buildResult(queries: Array<Query>): Promise<Array<PageResult>> {
 
-
-        /*
-         * TODO: Merge duplicates
-         * For each basic query (eg. "Leaning Tower of Pisa") we perform a Google Search
-         * for each keywords that come from the adaptation group
-         * (eg. "Leaning Tower of Pisa Art", "Leaning Tower of Pisa Description", ecc).
-         *
-         * Each google search produces a set of pages that are actually merged regardless 
-         * the fact they they could potentially be duplicated.
-         *
-         * We need to merge duplicated results, taking into account that we have to find a way
-         * to merge their keywords and produce a a reasonable score index.
-         */
-
         const results: Array<PageResult> = [];
 
         return Promise.all(
@@ -125,41 +114,93 @@ export class Search {
             queries.map(async q => {
                 // query Google Search and get the list of results
                 return this.googleSearch
-                    .queryCustom(q.searchTerms + " " + q.keywords.join(" "), q.language as "it" | "en")
-                    .then(queryResult => {
+                    .queryCustom(q.searchTerms + " " + q.keywords.join(" "), q.language)
+                    .then(googleSearchResult => {
 
-                        if (!queryResult) {
-                            const err = new Error("Error: empty query result.");
-                            logger.warn("[search.ts] ", err);
+                        if (!googleSearchResult || !googleSearchResult.items) {
+                            logger.warn("[search.ts] Google returned no items for query.", { query: q });
                             return;
                         }
 
-                        if (!queryResult.items) {
-                            logger.debug("[search.ts] No results for query " +
-                                queryResult.queries.request[0].searchTerms);
-                            return;
-                        }
+                        return this
+                            .toPageResults(googleSearchResult, q)
+                            .then(pageResults => {
 
-                        return Promise.all(
-                            // for each result
-                            queryResult.items.map(item => {
-                                // Scrape text from results
-                                return this.parser.parse(item.link)
-                                    .then(parsedContent => {
-                                        parsedContent.keywords = q.keywords;
-                                        results.push(parsedContent);
-                                        logger.silly("[search.ts] Parsed link " + item.link);
-                                    })
-                                    .catch(ex => {
-                                        logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
-                                    });
-                            })
-                        );
+                                /*
+                                 * TODO: Merge duplicates
+                                 * For each basic query (eg. "Leaning Tower of Pisa") we perform a Google Search
+                                 * for each keywords that come from the adaptation group
+                                 * (eg. "Leaning Tower of Pisa Art", "Leaning Tower of Pisa Description", ecc).
+                                 *
+                                 * Each google search produces a set of pages that are actually merged regardless 
+                                 * the fact they they could potentially be duplicated.
+                                 *
+                                 * We need to merge duplicated results, taking into account that we have to find a way
+                                 * to merge their keywords and produce a a reasonable score index.
+                                 */
+                                results.push(...pageResults);
+                            });
                     })
-                    .catch(ex => logger.warn("[search.ts] Caught exception while processing query\"" + q +
-                        "\". Error: ", ex));
+                    .catch(ex => {
+                        logger.error("[search.ts] Caught exception while processing a query.",
+                                     { query: q, exception: ex });
+                    });
             })
         ).then(() => results);
     }
 
+    /**
+     * Makes a custom search on google using only the search terms provided, then converts back
+     * the result to an array of PageResult. 
+     * 
+     * The keywords associated to the PageResult are the one provided by the query
+     * since they cannot be inferred.
+     * 
+     * @param query The query with the keywords to search on Google.
+     * @returns An array of PageResults.
+     */
+    public searchByTerms(query: Query): Promise<Array<PageResult>> {
+        return this.googleSearch
+            .queryCustom(query.searchTerms, query.language)
+            .then(googleResult => this.toPageResults(googleResult, query));
+    }
+
+    /**
+     * Given a GoogleSearchResult, for each returned item the parser gets invoked and
+     *the text content of the corresponding page is inserted into a PageResult.
+     *
+     *Since the keywords that are associated to that google result cannot be inferred from the results themselves,
+     *they must be explicitly passed by the caller.
+     *
+     * @param googleResult The google search result.
+     * @param query The query that produced the result.
+     * @returns The array of page results corresponding to the parsed pages returned from Google.
+     */
+    private async toPageResults(googleResult: GoogleSearchResult, query: Query): Promise<Array<PageResult>> {
+        const results: Array<PageResult> = [];
+        const itemsLen = Math.min(flowConfig.googleSearchResults.maxLimit, googleResult.items.length);
+        return Promise.all(
+            googleResult.items
+                .slice(0, itemsLen)
+                .map((item, index) => {
+                    // Scrape text from results
+                    return this.parser.parse(item.link)
+                        .then(pageResult => {
+
+                            if (!pageResult)
+                                return;
+
+                            // TODO: assign a score multiplier read from config.json
+                            pageResult.score = query.score * (1 - (index / itemsLen));
+                            pageResult.keywords = query.keywords;
+
+                            results.push(pageResult);
+                            logger.silly("[search.ts] Parsed link.", { url: item.link });
+                        })
+                        .catch(ex => {
+                            logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
+                        });
+                })
+        ).then(() => results);
+    }
 }

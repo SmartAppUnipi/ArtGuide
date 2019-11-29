@@ -1,7 +1,7 @@
 /// <reference types="@types/jest"/>
 
-import { Search } from "../src/search"
-import { Query, PageResult, GoogleSearchResult } from "../src/models"
+import { Search } from "../../src/search"
+import { Query, PageResult, GoogleSearchResult } from "../../src/models"
 
 
 const search = new Search()
@@ -49,13 +49,13 @@ describe("Test build query", () => {
     test("Should extend the query", () => {
         const result = search['extendQuery'](queries, queryExpansionResponse);
         // must return an array of (initial queries * #tastes) queries
-        expect(result).toBeDefined();
+        expect(result).toBeTruthy();
         expect(result).toHaveLength(2);
         // queries must be well formed
         result.forEach(query => {
-            expect(query.searchTerms).toBeDefined();
-            expect(query.score).toBeDefined();
-            expect(query.keywords).toBeDefined();
+            expect(query.searchTerms).toBeTruthy();
+            expect(query.score).toBeTruthy();
+            expect(query.keywords).toBeTruthy();
         })
         // must produce the expected object
         expect(result).toEqual(extendedQueries)
@@ -64,14 +64,14 @@ describe("Test build query", () => {
     it("Should return valid result object if Google returns valid items", async () => {
         const result = await search['buildResult'](extendedQueries);
         // must return an array of well formed page results
-        expect(result).toBeDefined();
+        expect(result).toBeTruthy();
         result.forEach(pageResult => {
             // page results must be well formed
-            expect(pageResult.url).toBeDefined();
-            expect(pageResult.title).toBeDefined();
-            expect(pageResult.sections).toBeDefined();
-            expect(pageResult.keywords).toBeDefined();
-            expect(pageResult.tags).toBeDefined();
+            expect(pageResult.url).toBeTruthy();
+            expect(pageResult.title).toBeTruthy();
+            expect(pageResult.sections).toBeTruthy();
+            expect(pageResult.keywords).toBeTruthy();
+            expect(pageResult.tags).toBeTruthy();
             // must contain at least 1 section
             expect(pageResult.sections.length).toBeGreaterThan(0)
         })

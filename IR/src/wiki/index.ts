@@ -1,5 +1,7 @@
-import { Wiki } from "./wiki";
+import { WikiData } from "../wiki/wikidata";
+import { Wikipedia } from "./wikipedia";
 
 export {
-    Wiki
+    WikiData,
+    Wikipedia
 };

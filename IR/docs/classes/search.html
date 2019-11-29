@@ -95,11 +95,13 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#buildbasicquery" class="tsd-kind-icon">build<wbr>Basic<wbr>Query</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="search.html#buildquery" class="tsd-kind-icon">build<wbr>Query</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="search.html#buildresult" class="tsd-kind-icon">build<wbr>Result</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#buildbasicqueries" class="tsd-kind-icon">build<wbr>Basic<wbr>Queries</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#buildqueries" class="tsd-kind-icon">build<wbr>Queries</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#buildresult" class="tsd-kind-icon">build<wbr>Result</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#extendquery" class="tsd-kind-icon">extend<wbr>Query</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="search.html#search-1" class="tsd-kind-icon">search</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="search.html#searchbyterms" class="tsd-kind-icon">search<wbr>ByTerms</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="search.html#topageresults" class="tsd-kind-icon">to<wbr>Page<wbr>Results</a></li>
 							</ul>
 						</section>
 					</div>
@@ -113,7 +115,7 @@
 					<div class="tsd-signature tsd-kind-icon">google<wbr>Search<span class="tsd-signature-symbol">:</span> <a href="googlesearch.html" class="tsd-signature-type">GoogleSearch</a><span class="tsd-signature-symbol"> =&nbsp;new GoogleSearch()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/search/search.ts:13</li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/search.ts#L21">IR/src/search/search.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -128,7 +130,7 @@
 					<div class="tsd-signature tsd-kind-icon">parser<span class="tsd-signature-symbol">:</span> <a href="parser.html" class="tsd-signature-type">Parser</a><span class="tsd-signature-symbol"> =&nbsp;new Parser()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/search/search.ts:16</li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/search.ts#L24">IR/src/search/search.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -141,16 +143,16 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="buildbasicquery" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Basic<wbr>Query</h3>
+					<a name="buildbasicqueries" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Basic<wbr>Queries</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">build<wbr>Basic<wbr>Query<span class="tsd-signature-symbol">(</span>classificationResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Basic<wbr>Queries<span class="tsd-signature-symbol">(</span>classificationResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/search/search.ts:23</li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/search.ts#L44">IR/src/search/search.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -167,22 +169,22 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>A basic query string.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>An array of Query objects with searchTerms and score.</p>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="buildquery" class="tsd-anchor"></a>
-					<h3>build<wbr>Query</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">build<wbr>Query<span class="tsd-signature-symbol">(</span>classificationResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/querybuildresult.html" class="tsd-signature-type">QueryBuildResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="buildqueries" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Queries</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Queries<span class="tsd-signature-symbol">(</span>classificationResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/search/search.ts:55</li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/search.ts#L87">IR/src/search/search.ts:87</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -199,22 +201,22 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/querybuildresult.html" class="tsd-signature-type">QueryBuildResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A promise resolved with the array of queries of type QueryBuildResult.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A promise resolved with the array of Query.</p>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="buildresult" class="tsd-anchor"></a>
-					<h3>build<wbr>Result</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">build<wbr>Result<span class="tsd-signature-symbol">(</span>queries<span class="tsd-signature-symbol">: </span><a href="../interfaces/querybuildresult.html" class="tsd-signature-type">QueryBuildResult</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Result</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Result<span class="tsd-signature-symbol">(</span>queries<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/search/search.ts:76</li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/search.ts#L108">IR/src/search/search.ts:108</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -225,13 +227,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>queries: <a href="../interfaces/querybuildresult.html" class="tsd-signature-type">QueryBuildResult</a><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>queries: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The buildQuery result.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>An array of page result to be sent to the Adaptation module.</p>
 						</li>
 					</ul>
@@ -240,13 +242,13 @@
 					<a name="extendquery" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> extend<wbr>Query</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">extend<wbr>Query<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, queryExpansion<span class="tsd-signature-symbol">: </span><a href="../interfaces/queryexpansionresponse.html" class="tsd-signature-type">QueryExpansionResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/querybuildresult.html" class="tsd-signature-type">QueryBuildResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">extend<wbr>Query<span class="tsd-signature-symbol">(</span>queries<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span>, queryExpansion<span class="tsd-signature-symbol">: </span><a href="../interfaces/queryexpansionresponse.html" class="tsd-signature-type">QueryExpansionResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/search/search.ts:35</li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/search.ts#L69">IR/src/search/search.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -257,9 +259,9 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>query: <span class="tsd-signature-type">string</span></h5>
+									<h5>queries: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>A string representing basic query.</p>
+										<p>An array of Query produced by @function buildBasicQuery.</p>
 									</div>
 								</li>
 								<li>
@@ -269,7 +271,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/querybuildresult.html" class="tsd-signature-type">QueryBuildResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>An array of object containing the originalQuery and an array expandedKeywords.</p>
 						</li>
 					</ul>
@@ -278,13 +280,13 @@
 					<a name="search-1" class="tsd-anchor"></a>
 					<h3>search</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">search<span class="tsd-signature-symbol">(</span>classificationResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">search<span class="tsd-signature-symbol">(</span>classificationResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/search/search.ts:105</li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/search.ts#L32">IR/src/search/search.ts:32</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -301,8 +303,84 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A list of page results.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="searchbyterms" class="tsd-anchor"></a>
+					<h3>search<wbr>ByTerms</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">search<wbr>ByTerms<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/search.ts#L162">IR/src/search/search.ts:162</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Makes a custom search on google using only the search terms provided, then converts back
+									the result to an array of PageResult.</p>
+								</div>
+								<p>The keywords associated to the PageResult are the one provided by the query
+								since they cannot be inferred.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>query: <a href="query.html" class="tsd-signature-type">Query</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The query with the keywords to search on Google.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>An array of PageResults.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="topageresults" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> to<wbr>Page<wbr>Results</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Page<wbr>Results<span class="tsd-signature-symbol">(</span>googleResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a>, query<span class="tsd-signature-symbol">: </span><a href="query.html" class="tsd-signature-type">Query</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/search.ts#L179">IR/src/search/search.ts:179</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Given a GoogleSearchResult, for each returned item the parser gets invoked and
+									the text content of the corresponding page is inserted into a PageResult.</p>
+								</div>
+								<p>Since the keywords that are associated to that google result cannot be inferred from the results themselves,
+								they must be explicitly passed by the caller.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>googleResult: <a href="../interfaces/googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The google search result.</p>
+									</div>
+								</li>
+								<li>
+									<h5>query: <a href="query.html" class="tsd-signature-type">Query</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The query that produced the result.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The array of page results corresponding to the parsed pages returned from Google.</p>
 						</li>
 					</ul>
 				</section>
@@ -318,12 +396,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="googlesearch.html" class="tsd-kind-icon">Google<wbr>Search</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="parser.html" class="tsd-kind-icon">Parser</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
@@ -336,12 +408,12 @@
 								<a href="search.html#parser" class="tsd-kind-icon">parser</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="search.html#buildbasicquery" class="tsd-kind-icon">build<wbr>Basic<wbr>Query</a>
+								<a href="search.html#buildbasicqueries" class="tsd-kind-icon">build<wbr>Basic<wbr>Queries</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="search.html#buildquery" class="tsd-kind-icon">build<wbr>Query</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="search.html#buildqueries" class="tsd-kind-icon">build<wbr>Queries</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="search.html#buildresult" class="tsd-kind-icon">build<wbr>Result</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -350,121 +422,16 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="search.html#search-1" class="tsd-kind-icon">search</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="search.html#searchbyterms" class="tsd-kind-icon">search<wbr>ByTerms</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="search.html#topageresults" class="tsd-kind-icon">to<wbr>Page<wbr>Results</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="wiki.html" class="tsd-kind-icon">Wiki</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/basicfield.html" class="tsd-kind-icon">Basic<wbr>Field</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/basicfieldwithid.html" class="tsd-kind-icon">Basic<wbr>Field<wbr>With<wbr>Id</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/classification.html" class="tsd-kind-icon">Classification</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/classificationresult.html" class="tsd-kind-icon">Classification<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/context.html" class="tsd-kind-icon">Context</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/cseimage.html" class="tsd-kind-icon">Cse<wbr>Image</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/csethumbnail.html" class="tsd-kind-icon">Cse<wbr>Thumbnail</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/googlesearchresult.html" class="tsd-kind-icon">Google<wbr>Search<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/item.html" class="tsd-kind-icon">Item</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/keywordexpansion.html" class="tsd-kind-icon">Keyword<wbr>Expansion</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/location.html" class="tsd-kind-icon">Location</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/metatag.html" class="tsd-kind-icon">Metatag</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/nextpage.html" class="tsd-kind-icon">Next<wbr>Page</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/pageresult.html" class="tsd-kind-icon">Page<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/pagesection.html" class="tsd-kind-icon">Page<wbr>Section</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/pagemap.html" class="tsd-kind-icon">Pagemap</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/period.html" class="tsd-kind-icon">Period</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/queries.html" class="tsd-kind-icon">Queries</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/querybuildresult.html" class="tsd-kind-icon">Query<wbr>Build<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/queryexpansionrequest.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/queryexpansionresponse.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/request.html" class="tsd-kind-icon">Request</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/safesearch.html" class="tsd-kind-icon">Safe<wbr>Search</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/searchinformation.html" class="tsd-kind-icon">Search<wbr>Information</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/spelling.html" class="tsd-kind-icon">Spelling</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/url.html" class="tsd-kind-icon">Url</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/userprofile.html" class="tsd-kind-icon">User<wbr>Profile</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#adaptationendpoint" class="tsd-kind-icon">Adaptation<wbr>Endpoint</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#googlecustomsearchapikey" class="tsd-kind-icon">Google<wbr>Custom<wbr>SearchAPIKey</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#googlecustomsearchengineid" class="tsd-kind-icon">Google<wbr>Custom<wbr>Search<wbr>Engine<wbr>Id</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#app" class="tsd-kind-icon">app</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#result" class="tsd-kind-icon">result</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#search" class="tsd-kind-icon">search</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#urls" class="tsd-kind-icon">urls</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#wiki" class="tsd-kind-icon">wiki</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-not-exported">
-						<a href="../globals.html#post" class="tsd-kind-icon">post</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

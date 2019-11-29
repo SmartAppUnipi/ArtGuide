@@ -86,8 +86,22 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="googlesearch.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="googlesearch.html#cachepath" class="tsd-kind-icon">cache<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="googlesearch.html#cacheservice" class="tsd-kind-icon">cache<wbr>Service</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="googlesearch.html#query" class="tsd-kind-icon">query</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="googlesearch.html#querycustom" class="tsd-kind-icon">query<wbr>Custom</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="googlesearch.html#queryrestricted" class="tsd-kind-icon">query<wbr>Restricted</a></li>
 							</ul>
@@ -102,18 +116,137 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="querycustom" class="tsd-anchor"></a>
-					<h3>query<wbr>Custom</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">query<wbr>Custom<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Google<wbr>Search<span class="tsd-signature-symbol">(</span>cachePath<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="googlesearch.html" class="tsd-signature-type">GoogleSearch</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/search/google-search.ts:26</li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L29">IR/src/search/google-search.ts:29</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Performs Google Search using the api keys defined in the environment (.env) file.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> cachePath: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;google-cache.json&quot;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The cache file path on disk. Default &quot;google-cache.json&quot; in root folder</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="googlesearch.html" class="tsd-signature-type">GoogleSearch</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="cachepath" class="tsd-anchor"></a>
+					<h3>cache<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">cache<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L36">IR/src/search/google-search.ts:36</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The cache file path on disk. Default &quot;google-cache.json&quot; in root folder</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="cacheservice" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> cache<wbr>Service</h3>
+					<div class="tsd-signature tsd-kind-icon">cache<wbr>Service<span class="tsd-signature-symbol">:</span> <a href="cacheservice.html" class="tsd-signature-type">CacheService</a><span class="tsd-signature-symbol"> =&nbsp;new CacheService(this.cachePath)</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L43">IR/src/search/google-search.ts:43</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The local cache service</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="query" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> query</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">query<span class="tsd-signature-symbol">(</span>googleSearchUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L56">IR/src/search/google-search.ts:56</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Make a call to the a specified Google Search API url.
+									This api searches the whole web but has a limit of 1k/day. After 5€/1k queries.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{Error} if the error field is set on the API response.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>googleSearchUrl: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Url of the Google Search API endpoint to be called.</p>
+									</div>
+								</li>
+								<li>
+									<h5>query: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The query to forward to Google.</p>
+									</div>
+								</li>
+								<li>
+									<h5>language: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The language to use as key in the cache.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A Google Search result.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="querycustom" class="tsd-anchor"></a>
+					<h3>query<wbr>Custom</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">query<wbr>Custom<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L96">IR/src/search/google-search.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -121,6 +254,11 @@
 									<p>Make a call to the CUSTOM Google Search API.
 									This api searches the whole web but has a limit of 1k/day. After 5€/1k queries.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{Error} if the error field is set on the API response.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -128,6 +266,12 @@
 									<h5>query: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The query to forward to Google.</p>
+									</div>
+								</li>
+								<li>
+									<h5>language: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The language to use in the results.</p>
 									</div>
 								</li>
 							</ul>
@@ -140,13 +284,13 @@
 					<a name="queryrestricted" class="tsd-anchor"></a>
 					<h3>query<wbr>Restricted</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">query<wbr>Restricted<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">query<wbr>Restricted<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/search/google-search.ts:37</li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L110">IR/src/search/google-search.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -154,6 +298,11 @@
 									<p>Make a call to the RESTRICTED Google Search API.
 									The restricted api has no daily limits, but limited domains defined into the search engine context</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{Error} if the error field is set on the API response.</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -161,6 +310,12 @@
 									<h5>query: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The query to forward to Google.</p>
+									</div>
+								</li>
+								<li>
+									<h5>language: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The language to use in the results.</p>
 									</div>
 								</li>
 							</ul>
@@ -178,7 +333,7 @@
 					<div class="tsd-signature tsd-kind-icon">google<wbr>Search<wbr>Urls<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/search/google-search.ts:15</li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L16">IR/src/search/google-search.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -186,25 +341,65 @@
 							<p>The Google Search REST APIs urls</p>
 						</div>
 					</div>
-					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="googlesearchurls.custom" class="tsd-anchor"></a>
-						<h3>custom</h3>
-						<div class="tsd-signature tsd-kind-icon">custom<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;https://www.googleapis.com/customsearch/v1?key&#x3D;${GoogleCustomSearchAPIKey}&amp;cx&#x3D;${GoogleCustomSearchEngineId}&amp;q&#x3D;&#x60;</span></div>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="googlesearchurls.en" class="tsd-anchor"></a>
+						<h3>en</h3>
+						<div class="tsd-signature tsd-kind-icon">en<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in src/search/google-search.ts:17</li>
+								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L23">IR/src/search/google-search.ts:23</a></li>
 							</ul>
 						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="googlesearchurls.en.custom" class="tsd-anchor"></a>
+							<h3>custom</h3>
+							<div class="tsd-signature tsd-kind-icon">custom<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;https://www.googleapis.com/customsearch/v1?key&#x3D;${GoogleSearchConfig.apiKey}&amp;cx&#x3D;${GoogleSearchConfig.searchEngineId.en}&amp;q&#x3D;&#x60;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L27">IR/src/search/google-search.ts:27</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="googlesearchurls.en.restricted" class="tsd-anchor"></a>
+							<h3>restricted</h3>
+							<div class="tsd-signature tsd-kind-icon">restricted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;https://www.googleapis.com/customsearch/v1/siterestrict?key&#x3D;${GoogleSearchConfig.apiKey}&amp;cx&#x3D;${GoogleSearchConfig.searchEngineId.en}&amp;q&#x3D;&#x60;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L25">IR/src/search/google-search.ts:25</a></li>
+								</ul>
+							</aside>
+						</section>
 					</section>
-					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-						<a name="googlesearchurls.restricted" class="tsd-anchor"></a>
-						<h3>restricted</h3>
-						<div class="tsd-signature tsd-kind-icon">restricted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;https://www.googleapis.com/customsearch/v1/siterestrict?key&#x3D;${GoogleCustomSearchAPIKey}&amp;cx&#x3D;${GoogleCustomSearchEngineId}&amp;q&#x3D;&#x60;</span></div>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="googlesearchurls.it" class="tsd-anchor"></a>
+						<h3>it</h3>
+						<div class="tsd-signature tsd-kind-icon">it<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in src/search/google-search.ts:16</li>
+								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L17">IR/src/search/google-search.ts:17</a></li>
 							</ul>
 						</aside>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="googlesearchurls.it.custom-1" class="tsd-anchor"></a>
+							<h3>custom</h3>
+							<div class="tsd-signature tsd-kind-icon">custom<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;https://www.googleapis.com/customsearch/v1?key&#x3D;${GoogleSearchConfig.apiKey}&amp;cx&#x3D;${GoogleSearchConfig.searchEngineId.it}&amp;q&#x3D;&#x60;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L21">IR/src/search/google-search.ts:21</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="googlesearchurls.it.restricted-1" class="tsd-anchor"></a>
+							<h3>restricted</h3>
+							<div class="tsd-signature tsd-kind-icon">restricted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&#x60;https://www.googleapis.com/customsearch/v1/siterestrict?key&#x3D;${GoogleSearchConfig.apiKey}&amp;cx&#x3D;${GoogleSearchConfig.searchEngineId.it}&amp;q&#x3D;&#x60;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/search/google-search.ts#L19">IR/src/search/google-search.ts:19</a></li>
+								</ul>
+							</aside>
+						</section>
 					</section>
 				</section>
 			</section>
@@ -224,6 +419,18 @@
 					<li class="current tsd-kind-class">
 						<a href="googlesearch.html" class="tsd-kind-icon">Google<wbr>Search</a>
 						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="googlesearch.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="googlesearch.html#cachepath" class="tsd-kind-icon">cache<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="googlesearch.html#cacheservice" class="tsd-kind-icon">cache<wbr>Service</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="googlesearch.html#query" class="tsd-kind-icon">query</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="googlesearch.html#querycustom" class="tsd-kind-icon">query<wbr>Custom</a>
 							</li>
@@ -237,123 +444,6 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="parser.html" class="tsd-kind-icon">Parser</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="search.html" class="tsd-kind-icon">Search</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="wiki.html" class="tsd-kind-icon">Wiki</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/basicfield.html" class="tsd-kind-icon">Basic<wbr>Field</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/basicfieldwithid.html" class="tsd-kind-icon">Basic<wbr>Field<wbr>With<wbr>Id</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/classification.html" class="tsd-kind-icon">Classification</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/classificationresult.html" class="tsd-kind-icon">Classification<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/context.html" class="tsd-kind-icon">Context</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/cseimage.html" class="tsd-kind-icon">Cse<wbr>Image</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/csethumbnail.html" class="tsd-kind-icon">Cse<wbr>Thumbnail</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/googlesearchresult.html" class="tsd-kind-icon">Google<wbr>Search<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/item.html" class="tsd-kind-icon">Item</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/keywordexpansion.html" class="tsd-kind-icon">Keyword<wbr>Expansion</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/location.html" class="tsd-kind-icon">Location</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/metatag.html" class="tsd-kind-icon">Metatag</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/nextpage.html" class="tsd-kind-icon">Next<wbr>Page</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/pageresult.html" class="tsd-kind-icon">Page<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/pagesection.html" class="tsd-kind-icon">Page<wbr>Section</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/pagemap.html" class="tsd-kind-icon">Pagemap</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/period.html" class="tsd-kind-icon">Period</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/queries.html" class="tsd-kind-icon">Queries</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/querybuildresult.html" class="tsd-kind-icon">Query<wbr>Build<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/queryexpansionrequest.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/queryexpansionresponse.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/request.html" class="tsd-kind-icon">Request</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/safesearch.html" class="tsd-kind-icon">Safe<wbr>Search</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/searchinformation.html" class="tsd-kind-icon">Search<wbr>Information</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/spelling.html" class="tsd-kind-icon">Spelling</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/url.html" class="tsd-kind-icon">Url</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/userprofile.html" class="tsd-kind-icon">User<wbr>Profile</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#adaptationendpoint" class="tsd-kind-icon">Adaptation<wbr>Endpoint</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#googlecustomsearchapikey" class="tsd-kind-icon">Google<wbr>Custom<wbr>SearchAPIKey</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#googlecustomsearchengineid" class="tsd-kind-icon">Google<wbr>Custom<wbr>Search<wbr>Engine<wbr>Id</a>
-					</li>
-					<li class=" tsd-kind-variable">
-						<a href="../globals.html#app" class="tsd-kind-icon">app</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#result" class="tsd-kind-icon">result</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#search" class="tsd-kind-icon">search</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#urls" class="tsd-kind-icon">urls</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#wiki" class="tsd-kind-icon">wiki</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter tsd-is-not-exported">
-						<a href="../globals.html#post" class="tsd-kind-icon">post</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

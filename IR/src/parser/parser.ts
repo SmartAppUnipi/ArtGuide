@@ -1,4 +1,5 @@
 import { JSDOM } from "jsdom";
+import logger from "../logger";
 import { PageResult } from "../models";
 
 // eslint-disable-next-line
@@ -23,8 +24,8 @@ export class Parser {
     ];
 
     private sectionSelectors = [
-      "p"
-    ]
+        "p"
+    ];
 
     /*
      * This method is used to remove the code inside { } that could be found in the parse text.
@@ -84,128 +85,77 @@ export class Parser {
         return allSelectors;
     }
 
-    // This method is based on intersection with the merge approacch.
-    // It takes two text that should be similar. 
-    // In our case :
-    // - text1 is the complete text.
-    // - text2 is the text without the titles.
-    // Using the merge approacch when the two text are different means that
-    // we found a word of the title of one section.
-    // In this way we can extract the different sections with their title.
-    public mergeText(text1: string[], text2: string[]) {
-      let i = 0;
-      let areEqual = false
-      var sections = [];
-      var titles = [];
-      let nSections = 0;
-      let index1 = 0;
-      let index2 = 0;
-      let text1Length = text1.length
-      let text2Length = text2.length
-      while( index1 < text1Length ) {
-        if(text1[index1] == text2[index2]) {
-          if (!sections[nSections]) { 
-            sections[nSections] = "";
-        }
-          sections[nSections] += text1[index1] + " ";
-          index1 ++;
-          index2 ++;
-          areEqual = true
-        } else {
-          if (areEqual == true) {
-            nSections ++;
-          }
-          if (!titles[nSections]) { 
-            titles[nSections] = "";
-          }
-          areEqual = false;
-          titles[nSections] += text1[index1] + " ";
-          index1 ++;
-        }
-      }
-      return [titles, sections]
-    }
+    /*
+     * This method is based on intersection with the merge approacch.
+     * It takes two text that should be similar. 
+     * In our case :
+     * - text1 is the complete text.
+     * - text2 is the text without the titles.
+     * Using the merge approacch when the two text are different means that
+     * we found a word of the title of one section.
+     * In this way we can extract the different sections with their title.
+     */
+    public mergeText(text1: Array<string>, text2: Array<string>): Array<Array<string>> {
+        let areEqual = false;
+        const sections = [];
+        const titles = [];
+        let nSections = 0;
+        let index1 = 0;
+        let index2 = 0;
+        const text1Length = text1.length;
+        const text2Length = text2.length;
+        while (index1 < text1Length && index2 < text2Length) {
+            if (text1[index1] == text2[index2]) {
+                if (!sections[nSections])
+                    sections[nSections] = "";
 
-  
-    // Methods for getting sections and their title
-    public async getTitlesAndSections(url: string) {
-      let testoWithTitle = await this.parseToText(url, this.getAllSelectors())
-      let testoWithoutTitles = await this.parseToText(url, this.sectionSelectors[0])
-     // var testoWithTitleTokenized = testoWithTitle.split(" ");
-     // var testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
-      // var titlesAndSections = this.mergeText(testoWithTitleTokenized,testoWithoutTitlesTokenied);
-      // var titles = titlesAndSections[0]
-      // var sections = titlesAndSections[1]
-      var titles = "titolo"
-      var sections = "sezione"
-      var sectionsObj = []
-      var i,j = 0;
-      for (i = 0; i < sections.length; i++) { 
-        if (sections[i].length > 20) {
-          sectionsObj[j] = {
-            title: titles[i],
-            content: sections[i],
-            tags: rake(sections[i]).slice(0,10)
-          };
-          j++;
+                sections[nSections] += text1[index1] + " ";
+                index1++;
+                index2++;
+                areEqual = true;
+            } else {
+                if (areEqual == true)
+                    nSections++;
+
+                if (!titles[nSections])
+                    titles[nSections] = "";
+
+                areEqual = false;
+                titles[nSections] += text1[index1] + " ";
+                index1++;
+            }
         }
-      }
-      return sectionsObj
+        if (titles[0] == null) 
+            titles[0] = " ";
+        
+
+        return [titles, sections];
     }
 
 
-    // Used for extract the text using some defined selectors
-    public parseToText(url: string, selectors: string): Promise<string> {
-      return JSDOM.fromURL(url).then(dom => {
-        // look for a list of preferred query selectors
-        let textContent = "";
-        let content;
-        /*
-         * const i = 0;
-         * nodesToRemove = dom.window.document.querySelectorAll('a')
-         * for (i = 0; i < nodesToRemove.length; i++) {
-         *   console.log(nodesToRemove[i].textContent)
-         *   nodesToRemove[i].textContent = "";
-         * }
-         * i = 0;
-         */
-        const nodes = dom.window.document.querySelectorAll(selectors);
-        /*
-         * while (i < this.querySelectors.length)
-         * if no nodes are found choose the body}
-         */
-        if (!nodes.length) {
-            content = dom.window.document.body;
-            textContent = content.textContent;
-        } else {
-            nodes.forEach(item => {
-                const nodeText = item.textContent.replace(/\s+/g, " ").trim();
-                textContent += nodeText + " ";
-
-            });
-        }
-        const finalText = this.removeCodeInText(textContent)
-
-        return finalText
-    })
-  }
+    public validURL(str: string): boolean {
+        const pattern = new RegExp("^(https?:\\/\\/)?" + // protocol
+            "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+            "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+            "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+            "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+            "(\\#[-a-z\\d_]*)?$", "i"); // fragment locator
+        return !!pattern.test(str);
+    }
 
     public async parse(url: string): Promise<PageResult> {
-        // FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
-        //var sectionObject = await this.getTitlesAndSections(url)
-        return JSDOM.fromURL(url).then(async dom => {
+        /*
+         *  FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
+         * var sectionObject = await this.getTitlesAndSections(url)
+         */
+        if (!this.validURL(url))
+            return Promise.resolve(null);
+
+        return JSDOM.fromURL(url).then(dom => {
             // look for a list of preferred query selectors
             let textContent = "";
             let content;
-            /*
-             * const i = 0;
-             * nodesToRemove = dom.window.document.querySelectorAll('a')
-             * for (i = 0; i < nodesToRemove.length; i++) {
-             *   console.log(nodesToRemove[i].textContent)
-             *   nodesToRemove[i].textContent = "";
-             * }
-             * i = 0;
-             */
+
             const nodesWithTitle = dom.window.document.querySelectorAll(this.getAllSelectors());
             const nodesWithoutTitle = dom.window.document.querySelectorAll(this.sectionSelectors[0]);
 
@@ -213,140 +163,80 @@ export class Parser {
                 content = dom.window.document.body;
                 textContent = content.textContent;
             } else {
-              nodesWithTitle.forEach(item => {
+                nodesWithTitle.forEach(item => {
                     const nodeText = item.textContent.replace(/\s+/g, " ").trim();
                     textContent += nodeText + " ";
-    
+
                 });
             }
-            let testoWithTitle = this.removeCodeInText(textContent)
-            //const keywords = rake(finalText).slice(0,10)  
+            const testoWithTitle = this.removeCodeInText(textContent);
 
             let textContentWithoutTitle = "";
             let contentWithoutTitle;
+
             if (!nodesWithoutTitle.length) {
-              contentWithoutTitle = dom.window.document.body;
-              textContentWithoutTitle = contentWithoutTitle.textContent;
+                contentWithoutTitle = dom.window.document.body;
+                textContentWithoutTitle = contentWithoutTitle.textContent;
             } else {
-              nodesWithoutTitle.forEach(item => {
-                  const nodeTextWithoutTitle = item.textContent.replace(/\s+/g, " ").trim();
-                  textContentWithoutTitle += nodeTextWithoutTitle + " ";
-  
-              });
+                nodesWithoutTitle.forEach(item => {
+                    const nodeTextWithoutTitle = item.textContent.replace(/\s+/g, " ").trim();
+                    textContentWithoutTitle += nodeTextWithoutTitle + " ";
+
+                });
             }
-             let testoWithoutTitles = this.removeCodeInText(textContentWithoutTitle)
-             
-             var testoWithTitleTokenized = testoWithTitle.split(" ");
-             var testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
-             var titlesAndSections = this.mergeText(testoWithTitleTokenized,testoWithoutTitlesTokenied);
-             var titles = titlesAndSections[0]
-             var sections = titlesAndSections[1]
-             var sectionsObj = []
-             var i,j = 0;
-             for (i = 0; i < sections.length; i++) { 
-                if (sections[i].length > 20) {
-                   sectionsObj[j] = {
-                      title: titles[i],
-                      content: sections[i],
-                      tags: rake(sections[i]).slice(0,10)
-                  };
-                  j++;
+            const testoWithoutTitles = this.removeCodeInText(textContentWithoutTitle);
+
+            const testoWithTitleTokenized = testoWithTitle.split(" ");
+            const testoWithoutTitlesTokenied = testoWithoutTitles.split(" ");
+            const titlesAndSections = this.mergeText(testoWithTitleTokenized, testoWithoutTitlesTokenied);
+            const titles = titlesAndSections[0];
+            const sections = titlesAndSections[1];
+            const sectionsObj = [];
+            let i, j = 0;
+
+            for (i = 0; i < sections.length; i++) {
+                if (sections[i].length > 20) {
+                    const keywords = rake(sections[i]).slice(0, 10);
+
+                    sectionsObj[j] = {
+                        title: titles[i],
+                        content: sections[i],
+                        tags: keywords // FIXME: rake(sections[i]).slice(0, 10)
+                    };
+                    j++;
                 }
-              }
-
-            /*
-             * while (i < this.querySelectors.length)
-             * if no nodes are found choose the body}
-             */
-            // if (!nodes.length) {
-            //     content = dom.window.document.body;
-            //     textContent = content.textContent;
-            // } else {
-            //     nodes.forEach(item => {
-            //         const nodeText = item.textContent.replace(/\s+/g, " ").trim();
-            //         if (nodeText.length > 40)
-            //             textContent += nodeText;
-
-            //     });
-            // }
-
-
-            
-            //var sectionObject = await this.getTitlesAndSections(url)
-            if (sectionsObj.length > 1) {
-              return new PageResult({
-                url,
-                title: dom.window.document.title,
-                sections: sectionsObj,
-                keywords: [], // keywords are populated from caller which knows the query object
-                tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
-            });
-            } else { 
-              return new PageResult({
-                url,
-                title: dom.window.document.title,
-                sections: [
-                    {
-                        title: "main",
-                        content: testoWithTitle,
-                        tags: [rake(testoWithTitle).slice(0,10)] // FIXME: populate with some logic if possible
-                    }
-                ],
-                keywords: [], // keywords are populated from caller which knows the query object
-                tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
-            });
             }
-        });
-      
+
+            // var sectionObject = await this.getTitlesAndSections(url)
+            if (sectionsObj.length > 1) {
+                return new PageResult({
+                    url,
+                    title: dom.window.document.title,
+                    sections: sectionsObj,
+                    keywords: [], // keywords are populated from caller which knows the query object
+                    tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
+                });
+            } else {
+                return new PageResult({
+                    url,
+                    title: dom.window.document.title,
+                    sections: [
+                        {
+                            title: "main",
+                            content: testoWithTitle,
+                            tags: rake(testoWithTitle).slice(0, 10)
+                        }
+                    ],
+                    keywords: [], // keywords are populated from caller which knows the query object
+                    tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
+                });
+            }
+        })
+            .catch(ex => {
+                logger.warn("[parser.ts] Error parsing URL", { url: url, exception: ex });
+                return null;
+            });
+
     }
 
-    /*
-     * public parse(url: string): Promise<PageResult> {
-     *   return JSDOM.fromURL(url).then(dom => {
-     *     // look for a list of preferred query selectors
-     *     let content, nodes, i = 0
-     *     do nodes = dom.window.document.querySelectorAll(this.querySelectors[i++])
-     *     while (!nodes.length && i < this.querySelectors.length)
-     *     // if no nodes are found choose the body
-     *     if (!nodes.length) content = dom.window.document.body
-     *     // if is found exactly one node, choose that one
-     *     else if (nodes.length == 1) content = nodes[0]
-     *     // if more nodes are found, pick the one with longest HTML inside
-     *     else content = [...nodes].reduce((a, b) => a.innerHTML.length > b.innerHTML.length ? a : b)
-     *     // remove all the redundant spaces
-     *     const textContent = content.textContent.replace(/\s+/g, ' ').trim()
-     */
-
-    /*
-     *     return {
-     *       url: url,
-     *       title: dom.window.document.title,
-     *       sections: [
-     *         {
-     *           title: "main",
-     *           content: textContent
-     *         }
-     *       ],
-     *       keywords: []
-     *     }
-     */
-
-    /*
-     *   })
-     * }
-     */
-
 }
-
-
-// FIXME: move tests in tests/parsers.spec.ts
-/* eslint-disable */
-/*
-const urls = [
-  "https://www.studenti.it/la-gioconda-leonardo-da-vinci.html",
-  "http://www.ansa.it/canale_saluteebenessere/notizie/stili_di_vita/2019/01/09/leffetto-monna-lisa-esiste-ma-non-nella-gioconda_e1b96e6e-cf5b-42c1-a53d-b688e7ffb846.html",
-  "https://www.focus.it/cultura/storia/gioconda-monna-lisa-furto",
-  "https://www.artribune.com/arti-visive/arte-moderna/2019/07/ristrutturazione-sala-ospita-gioconda-tela-spostata/"
-]
-new Parser().parse(urls[0]).then(console.log)
-*/
