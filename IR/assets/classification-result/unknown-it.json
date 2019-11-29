@@ -2,14 +2,14 @@
   "userProfile": {
     "id": 42,
     "tastes": [
-      "history",
-      "style"
+      "storia",
+      "stile"
     ],
     "language": "it",
     "expertiseLevel": 2
   },
   "classification": {
-    "labelAnnotations": [
+    "labels": [
       {
         "description": "Modern art",
         "mid": "/m/015r61",

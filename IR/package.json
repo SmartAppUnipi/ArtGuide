@@ -104,7 +104,8 @@
       "/.vscode/"
     ],
     "coverageDirectory": "coverage",
-    "globalSetup": "./tests/testsSetup.ts"
+    "globalSetup": "./tests/testsSetup.ts",
+    "globalTeardown": "./tests/testsTeardown.ts"
   },
   "nodemonConfig": {
     "watch": [

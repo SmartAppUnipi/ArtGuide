@@ -9,7 +9,7 @@
     "expertiseLevel": 1
   },
   "classification": {
-    "labelAnnotations": [
+    "labels": [
       {
         "description": "Modern art",
         "mid": "/m/015r61",
