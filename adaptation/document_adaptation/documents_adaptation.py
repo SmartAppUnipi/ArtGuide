@@ -74,7 +74,7 @@ class DocumentsAdaptation():
             embedder = self.embedder[user.language]
         else:
             embedder = self.embedder['en']
-
+        user.embed_tastes(embedder)
         stop_words = self.get_language_stopwords(user)        
         # Map result in DocumentModel object
         documents = list(map(lambda x: DocumentModel(x, user, stop_words=stop_words), results))
@@ -99,34 +99,17 @@ class DocumentsAdaptation():
         salient_sentences = list(futures)
         salient_sentences = [x for s in salient_sentences for x in s]
 
-        # Rimuove sentenze non uniche
-        for a in salient_sentences:
-            for b in salient_sentences:
-                if a.sentence == b.sentence:
-                    if a != b:
-                        salient_sentences.remove(b)
-
+        # policy on sentences
         policy = Policy(salient_sentences, user.tastes, user)
-        policy.create_clusters()
-        policy.embed_user_tastes()
-        policy.apply_policy()
-
-        # Filtra le sentences in base alla policy usata
-        for cluster in policy.sentences:
-            policy.sentences[cluster] = sorted(policy.sentences[cluster], key=lambda tup: tup[0])
-
-        if self.verbose:
-            for cluster in policy.sentences:
-                print("Results for "+cluster+" (the lower the number, the better the sentence):")
-                for sentence in policy.sentences[cluster][:30]:
-                    print(str(sentence[0])+": "+sentence[1])
+        policy.auto()
+        #policy.print_results(5)  # Parameter is the number of results for cluster
 
         # create batch of sentences for summarization model 
         batch_sentences = []
         clusters = []
-        for cluster in policy.sentences:
+        for cluster in policy.results:
             clusters.append(cluster)
-            batch_sentences.append(''.join( list(map(lambda x :x[1],  policy.sentences[cluster][:self.config.max_sentences])) ))
+            batch_sentences.append(''.join( list(map(lambda x :x[1],  policy.results[cluster][:self.config.max_sentences])) ))
             print("Batch \"{}\" length: {} chars".format(cluster, len(batch_sentences[-1])))
 
         if self.verbose:
@@ -151,3 +134,4 @@ class DocumentsAdaptation():
             tailored_result += summary+'\n'
 
         return tailored_result
+
