@@ -1,5 +1,5 @@
-import { post } from "./utils"
-import json from "../assets/classification-result.json"
+import json from "../assets/classification-result.json";
+import { post } from "./utils";
 
-
-post("http://localhost:3000", json).then(JSON.stringify).then(console.log)
+// eslint-disable-next-line
+post.bind("http://localhost:3000", json).then((r: any) => JSON.stringify(r)).then((r: any) => console.log(r));

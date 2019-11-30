@@ -1,0 +1,1058 @@
+{
+  "cropHintsAnnotation": {
+    "cropHints": [
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "y": 593
+            },
+            {
+              "x": 2249,
+              "y": 593
+            },
+            {
+              "x": 2249,
+              "y": 3406
+            },
+            {
+              "y": 3406
+            }
+          ]
+        },
+        "confidence": 0.4888889,
+        "importanceFraction": 1
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "y": 875
+            },
+            {
+              "x": 2249,
+              "y": 875
+            },
+            {
+              "x": 2249,
+              "y": 3125
+            },
+            {
+              "y": 3125
+            }
+          ]
+        },
+        "confidence": 0.6111111,
+        "importanceFraction": 1
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "y": 1200
+            },
+            {
+              "x": 2249,
+              "y": 1200
+            },
+            {
+              "x": 2249,
+              "y": 3074
+            },
+            {
+              "y": 3074
+            }
+          ]
+        },
+        "confidence": 0.6875,
+        "importanceFraction": 0.93749994
+      }
+    ]
+  },
+  "imagePropertiesAnnotation": {
+    "cropHints": [
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "y": 593
+            },
+            {
+              "x": 2249,
+              "y": 593
+            },
+            {
+              "x": 2249,
+              "y": 3406
+            },
+            {
+              "y": 3406
+            }
+          ]
+        },
+        "confidence": 0.4888889,
+        "importanceFraction": 1
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "y": 875
+            },
+            {
+              "x": 2249,
+              "y": 875
+            },
+            {
+              "x": 2249,
+              "y": 3125
+            },
+            {
+              "y": 3125
+            }
+          ]
+        },
+        "confidence": 0.6111111,
+        "importanceFraction": 1
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "y": 1200
+            },
+            {
+              "x": 2249,
+              "y": 1200
+            },
+            {
+              "x": 2249,
+              "y": 3074
+            },
+            {
+              "y": 3074
+            }
+          ]
+        },
+        "confidence": 0.6875,
+        "importanceFraction": 0.93749994
+      }
+    ],
+    "dominantColors": {
+      "colors": [
+        {
+          "color": {
+            "blue": 156,
+            "green": 155,
+            "red": 157
+          },
+          "hex": "9D9B9C",
+          "percent": 27.692668410487435,
+          "percentRounded": 28,
+          "pixelFraction": 0.11396825,
+          "rgb": "157, 155,\n 156",
+          "score": 0.2765584
+        },
+        {
+          "color": {
+            "blue": 121,
+            "green": 119,
+            "red": 120
+          },
+          "hex": "787779",
+          "percent": 24.889305224795194,
+          "percentRounded": 25,
+          "pixelFraction": 0.14031745,
+          "rgb": "120, 119,\n 121",
+          "score": 0.24856205
+        },
+        {
+          "color": {
+            "blue": 187,
+            "green": 190,
+            "red": 196
+          },
+          "hex": "C4BEBB",
+          "percent": 23.175230681345045,
+          "percentRounded": 23,
+          "pixelFraction": 0.098253965,
+          "rgb": "196, 190,\n 187",
+          "score": 0.2314441
+        },
+        {
+          "color": {
+            "blue": 89,
+            "green": 87,
+            "red": 89
+          },
+          "hex": "595759",
+          "percent": 11.488167084685506,
+          "percentRounded": 11,
+          "pixelFraction": 0.1561111,
+          "rgb": "89, 87,\n 89",
+          "score": 0.11472889
+        },
+        {
+          "color": {
+            "blue": 174,
+            "green": 190,
+            "red": 205
+          },
+          "hex": "CDBEAE",
+          "percent": 8.123863305500327,
+          "percentRounded": 8,
+          "pixelFraction": 0.026666667,
+          "rgb": "205, 190,\n 174",
+          "score": 0.081130594
+        },
+        {
+          "color": {
+            "blue": 131,
+            "green": 145,
+            "red": 163
+          },
+          "hex": "A39183",
+          "percent": 1.6177924981988734,
+          "percentRounded": 2,
+          "pixelFraction": 0.008174603,
+          "rgb": "163, 145,\n 131",
+          "score": 0.01615641
+        },
+        {
+          "color": {
+            "blue": 61,
+            "green": 59,
+            "red": 61
+          },
+          "hex": "3D3B3D",
+          "percent": 1.2613899193002025,
+          "percentRounded": 1,
+          "pixelFraction": 0.2895238,
+          "rgb": "61, 59,\n 61",
+          "score": 0.012597124
+        },
+        {
+          "color": {
+            "blue": 229,
+            "green": 226,
+            "red": 229
+          },
+          "hex": "E5E2E5",
+          "percent": 1.1016720108530533,
+          "percentRounded": 1,
+          "pixelFraction": 0.07753968,
+          "rgb": "229, 226,\n 229",
+          "score": 0.011002069
+        },
+        {
+          "color": {
+            "blue": 106,
+            "green": 122,
+            "red": 143
+          },
+          "hex": "8F7A6A",
+          "percent": 0.4443658910876428,
+          "percentRounded": 0,
+          "pixelFraction": 0.0027777778,
+          "rgb": "143, 122,\n 106",
+          "score": 0.0044377493
+        },
+        {
+          "color": {
+            "blue": 21,
+            "green": 23,
+            "red": 24
+          },
+          "hex": "181715",
+          "percent": 0.20554497374672334,
+          "percentRounded": 0,
+          "pixelFraction": 0.05515873,
+          "rgb": "24, 23,\n 21",
+          "score": 0.0020527162
+        }
+      ]
+    }
+  },
+  "labelAnnotations": [
+    {
+      "description": "Bicycle",
+      "mid": "/m/0199g",
+      "score": 0.93063414,
+      "topicality": 0.93063414
+    },
+    {
+      "description": "Property",
+      "mid": "/m/05wrt",
+      "score": 0.9085858,
+      "topicality": 0.9085858
+    },
+    {
+      "description": "Building",
+      "mid": "/m/0cgh4",
+      "score": 0.8457702,
+      "topicality": 0.8457702
+    },
+    {
+      "description": "Architecture",
+      "mid": "/m/03nfmq",
+      "score": 0.8042546,
+      "topicality": 0.8042546
+    },
+    {
+      "description": "Vehicle",
+      "mid": "/m/07yv9",
+      "score": 0.80250853,
+      "topicality": 0.80250853
+    },
+    {
+      "description": "House",
+      "mid": "/m/03jm5",
+      "score": 0.74233705,
+      "topicality": 0.74233705
+    },
+    {
+      "description": "Facade",
+      "mid": "/m/01x314",
+      "score": 0.7005579,
+      "topicality": 0.7005579
+    },
+    {
+      "description": "Room",
+      "mid": "/m/06ht1",
+      "score": 0.6566393,
+      "topicality": 0.6566393
+    },
+    {
+      "description": "Apartment",
+      "mid": "/m/01nblt",
+      "score": 0.6169095,
+      "topicality": 0.6169095
+    },
+    {
+      "description": "Window",
+      "mid": "/m/0d4v4",
+      "score": 0.6095948,
+      "topicality": 0.6095948
+    },
+    {
+      "description": "Recreation",
+      "mid": "/m/06bm2",
+      "score": 0.59429896,
+      "topicality": 0.59429896
+    },
+    {
+      "description": "Sports equipment",
+      "mid": "/m/05y5lj",
+      "score": 0.5915133,
+      "topicality": 0.5915133
+    },
+    {
+      "description": "Urban design",
+      "mid": "/m/0d9wj",
+      "score": 0.58356863,
+      "topicality": 0.58356863
+    },
+    {
+      "description": "Residential area",
+      "mid": "/m/02nfxt",
+      "score": 0.53375006,
+      "topicality": 0.53375006
+    },
+    {
+      "description": "Bicycle wheel",
+      "mid": "/m/01bqk0",
+      "score": 0.52840245,
+      "topicality": 0.52840245
+    },
+    {
+      "description": "City",
+      "mid": "/m/01n32",
+      "score": 0.51347554,
+      "topicality": 0.51347554
+    },
+    {
+      "description": "Bicycle accessory",
+      "mid": "/m/0h8m1ct",
+      "score": 0.5008038,
+      "topicality": 0.5008038
+    }
+  ],
+  "localizedObjectAnnotations": [
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.17367876,
+            "y": 0.14164253
+          },
+          {
+            "x": 0.95195466,
+            "y": 0.14164253
+          },
+          {
+            "x": 0.95195466,
+            "y": 0.65324223
+          },
+          {
+            "x": 0.17367876,
+            "y": 0.65324223
+          }
+        ]
+      },
+      "mid": "/m/0cgh4",
+      "name": "Building",
+      "score": 0.879872
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.37352645,
+            "y": 0.70870304
+          },
+          {
+            "x": 0.48804215,
+            "y": 0.70870304
+          },
+          {
+            "x": 0.48804215,
+            "y": 0.7893781
+          },
+          {
+            "x": 0.37352645,
+            "y": 0.7893781
+          }
+        ]
+      },
+      "mid": "/m/0h9mv",
+      "name": "Tire",
+      "score": 0.8513699
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.1942631,
+            "y": 0.73605376
+          },
+          {
+            "x": 0.31688294,
+            "y": 0.73605376
+          },
+          {
+            "x": 0.31688294,
+            "y": 0.8364485
+          },
+          {
+            "x": 0.1942631,
+            "y": 0.8364485
+          }
+        ]
+      },
+      "mid": "/m/0h9mv",
+      "name": "Tire",
+      "score": 0.8411406
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.1019308,
+            "y": 0.7422373
+          },
+          {
+            "x": 0.23929006,
+            "y": 0.7422373
+          },
+          {
+            "x": 0.23929006,
+            "y": 0.8522844
+          },
+          {
+            "x": 0.1019308,
+            "y": 0.8522844
+          }
+        ]
+      },
+      "mid": "/m/0h9mv",
+      "name": "Tire",
+      "score": 0.8255385
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.45082226,
+            "y": 0.6908493
+          },
+          {
+            "x": 0.5710106,
+            "y": 0.6908493
+          },
+          {
+            "x": 0.5710106,
+            "y": 0.77116895
+          },
+          {
+            "x": 0.45082226,
+            "y": 0.77116895
+          }
+        ]
+      },
+      "mid": "/m/0h9mv",
+      "name": "Tire",
+      "score": 0.77946454
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.0037600275,
+            "y": 0.67536575
+          },
+          {
+            "x": 0.2528262,
+            "y": 0.67536575
+          },
+          {
+            "x": 0.2528262,
+            "y": 0.8448305
+          },
+          {
+            "x": 0.0037600275,
+            "y": 0.8448305
+          }
+        ]
+      },
+      "mid": "/m/0199g",
+      "name": "Bicycle",
+      "score": 0.70412093
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.42105412,
+            "y": 0.6466398
+          },
+          {
+            "x": 0.5973465,
+            "y": 0.6466398
+          },
+          {
+            "x": 0.5973465,
+            "y": 0.7342407
+          },
+          {
+            "x": 0.42105412,
+            "y": 0.7342407
+          }
+        ]
+      },
+      "mid": "/m/0199g",
+      "name": "Bicycle",
+      "score": 0.6907751
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.023185186,
+            "y": 0.71526927
+          },
+          {
+            "x": 0.18223077,
+            "y": 0.71526927
+          },
+          {
+            "x": 0.18223077,
+            "y": 0.8144675
+          },
+          {
+            "x": 0.023185186,
+            "y": 0.8144675
+          }
+        ]
+      },
+      "mid": "/m/0h9mv",
+      "name": "Tire",
+      "score": 0.6877195
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.63529277,
+            "y": 0.5557689
+          },
+          {
+            "x": 0.7576739,
+            "y": 0.5557689
+          },
+          {
+            "x": 0.7576739,
+            "y": 0.65145487
+          },
+          {
+            "x": 0.63529277,
+            "y": 0.65145487
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.6840817
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.7789607,
+            "y": 0.442291
+          },
+          {
+            "x": 0.9435949,
+            "y": 0.442291
+          },
+          {
+            "x": 0.9435949,
+            "y": 0.5358997
+          },
+          {
+            "x": 0.7789607,
+            "y": 0.5358997
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.6522406
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.7767794,
+            "y": 0.2609891
+          },
+          {
+            "x": 0.9275372,
+            "y": 0.2609891
+          },
+          {
+            "x": 0.9275372,
+            "y": 0.3461207
+          },
+          {
+            "x": 0.7767794,
+            "y": 0.3461207
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.64621574
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.00088445883,
+            "y": 0.5050518
+          },
+          {
+            "x": 0.12949978,
+            "y": 0.5050518
+          },
+          {
+            "x": 0.12949978,
+            "y": 0.60821706
+          },
+          {
+            "x": 0.00088445883,
+            "y": 0.60821706
+          }
+        ]
+      },
+      "mid": "/m/0cgh4",
+      "name": "Building",
+      "score": 0.6402223
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.61907065,
+            "y": 0.17707299
+          },
+          {
+            "x": 0.7521019,
+            "y": 0.17707299
+          },
+          {
+            "x": 0.7521019,
+            "y": 0.27081472
+          },
+          {
+            "x": 0.61907065,
+            "y": 0.27081472
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.6211629
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.20865689,
+            "y": 0.6642862
+          },
+          {
+            "x": 0.5216814,
+            "y": 0.6642862
+          },
+          {
+            "x": 0.5216814,
+            "y": 0.78691584
+          },
+          {
+            "x": 0.20865689,
+            "y": 0.78691584
+          }
+        ]
+      },
+      "mid": "/m/0199g",
+      "name": "Bicycle",
+      "score": 0.6179166
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.62740904,
+            "y": 0.4559991
+          },
+          {
+            "x": 0.7554645,
+            "y": 0.4559991
+          },
+          {
+            "x": 0.7554645,
+            "y": 0.53941596
+          },
+          {
+            "x": 0.62740904,
+            "y": 0.53941596
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.61514735
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.7773867,
+            "y": 0.34711385
+          },
+          {
+            "x": 0.9390219,
+            "y": 0.34711385
+          },
+          {
+            "x": 0.9390219,
+            "y": 0.44265798
+          },
+          {
+            "x": 0.7773867,
+            "y": 0.44265798
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.60512197
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.52061695,
+            "y": 0.6432125
+          },
+          {
+            "x": 0.7016508,
+            "y": 0.6432125
+          },
+          {
+            "x": 0.7016508,
+            "y": 0.7360863
+          },
+          {
+            "x": 0.52061695,
+            "y": 0.7360863
+          }
+        ]
+      },
+      "mid": "/m/0199g",
+      "name": "Bicycle",
+      "score": 0.59369534
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.48736617,
+            "y": 0.20204592
+          },
+          {
+            "x": 0.6072535,
+            "y": 0.20204592
+          },
+          {
+            "x": 0.6072535,
+            "y": 0.2902954
+          },
+          {
+            "x": 0.48736617,
+            "y": 0.2902954
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.57679826
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.62735903,
+            "y": 0.36370394
+          },
+          {
+            "x": 0.75305486,
+            "y": 0.36370394
+          },
+          {
+            "x": 0.75305486,
+            "y": 0.45100164
+          },
+          {
+            "x": 0.62735903,
+            "y": 0.45100164
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.56896985
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.49069464,
+            "y": 0.3773882
+          },
+          {
+            "x": 0.6030869,
+            "y": 0.3773882
+          },
+          {
+            "x": 0.6030869,
+            "y": 0.46512508
+          },
+          {
+            "x": 0.49069464,
+            "y": 0.46512508
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.56268096
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.62507826,
+            "y": 0.2737293
+          },
+          {
+            "x": 0.7510069,
+            "y": 0.2737293
+          },
+          {
+            "x": 0.7510069,
+            "y": 0.36110464
+          },
+          {
+            "x": 0.62507826,
+            "y": 0.36110464
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.55517113
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.4396074,
+            "y": 0.6887348
+          },
+          {
+            "x": 0.5703045,
+            "y": 0.6887348
+          },
+          {
+            "x": 0.5703045,
+            "y": 0.7672832
+          },
+          {
+            "x": 0.4396074,
+            "y": 0.7672832
+          }
+        ]
+      },
+      "mid": "/m/01bqk0",
+      "name": "Bicycle wheel",
+      "score": 0.53227055
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.19928212,
+            "y": 0.6774497
+          },
+          {
+            "x": 0.34619316,
+            "y": 0.6774497
+          },
+          {
+            "x": 0.34619316,
+            "y": 0.7679022
+          },
+          {
+            "x": 0.19928212,
+            "y": 0.7679022
+          }
+        ]
+      },
+      "mid": "/m/0h9mv",
+      "name": "Tire",
+      "score": 0.50154495
+    }
+  ],
+  "safeSearchAnnotation": {
+    "adult": "VERY_UNLIKELY",
+    "medical": "VERY_UNLIKELY",
+    "racy": "VERY_UNLIKELY",
+    "spoof": "VERY_UNLIKELY",
+    "violence": "VERY_UNLIKELY"
+  },
+  "webDetection": {
+    "bestGuessLabels": [
+      {
+        "label": "window"
+      }
+    ],
+    "visuallySimilarImages": [
+      {
+        "url": "https://q-cf.bstatic.com/images/hotel/max1024x768/170/170879643.jpg"
+      },
+      {
+        "url": "https://media-cdn.tripadvisor.com/media/photo-s/0d/89/cd/57/newman-house.jpg"
+      },
+      {
+        "url": "https://imganuncios.mitula.net/apartment_to_let_110_weekly_lifford_court_apartments_lifford_donegal_9100134551026653943.jpg"
+      },
+      {
+        "url": "https://capi.myleasestar.com/v2/dimg-crop/59006416/400x400/59006416.jpg"
+      },
+      {
+        "url": "https://imganuncios.mitula.net/apartment_to_let_110_weekly_lifford_court_apartments_lifford_donegal_9090134551026653942.jpg"
+      },
+      {
+        "url": "https://q-cf.bstatic.com/images/hotel/max1024x768/818/81862033.jpg"
+      },
+      {
+        "url": "https://imganuncios.mitula.net/2_bedrooms_studio_apartment_for_sales_at_james_court_lekki_phase_i_2930118571323418590.jpg"
+      },
+      {
+        "url": "https://s3.amazonaws.com/greenbuildingadvisor.s3.tauntoncloud.com/app/uploads/2019/03/06123311/IMG_1201-700x525.jpg"
+      },
+      {
+        "url": "http://images8.design-editor.com/93/9340383/3958%2F77D29825-263B-DF88-96D2-723AB539D835.png"
+      },
+      {
+        "url": "https://assets.atlasobscura.com/media/W1siZiIsInVwbG9hZHMvcGxhY2VfaW1hZ2VzLzEwMWYwOGRjMjJiNjE2Yjk4M19uaWNvbGFzZmxhbWVsMy5KUEciXSxbInAiLCJ0aHVtYiIsIngzOTA-Il0sWyJwIiwiY29udmVydCIsIi1xdWFsaXR5IDgxIC1hdXRvLW9yaWVudCJdXQ"
+      },
+      {
+        "url": "http://www.arthurlloyd.co.uk/RoyalOperaHouse/FloralStreet.jpg"
+      },
+      {
+        "url": "https://img.rnudah.com/images/89/892920104336377.jpg"
+      },
+      {
+        "url": "http://www.balticbookings.com/img/pix/office%20maja.jpg"
+      },
+      {
+        "url": "https://a-1windowwashers.com/wp-content/uploads/2019/11/residential-2.jpg"
+      },
+      {
+        "url": "https://nebula.wsimg.com/19cbf895c3046d865c06372ccaf87c7b?AccessKeyId=5E8869C18CC20B94E91F&disposition=0&alloworigin=1"
+      },
+      {
+        "url": "https://is1-3.housingcdn.com/01c16c28/0ddb5ca2bfe8cd2081c067e26fcb4755/v2/fs/2_bhk_apartment-for-sale-vajarahalli_bangalore-Bangalore-building_view.jpg"
+      },
+      {
+        "url": "https://homestylecreate.com/wp-content/uploads/2016/04/town-house-3.jpg"
+      },
+      {
+        "url": "https://my2-cdn.pgimgs.com/listing/25477400/UPHO.104918465.V800/Taman-Tenaga-Apartment-Kajang-Malaysia.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Iran_Caricature_House.jpg"
+      },
+      {
+        "url": "https://i2-prod.chroniclelive.co.uk/incoming/article12056325.ece/ALTERNATES/s1227b/JS102806435.jpg"
+      },
+      {
+        "url": "https://newprojects.99acres.com/projects/landindia_developers__/landindia_capital_green/images/cap_greenp5_med.jpg"
+      }
+    ],
+    "webEntities": [
+      {
+        "description": "Facade",
+        "entityId": "/m/01x314",
+        "score": 0.34649098
+      },
+      {
+        "description": "Bicycle",
+        "entityId": "/m/0199g",
+        "score": 0.34584802
+      },
+      {
+        "description": "Apartment",
+        "entityId": "/m/01nblt",
+        "score": 0.17994088
+      },
+      {
+        "description": "House",
+        "entityId": "/m/04p5cr",
+        "score": 0.02748
+      }
+    ]
+  }
+}

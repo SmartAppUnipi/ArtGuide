@@ -1,5 +1,0 @@
-google-cloud-vision
-flask
-flask_cors
-tensorflow
-sklearn

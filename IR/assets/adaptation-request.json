@@ -1,11 +1,14 @@
 {
-	"userId": 42,
-	"userTastes": [
-		"history",
-		"description",
-		"legacy"
-	],
-	"language": "en",
+	"userProfile": {
+		"id": 42,
+		"tastes": [
+			"history",
+			"description",
+			"legacy"
+		],
+		"language": "en",
+		"expertiseLevel": 1
+	},
 	"results": [
 		{
 			"keywords": [

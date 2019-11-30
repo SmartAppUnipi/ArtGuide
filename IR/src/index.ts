@@ -1,6 +1,7 @@
-import app from './app'
+import app from "./app";
+import { ExpressPort } from "./environment";
 
-
-app.listen(3000, () => {
-    console.log('App listening at http://localhost:3000')
-})
+app.listen(ExpressPort, () => {
+    // eslint-ignore next line
+    console.log("App listening at http://localhost:" + ExpressPort);
+});

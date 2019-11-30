@@ -1,0 +1,508 @@
+{
+  "cropHintsAnnotation": {
+    "cropHints": [
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 1000
+            },
+            {
+              "x": 2800
+            },
+            {
+              "x": 2800,
+              "y": 2249
+            },
+            {
+              "x": 1000,
+              "y": 2249
+            }
+          ]
+        },
+        "confidence": 0.3125,
+        "importanceFraction": 0.84705883
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 800
+            },
+            {
+              "x": 3050
+            },
+            {
+              "x": 3050,
+              "y": 2249
+            },
+            {
+              "x": 800,
+              "y": 2249
+            }
+          ]
+        },
+        "confidence": 0.2951389,
+        "importanceFraction": 1
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 600
+            },
+            {
+              "x": 3300
+            },
+            {
+              "x": 3300,
+              "y": 2249
+            },
+            {
+              "x": 600,
+              "y": 2249
+            }
+          ]
+        },
+        "confidence": 0.24594904,
+        "importanceFraction": 1
+      }
+    ]
+  },
+  "imagePropertiesAnnotation": {
+    "cropHints": [
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 1000
+            },
+            {
+              "x": 2800
+            },
+            {
+              "x": 2800,
+              "y": 2249
+            },
+            {
+              "x": 1000,
+              "y": 2249
+            }
+          ]
+        },
+        "confidence": 0.3125,
+        "importanceFraction": 0.84705883
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 800
+            },
+            {
+              "x": 3050
+            },
+            {
+              "x": 3050,
+              "y": 2249
+            },
+            {
+              "x": 800,
+              "y": 2249
+            }
+          ]
+        },
+        "confidence": 0.2951389,
+        "importanceFraction": 1
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 600
+            },
+            {
+              "x": 3300
+            },
+            {
+              "x": 3300,
+              "y": 2249
+            },
+            {
+              "x": 600,
+              "y": 2249
+            }
+          ]
+        },
+        "confidence": 0.24594904,
+        "importanceFraction": 1
+      }
+    ],
+    "dominantColors": {
+      "colors": [
+        {
+          "color": {
+            "blue": 112,
+            "green": 112,
+            "red": 123
+          },
+          "hex": "7B7070",
+          "percent": 48.25999059651892,
+          "percentRounded": 48,
+          "pixelFraction": 0.17507936,
+          "rgb": "123, 112,\n 112",
+          "score": 0.46806768
+        },
+        {
+          "color": {
+            "blue": 245,
+            "green": 237,
+            "red": 232
+          },
+          "hex": "E8EDF5",
+          "percent": 10.74694857022365,
+          "percentRounded": 11,
+          "pixelFraction": 0.09507936,
+          "rgb": "232, 237,\n 245",
+          "score": 0.104233325
+        },
+        {
+          "color": {
+            "blue": 86,
+            "green": 89,
+            "red": 96
+          },
+          "hex": "605956",
+          "percent": 18.118642222256938,
+          "percentRounded": 18,
+          "pixelFraction": 0.11595238,
+          "rgb": "96, 89,\n 86",
+          "score": 0.17573047
+        },
+        {
+          "color": {
+            "blue": 211,
+            "green": 202,
+            "red": 198
+          },
+          "hex": "C6CAD3",
+          "percent": 7.150696401498188,
+          "percentRounded": 7,
+          "pixelFraction": 0.1881746,
+          "rgb": "198, 202,\n 211",
+          "score": 0.06935372
+        },
+        {
+          "color": {
+            "blue": 51,
+            "green": 54,
+            "red": 52
+          },
+          "hex": "343633",
+          "percent": 6.87000099821873,
+          "percentRounded": 7,
+          "pixelFraction": 0.15825397,
+          "rgb": "52, 54,\n 51",
+          "score": 0.06663129
+        },
+        {
+          "color": {
+            "blue": 219,
+            "green": 202,
+            "red": 194
+          },
+          "hex": "C2CADB",
+          "percent": 2.839355002724687,
+          "percentRounded": 3,
+          "pixelFraction": 0.07825397,
+          "rgb": "194, 202,\n 219",
+          "score": 0.027538553
+        },
+        {
+          "color": {
+            "blue": 151,
+            "green": 148,
+            "red": 156
+          },
+          "hex": "9C9497",
+          "percent": 1.7762076174201589,
+          "percentRounded": 2,
+          "pixelFraction": 0.057857145,
+          "rgb": "156, 148,\n 151",
+          "score": 0.017227218
+        },
+        {
+          "color": {
+            "blue": 69,
+            "green": 89,
+            "red": 99
+          },
+          "hex": "635945",
+          "percent": 1.582416817539127,
+          "percentRounded": 2,
+          "pixelFraction": 0.011587301,
+          "rgb": "99, 89,\n 69",
+          "score": 0.015347665
+        },
+        {
+          "color": {
+            "blue": 115,
+            "green": 105,
+            "red": 126
+          },
+          "hex": "7E6973",
+          "percent": 1.5312781099573811,
+          "percentRounded": 2,
+          "pixelFraction": 0.0024603175,
+          "rgb": "126, 105,\n 115",
+          "score": 0.014851677
+        },
+        {
+          "color": {
+            "blue": 93,
+            "green": 111,
+            "red": 124
+          },
+          "hex": "7C6F5D",
+          "percent": 1.124463663642223,
+          "percentRounded": 1,
+          "pixelFraction": 0.0076984125,
+          "rgb": "124, 111,\n 93",
+          "score": 0.010906034
+        }
+      ]
+    }
+  },
+  "labelAnnotations": [
+    {
+      "description": "Wall",
+      "mid": "/m/09qqq",
+      "score": 0.9499664,
+      "topicality": 0.9499664
+    },
+    {
+      "description": "Architecture",
+      "mid": "/m/03nfmq",
+      "score": 0.8365494,
+      "topicality": 0.8365494
+    },
+    {
+      "description": "Building",
+      "mid": "/m/0cgh4",
+      "score": 0.7268015,
+      "topicality": 0.7268015
+    },
+    {
+      "description": "Facade",
+      "mid": "/m/01x314",
+      "score": 0.70942235,
+      "topicality": 0.70942235
+    },
+    {
+      "description": "Land lot",
+      "mid": "/m/0gs32y",
+      "score": 0.6682166,
+      "topicality": 0.6682166
+    },
+    {
+      "description": "Brick",
+      "mid": "/m/01g0g",
+      "score": 0.5607189,
+      "topicality": 0.5607189
+    },
+    {
+      "description": "Window",
+      "mid": "/m/0d4v4",
+      "score": 0.5380263,
+      "topicality": 0.5380263
+    }
+  ],
+  "localizedObjectAnnotations": [
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.03881985,
+            "y": 0.27807924
+          },
+          {
+            "x": 0.76958895,
+            "y": 0.27807924
+          },
+          {
+            "x": 0.76958895,
+            "y": 0.9016361
+          },
+          {
+            "x": 0.03881985,
+            "y": 0.9016361
+          }
+        ]
+      },
+      "mid": "/m/0cgh4",
+      "name": "Building",
+      "score": 0.7502442
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.7492184,
+            "y": 0.0014522007
+          },
+          {
+            "x": 0.9973958,
+            "y": 0.0014522007
+          },
+          {
+            "x": 0.9973958,
+            "y": 0.9805205
+          },
+          {
+            "x": 0.7492184,
+            "y": 0.9805205
+          }
+        ]
+      },
+      "mid": "/m/0cgh4",
+      "name": "Building",
+      "score": 0.6511142
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.9251116
+          },
+          {
+            "x": 0.99477667
+          },
+          {
+            "x": 0.99477667,
+            "y": 0.5242821
+          },
+          {
+            "x": 0.9251116,
+            "y": 0.5242821
+          }
+        ]
+      },
+      "mid": "/m/0d4v4",
+      "name": "Window",
+      "score": 0.50212497
+    }
+  ],
+  "safeSearchAnnotation": {
+    "adult": "VERY_UNLIKELY",
+    "medical": "VERY_UNLIKELY",
+    "racy": "VERY_UNLIKELY",
+    "spoof": "VERY_UNLIKELY",
+    "violence": "VERY_UNLIKELY"
+  },
+  "webDetection": {
+    "bestGuessLabels": [
+      {
+        "label": "wall"
+      }
+    ],
+    "visuallySimilarImages": [
+      {
+        "url": "https://coveredrachel.files.wordpress.com/2016/01/01-window-view.jpg?w=584"
+      },
+      {
+        "url": "https://footage.framepool.com/shotimg/176005033-karnak-temple-complex-luxor-temple-ram-animal-sheep.jpg"
+      },
+      {
+        "url": "https://1.bp.blogspot.com/-1z_GRiZKjx8/Wpej1C0CwzI/AAAAAAAABC4/O6igDddfx40M4wodHMbxl0MRwfnnlcabQCLcBGAs/s1600/DSC_0062_20180213_Zeynel%2BBey%2BTomb-new%2Bhousing.JPG"
+      },
+      {
+        "url": "http://img0123.psstatic.com/182011158_10apos-used-wall-ties-concrete-wall-forms-with-tube-.jpg"
+      },
+      {
+        "url": "https://thumbs.dreamstime.com/b/beautiful-medieval-style-stone-house-black-slate-roofs-ainsa-village-travel-landscapes-architecture-december-beautiful-139205183.jpg"
+      },
+      {
+        "url": "http://footage.framepool.com/shotimg/110622829-american-gangster-film-%E5%85%AC%E5%AF%93%E6%A5%BC-%E5%B8%9D%E5%9B%BD%E5%A4%A7%E5%8E%A6-%E4%BD%8F%E5%AE%85%E5%BC%80%E5%8F%91.jpg"
+      },
+      {
+        "url": "https://i.pinimg.com/originals/7b/85/e3/7b85e3fba910e10a8ce900c0870756ca.jpg"
+      },
+      {
+        "url": "https://www.connectscaffolding.ie/uploads/yOuIoOXp/767x0_2560x0/Photo24-08-2014130152.jpg"
+      },
+      {
+        "url": "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/07/09/88/85.jpg"
+      },
+      {
+        "url": "https://ichef.bbci.co.uk/news/1024/cpsprodpb/16AAE/production/_105064829_harbourgreen.jpg"
+      },
+      {
+        "url": "https://scontent-frt3-1.cdninstagram.com/v/t51.2885-15/e35/s320x320/67125545_159989595155605_6149109121607445870_n.jpg?_nc_ht=scontent-frt3-1.cdninstagram.com&oh=9d7c20af4556ec459c3878652bc6d5c0&oe=5DF440A3&ig_cache_key=MjExODQ0MTE1OTYyNjI3NDA4OA%3D%3D.2"
+      },
+      {
+        "url": "https://ak7.picdn.net/shutterstock/videos/12410177/thumb/1.jpg?ip=x480"
+      },
+      {
+        "url": "https://media-cdn.tripadvisor.com/media/photo-s/13/2f/af/a7/entrada.jpg"
+      },
+      {
+        "url": "https://images.adsttc.com/media/images/5d00/e1ab/284d/d191/4200/0616/slideshow/%E5%9B%BE%E7%89%871.jpg?1560338849"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Rajiv_Gandhi_Museum.jpg"
+      },
+      {
+        "url": "https://i1.wp.com/www.kahawatungu.com/wp-content/uploads/2019/09/Great-wall.jpg?resize=364%2C205&ssl=1"
+      },
+      {
+        "url": "https://i.pinimg.com/236x/98/80/83/988083f2bd46c988db442b1d950a56f3--exterior-tea.jpg"
+      }
+    ],
+    "webEntities": [
+      {
+        "description": "Facade",
+        "entityId": "/m/01x314",
+        "score": 0.42233455
+      },
+      {
+        "description": "Land lot",
+        "entityId": "/m/0gs32y",
+        "score": 0.2782584
+      },
+      {
+        "description": "Wall",
+        "entityId": "/m/09qqq",
+        "score": 0.25407672
+      },
+      {
+        "description": "Roof",
+        "entityId": "/m/06hyd",
+        "score": 0.24728514
+      },
+      {
+        "description": "Property",
+        "entityId": "/m/01fb8r",
+        "score": 0.2362
+      },
+      {
+        "entityId": "/g/120kt6sb",
+        "score": 0.2269
+      },
+      {
+        "description": "Town",
+        "entityId": "/m/0dx1j",
+        "score": 0.21744108
+      },
+      {
+        "description": "Real property",
+        "entityId": "/g/12175r4h",
+        "score": 0.1947
+      },
+      {
+        "description": "House",
+        "entityId": "/m/04p5cr",
+        "score": 0.027284998
+      }
+    ]
+  }
+}

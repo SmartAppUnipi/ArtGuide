@@ -1,0 +1,666 @@
+{
+  "cropHintsAnnotation": {
+    "cropHints": [
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 421
+            },
+            {
+              "x": 1180
+            },
+            {
+              "x": 1180,
+              "y": 948
+            },
+            {
+              "x": 421,
+              "y": 948
+            }
+          ]
+        },
+        "confidence": 0.59375,
+        "importanceFraction": 0.75794464
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 337
+            },
+            {
+              "x": 1286
+            },
+            {
+              "x": 1286,
+              "y": 948
+            },
+            {
+              "x": 337,
+              "y": 948
+            }
+          ]
+        },
+        "confidence": 0.59375,
+        "importanceFraction": 0.9474309
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 253
+            },
+            {
+              "x": 1391
+            },
+            {
+              "x": 1391,
+              "y": 948
+            },
+            {
+              "x": 253,
+              "y": 948
+            }
+          ]
+        },
+        "confidence": 0.52224565,
+        "importanceFraction": 1
+      }
+    ]
+  },
+  "imagePropertiesAnnotation": {
+    "cropHints": [
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 421
+            },
+            {
+              "x": 1180
+            },
+            {
+              "x": 1180,
+              "y": 948
+            },
+            {
+              "x": 421,
+              "y": 948
+            }
+          ]
+        },
+        "confidence": 0.59375,
+        "importanceFraction": 0.75794464
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 337
+            },
+            {
+              "x": 1286
+            },
+            {
+              "x": 1286,
+              "y": 948
+            },
+            {
+              "x": 337,
+              "y": 948
+            }
+          ]
+        },
+        "confidence": 0.59375,
+        "importanceFraction": 0.9474309
+      },
+      {
+        "boundingPoly": {
+          "vertices": [
+            {
+              "x": 253
+            },
+            {
+              "x": 1391
+            },
+            {
+              "x": 1391,
+              "y": 948
+            },
+            {
+              "x": 253,
+              "y": 948
+            }
+          ]
+        },
+        "confidence": 0.52224565,
+        "importanceFraction": 1
+      }
+    ],
+    "dominantColors": {
+      "colors": [
+        {
+          "color": {
+            "blue": 177,
+            "green": 123,
+            "red": 59
+          },
+          "hex": "3B7BB1",
+          "percent": 20.26249172926245,
+          "percentRounded": 20,
+          "pixelFraction": 0.06531746,
+          "rgb": "59, 123,\n 177",
+          "score": 0.11499528
+        },
+        {
+          "color": {
+            "blue": 209,
+            "green": 163,
+            "red": 67
+          },
+          "hex": "43A3D1",
+          "percent": 18.892692829008727,
+          "percentRounded": 19,
+          "pixelFraction": 0.048650794,
+          "rgb": "67, 163,\n 209",
+          "score": 0.10722129
+        },
+        {
+          "color": {
+            "blue": 162,
+            "green": 80,
+            "red": 31
+          },
+          "hex": "1F50A2",
+          "percent": 9.43124195703432,
+          "percentRounded": 9,
+          "pixelFraction": 0.020873016,
+          "rgb": "31, 80,\n 162",
+          "score": 0.053524923
+        },
+        {
+          "color": {
+            "blue": 106,
+            "green": 48,
+            "red": 25
+          },
+          "hex": "19306A",
+          "percent": 8.706515737664567,
+          "percentRounded": 9,
+          "pixelFraction": 0.023730159,
+          "rgb": "25, 48,\n 106",
+          "score": 0.0494119
+        },
+        {
+          "color": {
+            "blue": 185,
+            "green": 67,
+            "red": 20
+          },
+          "hex": "1443B9",
+          "percent": 0.7622197814542107,
+          "percentRounded": 1,
+          "pixelFraction": 0.0007142857,
+          "rgb": "20, 67,\n 185",
+          "score": 0.0043258094
+        },
+        {
+          "color": {
+            "blue": 139,
+            "green": 87,
+            "red": 39
+          },
+          "hex": "27578B",
+          "percent": 12.647776190938911,
+          "percentRounded": 13,
+          "pixelFraction": 0.045079365,
+          "rgb": "39, 87,\n 139",
+          "score": 0.07177965
+        },
+        {
+          "color": {
+            "blue": 61,
+            "green": 66,
+            "red": 140
+          },
+          "hex": "8C423D",
+          "percent": 0.12596853578204223,
+          "percentRounded": 0,
+          "pixelFraction": 0.0007142857,
+          "rgb": "140, 66,\n 61",
+          "score": 0.0007149065
+        },
+        {
+          "color": {
+            "blue": 193,
+            "green": 168,
+            "red": 92
+          },
+          "hex": "5CA8C1",
+          "percent": 12.16868532575662,
+          "percentRounded": 12,
+          "pixelFraction": 0.047142856,
+          "rgb": "92, 168,\n 193",
+          "score": 0.069060676
+        },
+        {
+          "color": {
+            "blue": 223,
+            "green": 201,
+            "red": 133
+          },
+          "hex": "85C9DF",
+          "percent": 9.763965198761205,
+          "percentRounded": 10,
+          "pixelFraction": 0.031587303,
+          "rgb": "133, 201,\n 223",
+          "score": 0.05541322
+        },
+        {
+          "color": {
+            "blue": 199,
+            "green": 123,
+            "red": 41
+          },
+          "hex": "297BC7",
+          "percent": 7.23844271433695,
+          "percentRounded": 7,
+          "pixelFraction": 0.018174604,
+          "rgb": "41, 123,\n 199",
+          "score": 0.041080177
+        }
+      ]
+    }
+  },
+  "labelAnnotations": [
+    {
+      "description": "Modern art",
+      "mid": "/m/015r61",
+      "score": 0.970688,
+      "topicality": 0.970688
+    },
+    {
+      "description": "Blue",
+      "mid": "/m/01g5v",
+      "score": 0.9649977,
+      "topicality": 0.9649977
+    },
+    {
+      "description": "Painting",
+      "mid": "/m/05qdh",
+      "score": 0.9515138,
+      "topicality": 0.9515138
+    },
+    {
+      "description": "Acrylic paint",
+      "mid": "/m/011lx",
+      "score": 0.9169938,
+      "topicality": 0.9169938
+    },
+    {
+      "description": "Art",
+      "mid": "/m/0jjw",
+      "score": 0.9034871,
+      "topicality": 0.9034871
+    },
+    {
+      "description": "Visual arts",
+      "mid": "/m/0p9xx",
+      "score": 0.7112529,
+      "topicality": 0.7112529
+    },
+    {
+      "description": "Watercolor paint",
+      "mid": "/m/018ktp",
+      "score": 0.70911425,
+      "topicality": 0.70911425
+    },
+    {
+      "description": "Paint",
+      "mid": "/m/05y4t",
+      "score": 0.6789527,
+      "topicality": 0.6789527
+    },
+    {
+      "description": "Artwork",
+      "mid": "/m/0dgsmq8",
+      "score": 0.6381411,
+      "topicality": 0.6381411
+    },
+    {
+      "description": "Electric blue",
+      "mid": "/m/02vwbzz",
+      "score": 0.63793284,
+      "topicality": 0.63793284
+    }
+  ],
+  "localizedObjectAnnotations": [
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.04306445,
+            "y": 0.070893615
+          },
+          {
+            "x": 0.85312253,
+            "y": 0.070893615
+          },
+          {
+            "x": 0.85312253,
+            "y": 0.97790825
+          },
+          {
+            "x": 0.04306445,
+            "y": 0.97790825
+          }
+        ]
+      },
+      "mid": "/m/06z37_",
+      "name": "Picture frame",
+      "score": 0.71078736
+    },
+    {
+      "boundingPoly": {
+        "normalizedVertices": [
+          {
+            "x": 0.044372335,
+            "y": 0.04519922
+          },
+          {
+            "x": 0.8917856,
+            "y": 0.04519922
+          },
+          {
+            "x": 0.8917856,
+            "y": 0.988677
+          },
+          {
+            "x": 0.044372335,
+            "y": 0.988677
+          }
+        ]
+      },
+      "mid": "/m/05qdh",
+      "name": "Painting",
+      "score": 0.6346645
+    }
+  ],
+  "safeSearchAnnotation": {
+    "adult": "VERY_UNLIKELY",
+    "medical": "VERY_UNLIKELY",
+    "racy": "VERY_UNLIKELY",
+    "spoof": "VERY_UNLIKELY",
+    "violence": "VERY_UNLIKELY"
+  },
+  "webDetection": {
+    "bestGuessLabels": [
+      {
+        "label": "modern art"
+      }
+    ],
+    "pagesWithMatchingImages": [
+      {
+        "pageTitle": "Plafoniere Moderne Living : Led light living room ceiling <b>modern</b> ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://dancekittens.eu/_images/q/quadri/quadri-astratti-bellissimi/quadri-moderni-astratti-illusion-vendita-online-originali-dipinti-a-mano-su.jpg"
+          }
+        ],
+        "url": "https://dancekittens.eu/5eFHoXi0L/"
+      },
+      {
+        "pageTitle": "<b>Art</b> MMB di Montserrat Martos Barriga: Vendita online Quadri ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://www.artmmb.it/2164-thickbox_default/1-quadri-moderni-astratti-illusion-4-rosso.jpg"
+          }
+        ],
+        "url": "https://www.artmmb.it/"
+      },
+      {
+        "pageTitle": "<b>ART</b> MMB &quot; ILLUSION - 4 BLU &quot; - 1 QUADRI MODERNI ASTRATTI ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://images-na.ssl-images-amazon.com/images/I/81xvfcfduzL._SX679_.jpg"
+          },
+          {
+            "url": "https://images-na.ssl-images-amazon.com/images/I/618CMX5%2BguL.jpg"
+          },
+          {
+            "url": "https://images-na.ssl-images-amazon.com/images/I/81xvfcfduzL._SX522_.jpg"
+          }
+        ],
+        "url": "https://www.amazon.it/ART-MMB-ILLUSION-MULTICOLOR-INTELAIATO/dp/B077TK1Q2Y"
+      },
+      {
+        "pageTitle": "quadri moderni astratti dipinti a mano <b>ART</b> MMB QUADRI",
+        "partialMatchingImages": [
+          {
+            "url": "https://www.artmmb.it/2164-thickbox_default/1-quadri-moderni-astratti-illusion-4-rosso.jpg"
+          }
+        ],
+        "url": "https://www.artmmb.it/home/361-1-quadri-moderni-astratti-illusion-4-rosso.html"
+      },
+      {
+        "pageTitle": "Quadri Moderni Rilassanti : Quadri su tela paesaggio con albero ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://castelvetrano.eu/_images/q/quadri/quadri-moderni-rilassanti/quadri-moderni-astratti-illusion-vendita-online-originali-dipinti-a-mano-su.jpg"
+          }
+        ],
+        "url": "https://castelvetrano.eu/0ifqnZy1Q/"
+      },
+      {
+        "pageTitle": "Quadri Astratti Famosi : Awesome quadri astratti moderni famosi ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://dancekittens.eu/_images/q/quadri/quadri-astratti-famosi/quadri-moderni-astratti-illusion-famosi-gallery-of-emejing.jpg"
+          }
+        ],
+        "url": "https://dancekittens.eu/1fxJWTN0A/"
+      },
+      {
+        "pageTitle": "Quadri Astratti Blu : Quadro moderno stampa su tela canvas pezzi ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://dancekittens.eu/_images/q/quadri/quadri-astratti-blu/quadri-moderni-astratti-illusion-dipinti-a-mano-blu.jpg"
+          }
+        ],
+        "url": "https://dancekittens.eu/9ufIBiA0Q/"
+      },
+      {
+        "pageTitle": "Quadri Astratti Famosi : Quadri moderni astratti illusion famosi ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://dancekittens.eu/_images/q/quadri/quadri-astratti-famosi/quadri-moderni-astratti-illusion-famosi-gallery-of-emejing.jpg"
+          }
+        ],
+        "url": "https://dancekittens.eu/4gxJWTN0Q/"
+      },
+      {
+        "pageTitle": "Quadri Astratti Blu: La danza dei papaveri blu quadri moderni astratti ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://dancekittens.eu/_images/q/quadri/quadri-astratti-blu/quadri-moderni-astratti-illusion-dipinti-a-mano-blu.jpg"
+          }
+        ],
+        "url": "https://dancekittens.eu/AiBIf/"
+      },
+      {
+        "pageTitle": "Quadri Astratti Moderni - Idee per la progettazione di decorazioni ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://i0.wp.com/www.artmmb.it/2098-thickbox_default/1-quadri-moderni-astratti-illusion-4.jpg"
+          }
+        ],
+        "url": "https://flirtas.info/quadri-astratti-moderni.html"
+      },
+      {
+        "pageTitle": "Divano Rifoderare : Maxresdefault come togliere il rivestimento di un ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://octn.eu/_images/q/quadri/quadri-astratti/quadri-moderni-astratti-illusion-irene-durbano.jpg"
+          }
+        ],
+        "url": "https://octn.eu/3aYNBLC1M/"
+      },
+      {
+        "pageTitle": "c81aef6307d14 halley 1 quadri moderni astratti toni del rosso ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://www.artmmb.it/2164-thickbox_default/1-quadri-moderni-astratti-illusion-4-rosso.jpg"
+          }
+        ],
+        "url": "http://www.gossiplankablog.com/landing/halley-1-quadri-moderni-astratti-toni-del-rosso"
+      },
+      {
+        "pageTitle": "Comodino Bambina : Lettocomodino cameretta marca colombini ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://octn.eu/_images/q/quadri/quadri-astratti/quadri-moderni-astratti-illusion-irene-durbano.jpg"
+          }
+        ],
+        "url": "https://octn.eu/7sqfgCS1L/"
+      },
+      {
+        "pageTitle": "Copri Corrimano Ringhiera: Corrimano e ringhiere per scale dal ...",
+        "partialMatchingImages": [
+          {
+            "url": "https://castelvetrano.eu/_images/q/quadri/quadri-moderni-rilassanti/quadri-moderni-astratti-illusion-vendita-online-originali-dipinti-a-mano-su.jpg"
+          }
+        ],
+        "url": "https://castelvetrano.eu/gmNLl/"
+      }
+    ],
+    "partialMatchingImages": [
+      {
+        "url": "https://dancekittens.eu/_images/q/quadri/quadri-astratti-blu/quadri-moderni-astratti-illusion-dipinti-a-mano-blu.jpg"
+      },
+      {
+        "url": "https://www.artmmb.it/2164-thickbox_default/1-quadri-moderni-astratti-illusion-4-rosso.jpg"
+      },
+      {
+        "url": "https://i0.wp.com/www.artmmb.it/2098-thickbox_default/1-quadri-moderni-astratti-illusion-4.jpg"
+      },
+      {
+        "url": "https://images-na.ssl-images-amazon.com/images/I/81xvfcfduzL._SX679_.jpg"
+      },
+      {
+        "url": "https://images-na.ssl-images-amazon.com/images/I/81xvfcfduzL._SX522_.jpg"
+      },
+      {
+        "url": "https://images-na.ssl-images-amazon.com/images/I/618CMX5%2BguL.jpg"
+      }
+    ],
+    "visuallySimilarImages": [
+      {
+        "url": "https://i0.wp.com/ae01.alicdn.com/kf/HTB1TRIQpIuYBuNkSmRyq6AA3pXau/Hand-Painted-Modern-Abstract-Flowers-font-b-Canvas-b-font-Wall-Art-Oil-font-b-Painting.jpg?crop=5,2,900,500&quality=2886"
+      },
+      {
+        "url": "https://image.dhgate.com/0x0/f2/albu/g9/M01/39/97/rBVaWFwwXJGAE5v5AAvZD3Tg_Fo778.jpg"
+      },
+      {
+        "url": "https://images-na.ssl-images-amazon.com/images/I/81P-ZzfZT0L._SL1440_.jpg"
+      },
+      {
+        "url": "https://ronaldhunter.com/wp-content/uploads/acrylic_painting_ronaldhunter_blue-350x424.jpg"
+      },
+      {
+        "url": "https://li0.rightinthebox.com/images/384x384/201711/ryzstj1509768598073.jpg"
+      },
+      {
+        "url": "https://i.etsystatic.com/16430476/d/il/538e98/1676631133/il_340x270.1676631133_84t6.jpg?version=0"
+      },
+      {
+        "url": "https://ae01.alicdn.com/kf/HTB1I5O_pgMPMeJjy1Xbq6AwxVXan/Modern-Palette-White-Flower-Vase-Knife-Oil-Painting-On-Canvas-Art-Sets-For-Living-Room-Home.jpg"
+      },
+      {
+        "url": "https://render.fineartamerica.com/images/rendered/default/canvas-print/10.000/6.750/mirror/break/images-medium/vintage-painting-don-wright-canvas-print.jpg"
+      },
+      {
+        "url": "https://akamai-scene7.frontgate.com/is/image/frontgate/158268_main?$wfih$"
+      },
+      {
+        "url": "https://i.etsystatic.com/17194107/r/il/fa73de/1499328471/il_570xN.1499328471_emf1.jpg"
+      }
+    ],
+    "webEntities": [
+      {
+        "description": "Modern art",
+        "entityId": "/m/015r61",
+        "score": 1.1544315
+      },
+      {
+        "description": "Painting",
+        "entityId": "/m/05qdh",
+        "score": 0.9854888
+      },
+      {
+        "description": "Acrylic paint",
+        "entityId": "/m/011lx",
+        "score": 0.7806977
+      },
+      {
+        "description": "Art",
+        "entityId": "/m/0jjw",
+        "score": 0.7116
+      },
+      {
+        "description": "painting",
+        "entityId": "/g/120ph51m",
+        "score": 0.4769
+      },
+      {
+        "description": "Abstract art",
+        "entityId": "/m/0197s6",
+        "score": 0.4315
+      },
+      {
+        "description": "Design",
+        "entityId": "/m/02cwm",
+        "score": 0.3993
+      },
+      {
+        "description": "Blue",
+        "entityId": "/m/01g5v",
+        "score": 0.37236315
+      },
+      {
+        "description": "Contemporary art",
+        "entityId": "/m/0h0vk",
+        "score": 0.3607
+      },
+      {
+        "entityId": "/m/0svn6n2",
+        "score": 0.2684
+      },
+      {
+        "description": "Canvas",
+        "entityId": "/m/0jmpt",
+        "score": 0.262
+      },
+      {
+        "description": "Sienna",
+        "entityId": "/m/079xy",
+        "score": 0.2471
+      },
+      {
+        "description": "Paint",
+        "entityId": "/m/05y4t",
+        "score": 0.227
+      },
+      {
+        "description": "Triptych",
+        "entityId": "/m/01tm3n",
+        "score": 0.219
+      },
+      {
+        "description": "mural",
+        "entityId": "/g/120v5ps6",
+        "score": 0.2162
+      }
+    ]
+  }
+}

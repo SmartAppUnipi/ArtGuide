@@ -34,8 +34,8 @@ _args = {
     "max_grad_norm": 0,
     "max_pos": 512, 
     "max_tgt_len": 0, # usato per estrarre il target - non serve 
-    "min_length": 80, # calcolato in automatico - non serve
-    "max_length": 500, # 500
+    "min_length": 20, # calcolato in automatico - non serve
+    "max_length": 300, # 500
     "mode": 'test', 
     "model_path": './document_adaptation/summarization/models/', 
     "optim": 'adam', 

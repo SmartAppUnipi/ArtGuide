@@ -1,5 +1,5 @@
-import { Parser } from './parser'
+import { Parser } from "./parser";
 
 export {
-  Parser
-}
+    Parser
+};
