@@ -4,19 +4,19 @@ from document_adaptation import DocumentsAdaptation, User, semantic_search
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import spatial
-from config import cofig
+from config import config
 
 # Lettura frasi
-document_adaptation = DocumentsAdaptation(max_workers=4, verbose=0)
+document_adaptation = DocumentsAdaptation(config, max_workers=4, verbose=1)
 
-data = "data/input_phase2_a.json"
+data = "data/test.json"
 
 with open(data, 'r', encoding="utf8") as f:
     json_query = json.load(f)
 
 user = User(json_query["userProfile"])  # deve diventare binario su 6 elementi
 results = document_adaptation.get_tailored_text(json_query['results'], user)  # formato giusto
-
+print(results)
 '''
 def print_scatter(data, colors):
 

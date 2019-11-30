@@ -10,7 +10,6 @@ from logging.handlers import RotatingFileHandler
 from document_adaptation import DocumentsAdaptation, User, semantic_search
 from config import config
 
-
 PORT = 4000
 # Read routes.json config
 with open('../routes.json') as f:
@@ -20,7 +19,6 @@ with open('../routes.json') as f:
 
 app = Flask(__name__, static_folder="documentation")
 document_adaptation = DocumentsAdaptation(config, max_workers=4, verbose=config.debug)
-
 
 @app.route('/', methods=["GET","POST"])
 def hello():
@@ -81,5 +79,6 @@ def internal_error(exc):
     return jsonify(req)
 
 if __name__ == '__main__':
-    app.run(debug=config.debug, host= '0.0.0.0', port=PORT)
+    app.run(debug=config.debug, host= '0.0.0.0', port=PORT, use_reloader=False)
     
+
