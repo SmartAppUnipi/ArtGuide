@@ -50,7 +50,15 @@ You can use Docker to test communications with other modules.
 The [docker-compose.yml](docker-compose.yml) defines the containers settings.  
 At the moment are available the [ia](ia.dockerfile) and [ir](ir.dockerfile) modules.
 
-Before running docker change the adaptation endpoint (keywords and text) to http://cipizio.it:4321 in routes.json.
+Before running docker change [routes.json](routes.json) as follows. Docker containers can access containers in the same network by name. The adaptation group doesn't have a Dockerfile and anyway is hard to be emulated locally, so they provide an online server, currently located at http://cipizio.it:4321.
+```json
+{
+  "image" : "http://ia:2345/upload",
+  "opus" : "http://ir:3000/",
+  "text" : "http://cipizio.it:4321/tailored_text",
+  "keywords" : "http://cipizio.it:4321/keywords"
+}
+```
 
 ENV variables with the API keys are needed, contact the teams to get them and please don't put them under version control.
 

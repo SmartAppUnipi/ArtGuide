@@ -1,17 +1,13 @@
 FROM python:3.6-slim-buster
 
-MAINTAINER ImageAnalysis
-
-COPY ./image_analysis/app ./app
-COPY ./routes.json ./routes.json
-
+COPY ./image_analysis/app/requirements.txt ./app/requirements.txt
 RUN pip install -r ./app/requirements.txt
 
-ARG google_key="/app/key/vision_api_keys.json" 
-ENV GOOGLE_APPLICATION_CREDENTIALS=$google_key
+COPY ./image_analysis/app ./app
+COPY ./docker.json ./routes.json
 
-ARG routes="/routes.json" 
-ENV ROUTES_JSON=$routes
+ENV GOOGLE_APPLICATION_CREDENTIALS="/app/key/vision_api_keys.json"
+ENV ROUTES_JSON="/routes.json"
 
 EXPOSE 2345
 
