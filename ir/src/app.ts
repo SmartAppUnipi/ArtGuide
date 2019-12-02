@@ -6,7 +6,7 @@ import logger from "./logger";
 import packageJson from "../package.json";
 import path from "path";
 import { Search } from "./search";
-import { ClassificationResult, Query } from "./models";
+import { ClassificationResult, Query, PageResult } from "./models";
 import { post, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
 
@@ -136,7 +136,7 @@ app.post("/", async (req, res) => {
         // 3. check if there is a known entity
         const knownInstance = await wikidata.tryGetKnownInstance(classificationResult);
 
-        let results;
+        let results: Array<PageResult>;
         if (knownInstance) {
             /*
              * BRANCH A: known entity
@@ -176,7 +176,7 @@ app.post("/", async (req, res) => {
              *  5b. build a smart query on Google
              */
             logger.debug("[app.ts] Not a known instance.",
-                         { reducedClassificationEntities: classificationResult.classification.entities });
+                { reducedClassificationEntities: classificationResult.classification.entities });
             results = await Promise.all([
                 wikipedia.search(classificationResult)
                     .then(results => {
@@ -195,6 +195,9 @@ app.post("/", async (req, res) => {
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         }
+
+        // 6. Sort the results by score
+        results.sort((p1, p2) => p2.score - p1.score);
 
         /*
          *END OF MAIN FLOW
