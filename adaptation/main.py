@@ -9,13 +9,15 @@ from logging.handlers import RotatingFileHandler
 
 from document_adaptation import DocumentsAdaptation, User, semantic_search
 from config import config
+from urllib.parse import urlparse
 
 PORT = 6397
 # Read routes.json config
 with open('../routes.json') as f:
     d = json.load(f)
-    PORT = d["text"].split(":")[2][:-14]
-    #print(PORT)
+    PORT = urlparse(d["text"]).port
+    #PORT = d["text"].split(":")[2][:-14]
+    print(PORT)
 
 app = Flask(__name__, static_folder="documentation")
 document_adaptation = DocumentsAdaptation(config, max_workers=4, verbose=config.debug)
