@@ -1,0 +1,85 @@
+<html>
+
+<head>
+  <title>ArtGuide Test UI</title>
+</head>
+
+<body>
+  <form style="line-height: 3em;" onsubmit="main()">
+    File: <input type="file" id="image" accept="image/png, image/jpeg"><br>
+    Language:
+    <select id="language">
+      <option value="en" selected>English</option>
+      <option value="it">Italian</option>
+    </select><br>
+    Tastes: <input type="text" id="tastes" value="history"></br>
+    Endpoint: <input type="text" id="endpoint" value="http://localhost:2345/upload"></br>
+    <input type="submit">
+  </form>
+
+  Result:<br>
+  <p id="response"></p>
+
+  <script>
+    function toBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = error => reject(error)
+      })
+    }
+
+    function buildJson(image, language = "en", tastes = []) {
+      return {
+        location: {
+          lat: 43.7228,
+          lng: 10.4017
+        },
+        userProfile: {
+          id: 42,
+          tastes: tastes,
+          language: language,
+          expertiseLevel: 1
+        },
+        image: image
+      }
+    }
+
+    function post(json) {
+      return fetch('http://localhost:2345/upload', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(json)
+      }).then(res => res.json())
+    }
+
+    function main() {
+      const image = document.getElementById("image").files[0]
+      const tastes = document.getElementById("tastes").value.split(",")
+      const language = document.getElementById("language").value
+      const endpoint = document.getElementById("endpoint").value
+      const response = document.getElementById("response")
+
+      response.innerText = "loading..."
+
+      toBase64(image)
+        .then(b64 => buildJson(b64, language, tastes))
+        .then(json => post(json, endpoint))
+        .then(json => {
+          console.log(json)
+          response.innerText = json.tailoredText
+        })
+        .catch(ex => {
+          console.error(ex)
+          response.innerText = "Error. Check the console."
+        })
+    }
+
+  </script>
+</body>
+
+</html>
