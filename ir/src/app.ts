@@ -1,7 +1,7 @@
+import * as config from "../config.json";
 import { AdaptationEndpoint } from "./environment";
 import bodyParser from "body-parser";
 import express from "express";
-import { flowConfig } from "../config.json";
 import logger from "./logger";
 import packageJson from "../package.json";
 import path from "path";
@@ -49,8 +49,16 @@ app.post("/", async (req, res) => {
 
         // Parse the classification result json
         const classificationResult = req.body as ClassificationResult;
-        if (!classificationResult)
+        if (!classificationResult) {
+            res.status(400);
             return res.json({ error: "Missing required body." });
+        }
+
+        // Ensure the language is supported
+        if (!config.supportedLanguages.includes(classificationResult.userProfile.language)) {
+            res.status(400);
+            return res.json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
+        }
 
 
 
@@ -119,13 +127,13 @@ app.post("/", async (req, res) => {
         // 2. slice results.entities and results.labels reducing the number of results
         classificationResult.classification.entities = reduceEntities(
             classificationResult.classification.entities,
-            flowConfig.entityFilter.maxEntityNumber,
-            flowConfig.entityFilter.minScore
+            config.flowConfig.entityFilter.maxEntityNumber,
+            config.flowConfig.entityFilter.minScore
         );
         classificationResult.classification.labels = reduceEntities(
             classificationResult.classification.labels,
-            flowConfig.entityFilter.maxEntityNumber,
-            flowConfig.entityFilter.minScore
+            config.flowConfig.entityFilter.maxEntityNumber,
+            config.flowConfig.entityFilter.minScore
         );
 
         logger.debug("[app.ts] Reduced classification entities and labels.", {
@@ -149,7 +157,7 @@ app.post("/", async (req, res) => {
                     .searchKnownInstance(knownInstance, classificationResult.userProfile.language)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
-                            pageResult.score *= flowConfig.weight.wikipedia.known);
+                            pageResult.score *= config.flowConfig.weight.wikipedia.known);
                         return pageResults;
                     }),
                 search
@@ -160,7 +168,7 @@ app.post("/", async (req, res) => {
                     }))
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
-                            pageResult.score *= flowConfig.weight.google.known);
+                            pageResult.score *= config.flowConfig.weight.google.known);
                         return pageResults;
                     })
             ]).then(allResults => [].concat(...allResults));
@@ -181,14 +189,14 @@ app.post("/", async (req, res) => {
                 wikipedia.search(classificationResult)
                     .then(results => {
                         results.forEach(result =>
-                            result.score *= flowConfig.weight.wikipedia.unknown);
+                            result.score *= config.flowConfig.weight.wikipedia.unknown);
 
                         return results;
                     }),
                 search.search(classificationResult)
                     .then(results => {
                         results.forEach(result =>
-                            result.score *= flowConfig.weight.google.unknown);
+                            result.score *= config.flowConfig.weight.google.unknown);
 
                         return results;
                     })
