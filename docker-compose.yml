@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+
+  ia:
+    build:
+      context: ./
+      dockerfile: ia.dockerfile
+    image: art/ia
+    container_name: ia
+    restart: always
+    ports:
+      - "2345:2345"
+    stdin_open: true
+    tty: true
+
+  ir:
+    build:
+      context: ./
+      dockerfile: ir.dockerfile
+    image: art/ir
+    container_name: ir
+    restart: always
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true

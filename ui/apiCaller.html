@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+  <p>Hello, art project!</p>
+  <p>In this file you can test your module with a custom JSON.</p>
+
+  <form>
+  <p><input type="text" name="url"> The url you wish to call</p>
+  <div class="errorDivurl"></div>
+  <p><input type="text" name="urlImg"> The url of the image you want to use</p>
+  <input type="hidden" name="urlImgB64"> 
+
+
+
+  <div class="errorDivurlImg"></div>
+  <p><input list="callMethods" name="callMethod"> The Method of the call</p>
+  <div class="errorDivcallMethod"></div>
+  <datalist id="callMethods">
+    <option value="POST">
+    <option value="GET">
+  </datalist>
+
+  <p><input list="uType" name="uType">User type</p>
+  <div class="errorDivuType"></div>
+  <datalist id="uType">
+    <option value="child">Child</option>
+    <option value="novice">Novice</option>
+    <option value="knowledgable">Knowledgable</option>
+    <option value="expert">Expert</option>
+  </datalist>
+  <p><input list="uLang" name="uLang">User language</p>
+  <div class="errorDivuLang"></div>
+  <datalist id="uLang">
+    <option value="en_US">English</option>
+    <option value="it">Italian</option>
+    <option value="fr">French</option>
+    <option value="ru">Russian</option>
+  </datalist>
+    <p><select multiple> 
+  <option value="history">History</option>
+  <option value="science">Science</option>
+  <option value="biography">Biography</option>
+  <option value="fun_facts">Fun facts</option>
+  <option value="art_movements">Art movements</option>
+  <option value="techniques">Techniques</option>
+
+</select>
+User preferences</p>
+<div class="errorDivpref"></div>
+  <p><input type="text" name="location"> The location of the user (It will produce lat ang long)</p>
+    <input type="hidden" name="lat"> 
+   <input type="hidden" name="lng"> 
+
+  <div class="errorDivloc"></div>
+  <a>Submit</a>
+  <div class="errorDiv"></div>
+  </form>
+  
+  <div class="responseDiv"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+  $('a').on('click', function(){
+      $('.errorDiv').html('');
+    $url = $('input[name="url"]').val();
+    $imgUrl = $('input[name="urlImg"]').val();
+    $callMethod = $('input[name="callMethod"]').val();
+    $uType = $('input[name="uType"]').val();
+    $uLang = $('input[name="uLang"]').val();
+    $uPref = $('select').val();
+    $uLoc = $('input[name="location"]').val();
+    console.log($url );
+        console.log($uLang );
+        console.log($uPref );
+        console.log($uType );
+    if($uLoc == '' ) {
+        $('.errorDivloc').html('Lat & Long will be empty');
+        $lat = ' ';
+        $lng = ' ';
+    } else {
+        $.get( "https://eu1.locationiq.com/v1/search.php?key=654fa264772868&q="+$uLoc+"&format=json", function( data ) {
+            console.log(data);
+            $lat = data[0].lat;
+            $lng = data[0].lon;
+            $('input[name="lat"]').val($lat);
+                        $('input[name="lng"]').val($lng);
+
+            $( ".errorDivloc" ).html( 'Lat: '+$lat+', Long: '+$lng );
+        });
+    }
+    if($imgUrl == '') {
+        $('.errorDivurlImg').html('Image cannot be empty');
+        $imgValid = false; 
+    } else {
+        const toDataURL = url => fetch(url)
+        .then(response => response.blob())
+        .then(blob => new Promise((resolve, reject) => {
+            const reader = new FileReader()
+            reader.onloadend = () => resolve(reader.result)
+            reader.onerror = reject
+            reader.readAsDataURL(blob)
+        }))
+
+
+        toDataURL($imgUrl)
+        .then(dataUrl => {
+            $('.errorDivurlImg').html('RESULT:'+dataUrl);
+            $('input[name="urlImgB64"]').val(dataUrl);
+            
+        })
+        $imgValid = true;
+    }
+    if($url == '') {
+        $('.errorDivurl').html('Url cannot be empty');
+        $urlValid = false; 
+    } else {
+        $urlValid = true; 
+    }
+    if($callMethod == '') {
+        $('.errorDivcallMethod').html('callMethod cannot be empty');
+         $callMethodValid = false; 
+
+    } else {
+         $callMethodValid = true; 
+
+    }
+    if($uType == '') {
+        $('.errorDivuType').html('caluTypelMethod cannot be empty');
+         $uTypeValid = false; 
+
+    } else {
+         $uTypeValid = true; 
+
+    }
+    if($uLang == '') {
+        $('.errorDivuLang').html('uLang cannot be empty');
+         $uLangValid = false; 
+
+    } else {
+         $uLangValid = true; 
+
+    }
+    if($uPref == '') {
+        $('.errorDivpref').html('uPref cannot be empty');
+         $uPrefValid = false; 
+
+    } else {
+         $uPrefValid = true; 
+
+    }
+    function sleep (time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+// Usage!
+    sleep(1000).then(() => {
+        if($imgValid && $urlValid && $callMethodValid && $uTypeValid && $uPrefValid && $uLangValid) {
+        $base64IMG = $('input[name="urlImgB64"]').val();
+        $lat = $('input[name="lat"]').val();
+        $lng = $('input[name="lng"]').val();
+
+        $jsonObj = {
+            image: $base64IMG,
+            location: {
+                lat: $lat,
+                lng: $lng,
+            },
+            userdata: {
+                type: $uType,
+                preferences: $uPref,
+                language: $uLang,
+            },
+
+        }
+        $JSON = JSON.stringify($jsonObj);
+        console.log($JSON);
+        if($callMethod == 'POST') {
+            $.post( $url, {json:$JSON})
+            .done(function( data ) {
+                console.log(data);
+                $( ".responseDiv" ).html( '<pre>'+data+'</pre>' );
+            });
+        } else {
+            $.get( $url, {json:$JSON})
+            .done(function( data ) {
+                console.log(data);
+            });
+        }
+        
+
+    } else {
+        $('.errorDiv').html('Check the errors');
+
+    }
+    });
+    
+
+
+  });
+  </script>
+</body>
+
+</html>

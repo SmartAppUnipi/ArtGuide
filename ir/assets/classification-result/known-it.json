@@ -1,0 +1,116 @@
+{
+  "userProfile": {
+    "id": 42,
+    "tastes": [
+      "storia",
+      "chimica",
+      "arte"
+    ],
+    "language": "it",
+    "expertiseLevel": 1
+  },
+  "classification": {
+    "entities": [
+      {
+        "description": "Leaning Tower of Pisa",
+        "entityId": "/m/0cn46",
+        "score": 2.1234577
+      },
+      {
+        "description": "Tower",
+        "entityId": "/m/01fdzj",
+        "score": 0.6169
+      },
+      {
+        "description": "Tourist attraction",
+        "entityId": "/m/0pgl9",
+        "score": 0.5087
+      }
+    ],
+    "labels": [
+      {
+        "description": "Tower",
+        "entityId": "/m/01fdzj",
+        "score": 0.9793564
+      },
+      {
+        "description": "Landmark",
+        "entityId": "/m/05_5t0l",
+        "score": 0.97427726
+      },
+      {
+        "description": "Architecture",
+        "entityId": "/m/03nfmq",
+        "score": 0.9243915
+      },
+      {
+        "description": "Building",
+        "entityId": "/m/0cgh4",
+        "score": 0.8942741
+      }
+    ],
+    "locations": [
+      {
+        "description": "Piazza dei Miracoli",
+        "latitude": 43.722855,
+        "longitude": 10.395813,
+        "entityId": "/m/0cn46",
+        "score": 0.9345933
+      }
+    ],
+    "safeSearch": {
+      "adult": "VERY_UNLIKELY",
+      "medical": "VERY_UNLIKELY",
+      "racy": "VERY_UNLIKELY",
+      "spoof": "VERY_UNLIKELY",
+      "violence": "VERY_UNLIKELY"
+    },
+    "type": [
+      {
+        "description": "Painting",
+        "score": 0.9995
+      },
+      {
+        "description": "Sculpture",
+        "score": 0.565428
+      },
+      {
+        "description": "Architecture",
+        "score": 0.35591
+      }
+    ],
+    "monumentType": [
+      {
+        "description": "column",
+        "score": 0.9995
+      }
+    ],
+    "period": [
+      {
+        "description": "1920-1930",
+        "score": 0.9995,
+        "name": "Renaissance"
+      }
+    ],
+    "style": [
+      {
+        "description": "Pointillism",
+        "score": 0.96185
+      },
+      {
+        "description": "cubism",
+        "score": 0.35591
+      }
+    ],
+    "materials": [
+      {
+        "description": "bronze",
+        "score": 0.96185
+      },
+      {
+        "description": "marble",
+        "score": 0.35591
+      }
+    ]
+  }
+}

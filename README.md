@@ -1,5 +1,16 @@
 # ArtGuide
 
+| branch               |                                                                                                                                               |
+|----------------------|:---------------------------------------------------------------------------------------------------------------------------------------------:|
+| master               | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=master)](https://travis-ci.com/SmartAppUnipi/ArtGuide)               |
+| ui                   | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=ui)](https://travis-ci.com/SmartAppUnipi/ArtGuide)                   |
+| image_analysis_proto | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=image_analysis_proto)](https://travis-ci.com/SmartAppUnipi/ArtGuide) |
+| ir                   | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=ir)](https://travis-ci.com/SmartAppUnipi/ArtGuide)                   |
+| adaptation_proto     | [![Build Status](https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=adaptation_proto)](https://travis-ci.com/SmartAppUnipi/ArtGuide)     |
+
+## Information Retrieval module
+Please check our [README.md](ir/README.md)
+
 ## Adaptation module
 
 The aim of this module is twofold:
@@ -32,3 +43,38 @@ Inside `adaptation` folder the following directories can be found:
 
 ### Run test
 To run some tests locally (and see how adaptation module performs on some sample situations) run `python test_phase1.py --help` (or `python test_phase2.py --help`)
+
+## Docker
+You can use Docker to test communications with other modules.
+
+The [docker-compose.yml](docker-compose.yml) defines the containers settings.  
+At the moment are available the [ia](ia.dockerfile) and [ir](ir.dockerfile) modules.
+
+Before running docker change [routes.json](routes.json) as follows. Docker containers can access containers in the same network (automatically created by docker-compose) by using the container's name. The adaptation group doesn't have a Dockerfile and anyway is hard to be emulated locally, so they provide an online server, currently located at http://cipizio.it:4321.
+```json
+{
+  "image" : "http://ia:2345/upload",
+  "opus" : "http://ir:3000/",
+  "text" : "http://cipizio.it:4321/tailored_text",
+  "keywords" : "http://cipizio.it:4321/keywords"
+}
+```
+
+ENV variables with the API keys are needed, contact the teams to get them and please don't put them under version control.
+
+```bash
+# start
+sudo docker-compose up
+# stop
+sudo docker-compose down
+
+# build and run single images
+sudo docker build -t art/ir -f ir.dockerfile .
+sudo docker build -t art/ia -f ia.dockerfile .
+
+sudo docker run --name ir -p 3000:3000 art/ir
+sudo docker run --name ia -p 2345:2345 art/ia
+```
+
+## Test UI
+APIs and communication can be tested by opening in a browser [test.html](test.html) without the need of an emulator for the mobile app.
