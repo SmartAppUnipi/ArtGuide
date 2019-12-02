@@ -1,9 +1,9 @@
-import { UserProfile } from './user-profile.model'
-import { PageResult } from './page-result.model'
+import { PageResult } from "./page-result.model";
+import { UserProfile } from "./user-profile.model";
 
 
 export interface TailoredTextRequest {
-    userProfile: UserProfile
+    userProfile: UserProfile;
     results: Array<PageResult>;
 }
 

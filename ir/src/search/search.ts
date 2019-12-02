@@ -9,8 +9,8 @@ import {
     GoogleSearchResult,
     PageResult,
     Query,
-    QueryExpansionResponse,
-    QueryExpansionRequest
+    QueryExpansionRequest,
+    QueryExpansionResponse
 } from "../models";
 
 /**
@@ -144,7 +144,7 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                            { query: q, exception: ex });
+                                     { query: q, exception: ex });
                     });
             })
         ).then(() => results);
