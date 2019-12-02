@@ -1,3 +1,4 @@
+import { CacheService } from "../search/cache.service";
 import { JSDOM } from "jsdom";
 import logger from "../logger";
 import { PageResult } from "../models";
@@ -6,6 +7,12 @@ import { PageResult } from "../models";
 const rake = require("rake-js").default;
 
 export class Parser {
+
+    private cacheService: CacheService;
+
+    constructor() {
+        this.cacheService = new CacheService("parser-cache.json");
+    }
 
     private querySelectors = [
         /*
@@ -125,9 +132,9 @@ export class Parser {
                 index1++;
             }
         }
-        if (titles[0] == null) 
+        if (titles[0] == null)
             titles[0] = " ";
-        
+
 
         return [titles, sections];
     }
@@ -150,6 +157,14 @@ export class Parser {
          */
         if (!this.validURL(url))
             return Promise.resolve(null);
+
+        const cachedResult = this.cacheService.get(url);
+        if (cachedResult) {
+            logger.debug("[parser.ts] Cache hit", { url });
+            return Promise.resolve(cachedResult);
+        } else
+            logger.debug("[parser.ts] Cache miss", { url });
+
 
         return JSDOM.fromURL(url).then(dom => {
             // look for a list of preferred query selectors
@@ -232,6 +247,11 @@ export class Parser {
                 });
             }
         })
+            .then(pageResult => {
+                this.cacheService.set(url, pageResult);
+                logger.debug("[parser.ts] Cache insert", { url, pageResult });
+                return pageResult;
+            })
             .catch(ex => {
                 logger.warn("[parser.ts] Error parsing URL", { url: url, exception: ex });
                 return null;
