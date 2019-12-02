@@ -7,7 +7,7 @@ WORKDIR /art/ir
 RUN npm ci
 
 ADD ./ir /art/ir
-ADD ./docker.json /art/routes.json
+ADD ./routes.json /art/routes.json
 
 EXPOSE 3000
 
