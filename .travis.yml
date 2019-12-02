@@ -12,7 +12,7 @@ jobs:
       language: node_js
       node_js: 12
       script:
-      - cd IR && npm ci && npm t
+      - cd ir && npm ci && npm t
 
 notifications:
   slack:
