@@ -1,7 +1,14 @@
 FROM node:alpine
+
+ADD ./ir/package.json /art/ir/package.json
+ADD ./ir/package-lock.json /art/ir/package-lock.json
+
+WORKDIR /art/ir
+RUN npm ci
+
 ADD ./ir /art/ir
 ADD ./routes.json /art/routes.json
-WORKDIR /art/ir
-RUN npm i
+
 EXPOSE 3000
+
 CMD npm start
