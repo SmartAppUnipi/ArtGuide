@@ -196,6 +196,9 @@ app.post("/", async (req, res) => {
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         }
 
+        // 6. Sort the results by score
+        results.sort((p1, p2) => p2.score - p1.score);
+
         /*
          *END OF MAIN FLOW
          */
