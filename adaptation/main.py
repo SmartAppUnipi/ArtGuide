@@ -10,11 +10,11 @@ from logging.handlers import RotatingFileHandler
 from document_adaptation import DocumentsAdaptation, User, semantic_search
 from config import config
 
-PORT = 4000
+PORT = 6397
 # Read routes.json config
 with open('../routes.json') as f:
     d = json.load(f)
-    PORT = d["text"].split(":")[2][:-15]
+    PORT = d["text"].split(":")[2][:-14]
     #print(PORT)
 
 app = Flask(__name__, static_folder="documentation")
