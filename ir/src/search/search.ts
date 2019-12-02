@@ -9,7 +9,8 @@ import {
     GoogleSearchResult,
     PageResult,
     Query,
-    QueryExpansionResponse
+    QueryExpansionResponse,
+    QueryExpansionRequest
 } from "../models";
 
 /**
@@ -91,7 +92,7 @@ export class Search {
         return post<QueryExpansionResponse>(
             AdaptationEndpoint.keywords, {
                 userProfile: classificationResult.userProfile
-            })
+            } as QueryExpansionRequest)
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
             // return both the basic query and the extended queries in one array
@@ -143,7 +144,7 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                                     { query: q, exception: ex });
+                            { query: q, exception: ex });
                     });
             })
         ).then(() => results);

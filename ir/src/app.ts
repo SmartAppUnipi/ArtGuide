@@ -6,7 +6,7 @@ import logger from "./logger";
 import packageJson from "../package.json";
 import path from "path";
 import { Search } from "./search";
-import { ClassificationResult, Query } from "./models";
+import { ClassificationResult, Query, PageResult, TailoredTextResponse, TailoredTextRequest } from "./models";
 import { post, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
 
@@ -136,7 +136,7 @@ app.post("/", async (req, res) => {
         // 3. check if there is a known entity
         const knownInstance = await wikidata.tryGetKnownInstance(classificationResult);
 
-        let results;
+        let results: Array<PageResult>;
         if (knownInstance) {
             /*
              * BRANCH A: known entity
@@ -176,7 +176,7 @@ app.post("/", async (req, res) => {
              *  5b. build a smart query on Google
              */
             logger.debug("[app.ts] Not a known instance.",
-                         { reducedClassificationEntities: classificationResult.classification.entities });
+                { reducedClassificationEntities: classificationResult.classification.entities });
             results = await Promise.all([
                 wikipedia.search(classificationResult)
                     .then(results => {
@@ -206,10 +206,10 @@ app.post("/", async (req, res) => {
             adaptationUrl: AdaptationEndpoint.text,
             resultsSent: results
         });
-        return post(AdaptationEndpoint.text, {
+        return post<TailoredTextResponse>(AdaptationEndpoint.text, {
             userProfile: classificationResult.userProfile,
             results
-        }).then(adaptationResponse => {
+        } as TailoredTextRequest).then(adaptationResponse => {
             logger.debug("[app.ts] Adaptation Response received.", { adaptationResponse });
             res.send(adaptationResponse);
         });
