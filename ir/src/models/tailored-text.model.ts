@@ -10,5 +10,5 @@ export interface TailoredTextRequest {
 export interface TailoredTextResponse {
     userProfile: UserProfile;
     results: Array<PageResult>;
-    tailored_text: string;
+    tailoredText: string;
 }
