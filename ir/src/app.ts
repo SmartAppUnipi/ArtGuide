@@ -9,6 +9,7 @@ import { Search } from "./search";
 import { ClassificationResult, PageResult, Query, TailoredTextRequest, TailoredTextResponse } from "./models";
 import { post, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
+import child_process from "child_process";
 
 /** Search module */
 const search = new Search();
@@ -35,7 +36,14 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 });
 
 // Index entry-point
-app.get("/", (req, res) => res.json({ message: `App version ${packageJson.version}.` }));
+app.get("/", (req, res) => {
+    const latestCommit = child_process.execSync("git rev-parse HEAD").toString().replace(/\n/, "");
+    return res.json({
+        message: `IR module version ${packageJson.version}.`,
+        currentCommit: `https://github.com/SmartAppUnipi/ArtGuide/commit/${latestCommit}`,
+        currentTree: `https://github.com/SmartAppUnipi/ArtGuide/tree/${latestCommit}`
+    });
+});
 
 // Docs entry-point
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
@@ -49,7 +57,9 @@ app.post("/", async (req, res) => {
 
         // Parse the classification result json
         const classificationResult = req.body as ClassificationResult;
-        if (!classificationResult) {
+        if (!classificationResult ||
+            !classificationResult.classification ||
+            !classificationResult.userProfile) {
             res.status(400);
             return res.json({ error: "Missing required body." });
         }
@@ -164,7 +174,8 @@ app.post("/", async (req, res) => {
                     .searchByTerms(new Query({
                         language: classificationResult.userProfile.language,
                         searchTerms: knownInstance.WikipediaPageTitle,
-                        keywords: []
+                        keywords: [],
+                        score: knownInstance.score
                     }), classificationResult.userProfile)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
