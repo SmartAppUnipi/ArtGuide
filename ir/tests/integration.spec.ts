@@ -44,6 +44,9 @@ if (mockAdaptationEndpoints) {
             expect(body).not.toHaveProperty("classification");
             expect(body.userProfile).toBeDefined();
             expect(body.results).toBeDefined();
+            body.results.forEach(pageResult => {
+                expect(pageResult.score).toBeGreaterThan(0);
+            });
 
             // reply with 200 status code and a mock JSON response
             callback(null, [

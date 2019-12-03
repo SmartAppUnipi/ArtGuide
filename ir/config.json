@@ -17,5 +17,9 @@
         "googleSearchResults": {
             "maxLimit": 3
         }
-    }
+    },
+    "supportedLanguages": [
+        "en",
+        "it"
+    ]
 }

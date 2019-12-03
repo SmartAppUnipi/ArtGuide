@@ -59,9 +59,9 @@ export class WikiData {
                     .then(properties => {
                         const knownInstance = properties as any as KnownInstance;
                         // check if is known by looking for the presence of some properties
-                        if (knownInstance.Creator.length > 0 ||
-                            knownInstance.Architect.length > 0 ||
-                            knownInstance.Location.length > 0) {
+                        if (knownInstance.Creator?.length > 0 ||
+                            knownInstance.Architect?.length > 0 ||
+                            knownInstance.Location?.length > 0) {
                             knownInstance.score = entity.score;
                             return knownInstance;
                         }
