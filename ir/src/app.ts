@@ -164,7 +164,8 @@ app.post("/", async (req, res) => {
                     .searchByTerms(new Query({
                         language: classificationResult.userProfile.language,
                         searchTerms: knownInstance.WikipediaPageTitle,
-                        keywords: []
+                        keywords: [],
+                        score: knownInstance.score
                     }), classificationResult.userProfile)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
