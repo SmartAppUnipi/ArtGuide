@@ -42,6 +42,7 @@ class Policy:
     def create_clusters(self):
         for key in self.keywords:  # Scorro tutte le keywords
             for sentence in self.sentences:  # Scorro tutte le frasi
+                sentence.keyword = self.keywords
                 if key in sentence.keyword:  # Se la keyword è contenuta nelle keyword della frase
                     x = False  # è presente nel dizionario?
                     for cluster in self.clusters:  # Controlla se la frase è già presente
