@@ -17296,5 +17296,567 @@
             "correctedQuery": "Modern art keyword history keyword history2",
             "htmlCorrectedQuery": "Modern art <em>keyword history</em> <em>keyword history2</em>"
         }
+    },
+    "[en]-mona lisa ": {
+        "kind": "customsearch#search",
+        "url": {
+            "type": "application/json",
+            "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+        },
+        "queries": {
+            "request": [
+                {
+                    "title": "Google Custom Search - mona lisa",
+                    "totalResults": "123000000",
+                    "searchTerms": "mona lisa",
+                    "count": 10,
+                    "startIndex": 1,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:4kthdl9fjjp"
+                }
+            ],
+            "nextPage": [
+                {
+                    "title": "Google Custom Search - mona lisa",
+                    "totalResults": "123000000",
+                    "searchTerms": "mona lisa",
+                    "count": 10,
+                    "startIndex": 11,
+                    "inputEncoding": "utf8",
+                    "outputEncoding": "utf8",
+                    "safe": "off",
+                    "cx": "017483280596283358881:4kthdl9fjjp"
+                }
+            ]
+        },
+        "context": {
+            "title": "SmartApps-Art-EN"
+        },
+        "searchInformation": {
+            "searchTime": 0.492863,
+            "formattedSearchTime": "0.49",
+            "totalResults": "123000000",
+            "formattedTotalResults": "123,000,000"
+        },
+        "items": [
+            {
+                "kind": "customsearch#result",
+                "title": "Mona Lisa - Wikipedia",
+                "htmlTitle": "<b>Mona Lisa</b> - Wikipedia",
+                "link": "https://en.wikipedia.org/wiki/Mona_Lisa",
+                "displayLink": "en.wikipedia.org",
+                "snippet": "The Mona Lisa is a half-length portrait painting by the Italian artist Leonardo da \nVinci. It is considered an archetypal masterpiece of the Italian Renaissance, and\n ...",
+                "htmlSnippet": "The <b>Mona Lisa</b> is a half-length portrait painting by the Italian artist Leonardo da <br>\nVinci. It is considered an archetypal masterpiece of the Italian Renaissance, and<br>\n&nbsp;...",
+                "cacheId": "8jbQaPwdqfQJ",
+                "formattedUrl": "https://en.wikipedia.org/wiki/Mona_Lisa",
+                "htmlFormattedUrl": "https://en.wikipedia.org/wiki/<b>Mona</b>_<b>Lisa</b>",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "184",
+                            "height": "274",
+                            "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS_ZIRjiXcH_nivg6qoF9F_lGm_qYlm6dgCqKchf7zMQ6U4B-FyL8m0YqLr"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "referrer": "origin",
+                            "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/1200px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "It's Time to Take Down the Mona Lisa - The New York Times",
+                "htmlTitle": "It&#39;s Time to Take Down the <b>Mona Lisa</b> - The New York Times",
+                "link": "https://www.nytimes.com/2019/11/06/arts/design/mona-lisa-louvre-overcrowding.html",
+                "displayLink": "www.nytimes.com",
+                "snippet": "Nov 6, 2019 ... Visitors to the Louvre to see the Mona Lisa on Oct. 24. Each day, 30,000 people \npass through the gallery where Leonardo's painting hangs, ...",
+                "htmlSnippet": "Nov 6, 2019 <b>...</b> Visitors to the Louvre to see the <b>Mona Lisa</b> on Oct. 24. Each day, 30,000 people <br>\npass through the gallery where Leonardo&#39;s painting hangs,&nbsp;...",
+                "formattedUrl": "https://www.nytimes.com/2019/11/.../mona-lisa-louvre-overcrowding.html",
+                "htmlFormattedUrl": "https://www.nytimes.com/2019/11/.../<b>mona</b>-<b>lisa</b>-louvre-overcrowding.html",
+                "pagemap": {
+                    "newsmediaorganization": [
+                        {
+                            "diversitypolicy": "https://www.nytco.com/diversity-and-inclusion-at-the-new-york-times/",
+                            "ethicspolicy": "https://www.nytco.com/who-we-are/culture/standards-and-ethics/",
+                            "foundingdate": "1851-09-18",
+                            "url": "https://www.nytimes.com/",
+                            "masthead": "https://www.nytimes.com/interactive/2018/09/28/admin/the-new-york-times-masthead.html",
+                            "name": "The New York Times"
+                        }
+                    ],
+                    "thumbnail": [
+                        {
+                            "src": "https://static01.nyt.com/images/2019/11/06/arts/06leonardo-notebook1-promo/06leonardo-notebook1-promo-thumbStandard-v3.jpg"
+                        }
+                    ],
+                    "webpageelement": [
+                        {
+                            "isaccessibleforfree": "False",
+                            "cssselector": ".meteredContent"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "article:published": "2019-11-06T14:21:13.000Z",
+                            "article:modified": "2019-11-07T00:48:56.000Z",
+                            "articleid": "100000006771541",
+                            "nyt_uri": "nyt://article/39dca119-5900-5dd0-9dd1-a6e499ced760",
+                            "pubp_event_id": "pubp://event/0eceb19d72404d39a30dea48d47d7ddc",
+                            "image": "https://static01.nyt.com/images/2019/11/06/arts/06leonardo-notebook1-promo/06leonardo-notebook1-promo-facebookJumbo-v3.jpg",
+                            "byl": "By Jason Farago",
+                            "thumbnail": "https://static01.nyt.com/images/2019/11/06/arts/06leonardo-notebook1-promo/06leonardo-notebook1-promo-thumbStandard-v3.jpg",
+                            "news_keywords": "Museum,Louvre Museum,Leonardo da Vinci,Travel;Tourism,Paris France",
+                            "pdate": "20191106",
+                            "og:url": "https://www.nytimes.com/2019/11/06/arts/design/mona-lisa-louvre-overcrowding.html",
+                            "og:type": "article",
+                            "og:title": "It’s Time to Take Down the Mona Lisa",
+                            "og:image": "https://static01.nyt.com/images/2019/11/06/arts/06leonardo-notebook1-promo/06leonardo-notebook1-promo-facebookJumbo-v3.jpg",
+                            "og:image:alt": "Visitors to the Louvre to see the Mona Lisa on Oct. 24. Each day, 30,000 people pass through the gallery where Leonardo’s painting hangs, according to the museum’s director.",
+                            "og:description": "Leonardo’s painting is a security hazard, an educational obstacle and not even a satisfying bucket-list item. It’s time the Louvre moved it out of the way.",
+                            "twitter:url": "https://www.nytimes.com/2019/11/06/arts/design/mona-lisa-louvre-overcrowding.html",
+                            "twitter:title": "It’s Time to Take Down the Mona Lisa",
+                            "twitter:description": "Leonardo’s painting is a security hazard, an educational obstacle and not even a satisfying bucket-list item. It’s time the Louvre moved it out of the way.",
+                            "twitter:image": "https://static01.nyt.com/images/2019/11/06/arts/06leonardo-notebook1-promo/06leonardo-notebook1-promo-videoSixteenByNineJumbo1600-v3.jpg",
+                            "twitter:image:alt": "Visitors to the Louvre to see the Mona Lisa on Oct. 24. Each day, 30,000 people pass through the gallery where Leonardo’s painting hangs, according to the museum’s director.",
+                            "twitter:card": "summary_large_image",
+                            "article:section": "Arts",
+                            "article:tag": "Museums",
+                            "article:opinion": "false",
+                            "article:content_tier": "metered",
+                            "cg": "arts",
+                            "scg": "design",
+                            "pt": "article",
+                            "pst": "News",
+                            "url": "https://www.nytimes.com/2019/11/06/arts/design/mona-lisa-louvre-overcrowding.html",
+                            "msapplication-starturl": "https://www.nytimes.com",
+                            "al:android:url": "nytimes://reader/id/100000006771541",
+                            "al:android:package": "com.nytimes.android",
+                            "al:android:app_name": "NYTimes",
+                            "twitter:app:name:googleplay": "NYTimes",
+                            "twitter:app:id:googleplay": "com.nytimes.android",
+                            "twitter:app:url:googleplay": "nytimes://reader/id/100000006771541",
+                            "al:iphone:url": "nytimes://www.nytimes.com/2019/11/06/arts/design/mona-lisa-louvre-overcrowding.html",
+                            "al:iphone:app_store_id": "284862083",
+                            "al:iphone:app_name": "NYTimes",
+                            "al:ipad:url": "nytimes://www.nytimes.com/2019/11/06/arts/design/mona-lisa-louvre-overcrowding.html",
+                            "al:ipad:app_store_id": "357066198",
+                            "al:ipad:app_name": "NYTimes",
+                            "viewport": "width=device-width, initial-scale=1",
+                            "fb:app_id": "9869919170"
+                        }
+                    ],
+                    "creativework": [
+                        {
+                            "name": "The New York Times",
+                            "productid": "nytimes.com:basic"
+                        }
+                    ],
+                    "newsarticle": [
+                        {
+                            "inlanguage": "en-US",
+                            "datepublished": "2019-11-06T14:21:13.000Z",
+                            "datecreated": "2019-11-06T14:21:13.000Z",
+                            "datemodified": "2019-11-07T00:48:56.000Z",
+                            "identifier": "100000006771541",
+                            "description": "Leonardo’s painting is a security hazard, an educational obstacle and not even a satisfying bucket-list item. It’s time the Louvre moved it out of the way.",
+                            "image": "https://static01.nyt.com/images/2019/11/06/arts/06leonardo-notebook1-promo/06leonardo-notebook1-promo-facebookJumbo-v3.jpg",
+                            "thumbnailurl": "https://static01.nyt.com/images/2019/11/06/arts/06leonardo-notebook1-promo/06leonardo-notebook1-promo-thumbStandard-v3.jpg",
+                            "articlesection": "Arts",
+                            "url": "https://www.nytimes.com/2019/11/06/arts/design/mona-lisa-louvre-overcrowding.html",
+                            "isaccessibleforfree": "false",
+                            "headline": "It’s Time to Take Down the Mona LisaIt’s Time to Take Down the Mona Lisa",
+                            "articlebody": "PARIS — Even in a city saturated with excellent fall exhibitions, from the Grand Palais’s retrospective of El Greco to the Fondation Louis Vuitton’s showcase of Charlotte Perriand, the...",
+                            "copyrightyear": "2019"
+                        }
+                    ],
+                    "imageobject": [
+                        {
+                            "url": "https://static01.nyt.com/images/2019/11/09/arts/06leonardo-notebook1/merlin_163284231_330a8c97-e7d6-49aa-bbb4-dfb4a1546c59-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+                            "caption": "Visitors to the Louvre to see the Mona Lisa on Oct. 24. Each day, 30,000 people pass through the gallery where Leonardo’s painting hangs, according to the museum’s director.Credit...Elliott...",
+                            "description": "Visitors to the Louvre to see the Mona Lisa on Oct. 24. Each day, 30,000 people pass through the gallery where Leonardo’s painting hangs, according to the museum’s director.Credit...Elliott...",
+                            "copyrightholder": "Credit...Elliott Verdier for The New York Times"
+                        },
+                        {
+                            "url": "https://static01.nyt.com/images/misc/NYT_logo_rss_250x40.png"
+                        }
+                    ],
+                    "person": [
+                        {
+                            "name": "Jason Farago"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://static01.nyt.com/images/2019/11/06/arts/06leonardo-notebook1-promo/06leonardo-notebook1-promo-thumbStandard-v3.jpg",
+                            "type": "1",
+                            "width": "75",
+                            "height": "75"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "10 Facts You Don't Know about The Mona Lisa by Leonardo da Vinci",
+                "htmlTitle": "10 Facts You Don&#39;t Know about The <b>Mona Lisa</b> by Leonardo da Vinci",
+                "link": "https://www.leonardodavinci.net/the-mona-lisa.jsp",
+                "displayLink": "www.leonardodavinci.net",
+                "snippet": "Mona Lisa, also known as La Gioconda, is the wife of Francesco del Giocondo. \nThis painting is painted as oil on wood. The original painting size is 77 x 53 cm ...",
+                "htmlSnippet": "<b>Mona Lisa</b>, also known as La Gioconda, is the wife of Francesco del Giocondo. <br>\nThis painting is painted as oil on wood. The original painting size is 77 x 53 cm&nbsp;...",
+                "cacheId": "p4XXR6QawdUJ",
+                "formattedUrl": "https://www.leonardodavinci.net/the-mona-lisa.jsp",
+                "htmlFormattedUrl": "https://www.leonardodavinci.net/the-<b>mona</b>-<b>lisa</b>.jsp",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "183",
+                            "height": "276",
+                            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCueh8phST3n1r8H5GhIr2w30RvDbKd0JZ43pscsql_qPDlO-INGK91-Y"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "width=device-width, initial-scale=1"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://www.leonardodavinci.net/images/gallery/the-mona-lisa.jpg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Mona Lisa – Portrait of Lisa Gherardini, wife of Francesco del ...",
+                "htmlTitle": "<b>Mona Lisa</b> – Portrait of Lisa Gherardini, wife of Francesco del ...",
+                "link": "https://www.louvre.fr/en/oeuvre-notices/mona-lisa-portrait-lisa-gherardini-wife-francesco-del-giocondo",
+                "displayLink": "www.louvre.fr",
+                "snippet": "This portrait was doubtless started in Florence around 1503. It is thought to be of \nLisa Gherardini, wife of a Florentine cloth merchant named Francesco del ...",
+                "htmlSnippet": "This portrait was doubtless started in Florence around 1503. It is thought to be of <br>\n<b>Lisa</b> Gherardini, wife of a Florentine cloth merchant named Francesco del&nbsp;...",
+                "cacheId": "8h7DQ28aXK0J",
+                "formattedUrl": "https://www.louvre.fr/.../mona-lisa-portrait-lisa-gherardini-wife-francesco-del -giocondo",
+                "htmlFormattedUrl": "https://www.louvre.fr/.../<b>mona</b>-<b>lisa</b>-portrait-<b>lisa</b>-gherardini-wife-francesco-del -giocondo",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "185",
+                            "height": "272",
+                            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc_nR4bUZxlqRijiBcaFS_394OQwWUJOyuqbWy3sedJ6sihUGRaWUQOfQ"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "dcterms.date": "2019-07-16T00:00:00Z",
+                            "referrer": "origin-when-cross-origin"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://www.louvre.fr/sites/default/files/medias/medias_images/images/louvre-portrait-de-lisa-gherardini-epouse-de-francesco-del-giocondo-dite-monna-lisa-la-gioconda-ou-la-jocon.jpg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Mona Lisa Italian Foods | 2061 India Street, San Diego, CA ...",
+                "htmlTitle": "<b>Mona Lisa</b> Italian Foods | 2061 India Street, San Diego, CA ...",
+                "link": "http://www.monalisalittleitaly.com/",
+                "displayLink": "www.monalisalittleitaly.com",
+                "snippet": "The first Mona Lisa Restaurant was established in 1956 in downtown San Diego \nby Grandfather Stefano Brunetto. Since then, Mona Lisa has become an ...",
+                "htmlSnippet": "The first <b>Mona Lisa</b> Restaurant was established in 1956 in downtown San Diego <br>\nby Grandfather Stefano Brunetto. Since then, <b>Mona Lisa</b> has become an&nbsp;...",
+                "cacheId": "0QH0nVhWX88J",
+                "formattedUrl": "www.monalisalittleitaly.com/",
+                "htmlFormattedUrl": "www.<b>monalisa</b>littleitaly.com/",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "225",
+                            "height": "225",
+                            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT7qwpXqeLJ7YSPHvJO5IutRgxAB40H_1Szbb6kc9olgm9AbVMidAzCJhU"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "width=device-width, initial-scale=1, user-scalable=no"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "http://www.monalisalittleitaly.com/images/menu2.jpg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Mona Lisa | Subject, History, & Facts | Britannica",
+                "htmlTitle": "<b>Mona Lisa</b> | Subject, History, &amp; Facts | Britannica",
+                "link": "https://www.britannica.com/topic/Mona-Lisa-painting",
+                "displayLink": "www.britannica.com",
+                "snippet": "Mona Lisa, oil painting on a poplar wood panel by Leonardo da Vinci, probably \nthe world's most famous painting. The sitter's mysterious smile and her unproven\n ...",
+                "htmlSnippet": "<b>Mona Lisa</b>, oil painting on a poplar wood panel by Leonardo da Vinci, probably <br>\nthe world&#39;s most famous painting. The sitter&#39;s mysterious smile and her unproven<br>\n&nbsp;...",
+                "cacheId": "PLfDHRR4UrkJ",
+                "formattedUrl": "https://www.britannica.com/topic/Mona-Lisa-painting",
+                "htmlFormattedUrl": "https://www.britannica.com/topic/<b>Mona</b>-<b>Lisa</b>-painting",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "184",
+                            "height": "274",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSwHyT7a7y6_F-0LSQuLbsPxhikxndWLZboD6QacGKlnNRPYrsjjXHOxyo"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "width=device-width, initial-scale=1.0",
+                            "p:domain_verify": "5247c07bac63b6b3250f68cfe355c9a2",
+                            "fb:pages": "74442380906",
+                            "fb:app_id": "1887621861548296",
+                            "twitter:card": "summary_large_image",
+                            "twitter:site": "@britannica",
+                            "twitter:image": "https://cdn.britannica.com/24/189624-050-F3C5BAA9/Mona-Lisa-oil-wood-panel-Leonardo-da.jpg",
+                            "twitter:description": "Mona Lisa, oil painting on a poplar wood panel by Leonardo da Vinci, probably the world’s most famous painting. The sitter’s mysterious smile and her unproven identity have made the work a source of ongoing investigation and fascination. Read more about the painting’s subject and history.",
+                            "og:type": "ARTICLE",
+                            "og:title": "Mona Lisa | Subject, History, & Facts",
+                            "og:description": "Mona Lisa, oil painting on a poplar wood panel by Leonardo da Vinci, probably the world’s most famous painting. The sitter’s mysterious smile and her unproven identity have made the work a source of ongoing investigation and fascination. Read more about the painting’s subject and history.",
+                            "og:site_name": "Encyclopedia Britannica",
+                            "og:url": "https://www.britannica.com/topic/Mona-Lisa-painting",
+                            "og:image": "https://cdn.britannica.com/24/189624-050-F3C5BAA9/Mona-Lisa-oil-wood-panel-Leonardo-da.jpg",
+                            "og:image:type": "image/jpeg"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://cdn.britannica.com/24/189624-050-F3C5BAA9/Mona-Lisa-oil-wood-panel-Leonardo-da.jpg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Mona Lisa (video) | Leonardo da Vinci | Khan Academy",
+                "htmlTitle": "<b>Mona Lisa</b> (video) | Leonardo da Vinci | Khan Academy",
+                "link": "https://www.khanacademy.org/humanities/renaissance-reformation/high-ren-florence-rome/leonardo-da-vinci/v/celebrity-art-leonardo-s-mona-lisa",
+                "displayLink": "www.khanacademy.org",
+                "snippet": "Learn about the history and key elements of the Mona Lisa, one of the most \nfamous paintings in the world.",
+                "htmlSnippet": "Learn about the history and key elements of the <b>Mona Lisa</b>, one of the most <br>\nfamous paintings in the world.",
+                "cacheId": "WfKLjIYA3R0J",
+                "formattedUrl": "https://www.khanacademy.org/.../celebrity-art-leonardo-s-mona-lisa",
+                "htmlFormattedUrl": "https://www.khanacademy.org/.../celebrity-art-leonardo-s-<b>mona</b>-<b>lisa</b>",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "259",
+                            "height": "194",
+                            "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRFXY27TcIHUWVRA1n-4ifJ3R6eV37bGkl8lQtykU6YKDc6yQy_W2gqMS0D"
+                        }
+                    ],
+                    "document": [
+                        {
+                            "title": "Mona Lisa",
+                            "description": "Learn about the history and key elements of the Mona Lisa, one of the most famous paintings in the world.",
+                            "author": "Beth Harris",
+                            "type": "video"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "width=device-width, initial-scale=1.0",
+                            "fb:app_id": "160249463991765",
+                            "fb:admins": "100000121497109,1305017,100001572496923",
+                            "og:site_name": "Khan Academy",
+                            "og:type": "video.other",
+                            "og:title": "Mona Lisa",
+                            "og:description": "Learn about the history and key elements of the Mona Lisa, one of the most famous paintings in the world.",
+                            "og:url": "https://www.khanacademy.org/humanities/renaissance-reformation/high-ren-florence-rome/leonardo-da-vinci/v/celebrity-art-leonardo-s-mona-lisa",
+                            "og:image": "http://img.youtube.com/vi/B06PK4yZwvY/0.jpg",
+                            "og:video": "http://www.youtube.com/v/B06PK4yZwvY",
+                            "og:video:type": "application/x-shockwave-flash",
+                            "title": "Mona Lisa",
+                            "video_type": "application/x-shockwave-flash",
+                            "twitter:site": "@khanacademy",
+                            "twitter:title": "Mona Lisa",
+                            "twitter:description": "Learn about the history and key elements of the Mona Lisa, one of the most famous paintings in the world.",
+                            "twitter:image": "http://img.youtube.com/vi/B06PK4yZwvY/0.jpg",
+                            "apple-itunes-app": "app-id=469863705, app-argument=https://www.khanacademy.org/humanities/renaissance-reformation/high-ren-florence-rome/leonardo-da-vinci/v/celebrity-art-leonardo-s-mona-lisa"
+                        }
+                    ],
+                    "videoobject": [
+                        {
+                            "name": "Mona Lisa",
+                            "description": "Learn about the history and key elements of the Mona Lisa, one of the most famous paintings in the world.",
+                            "uploaddate": "2012-12-15T11:00:08Z",
+                            "thumbnailurl": "https://cdn.kastatic.org/googleusercontent/H702hneeYtZ5jqiwHsLCqWnvUYpL2bCKHYWxuuEABphl7Q17PLgXPVAzhoxYcP0Oilnn_x64jonxZuJc-CP3UgE3fA",
+                            "transcript": "(gentle music) - We're in the single most crowed room in the Louvre but for good reason. This is the room that holds the Mona Lisa by Leonardo Da Vinci. Without a doubt, the most famous painting..."
+                        }
+                    ],
+                    "organization": [
+                        {
+                            "name": "Mona Lisa",
+                            "image": "http://img.youtube.com/vi/B06PK4yZwvY/0.jpg",
+                            "description": "Learn about the history and key elements of the Mona Lisa, one of the most famous paintings in the world."
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "http://img.youtube.com/vi/B06PK4yZwvY/0.jpg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Mona Lisa Restaurant",
+                "htmlTitle": "<b>Mona Lisa</b> Restaurant",
+                "link": "https://monalisas.biz/",
+                "displayLink": "monalisas.biz",
+                "snippet": "Established in 1994, Mona Lisa's is located in the Historic Water Street Business \nDistrict. We serve an ever changing menu inspired by the seasons. Our passion ...",
+                "htmlSnippet": "Established in 1994, <b>Mona Lisa&#39;s</b> is located in the Historic Water Street Business <br>\nDistrict. We serve an ever changing menu inspired by the seasons. Our passion&nbsp;...",
+                "cacheId": "V8afFcKl208J",
+                "formattedUrl": "https://monalisas.biz/",
+                "htmlFormattedUrl": "https://<b>monalisas</b>.biz/",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "169",
+                            "height": "167",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQFDdIdm197_HVROWrx1at9JqaFiyH5Ye5EvmgAhnOZJnTFEyrYuwwJHgAN"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "width=device-width, initial-scale=1.0"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://monalisas.biz/resources/Mona%20Lisa%20Logo%20Full%20Text.jpg"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Mona Lisa Fondue Restaurant: Fine Dining in Manitou Springs",
+                "htmlTitle": "<b>Mona Lisa</b> Fondue Restaurant: Fine Dining in Manitou Springs",
+                "link": "https://www.monalisafondue.com/",
+                "displayLink": "www.monalisafondue.com",
+                "snippet": "Enjoy romantic fine dining and wine in historical Manitou Springs. Our signature \n4-course fondue experience is great for any occasion. Reserve a table!",
+                "htmlSnippet": "Enjoy romantic fine dining and wine in historical Manitou Springs. Our signature <br>\n4-course fondue experience is great for any occasion. Reserve a table!",
+                "cacheId": "VWZGVI5Rd-IJ",
+                "formattedUrl": "https://www.monalisafondue.com/",
+                "htmlFormattedUrl": "https://www.<b>monalisa</b>fondue.com/",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "225",
+                            "height": "225",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSEFBRPPrM3_rBS_wvNdxMGxY2-E_9lR8dXZLsr-9xv1qQqwJLVwGrnwr4"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "initial-scale=1",
+                            "og:site_name": "Fine Dining Restaurants in Manitou Springs - Mona Lisa Fondue Restaurant",
+                            "og:title": "Fine Dining in Manitou Springs - Mona Lisa Fondue Restaurant",
+                            "og:url": "https://www.monalisafondue.com",
+                            "og:type": "website",
+                            "og:description": "Enjoy romantic fine dining and wine in historical Manitou Springs. Our signature 4-course fondue experience is great for any occasion. Reserve a table!",
+                            "og:image": "http://static1.squarespace.com/static/591efa49f5e231344517a5b4/t/5ac6a02cf950b7346fb0813f/1522966575711/ML_FaviconSQFinal.jpg?format=1500w",
+                            "og:image:width": "638",
+                            "og:image:height": "638",
+                            "twitter:title": "Fine Dining in Manitou Springs - Mona Lisa Fondue Restaurant",
+                            "twitter:image": "http://static1.squarespace.com/static/591efa49f5e231344517a5b4/t/5ac6a02cf950b7346fb0813f/1522966575711/ML_FaviconSQFinal.jpg?format=1500w",
+                            "twitter:url": "https://www.monalisafondue.com",
+                            "twitter:card": "summary",
+                            "twitter:description": "Enjoy romantic fine dining and wine in historical Manitou Springs. Our signature 4-course fondue experience is great for any occasion. Reserve a table!",
+                            "msvalidate.01": "81DBF3E21DC420D80E5F798A6B165809"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "http://static1.squarespace.com/static/591efa49f5e231344517a5b4/t/5ac6a02cf950b7346fb0813f/1522966575711/ML_FaviconSQFinal.jpg?format=1500w"
+                        }
+                    ]
+                }
+            },
+            {
+                "kind": "customsearch#result",
+                "title": "Mona Lisa, c.1503 - c.1519 - Leonardo da Vinci - WikiArt.org",
+                "htmlTitle": "<b>Mona Lisa</b>, c.1503 - c.1519 - Leonardo da Vinci - WikiArt.org",
+                "link": "https://www.wikiart.org/en/leonardo-da-vinci/mona-lisa",
+                "displayLink": "www.wikiart.org",
+                "snippet": "One of the most iconic and recognizable paintings in the world is the Mona Lisa (\nca. 1503-1519) painted by Leonardo da Vinci. The unique appeal of the portrait ...",
+                "htmlSnippet": "One of the most iconic and recognizable paintings in the world is the <b>Mona Lisa</b> (<br>\nca. 1503-1519) painted by Leonardo da Vinci. The unique appeal of the portrait&nbsp;...",
+                "cacheId": "U66qDpsRw1MJ",
+                "formattedUrl": "https://www.wikiart.org/en/leonardo-da-vinci/mona-lisa",
+                "htmlFormattedUrl": "https://www.wikiart.org/en/leonardo-da-vinci/<b>mona</b>-<b>lisa</b>",
+                "pagemap": {
+                    "cse_thumbnail": [
+                        {
+                            "width": "183",
+                            "height": "276",
+                            "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ5Fw7d-lpiS_2H13sGbCZ2pluKonQe0kPmRetZu7h-AOx5BTMgbkzZEqI"
+                        }
+                    ],
+                    "metatags": [
+                        {
+                            "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
+                            "og:url": "https://www.wikiart.org/en/leonardo-da-vinci/mona-lisa",
+                            "og:title": "Mona Lisa, c.1503 - c.1519 - Leonardo da Vinci - WikiArt.org",
+                            "og:type": "website",
+                            "og:image": "https://uploads7.wikiart.org/images/leonardo-da-vinci/mona-lisa.jpg!Large.jpg",
+                            "og:image:width": "397",
+                            "og:image:height": "600",
+                            "og:site_name": "www.wikiart.org",
+                            "og:description": "Mona Lisa, 1519 by Leonardo da Vinci. High Renaissance. portrait. Louvre, Paris, France",
+                            "fb:app_id": "1038592866179110",
+                            "twitter:site": "https://www.wikiart.org/en/leonardo-da-vinci/mona-lisa",
+                            "twitter:description": "Mona Lisa, 1519 by Leonardo da Vinci. High Renaissance. portrait. Louvre, Paris, France",
+                            "twitter:image:src": "https://uploads7.wikiart.org/images/leonardo-da-vinci/mona-lisa.jpg!Large.jpg",
+                            "twitter:domain": "www.wikiart.org"
+                        }
+                    ],
+                    "painting": [
+                        {
+                            "sameas": "https://en.wikipedia.org/wiki/Mona_Lisa",
+                            "image": "https://uploads7.wikiart.org/images/leonardo-da-vinci/mona-lisa.jpg!Large.jpg",
+                            "datecreated": "1519",
+                            "genre": "portrait",
+                            "keywords": "female-portraits, Mona-Lisa",
+                            "description": "One of the most iconic and recognizable paintings in the world is the Mona Lisa (ca. 1503-1519) painted by Leonardo da Vinci. The unique appeal of the portrait lies in its enigmatic nature,..."
+                        }
+                    ],
+                    "person": [
+                        {
+                            "name": "Leonardo da Vinci",
+                            "sameas": "http://en.wikipedia.org/wiki/Leonardo_da_Vinci"
+                        }
+                    ],
+                    "cse_image": [
+                        {
+                            "src": "https://uploads7.wikiart.org/images/leonardo-da-vinci/mona-lisa.jpg!Large.jpg"
+                        }
+                    ],
+                    "administrativearea": [
+                        {
+                            "name": "Florence"
+                        }
+                    ]
+                }
+            }
+        ]
     }
 }
