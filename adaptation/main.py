@@ -16,8 +16,7 @@ PORT = 6397
 with open('../routes.json') as f:
     d = json.load(f)
     PORT = urlparse(d["text"]).port
-    #PORT = d["text"].split(":")[2][:-14]
-    print(PORT)
+    print("Listening on port:{}".format(PORT))
 
 app = Flask(__name__, static_folder="documentation")
 document_adaptation = DocumentsAdaptation(config, max_workers=4, verbose=config.debug)
@@ -70,6 +69,8 @@ def tailored_text():
     # Body
     user = User(req["userProfile"])
     results = document_adaptation.get_tailored_text(req['results'], user)
+    if not results:
+        results = "Sorry,\nit is not art."
     req['tailoredText'] = results
     return jsonify(req)
 
