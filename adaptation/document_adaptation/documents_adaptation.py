@@ -116,7 +116,7 @@ class DocumentsAdaptation():
 
         for cluster in policy.results:
             clusters.append(cluster)
-            limited_cluster = policy.results[cluster][:self.config.max_cluster_size*3]
+            limited_cluster = policy.results[cluster][:self.config.max_cluster_size]
             batch_sentences.append(''.join( [x[1] for x in limited_cluster] ))
             num_sentences.append(len(limited_cluster))
             print("Batch \"{}\" length: {} chars".format(cluster, len(batch_sentences[-1])))
