@@ -49,7 +49,9 @@ app.post("/", async (req, res) => {
 
         // Parse the classification result json
         const classificationResult = req.body as ClassificationResult;
-        if (!classificationResult) {
+        if (!classificationResult ||
+            !classificationResult.classification ||
+            !classificationResult.userProfile) {
             res.status(400);
             return res.json({ error: "Missing required body." });
         }
