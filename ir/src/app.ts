@@ -165,7 +165,7 @@ app.post("/", async (req, res) => {
                         language: classificationResult.userProfile.language,
                         searchTerms: knownInstance.WikipediaPageTitle,
                         keywords: []
-                    }))
+                    }), classificationResult.userProfile)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
                             pageResult.score *= config.flowConfig.weight.google.known);
@@ -184,7 +184,7 @@ app.post("/", async (req, res) => {
              *  5b. build a smart query on Google
              */
             logger.debug("[app.ts] Not a known instance.",
-                         { reducedClassificationEntities: classificationResult.classification.entities });
+                { reducedClassificationEntities: classificationResult.classification.entities });
             results = await Promise.all([
                 wikipedia.search(classificationResult)
                     .then(results => {
@@ -208,7 +208,7 @@ app.post("/", async (req, res) => {
         results.sort((p1, p2) => p2.score - p1.score);
 
         /*
-         *END OF MAIN FLOW
+         * END OF MAIN FLOW
          */
 
 

@@ -40,6 +40,12 @@ const extendedQueries: Array<Query> = [
         score: 0.98765432,
         keywords: ['style', 'technique'],
         language: "en"
+    },
+    {
+        searchTerms: 'mona lisa',
+        score: 0.98765432,
+        keywords: [],
+        language: "en"
     }
 ]
 
@@ -50,7 +56,7 @@ describe("Test build query", () => {
         const result = search['extendQuery'](queries, queryExpansionResponse);
         // must return an array of (initial queries * #tastes) queries
         expect(result).toBeTruthy();
-        expect(result).toHaveLength(2);
+        expect(result).toHaveLength(3);
         // queries must be well formed
         result.forEach(query => {
             expect(query.searchTerms).toBeTruthy();
@@ -96,7 +102,7 @@ describe("Test build query", () => {
             expect(result).toEqual([]);
             expect(mock).toHaveBeenCalled();
         }));
-        
+
     });
 
 })

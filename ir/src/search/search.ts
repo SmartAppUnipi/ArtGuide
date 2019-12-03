@@ -10,7 +10,8 @@ import {
     PageResult,
     Query,
     QueryExpansionRequest,
-    QueryExpansionResponse
+    QueryExpansionResponse,
+    UserProfile
 } from "../models";
 
 /**
@@ -73,8 +74,11 @@ export class Search {
         queries.forEach(query => {
             for (const key in queryExpansion.keywordExpansion)
                 expandedQueries.push(Object.assign({}, query, { keywords: queryExpansion.keywordExpansion[key] }));
+            // perform a basic only search without query expansion
+            expandedQueries.push(query);
         });
         logger.silly("[search.ts] Expanded queries", { queryExpansion });
+
         return expandedQueries;
     }
 
@@ -144,7 +148,7 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                                     { query: q, exception: ex });
+                            { query: q, exception: ex });
                     });
             })
         ).then(() => results);
@@ -160,10 +164,25 @@ export class Search {
      * @param query The query with the keywords to search on Google.
      * @returns An array of PageResults.
      */
-    public searchByTerms(query: Query): Promise<Array<PageResult>> {
-        return this.googleSearch
-            .queryCustom(query.searchTerms, query.language)
-            .then(googleResult => this.toPageResults(googleResult, query));
+    public async searchByTerms(query: Query, userProfile: UserProfile): Promise<Array<PageResult>> {
+        return post<QueryExpansionResponse>(
+            AdaptationEndpoint.keywords, {
+                userProfile: userProfile
+            } as QueryExpansionRequest)
+            // extend the basic query with the query expansion
+            .then(queryExpansion => this.extendQuery([query], queryExpansion))
+            .then(queries => {
+                return Promise.all(
+                    queries.map(query => {
+                        return this.googleSearch
+                            .queryCustom(query.searchTerms, query.language)
+                            .then(googleResult => this.toPageResults(googleResult, query));
+                    })
+                ).then(allResults => {
+                    // flatten results => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
+                    return [].concat(...allResults);
+                });
+            });
     }
 
     /**
