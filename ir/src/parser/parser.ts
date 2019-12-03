@@ -150,7 +150,7 @@ export class Parser {
         return !!pattern.test(str);
     }
 
-    public async parse(url: string): Promise<PageResult> {
+    public parse(url: string): Promise<PageResult> {
         /*
          *  FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
          * var sectionObject = await this.getTitlesAndSections(url)
