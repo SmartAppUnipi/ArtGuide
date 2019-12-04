@@ -48,12 +48,12 @@ export class Parser {
         let positionFirstBracket = 0;
         let positionLastBracket = 0;
         while (i < text.length) {
-            if (text[i] === "{") {
+            if (text[i] === "{" || text[i] === "[") {
                 nOpenBracket++;
                 if (nOpenBracket === 1)
                     positionFirstBracket = i;
 
-            } else if (text[i] === "}") {
+            } else if (text[i] === "}" || text[i] === "]") {
                 nClosedBracket++;
                 if (nClosedBracket === nOpenBracket) {
                     positionLastBracket = i;
@@ -62,11 +62,12 @@ export class Parser {
                     /*
                      * FIXME: log properly
                      * console.log(deletionText);
-                     */
+                     */                    
                     nOpenBracket = 0;
                     nClosedBracket = 0;
                     positionLastBracket = 0;
                     positionLastBracket = 0;
+                    i = i - deletionText.length
                 }
             }
             i++;
@@ -185,7 +186,6 @@ export class Parser {
                 });
             }
             const testoWithTitle = this.removeCodeInText(textContent);
-
             let textContentWithoutTitle = "";
             let contentWithoutTitle;
 
