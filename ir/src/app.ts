@@ -30,7 +30,8 @@ app.use(bodyParser.json());
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (err) {
         logger.error("[app.ts] Unhandled error", { exception: err });
-        return res.json({ message: err.message, stack: err.stack });
+        /* istanbul ignore next */
+        return res.status(500).json({ message: err.message, stack: err.stack });
     }
     next();
 });
@@ -60,16 +61,12 @@ app.post("/", async (req, res) => {
         if (!classificationResult ||
             !classificationResult.classification ||
             !classificationResult.userProfile) {
-            res.status(400);
-            return res.json({ error: "Missing required body." });
+            return res.status(400).json({ error: "Missing required body." });
         }
 
         // Ensure the language is supported
-        if (!config.supportedLanguages.includes(classificationResult.userProfile.language)) {
-            res.status(400);
-            return res.json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
-        }
-
+        if (!config.supportedLanguages.includes(classificationResult.userProfile.language))
+            return res.status(400).json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
 
 
         /*
@@ -239,7 +236,8 @@ app.post("/", async (req, res) => {
         // Catch any error and inform the caller
     } catch (ex) {
         logger.error("[app.ts]", ex);
-        return res.json({ message: ex.message, stack: ex.stack });
+        /* istanbul ignore next */
+        return res.status(500).json({ message: ex.message, stack: ex.stack });
     }
 
 });
