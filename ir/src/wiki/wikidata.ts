@@ -155,4 +155,54 @@ export class WikiData {
             });
     }
 
+    /**
+     * Given a WikiData entity returns the list of the labels for properties 
+     * 'InstanceOf' (P31) and 'SubClassOf' (P279) until the WikiData root.
+     * 
+     * This function exploits SparQL to perform a single HTTP request.
+     * 
+     *  The returned list is unordered.
+     * 
+     * @param entityId The wikidata entity id (eg. Pisa Tower = Q39054)
+     * @returns An array with the labels corresponding to the properties values 
+     * (eg. for Pisa Tower => `["bell tower", "tower", "architectural structure", "work", "construction", ... ]`)
+     */
+    public async getEntityRootPath(entityId: string): Promise<Array<string>> {
+        // InstanceOf = P31
+        // SubClass = P279
+        const sparql = `
+            SELECT ?entity ?entityLabel WHERE {
+                wd:${entityId} wdt:P31*/wdt:P279* ?val.
+                ?val wdt:P31*/wdt:P279* ?entity
+                SERVICE wikibase:label {
+                    bd:serviceParam wikibase:language "en" .
+                }
+            } group by ?entity ?entityLabel
+        `;
+
+        const url = wbk.sparqlQuery(sparql);
+
+        return fetch(url)
+            .then(r => r.json())
+            .then(tree => {
+
+                const labels = tree.results.bindings
+                    .map((b: any) => b.entityLabel.value) as Array<string>;
+
+                // if the entityId is invalid, the query returns ["entityId"]
+                if (labels &&
+                    labels.length == 1 &&
+                    labels[0] == entityId) {
+                    // I return empty array instead
+                    return [];
+                }
+
+                return labels;
+
+            }).catch(ex => {
+                logger.error("[wikidata.ts] getEntityRootPath(): Error: ", ex);
+                return null;
+            });
+    }
+
 }

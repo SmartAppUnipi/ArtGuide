@@ -88,9 +88,52 @@ describe("getProperties(freebaseId)", () => {
     it("Should return InstanceOf, Architect, ArchitecturalStyle", async () => {
         const properties = await wikidata["getProperties"]("/m/0cn46", "en"); // pisa tower
         expect(properties).toBeTruthy();
-        expect(properties.Instanceof).toEqual(["Q200334","Q570116"]);
+        expect(properties.Instanceof).toEqual(["Q200334", "Q570116"]);
         expect(properties.Architect).toEqual(["Q892084"]);
         expect(properties.ArchitecturalStyle).toEqual(["Q46261"]);
         expect(properties.WikipediaPageTitle).toEqual("Leaning Tower of Pisa");
+    });
+});
+
+describe("getEntityRootPath(entityId)", () => {
+
+    const _wikidata = new WikiData()
+
+    it("Should return the tree of InstanceOf/SubClassOf of Pisa Tower", async () => {
+
+        const PisaTowerTree = await _wikidata.getEntityRootPath("Q39054");
+
+        expect(PisaTowerTree).toBeTruthy();
+        expect(PisaTowerTree.length).toBeGreaterThan(0);
+
+        expect(PisaTowerTree).toContain("tourist attraction")       // Level 1
+        expect(PisaTowerTree).toContain("bell tower")
+        expect(PisaTowerTree).toContain("tower")                    // Level 2
+        expect(PisaTowerTree).toContain("architectural structure")  // Level 3
+    });
+
+    it("Should return the tree of InstanceOf/SubClassOf of Mona Lisa", async () => {
+
+        const monaLisaTree = await _wikidata.getEntityRootPath("Q12418");
+
+        expect(monaLisaTree).toBeTruthy();
+        expect(monaLisaTree.length).toBeGreaterThan(0);
+
+        expect(monaLisaTree).toContain("painting")                              // Level 1
+        expect(monaLisaTree).toContain("visual artwork")                        // Level 2
+        expect(monaLisaTree).toContain("work of art")                           // Level 3
+        expect(monaLisaTree).toContain("item of collection or exhibition")
+    });
+
+    it("Should not include the entityId", async () => {
+        const entityId = "Q39054"
+        const PisaTowerTree = await _wikidata.getEntityRootPath(entityId);
+
+        expect(PisaTowerTree).not.toContain(entityId);
+    });
+
+    it("Should return [] if an invalid entity is provided", async () => {
+        const tree = await _wikidata.getEntityRootPath("NotValidEntityId");
+        expect(tree).toEqual([]);
     });
 });
