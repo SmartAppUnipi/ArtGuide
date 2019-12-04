@@ -1,3 +1,4 @@
+import * as childProcess from "child_process";
 import * as config from "../config.json";
 import { AdaptationEndpoint } from "./environment";
 import bodyParser from "body-parser";
@@ -9,7 +10,6 @@ import { Search } from "./search";
 import { ClassificationResult, PageResult, Query, TailoredTextRequest, TailoredTextResponse } from "./models";
 import { post, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
-import child_process from "child_process";
 
 /** Search module */
 const search = new Search();
@@ -38,7 +38,8 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 // Index entry-point
 app.get("/", (req, res) => {
-    const latestCommit = child_process.execSync("git rev-parse HEAD").toString().replace(/\n/, "");
+    const latestCommit = childProcess.execSync("git rev-parse HEAD").toString()
+        .replace(/\n/, "");
     return res.json({
         message: `IR module version ${packageJson.version}.`,
         currentCommit: `https://github.com/SmartAppUnipi/ArtGuide/commit/${latestCommit}`,
@@ -60,13 +61,16 @@ app.post("/", async (req, res) => {
         const classificationResult = req.body as ClassificationResult;
         if (!classificationResult ||
             !classificationResult.classification ||
-            !classificationResult.userProfile) {
+            !classificationResult.userProfile)
             return res.status(400).json({ error: "Missing required body." });
-        }
+
 
         // Ensure the language is supported
-        if (!config.supportedLanguages.includes(classificationResult.userProfile.language))
-            return res.status(400).json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
+        if (!config.supportedLanguages.includes(classificationResult.userProfile.language)) {
+            return res
+                .status(400)
+                .json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
+        }
 
 
         /*
@@ -153,9 +157,11 @@ app.post("/", async (req, res) => {
 
         let results: Array<PageResult>;
         if (knownInstance) {
-            // BRANCH A: known entity
-            // 5a. search by entityId on Wikipedia
-            // 5b. search for the exact query on Google
+            /*
+             * BRANCH A: known entity
+             * 5a. search by entityId on Wikipedia
+             * 5b. search for the exact query on Google
+             */
             logger.debug("[app.ts] Got a known instance.", { knownInstance });
             results = await Promise.all([
                 wikipedia
@@ -180,21 +186,23 @@ app.post("/", async (req, res) => {
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
-            // BRANCH B: not a known entity
-            // 4. remove unwanted entity (not art)
+            /*
+             * BRANCH B: not a known entity
+             * 4. remove unwanted entity (not art)
+             */
             await Promise.all([
                 wikidata.filterNotArtRelatedResult(classificationResult.classification.entities)
                     .then(entities => classificationResult.classification.entities = entities),
                 wikidata.filterNotArtRelatedResult(classificationResult.classification.labels)
                     .then(labels => classificationResult.classification.labels = labels)
-            ])
+            ]);
 
             /*
              *  5a. search for the top score entities on Wikipedia
              *  5b. build a smart query on Google
              */
             logger.debug("[app.ts] Not a known instance.",
-                { reducedClassificationEntities: classificationResult.classification.entities });
+                         { reducedClassificationEntities: classificationResult.classification.entities });
             results = await Promise.all([
                 wikipedia.search(classificationResult)
                     .then(results => {

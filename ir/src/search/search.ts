@@ -74,8 +74,10 @@ export class Search {
         queries.forEach(query => {
             for (const key in queryExpansion.keywordExpansion)
                 expandedQueries.push(Object.assign({}, query, { keywords: queryExpansion.keywordExpansion[key] }));
-            // perform a basic only search without query expansion
-            // FIXME: check line 104, the last of this.buildQueries()
+            /*
+             * perform a basic only search without query expansion
+             * FIXME: check line 104, the last of this.buildQueries()
+             */
             expandedQueries.push(query);
         });
         logger.silly("[search.ts] Expanded queries", { queryExpansion });
@@ -149,7 +151,7 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                            { query: q, exception: ex });
+                                     { query: q, exception: ex });
                     });
             })
         ).then(() => results);
@@ -157,12 +159,13 @@ export class Search {
 
     /**
      * Makes a custom search on google using only the search terms provided, then converts back
-     * the result to an array of PageResult. 
-     * 
-     * The keywords associated to the PageResult are the one provided by the query
-     * since they cannot be inferred.
-     * 
+     *the result to an array of PageResult.
+     *
+     *The keywords associated to the PageResult are the one provided by the query
+     *since they cannot be inferred.
+     *
      * @param query The query with the keywords to search on Google.
+     * @param userProfile The user profile for the adaptation module.
      * @returns An array of PageResults.
      */
     public async searchByTerms(query: Query, userProfile: UserProfile): Promise<Array<PageResult>> {
@@ -180,6 +183,7 @@ export class Search {
                             .then(googleResult => this.toPageResults(googleResult, query));
                     })
                 ).then(allResults => {
+                    // eslint-disable-next-line
                     // flatten results => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
                     return [].concat(...allResults);
                 });
