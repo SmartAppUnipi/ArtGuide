@@ -8,7 +8,7 @@
     "lint:fix": "eslint src/** --ext=ts --fix",
     "test": "jest --detectOpenHandles --runInBand",
     "test:debug": "node --inspect=5859 node_modules/.bin/jest --runInBand --detectOpenHandles",
-    "test:watch": "jest --coverage --watch",
+    "test:w": "jest --coverage --watch --runInBand",
     "test:cov": "jest --detectOpenHandles --coverage",
     "test:coveralls": "jest --detectOpenHandles --coverage --coverageReporters=text-lcov | coveralls",
     "start": "nodemon src/index.ts",
