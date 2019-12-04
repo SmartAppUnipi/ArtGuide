@@ -33,7 +33,7 @@ export class Wikipedia {
             })
             .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error in search.",
-                    { entities: classificationResult.classification.entities, exception: ex });
+                             { entities: classificationResult.classification.entities, exception: ex });
                 return Promise.resolve([]);
             });
     }
@@ -75,7 +75,7 @@ export class Wikipedia {
                     })
                     .catch(/* istanbul ignore next */ ex => {
                         logger.error("[wikipedia.ts] Error while getting Wikipedia page name.",
-                            { entityId: entity.entityId, exception: ex });
+                                     { entityId: entity.entityId, exception: ex });
                         return null;
                     });
             })
@@ -88,7 +88,7 @@ export class Wikipedia {
             })
             .catch/* istanbul ignore next */(ex => {
                 logger.error("[wikipedia.ts] Error while building queries.",
-                    { entities: classificationResult.classification.entities, exception: ex });
+                             { entities: classificationResult.classification.entities, exception: ex });
                 return Promise.resolve([]);
             });
     }
@@ -118,13 +118,13 @@ export class Wikipedia {
                     })
                     .catch(/* istanbul ignore next */ ex => {
                         logger.error("[wikipedia.ts] Error in getting the page from Wikipedia.",
-                            { title: title, exception: ex });
+                                     { title: title, exception: ex });
                         return Promise.resolve(null);
                     });
             })
             .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error while retrieving result from Wikipedia.",
-                    { query: query, exception: ex });
+                             { query: query, exception: ex });
                 return Promise.resolve(null);
             });
     }
@@ -162,7 +162,7 @@ export class Wikipedia {
                 })
                 .catch(/* istanbul ignore next */ ex => {
                     logger.error("[wikipedia.ts] Error in getting the sections from the page.",
-                        { page: pageResult.title, exception: ex });
+                                 { page: pageResult.title, exception: ex });
                 }),
             // set summary
             page.summary()
@@ -171,11 +171,11 @@ export class Wikipedia {
                 })
                 .catch(/* istanbul ignore next */ ex => {
                     logger.error("[wikipedia.ts] Error in getting the summary from the page.",
-                        { page: pageResult.title, exception: ex });
+                                 { page: pageResult.title, exception: ex });
                 })
         ]).then(() => {
             logger.debug("[wikipedia.ts] PageResult correctly built.",
-                { pageTitle: pageResult.title, pageUrl: pageResult.url });
+                         { pageTitle: pageResult.title, pageUrl: pageResult.url });
             return pageResult;
         });
     }

@@ -1,15 +1,11 @@
-import "wikibase-sdk";
-import "wikidata-sdk";
+import * as wbk from "wikidata-sdk";
+import { BasicFieldWithId } from "src/models/classification.models";
 import fetch from "node-fetch";
 import logger from "../logger";
 import path from "path";
-import { ClassificationResult, KnownInstance, WikiDataProperties } from "../models";
-import { BasicFieldWithId } from "src/models/classification.models";
 import { wikidataArtEntities } from "../../config.json";
+import { ClassificationResult, KnownInstance, WikiDataProperties } from "../models";
 
-
-// eslint-disable-next-line
-const wbk = require("wikidata-sdk");
 
 enum WikidataPropertyType {
     Instanceof = "P31",
@@ -81,6 +77,7 @@ export class WikiData {
     /**
      * Removes from a list the entities that are not related to arts.
      * It uses wikidata to retrieve the tree of InstanceOf and SubClassOf of the entity and look for a match.
+     *
      * @param entities The list of entities to be filtered out.
      * @returns The filtered entities array.
      */
@@ -89,27 +86,29 @@ export class WikiData {
         return Promise.all(entities.map(entity => {
             // if the entity description is not an art instance discard the entity directly
             if (wikidataArtEntities.exclude.includes(entity.description.toLocaleLowerCase()))
-                return null
+                return null;
             // if the entity description is an art instance keep the entity
             if (wikidataArtEntities.include.includes(entity.description.toLocaleLowerCase()))
-                return entity
+                return entity;
             // otherwise get the root path of the entity, ie. the list of all its instance of and subclass properties
             return this.getEntityRootPath(entity.entityId)
                 .then(roots => {
                     // if at least one of root path is not wanted drop the entity
-                    for (let root of roots)
+                    for (const root of roots) {
                         if (wikidataArtEntities.exclude.includes(root.toLocaleLowerCase()))
-                            return null
+                            return null;
+                    }
                     // if at least one root path is wanted keep the entity
-                    for (let root of roots)
+                    for (const root of roots) {
                         if (wikidataArtEntities.include.includes(root.toLocaleLowerCase()))
-                            return entity
+                            return entity;
+                    }
                     // else remove it (is not unwanted, but neither wanted)
-                    return null
-                })
+                    return null;
+                });
         }))
             // remove null entities
-            .then(entities => entities.filter(entity => entity != null))
+            .then(entities => entities.filter(entity => entity != null));
     }
 
     /**
@@ -192,22 +191,24 @@ export class WikiData {
     }
 
     /**
-     * Given a WikiData entity returns the list of the labels for properties 
-     * 'InstanceOf' (P31) and 'SubClassOf' (P279) until the WikiData root.
-     * 
-     * This function exploits SparQL to perform a single HTTP request.
-     * 
-     *  The returned list is unordered.
-     * 
-     * @param wikidataId The freebase entity id.
-     * @returns An array with the labels corresponding to the properties values 
+     * Given a WikiData entity returns the list of the labels for properties
+     *'InstanceOf' (P31) and 'SubClassOf' (P279) until the WikiData root.
+     *
+     *This function exploits SparQL to perform a single HTTP request.
+     *
+     *The returned list is unordered.
+     *
+     * @param entityId The freebase entity id.
+     * @returns An array with the labels corresponding to the properties values
      * (eg. for Pisa Tower => `["bell tower", "tower", "architectural structure", "work", "construction", ... ]`)
      */
     private getEntityRootPath(entityId: string): Promise<Array<string>> {
         return this.getWikiDataId(entityId)
             .then(wikidataId => {
-                // InstanceOf = P31
-                // SubClass = P279
+                /*
+                 * InstanceOf = P31
+                 * SubClass = P279
+                 */
                 const sparql = `
                 SELECT ?entity ?entityLabel WHERE {
                     wd:${wikidataId} wdt:P31*/wdt:P279* ?val.
@@ -237,8 +238,9 @@ export class WikiData {
 
                         return labels;
 
-                    })
-            }).catch(ex => {
+                    });
+            })
+            .catch(ex => {
                 logger.error("[wikidata.ts] getEntityRootPath(): Error: ", ex);
                 return [];
             });

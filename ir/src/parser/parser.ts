@@ -67,7 +67,7 @@ export class Parser {
                     nClosedBracket = 0;
                     positionLastBracket = 0;
                     positionLastBracket = 0;
-                    i = i - deletionText.length
+                    i = i - deletionText.length;
                 }
             }
             i++;
