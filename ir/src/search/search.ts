@@ -75,6 +75,7 @@ export class Search {
             for (const key in queryExpansion.keywordExpansion)
                 expandedQueries.push(Object.assign({}, query, { keywords: queryExpansion.keywordExpansion[key] }));
             // perform a basic only search without query expansion
+            // FIXME: check line 104, the last of this.buildQueries()
             expandedQueries.push(query);
         });
         logger.silly("[search.ts] Expanded queries", { queryExpansion });
