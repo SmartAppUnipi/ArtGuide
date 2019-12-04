@@ -51,7 +51,7 @@ if (mockAdaptationEndpoints) {
         });
 }
 
-describe("IR module", () => {
+describe.skip("IR module", () => {
     it("Should log on file all excanged JSON files", () => {
 
         const classificationResult = knownEntityEn
