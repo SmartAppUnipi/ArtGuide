@@ -46,11 +46,11 @@ class DocumentModel():
         Returns:
             Plain text containing title, section's title, sections'content, \n separated
         '''
-        plain_text = result['title']+'\n'
+        plain_text = result['title']+'.\n'
         if len(result['sections']):
             for section in result['sections']:
-                plain_text += section['title']+'\n'
-                plain_text += section['content']
+                plain_text += section['title']+'.\n' if 'title' in section else ''
+                plain_text += section['content'] if 'content' in section else ''
         return plain_text
 
     def normalize(self, text):
