@@ -10,13 +10,13 @@ interface ComposedSection {
     items: Array<PageSection>;
 }
 
-/** WikiData module */
-const wikidata = new WikiData();
-
 /**
  * Performs Wikipedia Search through the APIs.
  */
 export class Wikipedia {
+
+    /** The Wikidata module */
+    private wikidata = new WikiData();
 
     /**
      * Perform a Wikipedia search give a classification result (not a known instance).
@@ -33,7 +33,7 @@ export class Wikipedia {
             })
             .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error in search.",
-                             { entities: classificationResult.classification.entities, exception: ex });
+                    { entities: classificationResult.classification.entities, exception: ex });
                 return Promise.resolve([]);
             });
     }
@@ -64,7 +64,7 @@ export class Wikipedia {
         return Promise.all(
             classificationResult.classification.entities.map(entity => {
                 // get the Wikipedia page name from WikiData
-                return wikidata.getWikipediaName(entity.entityId, language)
+                return this.wikidata.getWikipediaName(entity.entityId, language)
                     // build the query
                     .then(wikipediaName => {
                         return new Query({
@@ -75,7 +75,7 @@ export class Wikipedia {
                     })
                     .catch(/* istanbul ignore next */ ex => {
                         logger.error("[wikipedia.ts] Error while getting Wikipedia page name.",
-                                     { entityId: entity.entityId, exception: ex });
+                            { entityId: entity.entityId, exception: ex });
                         return null;
                     });
             })
@@ -86,9 +86,9 @@ export class Wikipedia {
                 logger.silly("[wikipedia.ts] Queries built: " + queries);
                 return queries;
             })
-            .catch/* istanbul ignore next */ (ex => {
+            .catch/* istanbul ignore next */(ex => {
                 logger.error("[wikipedia.ts] Error while building queries.",
-                             { entities: classificationResult.classification.entities, exception: ex });
+                    { entities: classificationResult.classification.entities, exception: ex });
                 return Promise.resolve([]);
             });
     }
@@ -118,13 +118,13 @@ export class Wikipedia {
                     })
                     .catch(/* istanbul ignore next */ ex => {
                         logger.error("[wikipedia.ts] Error in getting the page from Wikipedia.",
-                                     { title: title, exception: ex });
+                            { title: title, exception: ex });
                         return Promise.resolve(null);
                     });
             })
             .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error while retrieving result from Wikipedia.",
-                             { query: query, exception: ex });
+                    { query: query, exception: ex });
                 return Promise.resolve(null);
             });
     }
@@ -162,7 +162,7 @@ export class Wikipedia {
                 })
                 .catch(/* istanbul ignore next */ ex => {
                     logger.error("[wikipedia.ts] Error in getting the sections from the page.",
-                                 { page: pageResult.title, exception: ex });
+                        { page: pageResult.title, exception: ex });
                 }),
             // set summary
             page.summary()
@@ -171,11 +171,11 @@ export class Wikipedia {
                 })
                 .catch(/* istanbul ignore next */ ex => {
                     logger.error("[wikipedia.ts] Error in getting the summary from the page.",
-                                 { page: pageResult.title, exception: ex });
+                        { page: pageResult.title, exception: ex });
                 })
         ]).then(() => {
             logger.debug("[wikipedia.ts] PageResult correctly built.",
-                         { pageTitle: pageResult.title, pageUrl: pageResult.url });
+                { pageTitle: pageResult.title, pageUrl: pageResult.url });
             return pageResult;
         });
     }
