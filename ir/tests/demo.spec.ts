@@ -9,9 +9,6 @@ import logger from '../src/logger'
 
 import queryExpansionResponse from "../assets/query-expansion-response.json"
 import knownEntityEn from "../assets/classification-result/known-en.json"
-import knownEntityIt from "../assets/classification-result/known-it.json"
-import unknownEntityEn from "../assets/classification-result/unknown-en.json"
-import unknownEntityIt from "../assets/classification-result/unknown-it.json"
 
 // ### Flag to mock adaptation server ###
 const mockAdaptationEndpoints = true;
@@ -24,17 +21,10 @@ if (mockAdaptationEndpoints) {
         .times(100)
         .reply((url, body: { userProfile: UserProfile }, callback) => {
 
-            logger.error(`
-            **********************
-            * /KEYWORDS ENDPOINT *
-            **********************
-            RECEIVED
-            ${JSON.stringify(body, null, 2)}
-
-            REPLY WITH
-            ${JSON.stringify(queryExpansionResponse, null, 2)}
-            **********************
-            `)
+            logger.error(`Adaptation endpoint: ${adaptationKeywordUrl.pathname}`, {
+                received: body,
+                replay: queryExpansionResponse
+            });
 
             // reply with 200 status code and the JSON response
             callback(null, [
@@ -49,14 +39,9 @@ if (mockAdaptationEndpoints) {
         .times(100)
         .reply((url, body: { userProfile: UserProfile, results: Array<PageResult> }, callback) => {
 
-            logger.error(`
-            ************************
-            * /ADAPTATION ENDPOINT *
-            ************************
-            RECEIVED
-            ${JSON.stringify(body, null, 2)}
-            ************************
-            `)
+            logger.error(`Adaptation endpoint: ${adaptationTextUrl.pathname}`, {
+                receivedFromIr: body
+            });
 
             // reply with 200 status code and a mock JSON response
             callback(null, [
@@ -66,23 +51,16 @@ if (mockAdaptationEndpoints) {
         });
 }
 
+describe("IR module", () => {
+    it("Should log on file all excanged JSON files", () => {
 
-it.skip("Should return 200 and match user profile we passed", () => {
+        const classificationResult = knownEntityEn
 
-    const classificationResult = knownEntityEn
+        logger.error(`Image analysis module`, { sentToIrModule: classificationResult })
 
-    logger.error(`
-            ******************
-            * IMAGE ANALYSIS *
-            ******************
-            SEND
-            ${JSON.stringify(classificationResult, null, 2)}
-            ******************
-            `)
-
-
-    return request(app)
-        .post("/")
-        .send(classificationResult)
+        return request(app)
+            .post("/")
+            .send(classificationResult)
+    });
 });
 
