@@ -30,12 +30,8 @@ export interface Classification {
     entities: Array<BasicFieldWithId>;
     labels: Array<BasicFieldWithId>;
     locations: Array<Location>;
-    safeSearch: SafeSearch;
-    type: Array<BasicField>;
-    monumentType: Array<BasicField>;
-    period: Array<Period>;
+    safeSearch: SafeSearch;    
     style: Array<BasicField>;
-    materials: Array<BasicField>;
 }
 
 export interface ClassificationResult {
