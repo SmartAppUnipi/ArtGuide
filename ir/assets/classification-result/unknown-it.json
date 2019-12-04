@@ -12,61 +12,61 @@
     "labels": [
       {
         "description": "Modern art",
-        "mid": "/m/015r61",
+        "entityId": "/m/015r61",
         "score": 0.970688,
         "topicality": 0.970688
       },
       {
         "description": "Blue",
-        "mid": "/m/01g5v",
+        "entityId": "/m/01g5v",
         "score": 0.9649977,
         "topicality": 0.9649977
       },
       {
         "description": "Painting",
-        "mid": "/m/05qdh",
+        "entityId": "/m/05qdh",
         "score": 0.9515138,
         "topicality": 0.9515138
       },
       {
         "description": "Acrylic paint",
-        "mid": "/m/011lx",
+        "entityId": "/m/011lx",
         "score": 0.9169938,
         "topicality": 0.9169938
       },
       {
         "description": "Art",
-        "mid": "/m/0jjw",
+        "entityId": "/m/0jjw",
         "score": 0.9034871,
         "topicality": 0.9034871
       },
       {
         "description": "Visual arts",
-        "mid": "/m/0p9xx",
+        "entityId": "/m/0p9xx",
         "score": 0.7112529,
         "topicality": 0.7112529
       },
       {
         "description": "Watercolor paint",
-        "mid": "/m/018ktp",
+        "entityId": "/m/018ktp",
         "score": 0.70911425,
         "topicality": 0.70911425
       },
       {
         "description": "Paint",
-        "mid": "/m/05y4t",
+        "entityId": "/m/05y4t",
         "score": 0.6789527,
         "topicality": 0.6789527
       },
       {
         "description": "Artwork",
-        "mid": "/m/0dgsmq8",
+        "entityId": "/m/0dgsmq8",
         "score": 0.6381411,
         "topicality": 0.6381411
       },
       {
         "description": "Electric blue",
-        "mid": "/m/02vwbzz",
+        "entityId": "/m/02vwbzz",
         "score": 0.63793284,
         "topicality": 0.63793284
       }
