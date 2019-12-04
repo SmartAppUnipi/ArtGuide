@@ -4,6 +4,9 @@ import fetch from "node-fetch";
 import logger from "../logger";
 import path from "path";
 import { ClassificationResult, KnownInstance, WikiDataProperties } from "../models";
+import { BasicFieldWithId } from "src/models/classification.models";
+import { wikidataArtEntities } from "../../config.json";
+
 
 // eslint-disable-next-line
 const wbk = require("wikidata-sdk");
@@ -75,6 +78,39 @@ export class WikiData {
             .then(resArray => resArray.length ? resArray[0] : null);
     }
 
+    /**
+     * Removes from a list the entities that are not related to arts.
+     * It uses wikidata to retrieve the tree of InstanceOf and SubClassOf of the entity and look for a match.
+     * @param entities The list of entities to be filtered out.
+     * @returns The filtered entities array.
+     */
+    public filterNotArtRelatedResult(entities: Array<BasicFieldWithId>): Promise<Array<BasicFieldWithId>> {
+        // filter the entities
+        return Promise.all(entities.map(entity => {
+            // if the entity description is not an art instance discard the entity directly
+            if (wikidataArtEntities.exclude.includes(entity.description.toLocaleLowerCase()))
+                return null
+            // if the entity description is an art instance keep the entity
+            if (wikidataArtEntities.include.includes(entity.description.toLocaleLowerCase()))
+                return entity
+            // otherwise get the root path of the entity, ie. the list of all its instance of and subclass properties
+            return this.getEntityRootPath(entity.entityId)
+                .then(roots => {
+                    // if at least one of root path is not wanted drop the entity
+                    for (let root of roots)
+                        if (wikidataArtEntities.exclude.includes(root.toLocaleLowerCase()))
+                            return null
+                    // if at least one root path is wanted keep the entity
+                    for (let root of roots)
+                        if (wikidataArtEntities.include.includes(root.toLocaleLowerCase()))
+                            return entity
+                    // else remove it (is not unwanted, but neither wanted)
+                    return null
+                })
+        }))
+            // remove null entities
+            .then(entities => entities.filter(entity => entity != null))
+    }
 
     /**
      * Convert a freebase id in a WikiData id.
@@ -163,45 +199,48 @@ export class WikiData {
      * 
      *  The returned list is unordered.
      * 
-     * @param entityId The wikidata entity id (eg. Pisa Tower = Q39054)
+     * @param wikidataId The freebase entity id.
      * @returns An array with the labels corresponding to the properties values 
      * (eg. for Pisa Tower => `["bell tower", "tower", "architectural structure", "work", "construction", ... ]`)
      */
-    public async getEntityRootPath(entityId: string): Promise<Array<string>> {
-        // InstanceOf = P31
-        // SubClass = P279
-        const sparql = `
-            SELECT ?entity ?entityLabel WHERE {
-                wd:${entityId} wdt:P31*/wdt:P279* ?val.
-                ?val wdt:P31*/wdt:P279* ?entity
-                SERVICE wikibase:label {
-                    bd:serviceParam wikibase:language "en" .
-                }
-            } group by ?entity ?entityLabel
-        `;
+    private getEntityRootPath(entityId: string): Promise<Array<string>> {
+        return this.getWikiDataId(entityId)
+            .then(wikidataId => {
+                // InstanceOf = P31
+                // SubClass = P279
+                const sparql = `
+                SELECT ?entity ?entityLabel WHERE {
+                    wd:${wikidataId} wdt:P31*/wdt:P279* ?val.
+                    ?val wdt:P31*/wdt:P279* ?entity
+                    SERVICE wikibase:label {
+                        bd:serviceParam wikibase:language "en" .
+                    }
+                } group by ?entity ?entityLabel
+            `;
 
-        const url = wbk.sparqlQuery(sparql);
+                const url = wbk.sparqlQuery(sparql);
 
-        return fetch(url)
-            .then(r => r.json())
-            .then(tree => {
+                return fetch(url)
+                    .then(r => r.json())
+                    .then(tree => {
 
-                const labels = tree.results.bindings
-                    .map((b: any) => b.entityLabel.value) as Array<string>;
+                        const labels = tree.results.bindings
+                            .map((b: any) => b.entityLabel.value) as Array<string>;
 
-                // if the entityId is invalid, the query returns ["entityId"]
-                if (labels &&
-                    labels.length == 1 &&
-                    labels[0] == entityId) {
-                    // I return empty array instead
-                    return [];
-                }
+                        // if the entityId is invalid, the query returns ["entityId"]
+                        if (labels &&
+                            labels.length == 1 &&
+                            labels[0] == wikidataId) {
+                            // I return empty array instead
+                            return [];
+                        }
 
-                return labels;
+                        return labels;
 
+                    })
             }).catch(ex => {
                 logger.error("[wikidata.ts] getEntityRootPath(): Error: ", ex);
-                return null;
+                return [];
             });
     }
 

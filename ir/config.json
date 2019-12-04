@@ -21,5 +21,46 @@
     "supportedLanguages": [
         "en",
         "it"
-    ]
+    ],
+    "wikidataArtEntities": {
+        "include": [
+            "architect",
+            "architectural structure",
+            "architecture",
+            "art",
+            "art genre",
+            "art movement",
+            "art museum",
+            "art style",
+            "arts",
+            "bell tower",
+            "building",
+            "creative work",
+            "creator",
+            "design",
+            "designer",
+            "exhibition hall",
+            "genre of sculpture",
+            "museum",
+            "museum building",
+            "national museum",
+            "painter",
+            "painting",
+            "painting movement",
+            "painting style",
+            "sculpture",
+            "statue",
+            "tourist attraction",
+            "tower",
+            "visual artist",
+            "visual artwork",
+            "work of art"
+        ],
+        "exclude": [
+            "crowd",
+            "house",
+            "residence",
+            "residential building"
+        ]
+    }
 }

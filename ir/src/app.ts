@@ -153,11 +153,9 @@ app.post("/", async (req, res) => {
 
         let results: Array<PageResult>;
         if (knownInstance) {
-            /*
-             * BRANCH A: known entity
-             *  5a. search by entityId on Wikipedia
-             *  5b. search for the exact query on Google
-             */
+            // BRANCH A: known entity
+            // 5a. search by entityId on Wikipedia
+            // 5b. search for the exact query on Google
             logger.debug("[app.ts] Got a known instance.", { knownInstance });
             results = await Promise.all([
                 wikipedia
@@ -182,10 +180,14 @@ app.post("/", async (req, res) => {
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
-            /*
-             * BRANCH B: not a known entity
-             * TODO: 4. remove unwanted entity (not art)
-             */
+            // BRANCH B: not a known entity
+            // 4. remove unwanted entity (not art)
+            await Promise.all([
+                wikidata.filterNotArtRelatedResult(classificationResult.classification.entities)
+                    .then(entities => classificationResult.classification.entities = entities),
+                wikidata.filterNotArtRelatedResult(classificationResult.classification.labels)
+                    .then(labels => classificationResult.classification.labels = labels)
+            ])
 
             /*
              *  5a. search for the top score entities on Wikipedia
