@@ -7,7 +7,7 @@ import logger from "./logger";
 import packageJson from "../package.json";
 import path from "path";
 import { Search } from "./search";
-import { ClassificationResult, PageResult, Query, TailoredTextRequest, TailoredTextResponse } from "./models";
+import { ClassificationResult, Entity, PageResult, TailoredTextRequest, TailoredTextResponse } from "./models";
 import { post, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
 
@@ -75,11 +75,12 @@ app.post("/", async (req, res) => {
 
         /*
          * MAIN FLOW
-         * 
+         *  TODO: update me
          * We receive the Google vision results from the classification module.
          * 
-         *  1. sort results.entities and result.labels by score descending
-         *  2. slice results.entities and results.labels reducing the number of results
+         *  0. aggregate entities
+         *  1. sort entities by score descending
+         *  2. slice entities reducing the number of results
          *      - at the first "big" gap between scores
          *      - using a max-length to be sure to crop it sooner or later
          *      - using a min-score to ensure a quality threshold?
@@ -131,53 +132,60 @@ app.post("/", async (req, res) => {
             classificationLabels: classificationResult.classification.labels
         });
 
-        // 1. sort results.entities and result.labels by score descending
-        classificationResult.classification.entities.sort((e1, e2) => e2.score - e1.score);
-        classificationResult.classification.labels.sort((l1, l2) => l2.score - l1.score);
+        // 1. Aggregate all entities
+        const language = classificationResult.userProfile.language;
+        let entities: Array<Entity> = [].concat(
+            classificationResult?.classification?.entities ?? [],
+            classificationResult?.classification?.labels ?? [],
+            classificationResult?.classification?.style ?? []
+        );
 
-        // 2. slice results.entities and results.labels reducing the number of results
-        classificationResult.classification.entities = reduceEntities(
-            classificationResult.classification.entities,
+        // require at least one entity
+        if (!entities.length)
+            return res.status(400).json({ error: "No entities found." });
+
+
+        // 2. sort entities by score descending
+        entities.sort((e1, e2) => e2.score - e1.score);
+
+        // 3. slice entities reducing the number of results
+        entities = reduceEntities(
+            entities,
             config.flowConfig.entityFilter.maxEntityNumber,
             config.flowConfig.entityFilter.minScore
         );
-        classificationResult.classification.labels = reduceEntities(
-            classificationResult.classification.labels,
-            config.flowConfig.entityFilter.maxEntityNumber,
-            config.flowConfig.entityFilter.minScore
-        );
 
-        logger.debug("[app.ts] Reduced classification entities and labels.", {
-            classificationEntities: classificationResult.classification.entities,
-            classificationLabels: classificationResult.classification.labels
-        });
+        logger.debug("[app.ts] Reduced classification entities and labels.", { entities });
 
-        // 3. check if there is a known entity
-        const knownInstance = await wikidata.tryGetKnownInstance(classificationResult);
+        // 4. populate the metadata
+        let metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, language)));
+
+        // 5. Try to get a known instance
+        const knownInstance = wikidata.tryGetKnownInstance(metaEntities);
 
         let results: Array<PageResult>;
         if (knownInstance) {
             /*
              * BRANCH A: known entity
-             * 5a. search by entityId on Wikipedia
-             * 5b. search for the exact query on Google
+             * 7a. search by entityId on Wikipedia
+             * 7b. search for the exact query on Google
              */
             logger.debug("[app.ts] Got a known instance.", { knownInstance });
             results = await Promise.all([
                 wikipedia
-                    .searchKnownInstance(knownInstance, classificationResult.userProfile.language)
+                    .searchKnownInstance(knownInstance, language)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
                             pageResult.score *= config.flowConfig.weight.wikipedia.known);
                         return pageResults;
                     }),
                 search
-                    .searchByTerms(new Query({
-                        language: classificationResult.userProfile.language,
-                        searchTerms: knownInstance.WikipediaPageTitle,
+                    .searchByTerms({
+                        language: language,
+                        searchTerms: knownInstance.wikipediaPageTitle,
                         keywords: [],
                         score: knownInstance.score
-                    }), classificationResult.userProfile)
+                    }, classificationResult.userProfile)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
                             pageResult.score *= config.flowConfig.weight.google.known);
@@ -186,36 +194,29 @@ app.post("/", async (req, res) => {
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
-            /*
-             * BRANCH B: not a known entity
-             * 4. remove unwanted entity (not art)
-             */
-            await Promise.all([
-                wikidata.filterNotArtRelatedResult(classificationResult.classification.entities)
-                    .then(entities => classificationResult.classification.entities = entities),
-                wikidata.filterNotArtRelatedResult(classificationResult.classification.labels)
-                    .then(labels => classificationResult.classification.labels = labels)
-            ]);
+            // BRANCH B: not a known entity
+            logger.debug("[app.ts] Not a known instance.",
+                         { reducedClassificationEntities: classificationResult.classification.entities });
+
+            // 6. remove unwanted entity (not art)
+            await wikidata.filterNotArtRelatedResult(metaEntities)
+                .then(entities => metaEntities = entities);
 
             /*
              *  5a. search for the top score entities on Wikipedia
              *  5b. build a smart query on Google
              */
-            logger.debug("[app.ts] Not a known instance.",
-                         { reducedClassificationEntities: classificationResult.classification.entities });
             results = await Promise.all([
-                wikipedia.search(classificationResult)
+                wikipedia.search(metaEntities, language)
                     .then(results => {
                         results.forEach(result =>
                             result.score *= config.flowConfig.weight.wikipedia.unknown);
-
                         return results;
                     }),
-                search.search(classificationResult)
+                search.search(metaEntities, classificationResult.userProfile)
                     .then(results => {
                         results.forEach(result =>
                             result.score *= config.flowConfig.weight.google.unknown);
-
                         return results;
                     })
             ]).then(allResults => [].concat(...allResults));

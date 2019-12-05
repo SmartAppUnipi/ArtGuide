@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Classification | ArtGuide - Information retrieval module</title>
+	<title>TailoredTextRequest | ArtGuide - Information retrieval module</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="classification.html">Classification</a>
+					<a href="tailoredtextrequest.html">TailoredTextRequest</a>
 				</li>
 			</ul>
-			<h1>Interface Classification</h1>
+			<h1>Interface TailoredTextRequest</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Classification</span>
+						<span class="target">TailoredTextRequest</span>
 					</li>
 				</ul>
 			</section>
@@ -81,11 +81,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="classification.html#entities" class="tsd-kind-icon">entities</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="classification.html#labels" class="tsd-kind-icon">labels</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="classification.html#locations" class="tsd-kind-icon">locations</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="classification.html#safesearch" class="tsd-kind-icon">safe<wbr>Search</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="classification.html#style" class="tsd-kind-icon">style</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tailoredtextrequest.html#results" class="tsd-kind-icon">results</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="tailoredtextrequest.html#userprofile" class="tsd-kind-icon">user<wbr>Profile</a></li>
 							</ul>
 						</section>
 					</div>
@@ -94,52 +91,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="entities" class="tsd-anchor"></a>
-					<h3>entities</h3>
-					<div class="tsd-signature tsd-kind-icon">entities<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="entity.html" class="tsd-signature-type">Entity</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="results" class="tsd-anchor"></a>
+					<h3>results</h3>
+					<div class="tsd-signature tsd-kind-icon">results<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/classification.models.ts#L18">ir/src/models/classification.models.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/tailored-text.model.ts#L7">ir/src/models/tailored-text.model.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="labels" class="tsd-anchor"></a>
-					<h3>labels</h3>
-					<div class="tsd-signature tsd-kind-icon">labels<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="entity.html" class="tsd-signature-type">Entity</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="userprofile" class="tsd-anchor"></a>
+					<h3>user<wbr>Profile</h3>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Profile<span class="tsd-signature-symbol">:</span> <a href="userprofile.html" class="tsd-signature-type">UserProfile</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/classification.models.ts#L19">ir/src/models/classification.models.ts:19</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="locations" class="tsd-anchor"></a>
-					<h3>locations</h3>
-					<div class="tsd-signature tsd-kind-icon">locations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="location.html" class="tsd-signature-type">Location</a><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/classification.models.ts#L20">ir/src/models/classification.models.ts:20</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="safesearch" class="tsd-anchor"></a>
-					<h3>safe<wbr>Search</h3>
-					<div class="tsd-signature tsd-kind-icon">safe<wbr>Search<span class="tsd-signature-symbol">:</span> <a href="safesearch.html" class="tsd-signature-type">SafeSearch</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/classification.models.ts#L21">ir/src/models/classification.models.ts:21</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="style" class="tsd-anchor"></a>
-					<h3>style</h3>
-					<div class="tsd-signature tsd-kind-icon">style<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="entity.html" class="tsd-signature-type">Entity</a><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/classification.models.ts#L22">ir/src/models/classification.models.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/tailored-text.model.ts#L6">ir/src/models/tailored-text.model.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -158,22 +125,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="classification.html" class="tsd-kind-icon">Classification</a>
+						<a href="tailoredtextrequest.html" class="tsd-kind-icon">Tailored<wbr>Text<wbr>Request</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="classification.html#entities" class="tsd-kind-icon">entities</a>
+								<a href="tailoredtextrequest.html#results" class="tsd-kind-icon">results</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="classification.html#labels" class="tsd-kind-icon">labels</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="classification.html#locations" class="tsd-kind-icon">locations</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="classification.html#safesearch" class="tsd-kind-icon">safe<wbr>Search</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="classification.html#style" class="tsd-kind-icon">style</a>
+								<a href="tailoredtextrequest.html#userprofile" class="tsd-kind-icon">user<wbr>Profile</a>
 							</li>
 						</ul>
 					</li>

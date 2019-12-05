@@ -5,8 +5,8 @@ import logger from "../logger";
 import { Parser } from "../parser";
 import { post } from "../utils";
 import {
-    ClassificationResult,
     GoogleSearchResult,
+    MetaEntity,
     PageResult,
     Query,
     QueryExpansionRequest,
@@ -28,32 +28,33 @@ export class Search {
     /**
      * Perform a web search.
      *
-     * @param classificationResult The object received from the Classification module.
-     * @returns {Promise<Array<PageResult>>} A list of page results.
+     * @param metaEntities The entities with WikiData properties.
+     * @param userProfile The user profile for the keyword expansion query.
+     * @returns A list of page results.
      */
-    public search(classificationResult: ClassificationResult): Promise<Array<PageResult>> {
+    public search(metaEntities: Array<MetaEntity>, userProfile: UserProfile): Promise<Array<PageResult>> {
         return this
-            .buildQueries(classificationResult)
-            .then(q => this.buildResult(q));
+            .buildQueries(metaEntities, userProfile)
+            .then(queries => this.buildResult(queries));
     }
 
     /**
      * Builds a basic query basing on the Classification module result.
      *
-     * @param classificationResult The object received from the Classification module.
-     * @returns {Array<Query>} An array of Query objects with searchTerms and score.
+     * @param metaEntities The entities with WikiData properties.
+     * @param language The language to be used for the query.
+     * @returns An array of Query objects with searchTerms and score.
      */
-    private buildBasicQueries(classificationResult: ClassificationResult): Array<Query> {
+    private buildBasicQueries(metaEntities: Array<MetaEntity>, language: string): Array<Query> {
         // TODO: return a meaningful query
-        const queries = classificationResult.classification.entities
-            .map(entity => {
-                return new Query({
-                    // TODO: entity description must be taken in the user language
-                    searchTerms: entity.description,
-                    score: entity.score,
+        const queries = metaEntities
+            .map(metaEntity => {
+                return {
+                    searchTerms: metaEntity.wikipediaPageTitle,
+                    score: metaEntity.score,
                     keywords: [],
-                    language: classificationResult.userProfile.language
-                });
+                    language: language
+                };
             });
         if (!queries.length) logger.debug("[search.ts] Classification entities are empty");
         logger.silly("[search.ts] Basic query built", { queries });
@@ -66,7 +67,7 @@ export class Search {
      *
      * @param queries An array of Query produced by @function buildBasicQuery.
      * @param queryExpansion The query expansion provided by the Adaptation module.
-     * @returns {Array<Query>} An array of object containing the originalQuery and an array expandedKeywords.
+     * @returns An array of object containing the originalQuery and an array expandedKeywords.
      */
     private extendQuery(queries: Array<Query>, queryExpansion: QueryExpansionResponse): Array<Query> {
         logger.silly("[search.ts] Query expansion request", { queryExpansion });
@@ -89,17 +90,16 @@ export class Search {
     /**
      * Build an array of queries using the query expansion provided by the Adaptation module.
      *
-     * @param classificationResult The object received from the Classification module.
-     * @returns {Promise<Array<Query>>} A promise resolved with the array of Query.
+     * @param metaEntities The entities with WikiData properties.
+     * @param userProfile The user profile for the query expansion.
+     * @returns A promise resolved with the array of Query.
      */
-    private buildQueries(classificationResult: ClassificationResult): Promise<Array<Query>> {
+    private buildQueries(metaEntities: Array<MetaEntity>, userProfile: UserProfile): Promise<Array<Query>> {
         // build the basic query using the Classification result
-        const basicQueries = this.buildBasicQueries(classificationResult);
+        const basicQueries = this.buildBasicQueries(metaEntities, userProfile.language);
         // get the query expansion from the Adaptation module
         return post<QueryExpansionResponse>(
-            AdaptationEndpoint.keywords, {
-                userProfile: classificationResult.userProfile
-            } as QueryExpansionRequest)
+            AdaptationEndpoint.keywords, { userProfile } as QueryExpansionRequest)
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
             // return both the basic query and the extended queries in one array
@@ -111,7 +111,7 @@ export class Search {
      * Build a result object by querying Google Search the provided query.
      *
      * @param queries The buildQuery result.
-     * @returns {Array<PageResult>} An array of page result to be sent to the Adaptation module.
+     * @returns An array of page result to be sent to the Adaptation module.
      */
     private buildResult(queries: Array<Query>): Promise<Array<PageResult>> {
 

@@ -1,7 +1,7 @@
 /// <reference types="@types/jest"/>
 
 import { reduceEntities } from "../../src/utils"
-import { BasicFieldWithId } from "../../src/models/classification.models";
+import { Entity } from "../../src/models/classification.models";
 
 describe("Utility functions", () => {
 
@@ -19,7 +19,7 @@ describe("Utility functions", () => {
             { score: 0.10 },
             { score: 0.03 },
             { score: 0.01 },
-        ] as Array<BasicFieldWithId>;
+        ] as Array<Entity>;
 
         it("Should cut on the biggest jump between scores", () => {
             let result = reduceEntities(entities)

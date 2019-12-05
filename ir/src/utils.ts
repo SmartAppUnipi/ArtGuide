@@ -1,4 +1,4 @@
-import { BasicFieldWithId } from "./models/classification.models";
+import { Entity } from "./models";
 import fetch from "node-fetch";
 import logger from "./logger";
 
@@ -26,8 +26,8 @@ export function post<T = any>(url: string, body: any): Promise<T> {
  * @param minScore A minimum score to keep the entity. Default is 0, ie. no min score.
  * @returns The list of survived entities.
  */
-export function reduceEntities(entities: Array<BasicFieldWithId>,
-        maxEntityNumber = entities.length, minScore = 0): Array<BasicFieldWithId> {
+export function reduceEntities(entities: Array<Entity>,
+        maxEntityNumber = entities.length, minScore = 0): Array<Entity> {
     let maxGap = -1;
     let cutIndex = -1;
 

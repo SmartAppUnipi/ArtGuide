@@ -224,15 +224,15 @@ export class Parser {
 
             // var sectionObject = await this.getTitlesAndSections(url)
             if (sectionsObj.length > 1) {
-                return new PageResult({
+                return {
                     url,
                     title: dom.window.document.title,
                     sections: sectionsObj,
                     keywords: [], // keywords are populated from caller which knows the query object
                     tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
-                });
+                };
             } else {
-                return new PageResult({
+                return {
                     url,
                     title: dom.window.document.title,
                     sections: [
@@ -244,7 +244,7 @@ export class Parser {
                     ],
                     keywords: [], // keywords are populated from caller which knows the query object
                     tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
-                });
+                };
             }
         })
             .then(pageResult => {
