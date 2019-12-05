@@ -106,8 +106,9 @@ class DocumentsAdaptation():
         salient_sentences = [x for s in salient_sentences for x in s]
 
         # policy on sentences
-        policy = Policy(salient_sentences, user.tastes, user)
+        policy = Policy(salient_sentences, user)
         policy.auto()
+        #policy.print_results(5)
 
         # create batch of sentences for summarization model 
         batch_sentences = []

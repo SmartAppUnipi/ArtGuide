@@ -31,3 +31,6 @@ class SalientSentence():
         # embedding
         sentence = rake(self.sentence, stopwords)
         self.sentence_embeddings = np.concatenate([bpemb.embed(s) for s in sentence])
+        self.sentence_embeddings_summed = self.sentence_embeddings[0]
+        for cur in self.sentence_embeddings[1:]:
+            self.sentence_embeddings_summed += cur

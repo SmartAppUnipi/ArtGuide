@@ -1,5 +1,6 @@
 from sklearn.metrics.pairwise import cosine_similarity
 import json
+import numpy as np
 
 '''
 Usage: chiamate auto() e print_results(n) per stampare i primi n risultati per ogni chiave
@@ -13,11 +14,12 @@ Migliorie: così creo cluster basandomi su tutte le keyword, ma noi vogliamo sol
 
 
 class Policy:
-    def __init__(self, sentences, keywords, user):
+    def __init__(self, sentences, user):
         self.sentences = sentences
-        self.keywords = keywords
         self.user = user
         self.user_taste_embedded = user.tastes_embedded
+        self.user_taste_embedded_summed = []
+        self.tastes = list(self.user_taste_embedded.keys())
         self.clusters = {}
         self.results = {}
 
@@ -40,19 +42,19 @@ class Policy:
                 self.sentences.remove(a)
 
     def create_clusters(self):
-        for key in self.keywords:  # Scorro tutte le keywords
-            for sentence in self.sentences:  # Scorro tutte le frasi
-                sentence.keyword = self.keywords
-                if key in sentence.keyword:  # Se la keyword è contenuta nelle keyword della frase
-                    x = False  # è presente nel dizionario?
-                    for cluster in self.clusters:  # Controlla se la frase è già presente
-                        if sentence in self.clusters[cluster]:
-                            x = True  # è gia presente nel dizionario
-                    if not x:
-                        if key in self.clusters:
-                            self.clusters[key].append(sentence)
-                        else:
-                            self.clusters[key] = [sentence]
+        for taste in self.tastes:
+            self.clusters[taste] = []
+        for sentence in self.sentences:
+            max = 0
+            best = ""
+            for taste in self.tastes:
+                x = np.array(self.user_taste_embedded[taste][0]).reshape(1, -1)
+                y = np.array(sentence.sentence_embeddings_summed).reshape(1, -1)
+                score = cosine_similarity(x, y)[0]
+                if score > max:
+                    max = score
+                    best = taste
+            self.clusters[best].append(sentence)
 
     def apply_policy(self):
         for cluster in self.clusters:
@@ -72,21 +74,24 @@ class Policy:
         sentence_embedded = sentence_embeddings[0]
         for emb in sentence_embedded:
             sentence_embedded = sentence_embedded + emb
-        return cosine_similarity(sentence_embedded.reshape(1, -1), self.user_taste_embedded.reshape(1, -1))
+        x = np.array(sentence_embedded).reshape(1, -1)
+        y = np.array(self.user_taste_embedded_summed[0]).reshape(1, -1)
+        return cosine_similarity(x, y)
 
     def auto(self):
         self.eliminate_duplicates()  # Toglie i duplicati dall'input della classe
         self.heuristic_filter()  # Toglie le frasi insensate dall'input della classe
         self.create_clusters()  # In self.clusters crea un dizionario keyword - frasi
-        #self.sum_user_tastes_embedded()
+        self.sum_user_tastes_embedded()
         self.apply_policy()  # Usa il criterio readibility - similiarity per ordinare le frasi
 
     def sum_user_tastes_embedded(self):
-        aux = self.user_taste_embedded
-        tastes = aux[0]
-        for cur in aux[1:]:
-            tastes = tastes + cur
-        self.user_taste_embedded = aux
+        keys = list(self.user_taste_embedded.keys())
+        aux = self.user_taste_embedded[keys[0]]
+        for key in keys[1:]:
+            aux += self.user_taste_embedded[key]
+        self.user_taste_embedded_summed = aux
+
 
     def print_results(self, n):
         for cluster in self.results:
