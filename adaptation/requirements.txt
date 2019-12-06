@@ -2,7 +2,6 @@ flask
 sklearn
 numpy
 matplotlib
-textstat
 sentence-transformers
 bpemb
 scipy
@@ -20,3 +19,4 @@ https://github.com/explosion/spacy-models/releases/download/xx_ent_wiki_sm-2.1.0
 torch==1.1.0
 pytorch-transformers==1.2.0
 bert-extractive-summarizer
+spacy-readability
