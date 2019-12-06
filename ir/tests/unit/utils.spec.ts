@@ -1,7 +1,7 @@
 /// <reference types="@types/jest"/>
 
 import { reduceEntities } from "../../src/utils"
-import { Entity } from "../../src/models/classification.models";
+import { Entity } from "../../src/models";
 
 describe("Utility functions", () => {
 

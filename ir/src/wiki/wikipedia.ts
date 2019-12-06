@@ -3,6 +3,7 @@ import { Page } from "wikijs";
 import wiki from "wikijs";
 import { WikiData } from ".";
 import { MetaEntity, PageResult, PageSection, Query } from "../models";
+import { scoreWeight, wikidataProperties } from "../../config.json";
 
 interface ComposedSection {
     title: string;
@@ -43,10 +44,22 @@ export class Wikipedia {
      * @returns An array of PageResult about the piece of art and correlated pages like the author.
      */
     public searchKnownInstance(knownInstance: MetaEntity, language: string): Promise<Array<PageResult>> {
-        return Promise.all([
-            // TODO: look also for: creator/architect, period, style, movement 
-            this.getWikiInfo(knownInstance.wikipediaPageTitle, language, knownInstance.score)
-        ]);
+        const promises = [];
+        promises.push(this.getWikiInfo(knownInstance.wikipediaPageTitle, language, knownInstance.score));
+        const propertyScore = knownInstance.score * scoreWeight.known.wikidataProperty;
+        for (const key in wikidataProperties) {
+            if (!knownInstance[key] || !Array.isArray(knownInstance[key]) || !knownInstance[key].length)
+                continue;
+            for (const value of knownInstance[key]) {
+                if (!value || typeof value !== "string" || !value.startsWith("Q"))
+                    continue;
+                promises.push(
+                    this.wikidata.getWikipediaName(value, language)
+                        .then(wikipediaName => this.getWikiInfo(wikipediaName, language, propertyScore))
+                );
+            }
+        }
+        return Promise.all(promises);
     }
 
     /**

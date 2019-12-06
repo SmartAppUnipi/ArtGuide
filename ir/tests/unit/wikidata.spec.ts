@@ -10,7 +10,7 @@ const wikidata = new WikiData()
 
 describe("Get Wikipedia page name from entityId", () => {
     it("Should return the correct page title", async () => {
-        const wikipediaPageTitle = await wikidata.getWikipediaName("/m/0cn46", "en");
+        const wikipediaPageTitle = await wikidata.getWikipediaName("Q39054", "en");
         expect(wikipediaPageTitle).toBe("Leaning Tower of Pisa");
     });
 });

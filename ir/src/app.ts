@@ -176,7 +176,7 @@ app.post("/", async (req, res) => {
                     .searchKnownInstance(knownInstance, language)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
-                            pageResult.score *= config.flowConfig.weight.wikipedia.known);
+                            pageResult.score *= config.scoreWeight.known.wikipedia);
                         return pageResults;
                     }),
                 search
@@ -188,7 +188,7 @@ app.post("/", async (req, res) => {
                     }, classificationResult.userProfile)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
-                            pageResult.score *= config.flowConfig.weight.google.known);
+                            pageResult.score *= config.scoreWeight.known.google);
                         return pageResults;
                     })
             ]).then(allResults => [].concat(...allResults));
@@ -210,13 +210,13 @@ app.post("/", async (req, res) => {
                 wikipedia.search(metaEntities, language)
                     .then(results => {
                         results.forEach(result =>
-                            result.score *= config.flowConfig.weight.wikipedia.unknown);
+                            result.score *= config.scoreWeight.unknown.wikipedia);
                         return results;
                     }),
                 search.search(metaEntities, classificationResult.userProfile)
                     .then(results => {
                         results.forEach(result =>
-                            result.score *= config.flowConfig.weight.google.unknown);
+                            result.score *= config.scoreWeight.unknown.google);
                         return results;
                     })
             ]).then(allResults => [].concat(...allResults));
