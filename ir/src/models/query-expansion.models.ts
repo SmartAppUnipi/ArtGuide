@@ -1,7 +1,7 @@
+import { UserProfile } from "./user-profile.model";
+
 export interface QueryExpansionRequest {
-    userId: number;
-    userTastes: Array<string>;
-    language: string;
+    userProfile: UserProfile;
 }
 
 export interface KeywordExpansion {

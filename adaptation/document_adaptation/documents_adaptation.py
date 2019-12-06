@@ -5,7 +5,7 @@ from .document_model import DocumentModel
 from .semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_distance
 from .salient_sentences import from_document_to_salient
 from .policy import Policy
-from .summarization import ModelSummarizer, args
+from .summarization import ModelSummarizer
 from .transitions import transitions_handler
 import spacy
 from bpemb import BPEmb
@@ -18,16 +18,22 @@ class DocumentsAdaptation():
                             'it':'it_core_news_sm', 'multi':'xx_ent_wiki_sm'}
         # we can use also BERT distance, but it's slower and does not support multi language
         # self.distance = BERT_distance()
-        print("Preloading Word Embeddings for supported languages...")
+        print("Preloading Word Embeddings for selected languages...")
         # list of the language we want to suppport
         dim = 200
         vs = 200000
-        language = ["en", "it"]
+        languages = config.languages
+
+        # Checking for available languages
+        for lang in languages:
+            if lang not in self.available_languages:
+                raise Exception("Sorry, '{}' not yet supported".format(lang))
+
         self.verbose = verbose
         self.max_workers = max_workers
-        self.transition = {l:transitions_handler(self.config.transition_data_path) for l in language}
-        self.model_summarizer = {l:ModelSummarizer(args, type="ext", lang=l, checkpoint_path='./document_adaptation/summarization/checkpoint/', verbose=self.verbose) for l in language}
-        self.embedder = {l:BPEmb(lang=l, dim=dim, vs = vs) for l in language}
+        self.transition = {l:transitions_handler(self.config.transition_data_path) for l in languages}
+        self.model_summarizer = {l:ModelSummarizer(config, lang=l, verbose=self.verbose) for l in languages}
+        self.embedder = {l:BPEmb(lang=l, dim=dim, vs = vs) for l in languages}
        
     # Input: json contenente informazioni dell'utente passate dall'applicazione
     # Out: serie di keyword da passare a SDAIS per la generazione di queries specializzate
@@ -90,7 +96,7 @@ class DocumentsAdaptation():
 
         # Parallel function for evaluate the document's affinity 
         def calc_document_affinity(document):
-            read_score = document.user_readability_score()
+            read_score = document.user_readability_score() # QUESTION?
             salient_sentences = from_document_to_salient(document, embedder)
             return salient_sentences
 
@@ -100,23 +106,26 @@ class DocumentsAdaptation():
         salient_sentences = [x for s in salient_sentences for x in s]
 
         # policy on sentences
-        policy = Policy(salient_sentences, user.tastes, user)
+        policy = Policy(salient_sentences, user)
         policy.auto()
-        #policy.print_results(5)  # Parameter is the number of results for cluster
+        #policy.print_results(5)
 
         # create batch of sentences for summarization model 
         batch_sentences = []
         clusters = []
+        num_sentences = []
+
         for cluster in policy.results:
             clusters.append(cluster)
-            batch_sentences.append(''.join( list(map(lambda x :x[1],  policy.results[cluster][:self.config.max_sentences])) ))
+            limited_cluster = policy.results[cluster][:self.config.max_cluster_size]
+            batch_sentences.append(''.join( [x[1] for x in limited_cluster] ))
+            num_sentences.append(len(limited_cluster))
             print("Batch \"{}\" length: {} chars".format(cluster, len(batch_sentences[-1])))
 
         if self.verbose:
+            print("Sentences per cluster: {}".format(list(zip(clusters, num_sentences))))
             print("###!-- Starting summarization")
-        summaries = self.model_summarizer[user.language].inference(batch_sentences)
-        if self.verbose:
-            print("###!-- Starting summarization")
+        summaries = self.model_summarizer[user.language].inference(batch_sentences, num_sentences)
 
         if self.verbose:
             print("####----- Tailored result -----####")

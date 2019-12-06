@@ -1,14 +1,15 @@
+import * as config from "../config.json";
 import { AdaptationEndpoint } from "./environment";
 import bodyParser from "body-parser";
 import express from "express";
-import { flowConfig } from "../config.json";
 import logger from "./logger";
 import packageJson from "../package.json";
 import path from "path";
 import { Search } from "./search";
-import { ClassificationResult, Query } from "./models";
+import { ClassificationResult, PageResult, Query, TailoredTextRequest, TailoredTextResponse } from "./models";
 import { post, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
+import child_process from "child_process";
 
 /** Search module */
 const search = new Search();
@@ -35,7 +36,14 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 });
 
 // Index entry-point
-app.get("/", (req, res) => res.json({ message: `App version ${packageJson.version}.` }));
+app.get("/", (req, res) => {
+    const latestCommit = child_process.execSync("git rev-parse HEAD").toString().replace(/\n/, "");
+    return res.json({
+        message: `IR module version ${packageJson.version}.`,
+        currentCommit: `https://github.com/SmartAppUnipi/ArtGuide/commit/${latestCommit}`,
+        currentTree: `https://github.com/SmartAppUnipi/ArtGuide/tree/${latestCommit}`
+    });
+});
 
 // Docs entry-point
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
@@ -49,8 +57,18 @@ app.post("/", async (req, res) => {
 
         // Parse the classification result json
         const classificationResult = req.body as ClassificationResult;
-        if (!classificationResult)
+        if (!classificationResult ||
+            !classificationResult.classification ||
+            !classificationResult.userProfile) {
+            res.status(400);
             return res.json({ error: "Missing required body." });
+        }
+
+        // Ensure the language is supported
+        if (!config.supportedLanguages.includes(classificationResult.userProfile.language)) {
+            res.status(400);
+            return res.json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
+        }
 
 
 
@@ -119,13 +137,13 @@ app.post("/", async (req, res) => {
         // 2. slice results.entities and results.labels reducing the number of results
         classificationResult.classification.entities = reduceEntities(
             classificationResult.classification.entities,
-            flowConfig.entityFilter.maxEntityNumber,
-            flowConfig.entityFilter.minScore
+            config.flowConfig.entityFilter.maxEntityNumber,
+            config.flowConfig.entityFilter.minScore
         );
         classificationResult.classification.labels = reduceEntities(
             classificationResult.classification.labels,
-            flowConfig.entityFilter.maxEntityNumber,
-            flowConfig.entityFilter.minScore
+            config.flowConfig.entityFilter.maxEntityNumber,
+            config.flowConfig.entityFilter.minScore
         );
 
         logger.debug("[app.ts] Reduced classification entities and labels.", {
@@ -136,7 +154,7 @@ app.post("/", async (req, res) => {
         // 3. check if there is a known entity
         const knownInstance = await wikidata.tryGetKnownInstance(classificationResult);
 
-        let results;
+        let results: Array<PageResult>;
         if (knownInstance) {
             /*
              * BRANCH A: known entity
@@ -149,18 +167,19 @@ app.post("/", async (req, res) => {
                     .searchKnownInstance(knownInstance, classificationResult.userProfile.language)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
-                            pageResult.score *= flowConfig.weight.wikipedia.known);
+                            pageResult.score *= config.flowConfig.weight.wikipedia.known);
                         return pageResults;
                     }),
                 search
                     .searchByTerms(new Query({
                         language: classificationResult.userProfile.language,
                         searchTerms: knownInstance.WikipediaPageTitle,
-                        keywords: []
-                    }))
+                        keywords: [],
+                        score: knownInstance.score
+                    }), classificationResult.userProfile)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
-                            pageResult.score *= flowConfig.weight.google.known);
+                            pageResult.score *= config.flowConfig.weight.google.known);
                         return pageResults;
                     })
             ]).then(allResults => [].concat(...allResults));
@@ -176,19 +195,19 @@ app.post("/", async (req, res) => {
              *  5b. build a smart query on Google
              */
             logger.debug("[app.ts] Not a known instance.",
-                         { reducedClassificationEntities: classificationResult.classification.entities });
+                { reducedClassificationEntities: classificationResult.classification.entities });
             results = await Promise.all([
                 wikipedia.search(classificationResult)
                     .then(results => {
                         results.forEach(result =>
-                            result.score *= flowConfig.weight.wikipedia.unknown);
+                            result.score *= config.flowConfig.weight.wikipedia.unknown);
 
                         return results;
                     }),
                 search.search(classificationResult)
                     .then(results => {
                         results.forEach(result =>
-                            result.score *= flowConfig.weight.google.unknown);
+                            result.score *= config.flowConfig.weight.google.unknown);
 
                         return results;
                     })
@@ -196,8 +215,11 @@ app.post("/", async (req, res) => {
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         }
 
+        // 6. Sort the results by score
+        results.sort((p1, p2) => p2.score - p1.score);
+
         /*
-         *END OF MAIN FLOW
+         * END OF MAIN FLOW
          */
 
 
@@ -206,10 +228,10 @@ app.post("/", async (req, res) => {
             adaptationUrl: AdaptationEndpoint.text,
             resultsSent: results
         });
-        return post(AdaptationEndpoint.text, {
+        return post<TailoredTextResponse>(AdaptationEndpoint.text, {
             userProfile: classificationResult.userProfile,
             results
-        }).then(adaptationResponse => {
+        } as TailoredTextRequest).then(adaptationResponse => {
             logger.debug("[app.ts] Adaptation Response received.", { adaptationResponse });
             res.send(adaptationResponse);
         });

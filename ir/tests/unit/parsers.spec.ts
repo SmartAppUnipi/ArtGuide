@@ -15,10 +15,21 @@ const urls = [
   ]
 
 
-describe("Index module", () => {
+describe("Parsers module", () => {
 
-    it("Should return text", async () => {
-        //await new Parser().parse(urls[0]).then(console.log)
+    it("it should return a Promise<PageResult>", async () => {
+        const result = await new Parser().parse(urls[0])
+        expect(result).toBeDefined();
+
+        expect(result).toHaveProperty('url');
+        expect(result).toHaveProperty('title');
+        expect(result).toHaveProperty('sections');
+        expect(result).toHaveProperty('keywords');
+
+        expect(result.title).toBeDefined();
+        expect(result.url).toBeDefined();
+        expect(result.keywords).toBeDefined();
+        expect(result.sections.length).toBeGreaterThan(0);
     })
     
 })
