@@ -1,12 +1,7 @@
 import os
 
-import cv2
-import math
-import re
-import numpy as np
 import pandas as pd
 import tensorflow as tf
-import imagesize
 import shutil
 
 import project_types as pt
