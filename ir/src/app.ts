@@ -197,11 +197,10 @@ app.post("/", async (req, res) => {
         } else {
             // BRANCH B: not a known entity
             logger.debug("[app.ts] Not a known instance.",
-                         { reducedClassificationEntities: classificationResult.classification.entities });
+                { reducedClassificationEntities: classificationResult.classification.entities });
 
             // 6. remove unwanted entity (not art)
-            await wikidata.filterNotArtRelatedResult(metaEntities)
-                .then(entities => metaEntities = entities);
+            entities = await wikidata.filterNotArtRelatedResult(metaEntities);
 
             /*
              *  5a. search for the top score entities on Wikipedia
@@ -249,7 +248,9 @@ app.post("/", async (req, res) => {
     } catch (ex) {
         logger.error("[app.ts]", ex);
         /* istanbul ignore next */
-        return res.status(500).json({ message: ex.message, stack: ex.stack });
+        return res
+            .status(500)
+            .json({ message: ex.message, stack: ex.stack });
     }
 
 });
