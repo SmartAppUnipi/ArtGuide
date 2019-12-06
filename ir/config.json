@@ -72,5 +72,10 @@
         "architect": "P84",
         "architecturalStyle": "P149",
         "location": "P625"
-    }
+    },
+    "knownInstanceProperties": [
+        "creator",
+        "architect",
+        "genre"
+    ]
 }

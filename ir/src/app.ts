@@ -167,7 +167,7 @@ app.post("/", async (req, res) => {
         let metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, language)));
 
         // 5. Try to get a known instance
-        const knownInstance = wikidata.tryGetKnownInstance(metaEntities);
+        const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, language);
 
         let results: Array<PageResult>;
         if (knownInstance) {
@@ -186,12 +186,7 @@ app.post("/", async (req, res) => {
                         return pageResults;
                     }),
                 search
-                    .searchByTerms({
-                        language: language,
-                        searchTerms: knownInstance.wikipediaPageTitle,
-                        keywords: [],
-                        score: knownInstance.score
-                    }, classificationResult.userProfile)
+                    .searchKnownInstance(knownInstance, classificationResult.userProfile)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
                             pageResult.score *= config.scoreWeight.known.google);
@@ -202,7 +197,7 @@ app.post("/", async (req, res) => {
         } else {
             // BRANCH B: not a known entity
             logger.debug("[app.ts] Not a known instance.",
-                { reducedClassificationEntities: classificationResult.classification.entities });
+                         { reducedClassificationEntities: classificationResult.classification.entities });
 
             // 6. remove unwanted entity (not art)
             await wikidata.filterNotArtRelatedResult(metaEntities)

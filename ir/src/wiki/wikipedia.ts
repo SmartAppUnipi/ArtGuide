@@ -2,8 +2,8 @@ import logger from "../logger";
 import { Page } from "wikijs";
 import wiki from "wikijs";
 import { WikiData } from ".";
+import { knownInstanceProperties, scoreWeight } from "../../config.json";
 import { MetaEntity, PageResult, PageSection, Query } from "../models";
-import { scoreWeight, wikidataProperties } from "../../config.json";
 
 interface ComposedSection {
     title: string;
@@ -45,19 +45,14 @@ export class Wikipedia {
      */
     public searchKnownInstance(knownInstance: MetaEntity, language: string): Promise<Array<PageResult>> {
         const promises = [];
+        // search for the entity
         promises.push(this.getWikiInfo(knownInstance.wikipediaPageTitle, language, knownInstance.score));
+        // search for the properties
         const propertyScore = knownInstance.score * scoreWeight.known.wikidataProperty;
-        for (const key in wikidataProperties) {
-            if (!knownInstance[key] || !Array.isArray(knownInstance[key]) || !knownInstance[key].length)
-                continue;
-            for (const value of knownInstance[key]) {
-                if (!value || typeof value !== "string" || !value.startsWith("Q"))
-                    continue;
-                promises.push(
-                    this.wikidata.getWikipediaName(value, language)
-                        .then(wikipediaName => this.getWikiInfo(wikipediaName, language, propertyScore))
-                );
-            }
+        for (const property of knownInstanceProperties) {
+            for (const value of knownInstance[property]) 
+                promises.push(this.getWikiInfo(value, language, propertyScore));
+            
         }
         return Promise.all(promises);
     }

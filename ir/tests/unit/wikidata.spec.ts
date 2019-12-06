@@ -30,8 +30,8 @@ describe("Look for known instance", () => {
             }
         ] as Array<Entity>;
         return Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")))
-            .then(metaEntities => {
-                const knownInstance = wikidata.tryGetKnownInstance(metaEntities);
+            .then(async metaEntities => {
+                const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, "en");
                 expect(knownInstance).toBeDefined();
                 expect(knownInstance.entityId).toBe("/m/0cn46") // Leaning Tower of Pisa
             })
@@ -50,8 +50,8 @@ describe("Look for known instance", () => {
             }
         ] as Array<Entity>;
         return Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")))
-            .then(metaEntities => {
-                const knownInstance = wikidata.tryGetKnownInstance(metaEntities);
+            .then(async metaEntities => {
+                const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, "en");
                 expect(knownInstance).toBeDefined();
                 expect(knownInstance.entityId).toBe("/m/0cn46") // Leaning Tower of Pisa
             })
@@ -67,8 +67,8 @@ describe("Look for known instance", () => {
             }
         ] as Array<Entity>;
         return Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")))
-            .then(metaEntities => {
-                const knownInstance = wikidata.tryGetKnownInstance(metaEntities);
+            .then(async metaEntities => {
+                const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, "en");
                 expect(knownInstance).toBeNull();
             })
     });
@@ -182,3 +182,19 @@ describe("filterNotArtRelatedResult", () => {
             })
     })
 })
+
+describe("setWikipediaNames()", () => {
+
+    it("Should populate wikidata id with names", async () => {
+        const _wikidata = new WikiData();
+        const metaEntity = await wikidata["getProperties"]({ entityId: "/m/0cn46" } as Entity, "en"); // pisa tower
+
+        expect(metaEntity.architect).toEqual(["Q892084"]);
+        // expect(metaEntity.instanceof).toEqual(["Q200334", "Q570116"]);
+
+        const populatedMetaEntity = await _wikidata["setWikipediaNames"](metaEntity, "en");
+
+        expect(populatedMetaEntity.architect).toEqual(["Bonanno Pisano"]);
+        // expect(populatedMetaEntity.instanceof).toEqual(["bell tower", "tourist attraction"]);
+    });
+});

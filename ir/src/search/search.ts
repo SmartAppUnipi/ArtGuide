@@ -1,9 +1,9 @@
 import { AdaptationEndpoint } from "../environment";
-import { flowConfig } from "../../config.json";
 import { GoogleSearch } from "./google-search";
 import logger from "../logger";
 import { Parser } from "../parser";
 import { post } from "../utils";
+import { flowConfig, knownInstanceProperties, scoreWeight } from "../../config.json";
 import {
     GoogleSearchResult,
     MetaEntity,
@@ -164,17 +164,38 @@ export class Search {
      *The keywords associated to the PageResult are the one provided by the query
      *since they cannot be inferred.
      *
-     * @param query The query with the keywords to search on Google.
+     * @param knownInstance The non-null KnownInstance object.
      * @param userProfile The user profile for the adaptation module.
      * @returns An array of PageResults.
      */
-    public async searchByTerms(query: Query, userProfile: UserProfile): Promise<Array<PageResult>> {
+    public async searchKnownInstance(knownInstance: MetaEntity, userProfile: UserProfile): Promise<Array<PageResult>> {
+        const queries = [];
+        // search for the entity
+        queries.push({
+            language: userProfile.language,
+            searchTerms: knownInstance.wikipediaPageTitle,
+            keywords: [],
+            score: knownInstance.score
+        });
+        // search for the properties
+        const propertyScore = knownInstance.score * scoreWeight.known.wikidataProperty;
+        for (const property of knownInstanceProperties) {
+            for (const value of knownInstance[property]) {
+                queries.push({
+                    language: userProfile.language,
+                    searchTerms: value,
+                    keywords: [],
+                    score: propertyScore
+                });
+            }
+        }
+
         return post<QueryExpansionResponse>(
             AdaptationEndpoint.keywords, {
                 userProfile: userProfile
             } as QueryExpansionRequest)
             // extend the basic query with the query expansion
-            .then(queryExpansion => this.extendQuery([query], queryExpansion))
+            .then(queryExpansion => this.extendQuery(queries, queryExpansion))
             .then(queries => {
                 return Promise.all(
                     queries.map(query => {

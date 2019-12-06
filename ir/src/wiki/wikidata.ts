@@ -4,7 +4,7 @@ import fetch from "node-fetch";
 import logger from "../logger";
 import { MetaEntity } from "../models";
 import path from "path";
-import { wikidataArtEntities, wikidataProperties } from "../../config.json";
+import { knownInstanceProperties, wikidataArtEntities, wikidataProperties } from "../../config.json";
 
 
 
@@ -63,16 +63,55 @@ export class WikiData {
      * Check if there is a meta entity that is an instance of a known entity.
      *
      * @param metaEntities The entities with WikiData properties.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
      * @returns The first meta entity that is a known instance or null if there are none.
      */
-    public tryGetKnownInstance(metaEntities: Array<MetaEntity>): MetaEntity {
+    public tryGetKnownInstance(metaEntities: Array<MetaEntity>, language: string): Promise<MetaEntity> {
+        // foreach meta entity
         for (const metaEntity of metaEntities) {
-            if (metaEntity.creator?.length > 0 ||
-                metaEntity.architect?.length > 0 ||
-                metaEntity.location?.length > 0)
-                return metaEntity;
+        // if the meta entity has one of the knownInstanceProperties, then is a known entity
+            for (const property of knownInstanceProperties) {
+                if (metaEntity[property] && metaEntity[property].length) {
+                    // fill its knownInstanceProperties with the Wikipedia names of the properties
+                    return this.setWikipediaNames(metaEntity, language);
+                }
+            }
         }
-        return null;
+        // no known instance found
+        return Promise.resolve(null);
+    }
+
+    /**
+     * Given a known entity, replace all the property ids with the corresponding Wikipedia page titles.
+     *
+     * @param knownInstance The known instance to be populated.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
+     * @returns the improved known entity.
+     */
+    private setWikipediaNames(knownInstance: MetaEntity, language: string): Promise<MetaEntity> {
+        const promises = [];
+        for (const property of knownInstanceProperties as Array<string>) {
+
+            // the current property does not exist, skip the call to populate it
+            if (!knownInstance[property] || !Array.isArray(knownInstance[property]) || !knownInstance[property].length)
+                continue;
+
+            /*
+             * else populate the id with the name. 
+             * Note that knownInstance[property] is an array of ids
+             */
+            promises.push(
+                Promise.all(
+                    (knownInstance[property as keyof typeof wikidataProperties]).map(wikidataPropertyId => {
+                        return this.getWikipediaName(wikidataPropertyId, language);
+                    })
+                ).then(propertiesNames => {
+                    knownInstance[property] = propertiesNames;
+                })
+            );
+        }
+        return Promise.all(promises)
+            .then(() => knownInstance);
     }
 
     /**

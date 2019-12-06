@@ -1,7 +1,7 @@
 /// <reference types="@types/jest"/>
 
-import { Wikipedia } from "../../src/wiki"
-import { PageResult, ClassificationResult, Query, MetaEntity } from "../../src/models";
+import { Wikipedia, WikiData } from "../../src/wiki"
+import { MetaEntity, Entity } from "../../src/models";
 import knownEntityEn from "../../assets/classification-result/known-en.json";
 
 describe("Function getWikiInfo", () => {
@@ -27,22 +27,15 @@ describe("Function getWikiInfo", () => {
 describe("Wikipedia.searchKnownInstance(knownInstance)", () => {
     it("Should replay correctly for Pisa Tower", async () => {
         const wiki = new Wikipedia();
+        const wikidata = new WikiData();
 
-        const getWikiInfoMock = jest.fn().mockImplementation(
-            () => ({ title: "Leaning Tower Of Pisa", summary: "Test summary" })
-        );
-        wiki['getWikiInfo'] = getWikiInfoMock;
+        const metaEntity = await wikidata["getProperties"]({ entityId: "/m/0cn46", score: 1 } as Entity, "en"); // pisa tower
+        const knownInstance = await wikidata['setWikipediaNames'](metaEntity, "en");
 
+        const results = await wiki.searchKnownInstance(knownInstance, "en");
 
-
-        const results = await wiki.searchKnownInstance(
-            { WikipediaPageTitle: "Leaning Tower Of Pisa" } as any as MetaEntity,
-            "en"
-        );
-        expect(getWikiInfoMock).toHaveBeenCalledTimes(1);
-
-        expect(results.length).toEqual(1);
-        expect(results[0].summary).toContain("Test");
+        expect(results.length).toEqual(2);  // Pisa Tower + Bonanno Pisano
+        expect(results[0].title).toEqual("Leaning Tower of Pisa");
 
     });
 });
