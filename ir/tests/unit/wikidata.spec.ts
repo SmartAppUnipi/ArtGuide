@@ -116,7 +116,7 @@ describe("getEntityRootPath(entityId)", () => {
     });
 
     it("Should not include the entityId", async () => {
-        const entityId = "/m/0cn46Q39054"
+        const entityId = "NotValidId";
         const PisaTowerTree = await wikidata['getEntityRootPath'](entityId);
         expect(PisaTowerTree).not.toContain(entityId);
     });
