@@ -164,7 +164,7 @@ app.post("/", async (req, res) => {
         logger.debug("[app.ts] Reduced classification entities and labels.", { entities });
 
         // 4. populate the metadata
-        let metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, language)));
+        const metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, language)));
 
         // 5. Try to get a known instance
         const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, language);
@@ -196,8 +196,9 @@ app.post("/", async (req, res) => {
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
             // BRANCH B: not a known entity
-            logger.debug("[app.ts] Not a known instance.",
-                { reducedClassificationEntities: classificationResult.classification.entities });
+            logger.debug("[app.ts] Not a known instance.", {
+                reducedClassificationEntities: classificationResult.classification.entities
+            });
 
             // 6. remove unwanted entity (not art)
             entities = await wikidata.filterNotArtRelatedResult(metaEntities);
