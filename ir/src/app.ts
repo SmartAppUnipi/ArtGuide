@@ -61,8 +61,11 @@ app.post("/", async (req, res) => {
         const classificationResult = req.body as ClassificationResult;
         if (!classificationResult ||
             !classificationResult.classification ||
-            !classificationResult.userProfile)
-            return res.status(400).json({ error: "Missing required body." });
+            !classificationResult.userProfile) {
+            return res
+                .status(400)
+                .json({ error: "Missing required body." });
+        }
 
 
         // Ensure the language is supported
@@ -128,8 +131,8 @@ app.post("/", async (req, res) => {
          */
 
         logger.debug("[app.ts] Original classification entities and labels.", {
-            classificationEntities: classificationResult.classification.entities,
-            classificationLabels: classificationResult.classification.labels
+            classificationEntities: classificationResult.classification?.entities ?? [],
+            classificationLabels: classificationResult.classification?.labels ?? []
         });
 
         // 1. Aggregate all entities
@@ -141,8 +144,11 @@ app.post("/", async (req, res) => {
         );
 
         // require at least one entity
-        if (!entities.length)
-            return res.status(400).json({ error: "No entities found." });
+        if (!entities.length) {
+            return res
+                .status(400)
+                .json({ error: "No entities found." });
+        }
 
 
         // 2. sort entities by score descending
@@ -196,7 +202,7 @@ app.post("/", async (req, res) => {
         } else {
             // BRANCH B: not a known entity
             logger.debug("[app.ts] Not a known instance.",
-                         { reducedClassificationEntities: classificationResult.classification.entities });
+                { reducedClassificationEntities: classificationResult.classification.entities });
 
             // 6. remove unwanted entity (not art)
             await wikidata.filterNotArtRelatedResult(metaEntities)

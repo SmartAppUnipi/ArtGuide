@@ -4,21 +4,9 @@ import fetch from "node-fetch";
 import logger from "../logger";
 import { MetaEntity } from "../models";
 import path from "path";
-import { wikidataArtEntities } from "../../config.json";
+import { wikidataArtEntities, wikidataProperties } from "../../config.json";
 
 
-enum WikidataPropertyType {
-    instanceof = "P31",
-    // Painting/monument/statue
-    creator = "P170",
-    genre = "P136",
-    movement = "P135",
-    // Architecture
-    architect = "P84",
-    architecturalStyle = "P149",
-    // Architectures and in-museum-located painting and monuments
-    location = "P625"
-}
 
 /**
  * Retrieve metadata from WikiData using the entityIds.
@@ -37,8 +25,8 @@ export class WikiData {
         return this.getWikiDataId(entity.entityId)
             .then(wikidataId => {
                 // prepare the wikidata object and se the id
-                const wikidataProperties = entity as MetaEntity;
-                wikidataProperties.wikidataId = wikidataId;
+                const wikidataEntity = entity as MetaEntity;
+                wikidataEntity.wikidataId = wikidataId;
                 // get the WikiData content for the entity
                 return fetch(wd.getEntities([wikidataId]))
                     .then(r => r.json())
@@ -47,25 +35,22 @@ export class WikiData {
                         // simplify entities (https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities)
                         content.entities = wd.simplify.entities(content.entities);
 
-                        /*
-                         * Key is the WikiDataPropertyType, values are arrays of wikidata ids
-                         * for each entity id
-                         */
+                        // for each entity returned by wd.getEntities([wikidataId])
                         for (const entityId in content.entities) {
                             // for each property we want to extract
-                            for (const enumKey in WikidataPropertyType) {
-                                // enum => ["InstanceOf", "Creator", ...]
-                                const claimName = enumKey as keyof typeof WikidataPropertyType;
-                                wikidataProperties[claimName] =
-                                    content.entities[entityId].claims[WikidataPropertyType[claimName]] || [];
+                            for (const enumKey in wikidataProperties) {
+                                // enumKey = ["instanceOf", "creator", ...]
+                                const claimName = enumKey as keyof typeof wikidataProperties;
+                                wikidataEntity[claimName] =
+                                    content.entities[entityId].claims[wikidataProperties[claimName]] ?? [];
                             }
                         }
 
                         // set also the Wikipedia page title
-                        wikidataProperties.wikipediaPageTitle =
+                        wikidataEntity.wikipediaPageTitle =
                             content.entities[wikidataId].sitelinks[`${language}wiki`];
 
-                        return wikidataProperties;
+                        return wikidataEntity;
                     });
             })
             .catch(/* istanbul ignore next */ ex => {
