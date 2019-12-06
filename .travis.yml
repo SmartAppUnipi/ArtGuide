@@ -8,7 +8,7 @@ jobs:
       - pip install -r image_analysis/app/requirements.txt && python image_analysis/app/app.py
 
     - name: IR module
-      if: branch IN (master, ir)
+      if: branch =~ /(master|ir[A-Za-z-]*)/
       language: node_js
       node_js: 12
       script:
