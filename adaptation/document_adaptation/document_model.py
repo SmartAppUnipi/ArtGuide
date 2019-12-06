@@ -27,12 +27,15 @@ class DocumentModel():
         self.stop_words = stop_words
         self.readability_score = 0
         self.affinity_score = 0
+        self.score = 0
         
         if result:
             self.keywords = result['keywords']
             self.url = result['url']
             self.title = result['title']
             self.sections = result['sections']
+            if 'score' in result:
+                self.score = result['score']
             self.plain_text = self.get_plain_text(result)
             self.normalized_text = self.normalize(self.plain_text)
             

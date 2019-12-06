@@ -86,6 +86,8 @@ class DocumentsAdaptation():
         documents = list(map(lambda x: DocumentModel(x, user, stop_words=stop_words), results))
         # Remove document without content
         documents = list(filter(lambda x: bool(x.plain_text), documents))
+        # sort on the IR value
+        sorted(documents, key=lambda x: x.score, reverse=True)
 
         if len(documents) <= 0:
             return "Content not found"
@@ -95,13 +97,13 @@ class DocumentsAdaptation():
             print(["{} in document".format(len(doc.plain_text)) for doc in documents])
 
         # Parallel function for evaluate the document's affinity 
-        def calc_document_affinity(document):
-            read_score = document.user_readability_score() # QUESTION?
+        def create_list_salient_sentences(document):
+            document.user_readability_score() # QUESTION?
             salient_sentences = from_document_to_salient(document, embedder)
             return salient_sentences
 
         with PoolExecutor(max_workers=self.max_workers) as executor:
-            futures = executor.map(calc_document_affinity, documents) 
+            futures = executor.map(create_list_salient_sentences, documents) 
         salient_sentences = list(futures)
         salient_sentences = [x for s in salient_sentences for x in s]
 

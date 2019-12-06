@@ -17,14 +17,25 @@ def from_document_to_salient(document, embedder, ratio=0.3, word_count=None, spl
     except:
         summarized_sentences = []
         print("Error, we were not able to find the salient sentence from the document!")
-    return [SalientSentence(s, document.keywords, document.readability_score, embedder) for s in summarized_sentences]
+    #delete double occourence in each sentence
+    for s in summarized_sentences:
+        words = s.split()
+        prev = ""
+        s = ""
+        for w in words:
+            if w != prev:
+                s.join(w + " ")
+            prev = w
+    summarized_sentences = [s for s in summarized_sentences if len(s) > 20]#delete too short sentences
+    return [SalientSentence(s, document.keywords, document.readability_score, document.score, embedder) for s in summarized_sentences]
 
 class SalientSentence():
-    def __init__(self, sentence, keyword, readibility, bpemb, stopwords = []):
+    def __init__(self, sentence, keyword, readibility, IR_score,  bpemb, stopwords = []):
         self.sentence = sentence
         self.readibility = readibility
         self.sentence_rake_embed = self.sentence_rake_embed(stopwords, bpemb)
         self.keyword = {k: bpemb.embed(k) for k in keyword}
+        self.IR_score = IR_score
         
     def sentence_rake_embed(self, stopwords, bpemb):
         # rake
