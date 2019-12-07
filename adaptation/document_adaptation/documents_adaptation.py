@@ -9,7 +9,6 @@ from .summarization import ModelSummarizer
 from .transitions import transitions_handler
 import spacy
 from bpemb import BPEmb
-from spacy_readability import Readability
 
 class DocumentsAdaptation():
     def __init__(self, config, max_workers=0, verbose=False):
@@ -84,16 +83,7 @@ class DocumentsAdaptation():
         user.embed_tastes(embedder)
         stop_words = self.get_language_stopwords(user)        
         # Map result in DocumentModel object
-
-        # Load spacy dictionary for readibility evaluation
-        if (user.language in self.available_languages):
-            nlp = spacy.load(self.available_languages[user.language])
-        else:
-            nlp = spacy.load(self.available_languages['multi'])
-        read = Readability()
-        nlp.add_pipe(read, last=True)
-
-        documents = list(map(lambda x: DocumentModel(x, user, nlp, stop_words=stop_words), results))
+        documents = list(map(lambda x: DocumentModel(x, user, stop_words=stop_words), results))
         # Remove document without content
         documents = list(filter(lambda x: bool(x.plain_text), documents))
         # sort on the IR value
@@ -155,4 +145,3 @@ class DocumentsAdaptation():
             tailored_result += summary+'\n'
 
         return tailored_result
-
