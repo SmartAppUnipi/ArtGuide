@@ -41,6 +41,47 @@ class Policy:
             if '^' or '>' or '<' in a.sentence:
                 self.sentences.remove(a)
 
+    def create_cluster_greedy(self):
+        '''
+        Algorithm that creates the cluster for each sentences. 
+        Given the user tastes and the salient sentences it returns a list ok K(K selected as parameter)
+        best sentences for each user taste.
+        This implementation is made with an euristic greedy algorithm.
+        We create a list of sentences for each taste and then, starting from the taste with less number of sentence
+        we sort and fix the best K results.
+        Then we do the same for each taste.
+        '''
+        if not self.user.tastes:
+            return self.sentences[10]
+        tastes = {t:[] for t in self.user.tastes}
+        for s in self.sentences:
+            for k in s.keyword:
+                tastes[k] += s
+        for t in tastes:
+            t.sort(key = lambda x: x.score ,reverse = True)
+        tastes.sort( key =lambda x: len(x) )
+        result = {t:[] for t in self.user.tastes}
+        for t in tastes:
+            for s in tastes[t]:
+                if not s.assigned:
+                    result[t].append(s)
+                    s.assigned = True
+        return result
+
+
+
+
+
+    def create_cluster_ILP(self):
+        '''
+        Algorithm that creates the cluster for each sentences. 
+        Given the user tastes and the salient sentences it returns a list ok K(K selected as parameter)
+        best sentences for each user taste.
+        We translate this problem to an integer graph optimization prbolem. 
+        The idea is to use integer linear programming for the task.
+        '''
+        pass
+
     def create_clusters(self):
         for taste in self.tastes:
             self.clusters[taste] = []

@@ -9,13 +9,13 @@ from config import config
 # Lettura frasi
 document_adaptation = DocumentsAdaptation(config, max_workers=4, verbose=1)
 
-data = "data/test.json"
+data = "adaptation/data/test.json"
 
 with open(data, 'r', encoding="utf8") as f:
     json_query = json.load(f)
 
 user = User(json_query["userProfile"])  # deve diventare binario su 6 elementi
-results = document_adaptation.get_tailored_text(json_query['results'], user)  # formato giusto
+results = document_adaptation.get_tailored_text(json_query['results'], user, config)  # formato giusto
 print(results)
 '''
 def print_scatter(data, colors):

@@ -9,6 +9,7 @@ from .summarization import ModelSummarizer
 from .transitions import transitions_handler
 import spacy
 from bpemb import BPEmb
+from spacy_readability import Readability
 
 class DocumentsAdaptation():
     def __init__(self, config, max_workers=0, verbose=False):
@@ -71,7 +72,7 @@ class DocumentsAdaptation():
     # Out: articolo filtrato im base alle preferenze dell'utente 
     # Formato output: string
     # Proto: il primo articolo per ora puo' andare bene
-    def get_tailored_text(self, results, user):
+    def get_tailored_text(self, results, user, config):
         if len(results)<=0:
             return "Content not found"
 
@@ -83,7 +84,16 @@ class DocumentsAdaptation():
         user.embed_tastes(embedder)
         stop_words = self.get_language_stopwords(user)        
         # Map result in DocumentModel object
-        documents = list(map(lambda x: DocumentModel(x, user, stop_words=stop_words), results))
+
+        # Load spacy dictionary for readibility evaluation
+        if (user.language in self.available_languages):
+            nlp = spacy.load(self.available_languages[user.language])
+        else:
+            nlp = spacy.load(self.available_languages['multi'])
+        read = Readability()
+        nlp.add_pipe(read, last=True)
+
+        documents = list(map(lambda x: DocumentModel(x, user, nlp, stop_words=stop_words), results))
         # Remove document without content
         documents = list(filter(lambda x: bool(x.plain_text), documents))
         # sort on the IR value
@@ -99,7 +109,7 @@ class DocumentsAdaptation():
         # Parallel function for evaluate the document's affinity 
         def create_list_salient_sentences(document):
             document.user_readability_score() # QUESTION?
-            salient_sentences = from_document_to_salient(document, embedder)
+            salient_sentences = from_document_to_salient(document, embedder, config)
             return salient_sentences
 
         with PoolExecutor(max_workers=self.max_workers) as executor:

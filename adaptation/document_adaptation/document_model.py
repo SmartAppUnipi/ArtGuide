@@ -1,12 +1,12 @@
 import re
-import textstat
+import spacy
 import os
 from .user import User
 from rake_nltk import Rake
 from gensim.summarization.summarizer import summarize
 
 class DocumentModel():
-    def __init__(self, result, user, stop_words=[]):
+    def __init__(self, result, user, nlp, stop_words=[]):
         '''
         Vars:
             query_keywords = keywords used by query for retrive the result
@@ -27,6 +27,7 @@ class DocumentModel():
         self.stop_words = stop_words
         self.readability_score = 0
         self.affinity_score = 0
+        self.nlp = nlp
         self.score = 0
         
         if result:
@@ -69,14 +70,16 @@ class DocumentModel():
         Returns:
             Float value between 0 (easy to read) and 1 (difficult to read). 
         '''
-        score = textstat.flesch_reading_ease(self.plain_text)  # [1-100] alto facile, basso difficile
-        score = score / 100
+        doc = self.nlp(self.plain_text)
+
+        score = doc._.coleman_liau_index
+        score = score / 90
         if score > 1 or score < 0:
             return 0
         level = self.user.expertise_level
-        expertise_level = level / 3  # dettagli in input_phase2.json
-        self.readability_score = abs(expertise_level - score)
-        return self.readability_score
+        expertise_level = level / 4  # dettagli in input_phase2.json
+        self.readability_score = score
+        return score #  [0-1] senza contare utente
 
     def rake(self, n_sentences=10):
         # https://pypi.org/project/rake-nltk/
