@@ -1,5 +1,5 @@
 import os
-
+import numpy as np
 import pandas as pd
 import tensorflow as tf
 import shutil
@@ -67,6 +67,24 @@ pict_styles = pictdf['style'].unique()
 one_hot_pict = tf.one_hot(range(len(pict_styles)), len(pict_styles))
 tflabels_pict = {style: one_hot_pict[idx] for idx, style in enumerate(pict_styles)}
 
+###### BAD CONVERTION FIX ######
+string_dict = {}
+def style_2_tf(t):
+    t = str(t)
+    if t not in string_dict:
+        
+        idx = 0
+        for k in string_dict:
+            idx = max(idx, tf.argmax(string_dict[k])+1)
+        
+        aus = np.zeros(136)
+        aus[idx] = 1
+        new_tf = tf.convert_to_tensor(aus)
+        string_dict[t] = new_tf
+
+        return new_tf
+    else:
+        return string_dict[t]
 
 def convert_paths(n_path):
     for (fpath, row) in pictdf.iterrows():
@@ -93,9 +111,10 @@ def parse_image_pict(filename, linux=True):
         filename = tf.strings.regex_replace(filename, '\\\\', '/')
     fname = tf.strings.split(filename, '/')[-1]
     label = tf.strings.split(fname, '__')[0]
-
+    label = tf.py_function(style_2_tf, [label], tf.float64)
+    
     image = tf.io.read_file(filename)
     image = tf.image.decode_jpeg(image)
     image = tf.image.convert_image_dtype(image, tf.float32)
-    image = tf.image.random_crop(image, CROP_SIZE)
+    image = tf.image.resize_with_crop_or_pad(image, CROP_SIZE[1], CROP_SIZE[2])
     return image, label
