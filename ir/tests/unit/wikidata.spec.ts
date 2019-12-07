@@ -190,7 +190,7 @@ describe("setWikipediaNames()", () => {
         const metaEntity = await wikidata["getProperties"]({ entityId: "/m/0cn46" } as Entity, "en"); // pisa tower
 
         expect(metaEntity.architect).toEqual(["Q892084"]);
-        // expect(metaEntity.instanceof).toEqual(["Q200334", "Q570116"]);
+        expect(metaEntity.instanceof).toEqual(["Q200334", "Q570116"]);
 
         const populatedMetaEntity = await _wikidata["setWikipediaNames"](metaEntity, "en");
 
