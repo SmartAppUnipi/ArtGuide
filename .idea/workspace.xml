@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="677d46cf-0f97-4f03-97a4-4029f904ff3f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ArtGuide.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ArtGuide.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptation/document_adaptation/documents_adaptation.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/document_adaptation/documents_adaptation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptation/document_adaptation/policy.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/document_adaptation/policy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptation/document_adaptation/salient_sentences.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/document_adaptation/salient_sentences.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptation/document_adaptation/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/document_adaptation/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adaptation/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adaptation/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/config.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,8 +84,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Server" />
       <item itemvalue="Python.Client" />
+      <item itemvalue="Python.Server" />
     </list>
   </component>
   <component name="SvnConfiguration">
