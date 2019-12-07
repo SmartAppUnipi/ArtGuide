@@ -61,7 +61,8 @@ describe("Wikipedia search for unknown entity", () => {
             config.flowConfig.entityFilter.minScore
         );
         const metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")));
-        const res = await wiki.search(metaEntities, "en");
+        const filteredEntities = await wikidata.filterNotArtRelatedResult(metaEntities);
+        const res = await wiki.search(filteredEntities, "en");
         //console.log(res);
         expect(res.length).toEqual(1);
         expect(res[0].title).toEqual("Modern art");

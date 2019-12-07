@@ -201,20 +201,20 @@ app.post("/", async (req, res) => {
             });
 
             // 6. remove unwanted entity (not art)
-            entities = await wikidata.filterNotArtRelatedResult(metaEntities);
+            const filteredEntities = await wikidata.filterNotArtRelatedResult(metaEntities);
 
             /*
              *  5a. search for the top score entities on Wikipedia
              *  5b. build a smart query on Google
              */
             results = await Promise.all([
-                wikipedia.search(metaEntities, language)
+                wikipedia.search(filteredEntities, language)
                     .then(results => {
                         results.forEach(result =>
                             result.score *= config.scoreWeight.unknown.wikipedia);
                         return results;
                     }),
-                search.search(metaEntities, classificationResult.userProfile)
+                search.search(filteredEntities, classificationResult.userProfile)
                     .then(results => {
                         results.forEach(result =>
                             result.score *= config.scoreWeight.unknown.google);
