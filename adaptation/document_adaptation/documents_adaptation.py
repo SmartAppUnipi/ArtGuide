@@ -118,11 +118,12 @@ class DocumentsAdaptation():
         num_sentences = []
 
         for cluster in policy.results:
-            clusters.append(cluster)
             limited_cluster = policy.results[cluster][:self.config.max_cluster_size]
-            batch_sentences.append(''.join( [x[1] for x in limited_cluster] ))
-            num_sentences.append(len(limited_cluster))
-            print("Batch \"{}\" length: {} chars".format(cluster, len(batch_sentences[-1])))
+            if len(limited_cluster) > 0:
+                clusters.append(cluster)
+                batch_sentences.append(''.join( [x[1] for x in limited_cluster] ))
+                num_sentences.append(len(limited_cluster))
+            print("Batch \"{}\" length: {} chars".format(cluster, len(limited_cluster)))
 
         if self.verbose:
             print("Sentences per cluster: {}".format(list(zip(clusters, num_sentences))))
@@ -145,4 +146,3 @@ class DocumentsAdaptation():
             tailored_result += summary+'\n'
 
         return tailored_result
-
