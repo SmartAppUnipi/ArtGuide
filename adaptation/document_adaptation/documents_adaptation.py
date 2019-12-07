@@ -72,7 +72,7 @@ class DocumentsAdaptation():
     # Out: articolo filtrato im base alle preferenze dell'utente 
     # Formato output: string
     # Proto: il primo articolo per ora puo' andare bene
-    def get_tailored_text(self, results, user, config):
+    def get_tailored_text(self, results, user):
         if len(results)<=0:
             return "Content not found"
 
@@ -97,7 +97,7 @@ class DocumentsAdaptation():
         # Remove document without content
         documents = list(filter(lambda x: bool(x.plain_text), documents))
         # sort on the IR value
-        sorted(documents, key=lambda x: x.score, reverse=True)
+        #sorted(documents, key=lambda x: x.score, reverse=True)
 
         if len(documents) <= 0:
             return "Content not found"
@@ -109,7 +109,7 @@ class DocumentsAdaptation():
         # Parallel function for evaluate the document's affinity 
         def create_list_salient_sentences(document):
             document.user_readability_score() # QUESTION?
-            salient_sentences = from_document_to_salient(document, embedder, config)
+            salient_sentences = from_document_to_salient(document, embedder, self.config, user.tastes)
             return salient_sentences
 
         with PoolExecutor(max_workers=self.max_workers) as executor:
@@ -118,7 +118,7 @@ class DocumentsAdaptation():
         salient_sentences = [x for s in salient_sentences for x in s]
 
         # policy on sentences
-        policy = Policy(salient_sentences, user)
+        policy = Policy(salient_sentences, user, self.config.max_cluster_size)
         policy.auto()
         #policy.print_results(5)
 
@@ -128,10 +128,10 @@ class DocumentsAdaptation():
         num_sentences = []
 
         for cluster in policy.results:
-            limited_cluster = policy.results[cluster][:self.config.max_cluster_size]
+            limited_cluster = policy.results[cluster]
             if len(limited_cluster) > 0:
                 clusters.append(cluster)
-                batch_sentences.append(''.join( [x[1] for x in limited_cluster] ))
+                batch_sentences.append(''.join( [x.sentence for x in limited_cluster] ))
                 num_sentences.append(len(limited_cluster))
             print("Batch \"{}\" length: {} chars".format(cluster, len(limited_cluster)))
 

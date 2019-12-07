@@ -14,7 +14,7 @@ Migliorie: così creo cluster basandomi su tutte le keyword, ma noi vogliamo sol
 
 
 class Policy:
-    def __init__(self, sentences, user):
+    def __init__(self, sentences, user, max_cluster_size):
         self.sentences = sentences
         self.user = user
         self.user_taste_embedded = user.tastes_embedded
@@ -22,6 +22,7 @@ class Policy:
         self.tastes = list(self.user_taste_embedded.keys())
         self.clusters = {}
         self.results = {}
+        self.max_cluster_size = min(int(len(sentences)/len(user.tastes)), max_cluster_size)
 
     def eliminate_duplicates(self):
         for a in self.sentences:
@@ -56,17 +57,19 @@ class Policy:
         tastes = {t:[] for t in self.user.tastes}
         for s in self.sentences:
             for k in s.keyword:
-                tastes[k] += s
+                tastes[k].append(s)
         for t in tastes:
-            t.sort(key = lambda x: x.score ,reverse = True)
-        tastes.sort( key =lambda x: len(x) )
+            tastes[t].sort(key = lambda x: x.score[t] ,reverse = True)
+        sorted(tastes,  key =lambda x: len(x) )
         result = {t:[] for t in self.user.tastes}
         for t in tastes:
             for s in tastes[t]:
                 if not s.assigned:
                     result[t].append(s)
                     s.assigned = True
-        return result
+                if len(result[t]) == self.max_cluster_size:
+                    break
+        self.results = result
 
 
 
@@ -120,12 +123,14 @@ class Policy:
         return cosine_similarity(x, y)
 
     def auto(self):
-        self.eliminate_duplicates()  # Toglie i duplicati dall'input della classe
+        self.eliminate_duplicates()
         self.heuristic_filter()  # Toglie le frasi insensate dall'input della classe
-        self.create_clusters()  # In self.clusters crea un dizionario keyword - frasi
-        self.sum_user_tastes_embedded()
-        self.apply_policy()  # Usa il criterio readibility - similiarity per ordinare le frasi
-
+        #self.create_clusters()  # In self.clusters crea un dizionario keyword - frasi
+        #self.sum_user_tastes_embedded()
+        #self.apply_policy()  # Usa il criterio readibility - similiarity per ordinare le frasi
+        self.max_cluster_size = min(int(len(self.sentences)/len(self.user.tastes)), self.max_cluster_size)
+        self.create_cluster_greedy()
+        
     def sum_user_tastes_embedded(self):
         keys = list(self.user_taste_embedded.keys())
         aux = self.user_taste_embedded[keys[0]]

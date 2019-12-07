@@ -12,37 +12,41 @@ def rake(sentence, stopwords):
     raked_sentences = r.get_ranked_phrases()
     return raked_sentences
 
-def from_document_to_salient(document, embedder, config, ratio=0.3, word_count=None, split=True):
+def from_document_to_salient(document, embedder, config, tastes, ratio=0.3, word_count=None, split=True):
     #https://radimrehurek.com/gensim/summarization/summariser.html
     try:
         summarized_sentences = summarize(document.normalized_text, ratio=ratio, word_count=word_count, split=split)
     except:
         summarized_sentences = []
         print("Error, we were not able to find the salient sentence from the document!")
-    #delete double occourence in each sentence
-    for s in summarized_sentences:
-        words = s.split()
+    
+    #delete double occourence of the same word in each sentence
+    for i in range(len(summarized_sentences)):
+        words = summarized_sentences[i].split()
         prev = ""
-        s = ""
+        summarized_sentences[i] = ""
         for w in words:
             if w != prev:
-                s.join(w + " ")
+                summarized_sentences[i] += (w + " ")
             prev = w
+    # eliminate duplicates
+    summarized_sentences = list(dict.fromkeys(summarized_sentences))
     summarized_sentences = [s for s in summarized_sentences if len(s) > 20]#delete too short sentences
-    return [SalientSentence(s, document.keywords, document.readability_score, document.score, embedder, config) for s in summarized_sentences]
+    return [SalientSentence(s, document.keywords, tastes, document.readability_score, document.score, embedder, config) for s in summarized_sentences]
 
 class SalientSentence():
-    def __init__(self, sentence, keyword, readibility, IR_score,  bpemb, config, stopwords = []):
+    def __init__(self, sentence, keyword, tastes, readibility, IR_score,  bpemb, config, stopwords = []):
         self.sentence = sentence
         self.readibility = readibility
         self.sentence_rake_embed = self.sentence_rake_embed(stopwords, bpemb)
+        if not keyword:
+            keyword = tastes
         if keyword:
             self.keyword = {k: bpemb.embed(k) for k in keyword}
             self.distance_keyword = {k: np.mean(distance.cdist(self.keyword[k], self.sentence_embeddings, 'cosine')) for k in keyword}
             # the final score of the sentence associated to each keyword    
             partial_score = config.expertise_weight*readibility + config.IR_score_weight*IR_score    
             self.score = {k: config.affinity_weight*self.distance_keyword[k]+partial_score for k in keyword}
-
         self.IR_score = IR_score
         # this variable willl be usefull for the policyù
         self.assigned = False

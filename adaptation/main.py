@@ -68,7 +68,7 @@ def tailored_text():
        
     # Body
     user = User(req["userProfile"])
-    results = document_adaptation.get_tailored_text(req['results'], user, config)
+    results = document_adaptation.get_tailored_text(req['results'], user)
     if not results:
         results = "Sorry,\nit is not art."
     req['tailoredText'] = results
