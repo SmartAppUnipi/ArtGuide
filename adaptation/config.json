@@ -6,7 +6,7 @@
     "transition_data_path":"data",
     "max_cluster_size": 80,
     "max_sentences": 4,
-    "debug": false,
+    "debug": true,
     "expertize_levels": 4,
     "expertise_weight": 10, 
     "IR_score_weight": 5, 

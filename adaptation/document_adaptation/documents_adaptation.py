@@ -93,7 +93,7 @@ class DocumentsAdaptation():
         read = Readability()
         nlp.add_pipe(read, last=True)
 
-        documents = list(map(lambda x: DocumentModel(x, user, nlp, stop_words=stop_words), results))
+        documents = [DocumentModel(x, user, nlp, stop_words=stop_words, uid=index) for index, x in enumerate(results)]
         # Remove document without content
         documents = list(filter(lambda x: bool(x.plain_text), documents))
         # sort on the IR value
@@ -103,8 +103,8 @@ class DocumentsAdaptation():
             return "Content not found"
 
         if self.verbose:
-            print("Total words in documents: {}".format(sum([len(doc.plain_text) for doc in documents])))
-            print(["{} in document".format(len(doc.plain_text)) for doc in documents])
+            print("Total chars in documents: {}".format(sum([len(doc.plain_text) for doc in documents])))
+            print(["{} chars in document".format(len(doc.plain_text)) for doc in documents])
 
         # Parallel function for evaluate the document's affinity 
         def create_list_salient_sentences(document):
@@ -120,39 +120,27 @@ class DocumentsAdaptation():
         # policy on sentences
         policy = Policy(salient_sentences, user, self.config.max_cluster_size)
         policy.auto()
-        #policy.print_results(5)
 
         # create batch of sentences for summarization model 
-        batch_sentences = []
-        clusters = []
-        num_sentences = []
-
-        for cluster in policy.results:
-            limited_cluster = policy.results[cluster]
-            if len(limited_cluster) > 0:
-                clusters.append(cluster)
-                batch_sentences.append(''.join( [x.sentence for x in limited_cluster] ))
-                num_sentences.append(len(limited_cluster))
-            print("Batch \"{}\" length: {} chars".format(cluster, len(limited_cluster)))
-
-        if self.verbose:
-            print("Sentences per cluster: {}".format(list(zip(clusters, num_sentences))))
-            print("###!-- Starting summarization")
+        batch_sentences, num_sentences, keywords = self.model_summarizer[user.language].to_batch(policy.results, aggregate_from_same_doc=True)
         summaries = self.model_summarizer[user.language].inference(batch_sentences, num_sentences)
 
         if self.verbose:
             print("####----- Tailored result -----####")
 
         tailored_result = ''
-        for index, res in enumerate(zip(clusters, summaries)):
-            cluster, summary = res
-
-            if self.verbose:
-                print("{}".format(cluster.upper()))
-                print("{}".format(summary))
+        for index, res in enumerate(zip(keywords, summaries)):
+            keyword, summary = res
+            paragraph = ''
 
             if (index>0):
-                tailored_result += self.transition[user.language].extract_transition(user.language, topic=cluster)+'\n'
-            tailored_result += summary+'\n'
+                paragraph += self.transition[user.language].extract_transition(user.language, topic=keyword)+'\n'
+            paragraph += summary+'\n'
+
+            if self.verbose:
+                print("[{}]".format(keyword.upper()))
+                print("{}".format(paragraph))
+                
+            tailored_result += paragraph
 
         return tailored_result

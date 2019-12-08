@@ -32,10 +32,11 @@ def from_document_to_salient(document, embedder, config, tastes, ratio=0.3, word
     # eliminate duplicates
     summarized_sentences = list(dict.fromkeys(summarized_sentences))
     summarized_sentences = [s for s in summarized_sentences if len(s) > 20]#delete too short sentences
-    return [SalientSentence(s, document.keywords, tastes, document.readability_score, document.score, embedder, config) for s in summarized_sentences]
+    return [SalientSentence(s, document.keywords, tastes, document.readability_score, document.score, embedder, 
+                config, document_uid=document.uid, position_in_document=index) for index, s in enumerate(summarized_sentences)]
 
 class SalientSentence():
-    def __init__(self, sentence, keyword, tastes, readibility, IR_score,  bpemb, config, stopwords = []):
+    def __init__(self, sentence, keyword, tastes, readibility, IR_score,  bpemb, config, stopwords = [], document_uid=None, position_in_document=None):
         self.sentence = sentence
         self.readibility = readibility
         self.sentence_rake_embed = self.sentence_rake_embed(stopwords, bpemb)
@@ -50,6 +51,8 @@ class SalientSentence():
         self.IR_score = IR_score
         # this variable willl be usefull for the policyù
         self.assigned = False
+        self.document_uid = document_uid
+        self.position_in_document = position_in_document
         
     def sentence_rake_embed(self, stopwords, bpemb):
         # rake
