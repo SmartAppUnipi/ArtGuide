@@ -1,3 +1,4 @@
-
+python-magic-bin==0.4.14
 tensorflow==2.0.0
+pandas==0.25.3
 sklearn
