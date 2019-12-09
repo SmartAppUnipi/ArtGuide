@@ -32,7 +32,7 @@ const GoogleSearchConfig = {
             /** The Google Custom Search Engine Id for kids (English version) */
             en: process.env.GoogleCustomSearchEngineId_EN_KIDS,
             /** The Google Custom Search Engine Id for kids (Italian version) */
-            it: process.env.GoogleCustomSearchEngineId_IT_KIDS,
+            it: process.env.GoogleCustomSearchEngineId_IT_KIDS
         }
     }
 };

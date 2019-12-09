@@ -2,8 +2,8 @@
 import { CacheService } from "./cache.service";
 import fetch from "node-fetch";
 import { GoogleSearchConfig } from "../environment";
-import { GoogleSearchResult, UserProfile, ExpertizeLevelType } from "../models";
 import logger from "../logger";
+import { ExpertizeLevelType, GoogleSearchResult, UserProfile } from "../models";
 
 /**
  * Performs Google Search using the api keys defined in the environment (.env) file.
@@ -57,12 +57,14 @@ export class GoogleSearch {
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    private async _query(googleSearchUrl: string, searchTerms: string, userProfile: UserProfile): Promise<GoogleSearchResult> {
+    private async _query(googleSearchUrl: string, searchTerms: string,
+                         userProfile: UserProfile): Promise<GoogleSearchResult> {
         if (!searchTerms)
             return Promise.resolve(null);
 
         const url = googleSearchUrl + searchTerms;
-        const key = `[${ExpertizeLevelType[userProfile.expertiseLevel]}:${userProfile.language}]-${searchTerms.trim()}`.trim();
+        const key = `[${ExpertizeLevelType[userProfile.expertiseLevel]}:${userProfile.language}]-${searchTerms.trim()}`
+            .trim();
 
         let queryResult = this.cacheService.get<GoogleSearchResult>(key);
 
@@ -81,7 +83,8 @@ export class GoogleSearch {
         }
 
         if (queryResult.error) {
-            logger.warn("[google-search.ts] Google search returned error", { query: searchTerms, exception: queryResult.error });
+            logger.warn("[google-search.ts] Google search returned error",
+                        { query: searchTerms, exception: queryResult.error });
             return null;
         }
 

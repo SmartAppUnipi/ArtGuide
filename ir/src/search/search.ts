@@ -105,6 +105,7 @@ export class Search {
      * Build a result object by querying Google Search the provided query.
      *
      * @param queries The buildQuery result.
+     * @param userProfile The user profile containing language and expertise level.
      * @returns An array of page result to be sent to the Adaptation module.
      */
     private buildResult(queries: Array<Query>, userProfile: UserProfile): Promise<Array<PageResult>> {
@@ -145,7 +146,7 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                            { query: q, exception: ex });
+                                     { query: q, exception: ex });
                     });
             })
         ).then(() => results);
