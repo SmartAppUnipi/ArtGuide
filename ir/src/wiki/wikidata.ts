@@ -69,7 +69,7 @@ export class WikiData {
     public tryGetKnownInstance(metaEntities: Array<MetaEntity>, language: string): Promise<MetaEntity> {
         // foreach meta entity
         for (const metaEntity of metaEntities) {
-        // if the meta entity has one of the knownInstanceProperties, then is a known entity
+            // if the meta entity has one of the knownInstanceProperties, then is a known entity
             for (const property of knownInstanceProperties) {
                 if (metaEntity[property] && metaEntity[property].length) {
                     // fill its knownInstanceProperties with the Wikipedia names of the properties
@@ -118,18 +118,18 @@ export class WikiData {
      * Removes from a list the entities that are not related to arts.
      * It uses wikidata to retrieve the tree of InstanceOf and SubClassOf of the entity and look for a match.
      *
-     * @param entities The list of entities to be filtered out.
+     * @param metaEntities The list of entities to be filtered out.
      * @returns The filtered entities array.
      */
-    public filterNotArtRelatedResult(entities: Array<MetaEntity>): Promise<Array<MetaEntity>> {
+    public filterNotArtRelatedResult(metaEntities: Array<MetaEntity>): Promise<Array<MetaEntity>> {
         // filter the entities
-        return Promise.all(entities.map(metaEntity => {
+        return Promise.all(metaEntities.map(metaEntity => {
             // if the entity description is not an art instance discard the entity directly
             if (wikidataArtEntities.exclude.includes(metaEntity.description.toLocaleLowerCase()))
-                return null;
+                return Promise.resolve(null);
             // if the entity description is an art instance keep the entity
             if (wikidataArtEntities.include.includes(metaEntity.description.toLocaleLowerCase()))
-                return metaEntity;
+                return Promise.resolve(metaEntity);
             // otherwise get the root path of the entity, ie. the list of all its instance of and subclass properties
             return this.getEntityRootPath(metaEntity.wikidataId)
                 .then(roots => {
@@ -217,8 +217,8 @@ export class WikiData {
          */
         const sparql = `
                 SELECT ?entity ?entityLabel WHERE {
-                    wd:${wikidataId} wdt:P31*/wdt:P279* ?val.
-                    ?val wdt:P31*/wdt:P279* ?entity
+                    wd:${wikidataId} wdt:P31*/wdt:P279*/wdt:P106* ?val.
+                    ?val wdt:P31*/wdt:P279*/wdt:P106* ?entity
                     SERVICE wikibase:label {
                         bd:serviceParam wikibase:language "en" .
                     }
@@ -245,7 +245,7 @@ export class WikiData {
                 return labels;
 
             })
-            .catch(ex => {
+            .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikidata.ts] getEntityRootPath(): Error: ", ex);
                 return [];
             });

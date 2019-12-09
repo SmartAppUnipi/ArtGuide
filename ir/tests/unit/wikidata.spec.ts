@@ -161,25 +161,33 @@ describe("filterNotArtRelatedResult", () => {
         {
             description: "crowd",
             entityId: "/m/03qtwd"
+        },
+        {
+            description: "home",
+            entityId: "/m/01l0mw"
+        },
+        {
+            description: "human",
+            entityId: "/m/0dgw9r"
         }
     ] as Array<MetaEntity>
 
     it("Should remove entities not related to arts", async () => {
-        return Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")))
-            .then(metaEntities => {
-                wikidata.filterNotArtRelatedResult(metaEntities)
-                    .then(filtered => {
-                        expect(filtered).not.toContain(metaEntities[0]) // bicycle
-                        expect(filtered).toContain(metaEntities[1]) // Leaning Tower of Pisa
-                        expect(filtered).toContain(metaEntities[2]) // Painting
-                        expect(filtered).toContain(metaEntities[3]) // Renzo Piano
-                        expect(filtered).toContain(metaEntities[4]) // Santa Maria della Spina
-                        expect(filtered).not.toContain(metaEntities[5]) // house
-                        expect(filtered).toContain(metaEntities[6]) // Mona Lisa
-                        expect(filtered).not.toContain(metaEntities[7]) // crowd
-                        expect(filtered).toHaveLength(5)
-                    })
-            })
+        const metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")))
+        const filtered = await wikidata.filterNotArtRelatedResult(metaEntities)
+
+        expect(filtered).not.toContain(metaEntities[0]) // bicycle
+        expect(filtered).toContain(metaEntities[1]) // Leaning Tower of Pisa
+        expect(filtered).toContain(metaEntities[2]) // Painting
+        expect(filtered).toContain(metaEntities[3]) // Renzo Piano
+        expect(filtered).toContain(metaEntities[4]) // Santa Maria della Spina
+        expect(filtered).not.toContain(metaEntities[5]) // house
+        expect(filtered).toContain(metaEntities[6]) // Mona Lisa
+        expect(filtered).not.toContain(metaEntities[7]) // crowd: not wanted in description
+        expect(filtered).not.toContain(metaEntities[8]) // home: not wanted in instanceof
+        expect(filtered).not.toContain(metaEntities[9]) // person: not unwanted neither wanted
+        expect(filtered).toHaveLength(5)
+
     })
 })
 
