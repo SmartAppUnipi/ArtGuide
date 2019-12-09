@@ -48,6 +48,11 @@ describe("Google search", () => {
 
     it("Should use the provided language", async () => {
 
+        if (process.env.CI) {
+            console.warn("Skipping since .env is missing.")
+            return;
+        }
+
         const googleSearch = new GoogleSearch(); // use the real cache to avoid requests to Google
 
         const mock = jest.fn();
