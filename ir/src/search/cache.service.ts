@@ -46,13 +46,16 @@ export class CacheService {
      */
     public set<T>(key: string, item: T): boolean {
 
-        const newCache = Object.assign({}, this.cache);
+        // create a new cache and insert the item
+        const newCache = { ...this.cache };
         newCache[key] = item;
 
         try {
+            // if the write doesn't fail update the cache, else keep it as before
             fs.writeFileSync(this.cachePath, JSON.stringify(newCache));
-            this.cache[key] = item;
+            this.cache = newCache;
         } catch (ex) {
+            /* istanbul ignore next: should have failed in the constructor */
             return false;
         }
 
