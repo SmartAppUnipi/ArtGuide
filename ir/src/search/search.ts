@@ -1,15 +1,13 @@
-import { AdaptationEndpoint } from "../environment";
+import { Adaptation } from "../adaptation";
 import { GoogleSearch } from "./google-search";
 import logger from "../logger";
 import { Parser } from "../parser";
-import { post } from "../utils";
 import { flowConfig, knownInstanceProperties, scoreWeight } from "../../config.json";
 import {
     GoogleSearchResult,
     MetaEntity,
     PageResult,
     Query,
-    QueryExpansionRequest,
     QueryExpansionResponse,
     UserProfile
 } from "../models";
@@ -24,6 +22,9 @@ export class Search {
 
     /** Parser */
     private parser = new Parser();
+
+    /** Adaptation interface */
+    private adaptation = new Adaptation();
 
     /**
      * Perform a web search.
@@ -75,10 +76,6 @@ export class Search {
         queries.forEach(query => {
             for (const key in queryExpansion.keywordExpansion)
                 expandedQueries.push(Object.assign({}, query, { keywords: queryExpansion.keywordExpansion[key] }));
-            /*
-             * perform a basic only search without query expansion
-             * FIXME: check line 104, the last of this.buildQueries()
-             */
             expandedQueries.push(query);
         });
         logger.silly("[search.ts] Expanded queries", { queryExpansion });
@@ -98,12 +95,9 @@ export class Search {
         // build the basic query using the Classification result
         const basicQueries = this.buildBasicQueries(metaEntities, userProfile.language);
         // get the query expansion from the Adaptation module
-        return post<QueryExpansionResponse>(
-            AdaptationEndpoint.keywords, { userProfile } as QueryExpansionRequest)
+        return this.adaptation.getKeywordExpansion(userProfile)
             // extend the basic query with the query expansion
-            .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion))
-            // return both the basic query and the extended queries in one array
-            .then(extendedQuery => basicQueries.concat(extendedQuery));
+            .then(queryExpansion => this.extendQuery(basicQueries, queryExpansion));
     }
 
 
@@ -190,10 +184,7 @@ export class Search {
             }
         }
 
-        return post<QueryExpansionResponse>(
-            AdaptationEndpoint.keywords, {
-                userProfile: userProfile
-            } as QueryExpansionRequest)
+        return this.adaptation.getKeywordExpansion(userProfile)
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(queries, queryExpansion))
             .then(queries => {
