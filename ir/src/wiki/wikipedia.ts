@@ -1,7 +1,6 @@
 import logger from "../logger";
 import { Page } from "wikijs";
 import wiki from "wikijs";
-import { WikiData } from ".";
 import { knownInstanceProperties, scoreWeight } from "../../config.json";
 import { MetaEntity, PageResult, PageSection, Query } from "../models";
 
@@ -15,9 +14,6 @@ interface ComposedSection {
  * Performs Wikipedia Search through the APIs.
  */
 export class Wikipedia {
-
-    /** The Wikidata module */
-    private wikidata = new WikiData();
 
     /**
      * Perform a Wikipedia search give a classification result (not a known instance).
