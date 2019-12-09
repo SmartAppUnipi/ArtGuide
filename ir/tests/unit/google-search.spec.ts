@@ -6,6 +6,7 @@ process.env.NODE_ENV = "production"
 import { GoogleSearch } from '../../src/search/google-search';
 import nock from "nock";
 import fs from "fs";
+import { userProfiles } from "../../tests";
 
 describe("Google search", () => {
 
@@ -19,8 +20,7 @@ describe("Google search", () => {
 
     it("Should not error if empty query is provided", () => {
         const googleSearch = new GoogleSearch(cacheName);
-        expect(googleSearch.queryCustom(null, "en")).resolves.toBeNull();
-        expect(googleSearch.queryRestricted(null, "en")).resolves.toBeNull();
+        expect(googleSearch.query(null, userProfiles.en.expert)).resolves.toBeNull();
     });
 
     it("Should return null if google throws", async () => {
@@ -31,7 +31,7 @@ describe("Google search", () => {
             .reply(200, { error: { message: "Mock error message" } })
 
         const googleSearch = new GoogleSearch(cacheName);
-        expect(googleSearch.queryCustom("Test error handling", "en")).resolves.toBeNull();
+        expect(googleSearch.query("Test error handling", userProfiles.en.expert)).resolves.toBeNull();
     });
 
     it("Should return null if google throws 400-500", async () => {
@@ -42,14 +42,14 @@ describe("Google search", () => {
             .reply(400, { error: { message: "Mock error message" } })
 
         const googleSearch = new GoogleSearch(cacheName);
-        expect(googleSearch.queryCustom("Test error handling", "en")).resolves.toBeNull();
+        expect(googleSearch.query("Test error handling", userProfiles.en.expert)).resolves.toBeNull();
     });
 
     it("Should use the provided language", async () => {
 
         const googleSearch = new GoogleSearch(); // use the real cache to avoid requests to Google
-        const resultsEn = await googleSearch.queryCustom("Leaning Tower of Pisa", "en");
-        const resultsIt = await googleSearch.queryCustom("Leaning Tower of Pisa", "it");
+        const resultsEn = await googleSearch.query("Leaning Tower of Pisa", userProfiles.en.expert);
+        const resultsIt = await googleSearch.query("Torre di Pisa", userProfiles.it.expert);
 
         expect(resultsEn.items[0].link).toContain("en.wikipedia.org");
         expect(resultsIt.items[0].link).toContain("it.wikipedia.org");

@@ -24,7 +24,14 @@ const GoogleSearchConfig = {
         /** The Google Custom Search Engine Id (Italian version) */
         it: process.env.GoogleCustomSearchEngineId_IT_00,
         /** The Google Custom Search Engine Id (English version) */
-        en: process.env.GoogleCustomSearchEngineId_EN_00
+        en: process.env.GoogleCustomSearchEngineId_EN_00,
+        /** The Google Custom Search Engines for kids */
+        kids: {
+            /** The Google Custom Search Engine Id for kids (English version) */
+            en: process.env.GoogleCustomSearchEngineId_EN_KIDS,
+            /** The Google Custom Search Engine Id for kids (Italian version) */
+            it: process.env.GoogleCustomSearchEngineId_IT_KIDS,
+        }
     }
 };
 

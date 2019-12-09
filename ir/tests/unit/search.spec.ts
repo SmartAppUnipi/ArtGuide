@@ -2,6 +2,8 @@
 
 import { Search } from "../../src/search"
 import { Query, GoogleSearchResult } from "../../src/models"
+import { userProfiles } from ".."
+import { GoogleSearch } from "../../src/search/google-search"
 
 
 const search = new Search()
@@ -68,7 +70,7 @@ describe("Test build query", () => {
     })
 
     it("Should return valid result object if Google returns valid items", async () => {
-        const result = await search['buildResult'](extendedQueries);
+        const result = await search['buildResult'](extendedQueries, userProfiles.en.expert);
         // must return an array of well formed page results
         expect(result).toBeTruthy();
         result.forEach(pageResult => {
@@ -95,14 +97,24 @@ describe("Test build query", () => {
 
         return Promise.all(cases.map(async mock => {
             // replace the original function with a mock that return the result to test
-            search['googleSearch'].queryCustom = mock;
+            search['googleSearch'].query = mock;
 
             // invoke the mock under the hoods
-            const result = await search['buildResult'](extendedQueries);
+            const result = await search['buildResult'](extendedQueries, userProfiles.en.expert);
             expect(result).toEqual([]);
             expect(mock).toHaveBeenCalled();
         }));
 
     });
 
-})
+});
+
+describe("Google safe search for kids", () => {
+    it("Should return kids content from kiddle.co", async () => {
+        const _google = new GoogleSearch();
+        const kidResults = await _google.query("pisa tower", userProfiles.en.kid);
+        for (let result of kidResults.items) {
+            expect(result.link).toContain("kids.kiddle.co");
+        }
+    });
+});

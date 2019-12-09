@@ -35,7 +35,7 @@ export class Search {
     public search(metaEntities: Array<MetaEntity>, userProfile: UserProfile): Promise<Array<PageResult>> {
         return this
             .buildQueries(metaEntities, userProfile)
-            .then(queries => this.buildResult(queries));
+            .then(queries => this.buildResult(queries, userProfile));
     }
 
     /**
@@ -113,7 +113,7 @@ export class Search {
      * @param queries The buildQuery result.
      * @returns An array of page result to be sent to the Adaptation module.
      */
-    private buildResult(queries: Array<Query>): Promise<Array<PageResult>> {
+    private buildResult(queries: Array<Query>, userProfile: UserProfile): Promise<Array<PageResult>> {
 
         const results: Array<PageResult> = [];
 
@@ -122,7 +122,7 @@ export class Search {
             queries.map(async q => {
                 // query Google Search and get the list of results
                 return this.googleSearch
-                    .queryCustom(q.searchTerms + " " + q.keywords.join(" "), q.language)
+                    .query(q.searchTerms + " " + q.keywords.join(" "), userProfile)
                     .then(googleSearchResult => {
 
                         if (!googleSearchResult || !googleSearchResult.items) {
@@ -151,7 +151,7 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                                     { query: q, exception: ex });
+                            { query: q, exception: ex });
                     });
             })
         ).then(() => results);
@@ -200,7 +200,7 @@ export class Search {
                 return Promise.all(
                     queries.map(query => {
                         return this.googleSearch
-                            .queryCustom(query.searchTerms, query.language)
+                            .query(query.searchTerms, userProfile)
                             .then(googleResult => this.toPageResults(googleResult, query));
                     })
                 ).then(allResults => {

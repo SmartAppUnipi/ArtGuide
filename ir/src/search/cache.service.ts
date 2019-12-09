@@ -52,7 +52,7 @@ export class CacheService {
 
         try {
             // if the write doesn't fail update the cache, else keep it as before
-            fs.writeFileSync(this.cachePath, JSON.stringify(newCache));
+            fs.writeFileSync(this.cachePath, JSON.stringify(newCache, null, 2));
             this.cache = newCache;
         } catch (ex) {
             /* istanbul ignore next: should have failed in the constructor */

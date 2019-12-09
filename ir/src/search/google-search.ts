@@ -2,7 +2,7 @@
 import { CacheService } from "./cache.service";
 import fetch from "node-fetch";
 import { GoogleSearchConfig } from "../environment";
-import { GoogleSearchResult } from "../models";
+import { GoogleSearchResult, UserProfile, ExpertizeLevelType } from "../models";
 import logger from "../logger";
 
 /**
@@ -18,13 +18,17 @@ export class GoogleSearch {
             // eslint-disable-next-line
             restricted: `https://www.googleapis.com/customsearch/v1/siterestrict?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.it}&q=`,
             // eslint-disable-next-line
-            custom: `https://www.googleapis.com/customsearch/v1?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.it}&q=`
+            custom: `https://www.googleapis.com/customsearch/v1?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.it}&q=`,
+            // eslint-disable-next-line
+            kids: `https://www.googleapis.com/customsearch/v1/siterestrict?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.kids.it}&q=`,
         },
         en: {
             // eslint-disable-next-line
             restricted: `https://www.googleapis.com/customsearch/v1/siterestrict?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.en}&q=`,
             // eslint-disable-next-line
-            custom: `https://www.googleapis.com/customsearch/v1?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.en}&q=`
+            custom: `https://www.googleapis.com/customsearch/v1?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.en}&q=`,
+            // eslint-disable-next-line
+            kids: `https://www.googleapis.com/customsearch/v1/siterestrict?key=${GoogleSearchConfig.apiKey}&cx=${GoogleSearchConfig.searchEngineId.kids.en}&q=`,
         }
     };
 
@@ -48,19 +52,19 @@ export class GoogleSearch {
      * This api searches the whole web but has a limit of 1k/day. After 5€/1k queries.
      *
      * @param googleSearchUrl Url of the Google Search API endpoint to be called.
-     * @param query The query to forward to Google.
-     * @param language The language to use as key in the cache.
+     * @param searchTerms The query to forward to Google.
+     * @param userProfile The language to use as key in the cache.
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    private async query(googleSearchUrl: string, query: string, language: string): Promise<GoogleSearchResult> {
-        if (!query)
+    private async _query(googleSearchUrl: string, searchTerms: string, userProfile: UserProfile): Promise<GoogleSearchResult> {
+        if (!searchTerms)
             return Promise.resolve(null);
 
-        const url = googleSearchUrl + query;
-        const key = `[${language}]-` + url.split("&q=")[1];
+        const url = googleSearchUrl + searchTerms;
+        const key = `[${ExpertizeLevelType[userProfile.expertiseLevel]}:${userProfile.language}]-${searchTerms.trim()}`.trim();
 
-        let queryResult = this.cacheService.get(key);
+        let queryResult = this.cacheService.get<GoogleSearchResult>(key);
 
         if (queryResult === null) {
             // cache miss
@@ -77,7 +81,7 @@ export class GoogleSearch {
         }
 
         if (queryResult.error) {
-            logger.warn("[google-search.ts] Google search returned error", { query, exception: queryResult.error });
+            logger.warn("[google-search.ts] Google search returned error", { query: searchTerms, exception: queryResult.error });
             return null;
         }
 
@@ -85,31 +89,30 @@ export class GoogleSearch {
     }
 
     /**
-     * Make a call to the CUSTOM Google Search API.
-     * This api searches the whole web but has a limit of 1k/day. After 5€/1k queries.
-     *
-     * @param query The query to forward to Google.
-     * @param language The language to use in the results.
-     * @returns {Promise<GoogleSearchResult>} A Google Search result.
-     * @throws {Error} if the error field is set on the API response.
-     */
-    public queryCustom(query: string, language: string): Promise<GoogleSearchResult> {
-        logger.debug("[google-search.ts] Making query to custom Google", { query: query, language: language });
-        return this.query(this.googleSearchUrls[language as "it" | "en"].custom, query, language);
-    }
-
-    /**
      * Make a call to the RESTRICTED Google Search API.
      * The restricted api has no daily limits, but limited domains defined into the search engine context
      *
-     * @param query The query to forward to Google.
-     * @param language The language to use in the results.
+     * @param searchTerms The query to forward to Google.
+     * @param userProfile The user profile with the language and expertize level.
      * @returns {Promise<GoogleSearchResult>} A Google Search result.
      * @throws {Error} if the error field is set on the API response.
      */
-    public queryRestricted(query: string, language: string): Promise<GoogleSearchResult> {
-        logger.debug("[google-search.ts] Making query to restricted Google", { query: query, language: language });
-        return this.query(this.googleSearchUrls[language as "it" | "en"].restricted, query, language);
+    public query(searchTerms: string, userProfile: UserProfile): Promise<GoogleSearchResult> {
+        logger.debug("[google-search.ts] Making query to Google", { query: searchTerms, userProfile });
+
+        if (userProfile.expertiseLevel == ExpertizeLevelType.Child) {
+            return this._query(
+                this.googleSearchUrls[userProfile.language].kids,
+                searchTerms,
+                userProfile
+            );
+        } else {
+            return this._query(
+                this.googleSearchUrls[userProfile.language].custom,
+                searchTerms,
+                userProfile
+            );
+        }
     }
 
 }
