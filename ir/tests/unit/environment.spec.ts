@@ -1,6 +1,7 @@
 /// <reference types="@types/jest"/>
 /// <reference types="@types/node"/>
 
+import * as routesJson from "../../../routes.json";
 
 // Mock fs to hide the .env file
 jest.mock('fs')
@@ -8,24 +9,29 @@ jest.mock('fs')
 delete process.env.GoogleCustomSearchAPIKey_00
 delete process.env.GoogleCustomSearchEngineId_IT_00
 delete process.env.GoogleCustomSearchEngineId_EN_00
+delete process.env.GoogleCustomSearchEngineId_EN_KIDS
+delete process.env.GoogleCustomSearchEngineId_IT_KIDS
 delete process.env.LoggerLevel
 delete process.env.LogFile
 delete process.env.DisableLogsOnConsole
 // load environment
-const environment = require('../../src/environment');
+import * as environment from '../../src/environment';
 
 
-describe(".env", () => {
+describe("File .env", () => {
 
-    test("GoogleSearchConfig", () => {
+    it("Should initialize GoogleSearchConfig", () => {
         expect(environment.GoogleSearchConfig).toBeDefined()
         expect(environment.GoogleSearchConfig.apiKey).toBeUndefined()
         expect(environment.GoogleSearchConfig.searchEngineId).toBeDefined()
         expect(environment.GoogleSearchConfig.searchEngineId.en).toBeUndefined()
         expect(environment.GoogleSearchConfig.searchEngineId.it).toBeUndefined()
+        expect(environment.GoogleSearchConfig.searchEngineId.kids).toBeDefined()
+        expect(environment.GoogleSearchConfig.searchEngineId.kids.en).toBeUndefined()
+        expect(environment.GoogleSearchConfig.searchEngineId.kids.it).toBeUndefined()
     });
 
-    test("LoggerConfig", () => {
+    it("Should initialize LoggerConfig", () => {
         expect(environment.LoggerConfig).toBeDefined()
         expect(environment.LoggerConfig.disableLogsOnConsole).toBeUndefined()
         expect(environment.LoggerConfig.file).toBeUndefined()
@@ -38,17 +44,17 @@ describe(".env", () => {
 
 describe("routes.json", () => {
 
-    it("The port should be 3000", () => {
+    it("Should use port 3000", () => {
         expect(environment.ExpressPort).toBeDefined()
         expect(environment.ExpressPort).toEqual("3000")
     });
 
-    test("Port", () => {
+    it("Should match exported env variables", () => {
         expect(environment.AdaptationEndpoint).toBeDefined()
         expect(environment.AdaptationEndpoint.keywords).toBeDefined()
-        expect(environment.AdaptationEndpoint.keywords).toEqual("http://localhost:6397/keywords")
+        expect(environment.AdaptationEndpoint.keywords).toEqual(routesJson.keywords)
         expect(environment.AdaptationEndpoint.text).toBeDefined()
-        expect(environment.AdaptationEndpoint.text).toEqual("http://localhost:6397/tailored_text")
+        expect(environment.AdaptationEndpoint.text).toEqual(routesJson.text)
     });
 
 })

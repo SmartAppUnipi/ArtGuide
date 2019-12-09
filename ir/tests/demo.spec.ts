@@ -17,8 +17,8 @@ const mockAdaptationEndpoints = true;
 if (mockAdaptationEndpoints) {
     const adaptationKeywordUrl = new URL(AdaptationEndpoint.keywords);
     nock(adaptationKeywordUrl.origin)
+        .persist()
         .post(adaptationKeywordUrl.pathname)
-        .times(100)
         .reply((url, body: { userProfile: UserProfile }, callback) => {
 
             logger.error(`Adaptation endpoint: ${adaptationKeywordUrl.pathname}`, {
@@ -35,8 +35,8 @@ if (mockAdaptationEndpoints) {
 
     const adaptationTextUrl = new URL(AdaptationEndpoint.text);
     nock(adaptationTextUrl.origin)
+        .persist()
         .post(adaptationTextUrl.pathname)
-        .times(100)
         .reply((url, body: { userProfile: UserProfile, results: Array<PageResult> }, callback) => {
 
             logger.error(`Adaptation endpoint: ${adaptationTextUrl.pathname}`, {
