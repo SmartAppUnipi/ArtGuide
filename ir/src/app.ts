@@ -61,8 +61,11 @@ app.post("/", async (req, res) => {
         const classificationResult = req.body as ClassificationResult;
         if (!classificationResult ||
             !classificationResult.classification ||
-            !classificationResult.userProfile)
-            return res.status(400).json({ error: "Missing required body." });
+            !classificationResult.userProfile) {
+            return res
+                .status(400)
+                .json({ error: "Missing required body." });
+        }
 
 
         // Ensure the language is supported
@@ -128,8 +131,8 @@ app.post("/", async (req, res) => {
          */
 
         logger.debug("[app.ts] Original classification entities and labels.", {
-            classificationEntities: classificationResult.classification.entities,
-            classificationLabels: classificationResult.classification.labels
+            classificationEntities: classificationResult.classification?.entities ?? [],
+            classificationLabels: classificationResult.classification?.labels ?? []
         });
 
         // 1. Aggregate all entities
@@ -141,8 +144,11 @@ app.post("/", async (req, res) => {
         );
 
         // require at least one entity
-        if (!entities.length)
-            return res.status(400).json({ error: "No entities found." });
+        if (!entities.length) {
+            return res
+                .status(400)
+                .json({ error: "No entities found." });
+        }
 
 
         // 2. sort entities by score descending
@@ -158,10 +164,10 @@ app.post("/", async (req, res) => {
         logger.debug("[app.ts] Reduced classification entities and labels.", { entities });
 
         // 4. populate the metadata
-        let metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, language)));
+        const metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, language)));
 
         // 5. Try to get a known instance
-        const knownInstance = wikidata.tryGetKnownInstance(metaEntities);
+        const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, language);
 
         let results: Array<PageResult>;
         if (knownInstance) {
@@ -176,47 +182,42 @@ app.post("/", async (req, res) => {
                     .searchKnownInstance(knownInstance, language)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
-                            pageResult.score *= config.flowConfig.weight.wikipedia.known);
+                            pageResult.score *= config.scoreWeight.known.wikipedia);
                         return pageResults;
                     }),
                 search
-                    .searchByTerms({
-                        language: language,
-                        searchTerms: knownInstance.wikipediaPageTitle,
-                        keywords: [],
-                        score: knownInstance.score
-                    }, classificationResult.userProfile)
+                    .searchKnownInstance(knownInstance, classificationResult.userProfile)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
-                            pageResult.score *= config.flowConfig.weight.google.known);
+                            pageResult.score *= config.scoreWeight.known.google);
                         return pageResults;
                     })
             ]).then(allResults => [].concat(...allResults));
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
             // BRANCH B: not a known entity
-            logger.debug("[app.ts] Not a known instance.",
-                         { reducedClassificationEntities: classificationResult.classification.entities });
+            logger.debug("[app.ts] Not a known instance.", {
+                reducedClassificationEntities: classificationResult.classification.entities
+            });
 
             // 6. remove unwanted entity (not art)
-            await wikidata.filterNotArtRelatedResult(metaEntities)
-                .then(entities => metaEntities = entities);
+            const filteredEntities = await wikidata.filterNotArtRelatedResult(metaEntities);
 
             /*
              *  5a. search for the top score entities on Wikipedia
              *  5b. build a smart query on Google
              */
             results = await Promise.all([
-                wikipedia.search(metaEntities, language)
+                wikipedia.search(filteredEntities, language)
                     .then(results => {
                         results.forEach(result =>
-                            result.score *= config.flowConfig.weight.wikipedia.unknown);
+                            result.score *= config.scoreWeight.unknown.wikipedia);
                         return results;
                     }),
-                search.search(metaEntities, classificationResult.userProfile)
+                search.search(filteredEntities, classificationResult.userProfile)
                     .then(results => {
                         results.forEach(result =>
-                            result.score *= config.flowConfig.weight.google.unknown);
+                            result.score *= config.scoreWeight.unknown.google);
                         return results;
                     })
             ]).then(allResults => [].concat(...allResults));
@@ -248,7 +249,9 @@ app.post("/", async (req, res) => {
     } catch (ex) {
         logger.error("[app.ts]", ex);
         /* istanbul ignore next */
-        return res.status(500).json({ message: ex.message, stack: ex.stack });
+        return res
+            .status(500)
+            .json({ message: ex.message, stack: ex.stack });
     }
 
 });

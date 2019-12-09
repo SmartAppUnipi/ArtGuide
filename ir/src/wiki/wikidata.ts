@@ -1,24 +1,12 @@
-import * as wbk from "wikidata-sdk";
+import * as wd from "wikidata-sdk";
 import { Entity } from "src/models";
 import fetch from "node-fetch";
 import logger from "../logger";
 import { MetaEntity } from "../models";
 import path from "path";
-import { wikidataArtEntities } from "../../config.json";
+import { knownInstanceProperties, wikidataArtEntities, wikidataProperties } from "../../config.json";
 
 
-enum WikidataPropertyType {
-    instanceof = "P31",
-    // Painting/monument/statue
-    creator = "P170",
-    genre = "P136",
-    movement = "P135",
-    // Architecture
-    architect = "P84",
-    architecturalStyle = "P149",
-    // Architectures and in-museum-located painting and monuments
-    location = "P625"
-}
 
 /**
  * Retrieve metadata from WikiData using the entityIds.
@@ -26,20 +14,48 @@ enum WikidataPropertyType {
 export class WikiData {
 
     /**
-     * Retrieve Wikipedia page name from WikiData given the entity id.
+     * Retrieve metadata from an entity.
      *
-     * @param freebaseId The freebaseId id to look for.
-     * @param lang The language code, ie. the Wikipedia subdomain to search in.
-     * @returns The Wikipedia page name.
+     * @param entity The entity to look for.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
+     * @returns An object with some fields from WikiData.
      */
-    public getWikipediaName(freebaseId: string, lang: string): Promise<string> {
+    public getProperties(entity: Entity, language: string): Promise<MetaEntity> {
         // translate freebaseId in WikiData id
-        return this.getWikiDataId(freebaseId)
+        return this.getWikiDataId(entity.entityId)
             .then(wikidataId => {
-                const url = wbk.getEntities([wikidataId]);
-                return fetch(url)
+                // prepare the wikidata object and se the id
+                const wikidataEntity = entity as MetaEntity;
+                wikidataEntity.wikidataId = wikidataId;
+                // get the WikiData content for the entity
+                return fetch(wd.getEntities([wikidataId]))
                     .then(r => r.json())
-                    .then(content => content.entities[wikidataId].sitelinks[`${lang}wiki`].title);
+                    .then(content => {
+                        // eslint-disable-next-line
+                        // simplify entities (https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities)
+                        content.entities = wd.simplify.entities(content.entities);
+
+                        // for each entity returned by wd.getEntities([wikidataId])
+                        for (const entityId in content.entities) {
+                            // for each property we want to extract
+                            for (const enumKey in wikidataProperties) {
+                                // enumKey = ["instanceOf", "creator", ...]
+                                const claimName = enumKey as keyof typeof wikidataProperties;
+                                wikidataEntity[claimName] =
+                                    content.entities[entityId].claims[wikidataProperties[claimName]] ?? [];
+                            }
+                        }
+
+                        // set also the Wikipedia page title
+                        wikidataEntity.wikipediaPageTitle =
+                            content.entities[wikidataId].sitelinks[`${language}wiki`];
+
+                        return wikidataEntity;
+                    });
+            })
+            .catch(/* istanbul ignore next */ ex => {
+                logger.warn("[wikidata.ts] ", ex);
+                return Promise.resolve({} as MetaEntity);
             });
     }
 
@@ -47,16 +63,55 @@ export class WikiData {
      * Check if there is a meta entity that is an instance of a known entity.
      *
      * @param metaEntities The entities with WikiData properties.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
      * @returns The first meta entity that is a known instance or null if there are none.
      */
-    public tryGetKnownInstance(metaEntities: Array<MetaEntity>): MetaEntity {
+    public tryGetKnownInstance(metaEntities: Array<MetaEntity>, language: string): Promise<MetaEntity> {
+        // foreach meta entity
         for (const metaEntity of metaEntities) {
-            if (metaEntity.creator?.length > 0 ||
-                metaEntity.architect?.length > 0 ||
-                metaEntity.location?.length > 0)
-                return metaEntity;
+        // if the meta entity has one of the knownInstanceProperties, then is a known entity
+            for (const property of knownInstanceProperties) {
+                if (metaEntity[property] && metaEntity[property].length) {
+                    // fill its knownInstanceProperties with the Wikipedia names of the properties
+                    return this.setWikipediaNames(metaEntity, language);
+                }
+            }
         }
-        return null;
+        // no known instance found
+        return Promise.resolve(null);
+    }
+
+    /**
+     * Given a known entity, replace all the property ids with the corresponding Wikipedia page titles.
+     *
+     * @param knownInstance The known instance to be populated.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
+     * @returns the improved known entity.
+     */
+    private setWikipediaNames(knownInstance: MetaEntity, language: string): Promise<MetaEntity> {
+        const promises = [];
+        for (const property of knownInstanceProperties as Array<string>) {
+
+            // the current property does not exist, skip the call to populate it
+            if (!knownInstance[property] || !Array.isArray(knownInstance[property]) || !knownInstance[property].length)
+                continue;
+
+            /*
+             * else populate the id with the name. 
+             * Note that knownInstance[property] is an array of ids
+             */
+            promises.push(
+                Promise.all(
+                    (knownInstance[property as keyof typeof wikidataProperties]).map(wikidataPropertyId => {
+                        return this.getWikipediaName(wikidataPropertyId, language);
+                    })
+                ).then(propertiesNames => {
+                    knownInstance[property] = propertiesNames;
+                })
+            );
+        }
+        return Promise.all(promises)
+            .then(() => knownInstance);
     }
 
     /**
@@ -97,52 +152,17 @@ export class WikiData {
     }
 
     /**
-     * Retrieve metadata from an entity.
+     * Retrieve Wikipedia page name from WikiData given the entity id.
      *
-     * @param entity The entity to look for.
-     * @param language The language code, ie. the Wikipedia subdomain to search in.
-     * @returns An object with some fields from WikiData.
+     * @param wikidataId The wikidata entity id to look for.
+     * @param lang The language code, ie. the Wikipedia subdomain to search in.
+     * @returns The Wikipedia page name.
      */
-    public getProperties(entity: Entity, language: string): Promise<MetaEntity> {
-        // translate freebaseId in WikiData id
-        return this.getWikiDataId(entity.entityId)
-            .then(wikidataId => {
-                // prepare the wikidata object and se the id
-                const wikidataProperties = entity as MetaEntity;
-                wikidataProperties.wikidataId = wikidataId;
-                // get the WikiData content for the entity
-                return fetch(wbk.getEntities([wikidataId]))
-                    .then(r => r.json())
-                    .then(content => {
-                        // eslint-disable-next-line
-                        // simplify entities (https://github.com/maxlath/wikibase-sdk/blob/master/docs/simplify_entities_data.md#simplify-entities)
-                        content.entities = wbk.simplify.entities(content.entities);
-
-                        /*
-                         * Key is the WikiDataPropertyType, values are arrays of wikidata ids
-                         * for each entity id
-                         */
-                        for (const entityId in content.entities) {
-                            // for each property we want to extract
-                            for (const enumKey in WikidataPropertyType) {
-                                // enum => ["InstanceOf", "Creator", ...]
-                                const claimName = enumKey as keyof typeof WikidataPropertyType;
-                                wikidataProperties[claimName] =
-                                    content.entities[entityId].claims[WikidataPropertyType[claimName]] || [];
-                            }
-                        }
-
-                        // set also the Wikipedia page title
-                        wikidataProperties.wikipediaPageTitle =
-                            content.entities[wikidataId].sitelinks[`${language}wiki`];
-
-                        return wikidataProperties;
-                    });
-            })
-            .catch(/* istanbul ignore next */ ex => {
-                logger.warn("[wikidata.ts] ", ex);
-                return Promise.resolve({} as MetaEntity);
-            });
+    public getWikipediaName(wikidataId: string, lang: string): Promise<string> {
+        const url = wd.getEntities([wikidataId]);
+        return fetch(url)
+            .then(r => r.json())
+            .then(content => content.entities[wikidataId].sitelinks[`${lang}wiki`].title);
     }
 
     /**
@@ -165,7 +185,7 @@ export class WikiData {
             }
             LIMIT 1
         `;
-        const url = wbk.sparqlQuery(sparql);
+        const url = wd.sparqlQuery(sparql);
         return fetch(url)
             .then(response => response.json())
             .then(json => {
@@ -205,7 +225,7 @@ export class WikiData {
                 } group by ?entity ?entityLabel
             `;
 
-        const url = wbk.sparqlQuery(sparql);
+        const url = wd.sparqlQuery(sparql);
 
         return fetch(url)
             .then(r => r.json())

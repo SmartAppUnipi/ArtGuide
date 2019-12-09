@@ -1,17 +1,17 @@
+import { wikidataProperties } from "../../config.json";
+
 export interface Entity {
     description: string;
     score: number;
     entityId: string;
 }
 
-export interface MetaEntity extends Entity {
+/** Load available properties from config.json */
+type WikidataEntity = {
+    [k in keyof typeof wikidataProperties]: Array<string>;
+};
+
+export interface MetaEntity extends Entity, WikidataEntity {
     wikidataId: string;
     wikipediaPageTitle: string;
-    instanceof: Array<string>;
-    creator: Array<string>;
-    genre: Array<string>;
-    movement: Array<string>;
-    architect: Array<string>;
-    architecturalStyle: Array<string>;
-    location: Array<string>;
 }

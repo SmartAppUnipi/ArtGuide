@@ -2,6 +2,7 @@ import logger from "../logger";
 import { Page } from "wikijs";
 import wiki from "wikijs";
 import { WikiData } from ".";
+import { knownInstanceProperties, scoreWeight } from "../../config.json";
 import { MetaEntity, PageResult, PageSection, Query } from "../models";
 
 interface ComposedSection {
@@ -43,10 +44,17 @@ export class Wikipedia {
      * @returns An array of PageResult about the piece of art and correlated pages like the author.
      */
     public searchKnownInstance(knownInstance: MetaEntity, language: string): Promise<Array<PageResult>> {
-        return Promise.all([
-            // TODO: look also for: creator/architect, period, style, movement 
-            this.getWikiInfo(knownInstance.wikipediaPageTitle, language, knownInstance.score)
-        ]);
+        const promises = [];
+        // search for the entity
+        promises.push(this.getWikiInfo(knownInstance.wikipediaPageTitle, language, knownInstance.score));
+        // search for the properties
+        const propertyScore = knownInstance.score * scoreWeight.known.wikidataProperty;
+        for (const property of knownInstanceProperties) {
+            for (const value of knownInstance[property]) 
+                promises.push(this.getWikiInfo(value, language, propertyScore));
+            
+        }
+        return Promise.all(promises);
     }
 
     /**
