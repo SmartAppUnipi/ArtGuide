@@ -16,24 +16,36 @@ from transformers import *
 import nltk
 nltk.download('punkt')
 
+def getSpacyLang(lang='en'):
+    language = None
+    if lang == 'it':
+        from spacy.lang.it import Italian
+        language = Italian
+    else:
+        from spacy.lang.en import English
+        language = English
+
+    return language
 
 class ModelSummarizer():
     def __init__(self, config, lang=None, custom_model=None, custom_tokenizer=None, tokenizer=None, verbose=None, **kwargs):
         self.config = config
         self.verbose = verbose
-        if lang == 'it':
-            from spacy.lang.it import Italian
-            self.language = Italian
-        elif lang == 'en':
-            from spacy.lang.en import English
-            self.language = English
+        self.language = getSpacyLang(lang)
         
-        if not custom_model:
-            custom_model = BertModel.from_pretrained('bert-base-uncased', output_hidden_states=True)
-        if not custom_tokenizer:
-            custom_tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+        if not (custom_model and custom_tokenizer):
+            custom_model, custom_tokenizer = self.get_pretrained_language(lang)
 
         self.model = Summarizer(language=self.language, custom_model=custom_model, custom_tokenizer=custom_tokenizer, **kwargs)
+
+    def get_pretrained_language(self, lang):
+        if lang=='en':
+            custom_model = RobertaModel.from_pretrained('distilroberta-base', output_hidden_states=True)
+            custom_tokenizer = RobertaTokenizer.from_pretrained('distilroberta-base')
+        else:
+            custom_model = DistilBertModel.from_pretrained('distilbert-base-multilingual-cased', output_hidden_states=True)
+            custom_tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-multilingual-cased')
+        return custom_model, custom_tokenizer
 
     def inference(self, txts, num_sentences=[], ratio=0.5, **kwargs):
         result = []

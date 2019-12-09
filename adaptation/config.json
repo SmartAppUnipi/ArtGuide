@@ -5,7 +5,7 @@
     "doc_api_file": "documentation/docs_api.html",
     "transition_data_path":"data",
     "max_cluster_size": 80,
-    "max_sentences": 4,
+    "max_sentences": 6,
     "debug": true,
     "expertize_levels": 4,
     "expertise_weight": 10, 

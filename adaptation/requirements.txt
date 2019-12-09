@@ -16,7 +16,7 @@ https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-2.1.
 https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-2.1.0/de_core_news_sm-2.1.0.tar.gz#egg=de_core_news_sm
 https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-2.1.0/fr_core_news_sm-2.1.0.tar.gz#egg=fr_core_news_sm
 https://github.com/explosion/spacy-models/releases/download/xx_ent_wiki_sm-2.1.0/xx_ent_wiki_sm-2.1.0.tar.gz#egg=xx_ent_wiki_sm
-torch==1.1.0
-pytorch-transformers==1.2.0
+torch
+pytorch-transformers
 bert-extractive-summarizer
 spacy-readability
