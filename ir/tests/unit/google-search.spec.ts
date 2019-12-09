@@ -6,6 +6,7 @@ process.env.NODE_ENV = "production"
 import { GoogleSearch } from '../../src/search/google-search';
 import nock from "nock";
 import fs from "fs";
+import { GoogleSearchConfig } from "../../src/environment";
 import { userProfiles } from "../../tests";
 
 describe("Google search", () => {
@@ -48,13 +49,23 @@ describe("Google search", () => {
     it("Should use the provided language", async () => {
 
         const googleSearch = new GoogleSearch(); // use the real cache to avoid requests to Google
-        const resultsEn = await googleSearch.query("Leaning Tower of Pisa", userProfiles.en.expert);
-        const resultsIt = await googleSearch.query("Torre di Pisa", userProfiles.it.expert);
 
-        expect(resultsEn.items[0].link).toContain("en.wikipedia.org");
-        expect(resultsIt.items[0].link).toContain("it.wikipedia.org");
+        const mock = jest.fn();
+        googleSearch["_query"] = mock
 
-        expect(Number(resultsEn.searchInformation.totalResults)).toBeGreaterThan(Number(resultsIt.searchInformation.totalResults))
+        await googleSearch.query("Leaning Tower of Pisa", userProfiles.en.expert);
+        expect(mock).toHaveBeenCalledWith(
+            expect.stringContaining(GoogleSearchConfig.searchEngineId.en),
+            "Leaning Tower of Pisa",
+            userProfiles.en.expert
+        );
+
+        await googleSearch.query("Torre di Pisa", userProfiles.it.expert);
+        expect(mock).toHaveBeenCalledWith(
+            expect.stringContaining(GoogleSearchConfig.searchEngineId.it),
+            "Torre di Pisa",
+            userProfiles.it.expert
+        );
 
     });
 

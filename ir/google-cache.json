@@ -2302,5 +2302,1833 @@
         }
       }
     ]
+  },
+  "[Child:en]-Leaning Tower of Pisa": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa",
+          "totalResults": "25",
+          "searchTerms": "Leaning Tower of Pisa",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa",
+          "totalResults": "25",
+          "searchTerms": "Leaning Tower of Pisa",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "context": {
+      "title": "Smartapps-Art-Kids"
+    },
+    "searchInformation": {
+      "searchTime": 0.273107,
+      "formattedSearchTime": "0.27",
+      "totalResults": "25",
+      "formattedTotalResults": "25"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa Facts for Kids",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The Leaning Tower of Pisa is a building in Pisa, Italy. It is a bell tower. It is famous \nbecause it is not vertical. The tower was once leaning more and more to the ...",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b> is a building in Pisa, Italy. It is a bell tower. It is famous <br>\nbecause it is not vertical. The tower was once leaning more and more to the&nbsp;...",
+        "cacheId": "aIQM7TsJmDoJ",
+        "formattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/<b>Leaning</b>_<b>Tower_of_Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "178",
+              "height": "283",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFoRGKvvgMHc4MNLUX1apsOGqqELoJxvBnrxjfE2KQRdemOm69kpL-QXnh"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Leaning Tower of Pisa",
+              "label": "Tuscany",
+              "note": "Affiliation Roman Catholic"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/84/Leaning_Tower_of_Pisa_%28April_2012%29.jpg/250px-Leaning_Tower_of_Pisa_%28April_2012%29.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Pisa Facts for Kids",
+        "htmlTitle": "<b>Pisa</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Pisa is a city in Tuscany, Italy. About 90,000 people live in the city. The city has a \nvery long and turbulent history. The \"Leaning Tower of Pisa\" is a famous ...",
+        "htmlSnippet": "Pisa is a city in Tuscany, Italy. About 90,000 people live in the city. The city has a <br>\nvery long and turbulent history. The &quot;<b>Leaning Tower of Pisa</b>&quot; is a famous&nbsp;...",
+        "cacheId": "YS6i6_8PBHwJ",
+        "formattedUrl": "https://kids.kiddle.co/Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/<b>Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "250",
+              "height": "197",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ0PT44o7eS2yNzQV_QsqkbXGhTI9KISHSgiLAhVnlAMv0L4-GY5DCuRZhG"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Pisa",
+              "category": "Comune"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/f/f4/Pisa_-_veduta_dall%27aereo_4.JPG/250px-Pisa_-_veduta_dall%27aereo_4.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Archimedes' screw Facts for Kids",
+        "htmlTitle": "Archimedes&#39; screw Facts for Kids",
+        "link": "https://kids.kiddle.co/Archimedes%27_screw",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "An Archimedes screw was used in the successful 2001 stabilization of the \nLeaning Tower of Pisa. Small amounts of subsoil saturated by groundwater \nremoved ...",
+        "htmlSnippet": "An Archimedes screw was used in the successful 2001 stabilization of the <br>\n<b>Leaning Tower of Pisa</b>. Small amounts of subsoil saturated by groundwater <br>\nremoved&nbsp;...",
+        "cacheId": "K_exM3XS7xkJ",
+        "formattedUrl": "https://kids.kiddle.co/Archimedes%27_screw",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Archimedes%27_screw",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "274",
+              "height": "184",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRwLjGCHiCgkqmR0FCzOWWt_JuxRTaNBmo2V6RPy5ULIk9-54gQeHIEeHp_"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/82/Archimedes_screw.JPG/300px-Archimedes_screw.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bell tower Facts for Kids",
+        "htmlTitle": "Bell <b>tower</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Bell_tower",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "A bell tower (also belfry or campanile) is a tower which contains one or more \nbells, ... Leaning Tower of Pisa, campanile of the Duomo di Pisa, Italy (1173-1372\n).",
+        "htmlSnippet": "A bell tower (also belfry or campanile) is a tower which contains one or more <br>\nbells, ... <b>Leaning Tower of Pisa</b>, campanile of the Duomo di Pisa, Italy (1173-1372<br>\n).",
+        "cacheId": "FD6d6UnM_7gJ",
+        "formattedUrl": "https://kids.kiddle.co/Bell_tower",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Bell_<b>tower</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "182",
+              "height": "276",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQhxZNNbJZwNjS0bjRFsO_hIQ6l8cwcTUWldd2emLHTQugm8gGyTCBA71c"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/7/7e/Belfry_%28PSF%29.jpg/250px-Belfry_%28PSF%29.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "1990 Facts for Kids",
+        "htmlTitle": "1990 Facts for Kids",
+        "link": "https://kids.kiddle.co/1990",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The Leaning Tower of Pisa, closed on January 7. January 2 – All My Children \nairs its 20th anniversary special. The characters Joe and Ruth Martin sit down \nwith ...",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b>, closed on January 7. January 2 – All My Children <br>\nairs its 20th anniversary special. The characters Joe and Ruth Martin sit down <br>\nwith&nbsp;...",
+        "cacheId": "9XmnlZwmF7MJ",
+        "formattedUrl": "https://kids.kiddle.co/1990",
+        "htmlFormattedUrl": "https://kids.kiddle.co/1990",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Province of Pisa Facts for Kids",
+        "htmlTitle": "Province of <b>Pisa</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Province_of_Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The Province of Pisa (Italian: Provincia di Pisa) is a province in the Tuscany ... \nPisa, the provincial capital, is known for its Leaning Tower, and other historic ...",
+        "htmlSnippet": "The Province of <b>Pisa</b> (Italian: Provincia di <b>Pisa</b>) is a province in the Tuscany ... <br>\n<b>Pisa</b>, the provincial capital, is known for its <b>Leaning Tower</b>, and other historic&nbsp;...",
+        "cacheId": "4AjtuYMTgIwJ",
+        "formattedUrl": "https://kids.kiddle.co/Province_of_Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Province_of_<b>Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "204",
+              "height": "247",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTmieWQ7zhKtMD-f_K__lTMHQfnDiCBWFvzX7RcuwWZdhKT0Ggws28HJmkW"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Province of Pisa",
+              "nickname": "Pisa",
+              "category": "Province"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/f/ff/Pisa_posizione.png/250px-Pisa_posizione.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Niles, Illinois Facts for Kids",
+        "htmlTitle": "Niles, Illinois Facts for Kids",
+        "link": "https://kids.kiddle.co/Niles,_Illinois",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "A notable landmark and point of pride among Niles' residents is the Leaning \nTower of Niles, a smaller-scale replica of the Leaning Tower of Pisa. This \nlandmark ...",
+        "htmlSnippet": "A notable landmark and point of pride among Niles&#39; residents is the Leaning <br>\nTower of Niles, a smaller-scale replica of the <b>Leaning Tower of Pisa</b>. This <br>\nlandmark&nbsp;...",
+        "cacheId": "Ya3jWKhyqQYJ",
+        "formattedUrl": "https://kids.kiddle.co/Niles,_Illinois",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Niles,_Illinois",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "253",
+              "height": "199",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRCcfLJYLZR5V0jD2r4jr2Bv367GKiK0onRIniPKbO_YMhJpaOirAfjfwQ"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/a/aa/Pace_2649.jpg/300px-Pace_2649.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Souvenir Facts for Kids",
+        "htmlTitle": "Souvenir Facts for Kids",
+        "link": "https://kids.kiddle.co/Souvenir",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Souvenirs from around the world. Clockwise from top, Empire State Building, \nNew York; Leaning Tower of Pisa, Italy; Queen's Guards, London; Eiffel Tower, ...",
+        "htmlSnippet": "Souvenirs from around the world. Clockwise from top, Empire State Building, <br>\nNew York; <b>Leaning Tower of Pisa</b>, Italy; Queen&#39;s Guards, London; Eiffel Tower,&nbsp;...",
+        "cacheId": "Cap5WAakUX8J",
+        "formattedUrl": "https://kids.kiddle.co/Souvenir",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Souvenir",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXLeWsrCwHH2Awxjzxndn5sU7-Ci-bQNUWACpTRzb7rBOE5Br005uK9sM"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0, width=device-width"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/e/e1/Canal_St-Baxter_St.JPG/677px-Canal_St-Baxter_St.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Scientific revolution Facts for Kids",
+        "htmlTitle": "Scientific revolution Facts for Kids",
+        "link": "https://kids.kiddle.co/Scientific_revolution",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "His experiment, to drop two balls of iron (one weighing one pound, the other a \nhundred) off the leaning tower of Pisa. The objects fell at the same rate which ...",
+        "htmlSnippet": "His experiment, to drop two balls of iron (one weighing one pound, the other a <br>\nhundred) off the <b>leaning tower of Pisa</b>. The objects fell at the same rate which&nbsp;...",
+        "cacheId": "XS5bJMqi4-gJ",
+        "formattedUrl": "https://kids.kiddle.co/Scientific_revolution",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Scientific_revolution",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "194",
+              "height": "260",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQj5mQJevXgJV2VXJcrwUeWBCE-ZgeVZsbNRV0up_8qow9cfq30EepPBneJ"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/a/a4/PeuerbachSuperioribus2.png/250px-PeuerbachSuperioribus2.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Humor Facts for Kids",
+        "htmlTitle": "Humor Facts for Kids",
+        "link": "https://kids.kiddle.co/Humor",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Forced perspective used for comic effect in front of the Leaning Tower of Pisa. All \ncontent from Kiddle encyclopedia articles (including the article images and ...",
+        "htmlSnippet": "Forced perspective used for comic effect in front of the <b>Leaning Tower of Pisa</b>. All <br>\ncontent from Kiddle encyclopedia articles (including the article images and&nbsp;...",
+        "cacheId": "7JjVfZ57mrkJ",
+        "formattedUrl": "https://kids.kiddle.co/Humor",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Humor",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "244",
+              "height": "207",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvvAscpQWCnumuxm7YlWtjmgimAhiErMphy-swPlX-8iQEppGjC96j-acB"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/9/93/Laughter_2_by_David_Shankbone.jpg/300px-Laughter_2_by_David_Shankbone.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Child:en]-Bonanno Pisano": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano",
+          "totalResults": "1",
+          "searchTerms": "Bonanno Pisano",
+          "count": 1,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "context": {
+      "title": "Smartapps-Art-Kids"
+    },
+    "searchInformation": {
+      "searchTime": 0.147755,
+      "formattedSearchTime": "0.15",
+      "totalResults": "1",
+      "formattedTotalResults": "1"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa Facts for Kids",
+        "htmlTitle": "Leaning Tower of Pisa Facts for Kids",
+        "link": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "For many years, the design was attributed to Guglielmo and Bonanno Pisano, a \nwell-known 12th-century resident artist of Pisa, famous for his bronze casting, ...",
+        "htmlSnippet": "For many years, the design was attributed to Guglielmo and <b>Bonanno Pisano</b>, a <br>\nwell-known 12th-century resident artist of Pisa, famous for his bronze casting,&nbsp;...",
+        "cacheId": "aIQM7TsJmDoJ",
+        "formattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "178",
+              "height": "283",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFoRGKvvgMHc4MNLUX1apsOGqqELoJxvBnrxjfE2KQRdemOm69kpL-QXnh"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Leaning Tower of Pisa",
+              "label": "Tuscany",
+              "note": "Affiliation Roman Catholic"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/84/Leaning_Tower_of_Pisa_%28April_2012%29.jpg/250px-Leaning_Tower_of_Pisa_%28April_2012%29.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Child:it]-Bonanno Pisano": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano",
+          "totalResults": "1",
+          "searchTerms": "Bonanno Pisano",
+          "count": 1,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "context": {
+      "title": "Smartapps-Art-Kids"
+    },
+    "searchInformation": {
+      "searchTime": 0.276833,
+      "formattedSearchTime": "0.28",
+      "totalResults": "1",
+      "formattedTotalResults": "1"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa Facts for Kids",
+        "htmlTitle": "Leaning Tower of Pisa Facts for Kids",
+        "link": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "For many years, the design was attributed to Guglielmo and Bonanno Pisano, a \nwell-known 12th-century resident artist of Pisa, famous for his bronze casting, ...",
+        "htmlSnippet": "For many years, the design was attributed to Guglielmo and <b>Bonanno Pisano</b>, a <br>\nwell-known 12th-century resident artist of Pisa, famous for his bronze casting,&nbsp;...",
+        "cacheId": "aIQM7TsJmDoJ",
+        "formattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "178",
+              "height": "283",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFoRGKvvgMHc4MNLUX1apsOGqqELoJxvBnrxjfE2KQRdemOm69kpL-QXnh"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Leaning Tower of Pisa",
+              "label": "Tuscany",
+              "note": "Affiliation Roman Catholic"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/84/Leaning_Tower_of_Pisa_%28April_2012%29.jpg/250px-Leaning_Tower_of_Pisa_%28April_2012%29.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Child:it]-Torre di Pisa": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Torre di Pisa",
+          "totalResults": "16",
+          "searchTerms": "Torre di Pisa",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Torre di Pisa",
+          "totalResults": "16",
+          "searchTerms": "Torre di Pisa",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "context": {
+      "title": "Smartapps-Art-Kids"
+    },
+    "searchInformation": {
+      "searchTime": 0.363368,
+      "formattedSearchTime": "0.36",
+      "totalResults": "16",
+      "formattedTotalResults": "16"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa Facts for Kids",
+        "htmlTitle": "Leaning Tower <b>of Pisa</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The Leaning Tower of Pisa is a building in Pisa, Italy. It is a bell tower. It is famous \nbecause it is not vertical. The tower was once leaning more and more to the ...",
+        "htmlSnippet": "The Leaning Tower <b>of Pisa</b> is <b>a</b> building in <b>Pisa</b>, Italy. It is <b>a</b> bell tower. It is famous <br>\nbecause it is not vertical. The tower was once leaning more and more to the&nbsp;...",
+        "cacheId": "aIQM7TsJmDoJ",
+        "formattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Leaning_Tower_<b>of</b>_<b>Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "178",
+              "height": "283",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFoRGKvvgMHc4MNLUX1apsOGqqELoJxvBnrxjfE2KQRdemOm69kpL-QXnh"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Leaning Tower of Pisa",
+              "label": "Tuscany",
+              "note": "Affiliation Roman Catholic"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/84/Leaning_Tower_of_Pisa_%28April_2012%29.jpg/250px-Leaning_Tower_of_Pisa_%28April_2012%29.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Ingrid Betancourt Facts for Kids",
+        "htmlTitle": "Ingrid Betancourt Facts for Kids",
+        "link": "https://kids.kiddle.co/Ingrid_Betancourt",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Íngrid Betancourt. Íngrid Betancourt mentre guarda la Torre di Pisa.jpg. Íngrid \nBetancourt, Italy, 2008. Senator of Colombia. In office. July 20, 1998 – February \n23, ...",
+        "htmlSnippet": "Íngrid Betancourt. Íngrid Betancourt mentre guarda la <b>Torre di Pisa</b>.jpg. Íngrid <br>\nBetancourt, Italy, 2008. Senator of Colombia. In office. July 20, 1998 – February <br>\n23,&nbsp;...",
+        "cacheId": "dtdXJqwiwyEJ",
+        "formattedUrl": "https://kids.kiddle.co/Ingrid_Betancourt",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Ingrid_Betancourt",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "183",
+              "height": "275",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTQq8p9PL87t-VlECaX49gLPxt-nLWb9G03-tu5GpvVuuRSHXQogcGrpwk"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Íngrid Betancourt",
+              "bday": "1961-12-25",
+              "label": "Bogotá"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/b/bd/%C3%8Dngrid_Betancourt_mentre_guarda_la_Torre_di_Pisa.jpg/300px-%C3%8Dngrid_Betancourt_mentre_guarda_la_Torre_di_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Lucca Facts for Kids",
+        "htmlTitle": "Lucca Facts for Kids",
+        "link": "https://kids.kiddle.co/Lucca",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "02 Lucca seen from Torre Guinigi. Panorama of Lucca from the Torre Guinigi. ... \ninternal problems Uguccione della Faggiuola of Pisa make himself lord of Lucca.",
+        "htmlSnippet": "02 Lucca seen from <b>Torre</b> Guinigi. Panorama <b>of</b> Lucca from the <b>Torre</b> Guinigi. ... <br>\ninternal problems Uguccione della Faggiuola <b>of Pisa</b> make himself lord <b>of</b> Lucca.",
+        "cacheId": "X7G2Oxqh8YMJ",
+        "formattedUrl": "https://kids.kiddle.co/Lucca",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Lucca",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "267",
+              "height": "189",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSs7IhxR24PqHcGYzeEi6Txo7C3gddVvDZ-70EIK_bx7fM78oInRbKy9I"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/8d/02_Lucca_seen_from_Torre_Guinigi.jpg/300px-02_Lucca_seen_from_Torre_Guinigi.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Province of Lucca Facts for Kids",
+        "htmlTitle": "Province <b>of</b> Lucca Facts for Kids",
+        "link": "https://kids.kiddle.co/Province_of_Lucca",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Province of Lucca (Italian: Provincia di Lucca) is a province in the Tuscany region \n... the provinces of Massa e Carrara to the northwest, Pisa to the south, Pistoia to \nthe ... Access to the Tyrrhenian Sea is through municipalities such as Torre del ...",
+        "htmlSnippet": "Province <b>of</b> Lucca (Italian: Provincia <b>di</b> Lucca) is <b>a</b> province in the Tuscany region <br>\n... the provinces <b>of</b> Massa e Carrara to the northwest, <b>Pisa</b> to the south, Pistoia to <br>\nthe ... Access to the Tyrrhenian Sea is through municipalities such as <b>Torre del</b>&nbsp;...",
+        "cacheId": "tRr7Pg7v8xIJ",
+        "formattedUrl": "https://kids.kiddle.co/Province_of_Lucca",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Province_<b>of</b>_Lucca",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "204",
+              "height": "247",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSQ1TjasBafPPqxs3AUdciAd64kL0rtQIwd4ZuCdm0tIYGcLShATgNpLkPs"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Province of Lucca",
+              "nickname": "Lucca",
+              "category": "Province"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/3/3e/Lucca_posizione.png/250px-Lucca_posizione.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Tuscany Facts for Kids",
+        "htmlTitle": "Tuscany Facts for Kids",
+        "link": "https://kids.kiddle.co/Tuscany",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Tuscany (in Italian Toscana ) is a region in the center of Italy. ... the historical \ncenter of Siena (1995), the square of the Cathedral of Pisa (1987), the historical \ncenter of San Gimignano (1990), the .... 03 Palazzo Pubblico Torre del Mangia \nSiena.",
+        "htmlSnippet": "Tuscany (in Italian Toscana ) is <b>a</b> region in the center <b>of</b> Italy. ... the historical <br>\ncenter <b>of</b> Siena (1995), the square <b>of</b> the Cathedral <b>of Pisa</b> (1987), the historical <br>\ncenter <b>of</b> San Gimignano (1990), the .... 03 Palazzo Pubblico <b>Torre del</b> Mangia <br>\nSiena.",
+        "cacheId": "tXi8d40STycJ",
+        "formattedUrl": "https://kids.kiddle.co/Tuscany",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Tuscany",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "208",
+              "height": "243",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZsUT-9XL8DrzP--AIeNrWXZtwHj9xNsgeejFcRzhyjX0RM4ToU8wQc3M"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Tuscany",
+              "nickname": "Toscana",
+              "category": "Region of Italy"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/5/5a/Italy_Regions_Tuscany_Map.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Romanesque architecture Facts for Kids",
+        "htmlTitle": "Romanesque architecture Facts for Kids",
+        "link": "https://kids.kiddle.co/Romanesque_architecture",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Simple capital of a Doric form supporting a Mozarabic arch, São Pedro de \nLourosa Church, Portugal. Capitel en la Torre de Pisa. Capital of Corinthian form \nwith ...",
+        "htmlSnippet": "Simple capital of a Doric form supporting a Mozarabic arch, São Pedro de <br>\nLourosa Church, Portugal. Capitel en la <b>Torre de Pisa</b>. Capital of Corinthian form <br>\nwith&nbsp;...",
+        "cacheId": "A9OiWcS_P1MJ",
+        "formattedUrl": "https://kids.kiddle.co/Romanesque_architecture",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Romanesque_architecture",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "241",
+              "height": "209",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbMsr2CQ2AdFv5MftPn89cTSt7ex9L-D_Zri0ZSHnFz4cD-8kcn_XO3x8"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/1/19/Speyer_Dom_pano.jpg/300px-Speyer_Dom_pano.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "List of World Heritage Sites in Italy Facts for Kids",
+        "htmlTitle": "List <b>of</b> World Heritage Sites in Italy Facts for Kids",
+        "link": "https://kids.kiddle.co/List_of_World_Heritage_Sites_in_Italy",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Archaeological Areas of Pompei, Herculaneum and Torre Annunziata, A street \n..... Piazza del Duomo, Pisa, White church, leaning tower and a circular building.",
+        "htmlSnippet": "Archaeological Areas <b>of</b> Pompei, Herculaneum and <b>Torre</b> Annunziata, <b>A</b> street <br>\n..... Piazza <b>del</b> Duomo, <b>Pisa</b>, White church, leaning tower and <b>a</b> circular building.",
+        "cacheId": "mrKeZMr_Q0kJ",
+        "formattedUrl": "https://kids.kiddle.co/List_of_World_Heritage_Sites_in_Italy",
+        "htmlFormattedUrl": "https://kids.kiddle.co/List_<b>of</b>_World_Heritage_Sites_in_Italy",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "18th-Century Royal Palace at Caserta with the Park, the Aqueduct of Vanvitelli, and the San Leucio Complex"
+            },
+            {
+              "fn": "Arab-Norman Palermo and the Cathedral Churches of Cefalú and Monreale"
+            },
+            {
+              "fn": "Archaeological Area and the Patriarchal Basilica of Aquileia"
+            },
+            {
+              "fn": "Archaeological Area of Agrigento"
+            },
+            {
+              "fn": "Archaeological Areas of Pompei, Herculaneum and Torre Annunziata"
+            },
+            {
+              "fn": "Assisi, the Basilica of San Francesco and Other Franciscan Sites"
+            },
+            {
+              "fn": "Botanical Garden (Orto Botanico), Padua"
+            },
+            {
+              "fn": "Castel del Monte"
+            },
+            {
+              "fn": "Cathedral, Torre Civica and Piazza Grande, Modena"
+            },
+            {
+              "fn": "Church and Dominican Convent of Santa Maria delle Grazie with \"The Last Supper\" by Leonardo da Vinci"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "List of buildings Facts for Kids",
+        "htmlTitle": "List <b>of</b> buildings Facts for Kids",
+        "link": "https://kids.kiddle.co/List_of_buildings",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "List of buildings facts for kids. Kids Encyclopedia Facts. Famous or notable \nbuildings with articles about them in Wikipedia include: Index: A-B - C-D - E-I - \nJ-O ...",
+        "htmlSnippet": "List <b>of</b> buildings facts for kids. Kids Encyclopedia Facts. Famous or notable <br>\nbuildings with articles about them in Wikipedia include: Index: A-B - C-D - E-I - <br>\nJ-O&nbsp;...",
+        "cacheId": "OXwIto4gwZcJ",
+        "formattedUrl": "https://kids.kiddle.co/List_of_buildings",
+        "htmlFormattedUrl": "https://kids.kiddle.co/List_<b>of</b>_buildings",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Cagliari Facts for Kids",
+        "htmlTitle": "Cagliari Facts for Kids",
+        "link": "https://kids.kiddle.co/Cagliari",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Cagliari (Sardinian: Casteddu) is a city in the region of Sardinia in Italy. It is also \nthe capital of the ... Pisa, Italy; Italy Vercelli, Italy; Italy ... Torre dell'Elefante.",
+        "htmlSnippet": "Cagliari (Sardinian: Casteddu) is <b>a</b> city in the region <b>of</b> Sardinia in Italy. It is also <br>\nthe capital <b>of</b> the ... <b>Pisa</b>, Italy; Italy Vercelli, Italy; Italy ... <b>Torre</b> dell&#39;Elefante.",
+        "cacheId": "3zzi4J8A_kEJ",
+        "formattedUrl": "https://kids.kiddle.co/Cagliari",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Cagliari",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "250",
+              "height": "186",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTE8aszf4vZkpOj4VspKluFGdY2F8xNt7uJOYItMUpygoGE0DZkGYDnzvfn"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Cagliari",
+              "category": "Comune"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/f/ff/Cathedral_in_Cagliari.jpg/250px-Cathedral_in_Cagliari.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "List of cities in Italy Facts for Kids",
+        "htmlTitle": "List <b>of</b> cities in Italy Facts for Kids",
+        "link": "https://kids.kiddle.co/List_of_cities_in_Italy",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "List of cities in Italy facts for kids. Kids Encyclopedia Facts. A list of cities in Italy. \nCities in bold text are capitals of provinces. Italy major ... 57, Torre del Greco, \nCampania · Province of Naples, 88,918. 58, Pisa · Tuscany · Province of Pisa, \n87,166.",
+        "htmlSnippet": "List <b>of</b> cities in Italy facts for kids. Kids Encyclopedia Facts. <b>A</b> list <b>of</b> cities in Italy. <br>\nCities in bold text are capitals <b>of</b> provinces. Italy major ... 57, <b>Torre del</b> Greco, <br>\nCampania &middot; Province <b>of</b> Naples, 88,918. 58, <b>Pisa</b> &middot; Tuscany &middot; Province <b>of Pisa</b>, <br>\n87,166.",
+        "cacheId": "h3ciTnsq2jQJ",
+        "formattedUrl": "https://kids.kiddle.co/List_of_cities_in_Italy",
+        "htmlFormattedUrl": "https://kids.kiddle.co/List_<b>of</b>_cities_in_Italy",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Child:en]-Modern art keyword_legacy1 keyword_legacy": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Modern art keyword_legacy1 keyword_legacy",
+          "totalResults": "0",
+          "searchTerms": "Modern art keyword_legacy1 keyword_legacy",
+          "count": 10,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "searchInformation": {
+      "searchTime": 0.175369,
+      "formattedSearchTime": "0.18",
+      "totalResults": "0",
+      "formattedTotalResults": "0"
+    },
+    "spelling": {
+      "correctedQuery": "Modern art keyword legacy1 keyword legacy",
+      "htmlCorrectedQuery": "Modern art <b><i>keyword legacy1</i></b> <b><i>keyword legacy</i></b>"
+    }
+  },
+  "[Child:en]-Modern art": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Modern art",
+          "totalResults": "6580",
+          "searchTerms": "Modern art",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Modern art",
+          "totalResults": "6580",
+          "searchTerms": "Modern art",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "context": {
+      "title": "Smartapps-Art-Kids"
+    },
+    "searchInformation": {
+      "searchTime": 0.422412,
+      "formattedSearchTime": "0.42",
+      "totalResults": "6580",
+      "formattedTotalResults": "6,580"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Modern art Facts for Kids",
+        "htmlTitle": "<b>Modern art</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Modern_art",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Modern art refers to artistic works produced from the 1860s to about the 1970s. It \nrefers to the style and philosophy of the art produced during that era.p102 The ...",
+        "htmlSnippet": "<b>Modern art</b> refers to artistic works produced from the 1860s to about the 1970s. It <br>\nrefers to the style and philosophy of the art produced during that era.<sup>p102</sup> The&nbsp;...",
+        "cacheId": "PyNiEsxp0wYJ",
+        "formattedUrl": "https://kids.kiddle.co/Modern_art",
+        "htmlFormattedUrl": "https://kids.kiddle.co/<b>Modern</b>_<b>art</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "200",
+              "height": "238",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9gOnGLP4UX534kk0Y2mA3hlxmgkkjDJUqk_4H5red8Y3LzelqOH76p_w"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/d/d7/Henri_de_Toulouse-Lautrec_028.jpg/200px-Henri_de_Toulouse-Lautrec_028.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Museum of Modern Art Facts for Kids",
+        "htmlTitle": "Museum of <b>Modern Art</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Museum_of_Modern_Art",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The Museum of Modern Art (MoMA) is a modern art museum in New York, New \nYork, United States, on 53rd Street between Fifth and Sixth Avenues. It has been\n ...",
+        "htmlSnippet": "The Museum of <b>Modern Art</b> (MoMA) is a <b>modern art</b> museum in New York, New <br>\nYork, United States, on 53rd Street between Fifth and Sixth Avenues. It has been<br>\n&nbsp;...",
+        "cacheId": "BCxqsY6UBxcJ",
+        "formattedUrl": "https://kids.kiddle.co/Museum_of_Modern_Art",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Museum_of_<b>Modern</b>_<b>Art</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "249",
+              "height": "203",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRGXsV6H9ZKjPfl7ZC_ErRSW2ympOGRw0c5gZJOOhghSx1yEFkIVwI-2yI"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/c/c5/Vincent_van_Gogh_%281853-1890%29_-_The_Olive_Trees_%281889%29.jpg/250px-Vincent_van_Gogh_%281853-1890%29_-_The_Olive_Trees_%281889%29.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "National Museum of Modern Art, Kyoto Facts for Kids",
+        "htmlTitle": "National Museum of <b>Modern Art</b>, Kyoto Facts for Kids",
+        "link": "https://kids.kiddle.co/National_Museum_of_Modern_Art,_Kyoto",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The National Museum of Modern Art, Kyoto (京都国立近代美術館, Kyōto Kokuritsu \nKindai Bijutsukan) or MOMAK is one of the major art museums in Japan.",
+        "htmlSnippet": "The National Museum of <b>Modern Art</b>, Kyoto (京都国立近代美術館, Kyōto Kokuritsu <br>\nKindai Bijutsukan) or MOMAK is one of the major art museums in Japan.",
+        "cacheId": "m1uQQYWiHZ4J",
+        "formattedUrl": "https://kids.kiddle.co/National_Museum_of_Modern_Art,_Kyoto",
+        "htmlFormattedUrl": "https://kids.kiddle.co/National_Museum_of_<b>Modern</b>_<b>Art</b>,_Kyoto",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "240",
+              "height": "192",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSb7D39VH0rjyHSuJiEyRxIKa9szzHonFXexj4qEoc5D2RPS6xTZ0cVEc9f"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "National Museum of Modern Art, Kyoto",
+              "nickname": "京都国立近代美術館"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/d/d5/National_Museum_of_Modern_Art_Kyoto_2010.jpg/240px-National_Museum_of_Modern_Art_Kyoto_2010.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Gallery of Modern Art Facts for Kids",
+        "htmlTitle": "Gallery of <b>Modern Art</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Gallery_of_Modern_Art",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The Gallery of Modern Art (GoMA) is the main gallery of contemporary art in \nGlasgow, Scotland. GoMA offers a programme of temporary exhibitions and ...",
+        "htmlSnippet": "The Gallery of <b>Modern Art</b> (GoMA) is the main gallery of contemporary art in <br>\nGlasgow, Scotland. GoMA offers a programme of temporary exhibitions and&nbsp;...",
+        "cacheId": "7zbyfe_fOmwJ",
+        "formattedUrl": "https://kids.kiddle.co/Gallery_of_Modern_Art",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Gallery_of_<b>Modern</b>_<b>Art</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "200",
+              "height": "234",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSTB-RodEO463YFkurdP6Iv6rh5iTHmdDXz0fT2vlW59WfBKvDOmq1Jx94"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Gallery of Modern Art"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/f/fc/Wfm_goma_glasgow.jpg/200px-Wfm_goma_glasgow.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "National Museum of Modern Art, Tokyo Facts for Kids",
+        "htmlTitle": "National Museum of <b>Modern Art</b>, Tokyo Facts for Kids",
+        "link": "https://kids.kiddle.co/National_Museum_of_Modern_Art,_Tokyo",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The National Museum of Modern Art, Tokyo (東京国立近代美術館, Tōkyō \nKokuritsu Kindai Bijutsukan) or MOMAT is one of the major art museums in Japan\n.",
+        "htmlSnippet": "The National Museum of <b>Modern Art</b>, Tokyo (東京国立近代美術館, Tōkyō <br>\nKokuritsu Kindai Bijutsukan) or MOMAT is one of the major art museums in Japan<br>\n.",
+        "cacheId": "xIE2uh_IglwJ",
+        "formattedUrl": "https://kids.kiddle.co/National_Museum_of_Modern_Art,_Tokyo",
+        "htmlFormattedUrl": "https://kids.kiddle.co/National_Museum_of_<b>Modern</b>_<b>Art</b>,_Tokyo",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "240",
+              "height": "180",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTyhPBQKUuX7xeeK4aHJQylS6qFSpsz8zZpa36g6wGZkgC0mTjVuL6w2N4c"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "National Museum of Modern Art, Tokyo",
+              "nickname": "東京国立近代美術館"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/b/ba/National_Museum_of_Modern_Art%2C_Tokyo_%282006.05%29.jpg/240px-National_Museum_of_Modern_Art%2C_Tokyo_%282006.05%29.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Tate Facts for Kids",
+        "htmlTitle": "Tate Facts for Kids",
+        "link": "https://kids.kiddle.co/Tate",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Tate is an institution that houses the United Kingdom's national collection of \nBritish art, and international modern and contemporary art. It is a network of four \nart ...",
+        "htmlSnippet": "Tate is an institution that houses the United Kingdom&#39;s national collection of <br>\nBritish <b>art</b>, and international <b>modern</b> and contemporary <b>art</b>. It is a network of four <br>\n<b>art</b>&nbsp;...",
+        "cacheId": "EdmJ51Qszg8J",
+        "formattedUrl": "https://kids.kiddle.co/Tate",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Tate",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "300",
+              "height": "134",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQtFhtd5S6q5F90x7VuEitQ9yTSliLWHrObuvZZWFhGkaWtVCnzRFeZYqI"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/2/2d/Tate_2016_Logo.png/300px-Tate_2016_Logo.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Abstract art Facts for Kids",
+        "htmlTitle": "Abstract <b>art</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Abstract_art",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Abstract art is modern art which does not represent images of our everyday world\n. It has colour, lines and shapes (form), but they are not intended to represent ...",
+        "htmlSnippet": "Abstract art is <b>modern art</b> which does not represent images of our everyday world<br>\n. It has colour, lines and shapes (form), but they are not intended to represent&nbsp;...",
+        "cacheId": "C3vkrNXZ-HIJ",
+        "formattedUrl": "https://kids.kiddle.co/Abstract_art",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Abstract_<b>art</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "200",
+              "height": "244",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSeapu21UAsBjupOgYxChmVKpeiG4Kvzv2Yp36hte4wSm9qupddOMkeDxa5"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/7/71/Suprematism_with_Blue_Triangle_and_Black_Square.jpg/200px-Suprematism_with_Blue_Triangle_and_Black_Square.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Henri Matisse Facts for Kids",
+        "htmlTitle": "Henri Matisse Facts for Kids",
+        "link": "https://kids.kiddle.co/Henri_Matisse",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Matisse was one of the main artists who helped to create modern art early in the \n20th century. \"Matisse created brilliantly coloured canvases structured by colour ...",
+        "htmlSnippet": "Matisse was one of the main artists who helped to create <b>modern art</b> early in the <br>\n20th century. &quot;Matisse created brilliantly coloured canvases structured by colour&nbsp;...",
+        "cacheId": "pxLNTcwpjggJ",
+        "formattedUrl": "https://kids.kiddle.co/Henri_Matisse",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Henri_Matisse",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "206",
+              "height": "245",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQhnE1KD0acpsJa0wfJD88D4EGWArxKqZQ2u3M4DVM9G4PSJ5LQWpd5RNZD"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Henri Matisse",
+              "bday": "1869-12-31",
+              "role": "Fauvism, Modernism, Post-Impressionism",
+              "note": "Woman with a Hat (1905) The Joy of Life (1906) Nu bleu (1907) La Danse (1909) L'Atelier Rouge (1911)"
+            }
+          ],
+          "person": [
+            {
+              "role": "Fauvism, Modernism, Post-Impressionism"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/7/76/Henri_Matisse%2C_1913%2C_photograph_by_Alvin_Langdon_Coburn.jpg/300px-Henri_Matisse%2C_1913%2C_photograph_by_Alvin_Langdon_Coburn.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Degenerate art Facts for Kids",
+        "htmlTitle": "Degenerate <b>art</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Degenerate_art",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Degenerate art (German: ''entartete Kunst'') was the term used by the Nazi regime \nin Germany to describe nearly all modern art. The Nazis banned the art ...",
+        "htmlSnippet": "Degenerate art (German: &#39;&#39;entartete Kunst&#39;&#39;) was the term used by the Nazi regime <br>\nin Germany to describe nearly all <b>modern art</b>. The Nazis banned the art&nbsp;...",
+        "cacheId": "2aKdCE2S_5cJ",
+        "formattedUrl": "https://kids.kiddle.co/Degenerate_art",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Degenerate_<b>art</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "220",
+              "height": "159",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTudkjSPgCgc7bZy_s-ptbERRoZPsey5LhVSte-orWhVMECXAtwsLcGVwRB"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/9/90/Ausstellung_entartete_kunst_1937.jpg/220px-Ausstellung_entartete_kunst_1937.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Art movement Facts for Kids",
+        "htmlTitle": "<b>Art</b> movement Facts for Kids",
+        "link": "https://kids.kiddle.co/Art_movement",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Some art movements can be pinned down to a time and place, or to particular ... \nPre-Raphaelite Brotherhood · post-impressionism · Art Nouveau · modern art ...",
+        "htmlSnippet": "Some art movements can be pinned down to a time and place, or to particular ... <br>\nPre-Raphaelite Brotherhood &middot; post-impressionism &middot; Art Nouveau &middot; <b>modern art</b>&nbsp;...",
+        "cacheId": "U3P2gLENSKEJ",
+        "formattedUrl": "https://kids.kiddle.co/Art_movement",
+        "htmlFormattedUrl": "https://kids.kiddle.co/<b>Art</b>_movement",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "253",
+              "height": "200",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS3hTUxA2vz8fuaiCAYmGMFwzuetzD5rBAuPYaLQYQRL18fq83r6GzW_pwb"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/a/a7/Eug%C3%A8ne_Delacroix_-_La_libert%C3%A9_guidant_le_peuple.jpg/569px-Eug%C3%A8ne_Delacroix_-_La_libert%C3%A9_guidant_le_peuple.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Child:en]-Modern art keyword_description1 keyword_description2": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Modern art keyword_description1 keyword_description2",
+          "totalResults": "0",
+          "searchTerms": "Modern art keyword_description1 keyword_description2",
+          "count": 10,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "searchInformation": {
+      "searchTime": 0.473862,
+      "formattedSearchTime": "0.47",
+      "totalResults": "0",
+      "formattedTotalResults": "0"
+    },
+    "spelling": {
+      "correctedQuery": "Modern art keywords description keyword description",
+      "htmlCorrectedQuery": "Modern art <b><i>keywords description</i></b> <b><i>keyword description</i></b>"
+    }
+  },
+  "[Child:en]-Modern art keyword_history1 keyword_history2": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Modern art keyword_history1 keyword_history2",
+          "totalResults": "0",
+          "searchTerms": "Modern art keyword_history1 keyword_history2",
+          "count": 10,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "searchInformation": {
+      "searchTime": 0.199244,
+      "formattedSearchTime": "0.20",
+      "totalResults": "0",
+      "formattedTotalResults": "0"
+    },
+    "spelling": {
+      "correctedQuery": "Modern art keyword history keyword history2",
+      "htmlCorrectedQuery": "Modern art <em>keyword history</em> <em>keyword history2</em>"
+    }
+  },
+  "[Novice:it]-Arte moderna": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Arte moderna",
+          "totalResults": "24500",
+          "searchTerms": "Arte moderna",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:aagjculgj8c"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Arte moderna",
+          "totalResults": "24500",
+          "searchTerms": "Arte moderna",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:aagjculgj8c"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-IT"
+    },
+    "searchInformation": {
+      "searchTime": 0.487887,
+      "formattedSearchTime": "0,49",
+      "totalResults": "24500",
+      "formattedTotalResults": "24.500"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Arte moderna - Wikipedia",
+        "htmlTitle": "<b>Arte moderna</b> - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Arte_moderna",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Il termine arte moderna denota lo stile e la concezione dell'arte propri di quell'\nepoca e, più in generale, alle espressioni artistiche che esprimono una forma di ...",
+        "htmlSnippet": "Il termine <b>arte moderna</b> denota lo stile e la concezione dell&#39;arte propri di quell&#39;<br>\nepoca e, più in generale, alle espressioni artistiche che esprimono una forma di&nbsp;...",
+        "cacheId": "nel61jP28K0J",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Arte_moderna",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/<b>Arte</b>_<b>moderna</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "206",
+              "height": "245",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRex9G44vIYVC8WxmNAceUguW59XGAtutSDRvCqIUdQ3S3KV-3lxuEad-4"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Henri_de_Toulouse-Lautrec_028.jpg/220px-Henri_de_Toulouse-Lautrec_028.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Arte contemporanea - Wikipedia",
+        "htmlTitle": "<b>Arte</b> contemporanea - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Arte_contemporanea",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "L'espressione arte contemporanea si riferisce all'insieme di movimenti e \ntendenze artistiche sorte nel periodo successivo alla seconda guerra mondiale, \nanche ...",
+        "htmlSnippet": "L&#39;espressione <b>arte</b> contemporanea si riferisce all&#39;insieme di movimenti e <br>\ntendenze artistiche sorte nel periodo successivo alla seconda guerra mondiale, <br>\nanche&nbsp;...",
+        "cacheId": "na2zgFx1860J",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Arte_contemporanea",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/<b>Arte</b>_contemporanea",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSLYVHyX5AycjiT8w16TB1yyMzKyK0Z4nAwKV5LzDqBkSsFwIcRDE_mBD4"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Telaio_del_meriggio%2C_Maria_Lai%2C_1970.JPG/260px-Telaio_del_meriggio%2C_Maria_Lai%2C_1970.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galleria d'arte moderna (Firenze) - Wikipedia",
+        "htmlTitle": "Galleria d&#39;<b>arte moderna</b> (Firenze) - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Galleria_d%27arte_moderna_(Firenze)",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "La Galleria d'arte moderna è uno dei musei ospitati in palazzo Pitti a Firenze. Si \ntrova al secondo piano del complesso architettonico, all'interno del quale si ...",
+        "htmlSnippet": "La Galleria d&#39;<b>arte moderna</b> è uno dei musei ospitati in palazzo Pitti a Firenze. Si <br>\ntrova al secondo piano del complesso architettonico, all&#39;interno del quale si&nbsp;...",
+        "cacheId": "tkiDCa40-z4J",
+        "formattedUrl": "https://it.wikipedia.org/.../Galleria_d%27arte_moderna_(Firenze)",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Galleria_d%27<b>arte</b>_<b>moderna</b>_(Firenze)",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9HlvN1noHfULCwy_FLinEXSLGCvVNwHrUnMooBQtsmErNZKOPSt_F09px"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Palazzo_pitti_33.JPG/1200px-Palazzo_pitti_33.JPG"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Palazzo_pitti_33.JPG/1200px-Palazzo_pitti_33.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galleria nazionale d'arte moderna e contemporanea - Wikipedia",
+        "htmlTitle": "Galleria nazionale d&#39;<b>arte moderna</b> e contemporanea - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Galleria_nazionale_d%27arte_moderna_e_contemporanea",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "La Galleria Nazionale d'Arte Moderna e Contemporanea è un museo di Roma. \nCustodisce la più completa collezione dedicata all'arte italiana e straniera dal ...",
+        "htmlSnippet": "La Galleria Nazionale d&#39;<b>Arte Moderna</b> e Contemporanea è un museo di Roma. <br>\nCustodisce la più completa collezione dedicata all&#39;arte italiana e straniera dal&nbsp;...",
+        "cacheId": "9JOlRaYxWgEJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Galleria_nazionale_d%27arte_moderna_e_ contemporanea",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Galleria_nazionale_d%27<b>arte</b>_<b>moderna</b>_e_ contemporanea",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "337",
+              "height": "149",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTTLXhw2F7Bf5d2W9L32ez5OMOI0SMRQTU6YszWSyyDrO1g63p3BSykka46"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Roma_Galleria_Nazionale_d%27Arte_Moderna_-_Il_mito_dell%27Italia.jpg/1200px-Roma_Galleria_Nazionale_d%27Arte_Moderna_-_Il_mito_dell%27Italia.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Roma_Galleria_Nazionale_d%27Arte_Moderna_-_Il_mito_dell%27Italia.jpg/1200px-Roma_Galleria_Nazionale_d%27Arte_Moderna_-_Il_mito_dell%27Italia.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galleria d'arte moderna di Udine - Wikipedia",
+        "htmlTitle": "Galleria d&#39;<b>arte moderna</b> di Udine - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Galleria_d%27arte_moderna_di_Udine",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "La Galleria d'arte moderna di Udine (GAMUD), oggi chiusa e sostituita dal nuovo \nMuseo di Arte Moderna e Contemporanea \"Casa Cavazzini\", fu fondata nel ...",
+        "htmlSnippet": "La Galleria d&#39;<b>arte moderna</b> di Udine (GAMUD), oggi chiusa e sostituita dal nuovo <br>\nMuseo di <b>Arte Moderna</b> e Contemporanea &quot;Casa Cavazzini&quot;, fu fondata nel&nbsp;...",
+        "cacheId": "8HTPQuT4nXYJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Galleria_d%27arte_moderna_di_Udine",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Galleria_d%27<b>arte</b>_<b>moderna</b>_di_Udine",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTZsoVofpl0aFDiN_3CWQ2aJ-Asyh8mamdNNctCcL874hfmdsHNlOBnMDs"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Galleria_D%27Arte_Moderna_Udine_Italy.JPG/1200px-Galleria_D%27Arte_Moderna_Udine_Italy.JPG"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Galleria_D%27Arte_Moderna_Udine_Italy.JPG/1200px-Galleria_D%27Arte_Moderna_Udine_Italy.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Museo d'arte moderna (Città del Messico) - Wikipedia",
+        "htmlTitle": "Museo d&#39;<b>arte moderna</b> (Città del Messico) - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Museo_d%27arte_moderna_(Citt%C3%A0_del_Messico)",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Il Museo de Arte Moderno (MAM) è il Museo d'arte moderna di Città del Messico, \npolo culturale dedicato principalmente a preservare, studiare e diffondere l'arte ...",
+        "htmlSnippet": "Il Museo de <b>Arte Moderno</b> (MAM) è il Museo d&#39;<b>arte moderna</b> di Città del Messico, <br>\npolo culturale dedicato principalmente a preservare, studiare e diffondere l&#39;arte&nbsp;...",
+        "cacheId": "PhqNexb035kJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Museo_d%27arte_moderna_(Città_del_Messico)",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Museo_d%27<b>arte</b>_<b>moderna</b>_(Città_del_Messico)",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSjaxJRJhD7WxwXkqWj_1zGgxgoXYcf_tRXQPB5uKAgHzWUgqiHmX4LUWE"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Museo_de_Arte_Moderno_de_M%C3%A9xico_%2821-10-2006%29.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/2/27/Museo_de_Arte_Moderno_de_M%C3%A9xico_%2821-10-2006%29.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galleria d'arte moderna Ricci Oddi - Wikipedia",
+        "htmlTitle": "Galleria d&#39;<b>arte moderna</b> Ricci Oddi - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Galleria_d%27arte_moderna_Ricci_Oddi",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "La Galleria d'arte moderna Ricci Oddi è una pinacoteca di Piacenza dedicata a \ndipinti di arte moderna. Pecore Tosate di Francesco Filippini, olio su tela, ...",
+        "htmlSnippet": "La Galleria d&#39;<b>arte moderna</b> Ricci Oddi è una pinacoteca di Piacenza dedicata a <br>\ndipinti di <b>arte moderna</b>. Pecore Tosate di Francesco Filippini, olio su tela,&nbsp;...",
+        "cacheId": "q-ebaCvxDM4J",
+        "formattedUrl": "https://it.wikipedia.org/.../Galleria_d%27arte_moderna_Ricci_Oddi",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Galleria_d%27<b>arte</b>_<b>moderna</b>_Ricci_Oddi",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "276",
+              "height": "183",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSK1dxMf5xXNfkTG3xu2rIlsTq1_cLSKLckFHGq0n9WnlmPRHrxtwH61z4l"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Ricci_Oddi.jpg/1200px-Ricci_Oddi.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Ricci_Oddi.jpg/1200px-Ricci_Oddi.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Museo d'arte contemporanea di Niterói - Wikipedia",
+        "htmlTitle": "Museo d&#39;<b>arte</b> contemporanea di Niterói - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Museo_d%27arte_contemporanea_di_Niter%C3%B3i",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Il museo d'arte contemporanea di Niterói (in portoghese: Museu de arte \ncontemporanea de Niterói) o MAC è un museo brasiliano.",
+        "htmlSnippet": "Il museo d&#39;<b>arte</b> contemporanea di Niterói (in portoghese: Museu de <b>arte</b> <br>\ncontemporanea de Niterói) o MAC è un museo brasiliano.",
+        "cacheId": "Rp8V023_AjcJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Museo_d%27arte_contemporanea_di_Niterói",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Museo_d%27<b>arte</b>_contemporanea_di_Niterói",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTwt-bJkqqmYVcbMgnAax2NYvhrswf98ADKXnD04h5_wXnCfshIzEzlI_Ut"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Niter%C3%B3i_Contemporary_Art_Museum_2011a.jpg/1200px-Niter%C3%B3i_Contemporary_Art_Museum_2011a.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Niter%C3%B3i_Contemporary_Art_Museum_2011a.jpg/1200px-Niter%C3%B3i_Contemporary_Art_Museum_2011a.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galleria civica d'arte moderna e contemporanea - Wikipedia",
+        "htmlTitle": "Galleria civica d&#39;<b>arte moderna</b> e contemporanea - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Galleria_civica_d%27arte_moderna_e_contemporanea",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "La Galleria civica d'arte moderna e contemporanea di Torino (anche conosciuta \ncome GAM Torino) si trova in via Magenta 31 a Torino, in Italia. Fu fondata ...",
+        "htmlSnippet": "La Galleria civica d&#39;<b>arte moderna</b> e contemporanea di Torino (anche conosciuta <br>\ncome GAM Torino) si trova in via Magenta 31 a Torino, in Italia. Fu fondata&nbsp;...",
+        "cacheId": "GpSf_Zw_YNEJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Galleria_civica_d%27arte_moderna_e_ contemporanea",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Galleria_civica_d%27<b>arte</b>_<b>moderna</b>_e_ contemporanea",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS5ysf21OVZcSs3Zjkuu5ra3WIK42uAelgKm3lF1-fxMDmSkpHxWLDmm7xv"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Galleria_d%27Arte_Moderna_-_Ingresso.jpg/1200px-Galleria_d%27Arte_Moderna_-_Ingresso.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Galleria_d%27Arte_Moderna_-_Ingresso.jpg/1200px-Galleria_d%27Arte_Moderna_-_Ingresso.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Museo d'arte moderna e contemporanea di Trento e Rovereto ...",
+        "htmlTitle": "Museo d&#39;<b>arte moderna</b> e contemporanea di Trento e Rovereto ...",
+        "link": "https://it.wikipedia.org/wiki/Museo_d%27arte_moderna_e_contemporanea_di_Trento_e_Rovereto",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Il Museo d'arte moderna e contemporanea di Trento e Rovereto (Mart) è un \ncentro museale del Trentino. La sede principale si trova a Rovereto in corso \nBettini ...",
+        "htmlSnippet": "Il Museo d&#39;<b>arte moderna</b> e contemporanea di Trento e Rovereto (Mart) è un <br>\ncentro museale del Trentino. La sede principale si trova a Rovereto in corso <br>\nBettini&nbsp;...",
+        "cacheId": "iC0gdX8rwmgJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Museo_d%27arte_moderna_e_contemporanea_di_ Trento_e_Rovereto",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Museo_d%27<b>arte</b>_<b>moderna</b>_e_contemporanea_di_ Trento_e_Rovereto",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTVriRgf47Ec4UkrybD0ACVH4BxKFDu3ysXZzSSujPvNSdQzhU39BEsOQw"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/MART-Glaskuppel.jpg/1200px-MART-Glaskuppel.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/MART-Glaskuppel.jpg/1200px-MART-Glaskuppel.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Novice:it]-Arte moderna keyword_legacy1 keyword_legacy": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Arte moderna keyword_legacy1 keyword_legacy",
+          "totalResults": "0",
+          "searchTerms": "Arte moderna keyword_legacy1 keyword_legacy",
+          "count": 10,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:aagjculgj8c"
+        }
+      ]
+    },
+    "searchInformation": {
+      "searchTime": 0.411447,
+      "formattedSearchTime": "0,41",
+      "totalResults": "0",
+      "formattedTotalResults": "0"
+    },
+    "spelling": {
+      "correctedQuery": "Arte moderna keyword legacy 1 keyword legacy",
+      "htmlCorrectedQuery": "Arte moderna <b><i>keyword legacy 1</i></b> <b><i>keyword legacy</i></b>"
+    }
+  },
+  "[Novice:it]-Arte moderna keyword_description1 keyword_description2": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Arte moderna keyword_description1 keyword_description2",
+          "totalResults": "0",
+          "searchTerms": "Arte moderna keyword_description1 keyword_description2",
+          "count": 10,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:aagjculgj8c"
+        }
+      ]
+    },
+    "searchInformation": {
+      "searchTime": 0.407787,
+      "formattedSearchTime": "0,41",
+      "totalResults": "0",
+      "formattedTotalResults": "0"
+    },
+    "spelling": {
+      "correctedQuery": "Arte moderna keyword description 1 keyword description 2",
+      "htmlCorrectedQuery": "Arte moderna <b><i>keyword description 1</i></b> <b><i>keyword description 2</i></b>"
+    }
+  },
+  "[Novice:it]-Arte moderna keyword_history1 keyword_history2": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Arte moderna keyword_history1 keyword_history2",
+          "totalResults": "0",
+          "searchTerms": "Arte moderna keyword_history1 keyword_history2",
+          "count": 10,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:aagjculgj8c"
+        }
+      ]
+    },
+    "searchInformation": {
+      "searchTime": 0.399292,
+      "formattedSearchTime": "0,40",
+      "totalResults": "0",
+      "formattedTotalResults": "0"
+    },
+    "spelling": {
+      "correctedQuery": "Arte moderna keyword history keyword history2",
+      "htmlCorrectedQuery": "Arte moderna <em>keyword history</em> <em>keyword history2</em>"
+    }
   }
 }
