@@ -1,7 +1,7 @@
 /// <reference types="@types/jest"/>
 
 import { WikiData } from "../../src/wiki"
-import { ClassificationResult, Entity } from "../../src/models";
+import { Entity } from "../../src/models";
 import { MetaEntity } from "../../src/models";
 
 

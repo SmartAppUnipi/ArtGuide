@@ -2,7 +2,6 @@
 
 import { Wikipedia, WikiData } from "../../src/wiki"
 import { MetaEntity, Entity } from "../../src/models";
-import knownEntityEn from "../../assets/classification-result/known-en.json";
 import unknownEntityEn from "../../assets/classification-result/unknown-en.json"
 import { reduceEntities } from "../../src/utils";
 import * as config from "../../config.json";
