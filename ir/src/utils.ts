@@ -10,16 +10,21 @@ import { Entity } from "./models";
  * @returns The list of survived entities.
  */
 export function reduceEntities(entities: Array<Entity>,
-        maxEntityNumber = entities.length, minScore = 0): Array<Entity> {
-    let maxGap = -1;
-    let cutIndex = -1;
+        maxEntityNumber = entities ? entities.length : 0, minScore = 0): Array<Entity> {
+
+    if (!entities) return null;
+    if (!maxEntityNumber && maxEntityNumber !== 0 || maxEntityNumber < 0) maxEntityNumber = entities.length;
+    if (!minScore || minScore < 0) minScore = 0;
+
+    let maxGap = 0;
+    let cutIndex = 0;
 
     for (let i = 0; i < entities.length - 1; i++) {
         // stop if the score is too low
-        if (entities[i].score < minScore)
+        if (entities[i]?.score < minScore)
             break;
         // find the biggest gap
-        const gap = entities[i].score - entities[i + 1].score;
+        const gap = entities[i]?.score - entities[i + 1]?.score;
         if (gap > maxGap) {
             maxGap = gap;
             cutIndex = i + 1;   // cut after this item
