@@ -153,11 +153,6 @@ export class Parser {
         return !!pattern.test(str);
     }
 
-    public getDesc() {
-        var desc = document.head.querySelector('meta[name=description]');
-        //return desc ? desc.content : undefined;
-    }
-
     public parse(url: string): Promise<PageResult> {
         /*
          *  FIXME: catch "Error: Could not parse CSS stylesheet" by jsdom
