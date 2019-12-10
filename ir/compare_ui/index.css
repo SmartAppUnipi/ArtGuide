@@ -1,0 +1,9 @@
+.jumbotron {
+    background-color: #1976D2;
+    color: #FFFFFF;
+}
+
+.card {
+    height: 500px;
+    overflow-y: scroll;
+}
