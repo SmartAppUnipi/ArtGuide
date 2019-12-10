@@ -76,5 +76,10 @@
         "creator",
         "architect",
         "genre"
+    ],
+    "searchBlackList": [
+        "amazon",
+        "wikipedia",
+        "ebay"
     ]
 }
