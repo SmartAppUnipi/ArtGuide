@@ -65,50 +65,15 @@
       "spoof": "VERY_UNLIKELY",
       "violence": "VERY_UNLIKELY"
     },
-    "type": [
-      {
-        "description": "Painting",
-        "score": 0.9995
-      },
-      {
-        "description": "Sculpture",
-        "score": 0.565428
-      },
-      {
-        "description": "Architecture",
-        "score": 0.35591
-      }
-    ],
-    "monumentType": [
-      {
-        "description": "column",
-        "score": 0.9995
-      }
-    ],
-    "period": [
-      {
-        "description": "1920-1930",
-        "score": 0.9995,
-        "name": "Renaissance"
-      }
-    ],
     "style": [
       {
         "description": "Pointillism",
+        "entityId": "...",
         "score": 0.96185
       },
       {
         "description": "cubism",
-        "score": 0.35591
-      }
-    ],
-    "materials": [
-      {
-        "description": "bronze",
-        "score": 0.96185
-      },
-      {
-        "description": "marble",
+        "entityId": "...",
         "score": 0.35591
       }
     ]

@@ -40,7 +40,7 @@ if (LoggerConfig.file) {
     );
 }
 
-if (LoggerConfig.enableLogsOnConsole != "false" || !LoggerConfig.file) {
+if (!LoggerConfig.disableLogsOnConsole || !LoggerConfig.file) {
     logger.add(
         new winston.transports.Console({
             format: winston.format.combine(
