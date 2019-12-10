@@ -8,7 +8,7 @@ import packageJson from "../package.json";
 import path from "path";
 import { reduceEntities } from "./utils";
 import { Search } from "./search";
-import { ClassificationResult, Entity, PageResult } from "./models";
+import { ClassificationResult, Entity, ExpertizeLevelType, PageResult } from "./models";
 import { WikiData, Wikipedia } from "./wiki";
 
 /** Search module */
@@ -41,8 +41,12 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 // Index entry-point
 app.get("/", (req, res) => {
-    const latestCommit = childProcess.execSync("git rev-parse HEAD").toString()
+    
+    const latestCommit = childProcess
+        .execSync("git rev-parse HEAD")
+        .toString()
         .replace(/\n/, "");
+
     return res.json({
         message: `IR module version ${packageJson.version}.`,
         currentCommit: `https://github.com/SmartAppUnipi/ArtGuide/commit/${latestCommit}`,
@@ -172,7 +176,7 @@ app.post("/", async (req, res) => {
         // 5. Try to get a known instance
         const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, language);
 
-        let results: Array<PageResult>;
+        const searchPromises: Array<Promise<Array<PageResult>>> = [];
         if (knownInstance) {
             /*
              * BRANCH A: known entity
@@ -180,14 +184,21 @@ app.post("/", async (req, res) => {
              * 7b. search for the exact query on Google
              */
             logger.debug("[app.ts] Got a known instance.", { knownInstance });
-            results = await Promise.all([
-                wikipedia
-                    .searchKnownInstance(knownInstance, language)
-                    .then(pageResults => {
-                        pageResults.forEach(pageResult =>
-                            pageResult.score *= config.scoreWeight.known.wikipedia);
-                        return pageResults;
-                    }),
+
+            if (classificationResult.userProfile.expertiseLevel != ExpertizeLevelType.Child) {
+                // Use Wikipedia if the user is not a child
+                searchPromises.push(
+                    wikipedia
+                        .searchKnownInstance(knownInstance, language)
+                        .then(pageResults => {
+                            pageResults.forEach(pageResult =>
+                                pageResult.score *= config.scoreWeight.known.wikipedia);
+                            return pageResults;
+                        })
+                );
+            }
+
+            searchPromises.push(
                 search
                     .searchKnownInstance(knownInstance, classificationResult.userProfile)
                     .then(pageResults => {
@@ -195,7 +206,8 @@ app.post("/", async (req, res) => {
                             pageResult.score *= config.scoreWeight.known.google);
                         return pageResults;
                     })
-            ]).then(allResults => [].concat(...allResults));
+            );
+
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
             // BRANCH B: not a known entity
@@ -210,22 +222,33 @@ app.post("/", async (req, res) => {
              *  5a. search for the top score entities on Wikipedia
              *  5b. build a smart query on Google
              */
-            results = await Promise.all([
-                wikipedia.search(filteredEntities, language)
-                    .then(results => {
-                        results.forEach(result =>
-                            result.score *= config.scoreWeight.unknown.wikipedia);
-                        return results;
-                    }),
+            if (classificationResult.userProfile.expertiseLevel != ExpertizeLevelType.Child) {
+                // Use Wikipedia if the user is not a child
+                searchPromises.push(
+                    wikipedia.search(filteredEntities, language)
+                        .then(results => {
+                            results.forEach(result =>
+                                result.score *= config.scoreWeight.unknown.wikipedia);
+                            return results;
+                        })
+                );
+            }
+
+            searchPromises.push(
                 search.search(filteredEntities, classificationResult.userProfile)
                     .then(results => {
                         results.forEach(result =>
                             result.score *= config.scoreWeight.unknown.google);
                         return results;
                     })
-            ]).then(allResults => [].concat(...allResults));
+            );
+
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         }
+
+        const results: Array<PageResult> = await Promise
+            .all(searchPromises)
+            .then(allResults => [].concat(...allResults));
 
         // 6. Sort the results by score
         results.sort((p1, p2) => p2.score - p1.score);
@@ -236,7 +259,8 @@ app.post("/", async (req, res) => {
 
 
         // call adaptation for summary and return the result to the caller
-        return adaptation.getTailoredText(results, classificationResult.userProfile)
+        return adaptation
+            .getTailoredText(results, classificationResult.userProfile)
             .then(adaptationResponse => res.send(adaptationResponse));
 
         // Catch any error and inform the caller

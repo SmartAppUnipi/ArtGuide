@@ -2,60 +2,16 @@
 
 import request from 'supertest'
 import app from "../src/app"
-import nock from 'nock'
-import { AdaptationEndpoint } from '../src/environment'
-import { UserProfile, PageResult } from '../src/models'
 
 import knownEntityEn from "../assets/classification-result/known-en.json"
 import knownEntityIt from "../assets/classification-result/known-it.json"
 import unknownEntityEn from "../assets/classification-result/unknown-en.json"
 import unknownEntityIt from "../assets/classification-result/unknown-it.json"
-import queryExpansionResponse from "../assets/query-expansion-response.json"
+import { mockAdaptation } from '.'
 
-// ### Flag to mock adaptation server ###
-const mockAdaptationEndpoints = true;
-// ### Flag to mock adaptation server ###
-
-if (mockAdaptationEndpoints) {
-    const adaptationKeywordUrl = new URL(AdaptationEndpoint.keywords);
-    nock(adaptationKeywordUrl.origin)
-        .persist()
-        .post(adaptationKeywordUrl.pathname)
-        .reply((url, body: { userProfile: UserProfile }, callback) => {
-
-            // verify passes parameters
-            expect(body).not.toHaveProperty("classification");
-            expect(body.userProfile).toBeDefined();
-
-            // reply with 200 status code and the JSON response
-            callback(null, [
-                200,
-                queryExpansionResponse
-            ]);
-        });
-
-    const adaptationTextUrl = new URL(AdaptationEndpoint.text);
-    nock(adaptationTextUrl.origin)
-        .persist()
-        .post(adaptationTextUrl.pathname)
-        .reply((url, body: { userProfile: UserProfile, results: Array<PageResult> }, callback) => {
-
-            // verify passes parameters
-            expect(body).not.toHaveProperty("classification");
-            expect(body.userProfile).toBeDefined();
-            expect(body.results).toBeDefined();
-            body.results.forEach(pageResult => {
-                expect(pageResult.score).toBeGreaterThan(0);
-            });
-
-            // reply with 200 status code and a mock JSON response
-            callback(null, [
-                200,
-                body
-            ]);
-        });
-}
-
+// ### Mock adaptation server ###
+mockAdaptation(true);
+// ### Mock adaptation server ###
 
 describe("Integration tests with KNOWN entity in english", () => {
     it("Should return 200 and match user profile we passed", () => {
