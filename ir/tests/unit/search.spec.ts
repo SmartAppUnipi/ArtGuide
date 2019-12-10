@@ -67,13 +67,14 @@ describe("Test build query", () => {
         expect(result).toEqual(extendedQueries)
     })
 
-    it("Should return valid result object if Google returns valid items", async () => {
+    it("Should return valid result object, without black list websites, if Google returns valid items", async () => {
         const result = await search['buildResult'](extendedQueries);
         // must return an array of well formed page results
         expect(result).toBeTruthy();
         result.forEach(pageResult => {
             // page results must be well formed
             expect(pageResult.url).toBeTruthy();
+            expect(pageResult.url).not.toContain("wikipedia");
             expect(pageResult.title).toBeTruthy();
             expect(pageResult.sections).toBeTruthy();
             expect(pageResult.keywords).toBeTruthy();

@@ -3,7 +3,7 @@ import { GoogleSearch } from "./google-search";
 import logger from "../logger";
 import { Parser } from "../parser";
 import { post } from "../utils";
-import { flowConfig, knownInstanceProperties, scoreWeight } from "../../config.json";
+import { flowConfig, knownInstanceProperties, scoreWeight, searchBlackList } from "../../config.json";
 import {
     GoogleSearchResult,
     MetaEntity,
@@ -146,7 +146,12 @@ export class Search {
                                  * We need to merge duplicated results, taking into account that we have to find a way
                                  * to merge their keywords and produce a a reasonable score index.
                                  */
-                                results.push(...pageResults);
+                                pageResults.forEach(pr =>{
+                                    if(!searchBlackList.some(blackListWebsite => pr.url.includes(blackListWebsite))){
+                                        /** Discard black list's results.*/
+                                        results.push(pr);
+                                    }
+                                });
                             });
                     })
                     .catch(ex => {
