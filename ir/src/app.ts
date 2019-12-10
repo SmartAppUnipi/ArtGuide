@@ -1,14 +1,14 @@
 import * as childProcess from "child_process";
 import * as config from "../config.json";
-import { AdaptationEndpoint } from "./environment";
+import { Adaptation } from "./adaptation";
 import bodyParser from "body-parser";
 import express from "express";
 import logger from "./logger";
 import packageJson from "../package.json";
 import path from "path";
+import { reduceEntities } from "./utils";
 import { Search } from "./search";
-import { ClassificationResult, Entity, PageResult, TailoredTextRequest, TailoredTextResponse } from "./models";
-import { post, reduceEntities } from "./utils";
+import { ClassificationResult, Entity, PageResult } from "./models";
 import { WikiData, Wikipedia } from "./wiki";
 
 /** Search module */
@@ -19,6 +19,9 @@ const wikipedia = new Wikipedia();
 
 /** WikiData module */
 const wikidata = new WikiData();
+
+/** Adaptation interface */
+const adaptation = new Adaptation();
 
 /** Express application instance */
 const app: express.Application = express();
@@ -233,17 +236,8 @@ app.post("/", async (req, res) => {
 
 
         // call adaptation for summary and return the result to the caller
-        logger.debug("[app.ts] Call to adaptation text.", {
-            adaptationUrl: AdaptationEndpoint.text,
-            resultsSent: results
-        });
-        return post<TailoredTextResponse>(AdaptationEndpoint.text, {
-            userProfile: classificationResult.userProfile,
-            results
-        } as TailoredTextRequest).then(adaptationResponse => {
-            logger.debug("[app.ts] Adaptation Response received.", { adaptationResponse });
-            res.send(adaptationResponse);
-        });
+        return adaptation.getTailoredText(results, classificationResult.userProfile)
+            .then(adaptationResponse => res.send(adaptationResponse));
 
         // Catch any error and inform the caller
     } catch (ex) {
