@@ -24,16 +24,12 @@ export class Adaptation {
      * @returns A promise resolved with the received JSON parsed as JS object of type T.
      */
     private post<T = any>(url: string, body: any): Promise<T> {
-        return new Promise((resolve, reject) => {
-            fetch(url, {
-                method: "POST",
-                body: JSON.stringify(body),
-                headers: { "Content-Type": "application/json" }
-            }).then(res => {
-                if (res.status !== 200) reject(res)
-                resolve(res.json())
-            });
+        return fetch(url, {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: { "Content-Type": "application/json" }
         })
+            .then(res => res.json());
     }
 
     /**

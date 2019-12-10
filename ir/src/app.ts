@@ -221,7 +221,7 @@ app.post("/", async (req, res) => {
 
         // Catch any error and inform the caller
     } catch (ex) {
-        logger.error("[app.ts]", ex);
+        logger.error("[app.ts] ", ex);
         /* istanbul ignore next */
         return res
             .status(500)
