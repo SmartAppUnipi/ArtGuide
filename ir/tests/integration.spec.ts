@@ -68,7 +68,11 @@ describe("Integration tests with KNOWN entity in english", () => {
                     id: 42,
                     language: "en",
                     tastes: ["history", "description", "legacy"],
-                    expertiseLevel: 1
+                    expertiseLevel: 1,
+                    location: {
+                        "lat": 43.72159521843962,
+                        "lng": 10.407908459891619
+                    }
                 });
             })
     });
@@ -85,7 +89,11 @@ describe("Integration tests with KNOWN entity in italian", () => {
                     id: 42,
                     language: "it",
                     tastes: ["storia", "chimica", "arte"],
-                    expertiseLevel: 1
+                    expertiseLevel: 1,
+                    location: {
+                        "lat": 43.72159521843962,
+                        "lng": 10.407908459891619
+                    }
                 });
             })
     });
@@ -102,7 +110,11 @@ describe("Integration tests with UNKNOWN entity in english", () => {
                     id: 42,
                     language: "en",
                     tastes: ["curiosity", "author"],
-                    expertiseLevel: 1
+                    expertiseLevel: 1,
+                    location: {
+                        "lat": 43.72159521843962,
+                        "lng": 10.407908459891619
+                    }
                 });
             })
     });
@@ -119,7 +131,11 @@ describe("Integration tests with UNKNOWN entity in italian", () => {
                     id: 42,
                     language: "it",
                     tastes: ["storia", "stile"],
-                    expertiseLevel: 2
+                    expertiseLevel: 2,
+                    location: {
+                        "lat": 43.72159521843962,
+                        "lng": 10.407908459891619
+                    }
                 });
             })
     });
