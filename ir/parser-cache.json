@@ -49,7 +49,7 @@
   },
   "https://en.wikipedia.org/wiki/Galileo%27s_Leaning_Tower_of_Pisa_experiment": {
     "keywords": [],
-    "score": 0.22395842929687504,
+    "score": 0.7078192333333334,
     "sections": [
       {
         "title": "Galileo's Leaning Tower of Pisa experiment ",
@@ -114,7 +114,7 @@
   },
   "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa": {
     "keywords": [],
-    "score": 0.6718752878906249,
+    "score": 2.1234577,
     "sections": [
       {
         "title": "Leaning Tower of Pisa ",
@@ -248,7 +248,7 @@
   },
   "http://www.towerofpisa.org/": {
     "keywords": [],
-    "score": 0.4479168585937501,
+    "score": 1.4156384666666668,
     "sections": [
       {
         "title": "Guide to the World's Most Famous Tower ",
@@ -5256,12 +5256,9 @@
         ]
       }
     ],
-    "keywords": [
-      "keyword_history1",
-      "keyword_history2"
-    ],
+    "keywords": [],
     "tags": [],
-    "score": 0.6270836020312499
+    "score": 1.48642039
   },
   "https://en.wikipedia.org/wiki/Bonanno": {
     "url": "https://en.wikipedia.org/wiki/Bonanno",
@@ -5277,12 +5274,9 @@
         ]
       }
     ],
-    "keywords": [
-      "keyword_history1",
-      "keyword_history2"
-    ],
+    "keywords": [],
     "tags": [],
-    "score": 0.20902786734375
+    "score": 0.49547346333333336
   },
   "https://it.wikipedia.org/wiki/Porta_di_San_Ranieri": {
     "url": "https://it.wikipedia.org/wiki/Porta_di_San_Ranieri",
@@ -6127,5 +6121,58 @@
     "keywords": [],
     "tags": [],
     "score": 0.7696210000000001
+  },
+  "https://es.wikipedia.org/wiki/Bonanno_Pisano": {
+    "url": "https://es.wikipedia.org/wiki/Bonanno_Pisano",
+    "title": "Bonanno Pisano - Wikipedia, la enciclopedia libre",
+    "sections": [
+      {
+        "title": "Bonanno Pisano ",
+        "content": "(Pisa), fue un escultor italiano que trabajó en las décadas de 1170 y 1180. Su estilo mezcla elementos de arte bizantino y de la Antigüedad clásica. Giorgio Vasari le atribuyó erróneamente la realización de la Torre de Pisa en su Le vite de' più eccellenti pittori, scultori e architettori. ",
+        "tags": [
+          "pisa",
+          "vite de' pi",
+          "estilo mezcla elementos",
+          "giorgio vasari",
+          "escultor italiano",
+          "eccellenti pittori"
+        ]
+      },
+      {
+        "title": "Índice La puerta de San Raniero de la catedral de Pisa  La puerta de San Raniero de la catedral de Pisa ",
+        "content": "De alrededor de 1181 es la puerta de San Raniero, ubicada en el transepto derecho de la Catedral de Pisa, está inserta en un portal datado del momento de la ejecución de la fachada de la catedral, cuyos paneles de bronce narran en veinticuatro escenas los principales episodios de la vida de Cristo. Esta puerta es una de las primeras producidas en Italia en la Edad Media, tras los numerosos ejemplos de Constantinopla (en Amalfi, Salerno, Roma, Montecassino, Venecia) y se admira de ella una sensibilidad occidental, que se separa un poco de la tradición bizantina. A diferencia de las puertas carolingias de Aquisgrán o las románicas de Giniezno en Polonia que son de una pieza las de Bonanno están formadas por paneles engarzados sobre una plancha de madera. La dirección de la lectura de estas representaciones se entiende con la puerta cerrada desde el primer panel en la parte inferior izquierda al derecho, y luego otra vez de izquierda a derecha en todos los posteriores hasta el final. Los paneles, dispuestos en cinco filas presentan además de la historia de Cristo, los Doce profetas en un paraíso de palmeras que ocupan los dos paneles alargados del extremo inferior de la puerta, pasan por la escena del Pecado original a través de una secuencia de figuras ubicado en el panel de los Reyes Magos, terminando en la parte superior de la puerta con los paneles también rectangulares con Cristo y María en la gloria celestial colocados en una arquitectura figurada que domina la escena con bóvedas y pilares. En estas escenas los personajes están vestidos con trajes pesados, con el cuerpo que sobresale de la parte del fondo, todos derivados de modelos de la escultura antigua. En la actualidad la puerta del siglo XII está conservada en el Museo dell'Opera del Duomo de Pisa, siendo sustituida por una copia la de la catedral. Entre marzo de 1179 y marzo de 1180, realizó, en bronce, la Puerta Real para la la misma catedral de Pisa, que fue totalmente destruida por un incendio en el año 1595. ",
+        "tags": [
+          "catedral",
+          "puerta",
+          "pisa",
+          "cristo",
+          "paneles",
+          "panel",
+          "escena",
+          "marzo",
+          "puertas carolingias",
+          "puerta real"
+        ]
+      },
+      {
+        "title": "La puerta de la catedral de Monreale  La puerta de la catedral de Monreale ",
+        "content": "Desde 1186 se encuentra en la fachada principal de la Catedral de Monreale —mandada construir por Guillermo II de Sicilia— la puerta de bronce que fue enviada desde Pisa y probablemente creada por el artista entre 1185 y 1186. La obra está firmada con Bonanno civis pisanus. A diferencia de las figuras de la puerta de San Raniero de Pisa, los cuerpos ya no se proyectan en el fondo sino que se muestran como aplicaciones, en cuarenta y seis paneles de los que constan en total las dos hojas de la puerta. Iconográficamente hay cinco órdenes de la parte inferior son escenas del Antiguo Testamento, siete dedicadas a la historia de Adán y Eva, y otras seis a Profetas, mientras que cinco superiores con escenas del Nuevo Testamento y en la parte alta se presenta a Cristo y María en la gloria celestial. Se aprecia una difusión normalizada y generalizada iconográfica, la vuelta de las aureolas, las arquitecturas pierden profundidad y se cubren con una decoración densa que amortigua la plasticidad, todo lo cual sugiere una petición expresa por parte de los comitentes. ",
+        "tags": [
+          "puerta",
+          "pisa",
+          "escenas",
+          "bonanno civis pisanus",
+          "arquitecturas pierden profundidad",
+          "generalizada iconogr fica",
+          "antiguo testamento",
+          "san raniero",
+          "probablemente creada",
+          "monreale mandada"
+        ]
+      }
+    ],
+    "keywords": [],
+    "tags": [],
+    "summary": ""
   }
 }

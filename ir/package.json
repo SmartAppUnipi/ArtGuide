@@ -15,7 +15,8 @@
     "build": "tsc",
     "watch": "tsc -w -p .",
     "clean": "npx rimraf dist && npx rimraf coverage",
-    "docs": "npx typedoc"
+    "docs": "npx typedoc",
+    "webpack": "webpack --config=src/client/webpack.config.js --mode development"
   },
   "keywords": [],
   "authors": [
@@ -65,10 +66,13 @@
     "nodemon": "^2.0.1",
     "supertest": "^4.0.2",
     "ts-jest": "^24.2.0",
+    "ts-loader": "^6.2.1",
     "ts-node": "^8.5.4",
     "tslint-eslint-rules": "^5.4.0",
     "typedoc": "^0.15.3",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -111,7 +115,8 @@
     ],
     "ext": "ts",
     "ignore": [
-      "src/**/*.spec.ts"
+      "src/**/*.spec.ts",
+      "src/client/**/*"
     ],
     "execMap": {
       "ts": "node --require ts-node/register"

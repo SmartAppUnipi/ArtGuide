@@ -57,12 +57,13 @@ app.get("/", (req, res) => {
 
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
 app.use("/coverage", express.static(path.join(__dirname, "../coverage/lcov-report/")));
+app.use("/logs", express.static(path.join(__dirname, "./client/")));
 
 // Serve trace log
 if (LoggerConfig.file) {
     express.static.mime.define({ "application/json": ["json", "log"] });
     const file = path.join(__dirname, `../${LoggerConfig.file}`);
-    app.use("/logs", express.static(file));
+    app.use("/logs/raw", express.static(file));
 }
 
 // Main entry-point
