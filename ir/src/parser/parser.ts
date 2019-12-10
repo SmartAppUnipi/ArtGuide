@@ -76,6 +76,8 @@ export class Parser {
          * FIXME: log properly
          * console.log(nOpenBracket)
          */
+        text = text.replace(/\\n/g, "");
+        text = text.replace(/\\t/g, "");
         return text;
     }
 
