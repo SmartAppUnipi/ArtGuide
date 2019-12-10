@@ -5,10 +5,10 @@
     "doc_api_file": "documentation/docs_api.html",
     "transition_data_path":"data",
     "max_cluster_size": 80,
-    "max_sentences": 6,
-    "debug": true,
+    "max_sentences": 4,
+    "debug": false,
     "expertize_levels": 4,
     "expertise_weight": 10, 
     "IR_score_weight": 5, 
-    "affinity_weight": 1 
+    "affinity_weight": 2 
 }
