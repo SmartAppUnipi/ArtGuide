@@ -65,9 +65,12 @@ def tailored_text():
         return jsonify(req)
     if 'tastes' not in req['userProfile'] or 'expertiseLevel' not in req['userProfile'] or 'language' not in req['userProfile']:
         req['adaptionError'] = {"userProfile incomplete"}
-       
+    
     # Body
     user = User(req["userProfile"])
+    
+    document_adaptation.language_assertion(user.language)
+
     results = document_adaptation.get_tailored_text(req['results'], user)
     if not results:
         results = "Sorry,\nit is not art."

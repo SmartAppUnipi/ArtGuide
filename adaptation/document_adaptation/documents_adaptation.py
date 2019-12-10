@@ -23,18 +23,18 @@ class DocumentsAdaptation():
         # list of the language we want to suppport
         dim = 200
         vs = 200000
-        languages = config.languages
+        self.languages = config.languages
 
         # Checking for available languages
-        for lang in languages:
+        for lang in self.languages:
             if lang not in self.available_languages:
-                raise Exception("Sorry, '{}' not yet supported".format(lang))
+                raise Exception("Sorry, language '{}' not yet supported".format(lang))
 
         self.verbose = verbose
         self.max_workers = max_workers
-        self.transition = {l:transitions_handler(self.config.transition_data_path) for l in languages}
-        self.model_summarizer = {l:ModelSummarizer(config, lang=l, verbose=self.verbose) for l in languages}
-        self.embedder = {l:BPEmb(lang=l, dim=dim, vs = vs) for l in languages}
+        self.transition = {l:transitions_handler(self.config.transition_data_path) for l in self.languages}
+        self.model_summarizer = {l:ModelSummarizer(config, lang=l, verbose=self.verbose) for l in self.languages}
+        self.embedder = {l:BPEmb(lang=l, dim=dim, vs = vs) for l in self.languages}
        
     # Input: json contenente informazioni dell'utente passate dall'applicazione
     # Out: serie di keyword da passare a SDAIS per la generazione di queries specializzate
@@ -43,6 +43,10 @@ class DocumentsAdaptation():
     #                   "keyword2":["keyword2_expanded_2","keyword2_expanded_3","keyword2_expanded_4"]
     #                   ....
     #                   }
+
+    def language_assertion(self, lang):
+        if lang not in self.languages:
+                raise Exception("Sorry, '{}' not yet supported".format(lang))
 
     def get_language_stopwords(self, user):
         if (user.language in self.available_languages):
