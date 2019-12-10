@@ -69,7 +69,6 @@ def main():
         for i in aggregate_results:
             plain_text += ['#'*50]
             plain_text += [i['text']]
-            plain_text += [i['text']]
             for index, j in enumerate(i['params']):
                 plain_text += ['-'*50]
                 plain_text += ['{} - expertise={}, ir={}, affinity={}'.format(index, j['expertise'], j['ir'], j['affinity'])]
