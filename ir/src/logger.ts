@@ -19,11 +19,16 @@ const logger = winston.createLogger({
 
 if (LoggerConfig.file) {
     logger.on("data", log => {
-        if (!fs.existsSync(LoggerConfig.file))
-            fs.writeFileSync(LoggerConfig.file, JSON.stringify([]));
-        const currentLogs: Array<any> = JSON.parse(fs.readFileSync(LoggerConfig.file).toString());
-        currentLogs.push(log);
-        fs.writeFileSync(LoggerConfig.file, JSON.stringify(currentLogs, null, 4));
+        try {
+            if (!fs.existsSync(LoggerConfig.file))
+                fs.writeFileSync(LoggerConfig.file, JSON.stringify([]));
+            const logFileContents = fs.readFileSync(LoggerConfig.file).toString();
+            const currentLogs: Array<any> = JSON.parse(logFileContents);
+            currentLogs.push(log);
+            fs.writeFileSync(LoggerConfig.file, JSON.stringify(currentLogs, null, 4));
+        } catch (ex) {
+            console.error("Cannot write log on file: " + log.message, ex);
+        }
     });
 }
 

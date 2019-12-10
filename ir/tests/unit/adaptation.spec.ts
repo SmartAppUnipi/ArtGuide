@@ -87,27 +87,4 @@ describe("Adaptation", () => {
         await expect(adaptation.getTailoredText(results, userProfile)).resolves.toEqual({ results, userProfile });
     });
 
-})
-
-describe("Fuzzy", () => {
-    describe("getKeywordExpansion", () => {
-
-        test("null user profile", async () => {
-            const adaptationKeywordUrl = new URL(AdaptationEndpoint.keywords);
-            nock(adaptationKeywordUrl.origin)
-                .post(adaptationKeywordUrl.pathname)
-                .reply((url, body: QueryExpansionRequest, callback) => {
-                    // verify passes parameters
-                    expect(body).toEqual({ userProfile: null });
-                    // reply with 200 status code and the JSON response
-                    callback(null, [
-                        400,
-                        { error: "Bad error." }
-                    ]);
-                });
-            const adaptation = new Adaptation()
-            await expect(adaptation.getKeywordExpansion(null)).rejects.toHaveProperty("status");
-        });
-        
-    });
-})
+});

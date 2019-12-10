@@ -7,8 +7,9 @@ import { LoggerConfig } from "../src/environment";
 export default () => {
 
     // Clear trace.log before run tests
-    if (fs.existsSync(LoggerConfig.file)) {
-        fs.writeFileSync(LoggerConfig.file, "");
+    if (LoggerConfig.file) {
+        // delete log file before starting a new execution
+        fs.writeFileSync(LoggerConfig.file, JSON.stringify([]));
     }
 
 }
