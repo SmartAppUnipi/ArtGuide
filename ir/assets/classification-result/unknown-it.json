@@ -6,7 +6,11 @@
       "stile"
     ],
     "language": "it",
-    "expertiseLevel": 2
+    "expertiseLevel": 2,
+    "location":{
+      "lat":43.72159521843962,
+      "lng":10.407908459891619
+    }
   },
   "classification": {
     "labels": [
