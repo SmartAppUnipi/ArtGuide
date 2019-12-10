@@ -124,11 +124,12 @@ export class WikiData {
     public filterNotArtRelatedResult(metaEntities: Array<MetaEntity>): Promise<Array<MetaEntity>> {
         // filter the entities
         return Promise.all(metaEntities.map(metaEntity => {
+            if (!metaEntity) return
             // if the entity description is not an art instance discard the entity directly
-            if (wikidataArtEntities.exclude.includes(metaEntity.description.toLocaleLowerCase()))
+            if (wikidataArtEntities.exclude.includes(metaEntity.description?.toLocaleLowerCase()))
                 return Promise.resolve(null);
             // if the entity description is an art instance keep the entity
-            if (wikidataArtEntities.include.includes(metaEntity.description.toLocaleLowerCase()))
+            if (wikidataArtEntities.include.includes(metaEntity.description?.toLocaleLowerCase()))
                 return Promise.resolve(metaEntity);
             // otherwise get the root path of the entity, ie. the list of all its instance of and subclass properties
             return this.getEntityRootPath(metaEntity.wikidataId)
