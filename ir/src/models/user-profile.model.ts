@@ -3,6 +3,7 @@ export interface UserProfile {
     tastes: Array<string>;
     language: string;
     expertiseLevel: ExpertizeLevelType;
+    location: LocationType;
 }
 
 export enum ExpertizeLevelType {
@@ -10,4 +11,9 @@ export enum ExpertizeLevelType {
     Novice = 2,
     Knowledgeable = 3,
     Expert = 4
+}
+
+export interface LocationType {
+    lat: number;
+    lng: number;
 }
