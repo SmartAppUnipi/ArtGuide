@@ -55,8 +55,8 @@ app.get("/", (req, res) => {
     });
 });
 
-// Docs entry-point
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
+app.use("/coverage", express.static(path.join(__dirname, "../coverage/lcov-report/")));
 
 // Serve trace log
 if (LoggerConfig.file) {
