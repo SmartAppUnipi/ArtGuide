@@ -4,6 +4,7 @@ import { Adaptation } from "./adaptation";
 import bodyParser from "body-parser";
 import express from "express";
 import logger from "./logger";
+import { LoggerConfig } from "./environment";
 import packageJson from "../package.json";
 import path from "path";
 import { reduceEntities } from "./utils";
@@ -41,7 +42,7 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 // Index entry-point
 app.get("/", (req, res) => {
-    
+
     const latestCommit = childProcess
         .execSync("git rev-parse HEAD")
         .toString()
@@ -57,6 +58,13 @@ app.get("/", (req, res) => {
 // Docs entry-point
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
 
+// Serve trace log
+if (LoggerConfig.file) {
+    express.static.mime.define({ "application/json": ["json", "log"] });
+    const file = path.join(__dirname, `../${LoggerConfig.file}`);
+    app.use("/logs", express.static(file));
+}
+
 // Main entry-point
 app.post("/", async (req, res) => {
 
@@ -69,7 +77,7 @@ app.post("/", async (req, res) => {
         if (!classificationResult ||
             !classificationResult.classification ||
             !classificationResult.userProfile) {
-            logger.warn({ message: "Missing required body.", classificationResult })
+            logger.warn({ message: "Missing required body.", classificationResult });
             return res
                 .status(400)
                 .json({ error: "Missing required body." });
@@ -78,7 +86,7 @@ app.post("/", async (req, res) => {
 
         // Ensure the language is supported
         if (!config.supportedLanguages.includes(classificationResult.userProfile.language)) {
-            logger.warn({ message: "Unsupported language.", language: classificationResult.userProfile.language })
+            logger.warn({ message: "Unsupported language.", language: classificationResult.userProfile.language });
             return res
                 .status(400)
                 .json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });

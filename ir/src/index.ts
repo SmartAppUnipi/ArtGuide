@@ -1,12 +1,10 @@
 import app from "./app";
-import { ExpressPort, LoggerConfig } from "./environment";
 import fs from "fs";
+import { ExpressPort, LoggerConfig } from "./environment";
 
 if (LoggerConfig.file) {
     // delete log file before starting a new execution
-    if (fs.existsSync(LoggerConfig.file)) {
-        fs.unlinkSync(LoggerConfig.file);
-    }
+    fs.writeFileSync(LoggerConfig.file, JSON.stringify([]));
 }
 
 app.listen(ExpressPort, () => {
