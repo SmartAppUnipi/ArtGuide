@@ -7,7 +7,7 @@ from flask import Flask, jsonify, request, abort
 import json
 from logging.handlers import RotatingFileHandler
 
-from document_adaptation import DocumentsAdaptation, User, semantic_search
+from document_adaptation import DocumentsAdaptation, User
 from config import config
 from urllib.parse import urlparse
 

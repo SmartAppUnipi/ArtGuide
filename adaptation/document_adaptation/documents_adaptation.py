@@ -43,6 +43,8 @@ class DocumentsAdaptation():
     #                   "keyword2":["keyword2_expanded_2","keyword2_expanded_3","keyword2_expanded_4"]
     #                   ....
     #                   }
+    def update_config(self, config):
+        self.config = config
 
     def language_assertion(self, lang):
         if lang not in self.languages:
@@ -76,7 +78,7 @@ class DocumentsAdaptation():
     # Out: articolo filtrato im base alle preferenze dell'utente 
     # Formato output: string
     # Proto: il primo articolo per ora puo' andare bene
-    def get_tailored_text(self, results, user):
+    def get_tailored_text(self, results, user, use_transitions=True):
         if len(results)<=0:
             return "Content not found"
 
@@ -137,7 +139,7 @@ class DocumentsAdaptation():
             keyword, summary = res
             paragraph = ''
 
-            if (index>0):
+            if (use_transitions and index>0):
                 paragraph += self.transition[user.language].extract_transition(user.language, topic=keyword)+'\n'
             paragraph += summary+'\n'
 
