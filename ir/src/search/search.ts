@@ -112,8 +112,6 @@ export class Search {
      */
     private buildResult(queries: Array<Query>, userProfile: UserProfile): Promise<Array<PageResult>> {
 
-        const results: Array<PageResult> = [];
-
         return Promise.all(
             // for each query
             queries.map(async q => {
@@ -127,36 +125,33 @@ export class Search {
                             return;
                         }
 
-                        return this
-                            .toPageResults(googleSearchResult, q)
-                            .then(pageResults => {
-
-                                /*
-                                 * TODO: Merge duplicates
-                                 * For each basic query (eg. "Leaning Tower of Pisa") we perform a Google Search
-                                 * for each keywords that come from the adaptation group
-                                 * (eg. "Leaning Tower of Pisa Art", "Leaning Tower of Pisa Description", ecc).
-                                 *
-                                 * Each google search produces a set of pages that are actually merged regardless 
-                                 * the fact they they could potentially be duplicated.
-                                 *
-                                 * We need to merge duplicated results, taking into account that we have to find a way
-                                 * to merge their keywords and produce a a reasonable score index.
-                                 */
-                                pageResults.forEach(pr => {
-                                    if (!searchBlackList.some(blackListWebsite => pr.url.includes(blackListWebsite))) {
-                                        /** Discard black list's results.*/
-                                        results.push(pr);
-                                    }
-                                });
-                            });
+                        return {
+                            gResult: googleSearchResult,
+                            query: q
+                        };
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
                             { query: q, exception: ex });
+                        return {
+                            gResult: null as GoogleSearchResult,
+                            query: null as Query
+                        };
                     });
             })
-        ).then(() => results);
+        ).then(gResults => {
+
+            return this
+                .mergeDuplicateUrls(gResults)
+                .filter(result => {
+                    return !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite))
+                });
+
+        }).then(r => {
+
+            return this.parseList(r);
+
+        });
     }
 
     /**
@@ -200,13 +195,20 @@ export class Search {
                     queries.map(query => {
                         return this.googleSearch
                             .query(query.searchTerms, userProfile)
-                            .then(googleResult => this.toPageResults(googleResult, query));
+                            .then(r => ({
+                                gResult: r,
+                                query: query
+                            }))
                     })
-                ).then(allResults => {
-                    // eslint-disable-next-line
-                    // flatten results => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
-                    return [].concat(...allResults);
-                });
+                ).then(gResults => {
+                    return this
+                        .mergeDuplicateUrls(gResults)
+                        .filter(result => {
+                            return !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite))
+                        });
+                }).then(r => {
+                    return this.parseList(r);
+                })
             });
     }
 
@@ -217,7 +219,7 @@ export class Search {
      * associated query that contains the search terms and the
      *  keywords that generated that results.
      */
-    
+
     public mergeDuplicateUrls(results: Array<{ gResult: GoogleSearchResult, query: Query }>): Array<{ url: string, keywords: Array<string> }> 
     {
 
@@ -276,7 +278,6 @@ export class Search {
         }
         
         return finalResult
-        
     }
 
     /**
@@ -290,29 +291,28 @@ export class Search {
      * @param query The query that produced the result.
      * @returns The array of page results corresponding to the parsed pages returned from Google.
      */
-    private async toPageResults(googleResult: GoogleSearchResult, query: Query): Promise<Array<PageResult>> {
+    private async parseList(list: Array<{ url: string, keywords: Array<string>, score: number }>): Promise<Array<PageResult>> {
         const results: Array<PageResult> = [];
-        const itemsLen = Math.min(flowConfig.googleSearchResults.maxLimit, googleResult.items.length);
+
         return Promise.all(
-            googleResult.items
-                .slice(0, itemsLen)
+            list
                 .map((item, index) => {
                     // Scrape text from results
-                    return this.parser.parse(item.link)
+                    return this.parser.parse(item.url)
                         .then(pageResult => {
 
                             if (!pageResult)
                                 return;
 
                             // TODO: assign a score multiplier read from config.json
-                            pageResult.score = query.score * (1 - (index / itemsLen));
-                            pageResult.keywords = query.keywords;
+                            pageResult.score = item.score * (1 - (index / list.length));
+                            pageResult.keywords = item.keywords;
 
                             results.push(pageResult);
-                            logger.silly("[search.ts] Parsed link.", { url: item.link });
+                            logger.silly("[search.ts] Parsed link.", { url: item.url });
                         })
                         .catch(ex => {
-                            logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
+                            logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.url);
                         });
                 })
         ).then(() => results);
