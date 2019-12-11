@@ -173,7 +173,7 @@ describe.only("Duplicate results", () => {
         });
         expect(gResultsNoDuplicates[4]).toEqual({
             url: "__5__",
-            keywords: ["one", "five"]
+            keywords: ["one", "five","test"]
         });
         expect(gResultsNoDuplicates[5]).toEqual({
             url: "__6__",

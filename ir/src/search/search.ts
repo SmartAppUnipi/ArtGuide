@@ -12,6 +12,8 @@ import {
     UserProfile
 } from "../models";
 
+
+
 /**
  * Perform web searches.
  */
@@ -215,9 +217,66 @@ export class Search {
      * associated query that contains the search terms and the
      *  keywords that generated that results.
      */
-    public mergeDuplicateUrls(results: Array<{ gResult: GoogleSearchResult, query: Query }>): Array<{ url: string, keywords: Array<string> }> {
-        // TODO: Haris, implement this function until google-search.spec.ts passes with no errors
-        return null;
+    
+    public mergeDuplicateUrls(results: Array<{ gResult: GoogleSearchResult, query: Query }>): Array<{ url: string, keywords: Array<string> }> 
+    {
+
+        const linkMap=new Map();
+        let finalResult:Array<{ url: string, keywords: Array<string> }>=[] 
+        let temp
+
+        // create a Map and if link is not there, append it to a map toogether with its keywords
+        // if link is already in the map, then take from the Map old values of keywords,
+        // concatenate them with the new values and append everything to a Map 
+        // In this way we merge keywords of the same queries, but still we have duplicates inside
+        // To get rid of duplicates, append links toogether with keywords in the final array,
+        // where we do canceling of duplicate values
+        for(var i=0;i<results.length;i++)   
+        {   
+            for(var j=0;j<results[i].gResult.items.length;j++)    
+            {    
+                if(!linkMap.has(results[i].gResult.items[j].link))      
+                {     
+                
+                    linkMap.set(results[i].gResult.items[j].link,results[i].query.keywords)     
+                }    
+                else       
+                {
+                    for(let [key,value] of linkMap)   
+                    {
+                        if(results[i].gResult.items[j].link==key)
+                        {
+                            temp=value.concat(results[i].query.keywords)  
+                            linkMap.set(key,temp)                       
+                        }                                  
+                    } 
+                    
+                }              
+                
+            }         
+        }   
+        
+        for(let[key,value]of linkMap)
+        {
+            finalResult.push({url:key,keywords:value})
+        }
+        
+        for(let i=0;i<finalResult.length;i++)
+        {
+            for(let j=0;j<finalResult[i].keywords.length;j++)
+            {
+                for(let z=j+1;z<finalResult[i].keywords.length;z++)
+                {
+                    if(finalResult[i].keywords[j]==finalResult[i].keywords[z])
+                    {
+                        finalResult[i].keywords.splice(z,1)
+                    }
+                }
+            }
+        }
+        
+        return finalResult
+        
     }
 
     /**
