@@ -13,11 +13,9 @@ from google.cloud import vision
 from google.cloud.vision import types
 from google.protobuf.json_format import MessageToDict
 from PIL import Image
-from dotenv import load_dotenv
 # from ..classification.codebase import CROP_SIZE
 
 
-load_dotenv()
 PORT = 2345
 VALID_LABELS = {"Painting", "Picture frame"}
 CROP_SIZE = [300, 300, 3]
@@ -56,21 +54,19 @@ def get_vision(content):
     # Performs label detection on the image file
     label = MessageToDict(client.label_detection(image=image))
     web_entities = MessageToDict(client.web_detection(image=image))
-    objects = MessageToDict(client.object_localization(image=image))
 
-    return {"label": label, "we": web_entities, "objects": objects}
+    return {"label": label, "we": web_entities}
 
 
 def get_bounding(content):
-    #client = vision.ImageAnnotatorClient()
-
     # The name of the image file to annotate
     image = types.Image(content=content)
 
     # Performs object detection on the image file
     objects = MessageToDict(client.object_localization(image=image))
 
-    return objects
+    return {"objects": objects}
+
 
 def freebaseID2wd(freebase_id):
     url = 'https://query.wikidata.org/sparql'
@@ -89,6 +85,7 @@ def freebaseID2wd(freebase_id):
     data = r.json()
     iri = data["results"]["bindings"][0]["s"]["value"]    
     return iri.split("/")[-1]
+
 
 # ----- CROP FUNCTION ON BOUNDING BOX ----- #
 def crop_on_bb(image, api_res):
@@ -120,17 +117,21 @@ def crop_on_bb(image, api_res):
     right = points[1].x * width
     bottom = points[2].y * height
 
-    # Cropped image of above dimension  
-    # (It will not change orginal image)  
+    # Crop image with above dimension  
     im1 = imageb.crop((left, top, right, bottom)) 
     newsize = (CROP_SIZE[0], CROP_SIZE[1])
     im1 = im1.resize(newsize) 
+
     # Shows the image in image viewer  
     im1.show()
 
-    print(most_centered_obj)
+    # print(most_centered_obj)
 
-    return image
+    imgByteArr = io.BytesIO()
+    im1.save(imgByteArr, format='PNG')
+    imgByteArr = imgByteArr.getvalue()
+
+    return imgByteArr
 
 
 # ----- ENVIRONMENT ----- #
@@ -174,14 +175,14 @@ def image_analysis(content):
     image = content["image"]
     image_b64_str = re.sub("^data:image/.+;base64,", "", image)
     img_b64 = base64.b64decode(image_b64_str)
-    api_res = get_vision(img_b64)
 
-    cropped_img = crop_on_bb(img_b64, api_res)
+    obj_res = get_bounding(img_b64)
+    cropped_img = crop_on_bb(img_b64, obj_res)
+    api_res = get_vision(cropped_img)
 
     content["classification"] = {
         "labels": api_res["label"]["labelAnnotations"],
         "entities": api_res["we"]["webDetection"]["webEntities"],
-        "objects": api_res["objects"],
         "locations": [],
         "safeSearch": [],
         "type": [],
