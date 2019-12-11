@@ -50,9 +50,6 @@ if not os.path.exists(api_key_path):
 
 # ----- FUNCTION DEFINITION ----- #
 def get_vision(content):
-    # Instantiates a client
-    #client = vision.ImageAnnotatorClient()
-
     # The name of the image file to annotate
     image = types.Image(content=content)
 
@@ -75,10 +72,26 @@ def get_bounding(content):
 
     return objects
 
+def freebaseID2wd(freebase_id):
+    url = 'https://query.wikidata.org/sparql'
+    query = f"""
+    PREFIX wd: <http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+    PREFIX wikibase: <http://wikiba.se/ontology#>
+
+    SELECT ?s WHERE {{
+      ?s ?p ?o .
+      ?s wdt:P646 "/m/0cn46" .
+    }}
+    LIMIT 1
+    """
+    r = requests.get(url, params = {'format': 'json', 'query': query})
+    data = r.json()
+    iri = data["results"]["bindings"][0]["s"]["value"]    
+    return iri.split("/")[-1]
 
 # ----- CROP FUNCTION ON BOUNDING BOX ----- #
 def crop_on_bb(image, api_res):
-
     most_centered_obj = None
     for obj in api_res["objects"]["localizedObjectAnnotations"]:
         print(obj["name"])
@@ -115,7 +128,6 @@ def crop_on_bb(image, api_res):
     # Shows the image in image viewer  
     im1.show()
 
-
     print(most_centered_obj)
 
     return image
@@ -133,25 +145,38 @@ def home():
     return "<h1>Image analysis service</h1>"
 
 
+@app.route("/mock", methods=["POST"])
+def mock():
+    content = request.get_json()
+    labels = image_analysis(content)
+    return str(labels)
+
+
 @app.route("/upload", methods=["POST"])
 def upload():
+    # Define the headers (they are needed to make get_json() work)
+    head = {"Content-type": "application/json"}
+
+    content = request.get_json()
+    labels = image_analysis(content)
+
+    r = requests.post(OPUS_URL, json=labels, headers=head)
+    return r.content
+
+
+def image_analysis(content):
     """
     For Test.py:
         load the Base64 encoded image with get_json(),
         decode it back to an image and send it to the API
         to retrieve the JSON answer.
     """
-    content = request.get_json()
-
     image = content["image"]
     image_b64_str = re.sub("^data:image/.+;base64,", "", image)
     img_b64 = base64.b64decode(image_b64_str)
     api_res = get_vision(img_b64)
 
     cropped_img = crop_on_bb(img_b64, api_res)
-
-    # Define the headers (they are needed to make get_json() work)
-    head = {"Content-type": "application/json"}
 
     content["classification"] = {
         "labels": api_res["label"]["labelAnnotations"],
@@ -166,11 +191,9 @@ def upload():
         "materials": []
     }
     del content["image"]
-    pprint.pprint(content)
+    # pprint.pprint(content)
 
-    r = requests.post(OPUS_URL, json=content, headers=head)
-    return r.content
-
+    return content
 
 if __name__ == "__main__":
     app.config["DEBUG"] = True
