@@ -16,23 +16,36 @@ from transformers import *
 import nltk
 nltk.download('punkt')
 
+def getSpacyLang(lang='en'):
+    language = None
+    if lang == 'it':
+        from spacy.lang.it import Italian
+        language = Italian
+    else:
+        from spacy.lang.en import English
+        language = English
+
+    return language
 
 class ModelSummarizer():
     def __init__(self, config, lang=None, custom_model=None, custom_tokenizer=None, tokenizer=None, verbose=None, **kwargs):
         self.config = config
-        if lang == 'it':
-            from spacy.lang.it import Italian
-            self.language = Italian
-        elif lang == 'en':
-            from spacy.lang.en import English
-            self.language = English
+        self.verbose = verbose
+        self.language = getSpacyLang(lang)
         
-        if not custom_model:
-            custom_model = BertModel.from_pretrained('bert-base-uncased', output_hidden_states=True)
-        if not custom_tokenizer:
-            custom_tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+        if not (custom_model and custom_tokenizer):
+            custom_model, custom_tokenizer = self.get_pretrained_language(lang)
 
         self.model = Summarizer(language=self.language, custom_model=custom_model, custom_tokenizer=custom_tokenizer, **kwargs)
+
+    def get_pretrained_language(self, lang):
+        if lang=='en':
+            custom_model = RobertaModel.from_pretrained('distilroberta-base', output_hidden_states=True)
+            custom_tokenizer = RobertaTokenizer.from_pretrained('distilroberta-base')
+        else:
+            custom_model = DistilBertModel.from_pretrained('distilbert-base-multilingual-cased', output_hidden_states=True)
+            custom_tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-multilingual-cased')
+        return custom_model, custom_tokenizer
 
     def inference(self, txts, num_sentences=[], ratio=0.5, **kwargs):
         result = []
@@ -43,13 +56,65 @@ class ModelSummarizer():
                 # Adaptive scale ration based on the items in the cluster
                 if len(num_sentences)>=idx:
                     weight = num_sentences[idx] / sum(num_sentences)
-                    _ratio = min(self.config.max_sentences / (num_sentences[idx]*weight), 0.8)
-                    # print(weight, _ratio)
+                    _ratio = min((self.config.max_sentences*weight) / num_sentences[idx], 0.8)
+                    if (self.verbose):
+                        print("Wehight-ratio on keyword: {}, {}".format(weight, _ratio))
                 pred = self.model(txt, ratio=_ratio, min_length=40, **kwargs)
             else:
                 pred = ''
             result.append(''.join(pred))
         return result
+
+    def to_batch(self, clusters, aggregate_from_same_doc=True):
+        if (aggregate_from_same_doc):
+            clusters = self.aggregate_from_same_doc(clusters)
+        ''' Create batch of sentences coming from policy.results '''
+        batch_sentences = []
+        num_sentences = []
+        keywords = []
+
+        for keyword in clusters:
+            # Da rimuovere
+            # limited_cluster = policy.results[cluster][:self.config.max_cluster_size]
+            sentences = clusters[keyword]
+            if len(sentences) > 0:
+                keywords.append(keyword)
+                batch_sentences.append(''.join( [x.sentence for x in sentences] ))
+                num_sentences.append(len(sentences))
+        if self.verbose:
+            print("Batch, num_sentences: {}".format(list(zip(clusters, num_sentences))))
+
+        return batch_sentences, num_sentences, keywords
+
+    def aggregate_from_same_doc(self, clusters):
+        # Flatting clusters O(n)
+        flat_clusters = []
+        keywords = []
+        for keyword in clusters:
+            keywords.append(keyword)
+            flat_clusters += [(keyword, x) for x in clusters[keyword]]
+        # ~O(n^2)
+        new_flat_clusters = []
+        for couple in flat_clusters:
+            keyword, target = couple
+            # check in element is already in new_flat_clusters
+            if any((x[1].document_uid == target.document_uid and x[1].position_in_document == target.position_in_document) for x in new_flat_clusters):
+                continue
+            else:
+                from_same_doc = [x for x in flat_clusters if x[1].document_uid == target.document_uid]
+                from_same_doc.sort(key=lambda x: x[1].position_in_document)
+                new_flat_clusters += from_same_doc
+        # refactoring cluster O(n)
+        new_clusters = {}
+        for key in keywords:
+            new_clusters[key] = []
+        for couple in new_flat_clusters:
+            keyword, target = couple
+            new_clusters[keyword].append(target)
+
+        return new_clusters
+
+         
 
 if __name__ == '__main__':
     txt = '''

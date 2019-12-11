@@ -23,18 +23,18 @@ class DocumentsAdaptation():
         # list of the language we want to suppport
         dim = 200
         vs = 200000
-        languages = config.languages
+        self.languages = config.languages
 
         # Checking for available languages
-        for lang in languages:
+        for lang in self.languages:
             if lang not in self.available_languages:
-                raise Exception("Sorry, '{}' not yet supported".format(lang))
+                raise Exception("Sorry, language '{}' not yet supported".format(lang))
 
         self.verbose = verbose
         self.max_workers = max_workers
-        self.transition = {l:transitions_handler(self.config.transition_data_path) for l in languages}
-        self.model_summarizer = {l:ModelSummarizer(config, lang=l, verbose=self.verbose) for l in languages}
-        self.embedder = {l:BPEmb(lang=l, dim=dim, vs = vs) for l in languages}
+        self.transition = {l:transitions_handler(self.config.transition_data_path) for l in self.languages}
+        self.model_summarizer = {l:ModelSummarizer(config, lang=l, verbose=self.verbose) for l in self.languages}
+        self.embedder = {l:BPEmb(lang=l, dim=dim, vs = vs) for l in self.languages}
        
     # Input: json contenente informazioni dell'utente passate dall'applicazione
     # Out: serie di keyword da passare a SDAIS per la generazione di queries specializzate
@@ -43,6 +43,12 @@ class DocumentsAdaptation():
     #                   "keyword2":["keyword2_expanded_2","keyword2_expanded_3","keyword2_expanded_4"]
     #                   ....
     #                   }
+    def update_config(self, config):
+        self.config = config
+
+    def language_assertion(self, lang):
+        if lang not in self.languages:
+                raise Exception("Sorry, '{}' not yet supported".format(lang))
 
     def get_language_stopwords(self, user):
         if (user.language in self.available_languages):
@@ -72,7 +78,7 @@ class DocumentsAdaptation():
     # Out: articolo filtrato im base alle preferenze dell'utente 
     # Formato output: string
     # Proto: il primo articolo per ora puo' andare bene
-    def get_tailored_text(self, results, user):
+    def get_tailored_text(self, results, user, use_transitions=True):
         if len(results)<=0:
             return "Content not found"
 
@@ -93,7 +99,7 @@ class DocumentsAdaptation():
         read = Readability()
         nlp.add_pipe(read, last=True)
 
-        documents = list(map(lambda x: DocumentModel(x, user, nlp, stop_words=stop_words), results))
+        documents = [DocumentModel(x, user, nlp, stop_words=stop_words, uid=index) for index, x in enumerate(results)]
         # Remove document without content
         documents = list(filter(lambda x: bool(x.plain_text), documents))
         # sort on the IR value
@@ -103,8 +109,8 @@ class DocumentsAdaptation():
             return "Content not found"
 
         if self.verbose:
-            print("Total words in documents: {}".format(sum([len(doc.plain_text) for doc in documents])))
-            print(["{} in document".format(len(doc.plain_text)) for doc in documents])
+            print("Total chars in documents: {}".format(sum([len(doc.plain_text) for doc in documents])))
+            print(["{} chars in document".format(len(doc.plain_text)) for doc in documents])
 
         # Parallel function for evaluate the document's affinity 
         def create_list_salient_sentences(document):
@@ -120,39 +126,27 @@ class DocumentsAdaptation():
         # policy on sentences
         policy = Policy(salient_sentences, user, self.config.max_cluster_size)
         policy.auto()
-        #policy.print_results(5)
 
         # create batch of sentences for summarization model 
-        batch_sentences = []
-        clusters = []
-        num_sentences = []
-
-        for cluster in policy.results:
-            limited_cluster = policy.results[cluster]
-            if len(limited_cluster) > 0:
-                clusters.append(cluster)
-                batch_sentences.append(''.join( [x.sentence for x in limited_cluster] ))
-                num_sentences.append(len(limited_cluster))
-            print("Batch \"{}\" length: {} chars".format(cluster, len(limited_cluster)))
-
-        if self.verbose:
-            print("Sentences per cluster: {}".format(list(zip(clusters, num_sentences))))
-            print("###!-- Starting summarization")
+        batch_sentences, num_sentences, keywords = self.model_summarizer[user.language].to_batch(policy.results, aggregate_from_same_doc=True)
         summaries = self.model_summarizer[user.language].inference(batch_sentences, num_sentences)
 
         if self.verbose:
             print("####----- Tailored result -----####")
 
         tailored_result = ''
-        for index, res in enumerate(zip(clusters, summaries)):
-            cluster, summary = res
+        for index, res in enumerate(zip(keywords, summaries)):
+            keyword, summary = res
+            paragraph = ''
+
+            if (use_transitions and index>0):
+                paragraph += self.transition[user.language].extract_transition(user.language, topic=keyword)+'\n'
+            paragraph += summary+'\n'
 
             if self.verbose:
-                print("{}".format(cluster.upper()))
-                print("{}".format(summary))
-
-            if (index>0):
-                tailored_result += self.transition[user.language].extract_transition(user.language, topic=cluster)+'\n'
-            tailored_result += summary+'\n'
+                print("[{}]".format(keyword.upper()))
+                print("{}".format(paragraph))
+                
+            tailored_result += paragraph
 
         return tailored_result

@@ -9,6 +9,6 @@
     "debug": false,
     "expertize_levels": 4,
     "expertise_weight": 10, 
-    "IR_score_weight": 5, 
-    "affinity_weight": 1 
+    "IR_score_weight": 8, 
+    "affinity_weight": 20 
 }

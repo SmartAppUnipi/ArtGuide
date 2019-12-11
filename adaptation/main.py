@@ -3,11 +3,12 @@
 
 import os
 import sys
+import traceback
 from flask import Flask, jsonify, request, abort
 import json
 from logging.handlers import RotatingFileHandler
 
-from document_adaptation import DocumentsAdaptation, User, semantic_search
+from document_adaptation import DocumentsAdaptation, User
 from config import config
 from urllib.parse import urlparse
 
@@ -65,9 +66,12 @@ def tailored_text():
         return jsonify(req)
     if 'tastes' not in req['userProfile'] or 'expertiseLevel' not in req['userProfile'] or 'language' not in req['userProfile']:
         req['adaptionError'] = {"userProfile incomplete"}
-       
+    
     # Body
     user = User(req["userProfile"])
+    
+    document_adaptation.language_assertion(user.language)
+
     results = document_adaptation.get_tailored_text(req['results'], user)
     if not results:
         results = "Sorry,\nit is not art."
@@ -78,7 +82,7 @@ def tailored_text():
 def internal_error(exc):
     req = request.get_json()
     #print("\n",exc,"\n")
-    req['adaptionError'] = "500 - Internal Server Error"
+    req['adaptionError'] = traceback.format_exc()
     return jsonify(req)
 
 if __name__ == '__main__':

@@ -110,7 +110,7 @@ class Policy:
         for cluster in self.clusters:
             self.results[cluster] = []
             for sentence in self.clusters[cluster]:
-                self.results[cluster].append((self.policy(sentence), sentence.sentence))
+                self.results[cluster].append((self.policy(sentence), sentence))
         for cluster in self.results:
             self.results[cluster] = sorted(self.results[cluster], key=lambda tup: tup[0])
 
@@ -151,7 +151,7 @@ class Policy:
         for cluster in self.results:
             print("Results for " + cluster + " (the lower the number, the better the sentence):")
             for sentence in self.results[cluster][:n]:
-                print(str(sentence[0]) + ": " + sentence[1])
+                print(str(sentence[0].sentence) + ": " + sentence[1].sentence)
 
 
     def PCA_dimention_reduction(self, n_components = 2):
