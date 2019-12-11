@@ -146,6 +146,15 @@ def parse_image_pict(filename, linux=True):
     image = tf.image.random_crop(image, CROP_SIZE)
     return image, label
 
+def tf2freebaseID(p, d_stile_freebaseID, d_stile_idOH):
+  new_p = list( map(int, list(p)) )
+  temp_dict = dict()
+
+  for style_sf in d_stile_freebaseID:
+    for style_sid in d_stile_idOH:
+      if style_sf == style_sid:
+        temp_dict[ d_stile_freebaseID[style_sf] ] = new_p[ d_stile_idOH[style_sid]-1 ]
+  return temp_dict
 
 descr = """Ensure to have the following file structure
 image_analysis/models/
