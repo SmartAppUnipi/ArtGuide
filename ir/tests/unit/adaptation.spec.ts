@@ -4,11 +4,11 @@
 import nock from "nock";
 import { Adaptation } from '../../src/adaptation';
 import { AdaptationEndpoint } from '../../src/environment';
+import { ExpertizeLevelType } from '../../src/models'
 import { QueryExpansionRequest, UserProfile, TailoredTextRequest, PageResult, TailoredTextResponse } from '../../src/models';
 
 import { userProfile } from "../../assets/classification-result/known-en.json"
 import queryExpansionResponse from "../../assets/query-expansion-response.json"
-
 
 
 describe("Adaptation", () => {
@@ -21,6 +21,12 @@ describe("Adaptation", () => {
                 // verify passes parameters
                 expect(body).not.toHaveProperty("classification");
                 expect(body.userProfile).toBeDefined();
+                expect(body.userProfile.id).toBeDefined();
+                expect(body.userProfile.language).toBeDefined();
+                expect(body.userProfile.tastes).toBeDefined();
+                expect(body.userProfile.tastes).toHaveLength(userProfile.tastes.length);
+                expect(body.userProfile.expertiseLevel).toBeDefined();
+                expect(Object.values(ExpertizeLevelType)).toContain(body.userProfile.expertiseLevel);
                 // reply with 200 status code and the JSON response
                 callback(null, [
                     200,
@@ -81,4 +87,4 @@ describe("Adaptation", () => {
         await expect(adaptation.getTailoredText(results, userProfile)).resolves.toEqual({ results, userProfile });
     });
 
-})
+});

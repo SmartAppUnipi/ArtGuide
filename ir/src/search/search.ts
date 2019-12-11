@@ -141,8 +141,8 @@ export class Search {
                                  * We need to merge duplicated results, taking into account that we have to find a way
                                  * to merge their keywords and produce a a reasonable score index.
                                  */
-                                pageResults.forEach(pr =>{
-                                    if(!searchBlackList.some(blackListWebsite => pr.url.includes(blackListWebsite))){
+                                pageResults.forEach(pr => {
+                                    if (!searchBlackList.some(blackListWebsite => pr.url.includes(blackListWebsite))){
                                         /** Discard black list's results.*/
                                         results.push(pr);
                                     }

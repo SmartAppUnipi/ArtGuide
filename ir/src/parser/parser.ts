@@ -76,6 +76,8 @@ export class Parser {
          * FIXME: log properly
          * console.log(nOpenBracket)
          */
+        text = text.replace(/\\n/g, "");
+        text = text.replace(/\\t/g, "");
         return text;
     }
 
@@ -222,6 +224,16 @@ export class Parser {
                 }
             }
 
+            // Extract summary description
+            const descrNodes = dom.window.document.querySelectorAll("meta[name=description]");
+            let descrContent = "";
+            if (descrNodes.length) {
+                descrNodes.forEach(item => {
+                    const descrText = item.getAttribute("content");
+                    descrContent += descrText + " ";
+                });
+            }
+
             // var sectionObject = await this.getTitlesAndSections(url)
             if (sectionsObj.length > 1) {
                 return {
@@ -229,7 +241,10 @@ export class Parser {
                     title: dom.window.document.title,
                     sections: sectionsObj,
                     keywords: [], // keywords are populated from caller which knows the query object
-                    tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
+                    tags: [], // FIXME: populate with some logic (eg metadata keyword tag in html header)
+                    summary: descrContent.length > 0 ? descrContent : ""
+
+                    
                 };
             } else {
                 return {
@@ -243,7 +258,8 @@ export class Parser {
                         }
                     ],
                     keywords: [], // keywords are populated from caller which knows the query object
-                    tags: [] // FIXME: populate with some logic (eg metadata keyword tag in html header)
+                    tags: [], // FIXME: populate with some logic (eg metadata keyword tag in html header)
+                    summary: descrContent.length > 0 ? descrContent : ""
                 };
             }
         })

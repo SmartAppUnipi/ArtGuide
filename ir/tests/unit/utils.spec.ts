@@ -46,6 +46,11 @@ describe("fuzzy", () => {
         expect(result).toBeNull()
     })
 
+    test("string instead of array", () => {
+        const result = reduceEntities("string" as any as Array<Entity>)
+        expect(result).not.toBeTruthy()
+    })
+
     test("empty array", () => {
         const result = reduceEntities([])
         expect(result).toHaveLength(0)

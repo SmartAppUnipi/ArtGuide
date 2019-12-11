@@ -1,3 +1,4 @@
+import fs from "fs";
 import { LoggerConfig } from "./environment";
 import winston from "winston";
 
@@ -17,30 +18,25 @@ const logger = winston.createLogger({
 });
 
 if (LoggerConfig.file) {
-    logger.add(
-        new winston.transports.File({
-            filename: LoggerConfig.file,
-            handleExceptions: true,
-            format: winston.format.combine(
-                /*
-                 * Render in one line in your log file.
-                 * If you use prettyPrint() here it will be really
-                 * difficult to exploit your logs files afterwards.
-                 */
-                winston.format.json({
-                    replacer: (key, value) => {
-                        if (value instanceof Error)
-                            return { message: value.message, stack: value.stack };
-                        return value;
-                    },
-                    space: 4
-                })
-            )
-        })
-    );
+    logger.on("data", log => {
+        try {
+            if (!fs.existsSync(LoggerConfig.file))
+                fs.writeFileSync(LoggerConfig.file, JSON.stringify([]));
+            const logFileContents = fs.readFileSync(LoggerConfig.file).toString();
+            const currentLogs: Array<any> = JSON.parse(logFileContents);
+            currentLogs.push(log);
+            fs.writeFileSync(LoggerConfig.file, JSON.stringify(currentLogs, null, 4));
+        } catch (ex) {
+            console.error("Cannot write log on file: " + log.message, ex);
+        }
+    });
 }
 
-if (!LoggerConfig.disableLogsOnConsole || !LoggerConfig.file) {
+if (LoggerConfig.disableLogsOnConsole) {
+    logger.add(new winston.transports.Stream({
+        stream: fs.createWriteStream("/dev/null")
+    }));
+} else {
     logger.add(
         new winston.transports.Console({
             format: winston.format.combine(

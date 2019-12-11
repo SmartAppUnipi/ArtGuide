@@ -4,11 +4,12 @@ import { Adaptation } from "./adaptation";
 import bodyParser from "body-parser";
 import express from "express";
 import logger from "./logger";
+import { LoggerConfig } from "./environment";
 import packageJson from "../package.json";
 import path from "path";
 import { reduceEntities } from "./utils";
 import { Search } from "./search";
-import { ClassificationResult, Entity, PageResult } from "./models";
+import { ClassificationResult, Entity, ExpertizeLevelType, PageResult } from "./models";
 import { WikiData, Wikipedia } from "./wiki";
 
 /** Search module */
@@ -41,8 +42,12 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 // Index entry-point
 app.get("/", (req, res) => {
-    const latestCommit = childProcess.execSync("git rev-parse HEAD").toString()
+
+    const latestCommit = childProcess
+        .execSync("git rev-parse HEAD")
+        .toString()
         .replace(/\n/, "");
+
     return res.json({
         message: `IR module version ${packageJson.version}.`,
         currentCommit: `https://github.com/SmartAppUnipi/ArtGuide/commit/${latestCommit}`,
@@ -50,8 +55,15 @@ app.get("/", (req, res) => {
     });
 });
 
-// Docs entry-point
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
+app.use("/coverage", express.static(path.join(__dirname, "../coverage/lcov-report/")));
+
+// Serve trace log
+if (LoggerConfig.file) {
+    express.static.mime.define({ "application/json": ["json", "log"] });
+    const file = path.join(__dirname, `../${LoggerConfig.file}`);
+    app.use("/logs", express.static(file));
+}
 
 // Main entry-point
 app.post("/", async (req, res) => {
@@ -65,6 +77,7 @@ app.post("/", async (req, res) => {
         if (!classificationResult ||
             !classificationResult.classification ||
             !classificationResult.userProfile) {
+            logger.warn({ message: "Missing required body.", classificationResult });
             return res
                 .status(400)
                 .json({ error: "Missing required body." });
@@ -73,66 +86,13 @@ app.post("/", async (req, res) => {
 
         // Ensure the language is supported
         if (!config.supportedLanguages.includes(classificationResult.userProfile.language)) {
+            logger.warn({ message: "Unsupported language.", language: classificationResult.userProfile.language });
             return res
                 .status(400)
                 .json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
         }
 
-
-        /*
-         * MAIN FLOW
-         *  TODO: update me
-         * We receive the Google vision results from the classification module.
-         * 
-         *  0. aggregate entities
-         *  1. sort entities by score descending
-         *  2. slice entities reducing the number of results
-         *      - at the first "big" gap between scores
-         *      - using a max-length to be sure to crop it sooner or later
-         *      - using a min-score to ensure a quality threshold?
-         * 
-         *  3. check if there is a known entity among the remaining ones
-         *      - take the corresponding WikiData entry
-         *      - look for the presence of one of these fields:
-         *          - geo location
-         *          - author
-         *          - architect
-         *          - creator
-         *  
-         *  BRANCH A: known entity
-         *      5a. search by entityId on Wikipedia
-         *          - weight on the score: 1
-         *          - look also for
-         *              - creator/architect
-         *              - period
-         *              - style
-         *              - movement
-         *      5b. search for the exact query on Google
-         *          - weight on the score: 0.8
-         *          - use query expansion
-         * 
-         *  BRANCH B: not a known entity
-         *      4. remove unwanted entity (not art)
-         *          - for each entity take the corresponding WikiData entry
-         *              - recursively populate the array instanceOf/subClassOf 
-         *              - perform a bottom up breadth first visit of the "instance of / subClassOf" graph
-         *                  - discarding the entity if a after real-clock expires (resolved using a single SparQL query)
-         *                  - keep the entity if it's instance of one of the following piece of arts
-         *                      - painting
-         *                      - building
-         *                      - sculpture
-         *                      - tower
-         *                      - facade
-         *                      - ...
-         *      
-         *      5a. search for the top score entities on Wikipedia
-         *          - weight on the score: 0.6
-         *      5b. build a smart query on Google
-         *          - weight on the score: 0.9
-         *          - use query expansion
-         *          - merge multiple entities?
-         */
-
+        // everything 
         logger.debug("[app.ts] Original classification entities and labels.", {
             classificationEntities: classificationResult.classification?.entities ?? [],
             classificationLabels: classificationResult.classification?.labels ?? []
@@ -172,7 +132,7 @@ app.post("/", async (req, res) => {
         // 5. Try to get a known instance
         const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, language);
 
-        let results: Array<PageResult>;
+        const searchPromises: Array<Promise<Array<PageResult>>> = [];
         if (knownInstance) {
             /*
              * BRANCH A: known entity
@@ -180,14 +140,21 @@ app.post("/", async (req, res) => {
              * 7b. search for the exact query on Google
              */
             logger.debug("[app.ts] Got a known instance.", { knownInstance });
-            results = await Promise.all([
-                wikipedia
-                    .searchKnownInstance(knownInstance, language)
-                    .then(pageResults => {
-                        pageResults.forEach(pageResult =>
-                            pageResult.score *= config.scoreWeight.known.wikipedia);
-                        return pageResults;
-                    }),
+
+            if (classificationResult.userProfile.expertiseLevel != ExpertizeLevelType.Child) {
+                // Use Wikipedia if the user is not a child
+                searchPromises.push(
+                    wikipedia
+                        .searchKnownInstance(knownInstance, language)
+                        .then(pageResults => {
+                            pageResults.forEach(pageResult =>
+                                pageResult.score *= config.scoreWeight.known.wikipedia);
+                            return pageResults;
+                        })
+                );
+            }
+
+            searchPromises.push(
                 search
                     .searchKnownInstance(knownInstance, classificationResult.userProfile)
                     .then(pageResults => {
@@ -195,7 +162,8 @@ app.post("/", async (req, res) => {
                             pageResult.score *= config.scoreWeight.known.google);
                         return pageResults;
                     })
-            ]).then(allResults => [].concat(...allResults));
+            );
+
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
             // BRANCH B: not a known entity
@@ -210,22 +178,33 @@ app.post("/", async (req, res) => {
              *  5a. search for the top score entities on Wikipedia
              *  5b. build a smart query on Google
              */
-            results = await Promise.all([
-                wikipedia.search(filteredEntities, language)
-                    .then(results => {
-                        results.forEach(result =>
-                            result.score *= config.scoreWeight.unknown.wikipedia);
-                        return results;
-                    }),
+            if (classificationResult.userProfile.expertiseLevel != ExpertizeLevelType.Child) {
+                // Use Wikipedia if the user is not a child
+                searchPromises.push(
+                    wikipedia.search(filteredEntities, language)
+                        .then(results => {
+                            results.forEach(result =>
+                                result.score *= config.scoreWeight.unknown.wikipedia);
+                            return results;
+                        })
+                );
+            }
+
+            searchPromises.push(
                 search.search(filteredEntities, classificationResult.userProfile)
                     .then(results => {
                         results.forEach(result =>
                             result.score *= config.scoreWeight.unknown.google);
                         return results;
                     })
-            ]).then(allResults => [].concat(...allResults));
+            );
+
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         }
+
+        const results: Array<PageResult> = await Promise
+            .all(searchPromises)
+            .then(allResults => [].concat(...allResults));
 
         // 6. Sort the results by score
         results.sort((p1, p2) => p2.score - p1.score);
@@ -236,12 +215,13 @@ app.post("/", async (req, res) => {
 
 
         // call adaptation for summary and return the result to the caller
-        return adaptation.getTailoredText(results, classificationResult.userProfile)
+        return adaptation
+            .getTailoredText(results, classificationResult.userProfile)
             .then(adaptationResponse => res.send(adaptationResponse));
 
         // Catch any error and inform the caller
     } catch (ex) {
-        logger.error("[app.ts]", ex);
+        logger.error("[app.ts] ", ex);
         /* istanbul ignore next */
         return res
             .status(500)

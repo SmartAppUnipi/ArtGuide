@@ -28,7 +28,8 @@ export class Adaptation {
             method: "POST",
             body: JSON.stringify(body),
             headers: { "Content-Type": "application/json" }
-        }).then(res => res.json());
+        })
+            .then(res => res.json());
     }
 
     /**
