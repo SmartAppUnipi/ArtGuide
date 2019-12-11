@@ -89,6 +89,7 @@ def parse_arch_pict(filename, linux=True):
     image = tf.image.random_crop(image, CROP_SIZE)
     return image, label
 
+
 # ----- ----- TENSORFLOW PICTURE ----- ----- #
 def preprocess_pict(n_path, duplicate=True):
     """Prepare the dataset found in {pt.pict_dset} such that each image has the name: 
@@ -97,10 +98,17 @@ def preprocess_pict(n_path, duplicate=True):
         n_path  --  the new path to use
         move  --  if False the old files will be deleted
     """
-    # Loading painters by artist meta inf.
     pictdf = pd.read_csv(pt.pict_info, index_col='new_filename').drop('date', axis=1)
     pictdf = pictdf.dropna(subset=['style', 'pixelsx', 'pixelsy'])
+    # Dataset fix Note: new realism and noveau realism are the same style
+    pictdf[pictdf['style'] == 'New Realism'] = 'Nouveau Réalisme'
+    # Discarding low cardinality samples
+    good_styles = (pictdf['style'].value_counts()>100)
+    good_styles = good_styles[good_styles]
+    pictdf = pictdf[pictdf['style'].isin(good_styles.index)]
+    # Ignorinng not existing
     pictdf = pictdf[pictdf.apply(lambda row: os.path.exists(pt.painter_by_numbers / row.name), axis=1)]
+    
     # One hot index
     styles = enumerate(pictdf['style'].unique())
     map2style = {v: idx for (idx, v) in styles}
