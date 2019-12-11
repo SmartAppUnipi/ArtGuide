@@ -1,4 +1,5 @@
 import io
+import time
 import re
 import os
 import json
@@ -77,12 +78,23 @@ def freebaseID2wd(freebase_id):
 
     SELECT ?s WHERE {{
       ?s ?p ?o .
-      ?s wdt:P646 "/m/0cn46" .
+      ?s wdt:P646 "{freebase_id}" .
     }}
     LIMIT 1
     """
-    r = requests.get(url, params = {'format': 'json', 'query': query})
-    data = r.json()
+    for tries in range(0, 3):
+        try:
+            data = None
+            r = requests.get(url, params = {'format': 'json', 'query': query})
+            data = r.json()
+            break
+        except ValueError:
+            time.sleep(.5)
+            pass
+    if data is None:
+        print(f"Requests to wikidata failed for {freebase_id}")
+        return None
+
     iri = data["results"]["bindings"][0]["s"]["value"]    
     return iri.split("/")[-1]
 
@@ -93,7 +105,6 @@ def crop_on_bb(image, api_res):
     for obj in api_res["objects"]["localizedObjectAnnotations"]:
         print(obj["name"])
         if obj["name"] in VALID_LABELS:
-
             # Sum distances from the center (return the most "centered" bounding box)
             nv = obj["boundingPoly"]["normalizedVertices"]
             bb = ImageBoundingBox(nv)
@@ -150,6 +161,7 @@ def home():
 def mock():
     content = request.get_json()
     labels = image_analysis(content)
+    pprint.pprint(labels)
     return str(labels)
 
 
@@ -165,6 +177,18 @@ def upload():
     return r.content
 
 
+def replaceGFreebaseID(elist, field): 
+    res = []
+    for el in elist: 
+        try:
+            el[field] = freebaseID2wd(el[field])
+            if el[field] is not None:
+                res.append(el)
+        except IndexError as e:
+            print(f"> error: unable to find wikidataID for {el}")
+    return res
+
+
 def image_analysis(content):
     """
     For Test.py:
@@ -172,14 +196,17 @@ def image_analysis(content):
         decode it back to an image and send it to the API
         to retrieve the JSON answer.
     """
+    # Manipulating image
     image = content["image"]
     image_b64_str = re.sub("^data:image/.+;base64,", "", image)
     img_b64 = base64.b64decode(image_b64_str)
-
+    
+    # Vision API request and bounding box crop
     obj_res = get_bounding(img_b64)
     cropped_img = crop_on_bb(img_b64, obj_res)
     api_res = get_vision(cropped_img)
 
+    # Cleaning data for ir module ----- #
     content["classification"] = {
         "labels": api_res["label"]["labelAnnotations"],
         "entities": api_res["we"]["webDetection"]["webEntities"],
@@ -192,7 +219,10 @@ def image_analysis(content):
         "materials": []
     }
     del content["image"]
-    # pprint.pprint(content)
+    
+    # Replace freebaseID with wikidataID
+    content["classification"]["entities"] = replaceGFreebaseID(content["classification"]["entities"], "entityId")
+    content["classification"]["labels"] = replaceGFreebaseID(content["classification"]["labels"], "mid")
 
     return content
 
