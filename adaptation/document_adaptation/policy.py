@@ -1,3 +1,12 @@
+"""
+    policy.py: class for the policy
+    ArtGuide project SmartApp1920
+    Dipartimento di Informatica Università di Pisa
+    Authors: M. Barato, S. Berti, M. Bonsembiante, P. Lonardi, G. Martini
+    We declare that the content of this file is entirelly
+    developed by the authors
+"""
+
 from sklearn.metrics.pairwise import cosine_similarity
 import json
 import numpy as np
@@ -6,8 +15,6 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 import matplotlib.cm as cm
 from sklearn.manifold import TSNE
-
-
 '''
 Usage: chiamate auto() e print_results(n) per stampare i primi n risultati per ogni chiave
 Inizialmente la classe Policy elimina i duplicati da sentences (lista di SalientSentence) e toglie alcune frasi
@@ -28,7 +35,8 @@ class Policy:
         self.tastes = list(self.user_taste_embedded.keys())
         self.clusters = {}
         self.results = {}
-        self.max_cluster_size = min(int(len(sentences)/len(user.tastes)), max_cluster_size)
+        self.max_cluster_size = min(int(len(sentences) / len(user.tastes)),
+                                    max_cluster_size)
 
     def eliminate_duplicates(self):
         for a in self.sentences:
@@ -60,14 +68,14 @@ class Policy:
         '''
         if not self.user.tastes:
             return self.sentences[10]
-        tastes = {t:[] for t in self.user.tastes}
+        tastes = {t: [] for t in self.user.tastes}
         for s in self.sentences:
             for k in s.keyword:
                 tastes[k].append(s)
         for t in tastes:
-            tastes[t].sort(key = lambda x: x.score[t] ,reverse = True)
-        sorted(tastes,  key =lambda x: len(x) )
-        result = {t:[] for t in self.user.tastes}
+            tastes[t].sort(key=lambda x: x.score[t], reverse=True)
+        sorted(tastes, key=lambda x: len(x))
+        result = {t: [] for t in self.user.tastes}
         for t in tastes:
             for s in tastes[t]:
                 if not s.assigned:
@@ -76,10 +84,6 @@ class Policy:
                 if len(result[t]) == self.max_cluster_size:
                     break
         self.results = result
-
-
-
-
 
     def create_cluster_ILP(self):
         '''
@@ -99,7 +103,8 @@ class Policy:
             best = ""
             for taste in self.tastes:
                 x = np.array(self.user_taste_embedded[taste][0]).reshape(1, -1)
-                y = np.array(sentence.sentence_embeddings_summed).reshape(1, -1)
+                y = np.array(sentence.sentence_embeddings_summed).reshape(
+                    1, -1)
                 score = cosine_similarity(x, y)[0]
                 if score > max:
                     max = score
@@ -112,12 +117,14 @@ class Policy:
             for sentence in self.clusters[cluster]:
                 self.results[cluster].append((self.policy(sentence), sentence))
         for cluster in self.results:
-            self.results[cluster] = sorted(self.results[cluster], key=lambda tup: tup[0])
+            self.results[cluster] = sorted(self.results[cluster],
+                                           key=lambda tup: tup[0])
 
     def policy(self, x):
         r = 1 / 2
         s = 1 / 2
-        return (abs(x.readibility-self.user.expertise_level) * r) + (self.calculate_similarity(x) * s)
+        return (abs(x.readibility - self.user.expertise_level) *
+                r) + (self.calculate_similarity(x) * s)
 
     def calculate_similarity(self, sentence):
         sentence_embeddings = sentence.sentence_embeddings
@@ -128,17 +135,20 @@ class Policy:
         y = np.array(self.user_taste_embedded_summed[0]).reshape(1, -1)
         return cosine_similarity(x, y)
 
-    def auto(self, pca = False):
+    def auto(self, pca=False):
         self.eliminate_duplicates()
-        self.heuristic_filter()  # Toglie le frasi insensate dall'input della classe
+        self.heuristic_filter(
+        )  # Toglie le frasi insensate dall'input della classe
         #self.create_clusters()  # In self.clusters crea un dizionario keyword - frasi
         #self.sum_user_tastes_embedded()
         #self.apply_policy()  # Usa il criterio readibility - similiarity per ordinare le frasi
-        self.max_cluster_size = min(int(len(self.sentences)/len(self.user.tastes)), self.max_cluster_size)
+        self.max_cluster_size = min(
+            int(len(self.sentences) / len(self.user.tastes)),
+            self.max_cluster_size)
         self.create_cluster_greedy()
         if pca:
             self.PCA_dimention_reduction()
-        
+
     def sum_user_tastes_embedded(self):
         keys = list(self.user_taste_embedded.keys())
         aux = self.user_taste_embedded[keys[0]]
@@ -146,18 +156,18 @@ class Policy:
             aux += self.user_taste_embedded[key]
         self.user_taste_embedded_summed = aux
 
-
     def print_results(self, n):
         for cluster in self.results:
-            print("Results for " + cluster + " (the lower the number, the better the sentence):")
+            print("Results for " + cluster +
+                  " (the lower the number, the better the sentence):")
             for sentence in self.results[cluster][:n]:
                 print(str(sentence[0].sentence) + ": " + sentence[1].sentence)
 
-
-    def PCA_dimention_reduction(self, n_components = 2):
+    def PCA_dimention_reduction(self, n_components=2):
         # decide if we want to do PCA or t-SNE
         # all the sentences points
-        sentence_points = np.concatenate([s.sentence_embeddings for s in self.sentences])
+        sentence_points = np.concatenate(
+            [s.sentence_embeddings for s in self.sentences])
         dim_reduction_model = PCA(n_components=n_components)
 
         dim_reduction_model.fit(sentence_points)
@@ -170,7 +180,7 @@ class Policy:
 
         for s, c in zip(self.sentences, colors):
             sentences = dim_reduction_model.transform(s.sentence_embeddings)
-            plt.scatter(sentences[:,0], sentences[:,1],  color=c)
+            plt.scatter(sentences[:, 0], sentences[:, 1], color=c)
 
         for k in self.results:
             # plot the sentence belonging to this cluster
@@ -178,15 +188,15 @@ class Policy:
             plt.figure()
             #ax1.set(xlim=(-3, 3), ylim=(-3, 3))
             # predict each sentence
-            sentences = np.concatenate([dim_reduction_model.transform(s.sentence_embeddings) for s in self.results[k]])
+            sentences = np.concatenate([
+                dim_reduction_model.transform(s.sentence_embeddings)
+                for s in self.results[k]
+            ])
             # plot sentences
-            plt.scatter(sentences[:,0], sentences[:,1],  color="red")
+            plt.scatter(sentences[:, 0], sentences[:, 1], color="red")
             # predict the keyword
-            keyword = dim_reduction_model.transform(self.results[k][0].keyword[k])
+            keyword = dim_reduction_model.transform(
+                self.results[k][0].keyword[k])
             # plot the keyword
-            plt.scatter(keyword[:,0], keyword[:,1],  color="blue")
+            plt.scatter(keyword[:, 0], keyword[:, 1], color="blue")
         plt.show()
-          
-
-
-
