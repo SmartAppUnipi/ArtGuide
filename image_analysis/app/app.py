@@ -6,14 +6,21 @@ import requests
 import base64
 import pprint
 
+from helpers import Point, ImageBoundingBox
 from flask_cors import CORS
 from flask import Flask, escape, request
 from google.cloud import vision
 from google.cloud.vision import types
 from google.protobuf.json_format import MessageToDict
 from PIL import Image
+from dotenv import load_dotenv
+# from ..classification.codebase import CROP_SIZE
 
+
+load_dotenv()
 PORT = 2345
+VALID_LABELS = {"Painting", "Picture frame"}
+CROP_SIZE = [300, 300, 3]
 
 # ----- ----- CONFIGURING ROUTES ----- ----- #
 if not "ROUTES_JSON" in os.environ:
@@ -44,7 +51,7 @@ if not os.path.exists(api_key_path):
 # ----- FUNCTION DEFINITION ----- #
 def get_vision(content):
     # Instantiates a client
-    client = vision.ImageAnnotatorClient()
+    #client = vision.ImageAnnotatorClient()
 
     # The name of the image file to annotate
     image = types.Image(content=content)
@@ -52,8 +59,66 @@ def get_vision(content):
     # Performs label detection on the image file
     label = MessageToDict(client.label_detection(image=image))
     web_entities = MessageToDict(client.web_detection(image=image))
+    objects = MessageToDict(client.object_localization(image=image))
 
-    return {"label": label, "we": web_entities}
+    return {"label": label, "we": web_entities, "objects": objects}
+
+
+def get_bounding(content):
+    #client = vision.ImageAnnotatorClient()
+
+    # The name of the image file to annotate
+    image = types.Image(content=content)
+
+    # Performs object detection on the image file
+    objects = MessageToDict(client.object_localization(image=image))
+
+    return objects
+
+
+# ----- CROP FUNCTION ON BOUNDING BOX ----- #
+def crop_on_bb(image, api_res):
+
+    most_centered_obj = None
+    for obj in api_res["objects"]["localizedObjectAnnotations"]:
+        print(obj["name"])
+        if obj["name"] in VALID_LABELS:
+
+            # Sum distances from the center (return the most "centered" bounding box)
+            nv = obj["boundingPoly"]["normalizedVertices"]
+            bb = ImageBoundingBox(nv)
+
+            if (most_centered_obj is None) or (bb.distance < most_centered_obj.distance):
+                most_centered_obj = bb
+
+    if most_centered_obj is None:
+        print(" -- No crop found -- ")
+        return image
+
+
+    imageb = Image.open(io.BytesIO(image))
+    imageb.show()
+    width, height = imageb.size
+
+    points = most_centered_obj.points
+
+    left = points[0].x * width 
+    top = points[0].y * height
+    right = points[1].x * width
+    bottom = points[2].y * height
+
+    # Cropped image of above dimension  
+    # (It will not change orginal image)  
+    im1 = imageb.crop((left, top, right, bottom)) 
+    newsize = (CROP_SIZE[0], CROP_SIZE[1])
+    im1 = im1.resize(newsize) 
+    # Shows the image in image viewer  
+    im1.show()
+
+
+    print(most_centered_obj)
+
+    return image
 
 
 # ----- ENVIRONMENT ----- #
@@ -77,10 +142,13 @@ def upload():
         to retrieve the JSON answer.
     """
     content = request.get_json()
+
     image = content["image"]
     image_b64_str = re.sub("^data:image/.+;base64,", "", image)
     img_b64 = base64.b64decode(image_b64_str)
     api_res = get_vision(img_b64)
+
+    cropped_img = crop_on_bb(img_b64, api_res)
 
     # Define the headers (they are needed to make get_json() work)
     head = {"Content-type": "application/json"}
@@ -88,6 +156,7 @@ def upload():
     content["classification"] = {
         "labels": api_res["label"]["labelAnnotations"],
         "entities": api_res["we"]["webDetection"]["webEntities"],
+        "objects": api_res["objects"],
         "locations": [],
         "safeSearch": [],
         "type": [],
