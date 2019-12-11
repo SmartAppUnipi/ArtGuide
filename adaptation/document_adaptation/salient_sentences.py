@@ -59,3 +59,5 @@ class SalientSentence():
         self.sentence_embeddings_summed = self.sentence_embeddings[0]
         for cur in self.sentence_embeddings[1:]:
             self.sentence_embeddings_summed += cur
+
+    

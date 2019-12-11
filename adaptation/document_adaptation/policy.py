@@ -2,6 +2,12 @@ from sklearn.metrics.pairwise import cosine_similarity
 import json
 import numpy as np
 
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+import matplotlib.cm as cm
+from sklearn.manifold import TSNE
+
+
 '''
 Usage: chiamate auto() e print_results(n) per stampare i primi n risultati per ogni chiave
 Inizialmente la classe Policy elimina i duplicati da sentences (lista di SalientSentence) e toglie alcune frasi
@@ -122,7 +128,7 @@ class Policy:
         y = np.array(self.user_taste_embedded_summed[0]).reshape(1, -1)
         return cosine_similarity(x, y)
 
-    def auto(self):
+    def auto(self, pca = False):
         self.eliminate_duplicates()
         self.heuristic_filter()  # Toglie le frasi insensate dall'input della classe
         #self.create_clusters()  # In self.clusters crea un dizionario keyword - frasi
@@ -130,6 +136,8 @@ class Policy:
         #self.apply_policy()  # Usa il criterio readibility - similiarity per ordinare le frasi
         self.max_cluster_size = min(int(len(self.sentences)/len(self.user.tastes)), self.max_cluster_size)
         self.create_cluster_greedy()
+        if pca:
+            self.PCA_dimention_reduction()
         
     def sum_user_tastes_embedded(self):
         keys = list(self.user_taste_embedded.keys())
@@ -144,4 +152,41 @@ class Policy:
             print("Results for " + cluster + " (the lower the number, the better the sentence):")
             for sentence in self.results[cluster][:n]:
                 print(str(sentence[0]) + ": " + sentence[1])
+
+
+    def PCA_dimention_reduction(self, n_components = 2):
+        # decide if we want to do PCA or t-SNE
+        # all the sentences points
+        sentence_points = np.concatenate([s.sentence_embeddings for s in self.sentences])
+        dim_reduction_model = PCA(n_components=n_components)
+
+        dim_reduction_model.fit(sentence_points)
+        # for each keyword we create a new plot with PCA or t-SNE which represents the sentences and the keyword
+
+        # first plot all the sentences
+        plt.figure()
+        #fig.set_size_inches(13.5, 10.5)
+        colors = cm.rainbow(np.linspace(0, 1, len(self.sentences)))
+
+        for s, c in zip(self.sentences, colors):
+            sentences = dim_reduction_model.transform(s.sentence_embeddings)
+            plt.scatter(sentences[:,0], sentences[:,1],  color=c)
+
+        for k in self.results:
+            # plot the sentence belonging to this cluster
+            # 1 newplot
+            plt.figure()
+            #ax1.set(xlim=(-3, 3), ylim=(-3, 3))
+            # predict each sentence
+            sentences = np.concatenate([dim_reduction_model.transform(s.sentence_embeddings) for s in self.results[k]])
+            # plot sentences
+            plt.scatter(sentences[:,0], sentences[:,1],  color="red")
+            # predict the keyword
+            keyword = dim_reduction_model.transform(self.results[k][0].keyword[k])
+            # plot the keyword
+            plt.scatter(keyword[:,0], keyword[:,1],  color="blue")
+        plt.show()
+          
+
+
 

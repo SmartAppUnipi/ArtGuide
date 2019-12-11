@@ -22,6 +22,10 @@ user = User(json_query["userProfile"])  # deve diventare binario su 6 elementi
 results = document_adaptation.get_tailored_text(json_query['results'], user)  # formato giusto
 
 print(results)
+
+'''
+scirpt for 
+'''
 '''
 def print_scatter(data, colors):
 
