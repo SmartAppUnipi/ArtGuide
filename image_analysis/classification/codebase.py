@@ -7,10 +7,11 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 import imagesize
+import shutil
 
 import project_types as pt
 
-CROP_SIZE = [300, 300, 3]
+CROP_SIZE = [299, 299, 3]
 
 arch_styles = [
     'Achaemenid architecture',
@@ -54,14 +55,12 @@ def parse_image_arch(filename, linux=True):
         filename = tf.strings.regex_replace(filename, '\\\\', '/')
     fname = tf.strings.split(filename, '/')[-1]
     label = tf.strings.split(fname, '_')[0]
-    label_str = str(label.numpy(), 'utf-8')
-    label_tf = tflabels_arch[label_str]
 
     image = tf.io.read_file(filename)
     image = tf.image.decode_jpeg(image)
     image = tf.image.convert_image_dtype(image, tf.float32)
     image = tf.image.random_crop(image, CROP_SIZE)
-    return image, label_tf
+    return image, label
 
 
 # ----- ----- TENSORFLOW PICTURE ----- ----- #
@@ -74,6 +73,22 @@ one_hot_pict = tf.one_hot(range(len(pict_styles)), len(pict_styles))
 tflabels_pict = {style: one_hot_pict[idx] for idx, style in enumerate(pict_styles)}
 
 
+def convert_paths(n_path):
+    for (fpath, row) in pictdf.iterrows():
+        try:
+            new_fname = row['style'].replace(' ', '_') + '__' + str(fpath)
+            new_path = pt.datasets / n_path / new_fname
+            old_path = pt.pict_dset / fpath
+            shutil.copyfile(old_path, new_path)
+        except:
+            pass
+        
+        
+if not os.path.exists(pt.pict_style):
+    os.mkdir(pt.pict_style)
+    convert_paths(pt.pict_style)
+        
+        
 def pictstyle2str(tf_vect):
     return pict_styles[tf.math.argmax(tf_vect)]
 
@@ -82,16 +97,10 @@ def parse_image_pict(filename, linux=True):
     if not linux:
         filename = tf.strings.regex_replace(filename, '\\\\', '/')
     fname = tf.strings.split(filename, '/')[-1]
-    fname_str = str(fname.numpy(), 'utf-8')
-    try:
-        pictdf_row = pictdf.loc[fname_str]
-    except:
-        print(f'not found {filename}')
-        return None, None
-    label_tf = tflabels_pict[pictdf_row.style]
+    label = tf.strings.split(fname, '__')[0]
 
     image = tf.io.read_file(filename)
     image = tf.image.decode_jpeg(image)
     image = tf.image.convert_image_dtype(image, tf.float32)
     image = tf.image.random_crop(image, CROP_SIZE)
-    return image, label_tf
+    return image, label

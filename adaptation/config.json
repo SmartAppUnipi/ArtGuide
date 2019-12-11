@@ -1,11 +1,14 @@
 {
-    "port": 4000,
     "languages": ["en","it"],
     "log_file": "log.txt",
     "disclaimer_file": "disclaimer.json",
     "doc_api_file": "documentation/docs_api.html",
     "transition_data_path":"data",
-    "max_sentences": 80,
-    "debug": true 
-
+    "max_cluster_size": 80,
+    "max_sentences": 4,
+    "debug": false,
+    "expertize_levels": 4,
+    "expertise_weight": 10, 
+    "IR_score_weight": 8, 
+    "affinity_weight": 20 
 }

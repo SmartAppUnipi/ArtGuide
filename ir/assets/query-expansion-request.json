@@ -1,0 +1,12 @@
+{
+	"userProfile": {
+		"id": 42,
+		"tastes": [
+			"history",
+			"description",
+			"legacy"
+		],
+		"language": "en",
+		"expertiseLevel": 1
+	}
+}
