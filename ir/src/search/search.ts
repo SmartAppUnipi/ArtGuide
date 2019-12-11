@@ -142,7 +142,7 @@ export class Search {
                                  * to merge their keywords and produce a a reasonable score index.
                                  */
                                 pageResults.forEach(pr => {
-                                    if (!searchBlackList.some(blackListWebsite => pr.url.includes(blackListWebsite))){
+                                    if (!searchBlackList.some(blackListWebsite => pr.url.includes(blackListWebsite))) {
                                         /** Discard black list's results.*/
                                         results.push(pr);
                                     }
@@ -151,7 +151,7 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                                     { query: q, exception: ex });
+                            { query: q, exception: ex });
                     });
             })
         ).then(() => results);
@@ -206,6 +206,18 @@ export class Search {
                     return [].concat(...allResults);
                 });
             });
+    }
+
+    /**
+     * Merges the google duplicates urls into a single object with he merged keywords.
+     * 
+     * @param results The array of results from Google with the 
+     * associated query that contains the search terms and the
+     *  keywords that generated that results.
+     */
+    public mergeDuplicateUrls(results: Array<{ gResult: GoogleSearchResult, query: Query }>): Array<{ url: string, keywords: Array<string> }> {
+        // TODO: Haris, implement this function until google-search.spec.ts passes with no errors
+        return null;
     }
 
     /**

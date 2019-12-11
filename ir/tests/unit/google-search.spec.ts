@@ -3,10 +3,11 @@
 
 process.env.NODE_ENV = "production"
 
-import { GoogleSearch } from '../../src/search/google-search';
+import { Search, GoogleSearch } from '../../src/search';
 import nock from "nock";
 import fs from "fs";
 import { userProfiles } from "../../tests";
+import { GoogleSearchResult, Query } from '../../src/models';
 
 describe("Google search", () => {
 
@@ -47,7 +48,7 @@ describe("Google search", () => {
 
         nock.restore(); // remove all interceptors
 
-        const googleSearch = new GoogleSearch(); 
+        const googleSearch = new GoogleSearch();
         let result = await googleSearch.query("Leaning Tower of Pisa", userProfiles.en.expert);
         expect(result.items[0].link).toContain("en.wikipedia.org");
 
@@ -58,3 +59,125 @@ describe("Google search", () => {
 
 
 })
+
+describe.only("Duplicate results", () => {
+
+    const gResultsWithDuplicates: Array<{ gResult: GoogleSearchResult, query: Query }> = [
+        {
+            query: {
+                keywords: ["one", "two"]
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__1__",
+                    },
+                    {
+                        link: "__2__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["one", "three", "four"]
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__1__",
+                    },
+                    {
+                        link: "__3__",
+                    },
+                    {
+                        link: "__4__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["one", "five"]
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__1__",
+                    },
+                    {
+                        link: "__5__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["six"]
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__6__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["five", "test"]
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__5__",
+                    }
+                ]
+            }
+        }
+    ] as Array<any>;
+
+    it("Should remove duplicates results", () => {
+        const _search = new Search();
+
+        const gResultsNoDuplicates = _search.mergeDuplicateUrls(gResultsWithDuplicates);
+
+        const set = new Set<string>();
+        for (let r of gResultsNoDuplicates) {
+            set.add(r.url);
+        }
+        expect(set.size).toEqual(6);
+    });
+
+    it("Should merge duplicates keywords", () => {
+        const _search = new Search();
+
+        const gResultsNoDuplicates = _search.mergeDuplicateUrls(gResultsWithDuplicates);
+
+        expect(gResultsNoDuplicates.length).toEqual(6);
+        expect(gResultsNoDuplicates[0]).toEqual({
+            url: "__1__",
+            keywords: ["one", "two", "three", "four", "five"]
+        });
+        expect(gResultsNoDuplicates[1]).toEqual({
+            url: "__2__",
+            keywords: ["one", "two"]
+        });
+        expect(gResultsNoDuplicates[2]).toEqual({
+            url: "__3__",
+            keywords: ["one", "three", "four"]
+        });
+        expect(gResultsNoDuplicates[3]).toEqual({
+            url: "__4__",
+            keywords: ["one", "three", "four"]
+        });
+        expect(gResultsNoDuplicates[4]).toEqual({
+            url: "__5__",
+            keywords: ["one", "five"]
+        });
+        expect(gResultsNoDuplicates[5]).toEqual({
+            url: "__6__",
+            keywords: ["six"]
+        });
+    });
+});
