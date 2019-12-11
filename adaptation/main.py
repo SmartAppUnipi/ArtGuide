@@ -3,6 +3,7 @@
 
 import os
 import sys
+import traceback
 from flask import Flask, jsonify, request, abort
 import json
 from logging.handlers import RotatingFileHandler
@@ -81,7 +82,7 @@ def tailored_text():
 def internal_error(exc):
     req = request.get_json()
     #print("\n",exc,"\n")
-    req['adaptionError'] = "500 - Internal Server Error"
+    req['adaptionError'] = traceback.format_exc()
     return jsonify(req)
 
 if __name__ == '__main__':
