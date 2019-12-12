@@ -2,7 +2,7 @@ import os
 import json
 import argparse
 from argparse import RawTextHelpFormatter
-import magic
+from PIL import Image
 import re
 import pathlib
 
@@ -29,8 +29,7 @@ def check_file(path, fname, duplicate=True):
         return False
     # Dimension
     try:
-        meta = magic.from_file(str(abs_path))
-        width, height = re.findall(r"[\d]+x[\d]+", meta)[-1].split('x')
+        width, height = Image.open(str(abs_path)).size
         return (min(int(width), int(height)) > CROP_SIZE[0])
     except Exception as e:
         print(str(e))
@@ -183,7 +182,7 @@ if __name__ == "__main__":
 
     if not os.path.exists(pt.pict_style):
         os.mkdir(pt.pict_style)
-    preprocess_pict(pt.pict_style, args.d)
+    #preprocess_pict(pt.pict_style, args.d)
 
     if not os.path.exists(pt.arch_style):
         os.mkdir(pt.arch_style)
