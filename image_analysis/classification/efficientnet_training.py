@@ -1,5 +1,7 @@
 import sys
+import os
 import shutil
+import json
 
 import tensorflow as tf
 import efficientnet.tfkeras as efn
@@ -47,35 +49,42 @@ if __name__ == '__main__':
         classes = 136
     elif data == 'arch':
         classes = 25
-    cp_dir = f'checkpoint_{data}/'
+    cp_dir = f'model_dir_{data}/'
     shutil.rmtree(cp_dir, ignore_errors=True)
+    os.makedirs(cp_dir)
 
-    train_set = cb.arch_data_input()
+    train_set = cb.arch_data_input('train')
+    eval_set = cb.arch_data_input('eval')
 
     model = create_model(classes, trainable_blocks)
 
-    train_stats = {
-        'loss': [],
-        'accuracy': []
+    stats = {
+        'train': {
+            'loss': [],
+            'accuracy': []
+        },
+        'eval': {
+            'loss': [],
+            'accuracy': []
+        }
     }
 
-    eval_stats = {
-        'loss': [],
-        'accuracy': []
-    }
-    best_loss = 1000
+    best_loss = 1e10
     patience = 0
     for i in range(100):
         history = model.fit(
             train_set,
             epochs=1,
         )
-        train_stats['loss'].append(history.history['loss'])
-        train_stats['accuracy'].append(history.history['accuracy'])
+        stats['train']['loss'].append(history.history['loss'])
+        stats['train']['accuracy'].append(history.history['accuracy'])
 
-        loss, accuracy = model.evaluate(eval_set)
-        eval_stats['loss'].append(loss)
-        eval_stats['accuracy'].append(accuracy)
+        loss, metrics = model.evaluate(eval_set)
+        stats['eval']['loss'].append(loss)
+        stats['eval']['accuracy'].append(metrics['accuracy'])
+
+        with open(f'stats_{data}.json', 'w') as fp:
+            json.dump(stats, fp)
 
         if loss < best_loss - 1e-5:
             model.save(cp_dir)

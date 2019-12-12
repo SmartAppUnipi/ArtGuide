@@ -96,9 +96,16 @@ def parse_arch_pict(filename, linux=True):
 
 
 def arch_data_input(dataset='train', batch_size=32):
-    list_ds = tf.data.Dataset.list_files(pt.tf_archstyle)
+    if dataset == 'train':
+        list_ds = tf.data.Dataset.list_files(pt.tf_archstyle_train)
+    if dataset == 'eval':
+        list_ds = tf.data.Dataset.list_files(pt.tf_archstyle_eval)
+    if dataset == 'test':
+        list_ds = tf.data.Dataset.list_files(pt.tf_archstyle_test)
     list_ds = list_ds.map(parse_arch_pict)
-    list_ds = list_ds.batch(batch_size)
+    if dataset == 'train':
+        list_ds = list_ds.shuffle(10000)
+        list_ds = list_ds.batch(batch_size)
     return list_ds
 
 
