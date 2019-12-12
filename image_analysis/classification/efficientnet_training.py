@@ -67,8 +67,8 @@ if __name__ == '__main__':
             train_set,
             epochs=1,
         )
-        train_stats['loss'].append(history['loss'])
-        train_stats['accuracy'].append(history['accuracy'])
+        train_stats['loss'].append(history.history['loss'])
+        train_stats['accuracy'].append(history.history['accuracy'])
 
         loss, accuracy = model.evaluate(eval_set)
         eval_stats['loss'].append(loss)
