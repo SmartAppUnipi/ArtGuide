@@ -7,13 +7,21 @@ import efficientnet.tfkeras as efn
 import codebase as cb
 
 
-def create_model(outputs, trainable_blocks=[]):
-    model = efn.EfficientNetB4(include_top=False, weights='imagenet', pooling='max')
-    
-    for l in model.layers:
-        l.trainable = any([(b in l.name) for b in trainable_blocks])
+class DenseEfficientNet(efn.EfficientNetB4):
 
-    model.add(tf.keras.layers.Dense(outputs))
+    def __init__(self, outputs, trainable_blocks=[]):
+        super(DenseEfficientNet, self).__init__(include_top=False, weights='imagenet', pooling='max')
+        for l in self.layers:
+            l.trainable = any([(b in l.name) for b in trainable_blocks])
+        self.output = tf.keras.layers.Dense(outputs)
+
+    def call(self, batch):
+        eff_net_output = super(DenseEfficientNet, self).call(batch)
+        return self.output(eff_net_output)
+    
+
+def create_model(outputs, trainable_blocks=[]):
+    model = DenseEfficientNet(outputs, trainable_blocks)
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
     
     return model
