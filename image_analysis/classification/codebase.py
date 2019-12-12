@@ -107,7 +107,7 @@ def arch_data_input(dataset='train', batch_size=32):
         list_ds = list_ds.shuffle(500)
         list_ds = list_ds.batch(batch_size)
     else:
-        list_ds = list_ds.batch()
+        list_ds = list_ds.batch(256)
     return list_ds
 
 
