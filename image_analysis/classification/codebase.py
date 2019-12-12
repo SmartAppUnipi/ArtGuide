@@ -15,7 +15,7 @@ import shutil
 
 import project_types as pt
 
-CROP_SIZE = [299, 299, 3]
+CROP_SIZE = [300, 300, 3]
 
 
 # ----- ----- TENSORFLOW ARCHITECTURE ----- ----- #
@@ -49,8 +49,9 @@ def preprocess_architecture(n_path, duplicate=True):
         'Tudor Revival architecture',
     ]
     arch_map2style = {v: idx for (idx, v) in enumerate(arch_styles)}
-    with open("arch_style2idx.json", 'w') as fp:
-        json.dump(arch_map2style, fp)
+    with open("idx2archstyle.json", 'w') as fp:
+        mapIdx2Style = { idx: v for (idx, v) in enumerate(arch_styles) }
+        json.dump(mapIdx2Style, fp)
 
     arch_idx = 0
     for path, subdirs, files in os.walk(pt.wwymak_architecture):
@@ -87,7 +88,7 @@ def parse_arch_pict(filename, linux=True):
     
     image = tf.io.read_file(filename)
     image = tf.image.decode_jpeg(image)
-    image = tf.image.convert_image_dtype(image, tf.float32)
+    image = tf.image.convert_image_dtype(image, tf.float32) / 255
     image = tf.image.random_crop(image, CROP_SIZE)
     return image, label
 
@@ -122,8 +123,9 @@ def preprocess_pict(n_path, duplicate=True):
     styles = pictdf["style"].unique()
     styles.sort()
     map2style = { v: idx for (idx, v) in enumerate(styles) }
-    with open("pict_style2idx.json", 'w') as fp:
-        json.dump(map2style, fp)
+    with open("idx2pictstyle.json", 'w') as fp:
+        mapIdx2Style = { idx: v for (idx, v) in enumerate(styles) }
+        json.dump(mapIdx2Style, fp)
 
     pictdf["style_idx"] = pictdf["style"].map(map2style)
     # Recreating dataset
@@ -155,20 +157,30 @@ def parse_image_pict(filename, linux=True):
     
     image = tf.io.read_file(filename)
     image = tf.image.decode_jpeg(image)
-    image = tf.image.convert_image_dtype(image, tf.float32)
+    image = tf.image.convert_image_dtype(image, tf.float32) / 255
     image = tf.image.random_crop(image, CROP_SIZE)
     return image, label
 
 
-def tf2freebaseID(p, d_stile_freebaseID, d_stile_idOH):
-    new_p = list( map(int, list(p)) )
-    temp_dict = dict()
-  
-    for style_sf in d_stile_freebaseID:
-      for style_sid in d_stile_idOH:
-        if style_sf == style_sid:
-          temp_dict[ d_stile_freebaseID[style_sf] ] = new_p[ d_stile_idOH[style_sid]-1 ]
-    return temp_dict
+def tf2wd(model_prediction_tf, art_type='picture'):
+    """Convert a model prediction to a dictionary {"WDId": v} with {v} the value predicted by the model for each style
+    INPUT 
+        model_prediction_tf - tensor returned by the model
+        art_type            - 'architecture' or 'picture' 
+    """ 
+    res = {}
+    prediction = list(map(int, list(model_prediction_tf)))
+    if art_type == "picture":
+        idx_style_map = IDX_2_PICTSTYLE 
+        style_2_wd = PICTSTYLE_2_WD 
+    else:
+        idx_style_map = IDX_2_ARCHSTYLE
+        style_2_wd = ARCHSTYLE_2_WD
+
+    for idx, stylename in idx_style_map.items():
+        wd_id = style_2_wd[stylename]
+        res[wd_id] = prediction[int(idx)]
+    return res
 
 
 descr = """Ensure to have the following file structure
@@ -188,8 +200,39 @@ if __name__ == "__main__":
 
     if not os.path.exists(pt.pict_style):
         os.mkdir(pt.pict_style)
-    #preprocess_pict(pt.pict_style, args.d)
+    preprocess_pict(pt.pict_style, args.d)
 
     if not os.path.exists(pt.arch_style):
         os.mkdir(pt.arch_style)
-    preprocess_architecture(pt.arch_style, args.d)
+    #preprocess_architecture(pt.arch_style, args.d)
+else:
+    try:
+        with open("dpictstyle2wd.json", "r") as f:
+            # picture style name to wikidata identifier
+            PICTSTYLE_2_WD = json.load(f)
+    except IOError:
+        print("file not found pictstyle2wd")
+
+    try:
+        with open("idx2pictstyle.json", "r") as f:
+            # picture style name to index in the model output
+            IDX_2_PICTSTYLE = json.load(f)
+    except :
+        print("file not found pictstyle2idx")
+
+    try:
+        with open("darchstyle2wd.json", "r") as f:
+            # picture style name to wikidata identifier
+            ARCHSTYLE_2_WD = json.load(f)
+    except :
+        print("file not found archstyle2wd.json")
+
+    try:
+        with open("idx2archstyle.json", "r") as f:
+            # picture style name to index in the model output
+            IDX_2_ARCHSTYLE = json.load(f)
+    except :
+        print("file not found archstyle2idx.json")
+
+
+
