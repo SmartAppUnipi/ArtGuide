@@ -3,7 +3,6 @@ import json
 import argparse
 from argparse import RawTextHelpFormatter
 from PIL import Image
-import re
 import pathlib
 
 import numpy as np
