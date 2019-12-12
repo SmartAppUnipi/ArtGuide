@@ -11,7 +11,12 @@ class DenseEfficientNet(tf.keras.Model):
 
     def __init__(self, outputs, trainable_blocks=[]):
         super(DenseEfficientNet, self).__init__()
-        self.eff_net = efn.EfficientNetB4(include_top=False, weights='imagenet', pooling='max')
+        self.eff_net = efn.EfficientNetB4(
+            include_top=False, 
+            input_shape=(300, 300, 3), 
+            weights='imagenet', 
+            pooling='max'
+        )
         for l in self.eff_net.layers:
             l.trainable = any([(b in l.name) for b in trainable_blocks])
         self.out_layer = tf.keras.layers.Dense(outputs)

@@ -15,7 +15,7 @@ import shutil
 
 import project_types as pt
 
-CROP_SIZE = [299, 299, 3]
+CROP_SIZE = [300, 300, 3]
 
 
 # ----- ----- TENSORFLOW ARCHITECTURE ----- ----- #
