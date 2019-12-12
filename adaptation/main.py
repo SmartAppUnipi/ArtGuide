@@ -1,3 +1,12 @@
+"""
+    main.py: this is the core file of the adaptation module. It  provides the APIs of adaptation module and performs the document adaptation functions
+    ArtGuide project SmartApp1920
+    Dipartimento di Informatica Università di Pisa
+    Authors: M. Barato, S. Berti, M. Bonsembiante, P. Lonardi, G. Martini
+    We declare that the content of this file is entirelly
+    developed by the authors
+"""
+
 # PEP8 - 4 spazi
 # Attirbuti JSON - camelCase
 
