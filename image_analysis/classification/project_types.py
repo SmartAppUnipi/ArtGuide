@@ -17,6 +17,19 @@ pict_style = datasets / 'pict_style'
 # painter_by_numbers metainf
 pict_info = datasets / 'all_data_info.csv'
 
+# ----- splits ----- #
+arch_splits = datasets / 'arch_splits'
+pict_splits = datasets / 'pict_splits'
+
 # ----- tensorflow dataset ----- #
 tf_archstyle = str(arch_style / '*')
 tf_pictstyle = str(pict_style / '*')
+
+# ----- splits ----- #
+tf_archstyle_train = str(arch_splits / 'train/*')
+tf_archstyle_eval = str(arch_splits / 'eval/*')
+tf_archstyle_test = str(arch_splits / 'test/*')
+
+tf_pict_train = str(pict_splits / 'train/*')
+tf_pict_eval = str(pict_splits / 'eval/*')
+tf_pict_test = str(pict_splits / 'test/*')
