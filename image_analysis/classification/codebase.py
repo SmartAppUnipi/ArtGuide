@@ -1,4 +1,5 @@
 import os
+import json
 import argparse
 from argparse import RawTextHelpFormatter
 import magic
@@ -19,18 +20,6 @@ CROP_SIZE = [299, 299, 3]
 
 
 # ----- ----- TENSORFLOW ARCHITECTURE ----- ----- #
-arch_styles = [
-    'Achaemenid architecture', 'American Foursquare architecture', 'American craftsman style',
-    'Ancient Egyptian architecture', 'Art Deco architecture', 'Art Nouveau architecture',
-    'Baroque architecture', 'Bauhaus architecture', 'Beaux-Arts architecture',
-    'Byzantine architecture', 'Chicago school architecture', 'Colonial architecture',
-    'Deconstructivism', 'Edwardian architecture', 'Georgian architecture',
-    'Gothic architecture', 'Greek Revival architecture', 'International style',
-    'Novelty architecture', 'Palladian architecture', 'Postmodern architecture',
-    'Queen Anne architecture', 'Romanesque architecture', 'Russian Revival architecture',
-    'Tudor Revival architecture',
-]
-arch_map2style = {v: idx for (idx, v) in enumerate(arch_styles)}
 
 def check_file(path, fname, duplicate=True):
     abs_path = pathlib.PurePath(path, fname)
@@ -50,6 +39,21 @@ def check_file(path, fname, duplicate=True):
 
 
 def preprocess_architecture(n_path, duplicate=True):
+    arch_styles = [
+        'Achaemenid architecture', 'American Foursquare architecture', 'American craftsman style',
+        'Ancient Egyptian architecture', 'Art Deco architecture', 'Art Nouveau architecture',
+        'Baroque architecture', 'Bauhaus architecture', 'Beaux-Arts architecture',
+        'Byzantine architecture', 'Chicago school architecture', 'Colonial architecture',
+        'Deconstructivism', 'Edwardian architecture', 'Georgian architecture',
+        'Gothic architecture', 'Greek Revival architecture', 'International style',
+        'Novelty architecture', 'Palladian architecture', 'Postmodern architecture',
+        'Queen Anne architecture', 'Romanesque architecture', 'Russian Revival architecture',
+        'Tudor Revival architecture',
+    ]
+    arch_map2style = {v: idx for (idx, v) in enumerate(arch_styles)}
+    with open("arch_style2idx.json", 'w') as fp:
+        json.dump(arch_map2style, fp)
+
     arch_idx = 0
     for path, subdirs, files in os.walk(pt.wwymak_architecture):
         if subdirs != []:
@@ -101,7 +105,7 @@ def preprocess_pict(n_path, duplicate=True):
     pictdf = pd.read_csv(pt.pict_info, index_col='new_filename').drop('date', axis=1)
     pictdf = pictdf.dropna(subset=['style', 'pixelsx', 'pixelsy'])
     # Dataset fix Note: new realism and noveau realism are the same style
-    pictdf[pictdf['style'] == 'New Realism'] = 'Nouveau Réalisme'
+    pictdf['style'] = pictdf['style'].apply(lambda x: 'Nouveau Réalisme' if x=='New Realism' else x)
     # Discarding low cardinality samples
     good_styles = (pictdf['style'].value_counts()>100)
     good_styles = good_styles[good_styles]
@@ -110,13 +114,17 @@ def preprocess_pict(n_path, duplicate=True):
     pictdf = pictdf[pictdf.apply(lambda row: os.path.exists(pt.painter_by_numbers / row.name), axis=1)]
     
     # One hot index
-    styles = enumerate(pictdf['style'].unique())
-    map2style = {v: idx for (idx, v) in styles}
-    pictdf['style_idx'] = pictdf['style'].map(map2style)
+    styles = pictdf["style"].unique()
+    styles.sort()
+    map2style = { v: idx for (idx, v) in enumerate(styles) }
+    with open("pict_style2idx.json", 'w') as fp:
+        json.dump(map2style, fp)
+
+    pictdf["style_idx"] = pictdf["style"].map(map2style)
     # Recreating dataset
     for (fpath, row) in pictdf.iterrows():
         # Ignoring small images
-        if min(row.pixelsx, row.pixelsy) < CROP_SIZE[0]:
+        if min(int(row.pixelsx), int(row.pixelsy)) < CROP_SIZE[0]:
             continue
         # Moving or copying Keyword arguments:the file 
         try:
@@ -146,15 +154,17 @@ def parse_image_pict(filename, linux=True):
     image = tf.image.random_crop(image, CROP_SIZE)
     return image, label
 
-def tf2freebaseID(p, d_stile_freebaseID, d_stile_idOH):
-  new_p = list( map(int, list(p)) )
-  temp_dict = dict()
 
-  for style_sf in d_stile_freebaseID:
-    for style_sid in d_stile_idOH:
-      if style_sf == style_sid:
-        temp_dict[ d_stile_freebaseID[style_sf] ] = new_p[ d_stile_idOH[style_sid]-1 ]
-  return temp_dict
+def tf2freebaseID(p, d_stile_freebaseID, d_stile_idOH):
+    new_p = list( map(int, list(p)) )
+    temp_dict = dict()
+  
+    for style_sf in d_stile_freebaseID:
+      for style_sid in d_stile_idOH:
+        if style_sf == style_sid:
+          temp_dict[ d_stile_freebaseID[style_sf] ] = new_p[ d_stile_idOH[style_sid]-1 ]
+    return temp_dict
+
 
 descr = """Ensure to have the following file structure
 image_analysis/models/
