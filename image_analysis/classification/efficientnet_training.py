@@ -33,7 +33,7 @@ if __name__ == '__main__':
     cp_dir = f'checkpoint_{data}/'
     shutil.rmtree(cp_dir, ignore_errors=True)
 
-    train_set, eval_set = cb.load_train(data)
+    train_set = cb.arch_data_input()
 
     model = create_model(classes, trainable_blocks)
 

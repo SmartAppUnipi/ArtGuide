@@ -93,6 +93,13 @@ def parse_arch_pict(filename, linux=True):
     return image, label
 
 
+def arch_data_input(dataset='train', batch_size=32):
+    list_ds = tf.data.Dataset.list_files(pt.tf_archstyle)
+    list_ds = list_ds.map(parse_arch_pict)
+    list_ds = list_ds.batch(batch_size)
+    return list_ds
+
+
 # ----- ----- TENSORFLOW PICTURE ----- ----- #
 def preprocess_pict(n_path, duplicate=True):
     """Prepare the dataset found in {pt.pict_dset} such that each image has the name: 
