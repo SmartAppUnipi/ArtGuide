@@ -1,7 +1,7 @@
 import sys
 import os
 import shutil
-import json
+import pickle
 
 import tensorflow as tf
 import efficientnet.tfkeras as efn
@@ -83,8 +83,8 @@ if __name__ == '__main__':
         stats['eval']['loss'].append(loss)
         stats['eval']['accuracy'].append(accuracy)
 
-        with open(f'stats_{data}.json', 'w') as fp:
-            json.dump(stats, fp)
+        with open(f'stats_{data}.pickle', 'wb') as fp:
+            pickle.dump(stats, fp, protocol=pickle.HIGHEST_PROTOCOL)
 
         if loss < best_loss - 1e-5:
             model.save(cp_dir)
