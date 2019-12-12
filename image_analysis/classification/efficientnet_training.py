@@ -30,7 +30,7 @@ def create_model(outputs, trainable_blocks=[]):
 
 if __name__ == '__main__':
     data = sys.argv[1]
-    if sys.argv[2] is not None:
+    if len(sys.argv) > 2 and sys.argv[2] is not None:
         trainable_blocks = [ f'block{i}' for i in sys.argv[2].split(',')]
     else:
         trainable_blocks = []
