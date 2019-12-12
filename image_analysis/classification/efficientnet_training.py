@@ -79,9 +79,9 @@ if __name__ == '__main__':
         stats['train']['loss'].append(history.history['loss'])
         stats['train']['accuracy'].append(history.history['accuracy'])
 
-        loss, metrics = model.evaluate(eval_set)
+        loss, accuracy = model.evaluate(eval_set)
         stats['eval']['loss'].append(loss)
-        stats['eval']['accuracy'].append(metrics['accuracy'])
+        stats['eval']['accuracy'].append(accuracy)
 
         with open(f'stats_{data}.json', 'w') as fp:
             json.dump(stats, fp)
