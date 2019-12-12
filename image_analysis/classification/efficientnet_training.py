@@ -7,16 +7,17 @@ import efficientnet.tfkeras as efn
 import codebase as cb
 
 
-class DenseEfficientNet(efn.EfficientNetB4):
+class DenseEfficientNet(tf.keras.Model):
 
     def __init__(self, outputs, trainable_blocks=[]):
-        super(DenseEfficientNet, self).__init__(include_top=False, weights='imagenet', pooling='max')
-        for l in self.layers:
+        super(DenseEfficientNet, self).__init__()
+        self.eff_net = efn.EfficientNetB4(include_top=False, weights='imagenet', pooling='max')
+        for l in self.eff_net.layers:
             l.trainable = any([(b in l.name) for b in trainable_blocks])
         self.output = tf.keras.layers.Dense(outputs)
 
     def call(self, batch):
-        eff_net_output = super(DenseEfficientNet, self).call(batch)
+        eff_net_output = self.eff_net(batch)
         return self.output(eff_net_output)
     
 
