@@ -2,7 +2,7 @@ import os
 import json
 import argparse
 from argparse import RawTextHelpFormatter
-import magic
+from PIL import Image
 import re
 import pathlib
 
@@ -29,8 +29,7 @@ def check_file(path, fname, duplicate=True):
         return False
     # Dimension
     try:
-        meta = magic.from_file(str(abs_path))
-        width, height = re.findall(r"[\d]+x[\d]+", meta)[-1].split('x')
+        width, height = Image.open(str(abs_path)).size
         return (min(int(width), int(height)) > CROP_SIZE[0])
     except Exception as e:
         print(str(e))
@@ -92,6 +91,13 @@ def parse_arch_pict(filename, linux=True):
     image = tf.image.convert_image_dtype(image, tf.float32)
     image = tf.image.random_crop(image, CROP_SIZE)
     return image, label
+
+
+def arch_data_input(dataset='train', batch_size=32):
+    list_ds = tf.data.Dataset.list_files(pt.tf_archstyle)
+    list_ds = list_ds.map(parse_arch_pict)
+    list_ds = list_ds.batch(batch_size)
+    return list_ds
 
 
 # ----- ----- TENSORFLOW PICTURE ----- ----- #
