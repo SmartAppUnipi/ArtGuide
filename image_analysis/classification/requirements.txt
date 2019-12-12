@@ -1,5 +1,5 @@
 tensorflow==2.0.0
 pandas==0.25.3
 pillow
-sklearn
+scikit-image
 git+https://github.com/qubvel/efficientnet

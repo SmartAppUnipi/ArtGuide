@@ -7,13 +7,27 @@ import efficientnet.tfkeras as efn
 import codebase as cb
 
 
-def create_model(outputs, trainable_blocks=[]):
-    model = efn.EfficientNetB4(include_top=False, weights='imagenet', pooling='max')
-    
-    for l in model.layers:
-        l.trainable = any([(b in l.name) for b in trainable_blocks])
+class DenseEfficientNet(tf.keras.Model):
 
-    model.add(tf.keras.layers.Dense(outputs))
+    def __init__(self, outputs, trainable_blocks=[]):
+        super(DenseEfficientNet, self).__init__()
+        self.eff_net = efn.EfficientNetB4(
+            include_top=False, 
+            input_shape=(300, 300, 3), 
+            weights='imagenet', 
+            pooling='max'
+        )
+        for l in self.eff_net.layers:
+            l.trainable = any([(b in l.name) for b in trainable_blocks])
+        self.out_layer = tf.keras.layers.Dense(outputs)
+
+    def call(self, batch):
+        eff_net_output = self.eff_net(batch)
+        return self.out_layer(eff_net_output)
+    
+
+def create_model(outputs, trainable_blocks=[]):
+    model = DenseEfficientNet(outputs, trainable_blocks)
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
     
     return model
@@ -21,7 +35,7 @@ def create_model(outputs, trainable_blocks=[]):
 
 if __name__ == '__main__':
     data = sys.argv[1]
-    if sys.argv[2] is not None:
+    if len(sys.argv) > 2 and sys.argv[2] is not None:
         trainable_blocks = [ f'block{i}' for i in sys.argv[2].split(',')]
     else:
         trainable_blocks = []
