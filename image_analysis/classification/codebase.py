@@ -88,6 +88,8 @@ def parse_arch_pict(filename, linux=True):
     
     image = tf.io.read_file(filename)
     image = tf.image.decode_jpeg(image)
+    if tf.shape(image)[-1] < 3:
+        image = tf.image.grayscale_to_rgb(image)
     image = tf.image.convert_image_dtype(image, tf.float32) / 255
     image = tf.image.random_crop(image, CROP_SIZE)
     return image, label

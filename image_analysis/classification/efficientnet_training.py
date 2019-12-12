@@ -20,10 +20,13 @@ class DenseEfficientNet(tf.keras.Model):
         for l in self.eff_net.layers:
             l.trainable = any([(b in l.name) for b in trainable_blocks])
         self.out_layer = tf.keras.layers.Dense(outputs)
+        self.softmax = tf.keras.layers.Softmax()
 
     def call(self, batch):
         eff_net_output = self.eff_net(batch)
-        return self.out_layer(eff_net_output)
+        out = self.out_layer(eff_net_output)
+        softmax = self.softmax(out)
+        return softmax
     
 
 def create_model(outputs, trainable_blocks=[]):
@@ -67,8 +70,8 @@ if __name__ == '__main__':
             train_set,
             epochs=1,
         )
-        train_stats['loss'].append(history['loss'])
-        train_stats['accuracy'].append(history['accuracy'])
+        train_stats['loss'].append(history.history['loss'])
+        train_stats['accuracy'].append(history.history['accuracy'])
 
         loss, accuracy = model.evaluate(eval_set)
         eval_stats['loss'].append(loss)
