@@ -1,7 +1,7 @@
 /// <reference types="@types/jest"/>
 /// <reference types="@types/node"/>
 
-import { LogFormatter } from "../../client/log-formatter";
+import { LogFormatter } from "../../src/client/log-formatter";
 
 const logs = [
   {
@@ -23,9 +23,9 @@ const logs = [
 
 describe("File .env", () => {
 
-  const logFormatter = new LogFormatter(JSON.stringify(logs));
+  const logFormatter = new LogFormatter(logs);
 
-  it("Should parse properly the file", () => {
+  it("Should load properly the logs", () => {
     const filteredLogs = logFormatter.filter()
     expect(filteredLogs).toBeDefined()
     expect(filteredLogs).toEqual(logs)
