@@ -1,7 +1,7 @@
 jobs:
   include:
     - name: image_analysis module
-      if: branch IN (master, image_analysis_proto)
+      if: branch IN (master, ia_beta)
       language: python
       python: 3.7.5
       script:
