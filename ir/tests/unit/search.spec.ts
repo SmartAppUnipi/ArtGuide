@@ -208,10 +208,7 @@ describe("Duplicate results", () => {
 
         const gResultsNoDuplicates = _search["mergeDuplicateUrls"](gResultsWithDuplicates);
 
-        const set = new Set<string>();
-        for (let r of gResultsNoDuplicates) {
-            set.add(r.url);
-        }
+        const set = new Set<string>(gResultsNoDuplicates.map(r => r.url));
         expect(set.size).toEqual(6);
     });
 

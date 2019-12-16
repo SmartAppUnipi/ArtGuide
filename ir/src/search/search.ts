@@ -2,7 +2,6 @@ import { Adaptation } from "../adaptation";
 import { GoogleSearch } from "./google-search";
 import logger from "../logger";
 import { Parser } from "../parser";
-import { flowConfig, knownInstanceProperties, scoreWeight, searchBlackList } from "../../config.json";
 import {
     GoogleSearchResult,
     MetaEntity,
@@ -11,6 +10,7 @@ import {
     QueryExpansionResponse,
     UserProfile
 } from "../models";
+import { knownInstanceProperties, scoreWeight, searchBlackList } from "../../config.json";
 
 
 
@@ -132,7 +132,7 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                            { query: q, exception: ex });
+                                     { query: q, exception: ex });
                         return {
                             gResult: null as GoogleSearchResult,
                             query: null as Query
@@ -144,14 +144,15 @@ export class Search {
             return this
                 .mergeDuplicateUrls(gResults)
                 .filter(result => {
-                    return !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite))
+                    return !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite));
                 });
 
-        }).then(r => {
+        })
+            .then(r => {
 
-            return this.parseList(r);
+                return this.parseList(r);
 
-        });
+            });
     }
 
     /**
@@ -198,17 +199,18 @@ export class Search {
                             .then(r => ({
                                 gResult: r,
                                 query: query
-                            }))
+                            }));
                     })
                 ).then(gResults => {
                     return this
                         .mergeDuplicateUrls(gResults)
                         .filter(result => {
-                            return !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite))
+                            return !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite));
                         });
-                }).then(r => {
-                    return this.parseList(r);
                 })
+                    .then(r => {
+                        return this.parseList(r);
+                    });
             });
     }
 
@@ -217,17 +219,21 @@ export class Search {
      * 
      * @param results The array of results from Google with the 
      * associated query that contains the search terms and the
-     *  keywords that generated that results.
+     * keywords that generated that results.
+     * 
+     * @returns The list of URLS without duplicates, with the associated keywords and score.
      */
+    // eslint-disable-next-line
+    private mergeDuplicateUrls(results: Array<{ gResult: GoogleSearchResult; query: Query }>): Array<{ url: string; keywords: Array<string>; score: number }> {
 
-    private mergeDuplicateUrls(results: Array<{ gResult: GoogleSearchResult, query: Query }>): Array<{ url: string, keywords: Array<string>, score: number }> {
+        const linkMap = new Map<string, { keywords: Array<string>; score: number; counter: number }>();
+        const finalResult: Array<{ url: string; keywords: Array<string>; score: number }> = [];
 
-        const linkMap = new Map<string, { keywords: Array<string>, score: number, counter: number }>();
-        let finalResult: Array<{ url: string, keywords: Array<string>, score: number }> = []
-
-        // create a Map and if link is not there, append it to a map toogether with its keywords
-        // if link is already in the map, then take from the Map old values of keywords,
-        // concatenate them with the new values and append everything to a Map 
+        /*
+         * create a Map and if link is not there, append it to a map toogether with its keywords
+         * if link is already in the map, then take from the Map old values of keywords,
+         * concatenate them with the new values and append everything to a Map 
+         */
 
         for (const result of results ?? []) {
             for (const item of result?.gResult?.items ?? []) {
@@ -237,8 +243,7 @@ export class Search {
                         score: result.query.score,
                         counter: 1
                     });
-                }
-                else {
+                } else {
                     const matching = linkMap.get(item.link);
 
                     linkMap.set(item.link, {
@@ -247,32 +252,28 @@ export class Search {
                         )),
                         score: matching.score + result.query.score, // accumulate score
                         counter: matching.counter + 1 // store counter to compute average
-                    })
+                    });
                 }
 
             }
         }
 
-        for (let [key, value] of linkMap) {
+        for (const [key, value] of linkMap) {
             const average = value.score / value.counter;
-            finalResult.push({ url: key, keywords: value.keywords, score: average })
+            finalResult.push({ url: key, keywords: value.keywords, score: average });
         }
 
-        return finalResult
+        return finalResult;
     }
 
     /**
-     * Given a GoogleSearchResult, for each returned item the parser gets invoked and
-     *the text content of the corresponding page is inserted into a PageResult.
+     * Given a list of urls, they get fetched, parsed and mapped to a PageResult.
      *
-     *Since the keywords that are associated to that google result cannot be inferred from the results themselves,
-     *they must be explicitly passed by the caller.
-     *
-     * @param googleResult The google search result.
-     * @param query The query that produced the result.
+     * @param list The list of the urls without duplicates to fetch and parse.
      * @returns The array of page results corresponding to the parsed pages returned from Google.
      */
-    private async parseList(list: Array<{ url: string, keywords: Array<string>, score: number }>): Promise<Array<PageResult>> {
+    // eslint-disable-next-line
+    private async parseList(list: Array<{ url: string; keywords: Array<string>; score: number }>): Promise<Array<PageResult>> {
         const results: Array<PageResult> = [];
 
         return Promise.all(
