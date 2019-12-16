@@ -220,63 +220,44 @@ export class Search {
      *  keywords that generated that results.
      */
 
-    public mergeDuplicateUrls(results: Array<{ gResult: GoogleSearchResult, query: Query }>): Array<{ url: string, keywords: Array<string> }> 
-    {
+    private mergeDuplicateUrls(results: Array<{ gResult: GoogleSearchResult, query: Query }>): Array<{ url: string, keywords: Array<string>, score: number }> {
 
-        const linkMap=new Map();
-        let finalResult:Array<{ url: string, keywords: Array<string> }>=[] 
-        let temp
+        const linkMap = new Map<string, { keywords: Array<string>, score: number, counter: number }>();
+        let finalResult: Array<{ url: string, keywords: Array<string>, score: number }> = []
 
         // create a Map and if link is not there, append it to a map toogether with its keywords
         // if link is already in the map, then take from the Map old values of keywords,
         // concatenate them with the new values and append everything to a Map 
-        // In this way we merge keywords of the same queries, but still we have duplicates inside
-        // To get rid of duplicates, append links toogether with keywords in the final array,
-        // where we do canceling of duplicate values
-        for(var i=0;i<results.length;i++)   
-        {   
-            for(var j=0;j<results[i].gResult.items.length;j++)    
-            {    
-                if(!linkMap.has(results[i].gResult.items[j].link))      
-                {     
-                
-                    linkMap.set(results[i].gResult.items[j].link,results[i].query.keywords)     
-                }    
-                else       
-                {
-                    for(let [key,value] of linkMap)   
-                    {
-                        if(results[i].gResult.items[j].link==key)
-                        {
-                            temp=value.concat(results[i].query.keywords)  
-                            linkMap.set(key,temp)                       
-                        }                                  
-                    } 
-                    
-                }              
-                
-            }         
-        }   
-        
-        for(let[key,value]of linkMap)
-        {
-            finalResult.push({url:key,keywords:value})
-        }
-        
-        for(let i=0;i<finalResult.length;i++)
-        {
-            for(let j=0;j<finalResult[i].keywords.length;j++)
-            {
-                for(let z=j+1;z<finalResult[i].keywords.length;z++)
-                {
-                    if(finalResult[i].keywords[j]==finalResult[i].keywords[z])
-                    {
-                        finalResult[i].keywords.splice(z,1)
-                    }
+
+        for (const result of results ?? []) {
+            for (const item of result?.gResult?.items ?? []) {
+                if (!linkMap.has(item.link)) {
+                    linkMap.set(item.link, {
+                        keywords: Array.from(new Set(result.query.keywords)), // keywords without duplicates
+                        score: result.query.score,
+                        counter: 1
+                    });
                 }
+                else {
+                    const matching = linkMap.get(item.link);
+
+                    linkMap.set(item.link, {
+                        keywords: Array.from(new Set( // merge keywords without duplicates
+                            matching.keywords.concat(result.query.keywords)
+                        )),
+                        score: matching.score + result.query.score, // accumulate score
+                        counter: matching.counter + 1 // store counter to compute average
+                    })
+                }
+
             }
         }
-        
+
+        for (let [key, value] of linkMap) {
+            const average = value.score / value.counter;
+            finalResult.push({ url: key, keywords: value.keywords, score: average })
+        }
+
         return finalResult
     }
 
