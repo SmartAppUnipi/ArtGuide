@@ -18,6 +18,7 @@ const logger = winston.createLogger({
 });
 
 if (LoggerConfig.file) {
+    
     logger.on("data", log => {
         try {
             if (!fs.existsSync(LoggerConfig.file))
@@ -27,7 +28,14 @@ if (LoggerConfig.file) {
             currentLogs.push(log);
             fs.writeFileSync(LoggerConfig.file, JSON.stringify(currentLogs, null, 4));
         } catch (ex) {
-            console.error("Cannot write log on file: " + log.message, ex);
+            /**
+             * If you run tests with Logger.level silly or debug and
+             * you run the tests without --runInBand (eg npm t),
+             * the calls to the logger are made in parallel, and thus
+             * you will probably get a console error saying "Unexpected
+             * JSON token" or "JSON.parse syntax error". 
+             */
+            // console.warn("Cannot write log on file: " + log.message, ex);
         }
     });
 }
