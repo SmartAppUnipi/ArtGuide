@@ -141,8 +141,7 @@ def preprocess_pict(n_path, duplicate=True):
     pictdf["style_idx"] = pictdf["style"].map(map2style)
     # Recreating dataset
     for (fpath, row) in pictdf.iterrows():
-        # Ignoring small images
-        if min(int(row.pixelsx), int(row.pixelsy)) < CROP_SIZE[0]:
+        if not check_file(pt.painter_by_numbers, fpath):
             continue
         # Moving or copying Keyword arguments:the file 
         try:
