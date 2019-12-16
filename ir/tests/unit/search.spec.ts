@@ -190,7 +190,7 @@ describe("Duplicate results", () => {
         },
         {
             query: {
-                keywords: ["five", "test"],
+                keywords: ["five"],
                 score: 5
             },
             gResult: {
@@ -206,7 +206,7 @@ describe("Duplicate results", () => {
     it("Should remove duplicates results", () => {
         const _search = new Search();
 
-        const gResultsNoDuplicates = _search.mergeDuplicateUrls(gResultsWithDuplicates);
+        const gResultsNoDuplicates = _search["mergeDuplicateUrls"](gResultsWithDuplicates);
 
         const set = new Set<string>();
         for (let r of gResultsNoDuplicates) {
@@ -218,7 +218,7 @@ describe("Duplicate results", () => {
     it("Should merge duplicates keywords", () => {
         const _search = new Search();
 
-        const gResultsNoDuplicates = _search.mergeDuplicateUrls(gResultsWithDuplicates);
+        const gResultsNoDuplicates = _search["mergeDuplicateUrls"](gResultsWithDuplicates);
 
         expect(gResultsNoDuplicates.length).toEqual(6);
         expect(gResultsNoDuplicates[0]).toEqual({
@@ -243,7 +243,7 @@ describe("Duplicate results", () => {
         });
         expect(gResultsNoDuplicates[4]).toEqual({
             url: "__5__",
-            keywords: ["one", "five", "test"],
+            keywords: ["one", "five"],
             score: (3 + 5) / 2
         });
         expect(gResultsNoDuplicates[5]).toEqual({
