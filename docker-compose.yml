@@ -25,3 +25,15 @@ services:
       - "3000:3000"
     stdin_open: true
     tty: true
+
+  adaptation:
+    build:
+      context: ./
+      dockerfile: adapt.dockerfile
+    image: art/adaptation
+    container_name: adaptation
+    restart: always
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
