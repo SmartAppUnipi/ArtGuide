@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="677d46cf-0f97-4f03-97a4-4029f904ff3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptation/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adaptation/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,6 +98,14 @@
       <option name="presentableId" value="Default" />
       <updated>1574623088668</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added &quot;grid_search&quot; to test different weights">
+      <created>1575990207805</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575990207805</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -113,5 +120,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added &quot;grid_search&quot; to test different weights" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added &quot;grid_search&quot; to test different weights" />
   </component>
 </project>
