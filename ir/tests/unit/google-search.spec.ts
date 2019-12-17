@@ -3,10 +3,11 @@
 
 process.env.NODE_ENV = "production"
 
-import { GoogleSearch } from '../../src/search/google-search';
+import { Search, GoogleSearch } from '../../src/search';
 import nock from "nock";
 import fs from "fs";
 import { userProfiles } from "../../tests";
+import { GoogleSearchResult, Query } from '../../src/models';
 
 describe("Google search", () => {
 
@@ -47,7 +48,7 @@ describe("Google search", () => {
 
         nock.restore(); // remove all interceptors
 
-        const googleSearch = new GoogleSearch(); 
+        const googleSearch = new GoogleSearch();
         let result = await googleSearch.query("Leaning Tower of Pisa", userProfiles.en.expert);
         expect(result.items[0].link).toContain("en.wikipedia.org");
 
@@ -57,4 +58,4 @@ describe("Google search", () => {
     });
 
 
-})
+});

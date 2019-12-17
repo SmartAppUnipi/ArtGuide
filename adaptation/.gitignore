@@ -14,7 +14,16 @@ _mailinglist
 .cache/
 .pytest_cache/
 .idea/
+../.idea/
 docs/_build/
+
+__pycache__
+.vscode
+venv/
+*.pyc
+*.pyd
+*.pyo
+.ipynb_checkpoints/
 
 # Coverage reports
 htmlcov/

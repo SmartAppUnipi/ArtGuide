@@ -4,7 +4,7 @@ class User():
         self.tastes = []
         self.expertise_level = 1  # enum from ["child","novice","knowledgeable","expert"]
         self.language = 'en'
-        self.tastes_embedded = []
+        self.tastes_embedded = {}
         if 'tastes' in user_profile:
             self.tastes = user_profile['tastes']
         if 'expertiseLevel' in user_profile:
@@ -14,6 +14,7 @@ class User():
     
     def embed_tastes(self, embedder):
         if self.tastes:
-            self.tastes_embedded = embedder.embed(self.tastes[0])
-            for taste in self.tastes[1:]:
-                self.tastes_embedded += embedder.embed(taste)
+            for taste in self.tastes:
+                self.tastes_embedded[taste] = embedder.embed(taste)
+        print(self.tastes_embedded)
+

@@ -5229,7 +5229,7 @@
       "request": [
         {
           "title": "Google Custom Search - Bonanno Pisano",
-          "totalResults": "155000",
+          "totalResults": "163000",
           "searchTerms": "Bonanno Pisano",
           "count": 10,
           "startIndex": 1,
@@ -5242,7 +5242,7 @@
       "nextPage": [
         {
           "title": "Google Custom Search - Bonanno Pisano",
-          "totalResults": "155000",
+          "totalResults": "163000",
           "searchTerms": "Bonanno Pisano",
           "count": 10,
           "startIndex": 11,
@@ -5257,10 +5257,10 @@
       "title": "SmartApps-Art-EN"
     },
     "searchInformation": {
-      "searchTime": 0.398297,
-      "formattedSearchTime": "0.40",
-      "totalResults": "155000",
-      "formattedTotalResults": "155,000"
+      "searchTime": 0.502867,
+      "formattedSearchTime": "0.50",
+      "totalResults": "163000",
+      "formattedTotalResults": "163,000"
     },
     "items": [
       {
@@ -5354,6 +5354,38 @@
       },
       {
         "kind": "customsearch#result",
+        "title": "Bonanno Pisano – Wikipédia, a enciclopédia livre",
+        "htmlTitle": "<b>Bonanno Pisano</b> – Wikipédia, a enciclopédia livre",
+        "link": "https://pt.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "pt.wikipedia.org",
+        "snippet": "Bonanno Pisano (Pisa), ativo nas décadas de 1170 e 1180, foi um escultor \nitaliano que misturou elementos bizantinos e clássicos. Giorgio Vasari \nerroneamente ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), ativo nas décadas de 1170 e 1180, foi um escultor <br>\nitaliano que misturou elementos bizantinos e clássicos. Giorgio Vasari <br>\nerroneamente&nbsp;...",
+        "cacheId": "gXP1xrk9Be4J",
+        "formattedUrl": "https://pt.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://pt.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "198",
+              "height": "255",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
         "title": "WHO built the Leaning Tower of Pisa?",
         "htmlTitle": "WHO built the Leaning Tower of Pisa?",
         "link": "https://leaningtowerpisa.com/facts/who/who-built-pisa-leaning-tower",
@@ -5425,70 +5457,6 @@
       },
       {
         "kind": "customsearch#result",
-        "title": "Bonanno Pisano – Wikipédia, a enciclopédia livre",
-        "htmlTitle": "<b>Bonanno Pisano</b> – Wikipédia, a enciclopédia livre",
-        "link": "https://pt.wikipedia.org/wiki/Bonanno_Pisano",
-        "displayLink": "pt.wikipedia.org",
-        "snippet": "Bonanno Pisano (Pisa), ativo nas décadas de 1170 e 1180, foi um escultor \nitaliano que misturou elementos bizantinos e clássicos. Giorgio Vasari \nerroneamente ...",
-        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), ativo nas décadas de 1170 e 1180, foi um escultor <br>\nitaliano que misturou elementos bizantinos e clássicos. Giorgio Vasari <br>\nerroneamente&nbsp;...",
-        "cacheId": "gXP1xrk9Be4J",
-        "formattedUrl": "https://pt.wikipedia.org/wiki/Bonanno_Pisano",
-        "htmlFormattedUrl": "https://pt.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
-        "pagemap": {
-          "cse_thumbnail": [
-            {
-              "width": "198",
-              "height": "255",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6"
-            }
-          ],
-          "metatags": [
-            {
-              "referrer": "origin",
-              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
-            }
-          ],
-          "cse_image": [
-            {
-              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
-            }
-          ]
-        }
-      },
-      {
-        "kind": "customsearch#result",
-        "title": "Bonanno Pisano — Wikipédia",
-        "htmlTitle": "<b>Bonanno Pisano</b> — Wikipédia",
-        "link": "https://fr.wikipedia.org/wiki/Bonanno_Pisano",
-        "displayLink": "fr.wikipedia.org",
-        "snippet": "Bonanno Pisano est un architecte italien du XII e siècle, né à Pise. On lui doit en \n1173 le commencement de la tour de Pise avec Guillaume d'Inspruck et ...",
-        "htmlSnippet": "<b>Bonanno Pisano</b> est un architecte italien du XII <sup>e</sup> siècle, né à Pise. On lui doit en <br>\n1173 le commencement de la tour de Pise avec Guillaume d&#39;Inspruck et&nbsp;...",
-        "cacheId": "-BpjlXmXpxYJ",
-        "formattedUrl": "https://fr.wikipedia.org/wiki/Bonanno_Pisano",
-        "htmlFormattedUrl": "https://fr.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
-        "pagemap": {
-          "cse_thumbnail": [
-            {
-              "width": "198",
-              "height": "255",
-              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6"
-            }
-          ],
-          "metatags": [
-            {
-              "referrer": "origin",
-              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
-            }
-          ],
-          "cse_image": [
-            {
-              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
-            }
-          ]
-        }
-      },
-      {
-        "kind": "customsearch#result",
         "title": "Bonanno Pisano – Wikipedia",
         "htmlTitle": "<b>Bonanno Pisano</b> – Wikipedia",
         "link": "https://de.wikipedia.org/wiki/Bonanno_Pisano",
@@ -5515,49 +5483,6 @@
           "cse_image": [
             {
               "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
-            }
-          ]
-        }
-      },
-      {
-        "kind": "customsearch#result",
-        "title": "Tower of Pisa Historical Facts – Leaning Tower of Pisa",
-        "htmlTitle": "Tower of Pisa Historical Facts – Leaning Tower of Pisa",
-        "link": "http://www.towerofpisa.org/tower-of-pisa-historical-facts/",
-        "displayLink": "www.towerofpisa.org",
-        "snippet": "The most accredited architects of this first phase of work are Bonanno Pisano and \n... Tommaso Pisano (1350-1372) was the architect who finished the work.",
-        "htmlSnippet": "The most accredited architects of this first phase of work are <b>Bonanno Pisano</b> and <br>\n... Tommaso Pisano (1350-1372) was the architect who finished the work.",
-        "cacheId": "YhHFk_Oz9EgJ",
-        "formattedUrl": "www.towerofpisa.org/tower-of-pisa-historical-facts/",
-        "htmlFormattedUrl": "www.towerofpisa.org/tower-of-pisa-historical-facts/",
-        "pagemap": {
-          "cse_thumbnail": [
-            {
-              "width": "259",
-              "height": "194",
-              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQmGh6HNcgtctRHY9ZcthPiqGh7eMxYlIqBHDCYM7jfDI60D-s_I9L8p0"
-            }
-          ],
-          "metatags": [
-            {
-              "viewport": "width=device-width,initial-scale=1.0",
-              "og:locale": "en_US",
-              "og:type": "article",
-              "og:title": "Tower of Pisa Historical Facts - Leaning Tower of Pisa",
-              "og:description": "WHEN was the leaning Tower of Pisa built? The construction of the Leaning Tower of Pisa began in August 1173. It was interrupted several times by wars, debt and while engineers worked on solutions to correct the lean. We now … Continue reading →",
-              "og:url": "http://www.towerofpisa.org/tower-of-pisa-historical-facts/",
-              "og:site_name": "Leaning Tower of Pisa",
-              "og:image": "http://towerofpisa.info/wp-content/uploads/2015/04/leaning-tower-of-pisa-detail-300x225.jpg",
-              "twitter:card": "summary",
-              "twitter:description": "WHEN was the leaning Tower of Pisa built? The construction of the Leaning Tower of Pisa began in August 1173. It was interrupted several times by wars, debt and while engineers worked on solutions to correct the lean. We now … Continue reading →",
-              "twitter:title": "Tower of Pisa Historical Facts - Leaning Tower of Pisa",
-              "twitter:domain": "Leaning Tower of Pisa",
-              "twitter:image:src": "http://towerofpisa.info/wp-content/uploads/2015/04/leaning-tower-of-pisa-detail-300x225.jpg"
-            }
-          ],
-          "cse_image": [
-            {
-              "src": "http://towerofpisa.info/wp-content/uploads/2015/04/leaning-tower-of-pisa-detail-300x225.jpg"
             }
           ]
         }
@@ -5601,15 +5526,98 @@
       },
       {
         "kind": "customsearch#result",
-        "title": "Leaning Tower of Pisa",
-        "htmlTitle": "Leaning Tower of Pisa",
-        "link": "http://www.getty.edu/cona/CONAFullSubject.aspx?subid=700000100",
-        "displayLink": "www.getty.edu",
-        "snippet": "Note: Vasari reports that the tower was begun by Bonanno Pisano, but modern \nresearch indicates the plan may have been by Gherardo di Gherardo.",
-        "htmlSnippet": "Note: Vasari reports that the tower was begun by <b>Bonanno Pisano</b>, but modern <br>\nresearch indicates the plan may have been by Gherardo di Gherardo.",
-        "cacheId": "a2_1ssgY6PAJ",
-        "formattedUrl": "www.getty.edu/cona/CONAFullSubject.aspx?subid=700000100",
-        "htmlFormattedUrl": "www.getty.edu/cona/CONAFullSubject.aspx?subid=700000100"
+        "title": "File:Brogi, Giacomo (1822-1881) - n. 3457 - Pisa - Bonanno.jpg",
+        "htmlTitle": "File:Brogi, Giacomo (1822-1881) - n. 3457 - Pisa - <b>Bonanno</b>.jpg",
+        "link": "https://en.m.wikipedia.org/wiki/File:Brogi,_Giacomo_(1822-1881)_-_n._3457_-_Pisa_-_Cattedrale_-_Antica_porta_in_bronzo_-_Bonanno.jpg",
+        "displayLink": "en.m.wikipedia.org",
+        "snippet": "3457 - Pisa - Cattedrale - Antica porta in bronzo - Bonanno.jpg ... Brogi (1822-\n1881), \"Pisa - Cathedral - Ancient bronze door by Bonanno\". ... Bonanno Pisano.",
+        "htmlSnippet": "3457 - Pisa - Cattedrale - Antica porta in bronzo - Bonanno.jpg ... Brogi (1822-<br>\n1881), &quot;Pisa - Cathedral - Ancient bronze door by Bonanno&quot;. ... <b>Bonanno Pisano</b>.",
+        "cacheId": "9silZ_9ExGQJ",
+        "formattedUrl": "https://en.m.wikipedia.org/.../File:Brogi,_Giacomo_(1822-1881)_-_n._3457 _-_Pisa_-_Cattedrale_-_Antica_porta_in_bronzo_-_Bonanno.jpg",
+        "htmlFormattedUrl": "https://en.m.wikipedia.org/.../File:Brogi,_Giacomo_(1822-1881)_-_n._3457 _-_Pisa_-_Cattedrale_-_Antica_porta_in_bronzo_-_<b>Bonanno</b>.jpg",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "197",
+              "height": "256",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTMqA-GwvifjItrC5UpbVHlOWCATtVy_yvhbFBrzRSVLT2bAZ1vGZ0L3I8_"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/6/60/Brogi%2C_Giacomo_%281822-1881%29_-_n._3457_-_Pisa_-_Cattedrale_-_Antica_porta_in_bronzo_-_Bonanno.jpg",
+              "viewport": "initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0, width=device-width",
+              "theme-color": "#eaecf0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Giacomo Brogi",
+              "uid": "156145857883923021479",
+              "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Brogi%2C_Giacomo_%281822-1881%29_-_Marchio_di_fabbrica.jpg/120px-Brogi%2C_Giacomo_%281822-1881%29_-_Marchio_di_fabbrica.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/6/60/Brogi%2C_Giacomo_%281822-1881%29_-_n._3457_-_Pisa_-_Cattedrale_-_Antica_porta_in_bronzo_-_Bonanno.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno da Pisa Online",
+        "htmlTitle": "<b>Bonanno</b> da Pisa Online",
+        "link": "http://www.artcyclopedia.com/artists/bonanno_da_pisa.html",
+        "displayLink": "www.artcyclopedia.com",
+        "snippet": "Bonanno da Pisa [Italian Sculptor and Architect, active ca.1179-1186] Guide to ... \nAlso known as: Bonanno Pisano ... Bonanno da Pisa in the Web Gallery of Art",
+        "htmlSnippet": "Bonanno da Pisa [Italian Sculptor and Architect, active ca.1179-1186] Guide to ... <br>\nAlso known as: <b>Bonanno Pisano</b> ... Bonanno da Pisa in the Web Gallery of Art",
+        "formattedUrl": "www.artcyclopedia.com/artists/bonanno_da_pisa.html",
+        "htmlFormattedUrl": "www.artcyclopedia.com/artists/<b>bonanno</b>_da_pisa.html"
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Tower of Pisa Historical Facts – Leaning Tower of Pisa",
+        "htmlTitle": "Tower of Pisa Historical Facts – Leaning Tower of Pisa",
+        "link": "http://www.towerofpisa.org/tower-of-pisa-historical-facts/",
+        "displayLink": "www.towerofpisa.org",
+        "snippet": "The most accredited architects of this first phase of work are Bonanno Pisano and \n... Tommaso Pisano (1350-1372) was the architect who finished the work.",
+        "htmlSnippet": "The most accredited architects of this first phase of work are <b>Bonanno Pisano</b> and <br>\n... Tommaso Pisano (1350-1372) was the architect who finished the work.",
+        "cacheId": "YhHFk_Oz9EgJ",
+        "formattedUrl": "www.towerofpisa.org/tower-of-pisa-historical-facts/",
+        "htmlFormattedUrl": "www.towerofpisa.org/tower-of-pisa-historical-facts/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQmGh6HNcgtctRHY9ZcthPiqGh7eMxYlIqBHDCYM7jfDI60D-s_I9L8p0"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width,initial-scale=1.0",
+              "og:locale": "en_US",
+              "og:type": "article",
+              "og:title": "Tower of Pisa Historical Facts - Leaning Tower of Pisa",
+              "og:description": "WHEN was the leaning Tower of Pisa built? The construction of the Leaning Tower of Pisa began in August 1173. It was interrupted several times by wars, debt and while engineers worked on solutions to correct the lean. We now … Continue reading →",
+              "og:url": "http://www.towerofpisa.org/tower-of-pisa-historical-facts/",
+              "og:site_name": "Leaning Tower of Pisa",
+              "og:image": "http://towerofpisa.info/wp-content/uploads/2015/04/leaning-tower-of-pisa-detail-300x225.jpg",
+              "twitter:card": "summary",
+              "twitter:description": "WHEN was the leaning Tower of Pisa built? The construction of the Leaning Tower of Pisa began in August 1173. It was interrupted several times by wars, debt and while engineers worked on solutions to correct the lean. We now … Continue reading →",
+              "twitter:title": "Tower of Pisa Historical Facts - Leaning Tower of Pisa",
+              "twitter:domain": "Leaning Tower of Pisa",
+              "twitter:image:src": "http://towerofpisa.info/wp-content/uploads/2015/04/leaning-tower-of-pisa-detail-300x225.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "http://towerofpisa.info/wp-content/uploads/2015/04/leaning-tower-of-pisa-detail-300x225.jpg"
+            }
+          ]
+        }
       }
     ]
   }
