@@ -42,10 +42,11 @@ app.get("/", (req, res) => {
 
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
 app.use("/coverage", express.static(path.join(__dirname, "../coverage/lcov-report/")));
+app.use("/ui", express.static(path.join(__dirname, "./client/ui")));
 
 // Serve trace log
 if (LoggerConfig.file) {
-    app.use("/logs", express.static(path.join(__dirname, "./client/")));
+    app.use("/logs", express.static(path.join(__dirname, "./client/logs")));
     app.get("/logs/raw/:logLevel?", (req, res) => {
 
         const file = path.join(__dirname, `../${LoggerConfig.file}`);

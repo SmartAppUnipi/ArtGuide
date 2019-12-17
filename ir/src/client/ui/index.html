@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title>ArtGuide</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <form id="settings" onsubmit="event.preventDefault(); saveSettings()">
+    <h3>Settings</h3>
+    Language:
+    <select id="language">
+      <option value="en" selected>English</option>
+      <option value="it">Italian</option>
+    </select><br>
+    Expertise level:
+    <select id="expertiseLevel">
+      <option value="1">Child</option>
+      <option value="2" selected>Novice</option>
+      <option value="3">Knowledgeable</option>
+      <option value="4">Expert</option>
+    </select><br>
+    Tastes: <input type="text" id="tastes" value="history"></br>
+    Endpoint: <input type="text" id="endpoint" value="http://localhost:2345/upload"></br>
+    <br>
+    <input type="submit" value="Save">
+  </form>
+
+  <input style="display: none" type="file" id="filePicker" accept="image/png, image/jpeg"
+    onchange="fileSelectedHandler(this.files)">
+  <div id="container" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" onclick="pickFile()">
+    <img id="upload-image" src="upload.svg">
+  </div>
+
+  <script src="app.js"></script>
+  <script>init()</script>
+</body>
+
+</html>

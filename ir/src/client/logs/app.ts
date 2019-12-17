@@ -30,13 +30,18 @@ import { parse } from "./log-parser";
     // assign to the left div
     irTree.innerHTML = logParsingResult.html;
 
-    // for each matched span, create the corresponding span on the right div
-    let adaptationHtml = "";
+    let adaptationHtml = tailoredText;
+    // for each match
     for (const span of logParsingResult.spans) {
-        // take the color from the attribute set before
-        const color = document.getElementById(span.irSpanId).getAttribute("data-color");
-        // create the new html string
-        adaptationHtml += `<span style="color: ${color}" data-ir-span-id="${span.irSpanId}" class="adaptation-span">${span.text}</span>`;
+        // take the text from the start to the char before the match
+        const start = adaptationHtml.indexOf(span.text);
+        const end = start + span.text.length
+        const before = adaptationHtml.substring(0, start);
+        const spanHtml = `<span style="color: ${span.color}" id="${span.irSpanId}">${span.text}</span>`;
+        // take the text the char after the match to the end
+        const after = adaptationHtml.substring(end);
+        // recompose the text with the span in the middle
+        adaptationHtml = before + spanHtml + after;
     }
 
     // assign it to the right div
