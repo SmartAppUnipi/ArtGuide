@@ -11,9 +11,10 @@ import {
     UserProfile
 } from "../models";
 import { knownInstanceProperties, scoreWeight, searchBlackList } from "../../config.json";
+import { query } from "winston";
 
 
-interface ParsableItem {
+interface ParsableItem extends Query {
     url: string;
     keywords: Array<string>;
     score: number;
@@ -143,7 +144,7 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                                     { query: query, exception: ex });
+                            { query: query, exception: ex });
                         return null;
                     });
             })
@@ -153,11 +154,11 @@ export class Search {
             // merge duplicate
             .then(gResults => this.mergeDuplicateUrls(gResults))
             // filter blacklist
-            .then(gResults => gResults
+            .then(parsableItems => parsableItems
                 .filter(result =>
                     !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite))))
             // call the parser
-            .then(gResults => this.parseList(gResults));
+            .then(parsableItems => this.parseList(parsableItems));
     }
 
     /**
@@ -212,7 +213,7 @@ export class Search {
      */
     private mergeDuplicateUrls(results: Array<QueryResult>): Array<ParsableItem> {
 
-        const linkMap = new Map<string, { keywords: Array<string>; score: number; counter: number }>();
+        const linkMap = new Map<string, ParsableItem>();
         const finalResult: Array<ParsableItem> = [];
 
         /*
@@ -224,29 +225,31 @@ export class Search {
         for (const result of results ?? []) {
             for (const item of result?.gResult?.items ?? []) {
                 if (!linkMap.has(item.link)) {
-                    linkMap.set(item.link, {
+                    const parsableItem: ParsableItem = Object.assign({}, result.query, {
+                        url: item.link,
                         keywords: Array.from(new Set(result.query.keywords)), // keywords without duplicates
-                        score: result.query.score,
                         counter: 1
-                    });
+                    })
+                    linkMap.set(item.link, parsableItem);
                 } else {
                     const matching = linkMap.get(item.link);
 
-                    linkMap.set(item.link, {
+                    linkMap.set(item.link, Object.assign({}, matching, {
                         keywords: Array.from(new Set( // merge keywords without duplicates
                             matching.keywords.concat(result.query.keywords)
                         )),
                         score: matching.score + result.query.score, // accumulate score
-                        counter: matching.counter + 1 // store counter to compute average
-                    });
+                        counter: (matching as any).counter + 1 // store counter to compute average
+                    }));
                 }
 
             }
         }
 
-        for (const [key, value] of linkMap) {
-            const average = value.score / value.counter;
-            finalResult.push({ url: key, keywords: value.keywords, score: average });
+        for (const [url, parsableItem] of linkMap) {
+            parsableItem.score = parsableItem.score / (parsableItem as any).counter;
+            delete (parsableItem as any).counter;
+            finalResult.push(parsableItem);
         }
 
         return finalResult;
@@ -271,9 +274,9 @@ export class Search {
                             if (!pageResult)
                                 return;
 
-                            // TODO: assign a score multiplier read from config.json
-                            pageResult.score = item.score * (1 - (index / list.length));
-                            pageResult.keywords = item.keywords;
+                            pageResult = Object.assign({}, pageResult, item, {
+                                score: item.score * (1 - (index / list.length))
+                            });
 
                             results.push(pageResult);
                             logger.silly("[search.ts] Parsed link.", { url: item.url });
