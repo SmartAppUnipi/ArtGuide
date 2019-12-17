@@ -2,7 +2,6 @@ import { Adaptation } from "../adaptation";
 import { GoogleSearch } from "./google-search";
 import logger from "../logger";
 import { Parser } from "../parser";
-import { flowConfig, knownInstanceProperties, scoreWeight, searchBlackList } from "../../config.json";
 import {
     GoogleSearchResult,
     MetaEntity,
@@ -11,6 +10,20 @@ import {
     QueryExpansionResponse,
     UserProfile
 } from "../models";
+import { knownInstanceProperties, scoreWeight, searchBlackList } from "../../config.json";
+
+
+interface ParsableItem {
+    url: string;
+    keywords: Array<string>;
+    score: number;
+}
+
+interface QueryResult {
+    gResult: GoogleSearchResult;
+    query: Query;
+}
+
 
 /**
  * Perform web searches.
@@ -47,7 +60,6 @@ export class Search {
      * @returns An array of Query objects with searchTerms and score.
      */
     private buildBasicQueries(metaEntities: Array<MetaEntity>, language: string): Array<Query> {
-        // TODO: return a meaningful query
         const queries = metaEntities
             .map(metaEntity => {
                 return {
@@ -110,51 +122,39 @@ export class Search {
      */
     private buildResult(queries: Array<Query>, userProfile: UserProfile): Promise<Array<PageResult>> {
 
-        const results: Array<PageResult> = [];
-
         return Promise.all(
             // for each query
-            queries.map(async q => {
+            queries.map(query => {
                 // query Google Search and get the list of results
                 return this.googleSearch
-                    .query(q.searchTerms + " " + q.keywords.join(" "), userProfile)
+                    .query(query.searchTerms + " " + query.keywords.join(" "), userProfile)
                     .then(googleSearchResult => {
 
                         if (!googleSearchResult || !googleSearchResult.items) {
-                            logger.warn("[search.ts] Google returned no items for query.", { query: q });
+                            logger.warn("[search.ts] Google returned no items for query.", { query: query });
                             return;
                         }
 
-                        return this
-                            .toPageResults(googleSearchResult, q)
-                            .then(pageResults => {
-
-                                /*
-                                 * TODO: Merge duplicates
-                                 * For each basic query (eg. "Leaning Tower of Pisa") we perform a Google Search
-                                 * for each keywords that come from the adaptation group
-                                 * (eg. "Leaning Tower of Pisa Art", "Leaning Tower of Pisa Description", ecc).
-                                 *
-                                 * Each google search produces a set of pages that are actually merged regardless 
-                                 * the fact they they could potentially be duplicated.
-                                 *
-                                 * We need to merge duplicated results, taking into account that we have to find a way
-                                 * to merge their keywords and produce a a reasonable score index.
-                                 */
-                                pageResults.forEach(pr => {
-                                    if (!searchBlackList.some(blackListWebsite => pr.url.includes(blackListWebsite))){
-                                        /** Discard black list's results.*/
-                                        results.push(pr);
-                                    }
-                                });
-                            });
+                        return {
+                            gResult: googleSearchResult,
+                            query: query
+                        };
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                                     { query: q, exception: ex });
+                            { query: query, exception: ex });
+                        return null
                     });
             })
-        ).then(() => results);
+        )
+            // remove null values
+            .then(gResults => gResults.filter(gResult => gResult))
+            // merge duplicate
+            .then(gResults => this.mergeDuplicateUrls(gResults))
+            // filter blacklist
+            .then(gResults => gResults.filter(result => !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite))))
+            // call the parser
+            .then(gResults => this.parseList(gResults))
     }
 
     /**
@@ -193,55 +193,88 @@ export class Search {
         return this.adaptation.getKeywordExpansion(userProfile)
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(queries, queryExpansion))
-            .then(queries => {
-                return Promise.all(
-                    queries.map(query => {
-                        return this.googleSearch
-                            .query(query.searchTerms, userProfile)
-                            .then(googleResult => this.toPageResults(googleResult, query));
-                    })
-                ).then(allResults => {
-                    // eslint-disable-next-line
-                    // flatten results => https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat
-                    return [].concat(...allResults);
-                });
-            });
+            .then(queries => this.buildResult(queries, userProfile));
     }
 
     /**
-     * Given a GoogleSearchResult, for each returned item the parser gets invoked and
-     *the text content of the corresponding page is inserted into a PageResult.
+     * Merges the google duplicates urls into a single object with he merged keywords.
+     * 
+     * @param results The array of results from Google with the 
+     * associated query that contains the search terms and the
+     * keywords that generated that results.
+     * 
+     * @returns The list of URLS without duplicates, with the associated keywords and score.
+     */
+    private mergeDuplicateUrls(results: Array<QueryResult>): Array<ParsableItem> {
+
+        const linkMap = new Map<string, { keywords: Array<string>; score: number; counter: number }>();
+        const finalResult: Array<ParsableItem> = [];
+
+        /*
+         * Create a Map and if link is not there, append it to a map together with its keywords
+         * if link is already in the map, then take from the Map old values of keywords,
+         * concatenate them with the new values and append everything to a Map 
+         */
+
+        for (const result of results ?? []) {
+            for (const item of result?.gResult?.items ?? []) {
+                if (!linkMap.has(item.link)) {
+                    linkMap.set(item.link, {
+                        keywords: Array.from(new Set(result.query.keywords)), // keywords without duplicates
+                        score: result.query.score,
+                        counter: 1
+                    });
+                } else {
+                    const matching = linkMap.get(item.link);
+
+                    linkMap.set(item.link, {
+                        keywords: Array.from(new Set( // merge keywords without duplicates
+                            matching.keywords.concat(result.query.keywords)
+                        )),
+                        score: matching.score + result.query.score, // accumulate score
+                        counter: matching.counter + 1 // store counter to compute average
+                    });
+                }
+
+            }
+        }
+
+        for (const [key, value] of linkMap) {
+            const average = value.score / value.counter;
+            finalResult.push({ url: key, keywords: value.keywords, score: average });
+        }
+
+        return finalResult;
+    }
+
+    /**
+     * Given a list of urls, they get fetched, parsed and mapped to a PageResult.
      *
-     *Since the keywords that are associated to that google result cannot be inferred from the results themselves,
-     *they must be explicitly passed by the caller.
-     *
-     * @param googleResult The google search result.
-     * @param query The query that produced the result.
+     * @param list The list of the urls without duplicates to fetch and parse.
      * @returns The array of page results corresponding to the parsed pages returned from Google.
      */
-    private async toPageResults(googleResult: GoogleSearchResult, query: Query): Promise<Array<PageResult>> {
+    private async parseList(list: Array<ParsableItem>): Promise<Array<PageResult>> {
         const results: Array<PageResult> = [];
-        const itemsLen = Math.min(flowConfig.googleSearchResults.maxLimit, googleResult.items.length);
+
         return Promise.all(
-            googleResult.items
-                .slice(0, itemsLen)
+            list
                 .map((item, index) => {
                     // Scrape text from results
-                    return this.parser.parse(item.link)
+                    return this.parser.parse(item.url)
                         .then(pageResult => {
 
                             if (!pageResult)
                                 return;
 
                             // TODO: assign a score multiplier read from config.json
-                            pageResult.score = query.score * (1 - (index / itemsLen));
-                            pageResult.keywords = query.keywords;
+                            pageResult.score = item.score * (1 - (index / list.length));
+                            pageResult.keywords = item.keywords;
 
                             results.push(pageResult);
-                            logger.silly("[search.ts] Parsed link.", { url: item.link });
+                            logger.silly("[search.ts] Parsed link.", { url: item.url });
                         })
                         .catch(ex => {
-                            logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.link);
+                            logger.warn("[search.ts] Parser error: ", ex, ". Link: " + item.url);
                         });
                 })
         ).then(() => results);
