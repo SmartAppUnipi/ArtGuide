@@ -12,10 +12,12 @@
     "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "start": "nodemon src/index.ts",
     "start:d": "nodemon --inspect=5858 src/index.ts",
-    "build": "tsc",
+    "build": "npm run webpack:prod && tsc",
     "watch": "tsc -w -p .",
     "clean": "npx rimraf dist && npx rimraf coverage",
-    "docs": "npx typedoc"
+    "docs": "npx typedoc",
+    "webpack": "webpack --config=client/logs/webpack.config.js --mode development --watch",
+    "webpack:prod": "webpack --config=client/logs/webpack.config.js --mode production"
   },
   "keywords": [],
   "authors": [
@@ -65,10 +67,13 @@
     "nodemon": "^2.0.1",
     "supertest": "^4.0.2",
     "ts-jest": "^24.2.0",
+    "ts-loader": "^6.2.1",
     "ts-node": "^8.5.4",
     "tslint-eslint-rules": "^5.4.0",
     "typedoc": "^0.15.3",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
