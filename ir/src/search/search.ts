@@ -152,7 +152,9 @@ export class Search {
             // merge duplicate
             .then(gResults => this.mergeDuplicateUrls(gResults))
             // filter blacklist
-            .then(gResults => gResults.filter(result => !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite))))
+            .then(gResults => gResults
+                .filter(result =>
+                    !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite))))
             // call the parser
             .then(gResults => this.parseList(gResults));
     }

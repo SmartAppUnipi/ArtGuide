@@ -41,8 +41,10 @@ export function reduceEntities(entities: Array<Entity>,
 
 /**
  * Return the last commit hash on the local repository
+ * 
+ * @returns The hash of the last commit on the local machine.
  */
-export function getLastCommitHash() {
+export function getLastCommitHash(): string {
     const latestCommit = childProcess
         .execSync("git rev-parse HEAD")
         .toString()
