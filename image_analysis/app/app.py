@@ -15,9 +15,10 @@ from flask import Flask, escape, request
 from google.cloud import vision
 from google.cloud.vision import types
 from google.protobuf.json_format import MessageToDict
+from google.oauth2 import service_account
 from PIL import Image
 import tensorflow as tf
-
+from google.oauth2 import service_account
 
 PORT = 2345
 VALID_PICT_LABELS = {"Painting", "Picture frame"}
@@ -92,7 +93,7 @@ def tf2wd(model_prediction_tf, art_type='picture'):
         model_prediction_tf - tensor returned by the model
         art_type            - 'architecture' or 'picture' 
     """ 
-    res = {}
+    res = []
     prediction = list(map(float, list(model_prediction_tf)))
     if art_type == "picture":
         idx_style_map = IDX_2_PICTSTYLE 
@@ -103,7 +104,7 @@ def tf2wd(model_prediction_tf, art_type='picture'):
 
     for idx, stylename in idx_style_map.items():
         wd_id = style_2_wd[stylename]
-        res[wd_id] = prediction[int(idx)]
+        res.append({"wikidataid": wd_id, "score": prediction[int(idx)]})
     return res
 
 
@@ -194,12 +195,7 @@ def crop_on_bb(image, api_res):
     im1 = imageb.crop((left, top, right, bottom)) 
     newsize = (CROP_SIZE[0], CROP_SIZE[1])
     im1 = im1.resize(newsize) 
-
-    # Shows the image in image viewer  
-    # im1.show()
-
-    # print(most_centered_obj)
-
+    
     imgByteArr = io.BytesIO()
     im1.save(imgByteArr, format='PNG')
     imgByteArr = imgByteArr.getvalue()
@@ -224,7 +220,8 @@ def detect_image_type(api_res):
 # ----- ENVIRONMENT ----- #
 app = Flask(__name__)
 CORS(app, resources=r"/*")
-client = vision.ImageAnnotatorClient()
+credentials = service_account.Credentials.from_service_account_file(api_key_path)
+client = vision.ImageAnnotatorClient(credentials=credentials)
 
 
 # ----- ROUTES ----- #
@@ -328,8 +325,8 @@ def image_analysis(content):
         content["classification"]["labels"] = 0 # chiamata nostre API
     
     # Replace freebaseID with wikidataID
-    content["classification"]["entities"] = replaceGFreebaseID(content["classification"]["entities"], "entityId")
-    content["classification"]["labels"] = replaceGFreebaseID(content["classification"]["labels"], "mid")
+    # content["classification"]["entities"] = replaceGFreebaseID(content["classification"]["entities"], "entityId")
+    # content["classification"]["labels"] = replaceGFreebaseID(content["classification"]["labels"], "mid")
 
     return content
 

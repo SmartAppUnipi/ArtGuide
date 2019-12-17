@@ -64,77 +64,104 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<table>
-					<thead>
-						<tr>
-							<th>branch</th>
-							<th align="center"></th>
-						</tr>
-					</thead>
-					<tbody><tr>
-							<td>master</td>
-							<td align="center"><a href="https://travis-ci.com/SmartAppUnipi/ArtGuide"><img src="https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=master" alt="Build Status"></a></td>
-						</tr>
-						<tr>
-							<td>ui</td>
-							<td align="center"><a href="https://travis-ci.com/SmartAppUnipi/ArtGuide"><img src="https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=ui" alt="Build Status"></a></td>
-						</tr>
-						<tr>
-							<td>image_analysis_proto</td>
-							<td align="center"><a href="https://travis-ci.com/SmartAppUnipi/ArtGuide"><img src="https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=image_analysis_proto" alt="Build Status"></a></td>
-						</tr>
-						<tr>
-							<td>ir</td>
-							<td align="center"><a href="https://travis-ci.com/SmartAppUnipi/ArtGuide"><img src="https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=ir" alt="Build Status"></a></td>
-						</tr>
-						<tr>
-							<td>adaptation_proto</td>
-							<td align="center"><a href="https://travis-ci.com/SmartAppUnipi/ArtGuide"><img src="https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=adaptation_proto" alt="Build Status"></a></td>
-						</tr>
-				</tbody></table>
 				<a href="#artguide" id="artguide" style="color: inherit; text-decoration: none;">
 					<h1>ArtGuide</h1>
 				</a>
-				<a href="#adaptation-module" id="adaptation-module" style="color: inherit; text-decoration: none;">
-					<h2>Adaptation module</h2>
+				<a href="#prerequisites" id="prerequisites" style="color: inherit; text-decoration: none;">
+					<h3>Prerequisites</h3>
 				</a>
-				<p>The aim of this module is twofold:</p>
-				<ol>
-					<li>Expand the words that represent the user&#39;s tastes in order to allow SDAIS module to retrieve better pages</li>
-					<li>Perform some analyses on the text returned by SDAIS module and send back the most promising result.
-					So far, the output text is chosen as follows: all the input texts are labeled with a couple <code>(difficulty, similarity)</code> and then sorted by difficulty and then by similarity. Ideally, the fittest text should have the proper lexical and syntactic difficulty and be close to the user&#39;s tastes.</li>
-				</ol>
-				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
-					<h3>API</h3>
+				<p>In order to run this project you will need:</p>
+				<ul>
+					<li>Node.js<ul>
+							<li><a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></li>
+						</ul>
+					</li>
+					<li>Typescript &gt; 3.7<ul>
+							<li><code>npm install -g typescript</code></li>
+						</ul>
+					</li>
+					<li><em>JavaScript and TypeScript Nightly</em> Visual Studio Code extension installed. <ul>
+							<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next">https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next</a></li>
+							<li>To make sure you are using the latest version of <em>typescript</em>:<ul>
+									<li>Open a TypeScript file in VS Code.</li>
+									<li>In the VS Code command palette (press F1), run the <em>TypeScript: Select TypeScript version</em> command.</li>
+									<li>Make sure you have <em>Use VS Code&#39;s version</em> selected</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<a href="#environmental-variables" id="environmental-variables" style="color: inherit; text-decoration: none;">
+					<h3>Environmental variables</h3>
 				</a>
-				<p>The APIs of this module can be found <a href="https:http://cipizio.it:4321/">here</a>.
-				Notice that the adaptation module will receive 2 different json files from the SDAI module in temporal order, which are called <code>phase1</code> and <code>phase2</code> respectively.</p>
+				<p>You must create a file called <code>.env</code> with that content in order to run the module correctly.</p>
+				<pre><code><span class="hljs-attr">GoogleCustomSearchAPIKey_00</span>=AIzaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxx
+<span class="hljs-comment"># The search engine id for different languages (https://cse.google.com/cse/all) </span>
+<span class="hljs-attr">GoogleCustomSearchEngineId_EN_00</span>=xxxxxxxxxxxxxxxxxxxxx:xxxxxxxxxxx
+<span class="hljs-attr">GoogleCustomSearchEngineId_IT_00</span>=xxxxxxxxxxxxxxxxxxxxx:xxxxxxxxxxx</code></pre>
+				<a href="#how-to-run" id="how-to-run" style="color: inherit; text-decoration: none;">
+					<h3>How to run</h3>
+				</a>
+				<pre><code class="language-bash">npm i               <span class="hljs-comment"># install dependencies</span>
+npm start           <span class="hljs-comment"># start the server in watch mode</span></code></pre>
+				<a href="#available-commands" id="available-commands" style="color: inherit; text-decoration: none;">
+					<h3>Available commands</h3>
+				</a>
+				<pre><code class="language-bash">npm i               <span class="hljs-comment"># install dependencies</span>
+npm start           <span class="hljs-comment"># start the server in watch mode</span>
+
+npm run build       <span class="hljs-comment"># compiles src/*.ts in dist/*.js</span>
+npm run watch       <span class="hljs-comment"># automatically compiles ts when the file is saved</span>
+
+npm t               <span class="hljs-comment"># run unit tests</span>
+npm t -- filename   <span class="hljs-comment"># run a specific test file</span>
+npm run <span class="hljs-built_in">test</span>:watch  <span class="hljs-comment"># run tests in watch mode (TDD)</span>
+npm run <span class="hljs-built_in">test</span>:cov    <span class="hljs-comment"># run coverage report</span>
+npm tun <span class="hljs-built_in">test</span>:debug  <span class="hljs-comment"># run tests and attach VS Code debugger</span>
+
+npm run lint        <span class="hljs-comment"># run linter</span>
+npm run lint:fix    <span class="hljs-comment"># run linter with --fix option</span>
+
+npm run docs        <span class="hljs-comment"># generate the documentation in /docs</span></code></pre>
+				<a href="#linter" id="linter" style="color: inherit; text-decoration: none;">
+					<h3>Linter</h3>
+				</a>
+				<p>We are using ESLint as linter together with a plugin to make it work properly with TypeScript. The list of our rules can be found in <a href=".eslintrc.js">eslintrc.js</a>. Whenever we use a rule specified in <em>typescript-eslint-plugin</em> we need to disable the original <em>ESLint</em> rule and override it with the one provided by the plugin.</p>
+				<p>Useful links:
+					- <a href="https://eslint.org/docs/rules">Available ESLint rules</a>
+				- <a href="https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules">Available TypeScript rules</a></p>
 				<a href="#folder-structure" id="folder-structure" style="color: inherit; text-decoration: none;">
-					<h3>Folder structure</h3>
-				</a>
-				<p>Inside <code>adaptation</code> folder the following directories can be found:</p>
-				<ul>
-					<li>data folder contains some examples of text (in .txt format) which should be the input of the text-tailoring functions and some json files, to emulate the REST interaction between modules</li>
-					<li>demo folder contains some temporary scripts that have been developed by various members of the team, in order to test some libraries for NLP</li>
-					<li>documentation folder contains the source code for the page describing the API</li>
-					<li>test folder contains two scripts that allow any user to test the module in local</li>
-					<li>document_adaptation folder is the core of the module and provides the functionalities of keword expansion and document adaptation</li>
-				</ul>
-				<a href="#files" id="files" style="color: inherit; text-decoration: none;">
-					<h3>Files</h3>
+					<h2>Folder structure</h2>
 				</a>
 				<ul>
-					<li><code>config.json</code> contains the config information</li>
-					<li><code>config.py</code> reads such file</li>
-					<li><code>disclaimer.json</code> contains some strings (for the supported language) that alert the user that the content that he is going to receive is not properly tailored to his expertise level</li>
-					<li><code>glossario.txt</code> is thought as an internal file, needed to write code using the same convention for variables and entities</li>
-					<li><code>main.py</code> is the code of the server</li>
-					<li><code>requirements.txt</code> is the usual file for allowing any user to install the modules required by the software</li>
+					<li><a href="assets">assets</a> contains example json that we use for testing purposes.</li>
+					<li><a href="docs">docs</a> contains the documentation of each class, automatically generated by TypeScript using the JSdoc.</li>
+					<li><a href="src">src</a><ul>
+							<li><a href="src/models">models</a> contains the TypeScript classes and interfaced used for the exchanged objects.</li>
+							<li><a href="src/parser">parser</a> parses url and extracts page content, divides it into sections and extracts keywords using the rake approach.</li>
+							<li><a href="src/parser">search</a> builds the queries and performs searches on Google Search.</li>
+							<li><a href="src/wiki">wiki</a><ul>
+									<li><a href="src/wiki/wikidata">wikidata</a> extract information from WikiData using the entities ID. It&#39;s used also to understand if the entity is recognized as a famous piece of art or as a generic class of artwork.</li>
+									<li><a href="src/wiki/wikipedia">wikipedia</a> extract results from Wikipedia.</li>
+								</ul>
+							</li>
+							<li><a href="src/app.ts">app.ts</a> is the server with the main flow.</li>
+							<li><a href="src/declarations.ts">declarations.ts</a> contains declarations for non-typescript libraries.</li>
+							<li><a href="src/environment.ts">environment.ts</a> parses the .env file.</li>
+							<li><a href="src/index.ts">index.ts</a> starts the server.</li>
+							<li><a href="src/logger.ts">logger.ts</a> is used to log on file.</li>
+							<li><a href="src/utils.ts">utils.ts</a> contains utility functions.</li>
+						</ul>
+					</li>
+					<li><a href="tests">tests</a> divided in <a href="tests/unit">unit</a> and <a href="tests/integration">integration</a> tests.</li>
+					<li><code>/</code><ul>
+							<li><code>.env</code> contains the environment variables.</li>
+							<li><a href="config.json">config.json</a> contains variables and settings used in our app.</li>
+							<li><a href="google-cache.json">*-cache</a> contains the cached Google Search results, since we have a limited number of queries each day.</li>
+							<li>The other files are the configurations for Node.js, TypeScript, ESlint, git, etc.</li>
+						</ul>
+					</li>
 				</ul>
-				<a href="#run-test" id="run-test" style="color: inherit; text-decoration: none;">
-					<h3>Run test</h3>
-				</a>
-				<p>To run some tests locally (and see how adaptation module performs on some sample situations) run <code>python test_phase1.py --help</code> (or <code>python test_phase2.py --help</code>)</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -157,13 +184,7 @@
 						<a href="classes/googlesearch.html" class="tsd-kind-icon">Google<wbr>Search</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/pageresult.html" class="tsd-kind-icon">Page<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-class">
 						<a href="classes/parser.html" class="tsd-kind-icon">Parser</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/query.html" class="tsd-kind-icon">Query</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/search.html" class="tsd-kind-icon">Search</a>
@@ -172,16 +193,7 @@
 						<a href="classes/wikidata.html" class="tsd-kind-icon">Wiki<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="classes/wikidataproperties.html" class="tsd-kind-icon">Wiki<wbr>Data<wbr>Properties</a>
-					</li>
-					<li class=" tsd-kind-class">
 						<a href="classes/wikipedia.html" class="tsd-kind-icon">Wikipedia</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/basicfield.html" class="tsd-kind-icon">Basic<wbr>Field</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/basicfieldwithid.html" class="tsd-kind-icon">Basic<wbr>Field<wbr>With<wbr>Id</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/classification.html" class="tsd-kind-icon">Classification</a>
@@ -202,6 +214,9 @@
 						<a href="interfaces/csethumbnail.html" class="tsd-kind-icon">Cse<wbr>Thumbnail</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/entity.html" class="tsd-kind-icon">Entity</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/googlesearchresult.html" class="tsd-kind-icon">Google<wbr>Search<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -211,10 +226,10 @@
 						<a href="interfaces/keywordexpansion.html" class="tsd-kind-icon">Keyword<wbr>Expansion</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/knowninstance.html" class="tsd-kind-icon">Known<wbr>Instance</a>
+						<a href="interfaces/location.html" class="tsd-kind-icon">Location</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/location.html" class="tsd-kind-icon">Location</a>
+						<a href="interfaces/metaentity.html" class="tsd-kind-icon">Meta<wbr>Entity</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/metatag.html" class="tsd-kind-icon">Metatag</a>
@@ -223,16 +238,19 @@
 						<a href="interfaces/nextpage.html" class="tsd-kind-icon">Next<wbr>Page</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/pageresult.html" class="tsd-kind-icon">Page<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/pagesection.html" class="tsd-kind-icon">Page<wbr>Section</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/pagemap.html" class="tsd-kind-icon">Pagemap</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/period.html" class="tsd-kind-icon">Period</a>
+						<a href="interfaces/queries.html" class="tsd-kind-icon">Queries</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/queries.html" class="tsd-kind-icon">Queries</a>
+						<a href="interfaces/query.html" class="tsd-kind-icon">Query</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/queryexpansionrequest.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Request</a>
@@ -251,6 +269,12 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/spelling.html" class="tsd-kind-icon">Spelling</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/tailoredtextrequest.html" class="tsd-kind-icon">Tailored<wbr>Text<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/tailoredtextresponse.html" class="tsd-kind-icon">Tailored<wbr>Text<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/url.html" class="tsd-kind-icon">Url</a>
@@ -278,9 +302,6 @@
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#search" class="tsd-kind-icon">search</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#wbk" class="tsd-kind-icon">wbk</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#wikidata" class="tsd-kind-icon">wikidata</a>

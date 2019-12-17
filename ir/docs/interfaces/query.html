@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BasicField | ArtGuide - Information retrieval module</title>
+	<title>Query | ArtGuide - Information retrieval module</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="basicfield.html">BasicField</a>
+					<a href="query.html">Query</a>
 				</li>
 			</ul>
-			<h1>Interface BasicField</h1>
+			<h1>Interface Query</h1>
 		</div>
 	</div>
 </header>
@@ -70,15 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BasicField</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="basicfieldwithid.html" class="tsd-signature-type">BasicFieldWithId</a>
-							</li>
-							<li>
-								<a href="period.html" class="tsd-signature-type">Period</a>
-							</li>
-						</ul>
+						<span class="target">Query</span>
 					</li>
 				</ul>
 			</section>
@@ -89,8 +81,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="basicfield.html#description" class="tsd-kind-icon">description</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="basicfield.html#score" class="tsd-kind-icon">score</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="query.html#keywords" class="tsd-kind-icon">keywords</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="query.html#language" class="tsd-kind-icon">language</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="query.html#score" class="tsd-kind-icon">score</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="query.html#searchterms" class="tsd-kind-icon">search<wbr>Terms</a></li>
 							</ul>
 						</section>
 					</div>
@@ -99,12 +93,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="description" class="tsd-anchor"></a>
-					<h3>description</h3>
-					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="keywords" class="tsd-anchor"></a>
+					<h3>keywords</h3>
+					<div class="tsd-signature tsd-kind-icon">keywords<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/models/classification.models.ts#L4">IR/src/models/classification.models.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/query-expansion.models.ts#L18">ir/src/models/query-expansion.models.ts:18</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="language" class="tsd-anchor"></a>
+					<h3>language</h3>
+					<div class="tsd-signature tsd-kind-icon">language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/query-expansion.models.ts#L19">ir/src/models/query-expansion.models.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -114,7 +118,17 @@
 					<div class="tsd-signature tsd-kind-icon">score<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/models/classification.models.ts#L5">IR/src/models/classification.models.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/query-expansion.models.ts#L17">ir/src/models/query-expansion.models.ts:17</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="searchterms" class="tsd-anchor"></a>
+					<h3>search<wbr>Terms</h3>
+					<div class="tsd-signature tsd-kind-icon">search<wbr>Terms<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/1a04cd2/ir/src/models/query-expansion.models.ts#L16">ir/src/models/query-expansion.models.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -133,13 +147,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="basicfield.html" class="tsd-kind-icon">Basic<wbr>Field</a>
+						<a href="query.html" class="tsd-kind-icon">Query</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="basicfield.html#description" class="tsd-kind-icon">description</a>
+								<a href="query.html#keywords" class="tsd-kind-icon">keywords</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="basicfield.html#score" class="tsd-kind-icon">score</a>
+								<a href="query.html#language" class="tsd-kind-icon">language</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="query.html#score" class="tsd-kind-icon">score</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="query.html#searchterms" class="tsd-kind-icon">search<wbr>Terms</a>
 							</li>
 						</ul>
 					</li>

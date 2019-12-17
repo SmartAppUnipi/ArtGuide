@@ -56,7 +56,6 @@ module.exports = {
         "spaced-comment": ["warn", "always"],                       // require a whitespace immediately after the initial // or /* of a comment
         "multiline-comment-style": ["error", "starred-block"],      // require multiline comments to have starting asterisks
         "@typescript-eslint/no-explicit-any": "off",                // allow any types to be defined         
-        "no-param-reassign": "warn",
 
         "quotes": "off",                                            // replaced below
         "@typescript-eslint/quotes": ["warn", "double"],            // use only double quotes
