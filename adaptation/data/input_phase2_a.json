@@ -3,12 +3,12 @@
   "userProfile": {
     "id": 42,
     "tastes": [ "history", "biography" ],
-    "expertiseLevel": 1,
+    "expertiseLevel": 4,
     "language": "en",
     "commentTest": "Right version of the json"
   },	
 	"results": [{
-		"keywords": ["k1", "k2", "k3"],
+		"keywords": ["history", "biography"],
 		"url": "www.google.com",
 		"title": "My Title",
 		"sections": [{
@@ -17,7 +17,7 @@
 		}]
 	},
 	{
-		"keywords": ["k11", "k12", "k13"],
+		"keywords": [ "history", "biography" ],
 		"url": "www.fuffa.com",
 		"title": "My Title2",
 		"sections": [{
@@ -26,7 +26,7 @@
 		}]
 	},
 	{
-		"keywords": ["k11", "k12", "k13"],
+		"keywords": [ "history", "biography" ],
 		"url": "www.fuffa.com",
 		"title": "My Title2",
 		"sections": [{
@@ -35,7 +35,7 @@
 		}]
 	},
 	{
-		"keywords": ["k11", "k12", "k13"],
+		"keywords": [ "history", "biography" ],
 		"url": "www.fuffa.com",
 		"title": "My Title2",
 		"sections": [{
@@ -44,7 +44,7 @@
 		}]
 	},
 	{
-		"keywords": ["k11", "k12", "k13"],
+		"keywords": [ "history", "biography" ],
 		"url": "",
 		"title": "",
 		"sections": [{

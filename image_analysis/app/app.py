@@ -19,6 +19,8 @@ from google.protobuf.json_format import MessageToDict
 from google.oauth2 import service_account
 from PIL import Image
 import tensorflow as tf
+from google.oauth2 import service_account
+
 
 PORT = 2345
 VALID_LABELS = {"Painting", "Picture frame"}
@@ -194,12 +196,7 @@ def crop_on_bb(image, api_res):
     im1 = imageb.crop((left, top, right, bottom)) 
     newsize = (CROP_SIZE[0], CROP_SIZE[1])
     im1 = im1.resize(newsize) 
-
-    # Shows the image in image viewer  
-    # im1.show()
-
-    # print(most_centered_obj)
-
+    
     imgByteArr = io.BytesIO()
     im1.save(imgByteArr, format='PNG')
     imgByteArr = imgByteArr.getvalue()
@@ -210,7 +207,7 @@ def crop_on_bb(image, api_res):
 # ----- ENVIRONMENT ----- #
 app = Flask(__name__)
 CORS(app, resources=r"/*")
-credentials = service_account.Credentials.from_service_account_file(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
+credentials = service_account.Credentials.from_service_account_file(api_key_path)
 client = vision.ImageAnnotatorClient(credentials=credentials)
 
 

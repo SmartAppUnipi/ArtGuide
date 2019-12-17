@@ -16,170 +16,105 @@ from transformers import *
 import nltk
 nltk.download('punkt')
 
+def getSpacyLang(lang='en'):
+    language = None
+    if lang == 'it':
+        from spacy.lang.it import Italian
+        language = Italian
+    else:
+        from spacy.lang.en import English
+        language = English
+
+    return language
 
 class ModelSummarizer():
     def __init__(self, config, lang=None, custom_model=None, custom_tokenizer=None, tokenizer=None, verbose=None, **kwargs):
         self.config = config
-        if lang == 'it':
-            from spacy.lang.it import Italian
-            self.language = Italian
-        elif lang == 'en':
-            from spacy.lang.en import English
-            self.language = English
+        self.verbose = verbose
+        self.language = getSpacyLang(lang)
         
-        if not custom_model:
-            custom_model = BertModel.from_pretrained('bert-base-uncased', output_hidden_states=True)
-        if not custom_tokenizer:
-            custom_tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+        if not (custom_model and custom_tokenizer):
+            custom_model, custom_tokenizer = self.get_pretrained_language(lang)
 
         self.model = Summarizer(language=self.language, custom_model=custom_model, custom_tokenizer=custom_tokenizer, **kwargs)
+
+    def get_pretrained_language(self, lang):
+        if lang=='en':
+            custom_model = RobertaModel.from_pretrained('distilroberta-base', output_hidden_states=True)
+            custom_tokenizer = RobertaTokenizer.from_pretrained('distilroberta-base')
+        else:
+            custom_model = DistilBertModel.from_pretrained('distilbert-base-multilingual-cased', output_hidden_states=True)
+            custom_tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-multilingual-cased')
+        return custom_model, custom_tokenizer
 
     def inference(self, txts, num_sentences=[], ratio=0.5, **kwargs):
         result = []
         for idx, txt in enumerate(txts):
             _ratio = ratio
-            if len(num_sentences)>=idx:
-                weight = num_sentences[idx] / sum(num_sentences)
-                _ratio = min(self.config.max_sentences / (num_sentences[idx]*weight), 0.8)
-                # print(weight, _ratio)
-            pred = self.model(txt, ratio=_ratio, min_length=40, **kwargs)
+            # If txt is not empty
+            if len(txt) > 0:
+                # Adaptive scale ration based on the items in the cluster
+                if len(num_sentences)>=idx:
+                    weight = num_sentences[idx] / sum(num_sentences)
+                    _ratio = min((self.config.max_sentences*weight) / num_sentences[idx], 0.8)
+                    if (self.verbose):
+                        print("Wehight-ratio on keyword: {}, {}".format(weight, _ratio))
+                pred = self.model(txt, ratio=_ratio, min_length=40, **kwargs)
+            else:
+                pred = ''
             result.append(''.join(pred))
         return result
 
-# class ABS_Summarizzer():
-#     def __init__(self, args, checkpoint=None, lang="en", shuffle=True, verbose=False, nlp_tokenizer=None):
-#         self.args = deepcopy(args)
-#         self.lang = lang
-#         self.shuffle = shuffle if shuffle and type == "ext" else False
-#         # Setting up Stanford Tokenizer Pipeline
-#         stanfordnlp.download(self.lang)
-#         self.nlp_tokenizer = nlp_tokenizer if nlp_tokenizer else stanfordnlp.Pipeline(
-#             processors='tokenize', lang=self.lang, tokenize_pretokenized=True)
-#         # Set device
-#         self.device = "cpu" if self.args.visible_gpus == '-1' else "cuda"
-#         self.device_id = 0 if self.device == "cuda" else -1
-#         # Import checkpoint
-#         # self.checkpoint = checkpoint if checkpoint else self.args.test_from
-#         self.checkpoint = checkpoint if checkpoint else os.path.join(
-#             checkpoint_path, self.model_checkpoints['abs'])
-#         # Load and setting up model predictor
-#         checkpoint = torch.load(self.checkpoint, map_location=self.device)
+    def to_batch(self, clusters, aggregate_from_same_doc=True):
+        if (aggregate_from_same_doc):
+            clusters = self.aggregate_from_same_doc(clusters)
+        ''' Create batch of sentences coming from policy.results '''
+        batch_sentences = []
+        num_sentences = []
+        keywords = []
 
-#         self.model = AbsSummarizer(self.args, self.device, checkpoint)
-#         self.model.eval()
+        for keyword in clusters:
+            # Da rimuovere
+            # limited_cluster = policy.results[cluster][:self.config.max_cluster_size]
+            sentences = clusters[keyword]
+            if len(sentences) > 0:
+                keywords.append(keyword)
+                batch_sentences.append(''.join( [x.sentence for x in sentences] ))
+                num_sentences.append(len(sentences))
+        if self.verbose:
+            print("Batch, num_sentences: {}".format(list(zip(clusters, num_sentences))))
 
-#         tokenizer = BertTokenizer.from_pretrained(
-#             'bert-base-uncased', do_lower_case=self.args.lower, cache_dir=self.args.temp_dir)
-#         symbols = {'BOS': tokenizer.vocab['[unused0]'], 'EOS': tokenizer.vocab['[unused1]'],
-#             'PAD': tokenizer.vocab['[PAD]'], 'EOQ': tokenizer.vocab['[unused2]']}
-#         self.predictor = build_predictor(
-#             self.args, tokenizer, symbols, self.model)
+        return batch_sentences, num_sentences, keywords
 
-#     def inference(self, texts, step=0):
-#         test_iter = data_loader.Dataloader(self.args, self.preprocess_data(texts),  # load_dataset(self.args, 'test', shuffle=False),#
-#                                         self.args.test_batch_size, self.device,
-#                                         shuffle=False, is_test=True)
+    def aggregate_from_same_doc(self, clusters):
+        # Flatting clusters O(n)
+        flat_clusters = []
+        keywords = []
+        for keyword in clusters:
+            keywords.append(keyword)
+            flat_clusters += [(keyword, x) for x in clusters[keyword]]
+        # ~O(n^2)
+        new_flat_clusters = []
+        for couple in flat_clusters:
+            keyword, target = couple
+            # check in element is already in new_flat_clusters
+            if any((x[1].document_uid == target.document_uid and x[1].position_in_document == target.position_in_document) for x in new_flat_clusters):
+                continue
+            else:
+                from_same_doc = [x for x in flat_clusters if x[1].document_uid == target.document_uid]
+                from_same_doc.sort(key=lambda x: x[1].position_in_document)
+                new_flat_clusters += from_same_doc
+        # refactoring cluster O(n)
+        new_clusters = {}
+        for key in keywords:
+            new_clusters[key] = []
+        for couple in new_flat_clusters:
+            keyword, target = couple
+            new_clusters[keyword].append(target)
 
-#         preds, _, src = self.predictor.translate(test_iter, step)
-#         preds = list(map(lambda s: self.beautify_text(s), preds))
-#         return preds
+        return new_clusters
 
-#     def beautify_text(self, text):
-#         sentences = list(map(lambda s: s.strip().capitalize(),
-#                          text.replace('<q>', '.').split('.')))
-#         res = ''
-#         if len(sentences) > 1:
-#             for i, _ in enumerate(sentences[:-1]):
-#                 if len(sentences[i]) > 0 and len(sentences[i+1]) > 0:
-#                     if sentences[i][-1].isdigit() and sentences[i+1][0].isdigit():
-#                         res += sentences[i]+'.'
-#                     else:
-#                         res += sentences[i]+'.\n'
-#             res += sentences[-1]+'.'
-#         else:
-#             res = sentences
-#         return res
-
-#     def preprocess_data(self, texts):
-#         res = []
-#         for text in texts:
-#             tmp = {"src": [], "tgt": ''}
-#             # Tokenize
-#             doc = self.nlp_tokenizer(text)
-#             # Format to lines
-#             for i, s in enumerate(doc.sentences):
-#                 sentences = [' '.join([token.text for token in s.tokens])]
-#                 tmp["src"].append(sentences)
-#             if (self.shuffle):
-#                 random.shuffle(tmp["src"])
-#             # Format to BERT
-#             res.append(tmp)
-#         yield _format_to_bert(res, self.args)
-#
-# class ModelSummarizer():
-#     def __init__(self, args, type=None, lang="en", verbose=False, checkpoint_path='', pretrained=True):
-#         self.model_checkpoints = {
-#             "abs": args.checkpoint_abs,
-#             "ext": args.checkpoint_ext
-#             }
-#         self.lang = lang
-#         self.type= type
-#         self.verbose = verbose
-#         self.checkpoint_path = checkpoint_path
-
-#         if pretrained:
-#             self.load_pretrained(self.checkpoint_path)
-
-#         if self.verbose:
-#             start_time = time.time()
-
-#         if self.type:
-#             if self.type == "ext":
-#                 self.model = EXT_Summarizer(args, lang=self.lang,  model='bert-large-uncased')
-#             elif self.type == "abs":
-#                 self.model = ABS_Summarizer(args, lang=self.lang, checkpoint=os.path.join(self.checkpoint_path, self.model_checkpoints['abs']))
-#         else:
-#             if self.lang == "en":
-#                 self.model = ABS_Summarizer(args, lang=self.lang, checkpoint=os.path.join(self.checkpoint_path, self.model_checkpoints['abs']))
-#             else:
-#                 self.model = EXT_Summarizer(args, lang=self.lang,  model='bert-large-uncased')
-
-#         if self.verbose:
-#             print("###--- Settin up model: %s seconds ---###" % (time.time() - start_time))
-
-#     def load_pretrained(self, checkpoint_path):
-#         if not os.path.exists(checkpoint_path):
-#             os.mkdir(checkpoint_path)
-#         if len(os.listdir(checkpoint_path)) == 0:
-#             print('Chekpoint\'s folder "{}" is empty. Downloading pretrained checkpoints'.format(checkpoint_path))
-#         else:
-#             if self.verbose:
-#                 print('Chekpoints\'s folder "{}" is not empty. Nothing to do.'.format(checkpoint_path))
-#             return
-#         file_ids = ["1-IKVCtc4Q-BdZpjXc4s70_fRsWnjtYLr"]
-#         for file_id in file_ids:
-#             gdd.download_file_from_google_drive(file_id=file_id,
-#                                         dest_path= os.path.join(checkpoint_path, file_id+'.zip'),
-#                                         unzip=True,
-#                                         showsize=True
-#                                         )
-#         time.sleep(5)
-#         print("Pretrained BERT checkpoints downloaded!")
-
-#     def inference(self, texts):
-#         if self.verbose:
-#             start_time = time.time()
-
-#         preds = self.model.inference(texts)
-
-#         if self.verbose:
-#             print("###--- Predicted in %s seconds ---###" % (time.time() - start_time))
-#             for i, summary in enumerate(preds):
-#                 print("--- Summary {} , reduced by {} words---".format(i, len(texts[0])-len(summary)) )
-#                 print(summary)
-
-#         return preds
-
+         
 
 if __name__ == '__main__':
     txt = '''

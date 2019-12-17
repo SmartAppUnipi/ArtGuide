@@ -1,5 +1,6 @@
 from sklearn.metrics.pairwise import cosine_similarity
 import json
+import numpy as np
 
 '''
 Usage: chiamate auto() e print_results(n) per stampare i primi n risultati per ogni chiave
@@ -13,13 +14,15 @@ Migliorie: così creo cluster basandomi su tutte le keyword, ma noi vogliamo sol
 
 
 class Policy:
-    def __init__(self, sentences, keywords, user):
+    def __init__(self, sentences, user, max_cluster_size):
         self.sentences = sentences
-        self.keywords = keywords
         self.user = user
         self.user_taste_embedded = user.tastes_embedded
+        self.user_taste_embedded_summed = []
+        self.tastes = list(self.user_taste_embedded.keys())
         self.clusters = {}
         self.results = {}
+        self.max_cluster_size = min(int(len(sentences)/len(user.tastes)), max_cluster_size)
 
     def eliminate_duplicates(self):
         for a in self.sentences:
@@ -39,26 +42,69 @@ class Policy:
             if '^' or '>' or '<' in a.sentence:
                 self.sentences.remove(a)
 
+    def create_cluster_greedy(self):
+        '''
+        Algorithm that creates the cluster for each sentences. 
+        Given the user tastes and the salient sentences it returns a list ok K(K selected as parameter)
+        best sentences for each user taste.
+        This implementation is made with an euristic greedy algorithm.
+        We create a list of sentences for each taste and then, starting from the taste with less number of sentence
+        we sort and fix the best K results.
+        Then we do the same for each taste.
+        '''
+        if not self.user.tastes:
+            return self.sentences[10]
+        tastes = {t:[] for t in self.user.tastes}
+        for s in self.sentences:
+            for k in s.keyword:
+                tastes[k].append(s)
+        for t in tastes:
+            tastes[t].sort(key = lambda x: x.score[t] ,reverse = True)
+        sorted(tastes,  key =lambda x: len(x) )
+        result = {t:[] for t in self.user.tastes}
+        for t in tastes:
+            for s in tastes[t]:
+                if not s.assigned:
+                    result[t].append(s)
+                    s.assigned = True
+                if len(result[t]) == self.max_cluster_size:
+                    break
+        self.results = result
+
+
+
+
+
+    def create_cluster_ILP(self):
+        '''
+        Algorithm that creates the cluster for each sentences. 
+        Given the user tastes and the salient sentences it returns a list ok K(K selected as parameter)
+        best sentences for each user taste.
+        We translate this problem to an integer graph optimization prbolem. 
+        The idea is to use integer linear programming for the task.
+        '''
+        pass
+
     def create_clusters(self):
-        for key in self.keywords:  # Scorro tutte le keywords
-            for sentence in self.sentences:  # Scorro tutte le frasi
-                sentence.keyword = self.keywords
-                if key in sentence.keyword:  # Se la keyword è contenuta nelle keyword della frase
-                    x = False  # è presente nel dizionario?
-                    for cluster in self.clusters:  # Controlla se la frase è già presente
-                        if sentence in self.clusters[cluster]:
-                            x = True  # è gia presente nel dizionario
-                    if not x:
-                        if key in self.clusters:
-                            self.clusters[key].append(sentence)
-                        else:
-                            self.clusters[key] = [sentence]
+        for taste in self.tastes:
+            self.clusters[taste] = []
+        for sentence in self.sentences:
+            max = 0
+            best = ""
+            for taste in self.tastes:
+                x = np.array(self.user_taste_embedded[taste][0]).reshape(1, -1)
+                y = np.array(sentence.sentence_embeddings_summed).reshape(1, -1)
+                score = cosine_similarity(x, y)[0]
+                if score > max:
+                    max = score
+                    best = taste
+            self.clusters[best].append(sentence)
 
     def apply_policy(self):
         for cluster in self.clusters:
             self.results[cluster] = []
             for sentence in self.clusters[cluster]:
-                self.results[cluster].append((self.policy(sentence), sentence.sentence))
+                self.results[cluster].append((self.policy(sentence), sentence))
         for cluster in self.results:
             self.results[cluster] = sorted(self.results[cluster], key=lambda tup: tup[0])
 
@@ -72,25 +118,30 @@ class Policy:
         sentence_embedded = sentence_embeddings[0]
         for emb in sentence_embedded:
             sentence_embedded = sentence_embedded + emb
-        return cosine_similarity(sentence_embedded.reshape(1, -1), self.user_taste_embedded.reshape(1, -1))
+        x = np.array(sentence_embedded).reshape(1, -1)
+        y = np.array(self.user_taste_embedded_summed[0]).reshape(1, -1)
+        return cosine_similarity(x, y)
 
     def auto(self):
-        self.eliminate_duplicates()  # Toglie i duplicati dall'input della classe
+        self.eliminate_duplicates()
         self.heuristic_filter()  # Toglie le frasi insensate dall'input della classe
-        self.create_clusters()  # In self.clusters crea un dizionario keyword - frasi
+        #self.create_clusters()  # In self.clusters crea un dizionario keyword - frasi
         #self.sum_user_tastes_embedded()
-        self.apply_policy()  # Usa il criterio readibility - similiarity per ordinare le frasi
-
+        #self.apply_policy()  # Usa il criterio readibility - similiarity per ordinare le frasi
+        self.max_cluster_size = min(int(len(self.sentences)/len(self.user.tastes)), self.max_cluster_size)
+        self.create_cluster_greedy()
+        
     def sum_user_tastes_embedded(self):
-        aux = self.user_taste_embedded
-        tastes = aux[0]
-        for cur in aux[1:]:
-            tastes = tastes + cur
-        self.user_taste_embedded = aux
+        keys = list(self.user_taste_embedded.keys())
+        aux = self.user_taste_embedded[keys[0]]
+        for key in keys[1:]:
+            aux += self.user_taste_embedded[key]
+        self.user_taste_embedded_summed = aux
+
 
     def print_results(self, n):
         for cluster in self.results:
             print("Results for " + cluster + " (the lower the number, the better the sentence):")
             for sentence in self.results[cluster][:n]:
-                print(str(sentence[0]) + ": " + sentence[1])
+                print(str(sentence[0].sentence) + ": " + sentence[1].sentence)
 

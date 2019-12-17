@@ -2,14 +2,18 @@ import * as routesJson from "../../routes.json";
 import dotenv from "dotenv";
 
 // Load env variables from .env file in the IR folder
-const result = dotenv.config();
+if (!process.env.CI) {
+    const result = dotenv.config();
 
-if (result.error) {
-    console.error(`
+    /* istanbul ignore else: cannot be tested without a .env file */
+    if (result.error) {
+        console.error(`
         Cannot load environment variables from .env file. Using defaults. \n
         The Google Search requests are served from cache (google-cache.json) if available, otherwise
         they will throw an error since the APIs key is missing.
+        ${result.error}
     `);
+    }
 }
 
 
@@ -22,7 +26,14 @@ const GoogleSearchConfig = {
         /** The Google Custom Search Engine Id (Italian version) */
         it: process.env.GoogleCustomSearchEngineId_IT_00,
         /** The Google Custom Search Engine Id (English version) */
-        en: process.env.GoogleCustomSearchEngineId_EN_00
+        en: process.env.GoogleCustomSearchEngineId_EN_00,
+        /** The Google Custom Search Engines for kids */
+        kids: {
+            /** The Google Custom Search Engine Id for kids (English version) */
+            en: process.env.GoogleCustomSearchEngineId_EN_KIDS,
+            /** The Google Custom Search Engine Id for kids (Italian version) */
+            it: process.env.GoogleCustomSearchEngineId_IT_KIDS
+        }
     }
 };
 
@@ -36,12 +47,11 @@ const LoggerConfig = {
      * If true the logs on console are written. If a file is
      * not specified, this cannot be disabled.
      */
-    enableLogsOnConsole: process.env.EnableLogsOnConsole
+    disableLogsOnConsole: process.env.DisableLogsOnConsole
 };
 
 /** The port on which express in listening at */
-const opusUrl = new URL(routesJson.opus);
-const ExpressPort = opusUrl.port || 3000;
+const ExpressPort = new URL(routesJson.opus).port;
 
 // ENDPOINTS
 /** The url of the Adaptation module endpoint */
