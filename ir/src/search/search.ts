@@ -63,6 +63,7 @@ export class Search {
         const queries = metaEntities
             .map(metaEntity => {
                 return {
+                    entityId: metaEntity?.entityId ?? metaEntity?.wikidataId,
                     searchTerms: metaEntity.wikipediaPageTitle,
                     score: metaEntity.score,
                     keywords: [],
@@ -171,9 +172,10 @@ export class Search {
      * @returns An array of PageResults.
      */
     public async searchKnownInstance(knownInstance: MetaEntity, userProfile: UserProfile): Promise<Array<PageResult>> {
-        const queries = [];
+        const queries: Array<Query> = [];
         // search for the entity
         queries.push({
+            entityId: knownInstance?.entityId ?? knownInstance?.wikidataId,
             language: userProfile.language,
             searchTerms: knownInstance.wikipediaPageTitle,
             keywords: [],
@@ -184,6 +186,7 @@ export class Search {
         for (const property of knownInstanceProperties) {
             for (const value of knownInstance[property]) {
                 queries.push({
+                    entityId: knownInstance?.entityId ?? knownInstance?.wikidataId,
                     language: userProfile.language,
                     searchTerms: value,
                     keywords: [],

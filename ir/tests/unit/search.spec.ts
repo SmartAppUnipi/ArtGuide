@@ -11,6 +11,7 @@ const search = new Search()
 
 const queries: Array<Query> = [
     {
+        entityId: "/m/0jbg2",
         searchTerms: "mona lisa",
         score: 0.98765432,
         keywords: [],
@@ -32,18 +33,21 @@ const queryExpansionResponse = {
 
 const extendedQueries: Array<Query> = [
     {
+        entityId: "/m/0jbg2",
         searchTerms: 'mona lisa',
         score: 0.98765432,
         keywords: ['history'],
         language: "en"
     },
     {
+        entityId: "/m/0jbg2",
         searchTerms: 'mona lisa',
         score: 0.98765432,
         keywords: ['style', 'technique'],
         language: "en"
     },
     {
+        entityId: "/m/0jbg2",
         searchTerms: 'mona lisa',
         score: 0.98765432,
         keywords: [],

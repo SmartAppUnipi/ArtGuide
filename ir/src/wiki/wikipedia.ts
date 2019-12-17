@@ -69,10 +69,11 @@ export class Wikipedia {
      */
     private buildQueries(metaEntities: Array<MetaEntity>, language: string): Array<Query> {
         // use all the entities
-        const queries = metaEntities?.map(entity => {
+        const queries = metaEntities?.map(metaEntity => {
             return {
-                searchTerms: entity?.wikipediaPageTitle,
-                score: entity?.score,
+                entityId: metaEntity?.entityId ?? metaEntity?.wikidataId,
+                searchTerms: metaEntity?.wikipediaPageTitle,
+                score: metaEntity?.score,
                 language
             } as Query;
         });

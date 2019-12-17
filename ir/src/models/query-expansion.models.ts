@@ -13,6 +13,7 @@ export interface QueryExpansionResponse {
 }
 
 export interface Query {
+    entityId: string;
     searchTerms: string;
     score: number;
     keywords: Array<string>;
