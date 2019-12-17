@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="677d46cf-0f97-4f03-97a4-4029f904ff3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adaptation/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/adaptation/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +105,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575990207805</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add adaptation module to travis.yml">
+      <created>1576596033159</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1576596033159</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add adaptation module to travis.yml">
+      <created>1576596046709</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1576596046709</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,6 +137,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added &quot;grid_search&quot; to test different weights" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added &quot;grid_search&quot; to test different weights" />
+    <MESSAGE value="Add adaptation module to travis.yml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add adaptation module to travis.yml" />
   </component>
 </project>
