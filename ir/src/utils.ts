@@ -1,3 +1,4 @@
+import * as childProcess from "child_process";
 import { Entity } from "./models";
 
 
@@ -10,7 +11,7 @@ import { Entity } from "./models";
  * @returns The list of survived entities.
  */
 export function reduceEntities(entities: Array<Entity>,
-        maxEntityNumber = entities ? entities.length : 0, minScore = 0): Array<Entity> {
+    maxEntityNumber = entities ? entities.length : 0, minScore = 0): Array<Entity> {
 
     if (!entities) return null;
     if (!maxEntityNumber && maxEntityNumber !== 0 || maxEntityNumber < 0) maxEntityNumber = entities.length;
@@ -36,4 +37,16 @@ export function reduceEntities(entities: Array<Entity>,
         .slice(0, cutIndex)
         // slice ensure there are not more than maxEntityNumber entities
         .slice(0, maxEntityNumber);
+}
+
+/**
+ * Return the last commit hash on the local repository
+ */
+export function getLastCommitHash() {
+    const latestCommit = childProcess
+        .execSync("git rev-parse HEAD")
+        .toString()
+        .replace(/\n/, "");
+
+    return latestCommit;
 }
