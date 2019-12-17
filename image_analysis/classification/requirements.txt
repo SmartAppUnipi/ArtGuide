@@ -1,3 +1,5 @@
-
 tensorflow==2.0.0
-sklearn
+pandas==0.25.3
+pillow
+scikit-image
+git+https://github.com/qubvel/efficientnet
