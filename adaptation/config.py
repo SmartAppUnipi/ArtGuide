@@ -1,3 +1,12 @@
+"""
+    config.py: configuration file
+    ArtGuide project SmartApp1920
+    Dipartimento di Informatica Università di Pisa
+    Authors: M. Barato, S. Berti, M. Bonsembiante, P. Lonardi, G. Martini
+    We declare that the content of this file is entirelly
+    developed by the authors
+"""
+
 import json
 
 class Struct:

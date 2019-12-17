@@ -37,6 +37,7 @@ with open(args.path) as file:
         logger.error("file is not correct json")
         exit
     r = requests.post(url=URL + "/tailored_text", json=pars)
+    print("Status code: {}".format(r.status_code))
 
 data = r.json()
 
