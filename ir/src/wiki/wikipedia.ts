@@ -49,13 +49,19 @@ export class Wikipedia {
                 .then(pageResult => pageResult ? Object.assign({}, pageResult, {
                     entityId: knownInstance?.entityId ?? knownInstance?.wikidataId,
                     searchTerms: knownInstance?.wikipediaPageTitle
-                }): null)
+                }) : null)
         );
         // search for the properties
         const propertyScore = knownInstance.score * scoreWeight.known.wikidataProperty;
         for (const property of knownInstanceProperties) {
             for (const value of knownInstance[property] || [])
-                promises.push(this.getWikiInfo(value, language, propertyScore));
+                promises.push(
+                    this.getWikiInfo(value, language, propertyScore)
+                        .then(pageResult => pageResult ? Object.assign({}, pageResult, {
+                            entityId: knownInstance?.entityId ?? knownInstance?.wikidataId,
+                            searchTerms: knownInstance?.wikipediaPageTitle
+                        }) : null)
+                );
 
         }
         return Promise.all(promises)
