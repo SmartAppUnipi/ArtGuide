@@ -3,9 +3,36 @@
     color: #FFFFFF;
 }
 
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 15px;
+    min-width: -webkit-fill-available;
+    margin-left: 15px;
+}
+
 .card {
     height: 500px;
+}
+
+.card-body {
     overflow-y: scroll;
+}
+
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 pre {
