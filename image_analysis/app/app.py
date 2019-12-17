@@ -12,6 +12,7 @@ from google.cloud import vision
 from google.cloud.vision import types
 from google.protobuf.json_format import MessageToDict
 from PIL import Image
+from google.oauth2 import service_account
 
 PORT = 2345
 
@@ -59,7 +60,8 @@ def get_vision(content):
 # ----- ENVIRONMENT ----- #
 app = Flask(__name__)
 CORS(app, resources=r"/*")
-client = vision.ImageAnnotatorClient()
+credentials = service_account.Credentials.from_service_account_file(api_key_path)
+client = vision.ImageAnnotatorClient(credentials=credentials)
 
 
 # ----- ROUTES ----- #
