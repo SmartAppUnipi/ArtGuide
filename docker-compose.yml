@@ -29,11 +29,11 @@ services:
   adaptation:
     build:
       context: ./
-      dockerfile: adapt.dockerfile
+      dockerfile: adaptation.dockerfile
     image: art/adaptation
     container_name: adaptation
     restart: always
     ports:
-      - "3000:3000"
+      - "6397:6397"
     stdin_open: true
     tty: true
