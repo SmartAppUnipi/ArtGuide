@@ -16,10 +16,9 @@ from flask import Flask, escape, request
 from google.cloud import vision
 from google.cloud.vision import types
 from google.protobuf.json_format import MessageToDict
+from google.oauth2 import service_account
 from PIL import Image
 import tensorflow as tf
-
-
 
 PORT = 2345
 VALID_LABELS = {"Painting", "Picture frame"}
@@ -211,7 +210,8 @@ def crop_on_bb(image, api_res):
 # ----- ENVIRONMENT ----- #
 app = Flask(__name__)
 CORS(app, resources=r"/*")
-client = vision.ImageAnnotatorClient()
+credentials = service_account.Credentials.from_service_account_file(os.environ['GOOGLE_APPLICATION_CREDENTIALS'])
+client = vision.ImageAnnotatorClient(credentials=credentials)
 
 
 # ----- ROUTES ----- #
