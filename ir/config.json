@@ -80,6 +80,18 @@
     "searchBlackList": [
         "amazon",
         "wikipedia",
-        "ebay"
+        "ebay",
+        "pinterest",
+        "youtube",
+        ".pdf",
+        ".png",
+        ".jpg",
+        ".jpeg",
+        ".svg",
+        ".doc",
+        ".docx",
+        ".ppt",
+        ".pptx",
+        "fandom.com"
     ]
 }
