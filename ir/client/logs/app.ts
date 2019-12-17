@@ -1,5 +1,13 @@
 import { parse } from "./log-parser";
 import { Utils } from "./utils";
+import { LogLevels } from "src/models";
+
+interface ILog {
+    level: LogLevels;
+    message: string;
+    metadata: any;
+    timestamp: string;
+}
 
 (async () => {
     // take a reference to left and right divs
@@ -7,7 +15,7 @@ import { Utils } from "./utils";
     const adaptationTree = document.getElementById("adaptation-tree");
 
     // fetch logs from server
-    const logs = await fetch("/logs/raw").then(res => res.json());
+    const logs: Array<ILog> = await fetch("/logs/raw").then(res => res.json());
 
     // take the log that contains the tailored text result
     const adaptationResponseLogs = logs.filter(l => l.message == "[adaptation.ts] Adaptation text response");
@@ -63,4 +71,26 @@ import { Utils } from "./utils";
             document.getElementById("ir-tree").scrollLeft = leftPos;
         });
     }
+
+    printResponseTime(logs);
 })();
+
+function printResponseTime(logs: Array<ILog>) {
+
+    const totalResponseTimeSpan = document.getElementById("total-response-time");
+    const partialResponseTimeSpan = document.getElementById("partial-response-time");
+    const adaptationResponseTimeSpan = document.getElementById("adaptation-response-time");
+
+    const first = logs?.filter(l => l.message == "[app.ts] Post request received.")?.pop();
+    const beforeAdaptation = logs?.filter(l => l.message == "[adaptation.ts] Adaptation text request")?.pop();
+    const last = logs?.filter(l => l.message == "[adaptation.ts] Adaptation text response")?.pop();
+
+    const totalResponseTime = (new Date(last.timestamp).getTime() - new Date(first.timestamp).getTime()) / 1000;
+    const partialResponseTime = (new Date(beforeAdaptation.timestamp).getTime() - new Date(first.timestamp).getTime()) / 1000;
+
+    partialResponseTimeSpan.innerText = `${partialResponseTime} secs`;
+    adaptationResponseTimeSpan.innerText = `${totalResponseTime - partialResponseTime} secs`;
+    totalResponseTimeSpan.innerText = `${totalResponseTime} secs`;
+
+
+}

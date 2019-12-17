@@ -15,6 +15,7 @@
         <h1>Art Guide Visual Debugging</h1>
     </div>
 
+
     <div class="container">
         <div class="card-deck">
             <div class="card">
@@ -25,6 +26,12 @@
                 <div class="card-header">Adaptation Tailored Text</div>
                 <p class="card-body" id="adaptation-tree"></p>
             </div>
+        </div>
+
+        <div style="padding: 10px;">
+            IR module response time: <span id="partial-response-time"></span>.
+            Adaptation getTailoredText: <span id="adaptation-response-time"></span>.
+            Total response time: <span id="total-response-time"></span>.
         </div>
     </div>
     <script src="dist/bundle.js"></script>

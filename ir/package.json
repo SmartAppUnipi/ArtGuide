@@ -10,7 +10,7 @@
     "test:d": "node --inspect=5859 node_modules/.bin/jest --runInBand --detectOpenHandles",
     "test:w": "jest --runInBand --coverage --watch",
     "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "start": "nodemon src/index.ts",
+    "start": "npm run webpack:prod && nodemon src/index.ts",
     "start:d": "nodemon --inspect=5858 src/index.ts",
     "build": "npm run webpack:prod && tsc",
     "watch": "tsc -w -p .",
