@@ -18,7 +18,8 @@ from PIL import Image
 
 
 PORT = 2345
-VALID_LABELS = {"Painting", "Picture frame"}
+VALID_PICT_LABELS = {"Painting", "Picture frame"}
+VALID_ARCH_LABELS = {"Building", "Architecture"}
 CROP_SIZE = [300, 300, 3]
 
 # ----- ----- CONFIGURING ROUTES ----- ----- #
@@ -104,7 +105,7 @@ def crop_on_bb(image, api_res):
     most_centered_obj = None
     for obj in api_res["objects"]["localizedObjectAnnotations"]:
         print(obj["name"])
-        if obj["name"] in VALID_LABELS:
+        if obj["name"] in VALID_PICT_LABELS:
             # Sum distances from the center (return the most "centered" bounding box)
             nv = obj["boundingPoly"]["normalizedVertices"]
             bb = ImageBoundingBox(nv)
@@ -219,6 +220,15 @@ def image_analysis(content):
         "materials": []
     }
     del content["image"]
+
+
+
+
+    if api_res["objects"]["localizedObjectAnnotations"]["name"] in VALID_PICT_LABELS:
+        content["classification"]["labels"] = 0 # chiamata nostre API
+
+    if api_res["objects"]["localizedObjectAnnotations"]["name"] in VALID_ARCH_LABELS:
+        content["classification"]["labels"] = 0 # chiamata nostre API
     
     # Replace freebaseID with wikidataID
     content["classification"]["entities"] = replaceGFreebaseID(content["classification"]["entities"], "entityId")
