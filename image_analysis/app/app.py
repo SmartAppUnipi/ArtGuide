@@ -104,7 +104,7 @@ def tf2wd(model_prediction_tf, art_type='picture'):
 
     for idx, stylename in idx_style_map.items():
         wd_id = style_2_wd[stylename]
-        res.append({"wikidataid": wd_id, "score": prediction[int(idx)]})
+        res.append({"wikidataId": wd_id, "score": prediction[int(idx)]})
     return res
 
 
