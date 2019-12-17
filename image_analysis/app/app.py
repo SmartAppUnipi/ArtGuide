@@ -28,13 +28,13 @@ if not "ROUTES_JSON" in os.environ:
 routes_path = os.environ["ROUTES_JSON"]
 
 if not os.path.exists(routes_path):
-    print(f"routes file not found: {routes_path}")
+    print("routes file not found: {}".format(routes_path))
     exit(0)
 
 with open(routes_path) as json_path:
     json = json.load(json_path)
     OPUS_URL = json["opus"]
-    print(f"> Post to opus service on port {OPUS_URL}")
+    print("> Post to opus service on port {}".format(OPUS_URL))
 
 
 # ----- CONFIGURING API KEY ----- #
@@ -44,7 +44,7 @@ if not "GOOGLE_APPLICATION_CREDENTIALS" in os.environ:
 api_key_path = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 if not os.path.exists(api_key_path):
-    print(f"Google cloud API key file not found: {api_key_path}")
+    print("Google cloud API key file not found: {api_key_path}".format(api_key_path))
 
 
 # ----- FUNCTION DEFINITION ----- #
@@ -71,17 +71,17 @@ def get_bounding(content):
 
 def freebaseID2wd(freebase_id):
     url = 'https://query.wikidata.org/sparql'
-    query = f"""
+    query = """
     PREFIX wd: <http://www.wikidata.org/entity/>
     PREFIX wdt: <http://www.wikidata.org/prop/direct/>
     PREFIX wikibase: <http://wikiba.se/ontology#>
 
     SELECT ?s WHERE {{
       ?s ?p ?o .
-      ?s wdt:P646 "{freebase_id}" .
+      ?s wdt:P646 "{}" .
     }}
     LIMIT 1
-    """
+    """.format(freebase_id)
     for tries in range(0, 3):
         try:
             data = None
@@ -92,7 +92,7 @@ def freebaseID2wd(freebase_id):
             time.sleep(.5)
             pass
     if data is None:
-        print(f"Requests to wikidata failed for {freebase_id}")
+        print("Requests to wikidata failed for {}".format(freebase_id))
         return None
 
     iri = data["results"]["bindings"][0]["s"]["value"]    
@@ -185,7 +185,7 @@ def replaceGFreebaseID(elist, field):
             if el[field] is not None:
                 res.append(el)
         except IndexError as e:
-            print(f"> error: unable to find wikidataID for {el}")
+            print("> error: unable to find wikidataID for {}".format(el))
     return res
 
 
@@ -228,5 +228,5 @@ def image_analysis(content):
 
 if __name__ == "__main__":
     app.config["DEBUG"] = True
-    print(f"> Opening service on port {PORT}")
+    print("> Opening service on port {}".format(PORT))
     app.run(host="0.0.0.0", port=PORT)
