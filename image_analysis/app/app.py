@@ -92,7 +92,7 @@ def tf2wd(model_prediction_tf, art_type='picture'):
         model_prediction_tf - tensor returned by the model
         art_type            - 'architecture' or 'picture' 
     """ 
-    res = {}
+    res = []
     prediction = list(map(float, list(model_prediction_tf)))
     if art_type == "picture":
         idx_style_map = IDX_2_PICTSTYLE 
@@ -103,7 +103,7 @@ def tf2wd(model_prediction_tf, art_type='picture'):
 
     for idx, stylename in idx_style_map.items():
         wd_id = style_2_wd[stylename]
-        res[wd_id] = prediction[int(idx)]
+        res.append({"wikidataid": wd_id, "score": prediction[int(idx)]})
     return res
 
 
@@ -303,8 +303,8 @@ def image_analysis(content):
     del content["image"]
     
     # Replace freebaseID with wikidataID
-    content["classification"]["entities"] = replaceGFreebaseID(content["classification"]["entities"], "entityId")
-    content["classification"]["labels"] = replaceGFreebaseID(content["classification"]["labels"], "mid")
+    # content["classification"]["entities"] = replaceGFreebaseID(content["classification"]["entities"], "entityId")
+    # content["classification"]["labels"] = replaceGFreebaseID(content["classification"]["labels"], "mid")
 
     return content
 
