@@ -1,4 +1,7 @@
 import io
+import matplotlib.pyplot as plt
+import numpy as np
+from PIL import Image
 import time
 import re
 import os
@@ -14,12 +17,16 @@ from google.cloud import vision
 from google.cloud.vision import types
 from google.protobuf.json_format import MessageToDict
 from PIL import Image
-# from ..classification.codebase import CROP_SIZE
+import tensorflow as tf
+
 
 
 PORT = 2345
 VALID_LABELS = {"Painting", "Picture frame"}
 CROP_SIZE = [300, 300, 3]
+
+architecture_nn = tf.saved_model.load("./models/architecture/1")
+
 
 # ----- ----- CONFIGURING ROUTES ----- ----- #
 if not "ROUTES_JSON" in os.environ:
@@ -32,8 +39,8 @@ if not os.path.exists(routes_path):
     exit(0)
 
 with open(routes_path) as json_path:
-    json = json.load(json_path)
-    OPUS_URL = json["opus"]
+    routes_json = json.load(json_path)
+    OPUS_URL = routes_json["opus"]
     print("> Post to opus service on port {}".format(OPUS_URL))
 
 
@@ -47,7 +54,60 @@ if not os.path.exists(api_key_path):
     print("Google cloud API key file not found: {api_key_path}".format(api_key_path))
 
 
+# ----- CONFIGURING TENSOR MAP ----- #
+try:
+    with open("tensormaps/dpictstyle2wd.json", "r") as f:
+        # picture style name to wikidata identifier
+        PICTSTYLE_2_WD = json.load(f)
+except IOError:
+    print("file not found pictstyle2wd")
+
+try:
+    with open("tensormaps/idx2pictstyle.json", "r") as f:
+        # picture style name to index in the model output
+        IDX_2_PICTSTYLE = json.load(f)
+except :
+    print("file not found pictstyle2idx")
+
+try:
+    with open("tensormaps/darchstyle2wd.json", "r") as f:
+        # picture style name to wikidata identifier
+        ARCHSTYLE_2_WD = json.load(f)
+except :
+    print("file not found archstyle2wd.json")
+
+try:
+    with open("tensormaps/idx2archstyle.json", "r") as f:
+        # picture style name to index in the model output
+        IDX_2_ARCHSTYLE = json.load(f)
+except :
+    print("file not found archstyle2idx.json")
+
+
+
+
 # ----- FUNCTION DEFINITION ----- #
+def tf2wd(model_prediction_tf, art_type='picture'):
+    """Convert a model prediction to a dictionary {"WDId": v} with {v} the value predicted by the model for each style
+    INPUT 
+        model_prediction_tf - tensor returned by the model
+        art_type            - 'architecture' or 'picture' 
+    """ 
+    res = {}
+    prediction = list(map(float, list(model_prediction_tf)))
+    if art_type == "picture":
+        idx_style_map = IDX_2_PICTSTYLE 
+        style_2_wd = PICTSTYLE_2_WD 
+    else:
+        idx_style_map = IDX_2_ARCHSTYLE
+        style_2_wd = ARCHSTYLE_2_WD
+
+    for idx, stylename in idx_style_map.items():
+        wd_id = style_2_wd[stylename]
+        res[wd_id] = prediction[int(idx)]
+    return res
+
+
 def get_vision(content):
     # The name of the image file to annotate
     image = types.Image(content=content)
@@ -102,13 +162,16 @@ def freebaseID2wd(freebase_id):
 # ----- CROP FUNCTION ON BOUNDING BOX ----- #
 def crop_on_bb(image, api_res):
     most_centered_obj = None
+    if "localizedObjectAnnotations" not in api_res["objects"]:
+        print(" -- No crop found -- ")
+        return image
+     
     for obj in api_res["objects"]["localizedObjectAnnotations"]:
         print(obj["name"])
         if obj["name"] in VALID_LABELS:
             # Sum distances from the center (return the most "centered" bounding box)
             nv = obj["boundingPoly"]["normalizedVertices"]
             bb = ImageBoundingBox(nv)
-
             if (most_centered_obj is None) or (bb.distance < most_centered_obj.distance):
                 most_centered_obj = bb
 
@@ -134,7 +197,7 @@ def crop_on_bb(image, api_res):
     im1 = im1.resize(newsize) 
 
     # Shows the image in image viewer  
-    im1.show()
+    # im1.show()
 
     # print(most_centered_obj)
 
@@ -189,6 +252,13 @@ def replaceGFreebaseID(elist, field):
     return res
 
 
+def visionMock(img):
+    return {
+        "label": { "labelAnnotations": "fake" },
+        "we": {"webDetection": { "webEntities": "fake" }}
+    }
+
+
 def image_analysis(content):
     """
     For Test.py:
@@ -205,6 +275,18 @@ def image_analysis(content):
     obj_res = get_bounding(img_b64)
     cropped_img = crop_on_bb(img_b64, obj_res)
     api_res = get_vision(cropped_img)
+    # api_res = visionMock(cropped_img)
+    
+    # Architecture model request
+    numpy_image = np.asarray(Image.open(io.BytesIO(cropped_img)))
+    tf_image = tf.convert_to_tensor([numpy_image])
+    
+    tf_image = tf.image.decode_jpeg(img_b64, channels=3)[tf.newaxis, ...]
+    tf_image = tf.image.resize_with_crop_or_pad(tf_image, CROP_SIZE[0], CROP_SIZE[1])
+    tf_image = tf.image.convert_image_dtype(tf_image, tf.float32, name="input_1") / 255
+    
+    arch_pred = architecture_nn(tf_image)
+    wd_prediction = tf2wd(arch_pred[0], art_type="architecture")
 
     # Cleaning data for ir module ----- #
     content["classification"] = {
@@ -215,7 +297,7 @@ def image_analysis(content):
         "type": [],
         "monumentType": [],
         "period": [],
-        "style": [],
+        "style": wd_prediction,
         "materials": []
     }
     del content["image"]
@@ -225,6 +307,7 @@ def image_analysis(content):
     content["classification"]["labels"] = replaceGFreebaseID(content["classification"]["labels"], "mid")
 
     return content
+
 
 if __name__ == "__main__":
     app.config["DEBUG"] = True
