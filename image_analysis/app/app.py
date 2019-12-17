@@ -1,5 +1,4 @@
 import io
-import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 import time
@@ -18,7 +17,6 @@ from google.cloud.vision import types
 from google.protobuf.json_format import MessageToDict
 from PIL import Image
 import tensorflow as tf
-
 
 
 PORT = 2345
@@ -209,6 +207,20 @@ def crop_on_bb(image, api_res):
     return imgByteArr
 
 
+def detect_image_type(api_res):
+    """Returns:
+    0: Picture
+    1: Architecture
+    2: None
+    """
+    for obj in api_res["objects"]["localizedObjectAnnotations"]:
+        if obj["name"] in VALID_PICT_LABELS:
+            return 0
+        if obj["name"] in VALID_ARCH_LABELS:
+            return 1
+    return 2
+
+
 # ----- ENVIRONMENT ----- #
 app = Flask(__name__)
 CORS(app, resources=r"/*")
@@ -286,8 +298,14 @@ def image_analysis(content):
     tf_image = tf.image.resize_with_crop_or_pad(tf_image, CROP_SIZE[0], CROP_SIZE[1])
     tf_image = tf.image.convert_image_dtype(tf_image, tf.float32, name="input_1") / 255
     
-    arch_pred = architecture_nn(tf_image)
-    wd_prediction = tf2wd(arch_pred[0], art_type="architecture")
+    wd_prediction = []
+    typ = detect_image_type(api_res)
+    if typ == 0:
+        #pict_pred = picture_nn(tf_image)
+        #wd_prediction = tf2wd(pict_pred[0], art_type="picture")
+    if typ == 1:
+        arch_pred = architecture_nn(tf_image)
+        wd_prediction = tf2wd(arch_pred[0], art_type="architecture")
 
     # Cleaning data for ir module ----- #
     content["classification"] = {
@@ -303,11 +321,8 @@ def image_analysis(content):
     }
     del content["image"]
 
-
-
-
     if api_res["objects"]["localizedObjectAnnotations"]["name"] in VALID_PICT_LABELS:
-        content["classification"]["labels"] = 0 # chiamata nostre API
+        content["classification"]["labels"] = architecture_nn() # chiamata nostre API
 
     if api_res["objects"]["localizedObjectAnnotations"]["name"] in VALID_ARCH_LABELS:
         content["classification"]["labels"] = 0 # chiamata nostre API
