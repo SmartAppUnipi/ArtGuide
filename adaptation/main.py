@@ -48,7 +48,7 @@ def keywords():
         return abort(400) # BAD REQUEST
     if 'userProfile' not in req:
         req['adaptionError'] = {"userProfile not found"}
-        return jsonify(req)
+        return jsonify(req), 400
     if 'tastes' not in req['userProfile']:
         req['adaptionError'] = {"userProfile incomplete"}
 		
@@ -69,10 +69,10 @@ def tailored_text():
         return abort(400) # BAD REQUEST
     if  'results' not in req:
         req['adaptionError'] = {"results not found"}
-        return jsonify(req)
+        return jsonify(req), 400
     if 'userProfile' not in req:
         req['adaptionError'] = {"userProfile not found"}
-        return jsonify(req)
+        return jsonify(req), 400
     if 'tastes' not in req['userProfile'] or 'expertiseLevel' not in req['userProfile'] or 'language' not in req['userProfile']:
         req['adaptionError'] = {"userProfile incomplete"}
     
@@ -92,7 +92,7 @@ def internal_error(exc):
     req = request.get_json()
     #print("\n",exc,"\n")
     req['adaptionError'] = traceback.format_exc()
-    return jsonify(req)
+    return jsonify(req), 500
 
 if __name__ == '__main__':
     app.run(debug=config.debug, host= '0.0.0.0', port=PORT, use_reloader=False)
