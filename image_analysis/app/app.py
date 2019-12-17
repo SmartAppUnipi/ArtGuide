@@ -21,8 +21,8 @@ import tensorflow as tf
 from google.oauth2 import service_account
 
 PORT = 2345
-VALID_PICT_LABELS = {"Painting", "Picture frame"}
-VALID_ARCH_LABELS = {"Building", "Architecture"}
+VALID_PICT_LABELS = set(["Painting", "Picture frame"])
+VALID_ARCH_LABELS = set(["Building", "Architecture", "Monument"])
 CROP_SIZE = [300, 300, 3]
 
 architecture_nn = tf.saved_model.load("./models/architecture/1")
@@ -167,7 +167,8 @@ def crop_on_bb(image, api_res):
         return image
      
     for obj in api_res["objects"]["localizedObjectAnnotations"]:
-        print(obj["name"])
+        if not "name" in obj:
+            continue
         if obj["name"] in VALID_PICT_LABELS:
             # Sum distances from the center (return the most "centered" bounding box)
             nv = obj["boundingPoly"]["normalizedVertices"]
@@ -203,17 +204,30 @@ def crop_on_bb(image, api_res):
     return imgByteArr
 
 
-def detect_image_type(api_res):
+def detect_image_type(obj_res, api_res):
     """Returns:
     0: Picture
     1: Architecture
     2: None
     """
-    for obj in api_res["objects"]["localizedObjectAnnotations"]:
-        if obj["name"] in VALID_PICT_LABELS:
-            return 0
-        if obj["name"] in VALID_ARCH_LABELS:
-            return 1
+    pprint.pprint(obj_res)
+    if "localizedObjectAnnotations" in obj_res["objects"]:
+        for obj in obj_res["objects"]["localizedObjectAnnotations"]:
+            if obj["name"] in VALID_PICT_LABELS:
+                return 0
+            if obj["name"] in VALID_ARCH_LABELS:
+                return 1
+
+    to_check = [api_res["we"]["webDetection"]["webEntities"], api_res["label"]["labelAnnotations"]]
+    for entity_list in to_check:
+        for lem in entity_list:
+            if "description" not in lem:
+                continue
+            if lem["description"] in VALID_PICT_LABELS:
+                return 0
+            if lem["description"] in VALID_ARCH_LABELS:
+                return 1
+        
     return 2
 
 
@@ -296,8 +310,9 @@ def image_analysis(content):
     tf_image = tf.image.convert_image_dtype(tf_image, tf.float32, name="input_1") / 255
     
     wd_prediction = []
-    typ = detect_image_type(api_res)
+    typ = detect_image_type(obj_res, api_res)
     if typ == 0:
+        pass
         #pict_pred = picture_nn(tf_image)
         #wd_prediction = tf2wd(pict_pred[0], art_type="picture")
     if typ == 1:
@@ -317,13 +332,11 @@ def image_analysis(content):
         "materials": []
     }
     del content["image"]
-
-    if api_res["objects"]["localizedObjectAnnotations"]["name"] in VALID_PICT_LABELS:
-        content["classification"]["labels"] = architecture_nn() # chiamata nostre API
-
-    if api_res["objects"]["localizedObjectAnnotations"]["name"] in VALID_ARCH_LABELS:
-        content["classification"]["labels"] = 0 # chiamata nostre API
     
+    # Cleaning data for ir module ----- #
+    for el in content["classification"]["labels"]:
+        el["entityId"] = el["mid"]
+        del el["mid"]
     # Replace freebaseID with wikidataID
     # content["classification"]["entities"] = replaceGFreebaseID(content["classification"]["entities"], "entityId")
     # content["classification"]["labels"] = replaceGFreebaseID(content["classification"]["labels"], "mid")
