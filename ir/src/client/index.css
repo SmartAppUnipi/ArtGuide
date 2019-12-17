@@ -15,3 +15,7 @@ pre {
 .adaptation-span:hover {
     cursor: pointer;
 }
+
+.ir-span {
+    font-weight: bold;
+}
