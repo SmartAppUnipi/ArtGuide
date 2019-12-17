@@ -3,9 +3,9 @@ export class Utils {
         let result = "";
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         const charactersLength = characters.length;
-        for (let i = 0; i < length; i++) 
+        for (let i = 0; i < length; i++)
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        
+
         return result;
     }
 
@@ -26,10 +26,11 @@ export class Utils {
 
     public static escapeHtml(unsafe: string) {
         return unsafe
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+        /*         return unsafe
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;"); */
     }
 }
