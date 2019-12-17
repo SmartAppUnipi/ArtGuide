@@ -16,19 +16,23 @@ class DenseEfficientNet(tf.keras.Model):
         self.eff_net = efn.EfficientNetB4(
             include_top=False, 
             input_shape=(300, 300, 3), 
-            weights='imagenet', 
-            pooling='max'
+            weights='imagenet',
+            pooling='avg'
         )
         for l in self.eff_net.layers:
-            l.trainable = any([(b in l.name) for b in trainable_blocks])
-        self.out_layer = tf.keras.layers.Dense(outputs)
+            l.trainable = any([(b in l.name) for b in trainable_blocks]) or isinstance(l, tf.keras.layers.BatchNormalization)
+        self.b_norm = tf.keras.layers.BatchNormalization()
+        self.dense_1 = tf.keras.layers.Dense(2048, activation='tanh')
+        self.dense_2 = tf.keras.layers.Dense(outputs)
         self.softmax = tf.keras.layers.Softmax()
 
     def call(self, batch):
-        eff_net_output = self.eff_net(batch)
-        out = self.out_layer(eff_net_output)
-        softmax = self.softmax(out)
-        return softmax
+        x = self.eff_net(batch)
+        x = self.b_norm(x)
+        x = self.dense_1(x)
+        x = self.dense_2(x)
+        x = self.softmax(x)
+        return x
     
 
 def create_model(outputs, trainable_blocks=[]):
@@ -46,16 +50,19 @@ if __name__ == '__main__':
         trainable_blocks = []
     
     if data == 'paint':
-        classes = 136
+        classes = 73
+        train_set = cb.pict_data_input('train')
+        eval_set = cb.pict_data_input('eval')
     elif data == 'arch':
         classes = 25
-    cp_dir = f'model_dir_{data}/'
+        train_set = cb.arch_data_input('train')
+        eval_set = cb.arch_data_input('eval')
+
+    cp_dir = f'eff_dir_{data}/'
     shutil.rmtree(cp_dir, ignore_errors=True)
     os.makedirs(cp_dir)
 
-    train_set = cb.arch_data_input('train')
-    eval_set = cb.arch_data_input('eval')
-
+    print("Creating Model")
     model = create_model(classes, trainable_blocks)
 
     stats = {
@@ -68,6 +75,8 @@ if __name__ == '__main__':
             'accuracy': []
         }
     }
+
+    print("Starting Epochs")
 
     best_loss = 1e10
     patience = 0
@@ -90,6 +99,8 @@ if __name__ == '__main__':
             model.save(cp_dir)
             best_loss = loss
             patience = 0
+            print("epoch: " + str(i))
+            print("")
         else:
             if patience < 10:
                 patience += 1
