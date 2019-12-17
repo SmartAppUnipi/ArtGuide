@@ -67,101 +67,83 @@
 				<a href="#artguide" id="artguide" style="color: inherit; text-decoration: none;">
 					<h1>ArtGuide</h1>
 				</a>
-				<a href="#prerequisites" id="prerequisites" style="color: inherit; text-decoration: none;">
-					<h3>Prerequisites</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>branch</th>
+							<th align="center">build status</th>
+						</tr>
+					</thead>
+					<tbody><tr>
+							<td><a href="https://github.com/SmartAppUnipi/ArtGuide/tree/master">master</a></td>
+							<td align="center"><a href="https://travis-ci.com/SmartAppUnipi/ArtGuide"><img src="https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=master" alt="Build Status"></a></td>
+						</tr>
+						<tr>
+							<td><a href="https://github.com/SmartAppUnipi/ArtGuide/tree/ui">ui</a></td>
+							<td align="center"><a href="https://travis-ci.com/SmartAppUnipi/ArtGuide/branches"><img src="https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=ui" alt="Build Status"></a></td>
+						</tr>
+						<tr>
+							<td><a href="https://github.com/SmartAppUnipi/ArtGuide/tree/ia_beta">ia_beta</a></td>
+							<td align="center"><a href="https://travis-ci.com/SmartAppUnipi/ArtGuide/branches"><img src="https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=ia_beta" alt="Build Status"></a></td>
+						</tr>
+						<tr>
+							<td><a href="https://github.com/SmartAppUnipi/ArtGuide/tree/ir">ir</a></td>
+							<td align="center"><a href="https://travis-ci.com/SmartAppUnipi/ArtGuide/branches"><img src="https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=ir" alt="Build Status"></a></td>
+						</tr>
+						<tr>
+							<td><a href="https://github.com/SmartAppUnipi/ArtGuide/tree/adaptation_proto">adaptation_proto</a></td>
+							<td align="center"><a href="https://travis-ci.com/SmartAppUnipi/ArtGuide/branches"><img src="https://travis-ci.com/SmartAppUnipi/ArtGuide.svg?branch=adaptation_proto" alt="Build Status"></a></td>
+						</tr>
+				</tbody></table>
+				<a href="#structure" id="structure" style="color: inherit; text-decoration: none;">
+					<h2>Structure</h2>
 				</a>
-				<p>In order to run this project you will need:</p>
+				<p>The project is structured in 4 modules:</p>
 				<ul>
-					<li>Node.js<ul>
-							<li><a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a></li>
-						</ul>
-					</li>
-					<li>Typescript &gt; 3.7<ul>
-							<li><code>npm install -g typescript</code></li>
-						</ul>
-					</li>
-					<li><em>JavaScript and TypeScript Nightly</em> Visual Studio Code extension installed. <ul>
-							<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next">https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next</a></li>
-							<li>To make sure you are using the latest version of <em>typescript</em>:<ul>
-									<li>Open a TypeScript file in VS Code.</li>
-									<li>In the VS Code command palette (press F1), run the <em>TypeScript: Select TypeScript version</em> command.</li>
-									<li>Make sure you have <em>Use VS Code&#39;s version</em> selected</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
+					<li><a href="ui">Mobile app</a>: developed with Flutter, provides apk and ipa to be installed on both Android and iOS.</li>
+					<li><a href="image_analysis">Image analysis</a>: recognize entities and styles present in the image.</li>
+					<li><a href="ir">Information Retrieval</a>: understand which kind of work of art is and retrieve information about that.</li>
+					<li><a href="adaptation">Adaptation</a>: summarize and customize the information for the user.</li>
 				</ul>
-				<a href="#environmental-variables" id="environmental-variables" style="color: inherit; text-decoration: none;">
-					<h3>Environmental variables</h3>
-				</a>
-				<p>You must create a file called <code>.env</code> with that content in order to run the module correctly.</p>
-				<pre><code><span class="hljs-attr">GoogleCustomSearchAPIKey_00</span>=AIzaxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-xxxx
-<span class="hljs-comment"># The search engine id for different languages (https://cse.google.com/cse/all) </span>
-<span class="hljs-attr">GoogleCustomSearchEngineId_EN_00</span>=xxxxxxxxxxxxxxxxxxxxx:xxxxxxxxxxx
-<span class="hljs-attr">GoogleCustomSearchEngineId_IT_00</span>=xxxxxxxxxxxxxxxxxxxxx:xxxxxxxxxxx</code></pre>
+				<p>Each module has its own README with further information.</p>
 				<a href="#how-to-run" id="how-to-run" style="color: inherit; text-decoration: none;">
-					<h3>How to run</h3>
+					<h2>How to run</h2>
 				</a>
-				<pre><code class="language-bash">npm i               <span class="hljs-comment"># install dependencies</span>
-npm start           <span class="hljs-comment"># start the server in watch mode</span></code></pre>
-				<a href="#available-commands" id="available-commands" style="color: inherit; text-decoration: none;">
-					<h3>Available commands</h3>
+				<p>Checkout the README.md files present in each module. You will need either Node.js and Python 3 or Docker (see below).</p>
+				<p>ENV variables with the API keys are needed, contact the teams to get them and please don&#39;t put them under version control.</p>
+				<a href="#docker" id="docker" style="color: inherit; text-decoration: none;">
+					<h3>Docker</h3>
 				</a>
-				<pre><code class="language-bash">npm i               <span class="hljs-comment"># install dependencies</span>
-npm start           <span class="hljs-comment"># start the server in watch mode</span>
+				<p>The <a href="docker-compose.yml">docker-compose.yml</a> defines the containers settings.</p>
+				<p>Before running docker change <a href="routes.json">routes.json</a> as follows. Docker containers can access containers in the same network (automatically created by docker-compose) by using the container&#39;s name.</p>
+				<pre><code class="language-json">{
+  <span class="hljs-attr">"image"</span> : <span class="hljs-string">"http://ia:2345/upload"</span>,
+  <span class="hljs-attr">"opus"</span> : <span class="hljs-string">"http://ir:3000/"</span>,
+  <span class="hljs-attr">"text"</span> : <span class="hljs-string">"http://adaptation:6397/tailored_text"</span>,
+  <span class="hljs-attr">"keywords"</span> : <span class="hljs-string">"http://adaptation:6397/keywords"</span>
+}</code></pre>
+				<p> Using <code>docker-compose</code></p>
+				<pre><code class="language-bash"><span class="hljs-comment"># start</span>
+sudo docker-compose up --build
+<span class="hljs-comment"># stop</span>
+sudo docker-compose down</code></pre>
+				<p>Build and run images individually</p>
+				<pre><code class="language-bash"><span class="hljs-comment"># build</span>
+sudo docker build -t art/ir -f ir.dockerfile .
+sudo docker build -t art/ia -f ia.dockerfile .
+sudo docker build -t art/adaptation -f adaptation.dockerfile .
 
-npm run build       <span class="hljs-comment"># compiles src/*.ts in dist/*.js</span>
-npm run watch       <span class="hljs-comment"># automatically compiles ts when the file is saved</span>
+<span class="hljs-comment"># run</span>
+sudo docker run --name ir -p 3000:3000 art/ir
+sudo docker run --name ia -p 2345:2345 art/ia
+sudo docker run --name adaptation -p 6397:6397 art/adaptation
 
-npm t               <span class="hljs-comment"># run unit tests</span>
-npm t -- filename   <span class="hljs-comment"># run a specific test file</span>
-npm run <span class="hljs-built_in">test</span>:watch  <span class="hljs-comment"># run tests in watch mode (TDD)</span>
-npm run <span class="hljs-built_in">test</span>:cov    <span class="hljs-comment"># run coverage report</span>
-npm tun <span class="hljs-built_in">test</span>:debug  <span class="hljs-comment"># run tests and attach VS Code debugger</span>
-
-npm run lint        <span class="hljs-comment"># run linter</span>
-npm run lint:fix    <span class="hljs-comment"># run linter with --fix option</span>
-
-npm run docs        <span class="hljs-comment"># generate the documentation in /docs</span></code></pre>
-				<a href="#linter" id="linter" style="color: inherit; text-decoration: none;">
-					<h3>Linter</h3>
+<span class="hljs-comment"># stop</span>
+sudo docker rm -f ir ia adaptation</code></pre>
+				<a href="#test-ui" id="test-ui" style="color: inherit; text-decoration: none;">
+					<h2>Test UI</h2>
 				</a>
-				<p>We are using ESLint as linter together with a plugin to make it work properly with TypeScript. The list of our rules can be found in <a href=".eslintrc.js">eslintrc.js</a>. Whenever we use a rule specified in <em>typescript-eslint-plugin</em> we need to disable the original <em>ESLint</em> rule and override it with the one provided by the plugin.</p>
-				<p>Useful links:
-					- <a href="https://eslint.org/docs/rules">Available ESLint rules</a>
-				- <a href="https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules">Available TypeScript rules</a></p>
-				<a href="#folder-structure" id="folder-structure" style="color: inherit; text-decoration: none;">
-					<h2>Folder structure</h2>
-				</a>
-				<ul>
-					<li><a href="assets">assets</a> contains example json that we use for testing purposes.</li>
-					<li><a href="docs">docs</a> contains the documentation of each class, automatically generated by TypeScript using the JSdoc.</li>
-					<li><a href="src">src</a><ul>
-							<li><a href="src/models">models</a> contains the TypeScript classes and interfaced used for the exchanged objects.</li>
-							<li><a href="src/parser">parser</a> parses url and extracts page content, divides it into sections and extracts keywords using the rake approach.</li>
-							<li><a href="src/parser">search</a> builds the queries and performs searches on Google Search.</li>
-							<li><a href="src/wiki">wiki</a><ul>
-									<li><a href="src/wiki/wikidata">wikidata</a> extract information from WikiData using the entities ID. It&#39;s used also to understand if the entity is recognized as a famous piece of art or as a generic class of artwork.</li>
-									<li><a href="src/wiki/wikipedia">wikipedia</a> extract results from Wikipedia.</li>
-								</ul>
-							</li>
-							<li><a href="src/app.ts">app.ts</a> is the server with the main flow.</li>
-							<li><a href="src/declarations.ts">declarations.ts</a> contains declarations for non-typescript libraries.</li>
-							<li><a href="src/environment.ts">environment.ts</a> parses the .env file.</li>
-							<li><a href="src/index.ts">index.ts</a> starts the server.</li>
-							<li><a href="src/logger.ts">logger.ts</a> is used to log on file.</li>
-							<li><a href="src/utils.ts">utils.ts</a> contains utility functions.</li>
-						</ul>
-					</li>
-					<li><a href="tests">tests</a> divided in <a href="tests/unit">unit</a> and <a href="tests/integration">integration</a> tests.</li>
-					<li><code>/</code><ul>
-							<li><code>.env</code> contains the environment variables.</li>
-							<li><a href="config.json">config.json</a> contains variables and settings used in our app.</li>
-							<li><a href="google-cache.json">*-cache</a> contains the cached Google Search results, since we have a limited number of queries each day.</li>
-							<li>The other files are the configurations for Node.js, TypeScript, ESlint, git, etc.</li>
-						</ul>
-					</li>
-				</ul>
+				<p>APIs and communication can be tested by opening in a browser <a href="test.html">test.html</a> without the need of an emulator for the mobile app.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -174,8 +156,14 @@ npm run docs        <span class="hljs-comment"># generate the documentation in /
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-is-not-exported">
-						<a href="enums/wikidatapropertytype.html" class="tsd-kind-icon">Wikidata<wbr>Property<wbr>Type</a>
+					<li class=" tsd-kind-enum">
+						<a href="enums/expertizeleveltype.html" class="tsd-kind-icon">Expertize<wbr>Level<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/loglevels.html" class="tsd-kind-icon">Log<wbr>Levels</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/adaptation.html" class="tsd-kind-icon">Adaptation</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/cacheservice.html" class="tsd-kind-icon">Cache<wbr>Service</a>
@@ -188,6 +176,9 @@ npm run docs        <span class="hljs-comment"># generate the documentation in /
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/search.html" class="tsd-kind-icon">Search</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/utils.html" class="tsd-kind-icon">Utils</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/wikidata.html" class="tsd-kind-icon">Wiki<wbr>Data</a>
@@ -229,6 +220,9 @@ npm run docs        <span class="hljs-comment"># generate the documentation in /
 						<a href="interfaces/location.html" class="tsd-kind-icon">Location</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/locationtype.html" class="tsd-kind-icon">Location<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/metaentity.html" class="tsd-kind-icon">Meta<wbr>Entity</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -246,6 +240,9 @@ npm run docs        <span class="hljs-comment"># generate the documentation in /
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/pagemap.html" class="tsd-kind-icon">Pagemap</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/parsableitem.html" class="tsd-kind-icon">Parsable<wbr>Item</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/queries.html" class="tsd-kind-icon">Queries</a>
 					</li>
@@ -257,6 +254,9 @@ npm run docs        <span class="hljs-comment"># generate the documentation in /
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/queryexpansionresponse.html" class="tsd-kind-icon">Query<wbr>Expansion<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/queryresult.html" class="tsd-kind-icon">Query<wbr>Result</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/request.html" class="tsd-kind-icon">Request</a>
@@ -282,6 +282,9 @@ npm run docs        <span class="hljs-comment"># generate the documentation in /
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/userprofile.html" class="tsd-kind-icon">User<wbr>Profile</a>
 					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="globals.html#wikidataentity" class="tsd-kind-icon">Wikidata<wbr>Entity</a>
+					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#expressport" class="tsd-kind-icon">Express<wbr>Port</a>
 					</li>
@@ -292,25 +295,13 @@ npm run docs        <span class="hljs-comment"># generate the documentation in /
 						<a href="globals.html#logger" class="tsd-kind-icon">logger</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#opusurl" class="tsd-kind-icon">opus<wbr>Url</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#rake" class="tsd-kind-icon">rake</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#result" class="tsd-kind-icon">result</a>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#getlastcommithash" class="tsd-kind-icon">get<wbr>Last<wbr>Commit<wbr>Hash</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#search" class="tsd-kind-icon">search</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#wikidata" class="tsd-kind-icon">wikidata</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#wikipedia" class="tsd-kind-icon">wikipedia</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#post" class="tsd-kind-icon">post</a>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#parse" class="tsd-kind-icon">parse</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#reduceentities" class="tsd-kind-icon">reduce<wbr>Entities</a>
