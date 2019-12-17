@@ -167,7 +167,7 @@ class DocumentsAdaptation():
 
         # policy on sentences
         policy = Policy(salient_sentences, user, self.config.max_cluster_size)
-        policy.auto()
+        policy.auto(pca=True)
 
         # create batch of sentences for summarization model
         batch_sentences, num_sentences, keywords = self.model_summarizer[

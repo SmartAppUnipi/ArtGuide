@@ -164,6 +164,39 @@ class Policy:
                 print(str(sentence[0].sentence) + ": " + sentence[1].sentence)
 
     def PCA_dimention_reduction(self, n_components=2):
+
+        sentence_points = np.concatenate(
+            [s.sentence_embeddings for s in self.sentences])
+        dim_reduction_model = PCA(n_components=n_components)
+        dim_reduction_model.fit(sentence_points)
+
+        colors_name = ["red", "green", "blue", "orange", "purple", "black"]
+        marker_type = ["1", "2", "3", "4", "P", "X", "h", "d", "D", "s"]
+        i = 0
+        fig, ax = plt.subplots()
+        for k in self.results:
+            m = 0
+            for s in self.results[k]:
+                sentence = dim_reduction_model.transform([s.sentence_embeddings_summed])
+                ax.scatter(sentence[0][0], sentence[0][1], color=colors_name[i], marker=marker_type[m], alpha=0.3, label=s.sentence[:70])
+                m += 1
+                if m>9:
+                    m=0
+
+            #plot keyword
+            keyword = dim_reduction_model.transform(
+                self.results[k][0].keyword[k])
+            # plot the keyword
+            ax.scatter(keyword[:, 0], keyword[:, 1], color=colors_name[i], marker="*", label=k)
+            i += 1
+
+        ax.axis([-100, 100, -100, 100])
+        #ax.set(xlim=(-50, 50), ylim=(-50, 50))
+        ax.legend(loc='upper left')
+        ax.grid(True)
+        plt.show()
+
+''' OLD PCA REDUCTION
         # decide if we want to do PCA or t-SNE
         # all the sentences points
         sentence_points = np.concatenate(
@@ -198,5 +231,4 @@ class Policy:
             keyword = dim_reduction_model.transform(
                 self.results[k][0].keyword[k])
             # plot the keyword
-            plt.scatter(keyword[:, 0], keyword[:, 1], color="blue")
-        plt.show()
+            plt.scatter(keyword[:, 0], keyword[:, 1], color="blue")'''
