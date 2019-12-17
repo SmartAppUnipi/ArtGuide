@@ -13,6 +13,17 @@ import {
 import { knownInstanceProperties, scoreWeight, searchBlackList } from "../../config.json";
 
 
+interface ParsableItem {
+    url: string;
+    keywords: Array<string>;
+    score: number;
+}
+
+interface QueryResult {
+    gResult: GoogleSearchResult;
+    query: Query;
+}
+
 
 /**
  * Perform web searches.
@@ -49,7 +60,6 @@ export class Search {
      * @returns An array of Query objects with searchTerms and score.
      */
     private buildBasicQueries(metaEntities: Array<MetaEntity>, language: string): Array<Query> {
-        // TODO: return a meaningful query
         const queries = metaEntities
             .map(metaEntity => {
                 return {
@@ -114,45 +124,37 @@ export class Search {
 
         return Promise.all(
             // for each query
-            queries.map(async q => {
+            queries.map(query => {
                 // query Google Search and get the list of results
                 return this.googleSearch
-                    .query(q.searchTerms + " " + q.keywords.join(" "), userProfile)
+                    .query(query.searchTerms + " " + query.keywords.join(" "), userProfile)
                     .then(googleSearchResult => {
 
                         if (!googleSearchResult || !googleSearchResult.items) {
-                            logger.warn("[search.ts] Google returned no items for query.", { query: q });
+                            logger.warn("[search.ts] Google returned no items for query.", { query: query });
                             return;
                         }
 
                         return {
                             gResult: googleSearchResult,
-                            query: q
+                            query: query
                         };
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                                     { query: q, exception: ex });
-                        return {
-                            gResult: null as GoogleSearchResult,
-                            query: null as Query
-                        };
+                            { query: query, exception: ex });
+                        return null
                     });
             })
-        ).then(gResults => {
-
-            return this
-                .mergeDuplicateUrls(gResults)
-                .filter(result => {
-                    return !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite));
-                });
-
-        })
-            .then(r => {
-
-                return this.parseList(r);
-
-            });
+        )
+            // remove null values
+            .then(gResults => gResults.filter(gResult => gResult))
+            // merge duplicate
+            .then(gResults => this.mergeDuplicateUrls(gResults))
+            // filter blacklist
+            .then(gResults => gResults.filter(result => !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite))))
+            // call the parser
+            .then(gResults => this.parseList(gResults))
     }
 
     /**
@@ -191,27 +193,7 @@ export class Search {
         return this.adaptation.getKeywordExpansion(userProfile)
             // extend the basic query with the query expansion
             .then(queryExpansion => this.extendQuery(queries, queryExpansion))
-            .then(queries => {
-                return Promise.all(
-                    queries.map(query => {
-                        return this.googleSearch
-                            .query(query.searchTerms, userProfile)
-                            .then(r => ({
-                                gResult: r,
-                                query: query
-                            }));
-                    })
-                ).then(gResults => {
-                    return this
-                        .mergeDuplicateUrls(gResults)
-                        .filter(result => {
-                            return !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite));
-                        });
-                })
-                    .then(r => {
-                        return this.parseList(r);
-                    });
-            });
+            .then(queries => this.buildResult(queries, userProfile));
     }
 
     /**
@@ -223,14 +205,13 @@ export class Search {
      * 
      * @returns The list of URLS without duplicates, with the associated keywords and score.
      */
-    // eslint-disable-next-line
-    private mergeDuplicateUrls(results: Array<{ gResult: GoogleSearchResult; query: Query }>): Array<{ url: string; keywords: Array<string>; score: number }> {
+    private mergeDuplicateUrls(results: Array<QueryResult>): Array<ParsableItem> {
 
         const linkMap = new Map<string, { keywords: Array<string>; score: number; counter: number }>();
-        const finalResult: Array<{ url: string; keywords: Array<string>; score: number }> = [];
+        const finalResult: Array<ParsableItem> = [];
 
         /*
-         * create a Map and if link is not there, append it to a map toogether with its keywords
+         * Create a Map and if link is not there, append it to a map together with its keywords
          * if link is already in the map, then take from the Map old values of keywords,
          * concatenate them with the new values and append everything to a Map 
          */
@@ -272,8 +253,7 @@ export class Search {
      * @param list The list of the urls without duplicates to fetch and parse.
      * @returns The array of page results corresponding to the parsed pages returned from Google.
      */
-    // eslint-disable-next-line
-    private async parseList(list: Array<{ url: string; keywords: Array<string>; score: number }>): Promise<Array<PageResult>> {
+    private async parseList(list: Array<ParsableItem>): Promise<Array<PageResult>> {
         const results: Array<PageResult> = [];
 
         return Promise.all(

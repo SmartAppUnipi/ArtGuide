@@ -12,17 +12,6 @@ import { Search } from "./search";
 import { ClassificationResult, Entity, ExpertizeLevelType, PageResult } from "./models";
 import { WikiData, Wikipedia } from "./wiki";
 
-/** Search module */
-const search = new Search();
-
-/** Wikipedia module */
-const wikipedia = new Wikipedia();
-
-/** WikiData module */
-const wikidata = new WikiData();
-
-/** Adaptation interface */
-const adaptation = new Adaptation();
 
 /** Express application instance */
 const app: express.Application = express();
@@ -67,6 +56,11 @@ if (LoggerConfig.file) {
 
 // Main entry-point
 app.post("/", async (req, res) => {
+
+    const search = new Search();
+    const wikipedia = new Wikipedia();
+    const wikidata = new WikiData();
+    const adaptation = new Adaptation();
 
     try {
 
