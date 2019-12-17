@@ -85,7 +85,8 @@ def parse_arch_pict(filename, linux=True):
     one_hot_idx = tf.strings.to_number(one_hot_idx, out_type=tf.float32)
     
     label = tf.one_hot(int(one_hot_idx), 25)
-    
+    tf.print(filename)
+    tf.print(one_hot_idx) 
     image = tf.io.read_file(filename)
     image = tf.image.decode_jpeg(image)
     if tf.shape(image)[-1] < 3:
@@ -104,7 +105,7 @@ def arch_data_input(dataset='train', batch_size=32):
         list_ds = tf.data.Dataset.list_files(pt.tf_archstyle_test)
     list_ds = list_ds.map(parse_arch_pict)
     if dataset == 'train':
-        list_ds = list_ds.shuffle(500)
+        # list_ds = list_ds.shuffle(500)
         list_ds = list_ds.batch(batch_size)
     else:
         list_ds = list_ds.batch(256)
@@ -141,7 +142,8 @@ def preprocess_pict(n_path, duplicate=True):
     pictdf["style_idx"] = pictdf["style"].map(map2style)
     # Recreating dataset
     for (fpath, row) in pictdf.iterrows():
-        if not check_file(pt.painter_by_numbers, fpath):
+        # Ignoring small images
+        if min(int(row.pixelsx), int(row.pixelsy)) < CROP_SIZE[0]:
             continue
         # Moving or copying Keyword arguments:the file 
         try:
@@ -163,14 +165,30 @@ def parse_image_pict(filename, linux=True):
     one_hot_idx = tf.strings.split(fname, '__')[0]
     one_hot_idx = tf.strings.to_number(one_hot_idx, out_type=tf.float32)
     
-    label = tf.one_hot(int(one_hot_idx), 136)
+    label = tf.one_hot(int(one_hot_idx), 73)
     
     image = tf.io.read_file(filename)
     image = tf.image.decode_jpeg(image)
+    if tf.shape(image)[-1] < 3:
+        image = tf.image.grayscale_to_rgb(image)
     image = tf.image.convert_image_dtype(image, tf.float32) / 255
     image = tf.image.random_crop(image, CROP_SIZE)
     return image, label
 
+def pict_data_input(dataset='train', batch_size=32):
+    if dataset == 'train':
+        list_ds = tf.data.Dataset.list_files(pt.tf_pict_train)
+    if dataset == 'eval':
+        list_ds = tf.data.Dataset.list_files(pt.tf_pict_eval)
+    if dataset == 'test':
+        list_ds = tf.data.Dataset.list_files(pt.tf_pict_test)
+    list_ds = list_ds.map(parse_image_pict)
+    if dataset == 'train':
+        list_ds = list_ds.shuffle(500)
+        list_ds = list_ds.batch(batch_size)
+    else:
+        list_ds = list_ds.batch(256)
+    return list_ds
 
 def tf2wd(model_prediction_tf, art_type='picture'):
     """Convert a model prediction to a dictionary {"WDId": v} with {v} the value predicted by the model for each style
@@ -217,28 +235,28 @@ if __name__ == "__main__":
     #preprocess_architecture(pt.arch_style, args.d)
 else:
     try:
-        with open("dpictstyle2wd.json", "r") as f:
+        with open("maps/dpictstyle2wd.json", "r") as f:
             # picture style name to wikidata identifier
             PICTSTYLE_2_WD = json.load(f)
     except IOError:
         print("file not found pictstyle2wd")
 
     try:
-        with open("idx2pictstyle.json", "r") as f:
+        with open("maps/idx2pictstyle.json", "r") as f:
             # picture style name to index in the model output
             IDX_2_PICTSTYLE = json.load(f)
     except :
         print("file not found pictstyle2idx")
 
     try:
-        with open("darchstyle2wd.json", "r") as f:
+        with open("maps/darchstyle2wd.json", "r") as f:
             # picture style name to wikidata identifier
             ARCHSTYLE_2_WD = json.load(f)
     except :
         print("file not found archstyle2wd.json")
 
     try:
-        with open("idx2archstyle.json", "r") as f:
+        with open("maps/idx2archstyle.json", "r") as f:
             # picture style name to index in the model output
             IDX_2_ARCHSTYLE = json.load(f)
     except :
