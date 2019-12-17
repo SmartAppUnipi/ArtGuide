@@ -1,15 +1,16 @@
+import * as childProcess from "child_process";
 import * as config from "../config.json";
-import { AdaptationEndpoint } from "./environment";
+import { Adaptation } from "./adaptation";
 import bodyParser from "body-parser";
 import express from "express";
 import logger from "./logger";
+import { LoggerConfig } from "./environment";
 import packageJson from "../package.json";
 import path from "path";
+import { reduceEntities } from "./utils";
 import { Search } from "./search";
-import { ClassificationResult, PageResult, Query, TailoredTextRequest, TailoredTextResponse } from "./models";
-import { post, reduceEntities } from "./utils";
+import { ClassificationResult, Entity, ExpertizeLevelType, PageResult } from "./models";
 import { WikiData, Wikipedia } from "./wiki";
-import child_process from "child_process";
 
 /** Search module */
 const search = new Search();
@@ -19,6 +20,9 @@ const wikipedia = new Wikipedia();
 
 /** WikiData module */
 const wikidata = new WikiData();
+
+/** Adaptation interface */
+const adaptation = new Adaptation();
 
 /** Express application instance */
 const app: express.Application = express();
@@ -30,14 +34,20 @@ app.use(bodyParser.json());
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (err) {
         logger.error("[app.ts] Unhandled error", { exception: err });
-        return res.json({ message: err.message, stack: err.stack });
+        /* istanbul ignore next */
+        return res.status(500).json({ message: err.message, stack: err.stack });
     }
     next();
 });
 
 // Index entry-point
 app.get("/", (req, res) => {
-    const latestCommit = child_process.execSync("git rev-parse HEAD").toString().replace(/\n/, "");
+
+    const latestCommit = childProcess
+        .execSync("git rev-parse HEAD")
+        .toString()
+        .replace(/\n/, "");
+
     return res.json({
         message: `IR module version ${packageJson.version}.`,
         currentCommit: `https://github.com/SmartAppUnipi/ArtGuide/commit/${latestCommit}`,
@@ -45,8 +55,15 @@ app.get("/", (req, res) => {
     });
 });
 
-// Docs entry-point
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
+app.use("/coverage", express.static(path.join(__dirname, "../coverage/lcov-report/")));
+
+// Serve trace log
+if (LoggerConfig.file) {
+    express.static.mime.define({ "application/json": ["json", "log"] });
+    const file = path.join(__dirname, `../${LoggerConfig.file}`);
+    app.use("/logs", express.static(file));
+}
 
 // Main entry-point
 app.post("/", async (req, res) => {
@@ -60,160 +77,134 @@ app.post("/", async (req, res) => {
         if (!classificationResult ||
             !classificationResult.classification ||
             !classificationResult.userProfile) {
-            res.status(400);
-            return res.json({ error: "Missing required body." });
+            logger.warn({ message: "Missing required body.", classificationResult });
+            return res
+                .status(400)
+                .json({ error: "Missing required body." });
         }
+
 
         // Ensure the language is supported
         if (!config.supportedLanguages.includes(classificationResult.userProfile.language)) {
-            res.status(400);
-            return res.json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
+            logger.warn({ message: "Unsupported language.", language: classificationResult.userProfile.language });
+            return res
+                .status(400)
+                .json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
+        }
+
+        // everything 
+        logger.debug("[app.ts] Original classification entities and labels.", {
+            classificationEntities: classificationResult.classification?.entities ?? [],
+            classificationLabels: classificationResult.classification?.labels ?? []
+        });
+
+        // 1. Aggregate all entities
+        const language = classificationResult.userProfile.language;
+        let entities: Array<Entity> = [].concat(
+            classificationResult?.classification?.entities ?? [],
+            classificationResult?.classification?.labels ?? [],
+            classificationResult?.classification?.style ?? []
+        );
+
+        // require at least one entity
+        if (!entities.length) {
+            return res
+                .status(400)
+                .json({ error: "No entities found." });
         }
 
 
+        // 2. sort entities by score descending
+        entities.sort((e1, e2) => e2.score - e1.score);
 
-        /*
-         * MAIN FLOW
-         * 
-         * We receive the Google vision results from the classification module.
-         * 
-         *  1. sort results.entities and result.labels by score descending
-         *  2. slice results.entities and results.labels reducing the number of results
-         *      - at the first "big" gap between scores
-         *      - using a max-length to be sure to crop it sooner or later
-         *      - using a min-score to ensure a quality threshold?
-         * 
-         *  3. check if there is a known entity among the remaining ones
-         *      - take the corresponding WikiData entry
-         *      - look for the presence of one of these fields:
-         *          - geo location
-         *          - author
-         *          - architect
-         *          - creator
-         *  
-         *  BRANCH A: known entity
-         *      5a. search by entityId on Wikipedia
-         *          - weight on the score: 1
-         *          - look also for
-         *              - creator/architect
-         *              - period
-         *              - style
-         *              - movement
-         *      5b. search for the exact query on Google
-         *          - weight on the score: 0.8
-         *          - use query expansion
-         * 
-         *  BRANCH B: not a known entity
-         *      4. remove unwanted entity (not art)
-         *          - for each entity take the corresponding WikiData entry
-         *              - recursively populate the array instanceOf/subClassOf 
-         *              - perform a bottom up breadth first visit of the "instance of / subClassOf" graph
-         *                  - discarding the entity if a after real-clock expires (resolved using a single SparQL query)
-         *                  - keep the entity if it's instance of one of the following piece of arts
-         *                      - painting
-         *                      - building
-         *                      - sculpture
-         *                      - tower
-         *                      - facade
-         *                      - ...
-         *      
-         *      5a. search for the top score entities on Wikipedia
-         *          - weight on the score: 0.6
-         *      5b. build a smart query on Google
-         *          - weight on the score: 0.9
-         *          - use query expansion
-         *          - merge multiple entities?
-         */
-
-        logger.debug("[app.ts] Original classification entities and labels.", {
-            classificationEntities: classificationResult.classification.entities,
-            classificationLabels: classificationResult.classification.labels
-        });
-
-        // 1. sort results.entities and result.labels by score descending
-        classificationResult.classification.entities.sort((e1, e2) => e2.score - e1.score);
-        classificationResult.classification.labels.sort((l1, l2) => l2.score - l1.score);
-
-        // 2. slice results.entities and results.labels reducing the number of results
-        classificationResult.classification.entities = reduceEntities(
-            classificationResult.classification.entities,
-            config.flowConfig.entityFilter.maxEntityNumber,
-            config.flowConfig.entityFilter.minScore
-        );
-        classificationResult.classification.labels = reduceEntities(
-            classificationResult.classification.labels,
+        // 3. slice entities reducing the number of results
+        entities = reduceEntities(
+            entities,
             config.flowConfig.entityFilter.maxEntityNumber,
             config.flowConfig.entityFilter.minScore
         );
 
-        logger.debug("[app.ts] Reduced classification entities and labels.", {
-            classificationEntities: classificationResult.classification.entities,
-            classificationLabels: classificationResult.classification.labels
-        });
+        logger.debug("[app.ts] Reduced classification entities and labels.", { entities });
 
-        // 3. check if there is a known entity
-        const knownInstance = await wikidata.tryGetKnownInstance(classificationResult);
+        // 4. populate the metadata
+        const metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, language)));
 
-        let results: Array<PageResult>;
+        // 5. Try to get a known instance
+        const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, language);
+
+        const searchPromises: Array<Promise<Array<PageResult>>> = [];
         if (knownInstance) {
             /*
              * BRANCH A: known entity
-             *  5a. search by entityId on Wikipedia
-             *  5b. search for the exact query on Google
+             * 7a. search by entityId on Wikipedia
+             * 7b. search for the exact query on Google
              */
             logger.debug("[app.ts] Got a known instance.", { knownInstance });
-            results = await Promise.all([
-                wikipedia
-                    .searchKnownInstance(knownInstance, classificationResult.userProfile.language)
-                    .then(pageResults => {
-                        pageResults.forEach(pageResult =>
-                            pageResult.score *= config.flowConfig.weight.wikipedia.known);
-                        return pageResults;
-                    }),
+
+            if (classificationResult.userProfile.expertiseLevel != ExpertizeLevelType.Child) {
+                // Use Wikipedia if the user is not a child
+                searchPromises.push(
+                    wikipedia
+                        .searchKnownInstance(knownInstance, language)
+                        .then(pageResults => {
+                            pageResults.forEach(pageResult =>
+                                pageResult.score *= config.scoreWeight.known.wikipedia);
+                            return pageResults;
+                        })
+                );
+            }
+
+            searchPromises.push(
                 search
-                    .searchByTerms(new Query({
-                        language: classificationResult.userProfile.language,
-                        searchTerms: knownInstance.WikipediaPageTitle,
-                        keywords: [],
-                        score: knownInstance.score
-                    }), classificationResult.userProfile)
+                    .searchKnownInstance(knownInstance, classificationResult.userProfile)
                     .then(pageResults => {
                         pageResults.forEach(pageResult =>
-                            pageResult.score *= config.flowConfig.weight.google.known);
+                            pageResult.score *= config.scoreWeight.known.google);
                         return pageResults;
                     })
-            ]).then(allResults => [].concat(...allResults));
+            );
+
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
-            /*
-             * BRANCH B: not a known entity
-             * TODO: 4. remove unwanted entity (not art)
-             */
+            // BRANCH B: not a known entity
+            logger.debug("[app.ts] Not a known instance.", {
+                reducedClassificationEntities: classificationResult.classification.entities
+            });
+
+            // 6. remove unwanted entity (not art)
+            const filteredEntities = await wikidata.filterNotArtRelatedResult(metaEntities);
 
             /*
              *  5a. search for the top score entities on Wikipedia
              *  5b. build a smart query on Google
              */
-            logger.debug("[app.ts] Not a known instance.",
-                { reducedClassificationEntities: classificationResult.classification.entities });
-            results = await Promise.all([
-                wikipedia.search(classificationResult)
+            if (classificationResult.userProfile.expertiseLevel != ExpertizeLevelType.Child) {
+                // Use Wikipedia if the user is not a child
+                searchPromises.push(
+                    wikipedia.search(filteredEntities, language)
+                        .then(results => {
+                            results.forEach(result =>
+                                result.score *= config.scoreWeight.unknown.wikipedia);
+                            return results;
+                        })
+                );
+            }
+
+            searchPromises.push(
+                search.search(filteredEntities, classificationResult.userProfile)
                     .then(results => {
                         results.forEach(result =>
-                            result.score *= config.flowConfig.weight.wikipedia.unknown);
-
-                        return results;
-                    }),
-                search.search(classificationResult)
-                    .then(results => {
-                        results.forEach(result =>
-                            result.score *= config.flowConfig.weight.google.unknown);
-
+                            result.score *= config.scoreWeight.unknown.google);
                         return results;
                     })
-            ]).then(allResults => [].concat(...allResults));
+            );
+
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         }
+
+        const results: Array<PageResult> = await Promise
+            .all(searchPromises)
+            .then(allResults => [].concat(...allResults));
 
         // 6. Sort the results by score
         results.sort((p1, p2) => p2.score - p1.score);
@@ -224,22 +215,17 @@ app.post("/", async (req, res) => {
 
 
         // call adaptation for summary and return the result to the caller
-        logger.debug("[app.ts] Call to adaptation text.", {
-            adaptationUrl: AdaptationEndpoint.text,
-            resultsSent: results
-        });
-        return post<TailoredTextResponse>(AdaptationEndpoint.text, {
-            userProfile: classificationResult.userProfile,
-            results
-        } as TailoredTextRequest).then(adaptationResponse => {
-            logger.debug("[app.ts] Adaptation Response received.", { adaptationResponse });
-            res.send(adaptationResponse);
-        });
+        return adaptation
+            .getTailoredText(results, classificationResult.userProfile)
+            .then(adaptationResponse => res.send(adaptationResponse));
 
         // Catch any error and inform the caller
     } catch (ex) {
-        logger.error("[app.ts]", ex);
-        return res.json({ message: ex.message, stack: ex.stack });
+        logger.error("[app.ts] ", ex);
+        /* istanbul ignore next */
+        return res
+            .status(500)
+            .json({ message: ex.message, stack: ex.stack });
     }
 
 });

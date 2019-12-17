@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BasicFieldWithId | ArtGuide - Information retrieval module</title>
+	<title>MetaEntity | ArtGuide - Information retrieval module</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="basicfieldwithid.html">BasicFieldWithId</a>
+					<a href="metaentity.html">MetaEntity</a>
 				</li>
 			</ul>
-			<h1>Interface BasicFieldWithId</h1>
+			<h1>Interface MetaEntity</h1>
 		</div>
 	</div>
 </header>
@@ -70,15 +70,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="basicfield.html" class="tsd-signature-type">BasicField</a>
+						<a href="entity.html" class="tsd-signature-type">Entity</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">BasicFieldWithId</span>
-								<ul class="tsd-hierarchy">
-									<li>
-										<a href="location.html" class="tsd-signature-type">Location</a>
-									</li>
-								</ul>
+								<span class="target">MetaEntity</span>
 							</li>
 						</ul>
 					</li>
@@ -91,9 +86,18 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="basicfieldwithid.html#description" class="tsd-kind-icon">description</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="basicfieldwithid.html#entityid" class="tsd-kind-icon">entity<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="basicfieldwithid.html#score" class="tsd-kind-icon">score</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metaentity.html#architect" class="tsd-kind-icon">architect</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metaentity.html#architecturalstyle" class="tsd-kind-icon">architectural<wbr>Style</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metaentity.html#creator" class="tsd-kind-icon">creator</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="metaentity.html#description" class="tsd-kind-icon">description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="metaentity.html#entityid" class="tsd-kind-icon">entity<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metaentity.html#genre" class="tsd-kind-icon">genre</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metaentity.html#instanceof" class="tsd-kind-icon">instanceof</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metaentity.html#location" class="tsd-kind-icon">location</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metaentity.html#movement" class="tsd-kind-icon">movement</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="metaentity.html#score" class="tsd-kind-icon">score</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metaentity.html#wikidataid" class="tsd-kind-icon">wikidata<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="metaentity.html#wikipediapagetitle" class="tsd-kind-icon">wikipedia<wbr>Page<wbr>Title</a></li>
 							</ul>
 						</section>
 					</div>
@@ -101,24 +105,95 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="architect" class="tsd-anchor"></a>
+					<h3>architect</h3>
+					<div class="tsd-signature tsd-kind-icon">architect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in ir/src/models/entity.model.ts:14</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="architecturalstyle" class="tsd-anchor"></a>
+					<h3>architectural<wbr>Style</h3>
+					<div class="tsd-signature tsd-kind-icon">architectural<wbr>Style<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in ir/src/models/entity.model.ts:15</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="creator" class="tsd-anchor"></a>
+					<h3>creator</h3>
+					<div class="tsd-signature tsd-kind-icon">creator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in ir/src/models/entity.model.ts:11</li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="description" class="tsd-anchor"></a>
 					<h3>description</h3>
 					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="basicfield.html">BasicField</a>.<a href="basicfield.html#description">description</a></p>
+						<p>Inherited from <a href="entity.html">Entity</a>.<a href="entity.html#description">description</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/models/classification.models.ts#L4">IR/src/models/classification.models.ts:4</a></li>
+							<li>Defined in ir/src/models/entity.model.ts:2</li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="entityid" class="tsd-anchor"></a>
 					<h3>entity<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">entity<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="entity.html">Entity</a>.<a href="entity.html#entityid">entityId</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/models/classification.models.ts#L9">IR/src/models/classification.models.ts:9</a></li>
+							<li>Defined in ir/src/models/entity.model.ts:4</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="genre" class="tsd-anchor"></a>
+					<h3>genre</h3>
+					<div class="tsd-signature tsd-kind-icon">genre<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in ir/src/models/entity.model.ts:12</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="instanceof" class="tsd-anchor"></a>
+					<h3>instanceof</h3>
+					<div class="tsd-signature tsd-kind-icon">instanceof<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in ir/src/models/entity.model.ts:10</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="location" class="tsd-anchor"></a>
+					<h3>location</h3>
+					<div class="tsd-signature tsd-kind-icon">location<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in ir/src/models/entity.model.ts:16</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="movement" class="tsd-anchor"></a>
+					<h3>movement</h3>
+					<div class="tsd-signature tsd-kind-icon">movement<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in ir/src/models/entity.model.ts:13</li>
 						</ul>
 					</aside>
 				</section>
@@ -127,9 +202,29 @@
 					<h3>score</h3>
 					<div class="tsd-signature tsd-kind-icon">score<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="basicfield.html">BasicField</a>.<a href="basicfield.html#score">score</a></p>
+						<p>Inherited from <a href="entity.html">Entity</a>.<a href="entity.html#score">score</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/models/classification.models.ts#L5">IR/src/models/classification.models.ts:5</a></li>
+							<li>Defined in ir/src/models/entity.model.ts:3</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="wikidataid" class="tsd-anchor"></a>
+					<h3>wikidata<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">wikidata<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in ir/src/models/entity.model.ts:8</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="wikipediapagetitle" class="tsd-anchor"></a>
+					<h3>wikipedia<wbr>Page<wbr>Title</h3>
+					<div class="tsd-signature tsd-kind-icon">wikipedia<wbr>Page<wbr>Title<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in ir/src/models/entity.model.ts:9</li>
 						</ul>
 					</aside>
 				</section>
@@ -148,16 +243,43 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="basicfieldwithid.html" class="tsd-kind-icon">Basic<wbr>Field<wbr>With<wbr>Id</a>
+						<a href="metaentity.html" class="tsd-kind-icon">Meta<wbr>Entity</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="basicfieldwithid.html#description" class="tsd-kind-icon">description</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metaentity.html#architect" class="tsd-kind-icon">architect</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="basicfieldwithid.html#entityid" class="tsd-kind-icon">entity<wbr>Id</a>
+								<a href="metaentity.html#architecturalstyle" class="tsd-kind-icon">architectural<wbr>Style</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metaentity.html#creator" class="tsd-kind-icon">creator</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="basicfieldwithid.html#score" class="tsd-kind-icon">score</a>
+								<a href="metaentity.html#description" class="tsd-kind-icon">description</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="metaentity.html#entityid" class="tsd-kind-icon">entity<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metaentity.html#genre" class="tsd-kind-icon">genre</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metaentity.html#instanceof" class="tsd-kind-icon">instanceof</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metaentity.html#location" class="tsd-kind-icon">location</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metaentity.html#movement" class="tsd-kind-icon">movement</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="metaentity.html#score" class="tsd-kind-icon">score</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metaentity.html#wikidataid" class="tsd-kind-icon">wikidata<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="metaentity.html#wikipediapagetitle" class="tsd-kind-icon">wikipedia<wbr>Page<wbr>Title</a>
 							</li>
 						</ul>
 					</li>

@@ -14,3 +14,5 @@ coverage
 *.env
 
 tmpCache.json
+.log
+trace.*

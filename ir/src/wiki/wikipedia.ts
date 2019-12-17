@@ -1,17 +1,14 @@
 import logger from "../logger";
 import { Page } from "wikijs";
 import wiki from "wikijs";
-import { WikiData } from ".";
-import { ClassificationResult, KnownInstance, PageResult, PageSection, Query } from "../models";
+import { knownInstanceProperties, scoreWeight } from "../../config.json";
+import { MetaEntity, PageResult, PageSection, Query } from "../models";
 
 interface ComposedSection {
     title: string;
     content: string;
     items: Array<PageSection>;
 }
-
-/** WikiData module */
-const wikidata = new WikiData();
 
 /**
  * Performs Wikipedia Search through the APIs.
@@ -21,19 +18,16 @@ export class Wikipedia {
     /**
      * Perform a Wikipedia search give a classification result (not a known instance).
      *
-     * @param classificationResult The object received from the Classification module.
+     * @param metaEntities The entities with WikiData properties.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
      * @returns A list of page results.
      * @throws When WikiPedia APIs return an error.
      */
-    public search(classificationResult: ClassificationResult): Promise<Array<PageResult>> {
-        return this.buildQueries(classificationResult)
-            .then(queries => {
-                const lang = classificationResult.userProfile.language.toLocaleLowerCase();
-                return Promise.all(queries.map(query => this.getWikiInfo(query.searchTerms, lang, query.score)));
-            })
+    public search(metaEntities: Array<MetaEntity>, language: string): Promise<Array<PageResult>> {
+        return Promise.all(this.buildQueries(metaEntities, language)
+            .map(query => this.getWikiInfo(query.searchTerms, language, query.score)))
             .catch(/* istanbul ignore next */ ex => {
-                logger.error("[wikipedia.ts] Error in search.",
-                             { entities: classificationResult.classification.entities, exception: ex });
+                logger.error("[wikipedia.ts] Error in search.", { metaEntities, exception: ex });
                 return Promise.resolve([]);
             });
     }
@@ -45,52 +39,38 @@ export class Wikipedia {
      * @param language The language code, ie. the Wikipedia subdomain to search in.
      * @returns An array of PageResult about the piece of art and correlated pages like the author.
      */
-    public searchKnownInstance(knownInstance: KnownInstance, language: string): Promise<Array<PageResult>> {
-        return Promise.all([
-            // TODO: look also for: creator/architect, period, style, movement 
-            this.getWikiInfo(knownInstance.WikipediaPageTitle, language, knownInstance.score)
-        ]);
+    public searchKnownInstance(knownInstance: MetaEntity, language: string): Promise<Array<PageResult>> {
+        const promises = [];
+        // search for the entity
+        promises.push(this.getWikiInfo(knownInstance.wikipediaPageTitle, language, knownInstance.score));
+        // search for the properties
+        const propertyScore = knownInstance.score * scoreWeight.known.wikidataProperty;
+        for (const property of knownInstanceProperties) {
+            for (const value of knownInstance[property]) 
+                promises.push(this.getWikiInfo(value, language, propertyScore));
+            
+        }
+        return Promise.all(promises);
     }
 
     /**
      * Builds a query basing on the Classification result (not a known instance).
      *
-     * @param classificationResult The object received from the Classification module.
+     * @param metaEntities The entities with WikiData properties.
+     * @param language The language code, ie. the Wikipedia subdomain to search in.
      * @returns A list of query. If there aren't classification entities an empty array is returned.
      */
-    private buildQueries(classificationResult: ClassificationResult): Promise<Array<Query>> {
-        const language = classificationResult.userProfile.language;
+    private buildQueries(metaEntities: Array<MetaEntity>, language: string): Array<Query> {
         // use all the entities
-        return Promise.all(
-            classificationResult.classification.entities.map(entity => {
-                // get the Wikipedia page name from WikiData
-                return wikidata.getWikipediaName(entity.entityId, language)
-                    // build the query
-                    .then(wikipediaName => {
-                        return new Query({
-                            searchTerms: wikipediaName,
-                            score: entity.score,
-                            language: language
-                        });
-                    })
-                    .catch(/* istanbul ignore next */ ex => {
-                        logger.error("[wikipedia.ts] Error while getting Wikipedia page name.",
-                                     { entityId: entity.entityId, exception: ex });
-                        return null;
-                    });
-            })
-        ).then(queries =>
-            queries.filter(query => query != null)
-        )
-            .then(queries => {
-                logger.silly("[wikipedia.ts] Queries built: " + queries);
-                return queries;
-            })
-            .catch/* istanbul ignore next */ (ex => {
-                logger.error("[wikipedia.ts] Error while building queries.",
-                             { entities: classificationResult.classification.entities, exception: ex });
-                return Promise.resolve([]);
-            });
+        const queries = metaEntities.map(entity => {
+            return {
+                searchTerms: entity.wikipediaPageTitle,
+                score: entity.score,
+                language: language
+            } as Query;
+        });
+        logger.silly("[wikipedia.ts] Queries built: " + queries);
+        return queries;
     }
 
 
@@ -139,7 +119,7 @@ export class Wikipedia {
      */
     private buildResult(page: Page, score: number): Promise<PageResult> {
         // PageResult object to be returned
-        const pageResult = new PageResult({ score: score });
+        const pageResult = { score: score, sections: [], keywords: [] } as PageResult;
         // set url
         pageResult.url = page.url().toString();
         // set sections
@@ -153,11 +133,12 @@ export class Wikipedia {
                         if (element.items) {
                             element.items.forEach(item => {
                                 item.tags = [element.title];
+                                item.score = score;
                                 pageResult.sections.push(item);
                             });
                         } else
                             // section without subsections
-                            pageResult.sections.push(Object.assign({}, element, { tags: [element.title] }));
+                            pageResult.sections.push(Object.assign({}, element, { tags: [element.title], score }));
                     });
                 })
                 .catch(/* istanbul ignore next */ ex => {
