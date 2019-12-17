@@ -5620,5 +5620,1969 @@
         }
       }
     ]
+  },
+  "[Expert:en]-Bonanno Pisano chemistry": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano chemistry",
+          "totalResults": "40600",
+          "searchTerms": "Bonanno Pisano chemistry",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano chemistry",
+          "totalResults": "40600",
+          "searchTerms": "Bonanno Pisano chemistry",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-EN"
+    },
+    "searchInformation": {
+      "searchTime": 0.515297,
+      "formattedSearchTime": "0.52",
+      "totalResults": "40600",
+      "formattedTotalResults": "40,600"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano - Wikipedia",
+        "htmlTitle": "<b>Bonanno Pisano</b> - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "Bonanno Pisano (Pisa), active in the 1170s and 1180s, was an Italian sculptor, \nmixing Byzantine and classical elements. Giorgio Vasari wrongly attributed the ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), active in the 1170s and 1180s, was an Italian sculptor, <br>\nmixing Byzantine and classical elements. Giorgio Vasari wrongly attributed the&nbsp;...",
+        "cacheId": "Rnqp5tBSIqYJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6",
+              "width": "198",
+              "height": "255"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Perspectives in Medicinal Chemistry: Metallomics and New Targets ...",
+        "htmlTitle": "Perspectives in Medicinal <b>Chemistry</b>: Metallomics and New Targets ...",
+        "link": "https://www.ncbi.nlm.nih.gov/pubmed/27852206",
+        "displayLink": "www.ncbi.nlm.nih.gov",
+        "snippet": "Perspectives in Medicinal Chemistry: Metallomics and New Targets in ... (1)\nDepartment of Pharmacy, University of Pisa, Via Bonanno Pisano 6, 56126, Pisa,\n ...",
+        "htmlSnippet": "Perspectives in Medicinal <b>Chemistry</b>: Metallomics and New Targets in ... (1)<br>\nDepartment of Pharmacy, University of Pisa, Via <b>Bonanno Pisano</b> 6, 56126, Pisa,<br>\n&nbsp;...",
+        "formattedUrl": "https://www.ncbi.nlm.nih.gov/pubmed/27852206",
+        "htmlFormattedUrl": "https://www.ncbi.nlm.nih.gov/pubmed/27852206",
+        "pagemap": {
+          "metatags": [
+            {
+              "citation_firstpage": "3381",
+              "citation_title": "Perspectives in Medicinal Chemistry: Metallomics and New Targets in Metal-Based Drug Discovery.",
+              "citation_pmid": "27852206",
+              "citation_issn": "1873-4294",
+              "citation_publisher": "Curr Top Med Chem",
+              "citation_doi": "10.2174/156802661629161020215241",
+              "citation_journal_title": "Current topics in medicinal chemistry",
+              "citation_date": "2016",
+              "citation_abstract_html_url": "https://www.ncbi.nlm.nih.gov/pubmed/27852206",
+              "citation_volume": "16",
+              "citation_issue": "29",
+              "citation_authors": "Mendola D; Rizzarelli E"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Ionic liquids : prediction of their melting points by a recursive neural ...",
+        "htmlTitle": "Ionic liquids : prediction of their melting points by a recursive neural ...",
+        "link": "https://pubs.rsc.org/en/content/articlehtml/2008/gc/b708123e",
+        "displayLink": "pubs.rsc.org",
+        "snippet": "... Antonina Starita c and Maria Rosaria Tiné b aDepartment of Bioorganic \nChemistry and Biopharmacy, University of Pisa, via Bonanno Pisano 33, 56126, \nPisa, ...",
+        "htmlSnippet": "... Antonina Starita <sup>c</sup> and Maria Rosaria Tiné <sup>b a</sup>Department of Bioorganic <br>\n<b>Chemistry</b> and Biopharmacy, University of Pisa, via <b>Bonanno Pisano</b> 33, 56126, <br>\nPisa,&nbsp;...",
+        "formattedUrl": "https://pubs.rsc.org/en/content/articlehtml/2008/gc/b708123e",
+        "htmlFormattedUrl": "https://pubs.rsc.org/en/content/articlehtml/2008/gc/b708123e",
+        "pagemap": {
+          "metatags": [
+            {
+              "dc.publisher": "Royal Society of Chemistry",
+              "citation_title": "Ionic liquids : prediction of their melting points by a recursive neural network model",
+              "citation_journal_title": "Green Chemistry",
+              "citation_author": "Riccardo Bini",
+              "dc.date": "2008/03/01",
+              "citation_date": "2008",
+              "citation_abstract_html_url": "https://pubs.rsc.org/en/content/articlelanding/2008/gc/b708123e",
+              "citation_issue": "3",
+              "citation_online_date": "2008/01/08",
+              "citation_firstpage": "306",
+              "viewport": "width=device-width, initial-scale=1",
+              "dc.creator": "Riccardo Bini",
+              "citation_doi": "10.1039/B708123E",
+              "citation_fulltext_html_url": "https://pubs.rsc.org/en/content/articlehtml/2008/gc/b708123e",
+              "dc.title": "Ionic liquids : prediction of their melting points by a recursive neural network model",
+              "dc.identifier": "10.1039/B708123E",
+              "citation_pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2008/gc/b708123e",
+              "citation_volume": "10",
+              "dc.language": "en",
+              "citation_lastpage": "309"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Intracellular Bioinorganic Chemistry and Cross Talk Among Different ...",
+        "htmlTitle": "Intracellular Bioinorganic <b>Chemistry</b> and Cross Talk Among Different ...",
+        "link": "https://www.ncbi.nlm.nih.gov/pubmed/27426868",
+        "displayLink": "www.ncbi.nlm.nih.gov",
+        "snippet": "Intracellular Bioinorganic Chemistry and Cross Talk Among Different -Omics. ... (1\n)Department of Pharmacy, University of Pisa, Via Bonanno Pisano 6, 56126, ...",
+        "htmlSnippet": "Intracellular Bioinorganic <b>Chemistry</b> and Cross Talk Among Different -Omics. ... (1<br>\n)Department of Pharmacy, University of Pisa, Via <b>Bonanno Pisano</b> 6, 56126,&nbsp;...",
+        "formattedUrl": "https://www.ncbi.nlm.nih.gov/pubmed/27426868",
+        "htmlFormattedUrl": "https://www.ncbi.nlm.nih.gov/pubmed/27426868",
+        "pagemap": {
+          "metatags": [
+            {
+              "citation_firstpage": "3103",
+              "citation_title": "Intracellular Bioinorganic Chemistry and Cross Talk Among Different -Omics.",
+              "citation_pmid": "27426868",
+              "citation_issn": "1873-4294",
+              "citation_publisher": "Curr Top Med Chem",
+              "citation_doi": "10.2174/1568026616666160715164212",
+              "citation_journal_title": "Current topics in medicinal chemistry",
+              "citation_date": "2016",
+              "citation_abstract_html_url": "https://www.ncbi.nlm.nih.gov/pubmed/27426868",
+              "citation_volume": "16",
+              "citation_issue": "27",
+              "citation_authors": "Mendola D; Giacomelli C; Rizzarelli E"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Adsorption of NGF and BDNF derived peptides on gold surfaces ...",
+        "htmlTitle": "Adsorption of NGF and BDNF derived peptides on gold surfaces ...",
+        "link": "https://pubs.rsc.org/en/content/articlehtml/2014/cp/c3cp52499j",
+        "displayLink": "pubs.rsc.org",
+        "snippet": "Nov 14, 2013 ... dDepartment of Chemical Sciences, University of Catania, Viale ... eDepartment \nof Pharmacy, University of Pisa, via Bonanno Pisano, 6, ...",
+        "htmlSnippet": "Nov 14, 2013 <b>...</b> <sup>d</sup>Department of <b>Chemical</b> Sciences, University of Catania, Viale ... <sup>e</sup>Department <br>\nof Pharmacy, University of Pisa, via <b>Bonanno Pisano</b>, 6,&nbsp;...",
+        "formattedUrl": "https://pubs.rsc.org/en/content/articlehtml/2014/cp/c3cp52499j",
+        "htmlFormattedUrl": "https://pubs.rsc.org/en/content/articlehtml/2014/cp/c3cp52499j",
+        "pagemap": {
+          "metatags": [
+            {
+              "dc.publisher": "Royal Society of Chemistry",
+              "citation_title": "Adsorption of NGF and BDNF derived peptides on gold surfaces",
+              "citation_journal_title": "Physical Chemistry Chemical Physics",
+              "citation_author": "Giuseppe Forte",
+              "dc.date": "2013/12/18",
+              "citation_date": "2014",
+              "citation_abstract_html_url": "https://pubs.rsc.org/en/content/articlelanding/2014/cp/c3cp52499j",
+              "citation_issue": "4",
+              "citation_online_date": "2013/11/14",
+              "citation_firstpage": "1536",
+              "viewport": "width=device-width, initial-scale=1",
+              "dc.creator": "Giuseppe Forte",
+              "citation_doi": "10.1039/C3CP52499J",
+              "citation_fulltext_html_url": "https://pubs.rsc.org/en/content/articlehtml/2014/cp/c3cp52499j",
+              "dc.title": "Adsorption of NGF and BDNF derived peptides on gold surfaces",
+              "dc.identifier": "10.1039/C3CP52499J",
+              "citation_pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2014/cp/c3cp52499j",
+              "citation_volume": "16",
+              "dc.language": "en",
+              "citation_lastpage": "1544"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Arsenoplatin-1 Is a Dual Pharmacophore Anticancer Agent | Journal ...",
+        "htmlTitle": "Arsenoplatin-1 Is a Dual Pharmacophore Anticancer Agent | Journal ...",
+        "link": "https://pubs.acs.org/doi/abs/10.1021/jacs.8b13681",
+        "displayLink": "pubs.acs.org",
+        "snippet": "Apr 3, 2019 ... Via Bonanno Pisano 6, 56126, Pisa, Italy. #. Department of Chemistry 'Ugo Schiff'\n,. Universit. à. degli Studi Firenze, via della. L. astruccia, 3.",
+        "htmlSnippet": "Apr 3, 2019 <b>...</b> Via <b>Bonanno Pisano</b> 6, 56126, Pisa, Italy. #. Department of <b>Chemistry</b> &#39;Ugo Schiff&#39;<br>\n,. Universit. à. degli Studi Firenze, via della. L. astruccia, 3.",
+        "formattedUrl": "https://pubs.acs.org/doi/abs/10.1021/jacs.8b13681",
+        "htmlFormattedUrl": "https://pubs.acs.org/doi/abs/10.1021/jacs.8b13681",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcROqc9dzxeoCNp0IF_gaUJ-ydwAkC4p9XPUPQjmNdXiCSzFBlByT4x_wic",
+              "width": "225",
+              "height": "225"
+            }
+          ],
+          "metatags": [
+            {
+              "dc.publisher": "American Chemical Society",
+              "og:image": "https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jacsat/2019/jacsat.2019.141.issue-16/jacs.8b13681/20190419/images/large/ja-2018-13681v_0007.jpeg",
+              "dc.description": "Arsenoplatins are adducts of two chemically important anticancer drugs, cisplatin and arsenic trioxide, that have a Pt(II) bond to an As(III) hydroxide center. Screens of the NCI-60 human tumor cell lines reveal that arsenoplatin-1 (AP-1), [Pt(μ-NHC(CH3)O)2ClAs(OH)2], the first representative of this novel class of anticancer agents, displays a superior activity profile relative to the parent drugs As2O3 or cisplatin in a majority of cancer cell lines tested. These activity profiles are important because the success of arsenic trioxide in blood cancers (such as APL) has not been seen in solid tumors due to the rapid clearance of arsenous acid from the body. To understand the biological chemistry of these compounds, we evaluated interactions of AP-1 with the two important classes of biomolecules—proteins and DNA. The first structural studies of AP-1 bound to model proteins reveal that platinum(II) binds the Nε of His in a manner that preserves the Pt–As bond. We find that AP-1 readily enters cells and bi",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "Arsenoplatin-1 Is a Dual Pharmacophore Anticancer Agent",
+              "og:type": "Article",
+              "pbcontext": ";page:string:Article/Chapter View;subPage:string:Abstract;issue:issue:10.1021/jacsat.2019.141.issue-16;wgroup:string:ACHS website Group;website:website:acspubs;pageGroup:string:Publication Pages;journal:journal:jacsat;article:article:10.1021/jacs.8b13681",
+              "citation_journal_title": "Journal of the American Chemical Society",
+              "dc.coverage": "world",
+              "og:title": "Arsenoplatin-1 Is a Dual Pharmacophore Anticancer Agent",
+              "dc.format": "text/HTML",
+              "dc.date": "April 3, 2019",
+              "og:description": "Arsenoplatins are adducts of two chemically important anticancer drugs, cisplatin and arsenic trioxide, that have a Pt(II) bond to an As(III) hydroxide center. Screens of the NCI-60 human tumor cell lines reveal that arsenoplatin-1 (AP-1), [Pt(μ-NHC(CH3)O)2ClAs(OH)2], the first representative of this novel class of anticancer agents, displays a superior activity profile relative to the parent drugs As2O3 or cisplatin in a majority of cancer cell lines tested. These activity profiles are important because the success of arsenic trioxide in blood cancers (such as APL) has not been seen in solid tumors due to the rapid clearance of arsenous acid from the body. To understand the biological chemistry of these compounds, we evaluated interactions of AP-1 with the two important classes of biomolecules—proteins and DNA. The first structural studies of AP-1 bound to model proteins reveal that platinum(II) binds the Nε of His in a manner that preserves the Pt–As bond. We find that AP-1 readily enters cells and bi",
+              "twitter:image": "https://pubs.acs.org/na101/home/literatum/publisher/achs/journals/content/jacsat/2019/jacsat.2019.141.issue-16/jacs.8b13681/20190419/images/large/ja-2018-13681v_0007.jpeg",
+              "twitter:site": "@ACSPublications",
+              "dc.type": "rapid-communication",
+              "viewport": "width=device-width,initial-scale=1,maximum-scale=10, user-scalable=0",
+              "dc.creator": "Đenana  Miodragović",
+              "twitter:description": "Arsenoplatins are adducts of two chemically important anticancer drugs, cisplatin and arsenic trioxide, that have a Pt(II) bond to an As(III) hydroxide center. Screens of the NCI-60 human tumor cell lines reveal that arsenoplatin-1 (AP-1), [Pt(μ-NHC(CH3)O)2ClAs(OH)2], the first representative of this novel class of anticancer agents, displays a superior activity profile relative to the parent drugs As2O3 or cisplatin in a majority of cancer cell lines tested. These activity profiles are important because the success of arsenic trioxide in blood cancers (such as APL) has not been seen in solid tumors due to the rapid clearance of arsenous acid from the body. To understand the biological chemistry of these compounds, we evaluated interactions of AP-1 with the two important classes of biomolecules—proteins and DNA. The first structural studies of AP-1 bound to model proteins reveal that platinum(II) binds the Nε of His in a manner that preserves the Pt–As bond. We find that AP-1 readily enters cells and bi",
+              "dc.title": "Arsenoplatin-1 Is a Dual Pharmacophore Anticancer Agent",
+              "dc.identifier": "10.1021/jacs.8b13681",
+              "dc.language": "en",
+              "og:url": "https://pubs.acs.org/doi/abs/10.1021/jacs.8b13681"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://pubs.acs.org/products/achs/releasedAssets/images/orchid.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Dynamics of acetone photodissociation: a surface hopping study ...",
+        "htmlTitle": "Dynamics of acetone photodissociation: a surface hopping study ...",
+        "link": "https://pubs.rsc.org/en/content/articlehtml/2013/cp/c3cp54016b",
+        "displayLink": "pubs.rsc.org",
+        "snippet": "Oct 21, 2013 ... DOI: 10.1039/C3CP54016B (Paper) Phys. Chem. Chem. Phys., 2013 ... a\nDipartimento di Farmacia, Università di Pisa, via Bonanno Pisano 33, ...",
+        "htmlSnippet": "Oct 21, 2013 <b>...</b> DOI: 10.1039/C3CP54016B (Paper) Phys. <b>Chem</b>. <b>Chem</b>. Phys., 2013 ... <sup>a</sup><br>\nDipartimento di Farmacia, Università di Pisa, via <b>Bonanno Pisano</b> 33,&nbsp;...",
+        "formattedUrl": "https://pubs.rsc.org/en/content/articlehtml/2013/cp/c3cp54016b",
+        "htmlFormattedUrl": "https://pubs.rsc.org/en/content/articlehtml/2013/cp/c3cp54016b",
+        "pagemap": {
+          "metatags": [
+            {
+              "dc.publisher": "Royal Society of Chemistry",
+              "citation_title": "Dynamics of acetone photodissociation: a surface hopping study",
+              "citation_journal_title": "Physical Chemistry Chemical Physics",
+              "citation_author": "Lucilla Favero",
+              "dc.date": "2013/11/13",
+              "citation_date": "2013",
+              "citation_abstract_html_url": "https://pubs.rsc.org/en/content/articlelanding/2013/cp/c3cp54016b",
+              "citation_issue": "47",
+              "citation_online_date": "2013/10/21",
+              "citation_firstpage": "20651",
+              "viewport": "width=device-width, initial-scale=1",
+              "dc.creator": "Lucilla Favero",
+              "citation_doi": "10.1039/C3CP54016B",
+              "citation_fulltext_html_url": "https://pubs.rsc.org/en/content/articlehtml/2013/cp/c3cp54016b",
+              "dc.title": "Dynamics of acetone photodissociation: a surface hopping study",
+              "dc.identifier": "10.1039/C3CP54016B",
+              "citation_pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2013/cp/c3cp54016b",
+              "citation_volume": "15",
+              "dc.language": "en",
+              "citation_lastpage": "20661"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano - Wikipedia, la enciclopedia libre",
+        "htmlTitle": "<b>Bonanno Pisano</b> - Wikipedia, la enciclopedia libre",
+        "link": "https://es.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "es.wikipedia.org",
+        "snippet": "Bonanno Pisano (Pisa), fue un escultor italiano que trabajó en las décadas de \n1170 y 1180. Su estilo mezcla elementos de arte bizantino y de la Antigüedad ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), fue un escultor italiano que trabajó en las décadas de <br>\n1170 y 1180. Su estilo mezcla elementos de arte bizantino y de la Antigüedad&nbsp;...",
+        "cacheId": "k9g-LqpdVAwJ",
+        "formattedUrl": "https://es.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://es.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "hcard": [
+            {
+              "fn": "Bonanno Pisano.",
+              "category": "ItaliaItalia"
+            }
+          ],
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6",
+              "width": "198",
+              "height": "255"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano – Wikipédia, a enciclopédia livre",
+        "htmlTitle": "<b>Bonanno Pisano</b> – Wikipédia, a enciclopédia livre",
+        "link": "https://pt.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "pt.wikipedia.org",
+        "snippet": "Bonanno Pisano (Pisa), ativo nas décadas de 1170 e 1180, foi um escultor \nitaliano que misturou elementos bizantinos e clássicos. Giorgio Vasari \nerroneamente ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), ativo nas décadas de 1170 e 1180, foi um escultor <br>\nitaliano que misturou elementos bizantinos e clássicos. Giorgio Vasari <br>\nerroneamente&nbsp;...",
+        "cacheId": "gXP1xrk9Be4J",
+        "formattedUrl": "https://pt.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://pt.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6",
+              "width": "198",
+              "height": "255"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano – Wikipedia",
+        "htmlTitle": "<b>Bonanno Pisano</b> – Wikipedia",
+        "link": "https://de.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "de.wikipedia.org",
+        "snippet": "Bonanno Pisano (* in Pisa; † ebenda) war ein italienischer Architekt und \nBildhauer, dessen Werke in der Zeit zwischen 1170 und 1180 entstanden.",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (* in Pisa; † ebenda) war ein italienischer Architekt und <br>\nBildhauer, dessen Werke in der Zeit zwischen 1170 und 1180 entstanden.",
+        "cacheId": "wHiZA9CapZIJ",
+        "formattedUrl": "https://de.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://de.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6",
+              "width": "198",
+              "height": "255"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Expert:en]-Leaning Tower of Pisa chemistry": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa chemistry",
+          "totalResults": "409000",
+          "searchTerms": "Leaning Tower of Pisa chemistry",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa chemistry",
+          "totalResults": "409000",
+          "searchTerms": "Leaning Tower of Pisa chemistry",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-EN"
+    },
+    "searchInformation": {
+      "searchTime": 0.60411,
+      "formattedSearchTime": "0.60",
+      "totalResults": "409000",
+      "formattedTotalResults": "409,000"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa - Wikipedia",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "The Leaning Tower of Pisa or simply the Tower of Pisa is the campanile, or \nfreestanding bell tower, of the cathedral of the Italian city of Pisa, known \nworldwide ...",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b> or simply <b>the Tower of Pisa</b> is the campanile, or <br>\nfreestanding bell tower, of the cathedral of the Italian city of Pisa, known <br>\nworldwide&nbsp;...",
+        "cacheId": "-hbT4AUf35kJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/<b>Leaning</b>_<b>Tower_of_Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFg_lO_n3FYnP7QLD1wMWybZWYe9DUGjM1SVktqLw39Hg2xvkoTsyFVs",
+              "width": "182",
+              "height": "277"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa | Reeko's Mad Scientist Lab",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> | Reeko&#39;s Mad Scientist Lab",
+        "link": "https://www.reekoscience.com/science-tips/leaning-tower-of-pisa",
+        "displayLink": "www.reekoscience.com",
+        "snippet": "Mar 29, 2014 ... Leaning Tower of Pisa is a bell tower at Pisa, Italy. It is famous for leaning 141/2 \nfeet (4.4 meters) out of line when measured from the seventh ...",
+        "htmlSnippet": "Mar 29, 2014 <b>...</b> <b>Leaning Tower of Pisa</b> is a bell tower at Pisa, Italy. It is famous for leaning 141/2 <br>\nfeet (4.4 meters) out of line when measured from the seventh&nbsp;...",
+        "cacheId": "31GyD8Cn40sJ",
+        "formattedUrl": "https://www.reekoscience.com/science-tips/leaning-tower-of-pisa",
+        "htmlFormattedUrl": "https://www.reekoscience.com/science-tips/<b>leaning</b>-<b>tower-of-pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRtyqUkZ2WJHE-Zhnua7N_peVTTritwLi8_Gwnlbn34E_sxRKwsZI4t1f6I",
+              "width": "194",
+              "height": "259"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "https://www.reekoscience.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png",
+              "og:type": "article",
+              "article:published_time": "2014-03-29T18:34:04Z",
+              "twitter:card": "summary",
+              "twitter:title": "Leaning Tower of Pisa | Reeko's Mad Scientist Lab",
+              "og:site_name": "Reeko's Mad Scientist Lab",
+              "handheldfriendly": "true",
+              "twitter:domain": "Reeko's Mad Scientist lab",
+              "og:title": "Leaning Tower of Pisa | Reeko's Mad Scientist Lab",
+              "og:description": "Leaning Tower of Pisa is a bell tower at Pisa, Italy. It is famous for leaning 141/2 feet (4.4 meters) out of line when measured from the seventh story. It tilts because its foundation was built on un",
+              "og:image:secure_url": "https://www.reekoscience.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png",
+              "twitter:image": "https://www.reekoscience.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png",
+              "fb:app_id": "259665057470122",
+              "twitter:site": "@ReekoScience",
+              "article:modified_time": "2014-03-29T18:39:07Z",
+              "viewport": "width=device-width,initial-scale=1,maximum-scale=1,user-scalable=yes",
+              "twitter:description": "Leaning Tower of Pisa is a bell tower at Pisa, Italy. It is famous for leaning 141/2 feet (4.4 meters) out of line when measured from the seventh story. It tilts because its foundation was built on un",
+              "onesignal": "wordpress-plugin",
+              "fb:admins": "65313692971",
+              "og:url": "https://www.reekoscience.com/science-tips/leaning-tower-of-pisa"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://www.reekoscience.com/wp-content/uploads/2014/03/image_thumb37.png"
+            }
+          ],
+          "hatomfeed": [
+            {}
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Superman III - Wikipedia",
+        "htmlTitle": "Superman III - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Superman_III",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "Superman III is a 1983 superhero film directed by Richard Lester, based on the \nDC Comics ... En route, as Superman, he extinguishes a fire in a chemical plant \ncontaining unstable beltric acid, which produces ... petty acts of vandalism such \nas straightening the Leaning Tower of Pisa, and blowing out the Olympic Flame.",
+        "htmlSnippet": "Superman III is a 1983 superhero film directed by Richard Lester, based on the <br>\nDC Comics ... En route, as Superman, he extinguishes a fire in a <b>chemical</b> plant <br>\ncontaining unstable beltric acid, which produces ... petty acts of vandalism such <br>\nas straightening the <b>Leaning Tower of Pisa</b>, and blowing out the Olympic Flame.",
+        "cacheId": "LpjXtrE7ba0J",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Superman_III",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/Superman_III",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwwxWwsBs1odS3jQMZDbW4m4gpSDCnA8uB6IB5GBOVIOZfYDUjvXmTasE",
+              "width": "182",
+              "height": "277"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/en/9/9f/Superman_III_poster.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/en/9/9f/Superman_III_poster.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Mystery Of The Leaning Tower Of Pisa Has Finally Been Solved ...",
+        "htmlTitle": "Mystery Of The <b>Leaning Tower Of Pisa</b> Has Finally Been Solved ...",
+        "link": "https://www.iflscience.com/physics/mystery-of-the-leaning-tower-of-pisa-has-finally-been-solved/",
+        "displayLink": "www.iflscience.com",
+        "snippet": "May 12, 2018 ... Mystery Of The Leaning Tower Of Pisa Has Finally Been Solved ... and chemical \nproperties of the construction materials and the rock and soil ...",
+        "htmlSnippet": "May 12, 2018 <b>...</b> Mystery Of The <b>Leaning Tower Of Pisa</b> Has Finally Been Solved ... and <b>chemical</b> <br>\nproperties of the construction materials and the rock and soil&nbsp;...",
+        "cacheId": "VcaREmNmN3IJ",
+        "formattedUrl": "https://www.iflscience.com/.../mystery-of-the-leaning-tower-of-pisa-has- finally-been-solved/",
+        "htmlFormattedUrl": "https://www.iflscience.com/.../mystery-of-<b>the</b>-<b>leaning</b>-<b>tower-of-pisa</b>-has- finally-been-solved/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSgC5JC0PT3wziLkRdtkAn6iyY-p_2r5iH1GdGMvZ5AfiynZwrtO6w9KAo",
+              "width": "300",
+              "height": "168"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "https://cdn.iflscience.com/images/55b00a8a-f503-58f3-993c-a1d5586d2c8d/default-1525903779-cover-image.jpg",
+              "theme-color": "#BBDF33",
+              "og:type": "article",
+              "twitter:card": "summary",
+              "twitter:title": "Mystery Of The Leaning Tower Of Pisa Has Finally Been Solved",
+              "og:site_name": "IFLScience",
+              "og:title": "Mystery Of The Leaning Tower Of Pisa Has Finally Been Solved",
+              "og:description": "A team of engineers has finally unlocked the puzzle of why the seemingly unstable Leaning Tower of Pisa is still standing despite the central Italian regio",
+              "fb:pages": "367116489976035",
+              "twitter:image": "https://cdn.iflscience.com/images/55b00a8a-f503-58f3-993c-a1d5586d2c8d/default-1525903779-cover-image.jpg",
+              "fb:app_id": "1634389153445458",
+              "twitter:site": "@IFLScience",
+              "apple-mobile-web-app-status-bar-style": "black",
+              "viewport": "width=device-width, initial-scale=1",
+              "twitter:description": "A team of engineers has finally unlocked the puzzle of why the seemingly unstable Leaning Tower of Pisa is still standing despite the central Italian regio",
+              "apple-mobile-web-app-capable": "yes",
+              "mobile-web-app-capable": "yes",
+              "og:url": "https://www.iflscience.com/physics/mystery-of-the-leaning-tower-of-pisa-has-finally-been-solved/"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://cdn.iflscience.com/images/55b00a8a-f503-58f3-993c-a1d5586d2c8d/default-1525903779-cover-image.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Case Study: The Leaning Tower of Pisa | Madrid Engineering Group ...",
+        "htmlTitle": "Case Study: The <b>Leaning Tower of Pisa</b> | Madrid Engineering Group ...",
+        "link": "http://madridengineering.com/case-study-the-leaning-tower-of-pisa/",
+        "displayLink": "madridengineering.com",
+        "snippet": "The Leaning Tower of Pisa is perhaps the most well-known architectural oddity in \nthe world. The construction of the tower occurred in three phases, spanning ...",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b> is perhaps the most well-known architectural oddity in <br>\nthe world. The construction of the tower occurred in three phases, spanning&nbsp;...",
+        "cacheId": "p-jb4z8shEoJ",
+        "formattedUrl": "madridengineering.com/case-study-the-leaning-tower-of-pisa/",
+        "htmlFormattedUrl": "madridengineering.com/case-study-<b>the</b>-<b>leaning</b>-<b>tower-of-pisa</b>/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVvA1nSy0F71ToFV-s9PyxDi6L9BvgAy53GpwxYxbvkoyjyPFkJqaR7xYX",
+              "width": "274",
+              "height": "184"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "https://lh6.googleusercontent.com/FYDSyFNW3ntLokeyXrsvGzG9zyn2de1-YS8922nftrk-3mthUVKh1sboo3KrEz9I7opCH011mlxk1FPs4oP5KCUISRR71NV6HOgcpUYo7_SxOFq1WrmypRAMZoeO2SCeuIA",
+              "og:type": "article",
+              "article:section": "Articles",
+              "article:published_time": "2013-09-04T09:22:12+00:00",
+              "og:site_name": "Madrid Engineering Group",
+              "og:title": "Case Study: The Leaning Tower of Pisa - Madrid Engineering Group",
+              "og:locale": "en_US",
+              "og:url": "http://madridengineering.com/case-study-the-leaning-tower-of-pisa/",
+              "og:description": "In an emergency effort to save the Leaning Tower of Pisa, engineers came together to stabilize the tower. Find out how they saved the Leaning Tower of Pisa."
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://lh6.googleusercontent.com/FYDSyFNW3ntLokeyXrsvGzG9zyn2de1-YS8922nftrk-3mthUVKh1sboo3KrEz9I7opCH011mlxk1FPs4oP5KCUISRR71NV6HOgcpUYo7_SxOFq1WrmypRAMZoeO2SCeuIA"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Milton E. Harr",
+        "htmlTitle": "Milton E. Harr",
+        "link": "https://engineering.purdue.edu/CE/People/ptProfile?resource_id=7278",
+        "displayLink": "engineering.purdue.edu",
+        "snippet": "Among the latter are: Bendix Corp. (pads on lunar module); Committee to \nimprove foundation of leaning tower of Pisa; Bougainville Copper; Dow Chemical\n ...",
+        "htmlSnippet": "Among the latter are: Bendix Corp. (pads on lunar module); Committee to <br>\nimprove foundation of <b>leaning tower of Pisa</b>; Bougainville Copper; Dow <b>Chemical</b><br>\n&nbsp;...",
+        "cacheId": "y8YDibazS3kJ",
+        "formattedUrl": "https://engineering.purdue.edu/CE/People/ptProfile?resource_id...",
+        "htmlFormattedUrl": "https://engineering.purdue.edu/CE/People/ptProfile?resource_id...",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGKnzKyNBWJVM7o1xdOZrE_mMq_aSWP--Gx4oY5vjQ4gSaDfmWWs7VgA0",
+              "width": "225",
+              "height": "225"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "https://engineering.purdue.edu/Wraps/ECO/wrap8/themes/default/common/og-image-default.png",
+              "og:type": "profile",
+              "twitter:site": "@PurdueEngineers",
+              "og:site_name": "Lyles School of Civil Engineering - Purdue University",
+              "viewport": "width=device-width, initial-scale=1",
+              "og:title": "Our People - Lyles School of Civil Engineering - Purdue University",
+              "og:url": "https://engineering.purdue.edu/CE/People/ptProfile"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://engineering.purdue.edu/Wraps/ECO/wrap8/themes/default/common/og-image-default.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Chemistry | Civ 5 CBP Wikia | FANDOM powered by Wikia",
+        "htmlTitle": "<b>Chemistry</b> | Civ 5 CBP Wikia | FANDOM powered by Wikia",
+        "link": "https://civ-5-cbp.fandom.com/wiki/Chemistry",
+        "displayLink": "civ-5-cbp.fandom.com",
+        "snippet": "Back to Vox Populi Front Page Back to the list of technologies Allows you to build \nthe Leaning Tower of Pisa, as well as the Grocer, a Food building.",
+        "htmlSnippet": "Back to Vox Populi Front Page Back to the list of technologies Allows you to build <br>\nthe <b>Leaning Tower of Pisa</b>, as well as the Grocer, a Food building.",
+        "cacheId": "R3A-V754uFAJ",
+        "formattedUrl": "https://civ-5-cbp.fandom.com/wiki/Chemistry",
+        "htmlFormattedUrl": "https://civ-5-cbp.fandom.com/wiki/<b>Chemistry</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSSWIsmLEM4S2f7Ctb7e2Jw8I7N8y4gGKRz8sYGtgZF4G7E0r1IcZQbFMlB",
+              "width": "180",
+              "height": "180"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "https://images.wikia.com/civ-5-cbp/images/b/bc/Wiki.png",
+              "apple-itunes-app": "app-id=422467074, app-arguments=https://civ-5-cbp.fandom.com/wiki/Chemistry",
+              "twitter:card": "summary",
+              "twitter:title": "Chemistry | Civ 5 CBP Wikia | FANDOM powered by Wikia",
+              "og:type": "article",
+              "og:site_name": "Civ 5 CBP Wikia",
+              "twitter:url": "https://civ-5-cbp.fandom.com/wiki/Chemistry",
+              "og:title": "Chemistry",
+              "og:description": "Back to Vox Populi Front Page Back to the list of technologies Allows you to build the Leaning Tower of Pisa, as well as the Grocer, a Food building.",
+              "fb:app_id": "112328095453510",
+              "twitter:site": "@getfandom",
+              "viewport": "width=device-width, user-scalable=yes",
+              "twitter:description": "Back to Vox Populi Front Page Back to the list of technologies Allows you to build the Leaning Tower of Pisa, as well as the Grocer, a Food building.",
+              "og:url": "https://civ-5-cbp.fandom.com/wiki/Chemistry"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://vignette.wikia.nocookie.net/civ-5-cbp/images/1/19/Chemistry.png/revision/latest?cb=20160502191539"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Physics + Chemistry Archives - Page 8 of 31 - Science Friday",
+        "htmlTitle": "Physics + <b>Chemistry</b> Archives - Page 8 of 31 - Science Friday",
+        "link": "https://www.sciencefriday.com/topics/physics-chemistry/page/8/",
+        "displayLink": "www.sciencefriday.com",
+        "snippet": "A Leaning Tower, A Jumping Spider, And Missing Plutonium. Researchers are \nlooking for new insights into why the Leaning Tower of Pisa has managed to stay\n ...",
+        "htmlSnippet": "A Leaning Tower, A Jumping Spider, And Missing Plutonium. Researchers are <br>\nlooking for new insights into why the <b>Leaning Tower of Pisa</b> has managed to stay<br>\n&nbsp;...",
+        "cacheId": "marQfEt7TJ4J",
+        "formattedUrl": "https://www.sciencefriday.com/topics/physics-chemistry/page/8/",
+        "htmlFormattedUrl": "https://www.sciencefriday.com/topics/physics-<b>chemistry</b>/page/8/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRCHWhfTBLcbDNVNJCZdk9YQlS8CoJjbF22i_Ox5HuTs1h7Dkl3oI1QxPQ",
+              "width": "276",
+              "height": "182"
+            }
+          ],
+          "metatags": [
+            {
+              "msapplication-tilecolor": "#da532c",
+              "theme-color": "#ffffff",
+              "og:type": "object",
+              "twitter:card": "summary",
+              "twitter:title": "Physics + Chemistry Archives - Page 8 of 31 - Science Friday",
+              "og:site_name": "Science Friday",
+              "viewport": "width=device-width, initial-scale=1",
+              "og:title": "Physics + Chemistry Archives - Page 8 of 31 - Science Friday",
+              "og:locale": "en_US",
+              "msapplication-tileimage": "https://www.sciencefriday.com/wp-content/themes/sciencefriday/images/icons/touch-icons/mstile-144x144.png",
+              "og:url": "https://www.sciencefriday.com/topics/physics-chemistry/page/8/"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://www.sciencefriday.com/wp-content/uploads/2018/05/orderoftimebook-575x380.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "500-year-old Leaning Tower of Pisa mystery unveiled by engineers ...",
+        "htmlTitle": "500-year-old <b>Leaning Tower of Pisa</b> mystery unveiled by engineers ...",
+        "link": "https://www.sciencedaily.com/releases/2018/05/180509105004.htm",
+        "displayLink": "www.sciencedaily.com",
+        "snippet": "May 9, 2018 ... Why has the Leaning Tower of Pisa survived the strong earthquakes that have hit \nthe region since the middle ages? This is a long-standing ...",
+        "htmlSnippet": "May 9, 2018 <b>...</b> Why has the <b>Leaning Tower of Pisa</b> survived the strong earthquakes that have hit <br>\nthe region since the middle ages? This is a long-standing&nbsp;...",
+        "cacheId": "RvAI4DnZWaQJ",
+        "formattedUrl": "https://www.sciencedaily.com/releases/2018/05/180509105004.htm",
+        "htmlFormattedUrl": "https://www.sciencedaily.com/releases/2018/05/180509105004.htm",
+        "pagemap": {
+          "metatags": [
+            {
+              "last-modified": "Sun, 15 Dec 2019 14:24:24 GMT",
+              "expires": "Sun, 15 Dec 2019 15:24:24 GMT",
+              "og:type": "article",
+              "og:site_name": "ScienceDaily",
+              "viewport": "width=device-width, initial-scale=1",
+              "og:title": "500-year-old Leaning Tower of Pisa mystery unveiled by engineers",
+              "og:url": "https://www.sciencedaily.com/releases/2018/05/180509105004.htm",
+              "og:description": "Why has the Leaning Tower of Pisa survived the strong earthquakes that have hit the region since the middle ages? This is a long-standing question that experts in earthquake engineering and soil-structure interaction have now solved.."
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "The mortar of the “Leaning Tower” of Pisa: the product of a medieval ...",
+        "htmlTitle": "The mortar of the “<b>Leaning Tower” of Pisa</b>: the product of a medieval ...",
+        "link": "https://www.schweizerbart.de/papers/ejm/detail/12/84181/The_mortar_of_the_Leaning_Tower_of_Pisa_the_product_of_a_medieval_technique_for_preparing_high_strength_mortars",
+        "displayLink": "www.schweizerbart.de",
+        "snippet": "The mineralogical, petrographical, chemical and physical data collected on the \nbulk mortar and its binder show that the famous “Leaning Tower” of Pisa was ...",
+        "htmlSnippet": "The mineralogical, petrographical, <b>chemical</b> and physical data collected on the <br>\nbulk mortar and its binder show that the famous “<b>Leaning Tower” of Pisa</b> was&nbsp;...",
+        "cacheId": "r_eI51FDD3gJ",
+        "formattedUrl": "https://www.schweizerbart.de/.../The_mortar_of_the_Leaning_Tower_of_ Pisa_the_product_of_a_medieval_technique_for_preparing_high_st...",
+        "htmlFormattedUrl": "https://www.schweizerbart.de/.../<b>The</b>_mortar_of_<b>the</b>_<b>Leaning</b>_<b>Tower_of_ Pisa</b>_<b>the</b>_product_of_a_medieval_technique_for_preparing_high_st...",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRuvKDVFFbfL0oMZSfm6_ArWRNbsUaNnygaE2y_eGwW51w2mPgLpdFs1C2v",
+              "width": "188",
+              "height": "268"
+            }
+          ],
+          "metatags": [
+            {
+              "citation_keywords": "“Leaning Tower of Pisa”; mortar; binder; lumps; hydraulic character; formulation procedure",
+              "dc.publisher": "Schweizerbart'sche Verlagsbuchhandlung",
+              "citation_title": "The mortar of the “Leaning Tower” of Pisa: the product of a medieval technique for preparing high-strength mortars",
+              "citation_publisher": "Schweizerbart'sche Verlagsbuchhandlung",
+              "citation_journal_title": "European Journal of Mineralogy",
+              "dc.format": "text/html",
+              "language": "en",
+              "citation_date": "2000-11-17",
+              "dc.date": "2000-11-17",
+              "citation_authors": "Franzini, Marco; Leoni, Leonardo; Lezzerini, Marco; Sartori, Franco",
+              "citation_firstpage": "1151",
+              "viewport": "width=device-width initial-scale=1.0",
+              "citation_language": "en",
+              "citation_doi": "10.1127/ejm/12/6/1151",
+              "dc.title": "The mortar of the “Leaning Tower” of Pisa: the product of a medieval technique for preparing high-strength mortars",
+              "dc.identifier": "84181",
+              "dc.language": "en",
+              "citation_lastpage": "1163"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "http://content1.schweizerbart.de//thumbnail/papers/84181.pdf/1000.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Expert:en]-Leaning Tower of Pisa art": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa art",
+          "totalResults": "4000000",
+          "searchTerms": "Leaning Tower of Pisa art",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa art",
+          "totalResults": "4000000",
+          "searchTerms": "Leaning Tower of Pisa art",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-EN"
+    },
+    "searchInformation": {
+      "searchTime": 0.640018,
+      "formattedSearchTime": "0.64",
+      "totalResults": "4000000",
+      "formattedTotalResults": "4,000,000"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa - Wikipedia",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "The Leaning Tower of Pisa or simply the Tower of Pisa is the campanile, or \nfreestanding bell ... Guglielmo and Bonanno Pisano, a well-known 12th-century \nresident artist of Pisa, known for his bronze casting, particularly in the Pisa \nDuomo.",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b> or simply <b>the Tower of Pisa</b> is the campanile, or <br>\nfreestanding bell ... Guglielmo and Bonanno Pisano, a well-known 12th-century <br>\nresident <b>artist</b> of Pisa, known for his bronze casting, particularly in the Pisa <br>\nDuomo.",
+        "cacheId": "-hbT4AUf35kJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/<b>Leaning</b>_<b>Tower_of_Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFg_lO_n3FYnP7QLD1wMWybZWYe9DUGjM1SVktqLw39Hg2xvkoTsyFVs",
+              "width": "182",
+              "height": "277"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa straightens up | Art and design | The Guardian",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> straightens up | <b>Art</b> and design | The Guardian",
+        "link": "https://www.theguardian.com/artanddesign/2013/sep/24/leaning-tower-pisa-restoration-architecture",
+        "displayLink": "www.theguardian.com",
+        "snippet": "Sep 24, 2013 ... The Leaning Tower of Pisa is still leaning – only less so. Its incline is a congenital \ndefect, a kind of childhood disease from which the tower ...",
+        "htmlSnippet": "Sep 24, 2013 <b>...</b> The <b>Leaning Tower of Pisa</b> is still leaning – only less so. Its incline is a congenital <br>\ndefect, a kind of childhood disease from which the tower&nbsp;...",
+        "cacheId": "SoIT3CUHewIJ",
+        "formattedUrl": "https://www.theguardian.com/artanddesign/.../leaning-tower-pisa-restoration- architecture",
+        "htmlFormattedUrl": "https://www.<b>the</b>guardian.com/<b>art</b>anddesign/.../<b>leaning</b>-<b>tower</b>-<b>pisa</b>-restoration- architecture",
+        "pagemap": {
+          "thumbnail": [
+            {
+              "src": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/9/17/1379430002070/Tower-of-Pisa-003.jpg?width=620&quality=85&auto=format&fit=max&s=7c4a1ca5407533f598d12c998338a3e1"
+            }
+          ],
+          "imageobject": [
+            {
+              "width": "190",
+              "url": "https://uploads.guim.co.uk/2018/01/31/TheGuardian_AMP.png",
+              "height": "60"
+            },
+            {
+              "contenturl": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/9/17/1379430008410/Tower-of-Pisa-008.jpg?width=300&quality=85&auto=format&fit=max&s=4f50243b382aa178c4e525688a3a2824",
+              "representativeofpage": "true",
+              "width": "460",
+              "description": "After a €30m restoration programme, the tower has returned to its original incline of two or three centuries earlier and is continuing to straighten. Photograph: Fabio Muzzi/Getty",
+              "url": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/9/17/1379430008410/Tower-of-Pisa-008.jpg?width=700&quality=85&auto=format&fit=max&s=aa3ae6dc2ae5c955833a406bf9c476ea",
+              "height": "276"
+            }
+          ],
+          "person": [
+            {
+              "name": "Philippe Ridet",
+              "sameas": "Philippe Ridet"
+            },
+            {
+              "givenname": "UnashamedPedant",
+              "url": "UnashamedPedant"
+            },
+            {
+              "givenname": "NoTottiNoParty",
+              "url": "NoTottiNoParty"
+            },
+            {
+              "givenname": "shakinwilly",
+              "url": "shakinwilly"
+            },
+            {
+              "givenname": "urbanpenguin",
+              "url": "urbanpenguin"
+            },
+            {
+              "givenname": "tegga",
+              "url": "tegga"
+            },
+            {
+              "givenname": "HalfWarmedFish",
+              "url": "HalfWarmedFish"
+            },
+            {
+              "givenname": "AvoidingMyTherapist",
+              "url": "AvoidingMyTherapist"
+            }
+          ],
+          "organization": [
+            {
+              "name": "The Guardian"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/9/17/1379430008410/Tower-of-Pisa-008.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=b773206c48ba8a2c0fb3863c0b3981ef",
+              "twitter:app:id:googleplay": "com.guardian",
+              "twitter:app:url:iphone": "gnmguardian://artanddesign/2013/sep/24/leaning-tower-pisa-restoration-architecture?contenttype=Article&source=twitter",
+              "theme-color": "#052962",
+              "og:image:width": "1200",
+              "article:published_time": "2013-09-24T12:59:00.000Z",
+              "twitter:card": "summary_large_image",
+              "og:site_name": "the Guardian",
+              "apple-mobile-web-app-title": "Guardian",
+              "twitter:app:url:ipad": "gnmguardian://artanddesign/2013/sep/24/leaning-tower-pisa-restoration-architecture?contenttype=Article&source=twitter",
+              "twitter:app:name:googleplay": "The Guardian",
+              "msapplication-tileimage": "https://assets.guim.co.uk/images/favicons/023dafadbf5ef53e0865e4baaaa32b3b/windows_tile_144_b.png",
+              "al:ios:url": "gnmguardian://artanddesign/2013/sep/24/leaning-tower-pisa-restoration-architecture?contenttype=Article&source=applinks",
+              "twitter:app:id:iphone": "409128287",
+              "og:description": "Restoration work on the famous Tuscan monument has corrected some of its perilous incline",
+              "article:publisher": "https://www.facebook.com/theguardian",
+              "al:ios:app_store_id": "409128287",
+              "twitter:image": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/9/17/1379430008410/Tower-of-Pisa-008.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&s=c262a8bcd5bff92a91b5fb251119a28e",
+              "twitter:dnt": "on",
+              "twitter:site": "@guardian",
+              "article:modified_time": "2018-03-04T12:51:06.000Z",
+              "news_keywords": "Architecture,Culture,Italy",
+              "application-name": "The Guardian",
+              "msapplication-tilecolor": "#052962",
+              "thumbnail": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/9/17/1379430002070/Tower-of-Pisa-003.jpg?width=620&quality=85&auto=format&fit=max&s=7c4a1ca5407533f598d12c998338a3e1",
+              "og:type": "article",
+              "article:section": "Art and design",
+              "handheldfriendly": "True",
+              "al:ios:app_name": "The Guardian",
+              "author": "Philippe Ridet",
+              "og:title": "Leaning Tower of Pisa straightens up",
+              "og:image:height": "720",
+              "twitter:app:id:ipad": "409128287",
+              "fb:pages": "10513336322",
+              "article:author": "https://www.theguardian.com/profile/phillipe-ridet",
+              "article:tag": "Architecture,Culture,Italy",
+              "fb:app_id": "180444840287",
+              "twitter:app:url:googleplay": "guardian://www.theguardian.com/artanddesign/2013/sep/24/leaning-tower-pisa-restoration-architecture",
+              "twitter:app:name:ipad": "The Guardian",
+              "viewport": "width=device-width,minimum-scale=1,initial-scale=1",
+              "og:url": "http://www.theguardian.com/artanddesign/2013/sep/24/leaning-tower-pisa-restoration-architecture",
+              "twitter:app:name:iphone": "The Guardian",
+              "format-detection": "telephone=no"
+            }
+          ],
+          "comment": [
+            {
+              "datecreated": "2013-09-24T15:35:15Z",
+              "text": "it had spontaneously recovered 2.5cm of its vertical incline between 2001 and 2013. [...] \"It was expected,\" he said, as a result of the major restoration programme carried out between 1991..."
+            },
+            {
+              "datecreated": "2013-09-24T15:41:30Z",
+              "text": "Pisa piss"
+            },
+            {
+              "datecreated": "2013-09-24T16:20:11Z",
+              "text": "I think mention should also be made of John Burland of Imperial College who was honoured by the Italians for his work in devising the scheme for stabilising the tower."
+            },
+            {
+              "datecreated": "2013-09-24T16:50:20Z",
+              "text": "Are you sure you mean €60,000? Not sure what level of restoration of the walls could be done for that bar a surface cleaning of a section."
+            },
+            {
+              "datecreated": "2013-09-24T17:42:17Z",
+              "text": "Has someone used google translate on this article?"
+            },
+            {
+              "datecreated": "2013-09-24T19:10:53Z",
+              "text": "Pah, when i visited it was so expensive to go up i waited at the bottom while the others did the climb."
+            },
+            {
+              "datecreated": "2013-09-29T18:47:16Z",
+              "text": "Viagra hails new first..."
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/9/17/1379430008410/Tower-of-Pisa-008.jpg?width=605&quality=85&auto=format&fit=max&s=98247d1e81e8edf0fa452b4f8de2efd8",
+              "width": "290",
+              "type": "1",
+              "height": "174"
+            }
+          ],
+          "newsarticle": [
+            {
+              "articlebody": "The Leaning Tower of Pisa is still leaning – only less so. Its incline is a congenital defect, a kind of childhood disease from which the tower never recovered. It has leaned for as long...",
+              "datemodified": "2018-03-04T07:51:06-0500",
+              "description": "Restoration work on the famous Tuscan monument has corrected some of its perilous incline",
+              "headline": "Leaning Tower of Pisa straightens up",
+              "datepublished": "2013-09-24T08:59:00-0400",
+              "mainentityofpage": "https://www.theguardian.com/artanddesign/2013/sep/24/leaning-tower-pisa-restoration-architecture"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Piazza dei Miracoli - Wikipedia",
+        "htmlTitle": "Piazza dei Miracoli - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Piazza_dei_Miracoli",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "The Piazza dei Miracoli formally known as Piazza del Duomo (English: Cathedral \nSquare), is a walled 8.87-hectare area located in Pisa, Tuscany, Italy, recognized \nas an important centre of European medieval art and one of the finest \narchitectural complexes in the .... The campanile (bell tower), commonly known \nas the Leaning Tower of Pisa, ...",
+        "htmlSnippet": "The Piazza dei Miracoli formally known as Piazza del Duomo (English: Cathedral <br>\nSquare), is a walled 8.87-hectare area located in Pisa, Tuscany, Italy, recognized <br>\nas an important centre of European medieval <b>art</b> and one of the finest <br>\narchitectural complexes in the .... The campanile (bell tower), commonly known <br>\nas the <b>Leaning Tower of Pisa</b>,&nbsp;...",
+        "cacheId": "CRzpPN9ug7oJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Piazza_dei_Miracoli",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/Piazza_dei_Miracoli",
+        "pagemap": {
+          "hcard": [
+            {
+              "fn": "UNESCO World Heritage Site",
+              "category": "Piazza del Duomo, Pisa"
+            }
+          ],
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToPv_yHofZ9wixL5X7CDRqJh34AKQV0d_DnJKpILWBMWnz-NbSRLGnqMHd",
+              "width": "220",
+              "height": "147"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/CampodeiMiracoliPisa_edit.jpg/1200px-CampodeiMiracoliPisa_edit.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/CampodeiMiracoliPisa_edit.jpg/220px-CampodeiMiracoliPisa_edit.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "How to Draw Famous Buildings: The Leaning Tower of Pisa - YouTube",
+        "htmlTitle": "How to Draw Famous Buildings: The <b>Leaning Tower of Pisa</b> - YouTube",
+        "link": "https://www.youtube.com/watch?v=uyzhY-JkAmY",
+        "displayLink": "www.youtube.com",
+        "snippet": "Jan 28, 2017 ... Learn How to Draw The Leaning Tower of Pisa in this simple step by step \ndrawing for beginners, plus draw Pisa ... Circle Line Art School.",
+        "htmlSnippet": "Jan 28, 2017 <b>...</b> Learn How to Draw The <b>Leaning Tower of Pisa</b> in this simple step by step <br>\ndrawing for beginners, plus draw Pisa ... Circle Line <b>Art</b> School.",
+        "cacheId": "9xKV4GUhJGQJ",
+        "formattedUrl": "https://www.youtube.com/watch?v=uyzhY-JkAmY",
+        "htmlFormattedUrl": "https://www.youtube.com/watch?v=uyzhY-JkAmY",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRtKQC1Qwns0EMGc11jve6_giAB7MnXsJa1yKsrK6Kf7aloPCygui9yyXTv",
+              "width": "300",
+              "height": "168"
+            }
+          ],
+          "imageobject": [
+            {
+              "width": "1280",
+              "url": "https://i.ytimg.com/vi/uyzhY-JkAmY/maxresdefault.jpg",
+              "height": "720"
+            }
+          ],
+          "person": [
+            {
+              "url": "http://www.youtube.com/user/circlelinemedia"
+            },
+            {
+              "url": "https://plus.google.com/109344037640939076423"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "https://i.ytimg.com/vi/uyzhY-JkAmY/maxresdefault.jpg",
+              "theme-color": "#ff0000",
+              "og:image:width": "1280",
+              "og:type": "video.other",
+              "og:site_name": "YouTube",
+              "al:ios:app_name": "YouTube",
+              "og:title": "How to Draw Famous Buildings: The Leaning Tower of Pisa",
+              "og:image:height": "720",
+              "al:android:package": "com.google.android.youtube",
+              "title": "How to Draw Famous Buildings: The Leaning Tower of Pisa",
+              "al:ios:url": "vnd.youtube://www.youtube.com/watch?v=uyzhY-JkAmY&feature=applinks",
+              "al:web:url": "https://www.youtube.com/watch?v=uyzhY-JkAmY&feature=applinks",
+              "og:video:secure_url": "https://www.youtube.com/embed/uyzhY-JkAmY",
+              "og:video:tag": "how to draw",
+              "og:description": "Learn How to Draw The Leaning Tower of Pisa in this simple step by step drawing for beginners, plus draw Pisa Cathedral! SUBSCRIBE for a new drawing every we...",
+              "og:video:width": "1280",
+              "al:ios:app_store_id": "544007664",
+              "al:android:url": "vnd.youtube://www.youtube.com/watch?v=uyzhY-JkAmY&feature=applinks",
+              "og:video:type": "text/html",
+              "og:video:height": "720",
+              "og:video:url": "https://www.youtube.com/embed/uyzhY-JkAmY",
+              "og:url": "https://www.youtube.com/watch?v=uyzhY-JkAmY",
+              "al:android:app_name": "YouTube"
+            }
+          ],
+          "videoobject": [
+            {
+              "embedurl": "https://www.youtube.com/embed/uyzhY-JkAmY",
+              "playertype": "HTML5 Flash",
+              "isfamilyfriendly": "True",
+              "uploaddate": "2017-01-28",
+              "description": "Learn How to Draw The Leaning Tower of Pisa in this simple step by step drawing for beginners, plus draw Pisa Cathedral! SUBSCRIBE for a new drawing every we...",
+              "videoid": "uyzhY-JkAmY",
+              "url": "https://www.youtube.com/watch?v=uyzhY-JkAmY",
+              "duration": "PT5M0S",
+              "unlisted": "False",
+              "name": "How to Draw Famous Buildings: The Leaning Tower of Pisa",
+              "paid": "False",
+              "width": "1280",
+              "regionsallowed": "AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH...",
+              "genre": "Howto & Style",
+              "interactioncount": "105768",
+              "channelid": "UCVQxmyIOutGT4lmWlDN9pmA",
+              "datepublished": "2017-01-28",
+              "thumbnailurl": "https://i.ytimg.com/vi/uyzhY-JkAmY/maxresdefault.jpg",
+              "height": "720"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://i.ytimg.com/vi/uyzhY-JkAmY/maxresdefault.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Beautiful Leaning Tower of Pisa artwork for sale, Posters and Prints ...",
+        "htmlTitle": "Beautiful <b>Leaning Tower of Pisa</b> artwork for sale, Posters and Prints ...",
+        "link": "https://www.art.com/gallery/id--b7261/leaning-tower-of-pisa-posters.htm",
+        "displayLink": "www.art.com",
+        "snippet": "Thrill your walls now with a stunning Leaning Tower of Pisa print from the world's \nlargest art gallery. Choose from thousands of Leaning Tower of Pisa artworks ...",
+        "htmlSnippet": "Thrill your walls now with a stunning <b>Leaning Tower of Pisa</b> print from the world&#39;s <br>\nlargest <b>art</b> gallery. Choose from thousands of <b>Leaning Tower of Pisa</b> artworks&nbsp;...",
+        "cacheId": "vGcYA1Iq0sYJ",
+        "formattedUrl": "https://www.art.com/gallery/id.../leaning-tower-of-pisa-posters.htm",
+        "htmlFormattedUrl": "https://www.<b>art</b>.com/gallery/id.../<b>leaning</b>-<b>tower-of-pisa</b>-posters.htm",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, height=device-height, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Church and Leaning Tower of Pisa | Denver Art Museum",
+        "htmlTitle": "Church and <b>Leaning Tower of Pisa</b> | Denver <b>Art</b> Museum",
+        "link": "https://denverartmuseum.org/object/2015.237",
+        "displayLink": "denverartmuseum.org",
+        "snippet": "Other images represent the best photography available and should be used as \nreference images only. Please complete the Image Rights Request form if you ...",
+        "htmlSnippet": "Other images represent <b>the</b> best photography available and should be used as <br>\nreference images only. Please complete <b>the</b> Image Rights Request form if you&nbsp;...",
+        "cacheId": "2V64tI6poiEJ",
+        "formattedUrl": "https://denverartmuseum.org/object/2015.237",
+        "htmlFormattedUrl": "https://denver<b>art</b>museum.org/object/2015.237",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR414XkWEf7oEGYDYFP8mKaXvmOopTtMwmQPWDUfX7j1P0uKCHvtRxSGdw",
+              "width": "250",
+              "height": "188"
+            }
+          ],
+          "museum": [
+            {
+              "openinghours": "Mo-Th 10:00-17:00"
+            }
+          ],
+          "postaladdress": [
+            {
+              "addresslocality": "Denver",
+              "postalcode": "80204",
+              "addressregion": "CO",
+              "name": "Denver Art Museum",
+              "streetaddress": "100 W 14th Avenue Pkwy"
+            }
+          ],
+          "metatags": [
+            {
+              "p:domain_verify": "eec2a3bd78a965b91b3a4bff20dad156",
+              "og:type": "website",
+              "twitter:card": "summary",
+              "twitter:title": "Church and Leaning Tower of Pisa",
+              "og:site_name": "Denver Art Museum",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "twitter:url": "https://denverartmuseum.org/object/2015.237",
+              "twitter:description": "The Denver Art Museum's collection includes more than 70,000 works of art. Known internationally for the way we help our visitors explore art and their own creativity.",
+              "og:description": "The Denver Art Museum's collection includes more than 70,000 works of art. Known internationally for the way we help our visitors explore art and their own creativity."
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://s3.amazonaws.com/damcollections/7fe3d1eb_9359/2000/2000_protected.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa - Useful Information – Florence Museums",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> - Useful Information – Florence Museums",
+        "link": "https://www.florence-museum.com/leaning-tower-of-pisa.php",
+        "displayLink": "www.florence-museum.com",
+        "snippet": "Discover the wonderful Leaning Tower of Pisa with it's fascinating history, \ncuriosities, useful information ... The Tower of Pisa is a true jewel of Romanesque \nart.",
+        "htmlSnippet": "Discover the wonderful <b>Leaning Tower of Pisa</b> with it&#39;s fascinating history, <br>\ncuriosities, useful information ... <b>The Tower of Pisa</b> is a true jewel of Romanesque <br>\n<b>art</b>.",
+        "cacheId": "0n07ULjWkwQJ",
+        "formattedUrl": "https://www.florence-museum.com/leaning-tower-of-pisa.php",
+        "htmlFormattedUrl": "https://www.florence-museum.com/<b>leaning</b>-<b>tower-of-pisa</b>.php",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQTuvCR1gpuUZ3LoBMoi7WRiYjbpNML04wzgdHbyVZ8pwkW0hC9dRb5ey4",
+              "width": "274",
+              "height": "184"
+            }
+          ],
+          "metatags": [
+            {
+              "copyright": "Copyright 2019, Florence Museum",
+              "geo.region": "IT",
+              "viewport": "width=device-width, initial-scale=1",
+              "og:title": "Leaning Tower of Pisa - Useful Information – Florence Museums",
+              "rating": "General",
+              "distribution": "Global",
+              "og:description": "Discover the wonderful Leaning Tower of Pisa with it's fascinating history, curiosities, useful information and other magnificent museums of Florence"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://www.florence-museum.com/photos/xleaning_tower_of_pisa_3.jpg.pagespeed.ic.F62jEBKSfL.jpg"
+            }
+          ],
+          "listitem": [
+            {
+              "item": "The Museums of Florence",
+              "name": "The Museums of Florence",
+              "position": "1"
+            },
+            {
+              "item": "Leaning Tower of Pisa",
+              "name": "Leaning Tower of Pisa",
+              "position": "2"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "WHO built the Leaning Tower of Pisa?",
+        "htmlTitle": "WHO built the <b>Leaning Tower of Pisa</b>?",
+        "link": "https://leaningtowerpisa.com/facts/who/who-built-pisa-leaning-tower",
+        "displayLink": "leaningtowerpisa.com",
+        "snippet": "The construction of the Leaning Tower lasted about 200 years. ... famous sculptor \nin Pisa who created several pieces of art in the Square of Miracles;; Gerardo di ...",
+        "htmlSnippet": "<b>The</b> construction of <b>the Leaning Tower</b> lasted about 200 years. ... famous sculptor <br>\nin <b>Pisa</b> who created several pieces of <b>art</b> in <b>the</b> Square of Miracles;; Gerardo di&nbsp;...",
+        "cacheId": "npbOZYQaUkwJ",
+        "formattedUrl": "https://leaningtowerpisa.com/facts/who/who-built-pisa-leaning-tower",
+        "htmlFormattedUrl": "https://<b>leaningtowerpisa</b>.com/facts/who/who-built-<b>pisa</b>-<b>leaning</b>-<b>tower</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRTbWj-xNEj7NyNxbpdj8gdBtYhLZ682Vk_J9LntOLqgeawIhymF7vjZwU",
+              "width": "318",
+              "height": "159"
+            }
+          ],
+          "imageobject": [
+            {
+              "width": "auto",
+              "url": "https://leaningtowerpisa.com/images/articles/leaning-tower-pisa-north-east-view.jpg",
+              "height": "auto"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "https://leaningtowerpisa.com/images/articles/leaning-tower-pisa-north-east-view.jpg",
+              "og:type": "article",
+              "og:site_name": "Leaning Tower Pisa",
+              "handheldfriendly": "true",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+              "author": "Andrea Bronzini",
+              "apple-mobile-web-app-capable": "YES",
+              "og:title": "WHO built the Leaning Tower of Pisa?",
+              "og:url": "https://leaningtowerpisa.com/facts/who/who-built-pisa-leaning-tower",
+              "og:description": "The construction of the Leaning Tower lasted about 200 years. There were several persons involved in the building works. Here is the complete list."
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://leaningtowerpisa.com/images/articles/leaning-tower-pisa-north-east-view.jpg"
+            }
+          ],
+          "sitenavigationelement": [
+            {
+              "name": "Home",
+              "url": "Home"
+            },
+            {
+              "name": "Home",
+              "url": "Home"
+            },
+            {
+              "name": "WHEN",
+              "url": "WHEN"
+            },
+            {
+              "name": "Pisa",
+              "url": "Pisa"
+            }
+          ],
+          "article": [
+            {
+              "articlebody": "The construction of the Leaning Tower of Pisa began over 800 years ago and the whole process lasted about 200 years (1173-1372). Consequently, there were several persons involved in the constructio...",
+              "inlanguage": "en-GB"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Yin Art- European Architecture Canvas Print Leaning Tower of Pisa",
+        "htmlTitle": "Yin <b>Art</b>- European Architecture Canvas Print <b>Leaning Tower of Pisa</b>",
+        "link": "https://www.amazon.com/Yin-Architecture-Colosseum-Art-Classical/dp/B06VXN29DV",
+        "displayLink": "www.amazon.com",
+        "snippet": "Amazon.com: Yin Art- European Architecture Canvas Print Leaning Tower of Pisa \n& Eiffel Tower Italy Roman Colosseum & London Big Clock Wall Art Classical ...",
+        "htmlSnippet": "Amazon.com: Yin <b>Art</b>- European Architecture Canvas Print <b>Leaning Tower of Pisa</b> <br>\n&amp; Eiffel Tower Italy Roman Colosseum &amp; London Big Clock Wall <b>Art</b> Classical&nbsp;...",
+        "cacheId": "ObY-hg4i7aYJ",
+        "formattedUrl": "https://www.amazon.com/Yin-Architecture...Art.../B06VXN29DV",
+        "htmlFormattedUrl": "https://www.amazon.com/Yin-Architecture...<b>Art</b>.../B06VXN29DV",
+        "pagemap": {
+          "scraped": [
+            {
+              "image_link": "https://images-na.ssl-images-amazon.com/images/I/81yZxxvk56L._SX355_.jpg"
+            }
+          ],
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQcA1zIuJevXxnwSaT83cLL72-KAS43oKiE8vwtPxDyWlHN7uFYzMe0vug",
+              "width": "226",
+              "height": "223"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "https://images-na.ssl-images-amazon.com/images/I/61Br-hHfjfL._SR600%2c315_PIWhiteStrip%2cBottomLeft%2c0%2c35_PIAmznPrime%2cBottomLeft%2c0%2c-5_PIStarRatingFOURANDHALF%2cBottomLeft%2c360%2c-6_SR600%2c315_ZA(79%20Reviews)%2c445%2c291%2c400%2c400%2carial%2c12%2c4%2c0%2c0%2c5_SCLZZZZZZZ_.jpg",
+              "og:title": "Yin Art- European Architecture Canvas Print Leaning Tower of Pisa & Eiffel Tower Italy Roman Colosseum & London Big Clock Wall Art Classical Artwork 30x30cm",
+              "og:url": "http://www.amazon.com/dp/B06VXN29DV/ref=tsm_1_fb_lk",
+              "title": "Amazon.com: Yin Art- European Architecture Canvas Print Leaning Tower of Pisa & Eiffel Tower Italy Roman Colosseum & London Big Clock Wall Art Classical Artwork 30x30cm: Posters & Prints",
+              "og:description": "Yin Art specializes in printed canvas wall art and photography. Our graphic designers and artisans curate and produce high quality art. Because we operate our own printing facility and large format printers in-house, we offer custom print options in high definition to tranform your digital images..."
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://images-na.ssl-images-amazon.com/images/I/81yZxxvk56L._SX355_.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa made during a whole school art day on ...",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> made during a whole school <b>art</b> day on ...",
+        "link": "https://www.pinterest.com/pin/538320961684854773/",
+        "displayLink": "www.pinterest.com",
+        "snippet": "Discover ideas about Around The World Crafts For Kids. Leaning Tower of Pisa \nmade during a whole school art day on famous buildings… Around The World ...",
+        "htmlSnippet": "Discover ideas about Around The World Crafts For Kids. <b>Leaning Tower of Pisa</b> <br>\nmade during a whole school <b>art</b> day on famous buildings… Around The World&nbsp;...",
+        "cacheId": "WPso_G0qctkJ",
+        "formattedUrl": "https://www.pinterest.com/pin/538320961684854773/",
+        "htmlFormattedUrl": "https://www.pinterest.com/pin/538320961684854773/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT1pBsKa4SCR5PjI_ZJsMV_m8uumfykU3jbjtRMbXROYQ1MJYmJiL5cyeY",
+              "width": "260",
+              "height": "194"
+            }
+          ],
+          "metatags": [
+            {
+              "application-name": "Pinterest",
+              "msapplication-tilecolor": "#ffffff",
+              "og:image": "https://i.pinimg.com/736x/84/25/e3/8425e313df7117a09290c9cad0bf5cf6--famous-buildings-famous-landmarks.jpg",
+              "og:type": "pinterestapp:pin",
+              "og:image:width": "736",
+              "twitter:title": "Leaning Tower of Pisa made during a whole school art day on famous buildings around the world. | Around the world crafts for kids, World thinking day, World crafts",
+              "og:site_name": "Pinterest",
+              "og:title": "Leaning Tower of Pisa made during a whole school art day on famous buildings around the world. | Around the world crafts for kids, World thinking day, World crafts",
+              "og:image:height": "549",
+              "pinterestapp:pinboard": "https://www.pinterest.com/sibelyilmaz796/%C5%9Fehir/",
+              "pinterestapp:repins": "137",
+              "og:description": "Leaning Tower of Pisa made during a whole school art day on famous buildings around the world.",
+              "twitter:image:src": "https://i.pinimg.com/736x/84/25/e3/8425e313df7117a09290c9cad0bf5cf6--famous-buildings-famous-landmarks.jpg",
+              "pinterestapp:pinner": "https://www.pinterest.com/sibelyilmaz796/",
+              "referrer": "origin",
+              "fb:app_id": "274266067164",
+              "viewport": "width=device-width, initial-scale=1",
+              "twitter:description": "Leaning Tower of Pisa made during a whole school art day on famous buildings around the world.",
+              "og:url": "https://www.pinterest.com/pin/538320961684854773/"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://i.pinimg.com/736x/84/25/e3/8425e313df7117a09290c9cad0bf5cf6--famous-buildings-famous-landmarks.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Expert:en]-Bonanno Pisano art": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano art",
+          "totalResults": "82100",
+          "searchTerms": "Bonanno Pisano art",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano art",
+          "totalResults": "82100",
+          "searchTerms": "Bonanno Pisano art",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-EN"
+    },
+    "searchInformation": {
+      "searchTime": 0.51498,
+      "formattedSearchTime": "0.51",
+      "totalResults": "82100",
+      "formattedTotalResults": "82,100"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano - Wikipedia",
+        "htmlTitle": "<b>Bonanno Pisano</b> - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "Bonanno Pisano (Pisa), active in the 1170s and 1180s, was an Italian sculptor, \nmixing Byzantine and classical elements. Giorgio Vasari wrongly attributed the ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), active in the 1170s and 1180s, was an Italian sculptor, <br>\nmixing Byzantine and classical elements. Giorgio Vasari wrongly attributed the&nbsp;...",
+        "cacheId": "Rnqp5tBSIqYJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "198",
+              "height": "255",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno da Pisa Online",
+        "htmlTitle": "<b>Bonanno</b> da Pisa Online",
+        "link": "http://www.artcyclopedia.com/artists/bonanno_da_pisa.html",
+        "displayLink": "www.artcyclopedia.com",
+        "snippet": "Bonanno da Pisa [Italian Sculptor and Architect, active ca.1179-1186] Guide to \npictures of works by Bonanno da Pisa in art museum sites and image archives \nworldwide. ... Also known as: Bonanno Pisano. • Browse all: Italian artists / \nsculptors ...",
+        "htmlSnippet": "Bonanno da Pisa [Italian Sculptor and Architect, active ca.1179-1186] Guide to <br>\npictures of works by Bonanno da Pisa in <b>art</b> museum sites and image archives <br>\nworldwide. ... Also known as: <b>Bonanno Pisano</b>. • Browse all: Italian artists / <br>\nsculptors&nbsp;...",
+        "formattedUrl": "www.artcyclopedia.com/artists/bonanno_da_pisa.html",
+        "htmlFormattedUrl": "www.<b>art</b>cyclopedia.com/<b>artist</b>s/<b>bonanno</b>_da_pisa.html"
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa - Wikipedia",
+        "htmlTitle": "Leaning Tower of Pisa - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "The Leaning Tower of Pisa or simply the Tower of Pisa is the campanile, or \nfreestanding bell ... For many years, the design was attributed to Guglielmo and \nBonanno Pisano, a well-known 12th-century resident artist of Pisa, known for his \nbronze casting, particularly in the Pisa Duomo. Pisano left Pisa in 1185 for \nMonreale, ...",
+        "htmlSnippet": "The Leaning Tower of Pisa or simply the Tower of Pisa is the campanile, or <br>\nfreestanding bell ... For many years, the design was attributed to Guglielmo and <br>\n<b>Bonanno Pisano</b>, a well-known 12th-century resident <b>artist</b> of Pisa, known for his <br>\nbronze casting, particularly in the Pisa Duomo. Pisano left Pisa in 1185 for <br>\nMonreale,&nbsp;...",
+        "cacheId": "-hbT4AUf35kJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "182",
+              "height": "277",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFg_lO_n3FYnP7QLD1wMWybZWYe9DUGjM1SVktqLw39Hg2xvkoTsyFVs"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "WHO built the Leaning Tower of Pisa?",
+        "htmlTitle": "WHO built the Leaning Tower of Pisa?",
+        "link": "https://leaningtowerpisa.com/facts/who/who-built-pisa-leaning-tower",
+        "displayLink": "leaningtowerpisa.com",
+        "snippet": "... Bonanno Pisano, famous sculptor in Pisa who created several pieces of art in \nthe ... Giovanni di Simone and Tommaso Pisano had the skills, focus, bravery to ...",
+        "htmlSnippet": "... <b>Bonanno Pisano</b>, famous sculptor in Pisa who created several pieces of <b>art</b> in <br>\nthe ... Giovanni di Simone and Tommaso Pisano had the skills, focus, bravery to&nbsp;...",
+        "cacheId": "npbOZYQaUkwJ",
+        "formattedUrl": "https://leaningtowerpisa.com/facts/who/who-built-pisa-leaning-tower",
+        "htmlFormattedUrl": "https://leaningtowerpisa.com/facts/who/who-built-pisa-leaning-tower",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "318",
+              "height": "159",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRTbWj-xNEj7NyNxbpdj8gdBtYhLZ682Vk_J9LntOLqgeawIhymF7vjZwU"
+            }
+          ],
+          "metatags": [
+            {
+              "author": "Andrea Bronzini",
+              "og:title": "WHO built the Leaning Tower of Pisa?",
+              "og:type": "article",
+              "og:image": "https://leaningtowerpisa.com/images/articles/leaning-tower-pisa-north-east-view.jpg",
+              "og:url": "https://leaningtowerpisa.com/facts/who/who-built-pisa-leaning-tower",
+              "og:site_name": "Leaning Tower Pisa",
+              "og:description": "The construction of the Leaning Tower lasted about 200 years. There were several persons involved in the building works. Here is the complete list.",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+              "handheldfriendly": "true",
+              "apple-mobile-web-app-capable": "YES"
+            }
+          ],
+          "sitenavigationelement": [
+            {
+              "name": "Home",
+              "url": "Home"
+            },
+            {
+              "name": "Home",
+              "url": "Home"
+            },
+            {
+              "name": "WHEN",
+              "url": "WHEN"
+            },
+            {
+              "name": "Pisa",
+              "url": "Pisa"
+            }
+          ],
+          "article": [
+            {
+              "inlanguage": "en-GB",
+              "articlebody": "The construction of the Leaning Tower of Pisa began over 800 years ago and the whole process lasted about 200 years (1173-1372). Consequently, there were several persons involved in the constructio..."
+            }
+          ],
+          "imageobject": [
+            {
+              "url": "https://leaningtowerpisa.com/images/articles/leaning-tower-pisa-north-east-view.jpg",
+              "height": "auto",
+              "width": "auto"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://leaningtowerpisa.com/images/articles/leaning-tower-pisa-north-east-view.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "bonanno pisano | Tumblr",
+        "htmlTitle": "<b>bonanno pisano</b> | Tumblr",
+        "link": "https://www.tumblr.com/tagged/bonanno-pisano",
+        "displayLink": "www.tumblr.com",
+        "snippet": "Bonanno Pisano. Ascension of Christ (Fragment of San Ranieri gate). 1180, \nbronze, Pisa Cathedral, Pisa. #bonanno pisano#12th ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b>. Ascension of Christ (Fragment of San Ranieri gate). 1180, <br>\nbronze, Pisa Cathedral, Pisa. #<b>bonanno pisano</b>#12th&nbsp;...",
+        "cacheId": "EJaOtQjmaUMJ",
+        "formattedUrl": "https://www.tumblr.com/tagged/bonanno-pisano",
+        "htmlFormattedUrl": "https://www.tumblr.com/tagged/<b>bonanno</b>-<b>pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "233",
+              "height": "217",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRax2yB_Q7qvTjlMJzwMnxSt-b9HMbExwjz3TPY-BOKw_t978Oe7CqP-z8"
+            }
+          ],
+          "metatags": [
+            {
+              "application-name": "Tumblr",
+              "msapplication-tilecolor": "#3645d",
+              "msapplication-tileimage": "https://assets.tumblr.com/images/msfavicon.png?_v=245323c5cb69e705ea213d9ed60e543a",
+              "p:domain_verify": "d06c4fa470a9a6935c9a7b43d57eb7d2",
+              "viewport": "initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no",
+              "tumblr-form-key": "!1231575741389|dvg3A5jb2wIfBthuYxL7Tjv2qc",
+              "tumblr-gpop": "Tumblr",
+              "og:title": "bonanno pisano | Tumblr",
+              "og:image": "https://66.media.tumblr.com/9f9eca4097589e4e1f56453d708f0dc8/tumblr_oles91S8n11rbk6mfo2_r1_500.jpg",
+              "theme-color": "#35465D"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://66.media.tumblr.com/9f9eca4097589e4e1f56453d708f0dc8/tumblr_oles91S8n11rbk6mfo2_r1_500.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "HUM 100 Worksheet Cultures and Artifacts - HUM100 - SNHU ...",
+        "htmlTitle": "HUM 100 Worksheet Cultures and Artifacts - HUM100 - SNHU ...",
+        "link": "https://www.studocu.com/en-us/document/southern-new-hampshire-university/perspectives-in-the-humanities/mandatory-assignments/hum-100-worksheet-cultures-and-artifacts/2710849/view",
+        "displayLink": "www.studocu.com",
+        "snippet": "Reason Example of Ar  fact Creator. 1. Bell Tower for. churches. Leaning Tower \nof Pisa Bonanno Pisano. 2. To create a great. art piece. Mona Lisa Leonardo da ...",
+        "htmlSnippet": "Reason Example of Ar  fact Creator. 1. Bell Tower for. churches. Leaning Tower <br>\nof Pisa <b>Bonanno Pisano</b>. 2. To create a great. <b>art</b> piece. Mona Lisa Leonardo da&nbsp;...",
+        "cacheId": "WzaLAKrH4psJ",
+        "formattedUrl": "https://www.studocu.com/en-us/...new...in...artifacts/.../view",
+        "htmlFormattedUrl": "https://www.studocu.com/en-us/...new...in...<b>art</b>ifacts/.../view",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "197",
+              "height": "255",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ14z7de4GT6q-ha-KLjSoYQcKkVIicMGlkeq6ieNinDaT-_zZgE2A492Dk"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1",
+              "msapplication-config": "none",
+              "csrf-token": "h7gPxuHnBnZpfBqmrFR1lOvWIXfeHUhO5wcPS5CQ",
+              "theme-color": "#2f3e4e",
+              "mobile-web-app-capable": "yes",
+              "apple-mobile-web-app-capable": "yes",
+              "application-name": "StuDocu",
+              "apple-mobile-web-app-title": "StuDocu",
+              "msapplication-starturl": "/",
+              "apple-itunes-app": "app-id=1460235511",
+              "og:title": "HUM 100 Worksheet Cultures and Artifacts - HUM100 - SNHU - StuDocu",
+              "og:description": "Share free summaries, past exams, lecture notes, solutions and more!!",
+              "og:type": "website",
+              "og:site_name": "StuDocu",
+              "og:image": "https://d20ohkaloyme4g.cloudfront.net/img/document_thumbnails/987d1a57d03fe9b0a7487eccbb4a24d5/thumb_1200_1553.png",
+              "og:image:width": "1200",
+              "og:image:height": "1553",
+              "og:image:alt": "StuDocu Logo",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@StuDocu",
+              "og:url": "https://www.studocu.com/en-us/document/southern-new-hampshire-university/perspectives-in-the-humanities/mandatory-assignments/hum-100-worksheet-cultures-and-artifacts/2710849/view"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://d20ohkaloyme4g.cloudfront.net/img/document_thumbnails/987d1a57d03fe9b0a7487eccbb4a24d5/thumb_1200_1553.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano - Ascension of Christ (Fragment of San Ranieri ...",
+        "htmlTitle": "<b>Bonanno Pisano</b> - Ascension of Christ (Fragment of San Ranieri ...",
+        "link": "https://www.pinterest.com/pin/317222367500690821/",
+        "displayLink": "www.pinterest.com",
+        "snippet": "Sainte FoyArt Of LoveRoman ArtMedieval ArtKirchenGothic ArtArt And \nArchitectureRomanesque ArtAp Art History 250. Tympanum (detail) Stone Abbey \nChurch ...",
+        "htmlSnippet": "Sainte Foy<b>Art</b> Of LoveRoman <b>Art</b>Medieval <b>Art</b>KirchenGothic <b>ArtArt</b> And <br>\nArchitectureRomanesque <b>Art</b>Ap <b>Art</b> History 250. Tympanum (detail) Stone Abbey <br>\nChurch&nbsp;...",
+        "formattedUrl": "https://www.pinterest.com/pin/317222367500690821/",
+        "htmlFormattedUrl": "https://www.pinterest.com/pin/317222367500690821/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "187",
+              "height": "270",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQzgnDaDlxZ2kfmz62j83Q2wWWPs7JZVWrht_DWj9OGUR9PmLNQkaqdDJQ"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1",
+              "application-name": "Pinterest",
+              "msapplication-tilecolor": "#ffffff",
+              "msapplication-tileimage": "https://s.pinimg.com/webapp/style/images/logo_trans_144x144-642179a1.png",
+              "referrer": "origin",
+              "fb:app_id": "274266067164",
+              "og:site_name": "Pinterest",
+              "al:android:app_name": "Pinterest",
+              "al:android:package": "com.pinterest",
+              "al:android:url": "pinterest://pin/317222367500690821",
+              "al:ios:app_name": "Pinterest",
+              "al:ios:app_store_id": "429047995",
+              "al:ios:url": "pinterest://pin/317222367500690821",
+              "canonical_domain": "www.pinterest.com",
+              "locale": "en-US",
+              "og:description": "Bonanno Pisano - Ascension of Christ (Fragment of San Ranieri gate) 1180, bronze, Pisa - Cathedral, Pisa",
+              "og:image": "https://i.pinimg.com/736x/91/62/69/9162691344db29a3ed3be1b706f068cc--italia-toscana-pisa.jpg",
+              "og:image:height": "439",
+              "og:image:width": "471",
+              "og:see_also": "http://kutxx.tumblr.com/post/157268059639/3-bonanno-pisano-ascension-of-christ-fragment",
+              "og:title": "Bonanno Pisano - Ascension of Christ (Fragment of San Ranieri gate) 1180, bronze, Pisa - Cathedral, Pisa | medieval in 2019 | Pisa, Lucca, Tuscany",
+              "og:type": "pinterestapp:pin",
+              "og:updated_time": "2019-01-25 09:36:45",
+              "og:url": "https://www.pinterest.com/pin/317222367500690821/",
+              "pinterest": "nohover",
+              "pinterestapp:pinboard": "https://www.pinterest.com/jackbene/medieval/",
+              "pinterestapp:pinner": "https://www.pinterest.com/jackbene/",
+              "pinterestapp:repins": "0",
+              "pinterestapp:source": "http://kutxx.tumblr.com/post/157268059639/3-bonanno-pisano-ascension-of-christ-fragment",
+              "theme-color": "#e60023",
+              "twitter:app:android": "com.pinterest",
+              "twitter:app:id:ipad": "429047995",
+              "twitter:app:id:iphone": "429047995",
+              "twitter:app:url:googleplay": "pinterest://pin/317222367500690821",
+              "twitter:app:url:ipad": "pinterest://pin/317222367500690821",
+              "twitter:app:url:iphone": "pinterest://pin/317222367500690821",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "Bonanno Pisano - Ascension of Christ (Fragment of San Ranieri gate) 1180, bronze, Pisa - Cathedral, Pisa",
+              "twitter:image:src": "https://i.pinimg.com/736x/91/62/69/9162691344db29a3ed3be1b706f068cc--italia-toscana-pisa.jpg",
+              "twitter:site": "@pinterest",
+              "twitter:title": "Bonanno Pisano - Ascension of Christ (Fragment of San Ranieri gate) 1180, bronze, Pisa - Cathedral, Pisa | medieval in 2019 | Pisa, Lucca, Tuscany"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://i.pinimg.com/236x/74/4b/d1/744bd1183f9902e15f3ba7d4fc27aa45--pisa-toscana.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa, Italy | Trivium Art History",
+        "htmlTitle": "Leaning Tower of Pisa, Italy | Trivium <b>Art</b> History",
+        "link": "https://arthistoryproject.com/timeline/middle-ages/medieval/leaning-tower-of-pisa/",
+        "displayLink": "arthistoryproject.com",
+        "snippet": "Dont forget the amazing Basillica of Pisa in the background. Read More. \nDimentions height: 5586 cm; Began 1173; Completed 1372; Architect Bonanno \nPisano ...",
+        "htmlSnippet": "Dont forget the amazing Basillica of Pisa in the background. Read More. <br>\nDimentions height: 5586 cm; Began 1173; Completed 1372; Architect <b>Bonanno</b> <br>\n<b>Pisano</b>&nbsp;...",
+        "cacheId": "ZIk_H6SyTV4J",
+        "formattedUrl": "https://arthistoryproject.com/timeline/middle.../leaning-tower-of-pisa/",
+        "htmlFormattedUrl": "https://<b>art</b>historyproject.com/timeline/middle.../leaning-tower-of-pisa/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "182",
+              "height": "277",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS7FHRECerlr_qP3BaF2M3b93SqccnmUlHCGUYwbU2zqAyfaKVEamH9oeCr"
+            }
+          ],
+          "metatags": [
+            {
+              "msapplication-tilecolor": "#2b5797",
+              "msapplication-tileimage": "/mstile-144x144.png",
+              "theme-color": "#1a1369",
+              "viewport": "width=device-width,initial-scale=1",
+              "p:domain_verify": "283f27f5335f9248b06670369c0f8036",
+              "og:title": "Leaning Tower of Pisa",
+              "og:url": "https://arthistoryproject.com/timeline/middle-ages/medieval/leaning-tower-of-pisa/",
+              "og:site_name": "Trivium Art History",
+              "og:description": "If you paid attention in class you will remember that Galileo figured out terminal velocity here at Pisa. Why? Because this bad boy is leaning, giving..."
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://arthistoryproject.com/site/assets/files/24698/leaning_tower_of_pisa-trivium-art-history.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Tower of Pisa Historical Facts – Leaning Tower of Pisa",
+        "htmlTitle": "Tower of Pisa Historical Facts – Leaning Tower of Pisa",
+        "link": "http://www.towerofpisa.org/tower-of-pisa-historical-facts/",
+        "displayLink": "www.towerofpisa.org",
+        "snippet": "The most accredited architects of this first phase of work are Bonanno Pisano and \n... Tommaso Pisano (1350-1372) was the architect who finished the work.",
+        "htmlSnippet": "The most accredited architects of this first phase of work are <b>Bonanno Pisano</b> and <br>\n... Tommaso Pisano (1350-1372) was the architect who finished the work.",
+        "cacheId": "YhHFk_Oz9EgJ",
+        "formattedUrl": "www.towerofpisa.org/tower-of-pisa-historical-facts/",
+        "htmlFormattedUrl": "www.towerofpisa.org/tower-of-pisa-historical-facts/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQmGh6HNcgtctRHY9ZcthPiqGh7eMxYlIqBHDCYM7jfDI60D-s_I9L8p0"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width,initial-scale=1.0",
+              "og:locale": "en_US",
+              "og:type": "article",
+              "og:title": "Tower of Pisa Historical Facts - Leaning Tower of Pisa",
+              "og:description": "WHEN was the leaning Tower of Pisa built? The construction of the Leaning Tower of Pisa began in August 1173. It was interrupted several times by wars, debt and while engineers worked on solutions to correct the lean. We now … Continue reading →",
+              "og:url": "http://www.towerofpisa.org/tower-of-pisa-historical-facts/",
+              "og:site_name": "Leaning Tower of Pisa",
+              "og:image": "http://towerofpisa.info/wp-content/uploads/2015/04/leaning-tower-of-pisa-detail-300x225.jpg",
+              "twitter:card": "summary",
+              "twitter:description": "WHEN was the leaning Tower of Pisa built? The construction of the Leaning Tower of Pisa began in August 1173. It was interrupted several times by wars, debt and while engineers worked on solutions to correct the lean. We now … Continue reading →",
+              "twitter:title": "Tower of Pisa Historical Facts - Leaning Tower of Pisa",
+              "twitter:domain": "Leaning Tower of Pisa",
+              "twitter:image:src": "http://towerofpisa.info/wp-content/uploads/2015/04/leaning-tower-of-pisa-detail-300x225.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "http://towerofpisa.info/wp-content/uploads/2015/04/leaning-tower-of-pisa-detail-300x225.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Art Centres",
+        "htmlTitle": "<b>Art</b> Centres",
+        "link": "https://www.wga.hu/database/glossary/cities/pisa.html",
+        "displayLink": "www.wga.hu",
+        "snippet": "The cathedral and the baptistery were decorated by a succession of \ndistinguished sculptors, including Guglielmo Pisano, Bonanno Pisano, Nicola \nPisano, and ...",
+        "htmlSnippet": "The cathedral and the baptistery were decorated by a succession of <br>\ndistinguished sculptors, including Guglielmo Pisano, <b>Bonanno Pisano</b>, Nicola <br>\nPisano, and&nbsp;...",
+        "cacheId": "RUTIrPMgbkYJ",
+        "formattedUrl": "https://www.wga.hu/database/glossary/cities/pisa.html",
+        "htmlFormattedUrl": "https://www.wga.hu/database/glossary/cities/pisa.html",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "180",
+              "height": "247",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSk4oTgo9_ExpHIMABU-ru7-kuAkj2z8HoXPXpgEInjF6WUXbqZZ_14mws"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://www.wga.hu/database/glossary/cities/pisa.jpg"
+            }
+          ]
+        }
+      }
+    ]
   }
 }
