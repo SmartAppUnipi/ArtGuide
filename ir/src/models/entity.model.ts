@@ -3,7 +3,8 @@ import { wikidataProperties } from "../../config.json";
 export interface Entity {
     description: string;
     score: number;
-    entityId: string;
+    entityId?: string;
+    wikidataId?: string;
 }
 
 /** Load available properties from config.json */
