@@ -7,3 +7,11 @@
     height: 500px;
     overflow-y: scroll;
 }
+
+pre {
+    white-space: pre-wrap;
+}
+
+.adaptation-span:hover {
+    cursor: pointer;
+}
