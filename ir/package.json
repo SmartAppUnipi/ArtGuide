@@ -10,14 +10,14 @@
     "test:d": "node --inspect=5859 node_modules/.bin/jest --runInBand --detectOpenHandles",
     "test:w": "jest --runInBand --coverage --watch",
     "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "start": "npm run webpack:prod && nodemon src/index.ts",
+    "start": "nodemon src/index.ts",
     "start:d": "nodemon --inspect=5858 src/index.ts",
     "build": "npm run webpack:prod && tsc",
     "watch": "tsc -w -p .",
     "clean": "npx rimraf dist && npx rimraf coverage",
     "docs": "npx typedoc",
-    "webpack": "webpack --config=src/client/logs/webpack.config.js --mode development --watch",
-    "webpack:prod": "webpack --config=src/client/logs/webpack.config.js --mode production"
+    "webpack": "webpack --config=client/logs/webpack.config.js --mode development --watch",
+    "webpack:prod": "webpack --config=client/logs/webpack.config.js --mode production"
   },
   "keywords": [],
   "authors": [
@@ -116,8 +116,7 @@
     ],
     "ext": "ts",
     "ignore": [
-      "src/**/*.spec.ts",
-      "src/client/**/*"
+      "src/**/*.spec.ts"
     ],
     "execMap": {
       "ts": "node --require ts-node/register"

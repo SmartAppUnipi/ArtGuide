@@ -142,8 +142,8 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                            { query: query, exception: ex });
-                        return null
+                                     { query: query, exception: ex });
+                        return null;
                     });
             })
         )
@@ -154,7 +154,7 @@ export class Search {
             // filter blacklist
             .then(gResults => gResults.filter(result => !searchBlackList.some(blackListWebsite => result.url.includes(blackListWebsite))))
             // call the parser
-            .then(gResults => this.parseList(gResults))
+            .then(gResults => this.parseList(gResults));
     }
 
     /**

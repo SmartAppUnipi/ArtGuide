@@ -1,6 +1,5 @@
-import { Utils } from "./utils";
 import { parse } from "./log-parser";
-
+import { Utils } from "./utils";
 
 (async () => {
     // take a reference to left and right divs
@@ -35,9 +34,9 @@ import { parse } from "./log-parser";
     for (const span of logParsingResult.spans) {
         // take the text from the start to the char before the match
         const start = adaptationHtml.indexOf(span.text);
-        const end = start + span.text.length
+        const end = start + span.text.length;
         const before = adaptationHtml.substring(0, start);
-        const spanHtml = `<span style="color: ${span.color}" id="${span.irSpanId}">${span.text}</span>`;
+        const spanHtml = `<span style="color: ${span.color}" class="adaptation-span" data-ir-span-id="${span.irSpanId}">${span.text}</span>`;
         // take the text the char after the match to the end
         const after = adaptationHtml.substring(end);
         // recompose the text with the span in the middle
@@ -49,7 +48,7 @@ import { parse } from "./log-parser";
 
     for (const adaptationSpan of document.getElementsByClassName("adaptation-span")) {
         // for each right span (from adaptation tailored text) add a click listsner
-        adaptationSpan.addEventListener("click", function (e) {
+        adaptationSpan.addEventListener("click", function () {
 
             // take the corresponding right div to obtain its position
             const currentSpanId = this.getAttribute("data-ir-span-id");

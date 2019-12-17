@@ -1,14 +1,18 @@
 import { Utils } from "./utils";
 
+/**
+ * @param tailoredText
+ * @param pageResultJson
+ */
 export function parse(tailoredText: string, pageResultJson: string) {
-    
+
     // create the return object 
     const result: {
-        spans: Array<{ irSpanId: string, text: string, color: string }>,
-        html: string
+        spans: Array<{ irSpanId: string; text: string; color: string }>;
+        html: string;
     } = { spans: [], html: "" };
 
-    const matches = []
+    const matches = [];
     let i = 0;
     while (i < tailoredText.length) {
         let j = i + 1;
@@ -22,15 +26,16 @@ export function parse(tailoredText: string, pageResultJson: string) {
                     start: position,
                     end: position + search.length,
                     text: search
-                }
+                };
                 j++;
-            }
-            else break;
+            } else break;
         }
         if (match) {
             matches.push(match);
-            // console.log(match)
-            // if match, j is after the first non matching char, restart from before that char
+            /*
+             * console.log(match)
+             * if match, j is after the first non matching char, restart from before that char
+             */
             i = j - 1;
         } else {
             // no match, j is after the char that has not matched, restart form after that char (skip it)
@@ -42,7 +47,7 @@ export function parse(tailoredText: string, pageResultJson: string) {
     matches.sort((a, b) => b.start - a.start);
 
     // for each match
-    for (let match of matches) {
+    for (const match of matches) {
         // take the text from the start to the char before the match
         const before = pageResultJson.substring(0, match.start);
         const spanId = Utils.generateId(4);
@@ -57,7 +62,7 @@ export function parse(tailoredText: string, pageResultJson: string) {
     }
 
     // set the result
-    result.html = pageResultJson
+    result.html = pageResultJson;
 
     return result;
 }

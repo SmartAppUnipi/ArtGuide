@@ -5640,15 +5640,10 @@
       }
     ],
     "keywords": [
-      "keyword_history1",
-      "keyword_history2",
-      "keyword_description1",
-      "keyword_description2",
-      "keyword_legacy1",
-      "keyword_legacy"
+      "description"
     ],
     "tags": [],
-    "score": 1.27407462
+    "score": 1.851112118789128
   },
   "https://kids.kiddle.co/Leaning_Tower_of_Pisa": {
     "url": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
@@ -5763,15 +5758,12 @@
       }
     ],
     "keywords": [
-      "keyword_history1",
-      "keyword_history2",
-      "keyword_description1",
-      "keyword_description2",
-      "keyword_legacy1",
-      "keyword_legacy"
+      "description",
+      "history",
+      "legacy"
     ],
     "tags": [],
-    "score": 1.3537042837499997
+    "score": 1.6944795548915863
   },
   "https://kids.kiddle.co/Pisa": {
     "url": "https://kids.kiddle.co/Pisa",
@@ -5934,15 +5926,11 @@
       }
     ],
     "keywords": [
-      "keyword_history1",
-      "keyword_history2",
-      "keyword_description1",
-      "keyword_description2",
-      "keyword_legacy1",
-      "keyword_legacy"
+      "description",
+      "history"
     ],
     "tags": [],
-    "score": 1.4333339475
+    "score": 1.708718878882272
   },
   "https://kids.kiddle.co/Lucca": {
     "url": "https://kids.kiddle.co/Lucca",
@@ -7492,16 +7480,11 @@
       }
     ],
     "keywords": [
-      "keyword_history1",
-      "keyword_history2",
-      "keyword_description1",
-      "keyword_description2",
-      "keyword_legacy1",
-      "keyword_legacy"
+      "description"
     ],
     "tags": [],
     "summary": "",
-    "score": 0.47777798250000003
+    "score": 1.1391459192548479
   },
   "https://kids.kiddle.co/Humor": {
     "url": "https://kids.kiddle.co/Humor",
@@ -7538,16 +7521,11 @@
       }
     ],
     "keywords": [
-      "keyword_history1",
-      "keyword_history2",
-      "keyword_description1",
-      "keyword_description2",
-      "keyword_legacy1",
-      "keyword_legacy"
+      "description"
     ],
     "tags": [],
     "summary": "",
-    "score": 0.15925932749999994
+    "score": 0.854359439441136
   },
   "https://kids.kiddle.co/Scientific_revolution": {
     "url": "https://kids.kiddle.co/Scientific_revolution",
@@ -7587,16 +7565,12 @@
       }
     ],
     "keywords": [
-      "keyword_history1",
-      "keyword_history2",
-      "keyword_description1",
-      "keyword_description2",
-      "keyword_legacy1",
-      "keyword_legacy"
+      "description",
+      "history"
     ],
     "tags": [],
     "summary": "",
-    "score": 0.3185186549999999
+    "score": 0.9967526793479919
   },
   "https://kids.kiddle.co/Bell_tower": {
     "url": "https://kids.kiddle.co/Bell_tower",
@@ -7662,16 +7636,12 @@
       }
     ],
     "keywords": [
-      "keyword_history1",
-      "keyword_history2",
-      "keyword_description1",
-      "keyword_description2",
-      "keyword_legacy1",
-      "keyword_legacy"
+      "description",
+      "history"
     ],
     "tags": [],
     "summary": "",
-    "score": 1.1148152924999999
+    "score": 1.5663256389754159
   },
   "https://kids.kiddle.co/Province_of_Pisa": {
     "url": "https://kids.kiddle.co/Province_of_Pisa",
@@ -7782,16 +7752,11 @@
       }
     ],
     "keywords": [
-      "keyword_history1",
-      "keyword_history2",
-      "keyword_description1",
-      "keyword_description2",
-      "keyword_legacy1",
-      "keyword_legacy"
+      "history"
     ],
     "tags": [],
     "summary": "",
-    "score": 0.7962966375
+    "score": 0.5695729596274239
   },
   "https://kids.kiddle.co/1990": {
     "url": "https://kids.kiddle.co/1990",
@@ -7812,16 +7777,12 @@
       }
     ],
     "keywords": [
-      "keyword_history1",
-      "keyword_history2",
-      "keyword_description1",
-      "keyword_description2",
-      "keyword_legacy1",
-      "keyword_legacy"
+      "description",
+      "history"
     ],
     "tags": [],
     "summary": "",
-    "score": 0.955555965
+    "score": 1.42393239906856
   },
   "https://kids.kiddle.co/List_of_buildings": {
     "url": "https://kids.kiddle.co/List_of_buildings",
@@ -10211,6 +10172,340 @@
         "content": "You have to login with your ACS ID befor you can login with your Mendeley account.  ",
         "tags": [
           "login"
+        ]
+      }
+    ],
+    "keywords": [],
+    "tags": [],
+    "summary": ""
+  },
+  "https://kids.kiddle.co/Galileo_Galilei": {
+    "url": "https://kids.kiddle.co/Galileo_Galilei",
+    "title": "Galileo Galilei Facts for Kids",
+    "sections": [
+      {
+        "title": "facts for kids Galileo Galilei ",
+        "content": "(Italian:  ; 15 February 1564 – 8 January 1642) was an Italian physicist, astronomer, and instrument maker. Galileo was originally going to be a doctor but became a tutor instead.He was a professor of mathematics and natural science in Padua and Pisa. People most remembered him today for his conflict with the Catholic Church of his day, which led to his trial for heresy by the Inquisition.  ",
+        "tags": [
+          "italian physicist",
+          "tutor instead he",
+          "natural science",
+          "instrument maker",
+          "catholic church",
+          "italian",
+          "trial",
+          "today",
+          "remembered"
+        ]
+      },
+      {
+        "title": "Early life Early life ",
+        "content": "Galileo was born in Pisa (then part of the Duchy of Florence), Italy, in 1564, the first of six children of Vincenzo Galilei, a famous lutenist, composer, and music theorist, and Giulia Ammannati. Galileo became an accomplished lutenist himself, and learned early from his father more than just music - healthy scepticism for established authority, mathematics, and the value of well-measured or quantified experimentation. Three of Galileo's five siblings survived infancy. The youngest, Michelangelo (or Michelagnolo), also became a noted lutenist and composer although he contributed to financial burdens during Galileo's young adulthood. Michelangelo quickly spent his part of the father's inheritance and often had to borrow money from Galileo. This financial burden gave additional intensive to Galileo for developing inventions that could bring him additional income. ",
+        "tags": [
+          "galileo",
+          "financial burden gave additional intensive",
+          "galileo's young adulthood",
+          "part",
+          "composer",
+          "accomplished lutenist himself",
+          "michelangelo quickly spent",
+          "siblings survived infancy",
+          "financial burdens",
+          "galileo's"
+        ]
+      },
+      {
+        "title": "Name Name ",
+        "content": "Galileo was named after an ancestor, Galileo Bonaiuti, a physician, university teacher and politician who lived in Florence from 1370 to 1450. At that time in the late 14th century, the family's surname shifted from Bonaiuti (or Buonaiuti) to Galilei. Galileo Bonaiuti was buried in the same church, the Basilica of Santa Croce in Florence, where about 200 years later his more famous descendant Galileo Galilei was also buried. When Galileo Galilei was eight, his family moved to Florence, but he was left with Jacopo Borghini for two years. He then was educated in the Camaldolese Monastery at Vallombrosa, 35 km southeast of Florence. ",
+        "tags": [
+          "florence",
+          "galileo bonaiuti",
+          "famous descendant galileo galilei",
+          "years",
+          "buried",
+          "galileo galilei",
+          "family's surname shifted",
+          "bonaiuti",
+          "family moved",
+          "galileo"
+        ]
+      },
+      {
+        "title": "Family Family ",
+        "content": "Although he was a devoted Roman Catholic, Galileo fathered three children with his mistress Marina Gamba. They had two daughters, Virginia in 1600 and Livia in 1601, and one son, Vincenzo, in 1606. Because of their illegitimate birth, their father considered the girls unmarriageable. Their only worthy alternative was the religious life. Both girls were accepted by the convent of San Matteo in Arcetri and remained   for the rest of their lives. Virginia took the name Maria Celeste upon entering the convent. She died on 2 April 1634, and is buried with Galileo at the Basilica of Santa Croce, Florence. Livia took the name Sister Arcangela and was ill for most of her life. Vincenzo was later legitimised as the legal heir of Galileo and married Sestilia Bocchineri. ",
+        "tags": [
+          "virginia",
+          "vincenzo",
+          "livia",
+          "galileo",
+          "convent",
+          "galileo fathered",
+          "mistress marina gamba",
+          "married sestilia bocchineri",
+          "devoted roman catholic",
+          "religious life"
+        ]
+      },
+      {
+        "title": "Astronomy Astronomy ",
+        "content": "Some people believe that Galileo was the first person to build a telescope. This is not true, but he was the first person to publish his observations of astronomical objects through a telescope. He discovered that the Milky Way is made of many stars. He discovered that the Moon has hills. He found four moons around Jupiter. Those moons are now called the Galilean moons. He discovered sunspots, which are dark areas of the Sun. He saw that the planet Venus has light and dark phases just like the Moon. This helped people to know that the Sun is at the centre of the Solar System, as Nicolaus Copernicus had said. ",
+        "tags": [
+          "moons",
+          "moon",
+          "telescope",
+          "sun",
+          "person",
+          "galilean moons",
+          "discovered",
+          "discovered sunspots",
+          "helped people",
+          "dark phases"
+        ]
+      },
+      {
+        "title": "Physics Physics ",
+        "content": "Galileo worked more at physics than at astronomy. He studied natural forces, and was one of the most important discoverers of the part of physics that is now called kinematics, including the discovery of the kinematic principle of relativity. However, he is often remembered now for things that either did not happen, or failed. A legend says that he climbed the Leaning Tower of Pisa, and dropped cannonballs of different weights, to see which would strike the ground first. Even though their weights were not the same, they hit the ground at the same time. Galileo found that objects fall to the ground at the same rate, unless things like wind resistance change the rate. This went against the views of Aristotle, an ancient philosopher whose theory was different. Galileo's findings were ignored by most people, and Aristotle's view was still accepted as correct until Isaac Newton proved Galileo was right. This also led to Newton creating his Law of Gravity. Galileo also tried to determine the speed of light. He climbed a hill, and had an assistant climb another hill, both carrying lanterns with closed shutters. He then opened the shutter of his lantern. His assistant opened his own shutter when he saw Galileo's lantern. Galileo then measured the time it took for his assistant's shutter to open. Knowing the time difference, and the distance between the hills, he tried to estimate the speed of light. However, this did not work. ",
+        "tags": [
+          "hill",
+          "isaac newton proved galileo",
+          "weights",
+          "time",
+          "things",
+          "speed",
+          "shutter",
+          "rate",
+          "physics",
+          "light"
+        ]
+      },
+      {
+        "title": "Publications Publications ",
+        "content": "The most important works of Galileo are: ",
+        "tags": [
+          "important works"
+        ]
+      },
+      {
+        "title": "Trial for heresy Trial for heresy ",
+        "content": "Galileo came to accept the findings of Copernicus, that the Sun was the center of the then-known universe, and not the Earth. Because he promoted this and other ideas, he came to the notice of the Committee of Propaganda, the dreaded Inquisition. The Church taught that the Earth stood still, while everything in the sky moved around it. The Inquisition ruled in 1616 that other theories could only be discussed as possibilities, not facts. Galileo said he would obey. He played a major part in the scientific revolution through this argument. Galileo later discussed the question in his most famous work, Dialogue Concerning the Two Chief World Systems, published in 1632 by permission of the Inquisition. His scientific writing was usually in Latin for hundreds of scientists around Europe, but this was one of the books he wrote in Italian so thousands of Italians could read it. The book was in the form of conversations between three men. The man representing the Church's point of view was called 'Simplicio'. Church leaders who liked his earlier books were angry at this one. The Inquisition took action in 1633. He was arrested and put on trial. They found him \"vehemently suspect of heresy\". They reminded him of the fate of Giordano Bruno, who had been burnt at the stake for heresy on topics such as transubstantiation and the Trinity. Bruno also believed the Earth went round the Sun and stars had planets. The Inquisition forced Galileo to recant (say he was wrong) under the threat of execution, and to withdraw his works from publication. Galileo spent the last ten years of his life under house arrest. Galileo continued to write about physics and other topics, but not astronomy. ",
+        "tags": [
+          "galileo",
+          "inquisition forced galileo",
+          "topics",
+          "sun",
+          "heresy",
+          "discussed",
+          "earth stood still",
+          "inquisition",
+          "earth",
+          "galileo spent"
+        ]
+      },
+      {
+        "title": "Images for kids Images for kids ",
+        "content": "Galileo Galilei. Portrait by Leoni Cristiano Banti's 1857 painting Galileo facing the Roman Inquisition Portrait, attributed to Murillo, of Galileo gazing at the words \"E pur si muove\" (And yet it moves) (not legible in this image) scratched on the wall of his prison cell Tomb of Galileo, Santa Croce, Florence Middle finger of Galileo's right hand Galileo's \"cannocchiali\" telescopes at the Museo Galileo, Florence Galileo's geometrical and military compass, thought to have been made c. 1604 by his personal instrument-maker Marc'Antonio Mazzoleni A replica of the earliest surviving telescope attributed to Galileo Galilei, on display at the Griffith Observatory. Galileo e Viviani, 1892, Tito Lessi International Year of Astronomy commemorative coin ",
+        "tags": [
+          "galileo galilei",
+          "earliest surviving telescope attributed",
+          "florence galileo's geometrical",
+          "tito lessi international year",
+          "painting galileo facing",
+          "hand galileo's cannocchiali",
+          "galileo",
+          "roman inquisition portrait",
+          "florence middle finger",
+          "pur si muove"
+        ]
+      }
+    ],
+    "keywords": [
+      "history"
+    ],
+    "tags": [],
+    "summary": "",
+    "score": 0.2847864798137121
+  },
+  "https://kids.kiddle.co/B_of_the_Bang": {
+    "url": "https://kids.kiddle.co/B_of_the_Bang",
+    "title": "B of the Bang Facts for Kids",
+    "sections": [
+      {
+        "title": "facts for kids B of the Bang ",
+        "content": "was a sculpture in Manchester, England. It was next to the City of Manchester Stadium at Sportcity. The work was designed by Thomas Heatherwick. It was taken apart in 2009 due to structural problems. Commissioned to mark the 2002 Commonwealth Games, it was one of the tallest structures in the City of Manchester. It was the tallest sculpture in the UK until the completion of Aspire in 2008. It was taller and leaned at a greater angle than the Leaning Tower of Pisa. The sculpture took its name from a quotation of British sprinter Linford Christie. In the quotation he said that he started his races not at the \"bang\" of the starting pistol, but at 'The B of the Bang'. The sculpture was commissioned in 2003. Construction went longer than planned and the official unveiling was delayed until 12 January 2005. Six days before the launch, the sculpture suffered the first of three visible structural problems. The tip of one of the spikes came off and fell to the ground. Legal action started a year later, resulting in an out-of-court settlement totalling £1.7m. In February 2009 Manchester City Council announced that the sculpture would be taken apart and placed in storage, as the \"only practical alternative\". The council said it was committed to working closely with the design team in order to \"determine whether there is a robust and affordable strategy for the re-construction of the structure on the site\". Despite the promise of storage and potential reassembly, the core and legs of the sculpture were cut apart during removal.  ",
+        "tags": [
+          "sculpture",
+          "manchester city council announced",
+          "visible structural problems",
+          "tallest sculpture",
+          "storage",
+          "sculpture suffered",
+          "quotation",
+          "commissioned",
+          "british sprinter linford christie",
+          "structural problems"
+        ]
+      },
+      {
+        "title": "Design and statistics Design and statistics ",
+        "content": "B of the Bang originally stood 56 metres (184 ft) tall. It had 180 hollow tapered steel columns or spikes coming out of a central core. It was angled at 30 degrees and supported by five 25 m (82 ft) long, tapered steel legs. These connected to the spikes 22 m (72 ft) above the ground. The sculpture weighed 165 tonnes. The concrete in the foundations weighed over 1,000 tonnes, including a 400 m2 (4,300 sq ft) reinforced concrete slab. The foundations are 20 m (66 ft) deep. The sculpture was made from the same weathering steel (also known as Cor-Ten) as the Angel of the North sculpture. This slowly develops a tightly adhering oxide layer as it is exposed to the elements. This layer prevents further corrosion by reducing its permeability to water. As part of the design, the spikes moved slightly in the wind in order to withstand gusts over 100 mph (160 km/h). At the time of construction a time capsule was placed in one of the spikes of the sculpture. It contained children's poems and paintings, due to be opened around 2300. The location of the time capsule after being taken apart is currently unknown. B of the Bang was next to the City of Manchester Stadium at Sportcity, in Beswick, at the corner of Alan Turing Way and Ashton New Road; coordinates 53°28′55″N 2°11′46″W / 53.48194°N 2.19611°W / 53.48194; -2.19611Coordinates: 53°28′55″N 2°11′46″W / 53.48194°N 2.19611°W / 53.48194; -2.19611. It took its name from a quotation of British sprinter Linford Christie in which he said that he started his races not merely at the 'bang' of the starting pistol, but at 'The B of the Bang'. The artwork had been nicknamed KerPlunk by the locals after the popular children's game from the 1970s. Prior to the construction of Aspire at the University of Nottingham, B of the Bang was Britain's tallest sculpture. It stood at twice the height of the Angel of the North. Angel of the North is 66 feet (20 m) tall. It was designed to look like an exploding firework. It was taller and leaned at a greater angle than the Leaning Tower of Pisa. It was commissioned by New East Manchester Limited to commemorate the 2002 Commonwealth Games. The design was selected by a panel consisting of both local residents and art experts via a competition in 2002. The sculpture was designed by Thomas Heatherwick. ",
+        "tags": [
+          "time capsule",
+          "angel",
+          "designed",
+          "design",
+          "sculpture",
+          "sq ft reinforced concrete slab",
+          "hollow tapered steel columns",
+          "bang originally stood",
+          "bang",
+          "tightly adhering oxide layer"
+        ]
+      },
+      {
+        "title": "Construction and funding Construction and funding ",
+        "content": "The sculpture was constructed in Sheffield by Thomas Heatherwick Studio, Packman Lucas, Flint and Neill and Westbury Structures. It was approved at the start of 2003, with the central core arriving in Manchester on the 13 June 2004. This was the largest load that could be transferred via road from the factory, and required a police escort. This central core was lifted into place in August 2004, after which the 180 spikes could begin being attached. Early estimates had given an optimistic completion date of July 2003, which contributed to the sculpture gaining the nickname G of the Bang. The official unveiling by Linford Christie took place on 12 January 2005. In total the sculpture cost £1.42 million to design and construct — twice the original estimate, as the initial costing had neglected to include installation costs. Funding was sourced from a European Regional Development Fund contribution of £700,000, the North West Development Agency, contributing £500,000, and Manchester City Council providing £120,000. ",
+        "tags": [
+          "european regional development fund contribution",
+          "central core arriving",
+          "manchester city council providing",
+          "north west development agency",
+          "place",
+          "include installation costs",
+          "central core",
+          "sculpture cost",
+          "thomas heatherwick studio",
+          "optimistic completion date"
+        ]
+      },
+      {
+        "title": "Structural problems and legal action Structural problems and legal action ",
+        "content": "The tip of one of the 2.1 m (6.9 ft) spikes detached and fell from the sculpture on the 6 January 2005, only six days before the official unveiling. After inspection, the event went ahead as planned. Four months later, in May 2005, a second spike had to be cut off by firefighters after it was discovered hanging loose. At that time the sculpture was closed off to the public, and the junction and pathway near the sculpture were temporarily closed. As a result, some of the joints were re-welded, with equipment put in place to prevent excessive movement. This consisted of retrofitting tip weights to 170 of the spikes. Despite these modifications, B of the Bang remained fenced off, prompting a local newspaper campaign to 'Get It Sorted'. In May 2006 a total of nine spikes were removed from the sculpture and taken away for metallurgical analysis, to discover the stresses being placed on the steel. It was announced in October 2007 that Manchester City Council were taking legal action against the makers of the sculpture, with the aim of completing the necessary repairs to the sculpture. In November 2008 this culminated in an out-of-court settlement being reached between Manchester City Council, the project's designers Thomas Heatherwick Studio Ltd, and the engineering and construction subcontractors Packman Lucas Ltd, Flint and Neill Partnership and Westbury Structures Ltd. The agreement was to pay the council £1.7m in damages for breach of contract and negligence. ",
+        "tags": [
+          "sculpture",
+          "manchester city council",
+          "project's designers thomas heatherwick studio ltd",
+          "construction subcontractors packman lucas ltd",
+          "spikes",
+          "ft spikes detached",
+          "bang remained fenced off",
+          "retrofitting tip weights",
+          "discovered hanging loose",
+          "westbury structures ltd"
+        ]
+      },
+      {
+        "title": "Dismantling Dismantling ",
+        "content": "Acting on a report in January 2009, the city council recommended that B of the Bang should be dismantled and placed in storage until funds could be raised for its safe reinstatement. The report recognised the sculpture's aesthetic value for Manchester and Manchester City Council committed itself to working with the artist to reach a long-term solution. One possibility involved the replacement of the steel spikes with alternatives made from carbon fibre, although the report underlined the necessity for extensive testing. In January 2009, Antony Gormley, creator of the Angel of the North — to which B of the Bang is often compared — spoke out in support of the sculpture, stating that, \"It is a great tribute to Manchester that this ground-breaking work was commissioned. To allow it to disappear would be a loss not just of an inspirational artwork but also of the council's nerve.\" Despite Gormley's plea, removal of B of the Bang began in April 2009. More substantial hoarding was erected around the site and demolition firm Connell Bros Ltd. began removing the spikes with oxyacetylene cutting equipment. Although the council had earlier promised to store the complex central core and legs, these too were cut apart during removal, casting doubt on future prospects for the landmark sculpture's return. ",
+        "tags": [
+          "manchester city council committed",
+          "demolition firm connell bros ltd",
+          "city council recommended",
+          "removal",
+          "january",
+          "bang",
+          "landmark sculpture's return",
+          "oxyacetylene cutting equipment",
+          "began removing",
+          "bang began"
+        ]
+      },
+      {
+        "title": "Images for kids Images for kids ",
+        "content": "B of the Bang under construction. Dismantling the B of the Bang. ",
+        "tags": [
+          "bang"
+        ]
+      }
+    ],
+    "keywords": [
+      "description"
+    ],
+    "tags": [],
+    "summary": "",
+    "score": 0.7119661995342799
+  },
+  "https://kids.kiddle.co/Italia": {
+    "url": "https://kids.kiddle.co/Italia",
+    "title": "Italia Facts for Kids",
+    "sections": [
+      {
+        "title": "Italia facts for kids ",
+        "content": "The Italian Republic or Italy is a country in the south of Europe, consisting mainly of a boot-shaped peninsula together with two large islands in the Mediterranean Sea: Sicily and Sardinia. To the north it is bound by the Alps, where it borders France, Switzerland, Austria and Slovenia. Italy was a charter member of NATO and the European Union, and hence joined the growing political and economic unification of Western Europe, including the introduction of the Euro in 1999.  ",
+        "tags": [
+          "italy",
+          "western europe",
+          "mediterranean sea",
+          "large islands",
+          "italian republic",
+          "growing political",
+          "european union",
+          "economic unification",
+          "charter member",
+          "borders france"
+        ]
+      },
+      {
+        "title": "History History ",
+        "content": "Italy's history is perhaps the most important one for the cultural and social development of the Mediterranean area as a whole. The country has been host to important human activities in prehistoric times, and thusly archaeological sites of note can be found in many regions: Latium and Tuscany, Umbria and Basilicata. After Magna Graecia, the Etruscan civilisation and especially the Roman Empire that came to dominate this part of the world for many centuries, came the medieval Humanism and the Renaissance that further helped to shape European philosophy and art. The city of Rome contains some of the most important examples of the Baroque. ",
+        "tags": [
+          "important human activities",
+          "thusly archaeological sites",
+          "shape european philosophy",
+          "important examples",
+          "medieval humanism",
+          "social development",
+          "roman empire",
+          "prehistoric times",
+          "mediterranean area",
+          "magna graecia"
+        ]
+      },
+      {
+        "title": "Geography Geography ",
+        "content": "Italy consists predominantly of a large peninsula that extends into the Mediterranean Sea, where together with its two main islands Sicily and Sardinia it creates distinct bodies of water, such as the Adriatic Sea to the north-east, the Ionian Sea to the south-east, the Tyrrhenian Sea to the south-west and finally the Ligurian Sea to the north-west. The Appennine mountains form the backbone of this peninsula, leading north-west to where they join the Alps, the mountain range that then forms an arc enclosing Italy from the north. Here is also found a large plain, the Po-Venetian plain, drained by the Po River and its many tributaries flowing down from the Alps, Appennines and Dolomites. Other well-known rivers include the Tiber, Adige and Arno. Its highest point is the Mont Blanc (Monte Bianco) at 4,810 m, but Italy is more typically associated with two famous volcanoes: the currently dormant Vesuvius near Naples and the very active Etna on Sicily. ",
+        "tags": [
+          "mont blanc monte bianco",
+          "alps",
+          "appennine mountains form",
+          "italy consists predominantly",
+          "arc enclosing italy",
+          "main islands sicily",
+          "creates distinct bodies",
+          "large plain",
+          "large peninsula",
+          "tyrrhenian sea"
+        ]
+      },
+      {
+        "title": "Culture Culture ",
+        "content": "Italy is well-known for its art, culture, and several monuments, among them the leaning tower of Pisa and the Roman Colosseum, as well as for its food (pizza, pasta, etc.), wine, lifestyle, elegance, design, cinema, theatre, literature, poetry, visual arts, music (notably Opera), holidays, and generally speaking, for taste. Europe's Renaissance period began in Italy during the 14th and 15th centuries. Literary achievements, such as the poetry of Petrarch, Tasso, and Ariosto and the prose of Boccaccio, Machiavelli, and Castiglione exerted a tremendous and lasting influence on the subsequent development of Western culture, as did the painting, sculpture, and architecture contributed by giants such as Leonardo da Vinci, Raffaello, Botticelli, Fra Angelico, and Michelangelo. Football is the main national sport. Italy has won the Football World Cup three times: in 1934, 1938 and 1982. Italian football has produced some of world's best football players and teams. ",
+        "tags": [
+          "italy",
+          "th",
+          "poetry",
+          "europe's renaissance period began",
+          "football world cup",
+          "music notably opera",
+          "main national sport",
+          "leonardo da vinci",
+          "italian football",
+          "football players"
+        ]
+      },
+      {
+        "title": "Images for kids Images for kids ",
+        "content": "The Colosseum in Rome, built c. 70 – 80 AD, is considered one of the greatest works of architecture and engineering of ancient history Leonardo da Vinci, the quintessential Renaissance man, in a self-portrait, c. 1512 (the painting is kept in the Biblioteca Reale of Turin) Christopher Columbus discovered America in 1492, opening a new era in the history of humankind Victor Emmanuel meets Giuseppe Garibaldi near Teano Alcide De Gasperi, first republican Prime Minister of Italy and one of the Founding Fathers of the European Union The signing ceremony of the Treaty of Rome at the Palazzo dei Conservatori on the Capitoline Hill Mount Vesuvius, as seen from the ruins of Pompeii National (green) and regional (orange) parks in Italy Examples of Italian fauna, clockwise from left: Paramuricea clavata, Marsican brown bear, Praying mantis and Bluethroat. Southern Italy has a Mediterranean climate The Italian Parliament in plenary session The Supreme Court of Cassation Lamborghini Gallardo provided to the Polizia di Stato corps Prime Minister Paolo Gentiloni with EU High Representative Federica Mogherini The aircraft carrier MM Cavour A Eurofighter Typhoon operated by the Italian Air Force A Ferrari 488, produced by the world's most powerful brand Ferrari. Italy maintains an innovative automotive industry, and is one of the largest exporters of manufactured goods. Boxes of Ferrero Rocher, manufactured by Ferrero, the third biggest chocolate producer and confectionery company in the world Vineyards and olive plantation in the Chianti region (the Italian food industry is well known for the high quality and variety of its products) Clockwise from left: Alessandro Volta, inventor of the electric battery and discoverer of methane;Galileo Galilei, recognized as the Father of modern science, physics and observational astronomy;Guglielmo Marconi, inventor of the long-distance radio transmission;Enrico Fermi, creator of the first nuclear reactor, the Chicago Pile-1 Map of population density in Italy as of the 2011 census Italy is home to a large population of migrants from Eastern Europe and North Africa Italy is home to many of the world’s largest churches and masterpieces of architecture. Clockwise from left: Florence Cathedral, which has the biggest brick dome in the world; St. Peter's Basilica, the largest church of Christendom; Milan Cathedral, the largest Italian church and the fifth largest in the world; and St Mark's Basilica, one of the best known examples of Italo-Byzantine architecture Bologna University is the oldest academic institution of the world, founded in AD 1088 In 2013, UNESCO added the Mediterranean diet to the Representative List of the Intangible Cultural Heritage of Humanity of Italy (promoter), Morocco, Spain, Portugal, Greece, Cyprus and Croatia The Last Supper (1494–1499), Leonardo da Vinci, Church of Santa Maria delle Grazie, Milan Michelangelo's David (1501–1504), Galleria dell'Accademia, Florence Dante, poised between the mountain of Purgatory and the city of Florence, displays the famous incipit \"Nel mezzo del cammin di nostra vita\" of the Divine Comedy in a detail of Domenico di Michelino's painting, 1465 Giacomo Puccini, Italian composer whose operas, including La bohème, Tosca, Madama Butterfly and Turandot, are among the most frequently worldwide performed in the standard repertoire Luciano Pavarotti, one of the most influential tenors of all time A Golden Lion from the Venice Film Festival, the oldest film festival in the world and one of the \"Big Three\" alongside the Cannes Film Festival and Berlin International Film Festival Entrance to the Cinecittà studios in Rome, whose together with Hollywood is the most recognizable film industry in the world The Azzurri at the 1982 FIFA World Cup (one of the four won by Italy) Starting in 1909, the Giro d'Italia is the second oldest of the prestigious Grands Tours Prada shop in Milan Some of the most popular Italian foods: pizza, pasta, gelato and espresso. Island of Lampedusa in the South of Sicily Beach of Cala Goloritzé in Sardinia Monte Bianco/Mont Blanc in Aosta Valley, the highest point in the European Union the Po river in Emilia-Romagna Lake Garda, the largest Italian lake, from Riva del Garda Lake Como with Grigna Mountains and Bellagio The legendary Mount Etna The Marmore's Falls in Ombria The Gulf of Naples in Campania The Riviera in Liguria ",
+        "tags": [
+          "world",
+          "rome",
+          "left",
+          "polizia di stato corps prime minister paolo gentiloni",
+          "european union",
+          "largest italian church",
+          "ancient history leonardo da vinci",
+          "berlin international film festival entrance",
+          "mezzo del cammin di nostra vita",
+          "humankind victor emmanuel meets giuseppe garibaldi"
         ]
       }
     ],

@@ -11,7 +11,7 @@ import { Entity } from "./models";
  * @returns The list of survived entities.
  */
 export function reduceEntities(entities: Array<Entity>,
-    maxEntityNumber = entities ? entities.length : 0, minScore = 0): Array<Entity> {
+        maxEntityNumber = entities ? entities.length : 0, minScore = 0): Array<Entity> {
 
     if (!entities) return null;
     if (!maxEntityNumber && maxEntityNumber !== 0 || maxEntityNumber < 0) maxEntityNumber = entities.length;

@@ -124,7 +124,7 @@ export class WikiData {
     public filterNotArtRelatedResult(metaEntities: Array<MetaEntity>): Promise<Array<MetaEntity>> {
         // filter the entities
         return Promise.all(metaEntities.map(metaEntity => {
-            if (!metaEntity) return
+            if (!metaEntity) return;
             // if the entity description is not an art instance discard the entity directly
             if (wikidataArtEntities.exclude.includes(metaEntity.description?.toLocaleLowerCase()))
                 return Promise.resolve(null);

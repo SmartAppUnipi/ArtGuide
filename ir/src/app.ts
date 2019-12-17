@@ -7,9 +7,9 @@ import logger from "./logger";
 import { LoggerConfig } from "./environment";
 import packageJson from "../package.json";
 import path from "path";
-import { reduceEntities, getLastCommitHash } from "./utils";
 import { Search } from "./search";
-import { ClassificationResult, Entity, ExpertizeLevelType, PageResult, LogLevels } from "./models";
+import { ClassificationResult, Entity, ExpertizeLevelType, LogLevels, PageResult } from "./models";
+import { getLastCommitHash, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
 
 
@@ -36,18 +36,18 @@ app.get("/", (req, res) => {
         message: `IR module version ${packageJson.version}.`,
         currentCommit: `https://github.com/SmartAppUnipi/ArtGuide/commit/${latestCommit}`,
         currentTree: `https://github.com/SmartAppUnipi/ArtGuide/tree/${latestCommit}`,
-        rawLogs: `/logs/raw?minLogLevel=error&contains=text`
+        rawLogs: "/logs/raw?minLogLevel=error&contains=text"
     });
 });
 
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
 app.use("/coverage", express.static(path.join(__dirname, "../coverage/lcov-report/")));
-app.use("/ui", express.static(path.join(__dirname, "./client/ui")));
+app.use("/ui", express.static(path.join(__dirname, "../client/ui")));
 
 // Serve trace log
 if (LoggerConfig.file) {
-    app.use("/logs", express.static(path.join(__dirname, "./client/logs")));
-    app.get("/logs/raw/:logLevel?", (req, res) => {
+    app.use("/logs", express.static(path.join(__dirname, "../client/logs")));
+    app.get("/logs/raw", (req, res) => {
 
         const file = path.join(__dirname, `../${LoggerConfig.file}`);
 
