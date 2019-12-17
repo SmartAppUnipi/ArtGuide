@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>UserProfile | ArtGuide - Information retrieval module</title>
+	<title>QueryResult | ArtGuide - Information retrieval module</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="userprofile.html">UserProfile</a>
+					<a href="queryresult.html">QueryResult</a>
 				</li>
 			</ul>
-			<h1>Interface UserProfile</h1>
+			<h1>Interface QueryResult</h1>
 		</div>
 	</div>
 </header>
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">UserProfile</span>
+						<span class="target">QueryResult</span>
 					</li>
 				</ul>
 			</section>
@@ -78,68 +78,35 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userprofile.html#expertiselevel" class="tsd-kind-icon">expertise<wbr>Level</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userprofile.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userprofile.html#language" class="tsd-kind-icon">language</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userprofile.html#location" class="tsd-kind-icon">location</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="userprofile.html#tastes" class="tsd-kind-icon">tastes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="queryresult.html#gresult" class="tsd-kind-icon">g<wbr>Result</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="queryresult.html#query" class="tsd-kind-icon">query</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="expertiselevel" class="tsd-anchor"></a>
-					<h3>expertise<wbr>Level</h3>
-					<div class="tsd-signature tsd-kind-icon">expertise<wbr>Level<span class="tsd-signature-symbol">:</span> <a href="../enums/expertizeleveltype.html" class="tsd-signature-type">ExpertizeLevelType</a></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="gresult" class="tsd-anchor"></a>
+					<h3>g<wbr>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">g<wbr>Result<span class="tsd-signature-symbol">:</span> <a href="googlesearchresult.html" class="tsd-signature-type">GoogleSearchResult</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/models/user-profile.model.ts#L5">ir/src/models/user-profile.model.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/search.ts#L23">ir/src/search/search.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="id" class="tsd-anchor"></a>
-					<h3>id</h3>
-					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="query" class="tsd-anchor"></a>
+					<h3>query</h3>
+					<div class="tsd-signature tsd-kind-icon">query<span class="tsd-signature-symbol">:</span> <a href="query.html" class="tsd-signature-type">Query</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/models/user-profile.model.ts#L2">ir/src/models/user-profile.model.ts:2</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="language" class="tsd-anchor"></a>
-					<h3>language</h3>
-					<div class="tsd-signature tsd-kind-icon">language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/models/user-profile.model.ts#L4">ir/src/models/user-profile.model.ts:4</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="location" class="tsd-anchor"></a>
-					<h3>location</h3>
-					<div class="tsd-signature tsd-kind-icon">location<span class="tsd-signature-symbol">:</span> <a href="locationtype.html" class="tsd-signature-type">LocationType</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/models/user-profile.model.ts#L6">ir/src/models/user-profile.model.ts:6</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tastes" class="tsd-anchor"></a>
-					<h3>tastes</h3>
-					<div class="tsd-signature tsd-kind-icon">tastes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/models/user-profile.model.ts#L3">ir/src/models/user-profile.model.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/search.ts#L24">ir/src/search/search.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -157,23 +124,14 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface">
-						<a href="userprofile.html" class="tsd-kind-icon">User<wbr>Profile</a>
+					<li class="current tsd-kind-interface tsd-is-not-exported">
+						<a href="queryresult.html" class="tsd-kind-icon">Query<wbr>Result</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userprofile.html#expertiselevel" class="tsd-kind-icon">expertise<wbr>Level</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="queryresult.html#gresult" class="tsd-kind-icon">g<wbr>Result</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userprofile.html#id" class="tsd-kind-icon">id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userprofile.html#language" class="tsd-kind-icon">language</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userprofile.html#location" class="tsd-kind-icon">location</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="userprofile.html#tastes" class="tsd-kind-icon">tastes</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="queryresult.html#query" class="tsd-kind-icon">query</a>
 							</li>
 						</ul>
 					</li>

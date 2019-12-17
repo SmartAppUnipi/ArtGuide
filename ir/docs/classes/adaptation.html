@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CacheService | ArtGuide - Information retrieval module</title>
+	<title>Adaptation | ArtGuide - Information retrieval module</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="cacheservice.html">CacheService</a>
+					<a href="adaptation.html">Adaptation</a>
 				</li>
 			</ul>
-			<h1>Class CacheService</h1>
+			<h1>Class Adaptation</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>A cache service that writes on disk.</p>
+						<p>An interface for the communications with the Adaptation module.</p>
 					</div>
 				</div>
 			</section>
@@ -77,7 +77,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CacheService</span>
+						<span class="target">Adaptation</span>
 					</li>
 				</ul>
 			</section>
@@ -86,180 +86,104 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="cacheservice.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="cacheservice.html#cache" class="tsd-kind-icon">cache</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="cacheservice.html#cachepath" class="tsd-kind-icon">cache<wbr>Path</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="cacheservice.html#get" class="tsd-kind-icon">get</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="cacheservice.html#reset" class="tsd-kind-icon">reset</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="cacheservice.html#set" class="tsd-kind-icon">set</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="adaptation.html#getkeywordexpansion" class="tsd-kind-icon">get<wbr>Keyword<wbr>Expansion</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="adaptation.html#gettailoredtext" class="tsd-kind-icon">get<wbr>Tailored<wbr>Text</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private"><a href="adaptation.html#post" class="tsd-kind-icon">post</a></li>
 							</ul>
 						</section>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Cache<wbr>Service<span class="tsd-signature-symbol">(</span>cachePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="cacheservice.html" class="tsd-signature-type">CacheService</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/cache.service.ts#L8">ir/src/search/cache.service.ts:8</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Create a new cache service that writes on disk.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>cachePath: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>The path to the cache file on disk</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="cacheservice.html" class="tsd-signature-type">CacheService</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="cache" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> cache</h3>
-					<div class="tsd-signature tsd-kind-icon">cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/cache.service.ts#L8">ir/src/search/cache.service.ts:8</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="cachepath" class="tsd-anchor"></a>
-					<h3>cache<wbr>Path</h3>
-					<div class="tsd-signature tsd-kind-icon">cache<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/cache.service.ts#L16">ir/src/search/cache.service.ts:16</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The path to the cache file on disk</p>
-						</div>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-					<a name="get" class="tsd-anchor"></a>
-					<h3>get</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">get&lt;T&gt;<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getkeywordexpansion" class="tsd-anchor"></a>
+					<h3>get<wbr>Keyword<wbr>Expansion</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Keyword<wbr>Expansion<span class="tsd-signature-symbol">(</span>userProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/userprofile.html" class="tsd-signature-type">UserProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/queryexpansionresponse.html" class="tsd-signature-type">QueryExpansionResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/cache.service.ts#L35">ir/src/search/cache.service.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/adaptation.ts#L41">ir/src/adaptation.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Get an item from the cache if it exists. Return null otherwise.</p>
+									<p>Call the adaptation endpoint to get the query expansion.</p>
 								</div>
 							</div>
-							<h4 class="tsd-type-parameters-title">Type parameters</h4>
-							<ul class="tsd-type-parameters">
-								<li>
-									<h4>T</h4>
-								</li>
-							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>key: <span class="tsd-signature-type">string</span></h5>
+									<h5>userProfile: <a href="../interfaces/userprofile.html" class="tsd-signature-type">UserProfile</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The cache key</p>
+										<p>The user profile coming from the UI needed for the query expansion.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
-							<p>The item value or null.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/queryexpansionresponse.html" class="tsd-signature-type">QueryExpansionResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A promise resolved with the query expansion containing the keywords.</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="reset" class="tsd-anchor"></a>
-					<h3>reset</h3>
+					<a name="gettailoredtext" class="tsd-anchor"></a>
+					<h3>get<wbr>Tailored<wbr>Text</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">reset<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Tailored<wbr>Text<span class="tsd-signature-symbol">(</span>results<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span>, userProfile<span class="tsd-signature-symbol">: </span><a href="../interfaces/userprofile.html" class="tsd-signature-type">UserProfile</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tailoredtextresponse.html" class="tsd-signature-type">TailoredTextResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/cache.service.ts#L68">ir/src/search/cache.service.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/adaptation.ts#L59">ir/src/adaptation.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Deletes the cache file form disk and empty the in-memory cache</p>
+									<p>Pass the results of our module to adaptation.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>results: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The array of page results.</p>
+									</div>
+								</li>
+								<li>
+									<h5>userProfile: <a href="../interfaces/userprofile.html" class="tsd-signature-type">UserProfile</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The user profile coming from the UI needed for the adaptation.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/tailoredtextresponse.html" class="tsd-signature-type">TailoredTextResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A promise resolved with the tailored text when sent by the adaptation module.</p>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-					<a name="set" class="tsd-anchor"></a>
-					<h3>set</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">set&lt;T&gt;<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, item<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private">
+					<a name="post" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> post</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">post&lt;T&gt;<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/cache.service.ts#L47">ir/src/search/cache.service.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/adaptation.ts#L26">ir/src/adaptation.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Set or replace an item at a given key. Return true if the
-									item has been written on the disk, false otherwise.</p>
+									<p>Perform a POST request to a specified endpoint with a custom json in the body.</p>
 								</div>
 							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -271,20 +195,20 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>key: <span class="tsd-signature-type">string</span></h5>
+									<h5>url: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The cache key</p>
+										<p>Url (string) of the POST request. Must include protocol port if different from the default.</p>
 									</div>
 								</li>
 								<li>
-									<h5>item: <span class="tsd-signature-type">T</span></h5>
+									<h5>body: <span class="tsd-signature-type">any</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The item to set at that key</p>
+										<p>A JS object that will be stringified and sent as a JSON.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p>true if the cache has been written on file, false otherwise</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A promise resolved with the received JSON parsed as JS object of type T.</p>
 						</li>
 					</ul>
 				</section>
@@ -303,25 +227,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
-						<a href="cacheservice.html" class="tsd-kind-icon">Cache<wbr>Service</a>
+						<a href="adaptation.html" class="tsd-kind-icon">Adaptation</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="cacheservice.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="cacheservice.html#cache" class="tsd-kind-icon">cache</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="cacheservice.html#cachepath" class="tsd-kind-icon">cache<wbr>Path</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="cacheservice.html#get" class="tsd-kind-icon">get</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="adaptation.html#getkeywordexpansion" class="tsd-kind-icon">get<wbr>Keyword<wbr>Expansion</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="cacheservice.html#reset" class="tsd-kind-icon">reset</a>
+								<a href="adaptation.html#gettailoredtext" class="tsd-kind-icon">get<wbr>Tailored<wbr>Text</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-								<a href="cacheservice.html#set" class="tsd-kind-icon">set</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private">
+								<a href="adaptation.html#post" class="tsd-kind-icon">post</a>
 							</li>
 						</ul>
 					</li>

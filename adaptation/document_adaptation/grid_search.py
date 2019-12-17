@@ -1,161 +1,108 @@
-# SDAIS = Smart Deep AI for Search
-# Commentiamo tutte le funzioni e classi seguendo formato Doxygen
-from concurrent.futures import ThreadPoolExecutor as PoolExecutor
-from .document_model import DocumentModel
-from .semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_distance
-from .salient_sentences import from_document_to_salient
-from .policy import Policy
-from .summarization import ModelSummarizer
-from .transitions import transitions_handler
-import spacy
-from bpemb import BPEmb
-from spacy_readability import Readability
+"""
+    grid_search.py: file for finding the **best balance** between
+        the score assigned to pages by the IR module, the affinity to user's tastes and the expertise level
+    ArtGuide project SmartApp1920
+    Dipartimento di Informatica Università di Pisa
+    Authors: M. Barato, S. Berti, M. Bonsembiante, P. Lonardi, G. Martini
+    We declare that the content of this file is entirelly
+    developed by the authors
+"""
+
+import sys
+sys.path.append('./')
+
+from document_adaptation import DocumentsAdaptation, User
+from config import config
+from copy import deepcopy
+from pprint import pprint
+import json
+import os
+
+# Variabili da cambiare per i test
+RESULT_DIR = '/tmp/'
+INPUT_FILES = ['./data/ir_1575387713.4855616.json']
+
+document_adaptation = DocumentsAdaptation(config,
+                                          max_workers=4,
+                                          verbose=config.debug)
+
+print("Must be launched from root of adaptation's folder! \n\n")
 
 
-class DocumentsAdaptation():
-    def __init__(self, config, max_workers=0, verbose=False):
-        self.config = config
-        self.available_languages = {'en': 'en_core_web_sm', 'de': 'de_core_news_sm',
-                                    'fr': 'fr_core_news_sm', 'es': 'es_core_news_sm',
-                                    'it': 'it_core_news_sm', 'multi': 'xx_ent_wiki_sm'}
-        # we can use also BERT distance, but it's slower and does not support multi language
-        # self.distance = BERT_distance()
-        print("Preloading Word Embeddings for selected languages...")
-        # list of the language we want to suppport
-        dim = 200
-        vs = 200000
-        languages = config.languages
+def test_on_config(config, path):
+    document_adaptation.update_config(config)
 
-        # Checking for available languages
-        for lang in languages:
-            if lang not in self.available_languages:
-                raise Exception("Sorry, '{}' not yet supported".format(lang))
+    with open(path) as file:
+        req = json.load(file)
 
-        self.verbose = verbose
-        self.max_workers = max_workers
-        self.transition = {l: transitions_handler(self.config.transition_data_path) for l in languages}
-        self.model_summarizer = {l: ModelSummarizer(config, lang=l, verbose=self.verbose) for l in languages}
-        self.embedder = {l: BPEmb(lang=l, dim=dim, vs=vs) for l in languages}
+    req['tailoredText'] = ''
+    # Body
+    user = User(req["userProfile"])
 
-    # Input: json contenente informazioni dell'utente passate dall'applicazione
-    # Out: serie di keyword da passare a SDAIS per la generazione di queries specializzate
-    # Formato output: {
-    #                  "keyword1":["keyword1_expanded_1","keyword1_expanded_2","keyword1_expanded_3"],
-    #                   "keyword2":["keyword2_expanded_2","keyword2_expanded_3","keyword2_expanded_4"]
-    #                   ....
-    #                   }
+    document_adaptation.language_assertion(user.language)
 
-    def get_language_stopwords(self, user):
-        if (user.language in self.available_languages):
-            spacy_nlp = spacy.load(self.available_languages[user.language])
-        else:
-            spacy_nlp = spacy.load(self.available_languages['multi'])
+    results = document_adaptation.get_tailored_text(req['results'],
+                                                    user,
+                                                    use_transitions=False)
+    if not results:
+        results = "Sorry,\nit is not art."
+    return results
 
-        spacy_lang = getattr(spacy.lang, user.language, None)
 
-        if spacy_lang:
-            stop_words = spacy_lang.stop_words.STOP_WORDS
-        else:
-            stop_words = []
+def main():
+    params_expertise_weight = range(0, 11, 2)
+    params_IR_score_weight = range(0, 11, 2)
+    params_affinity_weight = range(0, 11, 2)
 
-        return stop_words
-
-    def get_keywords(self, tastes):
-        res = {}
-        for taste in tastes:
-            res[taste] = [taste]
-        if self.verbose:
-            print("Expanded keywords: ", res)
-        return res
-
-    # Input: json contenente articoli ricevuti da SDAIS
-    # Out: articolo filtrato im base alle preferenze dell'utente
-    # Formato output: string
-    # Proto: il primo articolo per ora puo' andare bene
-    def get_tailored_text(self, results, user):
-        for i in range(0, 101, 50):
-            for j in range(0, 101, 50):
-                for k in range(0, 101, 50):
-                    new_config = self.config
+    results = []
+    new_config = deepcopy(config)
+    for file in INPUT_FILES:
+        for i in params_expertise_weight:
+            for j in params_IR_score_weight:
+                for k in params_affinity_weight:
+                    new_config = config
                     new_config.expertise_weight = i
                     new_config.IR_score_weight = j
                     new_config.affinity_weight = k
-                    if len(results) <= 0:
-                        return "Content not found"
 
-                    # Loading correct language for BPE embeddings
-                    if user.language in self.embedder:
-                        embedder = self.embedder[user.language]
-                    else:
-                        embedder = self.embedder['en']
-                    user.embed_tastes(embedder)
-                    stop_words = self.get_language_stopwords(user)
-                    # Map result in DocumentModel object
+                    text = test_on_config(config, file)
+                    results.append({
+                        'expertise': i,
+                        'ir': j,
+                        'affinity': k,
+                        'text': text
+                    })
+        unique_texts = list(set([r['text'] for r in results]))
+        aggregate_results = []
+        for u in unique_texts:
+            params = []
+            for r in results:
+                if u == r['text']:
+                    params.append({
+                        'expertise': r['expertise'],
+                        'ir': r['ir'],
+                        'affinity': r['affinity']
+                    })
+            aggregate_results.append({'text': u, 'params': params})
 
-                    # Load spacy dictionary for readibility evaluation
-                    if (user.language in self.available_languages):
-                        nlp = spacy.load(self.available_languages[user.language])
-                    else:
-                        nlp = spacy.load(self.available_languages['multi'])
-                    read = Readability()
-                    nlp.add_pipe(read, last=True)
+        # To plain text
+        plain_text = [file]
+        plain_text += ['  ']
 
-                    documents = [DocumentModel(x, user, nlp, stop_words=stop_words, uid=index) for index, x in
-                                 enumerate(results)]
-                    # Remove document without content
-                    documents = list(filter(lambda x: bool(x.plain_text), documents))
-                    # sort on the IR value
-                    # sorted(documents, key=lambda x: x.score, reverse=True)
+        for i in aggregate_results:
+            plain_text += ['#' * 50]
+            plain_text += [i['text']]
+            for index, j in enumerate(i['params']):
+                plain_text += ['-' * 50]
+                plain_text += [
+                    '{} - expertise={}, ir={}, affinity={}'.format(
+                        index, j['expertise'], j['ir'], j['affinity'])
+                ]
+            plain_text += ['-' * 50]
+        out_path = os.path.join(RESULT_DIR, os.path.basename(file) + '.txt')
+        print('Output ready for {}'.format(out_path))
+        with open(out_path, 'wt') as out:
+            pprint(plain_text, stream=out)
 
-                    if len(documents) <= 0:
-                        return "Content not found"
 
-                    if self.verbose:
-                        print("Total chars in documents: {}".format(sum([len(doc.plain_text) for doc in documents])))
-                        print(["{} chars in document".format(len(doc.plain_text)) for doc in documents])
-
-                    # Parallel function for evaluate the document's affinity
-                    def create_list_salient_sentences(document):
-                        document.user_readability_score()  # QUESTION?
-                        salient_sentences = from_document_to_salient(document, embedder, new_config, user.tastes)
-                        return salient_sentences
-
-                    with PoolExecutor(max_workers=self.max_workers) as executor:
-                        futures = executor.map(create_list_salient_sentences, documents)
-                    salient_sentences = list(futures)
-                    salient_sentences = [x for s in salient_sentences for x in s]
-
-                    # policy on sentences
-                    policy = Policy(salient_sentences, user, self.config.max_cluster_size)
-                    policy.auto()
-
-                    # create batch of sentences for summarization model
-                    batch_sentences, num_sentences, keywords = self.model_summarizer[user.language].to_batch(
-                        policy.results, aggregate_from_same_doc=True)
-                    summaries = self.model_summarizer[user.language].inference(batch_sentences, num_sentences)
-
-                    if self.verbose:
-                        print("####----- Tailored result -----####")
-
-                    tailored_result = ''
-                    for index, res in enumerate(zip(keywords, summaries)):
-                        keyword, summary = res
-                        paragraph = ''
-
-                        if (index > 0):
-                            paragraph += self.transition[user.language].extract_transition(user.language,
-                                                                                           topic=keyword) + '\n'
-                        paragraph += summary + '\n'
-
-                        if self.verbose:
-                            print("[{}]".format(keyword.upper()))
-                            print("{}".format(paragraph))
-
-                        tailored_result += paragraph
-                    with open("output.txt", "a") as myfile:
-                        myfile.write("IR: " + str(i) + ", READ: " + str(j) + ", SIM: " + str(k) + ", EXP: " + str(
-                            user.expertise_level) + "\n")
-                        myfile.write(tailored_result)
-                        myfile.write("======================================================================\n")
-
-        return tailored_result
+main()
