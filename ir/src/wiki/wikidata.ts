@@ -22,7 +22,7 @@ export class WikiData {
      */
     public getProperties(entity: Entity, language: string): Promise<MetaEntity> {
         // translate freebaseId in WikiData id
-        return this.getWikiDataId(entity.entityId)
+        return this.getWikiDataId(entity)
             .then(wikidataId => {
                 // prepare the wikidata object and se the id
                 const wikidataEntity = entity as MetaEntity;
@@ -124,7 +124,7 @@ export class WikiData {
     public filterNotArtRelatedResult(metaEntities: Array<MetaEntity>): Promise<Array<MetaEntity>> {
         // filter the entities
         return Promise.all(metaEntities.map(metaEntity => {
-            if (!metaEntity) return
+            if (!metaEntity) return;
             // if the entity description is not an art instance discard the entity directly
             if (wikidataArtEntities.exclude.includes(metaEntity.description?.toLocaleLowerCase()))
                 return Promise.resolve(null);
@@ -169,10 +169,16 @@ export class WikiData {
     /**
      * Convert a freebase id in a WikiData id.
      *
-     * @param freebaseId Freebase id from the Google Image Vision API (coming from Classification module).
+     * @param entity The entity with the freebase id from the Google Image Vision API (coming from Classification).
      * @returns {Promise<string>} The WikiData id.
      */
-    private getWikiDataId(freebaseId: string): Promise<string> {
+    private getWikiDataId(entity: Entity): Promise<string> {
+        // skip if already present
+        if (entity.wikidataId)
+            return Promise.resolve(entity.wikidataId);
+
+        const freebaseId = entity.entityId;
+        
         const sparql = `
             PREFIX wd: <http://www.wikidata.org/entity/>
             PREFIX wdt: <http://www.wikidata.org/prop/direct/>

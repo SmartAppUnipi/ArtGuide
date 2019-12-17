@@ -119,3 +119,135 @@ describe("Google safe search for kids", () => {
         }
     });
 });
+
+
+describe("Duplicate results", () => {
+
+    const gResultsWithDuplicates: Array<{ gResult: GoogleSearchResult, query: Query }> = [
+        {
+            query: {
+                keywords: ["one", "one", "two"],
+                score: 1
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__1__",
+                    },
+                    {
+                        link: "__2__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["one", "three", "four"],
+                score: 2
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__1__",
+                    },
+                    {
+                        link: "__3__",
+                    },
+                    {
+                        link: "__4__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["one", "five"],
+                score: 3
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__1__",
+                    },
+                    {
+                        link: "__5__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["six"],
+                score: 4
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__6__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["five"],
+                score: 5
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__5__",
+                    }
+                ]
+            }
+        }
+    ] as Array<any>;
+
+    it("Should remove duplicates results", () => {
+        const _search = new Search();
+
+        const gResultsNoDuplicates = _search["mergeDuplicateUrls"](gResultsWithDuplicates);
+
+        const set = new Set<string>(gResultsNoDuplicates.map(r => r.url));
+        expect(set.size).toEqual(6);
+    });
+
+    it("Should merge duplicates keywords", () => {
+        const _search = new Search();
+
+        const gResultsNoDuplicates = _search["mergeDuplicateUrls"](gResultsWithDuplicates);
+
+        expect(gResultsNoDuplicates.length).toEqual(6);
+        expect(gResultsNoDuplicates[0]).toEqual({
+            url: "__1__",
+            keywords: ["one", "two", "three", "four", "five"],
+            score: (1 + 2 + 3) / 3 // average between matching queries
+        });
+        expect(gResultsNoDuplicates[1]).toEqual({
+            url: "__2__",
+            keywords: ["one", "two"],
+            score: 1
+        });
+        expect(gResultsNoDuplicates[2]).toEqual({
+            url: "__3__",
+            keywords: ["one", "three", "four"],
+            score: 2
+        });
+        expect(gResultsNoDuplicates[3]).toEqual({
+            url: "__4__",
+            keywords: ["one", "three", "four"],
+            score: 2
+        });
+        expect(gResultsNoDuplicates[4]).toEqual({
+            url: "__5__",
+            keywords: ["one", "five"],
+            score: (3 + 5) / 2
+        });
+        expect(gResultsNoDuplicates[5]).toEqual({
+            url: "__6__",
+            keywords: ["six"],
+            score: 4
+        });
+    });
+
+});

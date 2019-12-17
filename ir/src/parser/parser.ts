@@ -2,14 +2,16 @@ import { CacheService } from "../search/cache.service";
 import { JSDOM } from "jsdom";
 import logger from "../logger";
 import { PageResult } from "../models";
-
-// eslint-disable-next-line
-const rake = require("rake-js").default;
+import rake from "rake-js";
 
 export class Parser {
 
+    /** The cache service for speedup results */
     private cacheService: CacheService;
 
+    /**
+     * Initialize a new Parser
+     */
     constructor() {
         this.cacheService = new CacheService("parser-cache.json");
     }

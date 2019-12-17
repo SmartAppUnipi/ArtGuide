@@ -1,3 +1,4 @@
+import * as childProcess from "child_process";
 import { Entity } from "./models";
 
 
@@ -36,4 +37,18 @@ export function reduceEntities(entities: Array<Entity>,
         .slice(0, cutIndex)
         // slice ensure there are not more than maxEntityNumber entities
         .slice(0, maxEntityNumber);
+}
+
+/**
+ * Return the last commit hash on the local repository
+ * 
+ * @returns The hash of the last commit on the local machine.
+ */
+export function getLastCommitHash(): string {
+    const latestCommit = childProcess
+        .execSync("git rev-parse HEAD")
+        .toString()
+        .replace(/\n/, "");
+
+    return latestCommit;
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Art Guide Visual Debugging</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body>
+
+    <div class="jumbotron text-center">
+        <h1>Art Guide Visual Debugging</h1>
+    </div>
+
+
+    <div class="container">
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-header">IR Page Result</div>
+                <pre class="card-body" id="ir-tree"></pre>
+            </div>
+            <div class="card">
+                <div class="card-header">Adaptation Tailored Text</div>
+                <p class="card-body" id="adaptation-tree"></p>
+            </div>
+        </div>
+
+        <div style="padding: 10px;">
+            IR module response time: <span id="partial-response-time"></span>.
+            Adaptation getTailoredText: <span id="adaptation-response-time"></span>.
+            Total response time: <span id="total-response-time"></span>.
+        </div>
+    </div>
+    <script src="dist/bundle.js"></script>
+</body>
+
+</html>

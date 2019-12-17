@@ -1,5 +1,6 @@
 import { ClassificationResult } from "./classification.models";
 import { GoogleSearchResult } from "./google-search.models";
+import { LogLevels } from "./log-level.enum";
 import { Entity, MetaEntity } from "./entity.model";
 import { ExpertizeLevelType, UserProfile } from "./user-profile.model";
 import { PageResult, PageSection } from "./page-result.model";
@@ -10,6 +11,8 @@ export {
     ClassificationResult,
     UserProfile,
     ExpertizeLevelType,
+
+    LogLevels,
 
     Query,
     QueryExpansionResponse,

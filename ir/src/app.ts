@@ -1,28 +1,17 @@
-import * as childProcess from "child_process";
 import * as config from "../config.json";
 import { Adaptation } from "./adaptation";
 import bodyParser from "body-parser";
 import express from "express";
+import fs from "fs";
 import logger from "./logger";
 import { LoggerConfig } from "./environment";
 import packageJson from "../package.json";
 import path from "path";
-import { reduceEntities } from "./utils";
 import { Search } from "./search";
-import { ClassificationResult, Entity, ExpertizeLevelType, PageResult } from "./models";
+import { ClassificationResult, Entity, ExpertizeLevelType, LogLevels, PageResult } from "./models";
+import { getLastCommitHash, reduceEntities } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
 
-/** Search module */
-const search = new Search();
-
-/** Wikipedia module */
-const wikipedia = new Wikipedia();
-
-/** WikiData module */
-const wikidata = new WikiData();
-
-/** Adaptation interface */
-const adaptation = new Adaptation();
 
 /** Express application instance */
 const app: express.Application = express();
@@ -42,31 +31,68 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 // Index entry-point
 app.get("/", (req, res) => {
-
-    const latestCommit = childProcess
-        .execSync("git rev-parse HEAD")
-        .toString()
-        .replace(/\n/, "");
-
+    const latestCommit = getLastCommitHash();
     return res.json({
         message: `IR module version ${packageJson.version}.`,
         currentCommit: `https://github.com/SmartAppUnipi/ArtGuide/commit/${latestCommit}`,
-        currentTree: `https://github.com/SmartAppUnipi/ArtGuide/tree/${latestCommit}`
+        currentTree: `https://github.com/SmartAppUnipi/ArtGuide/tree/${latestCommit}`,
+        rawLogs: "/logs/raw?minLogLevel=error&contains=text"
     });
 });
 
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
 app.use("/coverage", express.static(path.join(__dirname, "../coverage/lcov-report/")));
+app.use("/ui", express.static(path.join(__dirname, "../client/ui")));
 
 // Serve trace log
 if (LoggerConfig.file) {
-    express.static.mime.define({ "application/json": ["json", "log"] });
-    const file = path.join(__dirname, `../${LoggerConfig.file}`);
-    app.use("/logs", express.static(file));
+    app.use("/logs", express.static(path.join(__dirname, "../client/logs")));
+    app.get("/logs/raw", (req, res) => {
+
+        const file = path.join(__dirname, `../${LoggerConfig.file}`);
+
+        const minLogLevel = req.query.minLogLevel;
+        const contains = req.query.contains;
+
+        if (!minLogLevel && !contains) {
+            express.static.mime.define({ "application/json": ["json", "log"] });
+            return res.sendFile(file);
+        }
+
+        try {
+            let logs = JSON.parse(fs.readFileSync(file).toString());
+            if (contains)
+                logs = logs.filter(log => JSON.stringify(log).includes(contains));
+
+            if (minLogLevel) {
+                logs = logs.filter(log => {
+                    const currentLogLevel = LogLevels[log.level];
+                    return currentLogLevel <= LogLevels[minLogLevel];
+                });
+            }
+
+            return res.json(logs);
+
+        } catch (ex) {
+            const error = ex as Error;
+            return res.status(500).json({
+                message: "Error parsing the logs",
+                error: {
+                    message: error.message,
+                    stack: error.stack
+                }
+            });
+        }
+    });
 }
 
 // Main entry-point
 app.post("/", async (req, res) => {
+
+    const search = new Search();
+    const wikipedia = new Wikipedia();
+    const wikidata = new WikiData();
+    const adaptation = new Adaptation();
 
     try {
 

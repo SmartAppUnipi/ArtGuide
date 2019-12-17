@@ -25,7 +25,8 @@ export class Wikipedia {
      */
     public search(metaEntities: Array<MetaEntity>, language: string): Promise<Array<PageResult>> {
         return Promise.all(this.buildQueries(metaEntities, language)
-            .map(query => this.getWikiInfo(query.searchTerms, language, query.score)))
+            ?.map(query => this.getWikiInfo(query.searchTerms, language, query.score)))
+            .then(results => results.filter(result => result))
             .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error in search.", { metaEntities, exception: ex });
                 return Promise.resolve([]);
@@ -40,17 +41,23 @@ export class Wikipedia {
      * @returns An array of PageResult about the piece of art and correlated pages like the author.
      */
     public searchKnownInstance(knownInstance: MetaEntity, language: string): Promise<Array<PageResult>> {
+        if (!knownInstance) return Promise.resolve([]);
         const promises = [];
         // search for the entity
         promises.push(this.getWikiInfo(knownInstance.wikipediaPageTitle, language, knownInstance.score));
         // search for the properties
         const propertyScore = knownInstance.score * scoreWeight.known.wikidataProperty;
         for (const property of knownInstanceProperties) {
-            for (const value of knownInstance[property]) 
+            for (const value of knownInstance[property] || [])
                 promises.push(this.getWikiInfo(value, language, propertyScore));
-            
+
         }
-        return Promise.all(promises);
+        return Promise.all(promises)
+            .then(results => results.filter(result => result))
+            .catch(/* istanbul ignore next */ ex => {
+                logger.error("[wikipedia.ts] Error in searchKnownInstance.", { knownInstance, exception: ex });
+                return Promise.resolve([]);
+            });
     }
 
     /**
@@ -62,11 +69,11 @@ export class Wikipedia {
      */
     private buildQueries(metaEntities: Array<MetaEntity>, language: string): Array<Query> {
         // use all the entities
-        const queries = metaEntities.map(entity => {
+        const queries = metaEntities?.map(entity => {
             return {
-                searchTerms: entity.wikipediaPageTitle,
-                score: entity.score,
-                language: language
+                searchTerms: entity?.wikipediaPageTitle,
+                score: entity?.score,
+                language
             } as Query;
         });
         logger.silly("[wikipedia.ts] Queries built: " + queries);
