@@ -53,7 +53,7 @@ if not "GOOGLE_APPLICATION_CREDENTIALS" in os.environ:
 api_key_path = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 if not os.path.exists(api_key_path):
-    print("Google cloud API key file not found: {api_key_path}".format(api_key_path))
+    print("Google cloud API key file not found: {}".format(api_key_path))
 
 
 # ----- CONFIGURING TENSOR MAP ----- #
