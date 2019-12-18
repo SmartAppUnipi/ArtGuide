@@ -25,9 +25,6 @@ VALID_PICT_LABELS = set(["Painting", "Picture frame"])
 VALID_ARCH_LABELS = set(["Building", "Architecture", "Monument"])
 CROP_SIZE = [300, 300, 3]
 
-architecture_nn = tf.saved_model.load("./models/architecture/1")
-
-
 # ----- ----- CONFIGURING ROUTES ----- ----- #
 if not "ROUTES_JSON" in os.environ:
     print("routes.json path not specified, please set the envir. variable ROUTES_JSON")
@@ -43,6 +40,11 @@ with open(routes_path) as json_path:
     OPUS_URL = routes_json["opus"]
     print("> Post to opus service on port {}".format(OPUS_URL))
 
+# ----- ----- CONFIGURING MODELS ----- ----- #
+if not "MODELS_DIR_PATH" in os.environ:
+    print("Models directory path not specified, please set the envir. variable MODELS_DIR_PATH")
+    exit(0)
+models_path = os.environ["MODELS_DIR_PATH"]
 
 # ----- CONFIGURING API KEY ----- #
 if not "GOOGLE_APPLICATION_CREDENTIALS" in os.environ:
@@ -236,7 +238,7 @@ app = Flask(__name__)
 CORS(app, resources=r"/*")
 credentials = service_account.Credentials.from_service_account_file(api_key_path)
 client = vision.ImageAnnotatorClient(credentials=credentials)
-
+architecture_nn = tf.saved_model.load("{}/models/architecture/1".format(models_path))
 
 # ----- ROUTES ----- #
 @app.route("/", methods=["GET"])
