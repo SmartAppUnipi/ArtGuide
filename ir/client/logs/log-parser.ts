@@ -7,15 +7,25 @@ import { PageResult } from "src/models";
  */
 export function parse(tailoredText: string, pageResults: Array<PageResult>) {
 
+    tailoredText = Utils.escapeHtml(tailoredText);
+
     // create the return object 
     const result: {
         htmlIr: string,
         htmlAdaptation: string
     } = { htmlAdaptation: "", htmlIr: "" };
 
-    let pageResultsJson = Utils.escapeHtml(JSON.stringify(pageResults))
+    let pageResultsJson = Utils.escapeHtml(JSON.stringify(pageResults, null, 2))
 
-    const matches: Array<{ start: number, end: number, text: string, entityId: string }> = [];
+    const matches: Array<{
+        ir: { start: number, end: number },
+        adaptation: { start: number, end: number },
+        text: string,
+        entityId: string,
+        color: string,
+        spanId: string
+    }> = [];
+
     let i = 0;
     while (i < tailoredText.length) {
         let j = i + 1;
@@ -24,19 +34,19 @@ export function parse(tailoredText: string, pageResults: Array<PageResult>) {
             const search = tailoredText.substring(i, j);
 
             const blackList = ["\n", "\'", "\"", "<", ">", "=", ":", ".", ",", ";"]
-            if (blackList.includes(search)){
+            if (blackList.includes(search)) {
                 break;
             }
 
-            const position = pageResultJson.indexOf(search);
+            const position = pageResultsJson.indexOf(search);
             if (position >= 0) {
 
                 const pgMatch = pageResults.find(pg =>
-                    pg.title.includes(search) ||
-                    pg.summary?.includes(search) ||
+                    Utils.escapeHtml(pg?.title).includes(search) ||
+                    Utils.escapeHtml(pg?.summary).includes(search) ||
                     pg.sections?.some(section =>
-                        section.title?.includes(search) ||
-                        section.content?.includes(search)
+                        Utils.escapeHtml(section?.title)?.includes(search) ||
+                        Utils.escapeHtml(section?.content)?.includes(search)
                     )
                 );
 
@@ -51,7 +61,9 @@ export function parse(tailoredText: string, pageResults: Array<PageResult>) {
                     adaptation: {
                         start: i,
                         end: j
-                    }
+                    },
+
+                    entityId: pgMatch?.entityId
                 };
                 j++;
             } else break;
@@ -74,20 +86,20 @@ export function parse(tailoredText: string, pageResults: Array<PageResult>) {
     // for each match
     for (const match of matches) {
         // take the text from the start to the char before the match
-        const beforeIr = pageResultJson.substring(0, match.ir.start);
+        const beforeIr = pageResultsJson.substring(0, match.ir.start);
         const spanIr = `<span style="color: ${match.color}" id="${match.spanId}" class="ir-span">${match.text}</span>`;
         // take the text the char after the match to the end
-        const afterIr = pageResultJson.substring(match.ir.end);
+        const afterIr = pageResultsJson.substring(match.ir.end);
         // recompose the text with the span in the middle
-        pageResultJson = beforeIr + spanIr + afterIr;
+        pageResultsJson = beforeIr + spanIr + afterIr;
     }
 
     // sort matches in revers order to start from the back to not update indices
     matches.sort((a, b) => b.adaptation.start - a.adaptation.start);
-    console.log(matches)
+    console.log(matches.filter(m => !m.entityId))
     for (const match of matches) {
         const beforeAdaptation = tailoredText.substring(0, match.adaptation.start);
-        const spanAdaptation = `<span style="color: ${match.color}" class="adaptation-span" data-ir-span-id="${match.spanId}">${match.text}</span>`;
+        const spanAdaptation = `<span style="color: ${match.color}" class="adaptation-span" data-color="${match.color}" data-entity-id="${match.entityId}" data-ir-span-id="${match.spanId}">${match.text}</span>`;
         // take the text the char after the match to the end
         const afterAdaptation = tailoredText.substring(match.adaptation.end);
         // recompose the text with the span in the middle
@@ -95,7 +107,7 @@ export function parse(tailoredText: string, pageResults: Array<PageResult>) {
     }
 
     // set the result
-    result.htmlIr = pageResultJson;
+    result.htmlIr = pageResultsJson;
     result.htmlAdaptation = tailoredText;
 
     return result;

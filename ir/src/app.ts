@@ -96,10 +96,11 @@ app.post("/", async (req, res) => {
 
     try {
 
-        logger.debug("[app.ts] Post request received.", { from: req.ip, hostname: req.hostname });
-
         // Parse the classification result json
         const classificationResult = req.body as ClassificationResult;
+
+        logger.debug("[app.ts] Post request received.", { from: req.ip, hostname: req.hostname, classificationResult });
+
         if (!classificationResult ||
             !classificationResult.classification ||
             !classificationResult.userProfile) {
@@ -117,12 +118,6 @@ app.post("/", async (req, res) => {
                 .status(400)
                 .json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
         }
-
-        // everything 
-        logger.debug("[app.ts] Original classification entities and labels.", {
-            classificationEntities: classificationResult.classification?.entities ?? [],
-            classificationLabels: classificationResult.classification?.labels ?? []
-        });
 
         // 1. Aggregate all entities
         const language = classificationResult.userProfile.language;

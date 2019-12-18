@@ -26,31 +26,23 @@ interface ILog {
     // take ir results sent to adaptation
     const pageResults = last?.metadata?.adaptationResponse?.results ?? "Log not found";
 
-    // beautify the json as string
-    let pageResultJson: string = JSON.stringify(pageResults, null, 2);
-
-    pageResultJson = Utils.escapeHtml(pageResultJson)
-    tailoredText = Utils.escapeHtml(tailoredText)
-
-    console.log("pageResultJson", pageResultJson.substring(0, 800));
-    console.log("pageResultJson", pageResultJson.substring(0, 800));
-
     // create the html with the matched text wrapped in a colored span
-    const logParsingResult = parse(tailoredText, pageResultJson);
+    const logParsingResult = parse(tailoredText, pageResults);
 
     // assign to the divs
     irTree.innerHTML = logParsingResult.htmlIr;
     adaptationTree.innerHTML = logParsingResult.htmlAdaptation;
-    
+
 
     // classification tree
     const lastReducedEntities: Array<Entity> = logs
-        .filter(l => l.message == "[app.ts] Reduced classification entities and labels.")
+        .filter(l => l.message == "[app.ts] Post request received.")
         ?.pop()
         ?.metadata
-        ?.entities ?? [];
+        ?.classificationResult
+        ?.classification;
 
-    classificationTree.innerHTML = JSON.stringify(lastReducedEntities);
+    classificationTree.innerHTML = JSON.stringify(lastReducedEntities, null, 2);
 
     for (const adaptationSpan of document.getElementsByClassName("adaptation-span")) {
         // for each right span (from adaptation tailored text) add a click listener
@@ -61,7 +53,7 @@ interface ILog {
             const currentColor: string = this.getAttribute("data-color");
 
             // populate classification
-            let classificationHtml = Utils.escapeHtml(JSON.stringify(lastReducedEntities));
+            let classificationHtml = Utils.escapeHtml(JSON.stringify(lastReducedEntities, null, 2));
             const start = classificationHtml.indexOf(currentEntityId);
             const end = start + currentEntityId.length;
             const before = classificationHtml.substring(0, start);
@@ -69,6 +61,7 @@ interface ILog {
             const after = classificationHtml.substring(end);
             classificationHtml = before + spanHtml + after;
             classificationTree.innerHTML = classificationHtml;
+
 
             scrollUntilVisible("classification-tree", currentEntityId);
             scrollUntilVisible("ir-tree", currentIrSpanId);
