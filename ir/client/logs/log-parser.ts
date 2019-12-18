@@ -8,9 +8,9 @@ export function parse(tailoredText: string, pageResultJson: string) {
 
     // create the return object 
     const result: {
-        spans: Array<{ irSpanId: string; text: string; color: string }>;
-        html: string;
-    } = { spans: [], html: "" };
+        htmlIr: string,
+        htmlAdaptation: string
+    } = { htmlAdaptation: "", htmlIr: "" };
 
     const matches = [];
     let i = 0;
@@ -19,13 +19,26 @@ export function parse(tailoredText: string, pageResultJson: string) {
         let match = null;
         while (j <= tailoredText.length) {
             const search = tailoredText.substring(i, j);
-            if (search == "\n") break;
+
+            const blackList = ["\n", "\'", "\"", "<", ">", "=", ":", ".", ",", ";"]
+            if (blackList.includes(search)){
+                break;
+            }
+
             const position = pageResultJson.indexOf(search);
             if (position >= 0) {
                 match = {
-                    start: position,
-                    end: position + search.length,
-                    text: search
+                    text: search,
+                    spanId: Utils.generateId(8),
+                    color: Utils.getRandomColor(),
+                    ir: {
+                        start: position,
+                        end: position + search.length
+                    },
+                    adaptation: {
+                        start: i,
+                        end: j
+                    }
                 };
                 j++;
             } else break;
@@ -44,25 +57,33 @@ export function parse(tailoredText: string, pageResultJson: string) {
     }
 
     // sort matches in revers order to start from the back to not update indices
-    matches.sort((a, b) => b.start - a.start);
-
+    matches.sort((a, b) => b.ir.start - a.ir.start);
     // for each match
     for (const match of matches) {
         // take the text from the start to the char before the match
-        const before = pageResultJson.substring(0, match.start);
-        const spanId = Utils.generateId(4);
-        const color = Utils.getRandomColor();
-        // for each matched span, keep a reference to its id
-        result.spans.push({ irSpanId: spanId, text: match.text, color });
-        const span = `<span style="color: ${color}" id="${spanId}" class="ir-span">${match.text}</span>`;
+        const beforeIr = pageResultJson.substring(0, match.ir.start);
+        const spanIr = `<span style="color: ${match.color}" id="${match.spanId}" class="ir-span">${match.text}</span>`;
         // take the text the char after the match to the end
-        const after = pageResultJson.substring(match.end);
+        const afterIr = pageResultJson.substring(match.ir.end);
         // recompose the text with the span in the middle
-        pageResultJson = before + span + after;
+        pageResultJson = beforeIr + spanIr + afterIr;
+    }
+
+    // sort matches in revers order to start from the back to not update indices
+    matches.sort((a, b) => b.adaptation.start - a.adaptation.start);
+    console.log(matches)
+    for (const match of matches) {
+        const beforeAdaptation = tailoredText.substring(0, match.adaptation.start);
+        const spanAdaptation = `<span style="color: ${match.color}" class="adaptation-span" data-ir-span-id="${match.spanId}">${match.text}</span>`;
+        // take the text the char after the match to the end
+        const afterAdaptation = tailoredText.substring(match.adaptation.end);
+        // recompose the text with the span in the middle
+        tailoredText = beforeAdaptation + spanAdaptation + afterAdaptation;
     }
 
     // set the result
-    result.html = pageResultJson;
+    result.htmlIr = pageResultJson;
+    result.htmlAdaptation = tailoredText;
 
     return result;
 }

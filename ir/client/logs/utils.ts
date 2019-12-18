@@ -28,8 +28,8 @@ export class Utils {
         return unsafe
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
+            .replace(/>/g, "&gt;")            
+            .replace(/\\\"/g, "&#039;")
             .replace(/'/g, "&#039;");
     }
 }

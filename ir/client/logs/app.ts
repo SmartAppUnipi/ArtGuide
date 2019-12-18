@@ -24,35 +24,26 @@ interface ILog {
     const last = adaptationResponseLogs?.pop();
 
     // take tailored text
-    const tailoredText: string = last?.metadata?.adaptationResponse?.tailoredText ?? "Log not found";
+    let tailoredText: string = last?.metadata?.adaptationResponse?.tailoredText ?? "Log not found";
     // take ir results sent to adaptation
     const pageResults = last?.metadata?.adaptationResponse?.results ?? "Log not found";
 
     // beautify the json as string
-    const pageResultJson: string = JSON.stringify(pageResults, null, 2);
+    let pageResultJson: string = JSON.stringify(pageResults, null, 2);
+
+    pageResultJson = Utils.escapeHtml(pageResultJson)
+    tailoredText = Utils.escapeHtml(tailoredText)
+
+    console.log("pageResultJson", pageResultJson.substring(0, 800));
+    console.log("pageResultJson", pageResultJson.substring(0, 800));
 
     // create the html with the matched text wrapped in a colored span
-    const logParsingResult = parse(tailoredText, Utils.escapeHtml(pageResultJson));
+    const logParsingResult = parse(tailoredText, pageResultJson);
 
-    // assign to the left div
-    irTree.innerHTML = logParsingResult.html;
-
-    let adaptationHtml = tailoredText;
-    // for each match
-    for (const span of logParsingResult.spans) {
-        // take the text from the start to the char before the match
-        const start = adaptationHtml.indexOf(span.text);
-        const end = start + span.text.length;
-        const before = adaptationHtml.substring(0, start);
-        const spanHtml = `<span style="color: ${span.color}" class="adaptation-span" data-ir-span-id="${span.irSpanId}">${span.text}</span>`;
-        // take the text the char after the match to the end
-        const after = adaptationHtml.substring(end);
-        // recompose the text with the span in the middle
-        adaptationHtml = before + spanHtml + after;
-    }
-
-    // assign it to the right div
-    adaptationTree.innerHTML = adaptationHtml;
+    // assign to the divs
+    irTree.innerHTML = logParsingResult.htmlIr;
+    adaptationTree.innerHTML = logParsingResult.htmlAdaptation;
+    
 
     for (const adaptationSpan of document.getElementsByClassName("adaptation-span")) {
         // for each right span (from adaptation tailored text) add a click listsner
