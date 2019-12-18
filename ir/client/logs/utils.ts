@@ -26,11 +26,10 @@ export class Utils {
 
     public static escapeHtml(unsafe: string) {
         return unsafe
-        /*         return unsafe
-                    .replace(/&/g, "&amp;")
-                    .replace(/</g, "&lt;")
-                    .replace(/>/g, "&gt;")
-                    .replace(/"/g, "&quot;")
-                    .replace(/'/g, "&#039;"); */
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")            
+            .replace(/\\\"/g, "&#039;")
+            .replace(/'/g, "&#039;");
     }
 }

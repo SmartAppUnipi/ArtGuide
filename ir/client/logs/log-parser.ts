@@ -9,9 +9,9 @@ export function parse(tailoredText: string, pageResults: Array<PageResult>) {
 
     // create the return object 
     const result: {
-        spans: Array<{ irSpanId: string; text: string; color: string, entityId: string }>;
-        html: string;
-    } = { spans: [], html: "" };
+        htmlIr: string,
+        htmlAdaptation: string
+    } = { htmlAdaptation: "", htmlIr: "" };
 
     let pageResultsJson = Utils.escapeHtml(JSON.stringify(pageResults))
 
@@ -22,11 +22,13 @@ export function parse(tailoredText: string, pageResults: Array<PageResult>) {
         let match = null;
         while (j <= tailoredText.length) {
             const search = tailoredText.substring(i, j);
-            if (search == "\n") {
-                j++;
-                continue;
+
+            const blackList = ["\n", "\'", "\"", "<", ">", "=", ":", ".", ",", ";"]
+            if (blackList.includes(search)){
+                break;
             }
-            const position = pageResultsJson.indexOf(search);
+
+            const position = pageResultJson.indexOf(search);
             if (position >= 0) {
 
                 const pgMatch = pageResults.find(pg =>
@@ -39,10 +41,17 @@ export function parse(tailoredText: string, pageResults: Array<PageResult>) {
                 );
 
                 match = {
-                    start: position,
-                    end: position + search.length,
                     text: search,
-                    entityId: pgMatch?.entityId
+                    spanId: Utils.generateId(8),
+                    color: Utils.getRandomColor(),
+                    ir: {
+                        start: position,
+                        end: position + search.length
+                    },
+                    adaptation: {
+                        start: i,
+                        end: j
+                    }
                 };
                 j++;
             } else break;
@@ -61,25 +70,33 @@ export function parse(tailoredText: string, pageResults: Array<PageResult>) {
     }
 
     // sort matches in revers order to start from the back to not update indices
-    matches.sort((a, b) => b.start - a.start);
-
+    matches.sort((a, b) => b.ir.start - a.ir.start);
     // for each match
     for (const match of matches) {
         // take the text from the start to the char before the match
-        const before = pageResultsJson.substring(0, match.start);
-        const spanId = Utils.generateId(8);
-        const color = Utils.getRandomColor();
-        // for each matched span, keep a reference to its id
-        result.spans.push({ irSpanId: spanId, text: match.text, color, entityId: match.entityId });
-        const span = `<span style="color: ${color}" id="${spanId}" class="ir-span">${match.text}</span>`;
+        const beforeIr = pageResultJson.substring(0, match.ir.start);
+        const spanIr = `<span style="color: ${match.color}" id="${match.spanId}" class="ir-span">${match.text}</span>`;
         // take the text the char after the match to the end
-        const after = pageResultsJson.substring(match.end);
+        const afterIr = pageResultJson.substring(match.ir.end);
         // recompose the text with the span in the middle
-        pageResultsJson = before + span + after;
+        pageResultJson = beforeIr + spanIr + afterIr;
+    }
+
+    // sort matches in revers order to start from the back to not update indices
+    matches.sort((a, b) => b.adaptation.start - a.adaptation.start);
+    console.log(matches)
+    for (const match of matches) {
+        const beforeAdaptation = tailoredText.substring(0, match.adaptation.start);
+        const spanAdaptation = `<span style="color: ${match.color}" class="adaptation-span" data-ir-span-id="${match.spanId}">${match.text}</span>`;
+        // take the text the char after the match to the end
+        const afterAdaptation = tailoredText.substring(match.adaptation.end);
+        // recompose the text with the span in the middle
+        tailoredText = beforeAdaptation + spanAdaptation + afterAdaptation;
     }
 
     // set the result
-    result.html = pageResultsJson;
+    result.htmlIr = pageResultJson;
+    result.htmlAdaptation = tailoredText;
 
     return result;
 }
