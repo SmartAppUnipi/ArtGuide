@@ -43,6 +43,7 @@ pre {
     cursor: pointer;
 }
 
-.ir-span {
+.ir-span,
+.classification-span {
     font-weight: bold;
 }

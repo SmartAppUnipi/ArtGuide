@@ -96,10 +96,11 @@ app.post("/", async (req, res) => {
 
     try {
 
-        logger.debug("[app.ts] Post request received.", { from: req.ip, hostname: req.hostname });
-
         // Parse the classification result json
         const classificationResult = req.body as ClassificationResult;
+
+        logger.debug("[app.ts] Post request received.", { from: req.ip, hostname: req.hostname, classificationResult });
+
         if (!classificationResult ||
             !classificationResult.classification ||
             !classificationResult.userProfile) {
@@ -117,12 +118,6 @@ app.post("/", async (req, res) => {
                 .status(400)
                 .json({ error: `Unsupported language ${classificationResult.userProfile.language}.` });
         }
-
-        // everything 
-        logger.debug("[app.ts] Original classification entities and labels.", {
-            classificationEntities: classificationResult.classification?.entities ?? [],
-            classificationLabels: classificationResult.classification?.labels ?? []
-        });
 
         // 1. Aggregate all entities
         const language = classificationResult.userProfile.language;
@@ -150,8 +145,6 @@ app.post("/", async (req, res) => {
             config.flowConfig.entityFilter.minScore
         );
 
-        logger.debug("[app.ts] Reduced classification entities and labels.", { entities });
-
         // 4. populate the metadata
         const metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, language)));
 
@@ -166,6 +159,11 @@ app.post("/", async (req, res) => {
              * 7b. search for the exact query on Google
              */
             logger.debug("[app.ts] Got a known instance.", { knownInstance });
+
+            logger.debug("[app.ts] Reduced classification entities and labels.", {
+                entities: metaEntities.map(m =>
+                    ({ description: m.description, score: m.score, entityId: m.entityId } as Entity))
+            });
 
             if (classificationResult.userProfile.expertiseLevel != ExpertizeLevelType.Child) {
                 // Use Wikipedia if the user is not a child
@@ -193,12 +191,15 @@ app.post("/", async (req, res) => {
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
             // BRANCH B: not a known entity
-            logger.debug("[app.ts] Not a known instance.", {
-                reducedClassificationEntities: classificationResult.classification.entities
-            });
+            logger.debug("[app.ts] Not a known instance.", { reducedClassificationEntities: classificationResult.classification.entities });
 
             // 6. remove unwanted entity (not art)
             const filteredEntities = await wikidata.filterNotArtRelatedResult(metaEntities);
+
+            logger.debug("[app.ts] Reduced classification entities and labels.", {
+                entities: filteredEntities.map(m =>
+                    ({ description: m.description, score: m.score, entityId: m.entityId } as Entity))
+            });
 
             /*
              *  5a. search for the top score entities on Wikipedia

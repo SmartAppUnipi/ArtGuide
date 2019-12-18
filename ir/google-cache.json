@@ -10100,5 +10100,680 @@
         }
       }
     ]
+  },
+  "[Novice:it]-Arte moderna stile": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Arte moderna stile",
+          "totalResults": "16900",
+          "searchTerms": "Arte moderna stile",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:aagjculgj8c"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Arte moderna stile",
+          "totalResults": "16900",
+          "searchTerms": "Arte moderna stile",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:aagjculgj8c"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-IT"
+    },
+    "searchInformation": {
+      "searchTime": 0.278905,
+      "formattedSearchTime": "0,28",
+      "totalResults": "16900",
+      "formattedTotalResults": "16.900"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Arte moderna - Wikipedia",
+        "htmlTitle": "<b>Arte moderna</b> - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Arte_moderna",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Il termine arte moderna denota lo stile e la concezione dell'arte propri di quell'\nepoca e, più in generale, alle espressioni artistiche che esprimono una forma di ...",
+        "htmlSnippet": "Il termine <b>arte moderna</b> denota lo <b>stile</b> e la concezione dell&#39;arte propri di quell&#39;<br>\nepoca e, più in generale, alle espressioni artistiche che esprimono una forma di&nbsp;...",
+        "cacheId": "nel61jP28K0J",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Arte_moderna",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/<b>Arte</b>_<b>moderna</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "206",
+              "height": "245",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRex9G44vIYVC8WxmNAceUguW59XGAtutSDRvCqIUdQ3S3KV-3lxuEad-4"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Henri_de_Toulouse-Lautrec_028.jpg/220px-Henri_de_Toulouse-Lautrec_028.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Art Nouveau - Wikipedia",
+        "htmlTitle": "<b>Art</b> Nouveau - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Art_Nouveau",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Lo stile moderno ebbe grande visibilità in Italia nel 1902 all'Esposizione \ninternazionale d'arte decorativa moderna di ...",
+        "htmlSnippet": "Lo <b>stile moderno</b> ebbe grande visibilità in Italia nel 1902 all&#39;Esposizione <br>\ninternazionale d&#39;<b>arte</b> decorativa <b>moderna</b> di&nbsp;...",
+        "cacheId": "h_cXVW-Ba0YJ",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Art_Nouveau",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/<b>Art</b>_Nouveau",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "178",
+              "height": "282",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT610c0sKrQBkFosM9XOFsmG6mn7nvekjX6_IWVsuem0v7aOeP8n5EIwfQN"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Alfons_Mucha_-_Fruit2.jpg/1200px-Alfons_Mucha_-_Fruit2.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Alfons_Mucha_-_Fruit2.jpg/1200px-Alfons_Mucha_-_Fruit2.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Arte del Rinascimento - Wikipedia",
+        "htmlTitle": "<b>Arte</b> del Rinascimento - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Arte_del_Rinascimento",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "L'arte del Rinascimento si sviluppò a Firenze a partire dai primi anni del \nQuattrocento, e da qui ..... Di lì a poco un nuovo stile, nato da un'interpretazione \nestrema della Maniera moderna, conquistò l'Italia e l'Europa: il manierismo.",
+        "htmlSnippet": "L&#39;<b>arte</b> del Rinascimento si sviluppò a Firenze a partire dai primi anni del <br>\nQuattrocento, e da qui ..... Di lì a poco un nuovo <b>stile</b>, nato da un&#39;interpretazione <br>\nestrema della Maniera <b>moderna</b>, conquistò l&#39;Italia e l&#39;Europa: il manierismo.",
+        "cacheId": "VbVBnm2HjIoJ",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Arte_del_Rinascimento",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/<b>Arte</b>_del_Rinascimento",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "256",
+              "height": "197",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrbH0rGS_XgeAQ-ckCBNGw-9ev5alqpbFpJgqBU-IeV8jqDafWvZld9pui"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Masaccio%2C_polittico_di_pisa.jpg/310px-Masaccio%2C_polittico_di_pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Arte contemporanea - Wikipedia",
+        "htmlTitle": "<b>Arte</b> contemporanea - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Arte_contemporanea",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "L'espressione arte contemporanea si riferisce all'insieme di movimenti e \ntendenze artistiche .... Papunya Tula · Pattern and Decoration · Postminimalismo · \nProcess art · Rinascita pittorica Warli · Robotic art · Videoarte · Wild Style (writing)\n ...",
+        "htmlSnippet": "L&#39;espressione <b>arte</b> contemporanea si riferisce all&#39;insieme di movimenti e <br>\ntendenze artistiche .... Papunya Tula &middot; Pattern and Decoration &middot; Postminimalismo &middot; <br>\nProcess <b>art</b> &middot; Rinascita pittorica Warli &middot; Robotic <b>art</b> &middot; Videoarte &middot; Wild <b>Style</b> (writing)<br>\n&nbsp;...",
+        "cacheId": "na2zgFx1860J",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Arte_contemporanea",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/<b>Arte</b>_contemporanea",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSLYVHyX5AycjiT8w16TB1yyMzKyK0Z4nAwKV5LzDqBkSsFwIcRDE_mBD4"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Telaio_del_meriggio%2C_Maria_Lai%2C_1970.JPG/260px-Telaio_del_meriggio%2C_Maria_Lai%2C_1970.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Storia dell'arte - Wikipedia",
+        "htmlTitle": "Storia dell&#39;<b>arte</b> - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Storia_dell%27arte",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Il termine arte moderna denota lo stile e la concezione dell'arte propri di quell'\nepoca e, più in generale, alle espressioni artistiche ...",
+        "htmlSnippet": "Il termine <b>arte moderna</b> denota lo <b>stile</b> e la concezione dell&#39;arte propri di quell&#39;<br>\nepoca e, più in generale, alle espressioni artistiche&nbsp;...",
+        "cacheId": "vk0tDJrV_JYJ",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Storia_dell%27arte",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/Storia_dell%27<b>arte</b>",
+        "pagemap": {
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Arte figurativa - Wikipedia",
+        "htmlTitle": "<b>Arte</b> figurativa - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Arte_figurativa",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Con figurativo moderno o figurativismo si intende lo stile pittorico e scultoreo \ndegli artisti che, dal secondo dopoguerra in ...",
+        "htmlSnippet": "Con figurativo <b>moderno</b> o figurativismo si intende lo <b>stile</b> pittorico e scultoreo <br>\ndegli <b>artisti</b> che, dal secondo dopoguerra in&nbsp;...",
+        "cacheId": "5DRK1VT1d24J",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Arte_figurativa",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/<b>Arte</b>_figurativa",
+        "pagemap": {
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Gotico - Wikipedia",
+        "htmlTitle": "Gotico - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Gotico",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Vedi voci di arte moderna · Arte contemporanea · Vedi voci di arte \ncontemporanea · Categoria:Storia dell'arte · modifica. Schema delle \ncaratteristiche principali dell'architettura gotica. Interno di Saint-Etienne a Caen. Il \ngotico è una fase della storia dell'arte che, da un punto di vista geografico, nasce \nnella ... La nascita ufficiale dello stile viene identificata in architettura, con la ...",
+        "htmlSnippet": "Vedi voci di <b>arte moderna</b> &middot; Arte contemporanea &middot; Vedi voci di arte <br>\ncontemporanea &middot; Categoria:Storia dell&#39;arte &middot; modifica. Schema delle <br>\ncaratteristiche principali dell&#39;architettura gotica. Interno di Saint-Etienne a Caen. Il <br>\ngotico è una fase della storia dell&#39;arte che, da un punto di vista geografico, nasce <br>\nnella ... La nascita ufficiale dello <b>stile</b> viene identificata in architettura, con la&nbsp;...",
+        "cacheId": "X5K2LMJkaNsJ",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Gotico",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/Gotico",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "208",
+              "height": "242",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDGyTo67ybmHf-KmxOh1JRBmI-RdnYnYpntLfzGsn5lPnIIhukgk9m_FE"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Architettura_gotica.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Architettura_gotica.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Neoclassicismo - Wikipedia",
+        "htmlTitle": "Neoclassicismo - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Neoclassicismo",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Il neoclassicismo è una tendenza culturale sviluppatasi in Europa tra il XVIII e il \nXIX secolo. Nato come reazione al tardo barocco e al Rococò e ispiratosi all'arte\n ...",
+        "htmlSnippet": "Il neoclassicismo è una tendenza culturale sviluppatasi in Europa tra il XVIII e il <br>\nXIX secolo. Nato come reazione al tardo barocco e al Rococò e ispiratosi all&#39;<b>arte</b><br>\n&nbsp;...",
+        "cacheId": "5W3NaSq7vPAJ",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Neoclassicismo",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/Neoclassicismo",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "277",
+              "height": "182",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT4BTYadtdAUACikNXgNRZlLEy78JdbD2w3pgMgfD7GNLdYWCD3_5rdKHc"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/David_-_The_Death_of_Socrates.jpg/1200px-David_-_The_Death_of_Socrates.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/David_-_The_Death_of_Socrates.jpg/1200px-David_-_The_Death_of_Socrates.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Esposizione internazionale d'arte decorativa moderna - Wikipedia",
+        "htmlTitle": "Esposizione internazionale d&#39;<b>arte</b> decorativa <b>moderna</b> - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Esposizione_internazionale_d%27arte_decorativa_moderna",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "L'Esposizione internazionale d'arte decorativa moderna fu un importante evento \nespositivo internazionale dello stile Liberty, svoltosi a Torino nel 1902.",
+        "htmlSnippet": "L&#39;Esposizione internazionale d&#39;<b>arte</b> decorativa <b>moderna</b> fu un importante evento <br>\nespositivo internazionale dello <b>stile</b> Liberty, svoltosi a Torino nel 1902.",
+        "cacheId": "wxbak67FkEYJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Esposizione_internazionale_d%27arte_decorativa_ moderna",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Esposizione_internazionale_d%27<b>arte</b>_decorativa_ <b>moderna</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "266",
+              "height": "190",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSV7jMMZ6Q2H2srhyQvU-17GpFgPBWu0KX5aC9NazH28cWqihg1OTyLJ7Q"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Esposizione_arte_moderna_Torino_1902.JPG/1200px-Esposizione_arte_moderna_Torino_1902.JPG"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Esposizione_arte_moderna_Torino_1902.JPG/1200px-Esposizione_arte_moderna_Torino_1902.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Movimento Moderno - Wikipedia",
+        "htmlTitle": "Movimento <b>Moderno</b> - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Movimento_Moderno",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Nel 1932 viene organizzata da Philip Johnson al Museum of Modern Art di New \nYork un'esposizione di una certa ...",
+        "htmlSnippet": "Nel 1932 viene organizzata da Philip Johnson al Museum of Modern <b>Art</b> di New <br>\nYork un&#39;esposizione di una certa&nbsp;...",
+        "cacheId": "Sx3HWwdTGrMJ",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Movimento_Moderno",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/Movimento_<b>Moderno</b>",
+        "pagemap": {
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Novice:it]-Arte moderna storia": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Arte moderna storia",
+          "totalResults": "20500",
+          "searchTerms": "Arte moderna storia",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:aagjculgj8c"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Arte moderna storia",
+          "totalResults": "20500",
+          "searchTerms": "Arte moderna storia",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:aagjculgj8c"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-IT"
+    },
+    "searchInformation": {
+      "searchTime": 0.399001,
+      "formattedSearchTime": "0,40",
+      "totalResults": "20500",
+      "formattedTotalResults": "20.500"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Arte moderna - Wikipedia",
+        "htmlTitle": "<b>Arte moderna</b> - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Arte_moderna",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Il termine arte moderna denota lo stile e la concezione dell'arte propri di quell'\nepoca e, più in ... 1 Storia dell'arte moderna. 1.1 Le radici nel XIX secolo; 1.2 La \nprima metà del ventesimo secolo; 1.3 Dopo la Seconda guerra mondiale. 2 \nMovimenti artistici ...",
+        "htmlSnippet": "Il termine <b>arte moderna</b> denota lo stile e la concezione dell&#39;arte propri di quell&#39;<br>\nepoca e, più in ... 1 <b>Storia</b> dell&#39;<b>arte moderna</b>. 1.1 Le radici nel XIX secolo; 1.2 La <br>\nprima metà del ventesimo secolo; 1.3 Dopo la Seconda guerra mondiale. 2 <br>\nMovimenti artistici&nbsp;...",
+        "cacheId": "nel61jP28K0J",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Arte_moderna",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/<b>Arte</b>_<b>moderna</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "206",
+              "height": "245",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRex9G44vIYVC8WxmNAceUguW59XGAtutSDRvCqIUdQ3S3KV-3lxuEad-4"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Henri_de_Toulouse-Lautrec_028.jpg/220px-Henri_de_Toulouse-Lautrec_028.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Arte contemporanea - Wikipedia",
+        "htmlTitle": "<b>Arte</b> contemporanea - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Arte_contemporanea",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Storia[modifica | modifica wikitesto]. Elenco dei movimenti artistici suddivisi per \ndecenni:",
+        "htmlSnippet": "<b>Storia</b>[modifica | modifica wikitesto]. Elenco dei movimenti artistici suddivisi per <br>\ndecenni:",
+        "cacheId": "na2zgFx1860J",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Arte_contemporanea",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/<b>Arte</b>_contemporanea",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSLYVHyX5AycjiT8w16TB1yyMzKyK0Z4nAwKV5LzDqBkSsFwIcRDE_mBD4"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Telaio_del_meriggio%2C_Maria_Lai%2C_1970.JPG/260px-Telaio_del_meriggio%2C_Maria_Lai%2C_1970.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galleria nazionale d'arte moderna e contemporanea - Wikipedia",
+        "htmlTitle": "Galleria nazionale d&#39;<b>arte moderna</b> e contemporanea - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Galleria_nazionale_d%27arte_moderna_e_contemporanea",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "In quanto museo di arte moderna è necessariamente un ... XIX e XX secolo, \ncoerenti con le collezioni e la storia del museo.",
+        "htmlSnippet": "In quanto museo di <b>arte moderna</b> è necessariamente un ... XIX e XX secolo, <br>\ncoerenti con le collezioni e la <b>storia</b> del museo.",
+        "cacheId": "9JOlRaYxWgEJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Galleria_nazionale_d%27arte_moderna_e_ contemporanea",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Galleria_nazionale_d%27<b>arte</b>_<b>moderna</b>_e_ contemporanea",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "337",
+              "height": "149",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTTLXhw2F7Bf5d2W9L32ez5OMOI0SMRQTU6YszWSyyDrO1g63p3BSykka46"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Roma_Galleria_Nazionale_d%27Arte_Moderna_-_Il_mito_dell%27Italia.jpg/1200px-Roma_Galleria_Nazionale_d%27Arte_Moderna_-_Il_mito_dell%27Italia.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Roma_Galleria_Nazionale_d%27Arte_Moderna_-_Il_mito_dell%27Italia.jpg/1200px-Roma_Galleria_Nazionale_d%27Arte_Moderna_-_Il_mito_dell%27Italia.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Storia dell'arte - Wikipedia",
+        "htmlTitle": "<b>Storia</b> dell&#39;<b>arte</b> - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Storia_dell%27arte",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Il termine arte moderna denota lo stile e la concezione dell'arte propri di quell'\nepoca e, più in generale, alle espressioni artistiche ...",
+        "htmlSnippet": "Il termine <b>arte moderna</b> denota lo stile e la concezione dell&#39;arte propri di quell&#39;<br>\nepoca e, più in generale, alle espressioni artistiche&nbsp;...",
+        "cacheId": "vk0tDJrV_JYJ",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Storia_dell%27arte",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/<b>Storia</b>_dell%27<b>arte</b>",
+        "pagemap": {
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galleria d'arte moderna (Firenze) - Wikipedia",
+        "htmlTitle": "Galleria d&#39;<b>arte moderna</b> (Firenze) - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Galleria_d%27arte_moderna_(Firenze)",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "... tardi fu arricchita dal confluire di numerose collezioni cittadine di arte di quel \nperiodo, come quella di Diego Martelli, acquisita nel 1897.",
+        "htmlSnippet": "... tardi fu arricchita dal confluire di numerose collezioni cittadine di <b>arte</b> di quel <br>\nperiodo, come quella di Diego Martelli, acquisita nel 1897.",
+        "cacheId": "tkiDCa40-z4J",
+        "formattedUrl": "https://it.wikipedia.org/.../Galleria_d%27arte_moderna_(Firenze)",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Galleria_d%27<b>arte</b>_<b>moderna</b>_(Firenze)",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9HlvN1noHfULCwy_FLinEXSLGCvVNwHrUnMooBQtsmErNZKOPSt_F09px"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Palazzo_pitti_33.JPG/1200px-Palazzo_pitti_33.JPG"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Palazzo_pitti_33.JPG/1200px-Palazzo_pitti_33.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galleria civica d'arte moderna e contemporanea - Wikipedia",
+        "htmlTitle": "Galleria civica d&#39;<b>arte moderna</b> e contemporanea - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Galleria_civica_d%27arte_moderna_e_contemporanea",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "La collezione di arte moderna da parte della città di Torino ebbe inizio fin dalla \nfondazione del Museo Civico nel 1863, prima città in Italia ...",
+        "htmlSnippet": "La collezione di <b>arte moderna</b> da parte della città di Torino ebbe inizio fin dalla <br>\nfondazione del Museo Civico nel 1863, prima città in Italia&nbsp;...",
+        "cacheId": "GpSf_Zw_YNEJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Galleria_civica_d%27arte_moderna_e_ contemporanea",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Galleria_civica_d%27<b>arte</b>_<b>moderna</b>_e_ contemporanea",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "300",
+              "height": "168",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS5ysf21OVZcSs3Zjkuu5ra3WIK42uAelgKm3lF1-fxMDmSkpHxWLDmm7xv"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Galleria_d%27Arte_Moderna_-_Ingresso.jpg/1200px-Galleria_d%27Arte_Moderna_-_Ingresso.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Galleria_d%27Arte_Moderna_-_Ingresso.jpg/1200px-Galleria_d%27Arte_Moderna_-_Ingresso.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galleria d'arte moderna Sant'Anna - Wikipedia",
+        "htmlTitle": "Galleria d&#39;<b>arte moderna</b> Sant&#39;Anna - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Galleria_d%27arte_moderna_Sant%27Anna",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "La prima Galleria civica di arte moderna nasce nel 1910 e viene ubicata nel \nRidotto del teatro Politeama, che doveva essere una sede ...",
+        "htmlSnippet": "La prima Galleria civica di <b>arte moderna</b> nasce nel 1910 e viene ubicata nel <br>\nRidotto del teatro Politeama, che doveva essere una sede&nbsp;...",
+        "cacheId": "hVVi2lQ8IrkJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Galleria_d%27arte_moderna_Sant%27Anna",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Galleria_d%27<b>arte</b>_<b>moderna</b>_Sant%27Anna",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "183",
+              "height": "275",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQlxFh1o4rRaz7xgoLHdLJWrg5RZkCPkgvpmjWtVoN47AITjjvfenDZScWx"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Galleria_D%27arte_Moderna_Via_Sant%27Anna_28_Palermo_msu2017-0532.jpg/1200px-Galleria_D%27arte_Moderna_Via_Sant%27Anna_28_Palermo_msu2017-0532.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Galleria_D%27arte_Moderna_Via_Sant%27Anna_28_Palermo_msu2017-0532.jpg/1200px-Galleria_D%27arte_Moderna_Via_Sant%27Anna_28_Palermo_msu2017-0532.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galleria d'Arte Moderna (Milano) - Wikipedia",
+        "htmlTitle": "Galleria d&#39;<b>Arte Moderna</b> (Milano) - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Galleria_d%27Arte_Moderna_(Milano)",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Nel 1903 il Comune decise di far confluire le opere donate in una Galleria d'Arte \nContemporanea, dal 1877 custodite nel Salone dei ...",
+        "htmlSnippet": "Nel 1903 il Comune decise di far confluire le opere donate in una Galleria d&#39;<b>Arte</b> <br>\nContemporanea, dal 1877 custodite nel Salone dei&nbsp;...",
+        "cacheId": "AOolwgjM9L4J",
+        "formattedUrl": "https://it.wikipedia.org/.../Galleria_d%27Arte_Moderna_(Milano)",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Galleria_d%27<b>Arte</b>_<b>Moderna</b>_(Milano)",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSFshmqBhVlsP2AtTGG6F2_BnKp36yq9G3TmHtM6yM-P2A15A1-NUY_mt7_"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Galleria_d%27Arte_Moderna_di_Milano%2C_sala_XXVIII.jpg/1200px-Galleria_d%27Arte_Moderna_di_Milano%2C_sala_XXVIII.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Galleria_d%27Arte_Moderna_di_Milano%2C_sala_XXVIII.jpg/1200px-Galleria_d%27Arte_Moderna_di_Milano%2C_sala_XXVIII.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Museum of Modern Art - Wikipedia",
+        "htmlTitle": "Museum of Modern Art - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Museum_of_Modern_Art",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "Il Museum of Modern Art (conosciuto anche con l'acronimo MoMA) si trova a \nMidtown Manhattan, New York, sulla 53ª strada, tra la Quinta e la Sesta Avenue. \nHa avuto una straordinaria importanza per lo sviluppo dell'arte moderna ed ... 1 \nStoria; 2 Il rinnovamento; 3 New MoMA (2019); 4 Le opere; 5 Esposizioni ospitate\n ...",
+        "htmlSnippet": "Il Museum of Modern Art (conosciuto anche con l&#39;acronimo MoMA) si trova a <br>\nMidtown Manhattan, New York, sulla 53ª strada, tra la Quinta e la Sesta Avenue. <br>\nHa avuto una straordinaria importanza per lo sviluppo dell&#39;<b>arte moderna</b> ed ... 1 <br>\n<b>Storia</b>; 2 Il rinnovamento; 3 New MoMA (2019); 4 Le opere; 5 Esposizioni ospitate<br>\n&nbsp;...",
+        "cacheId": "kA0Wc28I70cJ",
+        "formattedUrl": "https://it.wikipedia.org/wiki/Museum_of_Modern_Art",
+        "htmlFormattedUrl": "https://it.wikipedia.org/wiki/Museum_of_Modern_Art",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "194",
+              "height": "259",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTDSpsOums9qYPfHc5e41JiV_LxY4NalzayO0_9Jd5bm8Z9hoDJ9oNm0ynj"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/MoMa_NY_USA_1.jpg/1200px-MoMa_NY_USA_1.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/MoMa_NY_USA_1.jpg/1200px-MoMa_NY_USA_1.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Museo d'arte moderna (Città del Messico) - Wikipedia",
+        "htmlTitle": "Museo d&#39;<b>arte moderna</b> (Città del Messico) - Wikipedia",
+        "link": "https://it.wikipedia.org/wiki/Museo_d%27arte_moderna_(Citt%C3%A0_del_Messico)",
+        "displayLink": "it.wikipedia.org",
+        "snippet": "... base a una concezione museologica dell'arte moderna all'interno di uno \nschema curatoriale più ampio, che inizia dalla storia dell'arte ...",
+        "htmlSnippet": "... base a una concezione museologica dell&#39;<b>arte moderna</b> all&#39;interno di uno <br>\nschema curatoriale più ampio, che inizia dalla <b>storia</b> dell&#39;arte&nbsp;...",
+        "cacheId": "PhqNexb035kJ",
+        "formattedUrl": "https://it.wikipedia.org/.../Museo_d%27arte_moderna_(Città_del_Messico)",
+        "htmlFormattedUrl": "https://it.wikipedia.org/.../Museo_d%27<b>arte</b>_<b>moderna</b>_(Città_del_Messico)",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "259",
+              "height": "194",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSjaxJRJhD7WxwXkqWj_1zGgxgoXYcf_tRXQPB5uKAgHzWUgqiHmX4LUWE"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/2/27/Museo_de_Arte_Moderno_de_M%C3%A9xico_%2821-10-2006%29.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/2/27/Museo_de_Arte_Moderno_de_M%C3%A9xico_%2821-10-2006%29.jpg"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

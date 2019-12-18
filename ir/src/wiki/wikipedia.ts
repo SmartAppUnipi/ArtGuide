@@ -25,7 +25,12 @@ export class Wikipedia {
      */
     public search(metaEntities: Array<MetaEntity>, language: string): Promise<Array<PageResult>> {
         return Promise.all(this.buildQueries(metaEntities, language)
-            ?.map(query => this.getWikiInfo(query.searchTerms, language, query.score)))
+            ?.map(query => 
+                this.getWikiInfo(query.searchTerms, language, query.score)
+                .then(pageResult => pageResult ? Object.assign({}, pageResult, {
+                    entityId: query?.entityId,
+                    searchTerms: query?.searchTerms
+                }) : null)))
             .then(results => results.filter(result => result))
             .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error in search.", { metaEntities, exception: ex });
