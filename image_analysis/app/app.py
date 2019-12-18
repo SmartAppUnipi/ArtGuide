@@ -57,33 +57,21 @@ if not os.path.exists(api_key_path):
 
 
 # ----- CONFIGURING TENSOR MAP ----- #
-try:
-    with open("tensormaps/dpictstyle2wd.json", "r") as f:
-        # picture style name to wikidata identifier
-        PICTSTYLE_2_WD = json.load(f)
-except IOError:
-    print("file not found pictstyle2wd")
+with open("image_analysis/app/tensormaps/dpictstyle2wd.json", "r") as f:
+    # picture style name to wikidata identifier
+    PICTSTYLE_2_WD = json.load(f)
 
-try:
-    with open("tensormaps/idx2pictstyle.json", "r") as f:
-        # picture style name to index in the model output
-        IDX_2_PICTSTYLE = json.load(f)
-except :
-    print("file not found pictstyle2idx")
+with open("image_analysis/app/tensormaps/idx2pictstyle.json", "r") as f:
+    # picture style name to index in the model output
+    IDX_2_PICTSTYLE = json.load(f)
 
-try:
-    with open("tensormaps/darchstyle2wd.json", "r") as f:
-        # picture style name to wikidata identifier
-        ARCHSTYLE_2_WD = json.load(f)
-except :
-    print("file not found archstyle2wd.json")
+with open("image_analysis/app/tensormaps/darchstyle2wd.json", "r") as f:
+    # picture style name to wikidata identifier
+    ARCHSTYLE_2_WD = json.load(f)
 
-try:
-    with open("tensormaps/idx2archstyle.json", "r") as f:
-        # picture style name to index in the model output
-        IDX_2_ARCHSTYLE = json.load(f)
-except :
-    print("file not found archstyle2idx.json")
+with open("image_analysis/app/tensormaps/idx2archstyle.json", "r") as f:
+    # picture style name to index in the model output
+    IDX_2_ARCHSTYLE = json.load(f)
 
 
 
