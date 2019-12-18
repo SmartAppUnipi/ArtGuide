@@ -27,10 +27,10 @@ export class Wikipedia {
         return Promise.all(this.buildQueries(metaEntities, language)
             ?.map(query => 
                 this.getWikiInfo(query.searchTerms, language, query.score)
-                .then(pageResult => pageResult ? Object.assign({}, pageResult, {
-                    entityId: query?.entityId,
-                    searchTerms: query?.searchTerms
-                }) : null)))
+                    .then(pageResult => pageResult ? Object.assign({}, pageResult, {
+                        entityId: query?.entityId,
+                        searchTerms: query?.searchTerms
+                    }) : null)))
             .then(results => results.filter(result => result))
             .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error in search.", { metaEntities, exception: ex });
@@ -59,7 +59,7 @@ export class Wikipedia {
         // search for the properties
         const propertyScore = knownInstance.score * scoreWeight.known.wikidataProperty;
         for (const property of knownInstanceProperties) {
-            for (const value of knownInstance[property] || [])
+            for (const value of knownInstance[property] || []) {
                 promises.push(
                     this.getWikiInfo(value, language, propertyScore)
                         .then(pageResult => pageResult ? Object.assign({}, pageResult, {
@@ -67,6 +67,7 @@ export class Wikipedia {
                             searchTerms: knownInstance?.wikipediaPageTitle
                         }) : null)
                 );
+            }
 
         }
         return Promise.all(promises)
@@ -110,9 +111,9 @@ export class Wikipedia {
      */
     private async getWikiInfo(query: string, language: string, score: number): Promise<PageResult> {
 
-        if (!query) {
+        if (!query) 
             return null;
-        }
+        
 
         // wiki object initialized with WikiPedia API endpoint
         const wikijs = wiki({ apiUrl: "https://" + language + ".wikipedia.org/w/api.php" });
@@ -128,13 +129,13 @@ export class Wikipedia {
                     })
                     .catch(/* istanbul ignore next */ ex => {
                         logger.error("[wikipedia.ts] Error in getting the page from Wikipedia.",
-                            { title: title, exception: ex });
+                                     { title: title, exception: ex });
                         return Promise.resolve(null);
                     });
             })
             .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error while retrieving result from Wikipedia.",
-                    { query: query, exception: ex });
+                             { query: query, exception: ex });
                 return Promise.resolve(null);
             });
     }
@@ -173,7 +174,7 @@ export class Wikipedia {
                 })
                 .catch(/* istanbul ignore next */ ex => {
                     logger.error("[wikipedia.ts] Error in getting the sections from the page.",
-                        { page: pageResult.title, exception: ex });
+                                 { page: pageResult.title, exception: ex });
                 }),
             // set summary
             page.summary()
@@ -182,11 +183,11 @@ export class Wikipedia {
                 })
                 .catch(/* istanbul ignore next */ ex => {
                     logger.error("[wikipedia.ts] Error in getting the summary from the page.",
-                        { page: pageResult.title, exception: ex });
+                                 { page: pageResult.title, exception: ex });
                 })
         ]).then(() => {
             logger.debug("[wikipedia.ts] PageResult correctly built.",
-                { pageTitle: pageResult.title, pageUrl: pageResult.url });
+                         { pageTitle: pageResult.title, pageUrl: pageResult.url });
             return pageResult;
         });
     }

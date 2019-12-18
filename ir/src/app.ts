@@ -191,7 +191,8 @@ app.post("/", async (req, res) => {
             logger.debug("[app.ts] Google and Wikipedia requests ended.");
         } else {
             // BRANCH B: not a known entity
-            logger.debug("[app.ts] Not a known instance.", { reducedClassificationEntities: classificationResult.classification.entities });
+            logger.debug("[app.ts] Not a known instance.",
+                         { reducedClassificationEntities: classificationResult.classification.entities });
 
             // 6. remove unwanted entity (not art)
             const filteredEntities = await wikidata.filterNotArtRelatedResult(metaEntities);

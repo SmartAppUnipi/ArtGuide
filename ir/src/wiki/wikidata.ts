@@ -174,7 +174,7 @@ export class WikiData {
      */
     private getWikiDataId(entity: Entity): Promise<string> {
         if (!entity)
-            return Promise.resolve(null)
+            return Promise.resolve(null);
         // skip if already present
         if (entity.wikidataId)
             return Promise.resolve(entity.wikidataId);

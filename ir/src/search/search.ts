@@ -11,7 +11,6 @@ import {
     UserProfile
 } from "../models";
 import { knownInstanceProperties, scoreWeight, searchBlackList } from "../../config.json";
-import { query } from "winston";
 
 
 interface ParsableItem extends Query {
@@ -144,7 +143,7 @@ export class Search {
                     })
                     .catch(ex => {
                         logger.error("[search.ts] Caught exception while processing a query.",
-                            { query: query, exception: ex });
+                                     { query: query, exception: ex });
                         return null;
                     });
             })
@@ -229,7 +228,7 @@ export class Search {
                         url: item.link,
                         keywords: Array.from(new Set(result.query.keywords)), // keywords without duplicates
                         counter: 1
-                    })
+                    });
                     linkMap.set(item.link, parsableItem);
                 } else {
                     const matching = linkMap.get(item.link);
@@ -246,7 +245,7 @@ export class Search {
             }
         }
 
-        for (const [url, parsableItem] of linkMap) {
+        for (const parsableItem of linkMap.values()) {
             parsableItem.score = parsableItem.score / (parsableItem as any).counter;
             delete (parsableItem as any).counter;
             finalResult.push(parsableItem);
