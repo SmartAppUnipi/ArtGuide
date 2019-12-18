@@ -81,7 +81,7 @@ describe("Adaptation", () => {
                     }
                 ],
                 summary: ""
-            }
+            } as PageResult
         ]
         const adaptation = new Adaptation()
         await expect(adaptation.getTailoredText(results, userProfile)).resolves.toEqual({ results, userProfile });
