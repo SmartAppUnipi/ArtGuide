@@ -88,9 +88,12 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="wikidata.html#getproperties" class="tsd-kind-icon">get<wbr>Properties</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wikidata.html#filternotartrelatedresult" class="tsd-kind-icon">filter<wbr>Not<wbr>Art<wbr>Related<wbr>Result</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="wikidata.html#getentityrootpath" class="tsd-kind-icon">get<wbr>Entity<wbr>Root<wbr>Path</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wikidata.html#getproperties" class="tsd-kind-icon">get<wbr>Properties</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="wikidata.html#getwikidataid" class="tsd-kind-icon">get<wbr>Wiki<wbr>Data<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wikidata.html#getwikipedianame" class="tsd-kind-icon">get<wbr>Wikipedia<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="wikidata.html#setwikipedianames" class="tsd-kind-icon">set<wbr>Wikipedia<wbr>Names</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="wikidata.html#trygetknowninstance" class="tsd-kind-icon">try<wbr>Get<wbr>Known<wbr>Instance</a></li>
 							</ul>
 						</section>
@@ -99,30 +102,99 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="getproperties" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Properties</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Properties<span class="tsd-signature-symbol">(</span>freebaseId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="wikidataproperties.html" class="tsd-signature-type">WikiDataProperties</a><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="filternotartrelatedresult" class="tsd-anchor"></a>
+					<h3>filter<wbr>Not<wbr>Art<wbr>Related<wbr>Result</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">filter<wbr>Not<wbr>Art<wbr>Related<wbr>Result<span class="tsd-signature-symbol">(</span>metaEntities<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/wiki/wikidata.ts#L119">IR/src/wiki/wikidata.ts:119</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/wiki/wikidata.ts#L124">ir/src/wiki/wikidata.ts:124</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Return the properties of</p>
+									<p>Removes from a list the entities that are not related to arts.
+									It uses wikidata to retrieve the tree of InstanceOf and SubClassOf of the entity and look for a match.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>freebaseId: <span class="tsd-signature-type">string</span></h5>
+									<h5>metaEntities: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The freebaseId id to look for.</p>
+										<p>The list of entities to be filtered out.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The filtered entities array.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="getentityrootpath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Entity<wbr>Root<wbr>Path</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Entity<wbr>Root<wbr>Path<span class="tsd-signature-symbol">(</span>wikidataId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/wiki/wikidata.ts#L222">ir/src/wiki/wikidata.ts:222</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Given a WikiData entity returns the list of the labels for properties
+									&#39;InstanceOf&#39; (P31) and &#39;SubClassOf&#39; (P279) until the WikiData root.</p>
+								</div>
+								<p>This function exploits SparQL to perform a single HTTP request.</p>
+								<p>The returned list is unordered.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>wikidataId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The WikiData entity id.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>An array with the labels corresponding to the properties values
+							(eg. for Pisa Tower =&gt; <code>[&quot;bell tower&quot;, &quot;tower&quot;, &quot;architectural structure&quot;, &quot;work&quot;, &quot;construction&quot;, ... ]</code>)</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getproperties" class="tsd-anchor"></a>
+					<h3>get<wbr>Properties</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Properties<span class="tsd-signature-symbol">(</span>entity<span class="tsd-signature-symbol">: </span><a href="../interfaces/entity.html" class="tsd-signature-type">Entity</a>, language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/wiki/wikidata.ts#L23">ir/src/wiki/wikidata.ts:23</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieve metadata from an entity.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>entity: <a href="../interfaces/entity.html" class="tsd-signature-type">Entity</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The entity to look for.</p>
 									</div>
 								</li>
 								<li>
@@ -132,7 +204,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="wikidataproperties.html" class="tsd-signature-type">WikiDataProperties</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>An object with some fields from WikiData.</p>
 						</li>
 					</ul>
@@ -141,13 +213,13 @@
 					<a name="getwikidataid" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Wiki<wbr>Data<wbr>Id</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Wiki<wbr>Data<wbr>Id<span class="tsd-signature-symbol">(</span>freebaseId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Wiki<wbr>Data<wbr>Id<span class="tsd-signature-symbol">(</span>entity<span class="tsd-signature-symbol">: </span><a href="../interfaces/entity.html" class="tsd-signature-type">Entity</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/wiki/wikidata.ts#L85">IR/src/wiki/wikidata.ts:85</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/wiki/wikidata.ts#L175">ir/src/wiki/wikidata.ts:175</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -158,9 +230,9 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>freebaseId: <span class="tsd-signature-type">string</span></h5>
+									<h5>entity: <a href="../interfaces/entity.html" class="tsd-signature-type">Entity</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Freebase id from the Google Image Vision API (coming from Classification module).</p>
+										<p>The entity with the freebase id from the Google Image Vision API (coming from Classification).</p>
 									</div>
 								</li>
 							</ul>
@@ -173,13 +245,13 @@
 					<a name="getwikipedianame" class="tsd-anchor"></a>
 					<h3>get<wbr>Wikipedia<wbr>Name</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Wikipedia<wbr>Name<span class="tsd-signature-symbol">(</span>freebaseId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, lang<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Wikipedia<wbr>Name<span class="tsd-signature-symbol">(</span>wikidataId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, lang<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/wiki/wikidata.ts#L36">IR/src/wiki/wikidata.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/wiki/wikidata.ts#L162">ir/src/wiki/wikidata.ts:162</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -190,9 +262,9 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>freebaseId: <span class="tsd-signature-type">string</span></h5>
+									<h5>wikidataId: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The freebaseId id to look for.</p>
+										<p>The wikidata entity id to look for.</p>
 									</div>
 								</li>
 								<li>
@@ -207,35 +279,79 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="trygetknowninstance" class="tsd-anchor"></a>
-					<h3>try<wbr>Get<wbr>Known<wbr>Instance</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">try<wbr>Get<wbr>Known<wbr>Instance<span class="tsd-signature-symbol">(</span>classificationResult<span class="tsd-signature-symbol">: </span><a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/knowninstance.html" class="tsd-signature-type">KnownInstance</a><span class="tsd-signature-symbol">&gt;</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="setwikipedianames" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> set<wbr>Wikipedia<wbr>Names</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Wikipedia<wbr>Names<span class="tsd-signature-symbol">(</span>knownInstance<span class="tsd-signature-symbol">: </span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a>, language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/5a6e5b6/IR/src/wiki/wikidata.ts#L54">IR/src/wiki/wikidata.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/wiki/wikidata.ts#L91">ir/src/wiki/wikidata.ts:91</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Check if a Freebase id refers to a known instance or not.</p>
+									<p>Given a known entity, replace all the property ids with the corresponding Wikipedia page titles.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>classificationResult: <a href="../interfaces/classificationresult.html" class="tsd-signature-type">ClassificationResult</a></h5>
+									<h5>knownInstance: <a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The classification result, optionally filtered.</p>
+										<p>The known instance to be populated.</p>
+									</div>
+								</li>
+								<li>
+									<h5>language: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The language code, ie. the Wikipedia subdomain to search in.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/knowninstance.html" class="tsd-signature-type">KnownInstance</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A KnownInstance object if is a known instance or null otherwise.</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>the improved known entity.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="trygetknowninstance" class="tsd-anchor"></a>
+					<h3>try<wbr>Get<wbr>Known<wbr>Instance</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">try<wbr>Get<wbr>Known<wbr>Instance<span class="tsd-signature-symbol">(</span>metaEntities<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span>, language<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/wiki/wikidata.ts#L69">ir/src/wiki/wikidata.ts:69</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Check if there is a meta entity that is an instance of a known entity.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>metaEntities: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The entities with WikiData properties.</p>
+									</div>
+								</li>
+								<li>
+									<h5>language: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The language code, ie. the Wikipedia subdomain to search in.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/metaentity.html" class="tsd-signature-type">MetaEntity</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The first meta entity that is a known instance or null if there are none.</p>
 						</li>
 					</ul>
 				</section>
@@ -256,7 +372,13 @@
 					<li class="current tsd-kind-class">
 						<a href="wikidata.html" class="tsd-kind-icon">Wiki<wbr>Data</a>
 						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="wikidata.html#filternotartrelatedresult" class="tsd-kind-icon">filter<wbr>Not<wbr>Art<wbr>Related<wbr>Result</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="wikidata.html#getentityrootpath" class="tsd-kind-icon">get<wbr>Entity<wbr>Root<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="wikidata.html#getproperties" class="tsd-kind-icon">get<wbr>Properties</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -264,6 +386,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="wikidata.html#getwikipedianame" class="tsd-kind-icon">get<wbr>Wikipedia<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="wikidata.html#setwikipedianames" class="tsd-kind-icon">set<wbr>Wikipedia<wbr>Names</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="wikidata.html#trygetknowninstance" class="tsd-kind-icon">try<wbr>Get<wbr>Known<wbr>Instance</a>

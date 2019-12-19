@@ -1,25 +1,97 @@
 {
+    "supportedLanguages": [
+        "en",
+        "it"
+    ],
     "flowConfig": {
         "entityFilter": {
             "maxEntityNumber": 3,
             "minScore": 0.5
         },
-        "weight": {
-            "wikipedia": {
-                "known": 1,
-                "unknown": 0.6
-            },
-            "google": {
-                "known": 0.75,
-                "unknown": 0.9
-            }
-        },
         "googleSearchResults": {
             "maxLimit": 3
         }
     },
-    "supportedLanguages": [
-        "en",
-        "it"
+    "scoreWeight": {
+        "known": {
+            "wikipedia": 1,
+            "google": 0.75,
+            "wikidataProperty": 0.7
+        },
+        "unknown": {
+            "wikipedia": 0.6,
+            "google": 0.9
+        }
+    },
+    "wikidataArtEntities": {
+        "include": [
+            "architect",
+            "architectural structure",
+            "architecture",
+            "art",
+            "art genre",
+            "art movement",
+            "art museum",
+            "art style",
+            "arts",
+            "bell tower",
+            "building",
+            "creator",
+            "design",
+            "designer",
+            "exhibition hall",
+            "genre of sculpture",
+            "museum",
+            "museum building",
+            "national museum",
+            "painter",
+            "painting",
+            "painting movement",
+            "painting style",
+            "sculpture",
+            "statue",
+            "tourist attraction",
+            "tower",
+            "visual artist",
+            "visual artwork",
+            "work of art"
+        ],
+        "exclude": [
+            "crowd",
+            "house",
+            "residence",
+            "residential building"
+        ]
+    },
+    "wikidataProperties": {
+        "instanceof": "P31",
+        "creator": "P170",
+        "genre": "P136",
+        "movement": "P135",
+        "architect": "P84",
+        "architecturalStyle": "P149",
+        "location": "P625"
+    },
+    "knownInstanceProperties": [
+        "creator",
+        "architect",
+        "genre"
+    ],
+    "searchBlackList": [
+        "amazon",
+        "wikipedia",
+        "ebay",
+        "pinterest",
+        "youtube",
+        ".pdf",
+        ".png",
+        ".jpg",
+        ".jpeg",
+        ".svg",
+        ".doc",
+        ".docx",
+        ".ppt",
+        ".pptx",
+        "fandom.com"
     ]
 }

@@ -1,7 +1,9 @@
 /// <reference types="@types/jest"/>
 
 import { Search } from "../../src/search"
-import { Query, PageResult, GoogleSearchResult } from "../../src/models"
+import { Query, GoogleSearchResult } from "../../src/models"
+import { userProfiles } from ".."
+import { GoogleSearch } from "../../src/search/google-search"
 
 
 const search = new Search()
@@ -9,6 +11,7 @@ const search = new Search()
 
 const queries: Array<Query> = [
     {
+        entityId: "/m/0jbg2",
         searchTerms: "mona lisa",
         score: 0.98765432,
         keywords: [],
@@ -30,18 +33,21 @@ const queryExpansionResponse = {
 
 const extendedQueries: Array<Query> = [
     {
+        entityId: "/m/0jbg2",
         searchTerms: 'mona lisa',
         score: 0.98765432,
         keywords: ['history'],
         language: "en"
     },
     {
+        entityId: "/m/0jbg2",
         searchTerms: 'mona lisa',
         score: 0.98765432,
         keywords: ['style', 'technique'],
         language: "en"
     },
     {
+        entityId: "/m/0jbg2",
         searchTerms: 'mona lisa',
         score: 0.98765432,
         keywords: [],
@@ -67,13 +73,14 @@ describe("Test build query", () => {
         expect(result).toEqual(extendedQueries)
     })
 
-    it("Should return valid result object if Google returns valid items", async () => {
-        const result = await search['buildResult'](extendedQueries);
+    it("Should return valid result object, without black list websites, if Google returns valid items", async () => {
+        const result = await search['buildResult'](extendedQueries, userProfiles.en.expert);
         // must return an array of well formed page results
         expect(result).toBeTruthy();
         result.forEach(pageResult => {
             // page results must be well formed
             expect(pageResult.url).toBeTruthy();
+            expect(pageResult.url).not.toContain("wikipedia");
             expect(pageResult.title).toBeTruthy();
             expect(pageResult.sections).toBeTruthy();
             expect(pageResult.keywords).toBeTruthy();
@@ -95,14 +102,156 @@ describe("Test build query", () => {
 
         return Promise.all(cases.map(async mock => {
             // replace the original function with a mock that return the result to test
-            search['googleSearch'].queryCustom = mock;
+            search['googleSearch'].query = mock;
 
             // invoke the mock under the hoods
-            const result = await search['buildResult'](extendedQueries);
+            const result = await search['buildResult'](extendedQueries, userProfiles.en.expert);
             expect(result).toEqual([]);
             expect(mock).toHaveBeenCalled();
         }));
 
     });
 
-})
+});
+
+describe("Google safe search for kids", () => {
+    it("Should return kids content from kiddle.co", async () => {
+        const _google = new GoogleSearch();
+        const kidResults = await _google.query("pisa tower", userProfiles.en.kid);
+        for (let result of kidResults.items) {
+            expect(result.link).toContain("kids.kiddle.co");
+        }
+    });
+});
+
+
+describe("Duplicate results", () => {
+
+    const gResultsWithDuplicates: Array<{ gResult: GoogleSearchResult, query: Query }> = [
+        {
+            query: {
+                keywords: ["one", "one", "two"],
+                score: 1
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__1__",
+                    },
+                    {
+                        link: "__2__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["one", "three", "four"],
+                score: 2
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__1__",
+                    },
+                    {
+                        link: "__3__",
+                    },
+                    {
+                        link: "__4__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["one", "five"],
+                score: 3
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__1__",
+                    },
+                    {
+                        link: "__5__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["six"],
+                score: 4
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__6__",
+                    }
+                ]
+            }
+        },
+        {
+            query: {
+                keywords: ["five"],
+                score: 5
+            },
+            gResult: {
+                items: [
+                    {
+                        link: "__5__",
+                    }
+                ]
+            }
+        }
+    ] as Array<any>;
+
+    it("Should remove duplicates results", () => {
+        const _search = new Search();
+
+        const gResultsNoDuplicates = _search["mergeDuplicateUrls"](gResultsWithDuplicates);
+
+        const set = new Set<string>(gResultsNoDuplicates.map(r => r.url));
+        expect(set.size).toEqual(6);
+    });
+
+    it("Should merge duplicates keywords", () => {
+        const _search = new Search();
+
+        const gResultsNoDuplicates = _search["mergeDuplicateUrls"](gResultsWithDuplicates);
+
+        expect(gResultsNoDuplicates.length).toEqual(6);
+        expect(gResultsNoDuplicates[0]).toEqual({
+            url: "__1__",
+            keywords: ["one", "two", "three", "four", "five"],
+            score: (1 + 2 + 3) / 3 // average between matching queries
+        });
+        expect(gResultsNoDuplicates[1]).toEqual({
+            url: "__2__",
+            keywords: ["one", "two"],
+            score: 1
+        });
+        expect(gResultsNoDuplicates[2]).toEqual({
+            url: "__3__",
+            keywords: ["one", "three", "four"],
+            score: 2
+        });
+        expect(gResultsNoDuplicates[3]).toEqual({
+            url: "__4__",
+            keywords: ["one", "three", "four"],
+            score: 2
+        });
+        expect(gResultsNoDuplicates[4]).toEqual({
+            url: "__5__",
+            keywords: ["one", "five"],
+            score: (3 + 5) / 2
+        });
+        expect(gResultsNoDuplicates[5]).toEqual({
+            url: "__6__",
+            keywords: ["six"],
+            score: 4
+        });
+    });
+
+});

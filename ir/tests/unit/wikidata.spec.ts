@@ -1,14 +1,16 @@
 /// <reference types="@types/jest"/>
 
 import { WikiData } from "../../src/wiki"
-import { ClassificationResult } from "../../src/models";
+import { Entity } from "../../src/models";
+import { MetaEntity } from "../../src/models";
 
 
 const wikidata = new WikiData()
 
+
 describe("Get Wikipedia page name from entityId", () => {
     it("Should return the correct page title", async () => {
-        const wikipediaPageTitle = await wikidata.getWikipediaName("/m/0cn46", "en");
+        const wikipediaPageTitle = await wikidata.getWikipediaName("Q39054", "en");
         expect(wikipediaPageTitle).toBe("Leaning Tower of Pisa");
     });
 });
@@ -19,78 +21,221 @@ describe("Look for known instance", () => {
         const entities = [
             {   // bicycle
                 entityId: "/m/0199g",
-                score: 1
             },
             {   // Leaning Tower of Pisa
                 entityId: "/m/0cn46",
-                score: 1
             },
             {   // tower
                 entityId: "/m/01fdzj",
-                score: 1
             }
-        ];
-        const classificationResult = {
-            userProfile: { language: "en" },
-            classification: { entities: entities }
-        }
-        const knownInstance = await wikidata.tryGetKnownInstance(classificationResult as ClassificationResult);
-        expect(knownInstance).toBeDefined();
-        expect(knownInstance.WikipediaPageTitle).toBe("Leaning Tower of Pisa")
+        ] as Array<Entity>;
+        return Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")))
+            .then(async metaEntities => {
+                const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, "en");
+                expect(knownInstance).toBeDefined();
+                expect(knownInstance.entityId).toBe("/m/0cn46") // Leaning Tower of Pisa
+            })
     });
 
-    it("Return the entity with the highest score", async () => {
+    it("Return the first recognized entity", async () => {
         const entities = [
-            {   // Mona Lisa
-                entityId: "/m/0jbg2",
-                score: 0.5
-            },
             {   // Leaning Tower of Pisa
                 entityId: "/m/0cn46",
-                score: 0.87
+            },
+            {   // Mona Lisa
+                entityId: "/m/0jbg2",
             },
             {   // tower
                 entityId: "/m/01fdzj",
-                score: 1
             }
-        ];
-        const classificationResult = {
-            userProfile: { language: "en" },
-            classification: { entities: entities }
-        }
-        const knownInstance = await wikidata.tryGetKnownInstance(classificationResult as ClassificationResult);
-        expect(knownInstance).toBeDefined();
-        expect(knownInstance.WikipediaPageTitle).toBe("Leaning Tower of Pisa")
+        ] as Array<Entity>;
+        return Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")))
+            .then(async metaEntities => {
+                const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, "en");
+                expect(knownInstance).toBeDefined();
+                expect(knownInstance.entityId).toBe("/m/0cn46") // Leaning Tower of Pisa
+            })
     });
 
     it("Return null if there isn't a known entity", async () => {
         const entities = [
             {   // bicycle
                 entityId: "/m/0199g",
-                score: 1
             },
             {   // tower
                 entityId: "/m/01fdzj",
-                score: 1
             }
-        ];
-        const classificationResult = {
-            userProfile: { language: "en" },
-            classification: { entities: entities }
-        }
-        const knownInstance = await wikidata.tryGetKnownInstance(classificationResult as ClassificationResult);
-        expect(knownInstance).toBeNull();
+        ] as Array<Entity>;
+        return Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")))
+            .then(async metaEntities => {
+                const knownInstance = await wikidata.tryGetKnownInstance(metaEntities, "en");
+                expect(knownInstance).toBeNull();
+            })
     });
 });
 
 
 describe("getProperties(freebaseId)", () => {
+
     it("Should return InstanceOf, Architect, ArchitecturalStyle", async () => {
-        const properties = await wikidata["getProperties"]("/m/0cn46", "en"); // pisa tower
+        const properties = await wikidata["getProperties"]({ entityId: "/m/0cn46" } as Entity, "en"); // pisa tower
         expect(properties).toBeTruthy();
-        expect(properties.Instanceof).toEqual(["Q200334","Q570116"]);
-        expect(properties.Architect).toEqual(["Q892084"]);
-        expect(properties.ArchitecturalStyle).toEqual(["Q46261"]);
-        expect(properties.WikipediaPageTitle).toEqual("Leaning Tower of Pisa");
+        expect(properties.instanceof).toEqual(["Q200334", "Q570116"]);
+        expect(properties.architect).toEqual(["Q892084"]);
+        expect(properties.architecturalStyle).toEqual(["Q46261"]);
+        expect(properties.wikipediaPageTitle).toEqual("Leaning Tower of Pisa");
+    });
+
+    it("Should work also for wikidataId", async () => {
+        const properties = await wikidata["getProperties"]({ wikidataId: "Q39054" } as Entity, "en"); // pisa tower
+        expect(properties).toBeTruthy();
+        expect(properties.instanceof).toEqual(["Q200334", "Q570116"]);
+        expect(properties.architect).toEqual(["Q892084"]);
+        expect(properties.architecturalStyle).toEqual(["Q46261"]);
+        expect(properties.wikipediaPageTitle).toEqual("Leaning Tower of Pisa");
+    });
+
+});
+
+
+describe("getEntityRootPath(entityId)", () => {
+
+    it("Should return the tree of InstanceOf/SubClassOf of Pisa Tower", async () => {
+
+        const PisaTowerTree = await wikidata['getEntityRootPath']("Q39054");
+
+        expect(PisaTowerTree).toBeTruthy();
+        expect(PisaTowerTree.length).toBeGreaterThan(0);
+
+        expect(PisaTowerTree).toContain("tourist attraction")       // Level 1
+        expect(PisaTowerTree).toContain("bell tower")
+        expect(PisaTowerTree).toContain("tower")                    // Level 2
+        expect(PisaTowerTree).toContain("architectural structure")  // Level 3
+    });
+
+    it("Should return the tree of InstanceOf/SubClassOf of Mona Lisa", async () => {
+
+        const monaLisaTree = await wikidata['getEntityRootPath']("Q12418");
+
+        expect(monaLisaTree).toBeTruthy();
+        expect(monaLisaTree.length).toBeGreaterThan(0);
+
+        expect(monaLisaTree).toContain("painting")                              // Level 1
+        expect(monaLisaTree).toContain("visual artwork")                        // Level 2
+        expect(monaLisaTree).toContain("work of art")                           // Level 3
+        expect(monaLisaTree).toContain("item of collection or exhibition")
+    });
+
+    it("Should not include the entityId", async () => {
+        const entityId = "NotValidId";
+        const PisaTowerTree = await wikidata['getEntityRootPath'](entityId);
+        expect(PisaTowerTree).not.toContain(entityId);
+    });
+
+    it("Should return [] if an invalid entity is provided", async () => {
+        const tree = await wikidata['getEntityRootPath']("NotValidEntityId");
+        expect(tree).toEqual([]);
+    });
+});
+
+
+describe("filterNotArtRelatedResult", () => {
+
+    it("Should remove entities not related to arts", async () => {
+        const entities = [
+            {
+                description: "bicycle",
+                entityId: "/m/0199g",
+            },
+            {
+                description: "Leaning Tower of Pisa",
+                entityId: "/m/0cn46"
+            },
+            {
+                description: "Painting",
+                entityId: "/m/05qdh"
+            },
+            {
+                description: "Renzo Piano",
+                entityId: "/m/06gpm"
+            },
+            {
+                description: "Santa Maria della Spina",
+                entityId: "/m/094yj5"
+            },
+            {
+                description: "house",
+                entityId: "/m/03jm5"
+            },
+            {
+                description: "Mona Lisa",
+                entityId: "/m/0jbg2"
+            },
+            {
+                description: "crowd",
+                entityId: "/m/03qtwd"
+            },
+            {
+                description: "home",
+                entityId: "/m/01l0mw"
+            },
+            {
+                description: "human",
+                entityId: "/m/0dgw9r"
+            }
+        ] as Array<MetaEntity>
+
+        const metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")))
+        const filtered = await wikidata.filterNotArtRelatedResult(metaEntities)
+
+        expect(filtered).not.toContain(metaEntities[0]) // bicycle
+        expect(filtered).toContain(metaEntities[1]) // Leaning Tower of Pisa
+        expect(filtered).toContain(metaEntities[2]) // Painting
+        expect(filtered).toContain(metaEntities[3]) // Renzo Piano
+        expect(filtered).toContain(metaEntities[4]) // Santa Maria della Spina
+        expect(filtered).not.toContain(metaEntities[5]) // house
+        expect(filtered).toContain(metaEntities[6]) // Mona Lisa
+        expect(filtered).not.toContain(metaEntities[7]) // crowd: not wanted in description
+        expect(filtered).not.toContain(metaEntities[8]) // home: not wanted in instanceof
+        expect(filtered).not.toContain(metaEntities[9]) // person: not unwanted neither wanted
+        expect(filtered).toHaveLength(5)
+
+    })
+
+    it("Should resist to malformed objects", async () => {
+        const entities = [
+            {
+                description: "Leaning Tower of Pisa",
+                wikidataId: "Q39054"
+            },
+            {
+                entityId: "/m/0jbg2"
+            },
+            null
+        ] as Array<MetaEntity>
+
+        const metaEntities = await Promise.all(entities.map(entity => wikidata.getProperties(entity, "en")))
+        metaEntities.push(null)
+        const filtered = await wikidata.filterNotArtRelatedResult(metaEntities)
+
+        expect(filtered).toContain(metaEntities[0]) // Leaning Tower of Pisa
+        expect(filtered).toContain(metaEntities[1]) // Mona Lisa
+        expect(filtered).toHaveLength(2)
+
+    })
+})
+
+describe("setWikipediaNames()", () => {
+    it("Should populate wikidata id with names", async () => {
+        const _wikidata = new WikiData();
+        const metaEntity = await wikidata["getProperties"]({ entityId: "/m/0cn46" } as Entity, "en"); // pisa tower
+
+        expect(metaEntity.architect).toEqual(["Q892084"]);
+        expect(metaEntity.instanceof).toEqual(["Q200334", "Q570116"]);
+
+        const populatedMetaEntity = await _wikidata["setWikipediaNames"](metaEntity, "en");
+
+        expect(populatedMetaEntity.architect).toEqual(["Bonanno Pisano"]);
+        // expect(populatedMetaEntity.instanceof).toEqual(["bell tower", "tourist attraction"]);
     });
 });

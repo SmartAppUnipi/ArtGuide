@@ -12,20 +12,10 @@ export interface QueryExpansionResponse {
     keywordExpansion: KeywordExpansion;
 }
 
-export class Query {
+export interface Query {
+    entityId: string;
     searchTerms: string;
     score: number;
     keywords: Array<string>;
     language: string;
-
-
-    constructor(item?: Partial<Query>) {
-
-        const defaults = {
-            score: 0,
-            keywords: []
-        } as Query;
-
-        Object.assign(this, defaults, item || {});
-    }
 }

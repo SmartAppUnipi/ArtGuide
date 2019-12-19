@@ -1,22 +1,6 @@
-import { BasicFieldWithId } from "./models/classification.models";
-import fetch from "node-fetch";
-import logger from "./logger";
+import * as childProcess from "child_process";
+import { Entity } from "./models";
 
-/**
- * Perform a POST request to a specified endpoint with a custom json in the body.
- *
- * @param url Url (string) of the POST request. Must include the protocol and the port if different from the default.
- * @param body A JS object that will be stringified and sent as a JSON.
- * @returns A promise resolved with the received JSON parsed as JS object of type T.
- */
-export function post<T = any>(url: string, body: any): Promise<T> {
-    logger.silly("[utils.ts] New post request", { url });
-    return fetch(url, {
-        method: "POST",
-        body: JSON.stringify(body),
-        headers: { "Content-Type": "application/json" }
-    }).then(res => res.json());
-}
 
 /**
  * Reduce the number of entities by cutting on the biggest jump between scores.
@@ -26,17 +10,22 @@ export function post<T = any>(url: string, body: any): Promise<T> {
  * @param minScore A minimum score to keep the entity. Default is 0, ie. no min score.
  * @returns The list of survived entities.
  */
-export function reduceEntities(entities: Array<BasicFieldWithId>,
-        maxEntityNumber = entities.length, minScore = 0): Array<BasicFieldWithId> {
-    let maxGap = -1;
-    let cutIndex = -1;
+export function reduceEntities(entities: Array<Entity>,
+        maxEntityNumber = entities ? entities.length : 0, minScore = 0): Array<Entity> {
+
+    if (!entities) return null;
+    if (!maxEntityNumber && maxEntityNumber !== 0 || maxEntityNumber < 0) maxEntityNumber = entities.length;
+    if (!minScore || minScore < 0) minScore = 0;
+
+    let maxGap = 0;
+    let cutIndex = 0;
 
     for (let i = 0; i < entities.length - 1; i++) {
         // stop if the score is too low
-        if (entities[i].score < minScore)
+        if (entities[i]?.score < minScore)
             break;
         // find the biggest gap
-        const gap = entities[i].score - entities[i + 1].score;
+        const gap = entities[i]?.score - entities[i + 1]?.score;
         if (gap > maxGap) {
             maxGap = gap;
             cutIndex = i + 1;   // cut after this item
@@ -48,4 +37,18 @@ export function reduceEntities(entities: Array<BasicFieldWithId>,
         .slice(0, cutIndex)
         // slice ensure there are not more than maxEntityNumber entities
         .slice(0, maxEntityNumber);
+}
+
+/**
+ * Return the last commit hash on the local repository
+ * 
+ * @returns The hash of the last commit on the local machine.
+ */
+export function getLastCommitHash(): string {
+    const latestCommit = childProcess
+        .execSync("git rev-parse HEAD")
+        .toString()
+        .replace(/\n/, "");
+
+    return latestCommit;
 }

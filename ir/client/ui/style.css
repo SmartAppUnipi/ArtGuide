@@ -1,0 +1,32 @@
+:root {
+  --left-panel-width: max(25%, 300px);
+  --right-panel-width: calc(100% - var(--left-panel-width))
+}
+
+body {
+  margin: 0;
+}
+
+#settings {
+  line-height: 3em;
+  background: #00BCD4;
+  height: calc(100% - 4vh);
+  width: calc(var(--left-panel-width) - 4vw);
+  padding: 2vh 2vw;
+  position: fixed;
+}
+
+#container {
+  height: calc(100% - 6vh);
+  width: calc(var(--right-panel-width) - 6vw);
+  padding: 3vh 3vw;
+  float: right;
+}
+
+#upload-image {
+  display: block;
+  margin: auto;
+  width: 25%;
+  position: relative;
+  top: 25%;
+}

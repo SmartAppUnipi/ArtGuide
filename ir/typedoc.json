@@ -3,6 +3,7 @@
     "name": "ArtGuide - Information retrieval module",
     "mode": "file",
     "out": "docs",
+    "readme": "README.md",
     "exclude": [
         "tests/**"
     ]
