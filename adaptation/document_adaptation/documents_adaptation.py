@@ -25,7 +25,7 @@ class DocumentsAdaptation():
     def __init__(self, config, max_workers=0, verbose=False):
         self.config = config
         self.available_languages = {
-            'en': 'en_core_web_sm',
+            'en': 'en_core_web_md',
             'de': 'de_core_news_sm',
             'fr': 'fr_core_news_sm',
             'es': 'es_core_news_sm',
@@ -167,7 +167,7 @@ class DocumentsAdaptation():
 
         # policy on sentences
         policy = Policy(salient_sentences, user, self.config.max_cluster_size)
-        policy.auto(pca=True)
+        policy.auto(pca=False)
 
         # create batch of sentences for summarization model
         batch_sentences, num_sentences, keywords = self.model_summarizer[
