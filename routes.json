@@ -1,6 +1,6 @@
 {
-  "image" : "http://131.114.137.237:2345/upload",
-  "opus" : "http://localhost:3000/",
-  "text" : "http://localhost:6397/tailored_text",
-  "keywords" : "http://localhost:6397/keywords"
+  "image": "http://131.114.137.237:2345/upload",
+  "opus": "http://localhost:3000/",
+  "text": "http://localhost:6397/tailored_text",
+  "keywords": "http://localhost:6397/keywords"
 }

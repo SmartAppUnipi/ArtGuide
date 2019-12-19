@@ -25,7 +25,12 @@ export class Wikipedia {
      */
     public search(metaEntities: Array<MetaEntity>, language: string): Promise<Array<PageResult>> {
         return Promise.all(this.buildQueries(metaEntities, language)
-            ?.map(query => this.getWikiInfo(query.searchTerms, language, query.score)))
+            ?.map(query => 
+                this.getWikiInfo(query.searchTerms, language, query.score)
+                    .then(pageResult => pageResult ? Object.assign({}, pageResult, {
+                        entityId: query?.entityId,
+                        searchTerms: query?.searchTerms
+                    }) : null)))
             .then(results => results.filter(result => result))
             .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error in search.", { metaEntities, exception: ex });
@@ -40,23 +45,36 @@ export class Wikipedia {
      * @param language The language code, ie. the Wikipedia subdomain to search in.
      * @returns An array of PageResult about the piece of art and correlated pages like the author.
      */
-    public searchKnownInstance(knownInstance: MetaEntity, language: string): Promise<Array<PageResult>> {
-        if (!knownInstance) return Promise.resolve([]);
+    public async searchKnownInstance(knownInstance: MetaEntity, language: string): Promise<Array<PageResult>> {
+        if (!knownInstance || !language) return [];
         const promises = [];
         // search for the entity
-        promises.push(this.getWikiInfo(knownInstance.wikipediaPageTitle, language, knownInstance.score));
+        promises.push(
+            this.getWikiInfo(knownInstance.wikipediaPageTitle, language, knownInstance.score)
+                .then(pageResult => pageResult ? Object.assign({}, pageResult, {
+                    entityId: knownInstance?.entityId ?? knownInstance?.wikidataId,
+                    searchTerms: knownInstance?.wikipediaPageTitle
+                }) : null)
+        );
         // search for the properties
         const propertyScore = knownInstance.score * scoreWeight.known.wikidataProperty;
         for (const property of knownInstanceProperties) {
-            for (const value of knownInstance[property] || [])
-                promises.push(this.getWikiInfo(value, language, propertyScore));
+            for (const value of knownInstance[property] || []) {
+                promises.push(
+                    this.getWikiInfo(value, language, propertyScore)
+                        .then(pageResult => pageResult ? Object.assign({}, pageResult, {
+                            entityId: knownInstance?.entityId ?? knownInstance?.wikidataId,
+                            searchTerms: knownInstance?.wikipediaPageTitle
+                        }) : null)
+                );
+            }
 
         }
         return Promise.all(promises)
             .then(results => results.filter(result => result))
             .catch(/* istanbul ignore next */ ex => {
                 logger.error("[wikipedia.ts] Error in searchKnownInstance.", { knownInstance, exception: ex });
-                return Promise.resolve([]);
+                return [];
             });
     }
 
@@ -69,10 +87,11 @@ export class Wikipedia {
      */
     private buildQueries(metaEntities: Array<MetaEntity>, language: string): Array<Query> {
         // use all the entities
-        const queries = metaEntities?.map(entity => {
+        const queries = metaEntities?.map(metaEntity => {
             return {
-                searchTerms: entity?.wikipediaPageTitle,
-                score: entity?.score,
+                entityId: metaEntity?.entityId ?? metaEntity?.wikidataId,
+                searchTerms: metaEntity?.wikipediaPageTitle,
+                score: metaEntity?.score,
                 language
             } as Query;
         });
@@ -90,7 +109,12 @@ export class Wikipedia {
      * @returns The WikiPedia content as PageResult object.
      * @throws When WikiPedia APIs returns error.
      */
-    private getWikiInfo(query: string, language: string, score: number): Promise<PageResult> {
+    private async getWikiInfo(query: string, language: string, score: number): Promise<PageResult> {
+
+        if (!query) 
+            return null;
+        
+
         // wiki object initialized with WikiPedia API endpoint
         const wikijs = wiki({ apiUrl: "https://" + language + ".wikipedia.org/w/api.php" });
         return wikijs.search(query)

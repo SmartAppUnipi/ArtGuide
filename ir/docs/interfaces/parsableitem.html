@@ -70,7 +70,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ParsableItem</span>
+						<a href="query.html" class="tsd-signature-type">Query</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">ParsableItem</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -81,8 +86,11 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="parsableitem.html#keywords" class="tsd-kind-icon">keywords</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="parsableitem.html#score" class="tsd-kind-icon">score</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="parsableitem.html#entityid" class="tsd-kind-icon">entity<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-not-exported"><a href="parsableitem.html#keywords" class="tsd-kind-icon">keywords</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="parsableitem.html#language" class="tsd-kind-icon">language</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-not-exported"><a href="parsableitem.html#score" class="tsd-kind-icon">score</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="parsableitem.html#searchterms" class="tsd-kind-icon">search<wbr>Terms</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="parsableitem.html#url" class="tsd-kind-icon">url</a></li>
 							</ul>
 						</section>
@@ -91,23 +99,58 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="entityid" class="tsd-anchor"></a>
+					<h3>entity<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">entity<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="query.html">Query</a>.<a href="query.html#entityid">entityId</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/models/query.models.ts#L16">ir/src/models/query.models.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-not-exported">
 					<a name="keywords" class="tsd-anchor"></a>
 					<h3>keywords</h3>
 					<div class="tsd-signature tsd-kind-icon">keywords<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
+						<p>Overrides <a href="query.html">Query</a>.<a href="query.html#keywords">keywords</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/search.ts#L18">ir/src/search/search.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/search/search.ts#L18">ir/src/search/search.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="language" class="tsd-anchor"></a>
+					<h3>language</h3>
+					<div class="tsd-signature tsd-kind-icon">language<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="query.html">Query</a>.<a href="query.html#language">language</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/models/query.models.ts#L20">ir/src/models/query.models.ts:20</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-not-exported">
 					<a name="score" class="tsd-anchor"></a>
 					<h3>score</h3>
 					<div class="tsd-signature tsd-kind-icon">score<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Overrides <a href="query.html">Query</a>.<a href="query.html#score">score</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/search.ts#L19">ir/src/search/search.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/search/search.ts#L19">ir/src/search/search.ts:19</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="searchterms" class="tsd-anchor"></a>
+					<h3>search<wbr>Terms</h3>
+					<div class="tsd-signature tsd-kind-icon">search<wbr>Terms<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="query.html">Query</a>.<a href="query.html#searchterms">searchTerms</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/models/query.models.ts#L17">ir/src/models/query.models.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -117,7 +160,7 @@
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/search/search.ts#L17">ir/src/search/search.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/search/search.ts#L17">ir/src/search/search.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -138,11 +181,20 @@
 					<li class="current tsd-kind-interface tsd-is-not-exported">
 						<a href="parsableitem.html" class="tsd-kind-icon">Parsable<wbr>Item</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="parsableitem.html#entityid" class="tsd-kind-icon">entity<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-not-exported">
 								<a href="parsableitem.html#keywords" class="tsd-kind-icon">keywords</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="parsableitem.html#language" class="tsd-kind-icon">language</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite tsd-is-not-exported">
 								<a href="parsableitem.html#score" class="tsd-kind-icon">score</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="parsableitem.html#searchterms" class="tsd-kind-icon">search<wbr>Terms</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 								<a href="parsableitem.html#url" class="tsd-kind-icon">url</a>

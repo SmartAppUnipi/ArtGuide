@@ -98,6 +98,7 @@
 								<li class="tsd-kind-interface"><a href="interfaces/csethumbnail.html" class="tsd-kind-icon">Cse<wbr>Thumbnail</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/entity.html" class="tsd-kind-icon">Entity</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/googlesearchresult.html" class="tsd-kind-icon">Google<wbr>Search<wbr>Result</a></li>
+								<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/ilog.html" class="tsd-kind-icon">ILog</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/item.html" class="tsd-kind-icon">Item</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/keywordexpansion.html" class="tsd-kind-icon">Keyword<wbr>Expansion</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/location.html" class="tsd-kind-icon">Location</a></li>
@@ -136,7 +137,6 @@
 								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#expressport" class="tsd-kind-icon">Express<wbr>Port</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#app" class="tsd-kind-icon">app</a></li>
 								<li class="tsd-kind-variable"><a href="globals.html#logger" class="tsd-kind-icon">logger</a></li>
-								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#rake" class="tsd-kind-icon">rake</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -144,7 +144,9 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function"><a href="globals.html#getlastcommithash" class="tsd-kind-icon">get<wbr>Last<wbr>Commit<wbr>Hash</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#parse" class="tsd-kind-icon">parse</a></li>
+								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#printresponsetime" class="tsd-kind-icon">print<wbr>Response<wbr>Time</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#reduceentities" class="tsd-kind-icon">reduce<wbr>Entities</a></li>
+								<li class="tsd-kind-function tsd-is-not-exported"><a href="globals.html#scrolluntilvisible" class="tsd-kind-icon">scroll<wbr>Until<wbr>Visible</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
@@ -166,7 +168,7 @@
 					<div class="tsd-signature tsd-kind-icon">Wikidata<wbr>Entity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/models/entity.model.ts#L11">ir/src/models/entity.model.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/models/entity.model.ts#L11">ir/src/models/entity.model.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -189,7 +191,7 @@
 					<div class="tsd-signature tsd-kind-icon">Express<wbr>Port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;new URL(routesJson.opus).port</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L54">ir/src/environment.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L54">ir/src/environment.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -204,7 +206,7 @@
 					<div class="tsd-signature tsd-kind-icon">app<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">express.Application</span><span class="tsd-signature-symbol"> =&nbsp;express()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/app.ts#L17">ir/src/app.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/app.ts#L17">ir/src/app.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -219,7 +221,7 @@
 					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span><span class="tsd-signature-symbol"> =&nbsp;winston.createLogger({level: LoggerConfig.level,format: winston.format.combine(winston.format.timestamp({format: &quot;YYYY-MM-DD HH:mm:ss&quot;}),winston.format.metadata({ fillExcept: [&quot;message&quot;, &quot;level&quot;, &quot;timestamp&quot;, &quot;label&quot;] })),transports: []})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/logger.ts#L8">ir/src/logger.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/logger.ts#L8">ir/src/logger.ts:8</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -227,16 +229,6 @@
 							<p>The application logger service.</p>
 						</div>
 					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-not-exported">
-					<a name="rake" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> rake</h3>
-					<div class="tsd-signature tsd-kind-icon">rake<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> =&nbsp;require(&quot;rake-js&quot;).default</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/parser/parser.ts#L7">ir/src/parser/parser.ts:7</a></li>
-						</ul>
-					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -251,7 +243,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/utils.ts#L47">ir/src/utils.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/utils.ts#L47">ir/src/utils.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -268,13 +260,13 @@
 					<a name="parse" class="tsd-anchor"></a>
 					<h3>parse</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>tailoredText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, pageResultJson<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>tailoredText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, pageResults<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/client/logs/log-parser.ts#L7">ir/client/logs/log-parser.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/client/logs/log-parser.ts#L8">ir/client/logs/log-parser.ts:8</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -285,20 +277,41 @@
 									<h5>tailoredText: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>pageResultJson: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
+									<h5>pageResults: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/pageresult.html" class="tsd-signature-type">PageResult</a><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter">
-									<h5>html<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+									<h5>html<wbr>Adaptation<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li class="tsd-parameter">
-									<h5>spans<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>html<wbr>Ir<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
+					<a name="printresponsetime" class="tsd-anchor"></a>
+					<h3>print<wbr>Response<wbr>Time</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">print<wbr>Response<wbr>Time<span class="tsd-signature-symbol">(</span>logs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/ilog.html" class="tsd-signature-type">ILog</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/client/logs/app.ts#L86">ir/client/logs/app.ts:86</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>logs: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/ilog.html" class="tsd-signature-type">ILog</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -312,7 +325,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/utils.ts#L13">ir/src/utils.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/utils.ts#L13">ir/src/utils.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -346,6 +359,38 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-is-not-exported">
+					<a name="scrolluntilvisible" class="tsd-anchor"></a>
+					<h3>scroll<wbr>Until<wbr>Visible</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">scroll<wbr>Until<wbr>Visible<span class="tsd-signature-symbol">(</span>scrollableContainerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, targetToShowId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, topExtraOffset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, leftExtraOffset<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/client/logs/app.ts#L73">ir/client/logs/app.ts:73</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>scrollableContainerId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>targetToShowId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> topExtraOffset: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;-50</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> leftExtraOffset: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;-10</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Object literals</h2>
@@ -355,7 +400,7 @@
 					<div class="tsd-signature tsd-kind-icon">Adaptation<wbr>Endpoint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L58">ir/src/environment.ts:58</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L58">ir/src/environment.ts:58</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -369,7 +414,7 @@
 						<div class="tsd-signature tsd-kind-icon">keywords<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;routesJson.keywords</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L60">ir/src/environment.ts:60</a></li>
+								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L60">ir/src/environment.ts:60</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -379,7 +424,7 @@
 						<div class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;routesJson.text</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L59">ir/src/environment.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L59">ir/src/environment.ts:59</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -390,7 +435,7 @@
 					<div class="tsd-signature tsd-kind-icon">Google<wbr>Search<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L21">ir/src/environment.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L21">ir/src/environment.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -404,7 +449,7 @@
 						<div class="tsd-signature tsd-kind-icon">api<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;process.env.GoogleCustomSearchAPIKey_00</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L23">ir/src/environment.ts:23</a></li>
+								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L23">ir/src/environment.ts:23</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -419,7 +464,7 @@
 						<div class="tsd-signature tsd-kind-icon">search<wbr>Engine<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L25">ir/src/environment.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L25">ir/src/environment.ts:25</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -433,7 +478,7 @@
 							<div class="tsd-signature tsd-kind-icon">en<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;process.env.GoogleCustomSearchEngineId_EN_00</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L29">ir/src/environment.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L29">ir/src/environment.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -448,7 +493,7 @@
 							<div class="tsd-signature tsd-kind-icon">it<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;process.env.GoogleCustomSearchEngineId_IT_00</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L27">ir/src/environment.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L27">ir/src/environment.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -463,7 +508,7 @@
 							<div class="tsd-signature tsd-kind-icon">kids<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L31">ir/src/environment.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L31">ir/src/environment.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -477,7 +522,7 @@
 								<div class="tsd-signature tsd-kind-icon">en<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;process.env.GoogleCustomSearchEngineId_EN_KIDS</span></div>
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L33">ir/src/environment.ts:33</a></li>
+										<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L33">ir/src/environment.ts:33</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -492,7 +537,7 @@
 								<div class="tsd-signature tsd-kind-icon">it<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;process.env.GoogleCustomSearchEngineId_IT_KIDS</span></div>
 								<aside class="tsd-sources">
 									<ul>
-										<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L35">ir/src/environment.ts:35</a></li>
+										<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L35">ir/src/environment.ts:35</a></li>
 									</ul>
 								</aside>
 								<div class="tsd-comment tsd-typography">
@@ -510,7 +555,7 @@
 					<div class="tsd-signature tsd-kind-icon">Logger<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L41">ir/src/environment.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L41">ir/src/environment.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -524,7 +569,7 @@
 						<div class="tsd-signature tsd-kind-icon">disable<wbr>Logs<wbr>OnConsole<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;process.env.DisableLogsOnConsole</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L50">ir/src/environment.ts:50</a></li>
+								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L50">ir/src/environment.ts:50</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -540,7 +585,7 @@
 						<div class="tsd-signature tsd-kind-icon">file<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;process.env.LogFile</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L45">ir/src/environment.ts:45</a></li>
+								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L45">ir/src/environment.ts:45</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -555,7 +600,7 @@
 						<div class="tsd-signature tsd-kind-icon">level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;process.env.LoggerLevel || &quot;error&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/7435d44/ir/src/environment.ts#L43">ir/src/environment.ts:43</a></li>
+								<li>Defined in <a href="https://github.com/SmartAppUnipi/ArtGuide/blob/2e974ec/ir/src/environment.ts#L43">ir/src/environment.ts:43</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -630,6 +675,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/googlesearchresult.html" class="tsd-kind-icon">Google<wbr>Search<wbr>Result</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/ilog.html" class="tsd-kind-icon">ILog</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/item.html" class="tsd-kind-icon">Item</a>
@@ -715,17 +763,20 @@
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#logger" class="tsd-kind-icon">logger</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="globals.html#rake" class="tsd-kind-icon">rake</a>
-					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#getlastcommithash" class="tsd-kind-icon">get<wbr>Last<wbr>Commit<wbr>Hash</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#parse" class="tsd-kind-icon">parse</a>
 					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#printresponsetime" class="tsd-kind-icon">print<wbr>Response<wbr>Time</a>
+					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#reduceentities" class="tsd-kind-icon">reduce<wbr>Entities</a>
+					</li>
+					<li class=" tsd-kind-function tsd-is-not-exported">
+						<a href="globals.html#scrolluntilvisible" class="tsd-kind-icon">scroll<wbr>Until<wbr>Visible</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-is-not-exported">
 						<a href="globals.html#adaptationendpoint" class="tsd-kind-icon">Adaptation<wbr>Endpoint</a>

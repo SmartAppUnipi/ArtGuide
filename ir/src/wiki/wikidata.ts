@@ -173,12 +173,14 @@ export class WikiData {
      * @returns {Promise<string>} The WikiData id.
      */
     private getWikiDataId(entity: Entity): Promise<string> {
+        if (!entity)
+            return Promise.resolve(null);
         // skip if already present
         if (entity.wikidataId)
             return Promise.resolve(entity.wikidataId);
 
         const freebaseId = entity.entityId;
-        
+
         const sparql = `
             PREFIX wd: <http://www.wikidata.org/entity/>
             PREFIX wdt: <http://www.wikidata.org/prop/direct/>

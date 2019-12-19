@@ -3,9 +3,9 @@ export class Utils {
         let result = "";
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         const charactersLength = characters.length;
-        for (let i = 0; i < length; i++) 
+        for (let i = 0; i < length; i++)
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        
+
         return result;
     }
 
@@ -28,8 +28,8 @@ export class Utils {
         return unsafe
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
+            .replace(/>/g, "&gt;")            
+            .replace(/\\\"/g, "&#039;")
             .replace(/'/g, "&#039;");
     }
 }

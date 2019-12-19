@@ -1,3 +1,5 @@
+import { Query } from "./query.models";
+
 export interface PageSection {
     title: string;
     content: string;
@@ -5,12 +7,10 @@ export interface PageSection {
     score: number;
 }
 
-export interface PageResult {
+export interface PageResult extends Query {
     url: string;
     title: string;
     sections: Array<PageSection>;
-    keywords: Array<string>;
     tags: Array<string>;
     summary?: string;
-    score: number;
 }

@@ -72,12 +72,12 @@
     "style": [
       {
         "description": "Pointillism",
-        "entityId": "...",
+        "wikidataId": "...",
         "score": 0.96185
       },
       {
         "description": "cubism",
-        "entityId": "...",
+        "wikidataId": "...",
         "score": 0.35591
       }
     ]
