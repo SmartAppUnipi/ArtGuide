@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 import matplotlib.cm as cm
 from sklearn.manifold import TSNE
+from .visualizer import Visualizer
 '''
 Usage: chiamate auto() e print_results(n) per stampare i primi n risultati per ogni chiave
 Inizialmente la classe Policy elimina i duplicati da sentences (lista di SalientSentence) e toglie alcune frasi
@@ -135,7 +136,7 @@ class Policy:
         y = np.array(self.user_taste_embedded_summed[0]).reshape(1, -1)
         return cosine_similarity(x, y)
 
-    def auto(self, pca=False):
+    def auto(self, debug=False, pca=False):
         self.eliminate_duplicates()
         self.heuristic_filter(
         )  # Toglie le frasi insensate dall'input della classe
@@ -148,6 +149,8 @@ class Policy:
         self.create_cluster_greedy()
         if pca:
             self.PCA_dimention_reduction()
+        if debug:
+            self.append_to_visualizer()
 
     def sum_user_tastes_embedded(self):
         keys = list(self.user_taste_embedded.keys())
@@ -162,6 +165,33 @@ class Policy:
                   " (the lower the number, the better the sentence):")
             for sentence in self.results[cluster][:n]:
                 print(str(sentence[0].sentence) + ": " + sentence[1].sentence)
+
+    def append_to_visualizer(self):
+        vectors = []
+        metadata = []
+        total_points = 0
+        # Adding sentences in cluster
+        for taste in self.results:
+            vectors.append(np.squeeze(self.user_taste_embedded[taste]))
+            metadata.append([taste, taste, -1, {}, True])
+            total_points += 1
+            for sentence in self.results[taste]:
+                vectors.append(sentence.sentence_embeddings_summed)
+                metadata.append([taste, sentence.sentence, sentence.score, {'readability':sentence.readibility, 'ir_score':sentence.IR_score},  False])
+                total_points += 1
+        # Adding other sentences with upperbound
+        upperbound = 100
+        for sentence in self.sentences:
+            if not any((sentence.sentence_embeddings_summed == x).all() for x in vectors):
+                vectors.append(sentence.sentence_embeddings_summed)
+                metadata.append(["_None_", sentence.sentence, sentence.score, {'readability':sentence.readibility, 'ir_score':sentence.IR_score}, False])
+                total_points += 1
+                upperbound -= 1
+            if upperbound < 0:
+                break
+       
+        # Append to visualizer file
+        Visualizer.add_embedding(vectors, metadata, metadata_header=["Class", "Sentences", "Policy score", "Scores", "Is Taste"])
 
     def PCA_dimention_reduction(self, n_components=2):
 

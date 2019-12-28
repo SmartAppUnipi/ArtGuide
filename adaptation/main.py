@@ -17,7 +17,7 @@ from flask import Flask, jsonify, request, abort
 import json
 from logging.handlers import RotatingFileHandler
 
-from document_adaptation import DocumentsAdaptation, User
+from document_adaptation import DocumentsAdaptation, User, Visualizer
 from config import config
 from urllib.parse import urlparse
 
@@ -29,7 +29,7 @@ with open('../routes.json') as f:
     print("Listening on port:{}".format(PORT))
 
 app = Flask(__name__, static_folder="documentation")
-document_adaptation = DocumentsAdaptation(config, max_workers=4, verbose=config.debug)
+document_adaptation = DocumentsAdaptation(config, max_workers=8, verbose=config.debug)
 
 @app.route('/', methods=["GET","POST"])
 def hello():
@@ -85,6 +85,8 @@ def tailored_text():
     if not results:
         results = "Sorry,\nit is not art."
     req['tailoredText'] = results
+    
+    Visualizer.close()
     return jsonify(req)
 
 @app.errorhandler(500)
