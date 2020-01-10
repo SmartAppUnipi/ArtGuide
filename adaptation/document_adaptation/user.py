@@ -38,4 +38,4 @@ class User():
         if self.tastes:
             for taste in self.tastes:
                 self.tastes_embedded[taste] = embedder.embed(taste)
-        print(self.tastes_embedded)
+        print("User's keywords", self.tastes)

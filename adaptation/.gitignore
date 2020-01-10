@@ -32,3 +32,4 @@ htmlcov/
 *,cover
 document_adaptation/summarization/checkpoint/*
 document_adaptation/summarization/temp/*
+visualizer_logs/*

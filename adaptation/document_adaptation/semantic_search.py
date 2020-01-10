@@ -27,7 +27,7 @@ class Semantic_Search():
         #  multiple_distances() and distance()
         self.Dist = Dist
     
-    def find_most_similar_multiple_keywords(self, list_sentences, list_keywords, verbose = True, stop_words = []):
+    def find_most_similar_multiple_keywords(self, list_sentences, list_keywords, verbose = False, stop_words = []):
         # given a list of keywords it returns the most similar sentence for each keyword!
         # this method is usefull in order to compute the embedding of the sentece only once
         result = { i : [] for i in list_keywords }

@@ -19,13 +19,13 @@ from .transitions import transitions_handler
 import spacy
 from bpemb import BPEmb
 from spacy_readability import Readability
-
+import time
 
 class DocumentsAdaptation():
-    def __init__(self, config, max_workers=0, verbose=False):
+    def __init__(self, config, max_workers=None, verbose=False):
         self.config = config
         self.available_languages = {
-            'en': 'en_core_web_sm',
+            'en': 'en_core_web_md',
             'de': 'de_core_news_sm',
             'fr': 'fr_core_news_sm',
             'es': 'es_core_news_sm',
@@ -60,6 +60,10 @@ class DocumentsAdaptation():
             l: BPEmb(lang=l, dim=dim, vs=vs)
             for l in self.languages
         }
+        self.nlp = {
+            l: spacy.load(self.available_languages[l])
+            for l in self.languages
+        }
 
     def update_config(self, config):
         self.config = config
@@ -68,6 +72,12 @@ class DocumentsAdaptation():
         if lang not in self.languages:
             raise Exception("Sorry, '{}' not yet supported".format(lang))
 
+    def get_nlp(self, lang):
+        if lang in self.nlp:
+            return self.nlp[lang]
+        else:
+            return spacy.load(self.available_languages['multi'])
+
     def get_language_stopwords(self, user):
         """
         This function returns a list of stopwords given the language selected by the user
@@ -75,11 +85,6 @@ class DocumentsAdaptation():
 
         @return a list of stop words
         """
-        if (user.language in self.available_languages):
-            spacy_nlp = spacy.load(self.available_languages[user.language])
-        else:
-            spacy_nlp = spacy.load(self.available_languages['multi'])
-
         spacy_lang = getattr(spacy.lang, user.language, None)
 
         if spacy_lang:
@@ -113,23 +118,18 @@ class DocumentsAdaptation():
 
         @return final tailored document
         """
+        if self.verbose:
+            time_start = time.clock()
+
         if len(results) <= 0:
             return "Content not found"
 
         # Loading correct language for BPE embeddings
-        if user.language in self.embedder:
-            embedder = self.embedder[user.language]
-        else:
-            embedder = self.embedder['en']
+        embedder = self.embedder[user.language]
         user.embed_tastes(embedder)
         stop_words = self.get_language_stopwords(user)
-        # Map result in DocumentModel object
-
         # Load spacy dictionary for readibility evaluation
-        if (user.language in self.available_languages):
-            nlp = spacy.load(self.available_languages[user.language])
-        else:
-            nlp = spacy.load(self.available_languages['multi'])
+        nlp = self.get_nlp(user.language)
         read = Readability()
         nlp.add_pipe(read, last=True)
 
@@ -148,10 +148,7 @@ class DocumentsAdaptation():
         if self.verbose:
             print("Total chars in documents: {}".format(
                 sum([len(doc.plain_text) for doc in documents])))
-            print([
-                "{} chars in document".format(len(doc.plain_text))
-                for doc in documents
-            ])
+            print("Init request time: {}".format(time.clock() - time_start))
 
         # Parallel function for evaluate the document's affinity
         def create_list_salient_sentences(document):
@@ -160,14 +157,25 @@ class DocumentsAdaptation():
                 document, embedder, self.config, user.tastes)
             return salient_sentences
 
+        if self.verbose:
+            time_start = time.clock()
+            
         with PoolExecutor(max_workers=self.max_workers) as executor:
             futures = executor.map(create_list_salient_sentences, documents)
         salient_sentences = list(futures)
         salient_sentences = [x for s in salient_sentences for x in s]
 
+        if self.verbose:
+            print("Salient sentences extraction time: {}".format(time.clock() - time_start))
+            time_start = time.clock()
+        
         # policy on sentences
         policy = Policy(salient_sentences, user, self.config.max_cluster_size)
-        policy.auto()
+        policy.auto(debug=True)
+
+        if self.verbose:
+            print("Policy time: {}".format(time.clock() - time_start))
+            time_start = time.clock()
 
         # create batch of sentences for summarization model
         batch_sentences, num_sentences, keywords = self.model_summarizer[
@@ -177,6 +185,7 @@ class DocumentsAdaptation():
             batch_sentences, num_sentences)
 
         if self.verbose:
+            print("Summarization time: {}".format(time.clock() - time_start))
             print("####----- Tailored result -----####")
 
         tailored_result = ''

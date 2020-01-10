@@ -37,3 +37,10 @@ Now you are ready to start some tests!
 
 ## Run test
 To start some tests locally (and see how adaptation module performs on some sample situations) run `python test_phase1.py --help` (or `python test_phase2.py --help`)
+
+## Debug clusters on TensorBoard
+Now you can visualize the embeddings space labeled by clusters and other useful informations using TensorBoard or [Embedding Projector](http://projector.tensorflow.or/).
+All files are stored in `./visualizer_logs/` divided by request.
+
+
+
