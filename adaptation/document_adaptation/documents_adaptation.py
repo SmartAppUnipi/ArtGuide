@@ -64,6 +64,11 @@ class DocumentsAdaptation():
             l: spacy.load(self.available_languages[l])
             for l in self.languages
         }
+        # Add Readability to nlp pipe
+        for lang in self.nlp:
+            read = Readability()
+            nlp = self.get_nlp(lang)
+            nlp.add_pipe(read, last=True)
 
     def update_config(self, config):
         self.config = config
@@ -130,8 +135,6 @@ class DocumentsAdaptation():
         stop_words = self.get_language_stopwords(user)
         # Load spacy dictionary for readibility evaluation
         nlp = self.get_nlp(user.language)
-        read = Readability()
-        nlp.add_pipe(read, last=True)
 
         documents = [
             DocumentModel(x, user, nlp, stop_words=stop_words, uid=index)
