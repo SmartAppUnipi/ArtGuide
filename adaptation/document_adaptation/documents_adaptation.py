@@ -17,6 +17,7 @@ from .policy import Policy
 from .summarization import ModelSummarizer
 from .transitions import transitions_handler
 import spacy
+import numpy as np
 from bpemb import BPEmb
 from spacy_readability import Readability
 import time
@@ -48,10 +49,8 @@ class DocumentsAdaptation():
 
         self.verbose = verbose
         self.max_workers = max_workers
-        self.transition = {
-            l: transitions_handler(self.config.transition_data_path)
-            for l in self.languages
-        }
+        self.transition = transitions_handler(self.config.transition_data_path)
+            
         self.model_summarizer = {
             l: ModelSummarizer(config, lang=l, verbose=self.verbose)
             for l in self.languages
@@ -99,6 +98,18 @@ class DocumentsAdaptation():
 
         return stop_words
 
+    def normalize_IR_score(self, documents):
+        """
+        Function normalize IR score between 0 and 1
+        @param documents: list of DocumentModel
+        @return document with normalized IR score
+        """
+        scores = [d.score for d in documents]
+        norm_scores = (scores - np.min(scores)) / (np.max(scores) - np.min(scores))
+        for index, d in enumerate(documents):
+            d.score = norm_scores[index]
+        return documents
+
     def get_keywords(self, tastes):
         """
         Function for keyword expansion
@@ -142,6 +153,8 @@ class DocumentsAdaptation():
         ]
         # Remove document without content
         documents = list(filter(lambda x: bool(x.plain_text), documents))
+        documents = self.normalize_IR_score(documents)
+
         # sort on the IR value
         #sorted(documents, key=lambda x: x.score, reverse=True)
 
@@ -197,7 +210,7 @@ class DocumentsAdaptation():
             paragraph = ''
 
             if (use_transitions and index > 0):
-                paragraph += self.transition[user.language].extract_transition(
+                paragraph += self.transition.extract_transition(
                     user.language, topic=keyword) + '\n'
             paragraph += summary + '\n'
 

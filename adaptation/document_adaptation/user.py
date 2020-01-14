@@ -26,7 +26,7 @@ class User():
         if 'tastes' in user_profile:
             self.tastes = deepcopy(user_profile['tastes'])
             if not 'introduction' in self.tastes:
-                self.tastes.insert(0,"introduction")
+                self.tastes.insert(0,"Starting to talk about")
         if 'expertiseLevel' in user_profile:
             self.expertise_level = int(user_profile['expertiseLevel'])
         if 'language' in user_profile:
