@@ -41,13 +41,13 @@ class MeanEmbeddingCase(TestCase):
         embedding.get_word_vectors.side_effect = lambda words: np.random.rand(len(words), 300)
 
         self.sentence_embedding = MeanEmbedding(
-            tokenizer=SimpleTokenizer(),
-            word_embedder=embedding
-        )
-        self.addCleanup(embedding_patcher.stop)
+                tokenizer=SimpleTokenizer(),
+                word_embedder=embedding
+                )
+        self.embedding_patcher = embedding_patcher
 
     def tearDown(self):
-        pass
+        self.embedding_patcher.stop()
 
     def test_embed(self):
         sentence = "I am a dog."

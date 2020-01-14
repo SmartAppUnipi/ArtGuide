@@ -1,8 +1,5 @@
 .coverage
 .eggs
 .tox
-.github
-dist
-build
 *.egg-info
 __pycache__
