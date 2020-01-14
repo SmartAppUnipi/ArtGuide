@@ -8,7 +8,7 @@
     "max_sentences": 5,
     "debug": true,
     "expertize_levels": 4,
-    "expertise_weight": 0, 
+    "expertise_weight": 0.5, 
     "IR_score_weight": 0.5, 
     "affinity_weight": 1
 }
