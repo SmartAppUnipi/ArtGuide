@@ -17,6 +17,7 @@ import os
 from .user import User
 from rake_nltk import Rake
 from gensim.summarization.summarizer import summarize
+import html
 
 
 class DocumentModel():
@@ -76,10 +77,14 @@ class DocumentModel():
 
     def normalize(self, text):
         """Function of cleaning text from JS and HTML tags"""
-        tm1 = re.sub('<pre>.*?</pre>', '', text, flags=re.DOTALL)
-        tm2 = re.sub('<code>.*?</code>', '', tm1, flags=re.DOTALL)
-        tm3 = re.sub('<[^>]+>©', '', tm1, flags=re.DOTALL)
-        return tm3.replace("\n", "")
+        text = re.sub('<pre>.*?</pre>', '', text, flags=re.DOTALL)
+        text = re.sub('<code>.*?</code>', '', text, flags=re.DOTALL)
+        text = re.sub('<[^>]+>©', '', text, flags=re.DOTALL)
+        text = re.sub('(?<=[.,])(?![0-9])', ' ', text, flags=re.DOTALL)
+        text = re.sub('\[.*?\]', '', text, flags=re.DOTALL)
+        text = re.sub('\[.*?\]', '-', text, flags=re.DOTALL)
+        text = ' '.join(text.splitlines())
+        return text
 
     def user_readability_score(self):
         """ 

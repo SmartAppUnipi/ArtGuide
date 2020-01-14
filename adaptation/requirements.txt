@@ -14,10 +14,11 @@ torch
 transformers>=2.2.1
 bert-extractive-summarizer
 spacy==2.1.3
+./document_adaptation/sister
 https://github.com/explosion/spacy-models/releases/download/en_core_web_md-2.1.0/en_core_web_md-2.1.0.tar.gz#egg=en_core_web_md
 https://github.com/explosion/spacy-models/releases/download/it_core_news_sm-2.1.0/it_core_news_sm-2.1.0.tar.gz#egg=it_core_news_sm
+https://github.com/explosion/spacy-models/releases/download/xx_ent_wiki_sm-2.1.0/xx_ent_wiki_sm-2.1.0.tar.gz#egg=xx_ent_wiki_sm
 #https://github.com/explosion/spacy-models/releases/download/es_core_news_sm-2.1.0/es_core_news_sm-2.1.0.tar.gz#egg=es_core_news_sm
 #https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-2.1.0/de_core_news_sm-2.1.0.tar.gz#egg=de_core_news_sm
 #https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-2.1.0/fr_core_news_sm-2.1.0.tar.gz#egg=fr_core_news_sm
-https://github.com/explosion/spacy-models/releases/download/xx_ent_wiki_sm-2.1.0/xx_ent_wiki_sm-2.1.0.tar.gz#egg=xx_ent_wiki_sm
 

@@ -10,7 +10,7 @@
     We declare that the content of this file is entirelly
     developed by the authors
 """
-
+from copy import deepcopy
 
 class User():
     ''' User interface '''
@@ -24,7 +24,9 @@ class User():
         self.language = 'en'
         self.tastes_embedded = {}
         if 'tastes' in user_profile:
-            self.tastes = user_profile['tastes']
+            self.tastes = deepcopy(user_profile['tastes'])
+            if not 'introduction' in self.tastes:
+                self.tastes.insert(0,"introduction")
         if 'expertiseLevel' in user_profile:
             self.expertise_level = int(user_profile['expertiseLevel'])
         if 'language' in user_profile:

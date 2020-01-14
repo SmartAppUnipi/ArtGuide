@@ -74,8 +74,6 @@ class ModelSummarizer():
         keywords = []
 
         for keyword in clusters:
-            # Da rimuovere
-            # limited_cluster = policy.results[cluster][:self.config.max_cluster_size]
             sentences = clusters[keyword]
             if len(sentences) > 0:
                 keywords.append(keyword)

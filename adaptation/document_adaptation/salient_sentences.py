@@ -3,8 +3,8 @@ import scipy
 from rake_nltk import Rake
 from gensim.summarization.summarizer import summarize
 from scipy.spatial import distance
-
-
+import sister
+from sister.tokenizers import SimpleTokenizer
 def rake(sentence, stopwords):
     # https://pypi.org/project/rake-nltk/
     r = Rake(stopwords=stopwords)
@@ -36,31 +36,38 @@ def from_document_to_salient(document, embedder, config, tastes, ratio=0.3, word
                 config, document_uid=document.uid, position_in_document=index) for index, s in enumerate(summarized_sentences)]
 
 class SalientSentence():
-    def __init__(self, sentence, keyword, tastes, readibility, IR_score,  bpemb, config, stopwords = [], document_uid=None, position_in_document=None):
+    def __init__(self, sentence, keyword, tastes, readibility, IR_score,  embedder, config, stopwords = [], document_uid=None, position_in_document=None):
         self.sentence = sentence
         self.readibility = readibility
-        self.sentence_rake_embed = self.sentence_rake_embed(stopwords, bpemb)
+        self.sentence_rake_embed = self.sentence_rake_embed(stopwords, embedder)
         if not keyword:
             keyword = tastes
         if keyword:
-            self.keyword = {k: bpemb.embed(k) for k in keyword}
-            self.distance_keyword = {k: np.mean(distance.cdist(self.keyword[k], self.sentence_embeddings, 'cosine')) for k in keyword}
+            self.keyword = {k: embedder.embed(k) for k in keyword}
+            self.distance_keyword = {k: 1-distance.cosine(self.keyword[k], self.sentence_embedding) for k in keyword}
             # the final score of the sentence associated to each keyword    
             partial_score = config.expertise_weight*readibility + config.IR_score_weight*IR_score    
             self.score = {k: config.affinity_weight*self.distance_keyword[k]+partial_score for k in keyword}
         self.IR_score = IR_score
-        # this variable willl be usefull for the policyù
+        # this variable willl be usefull for the policy
         self.assigned = False
         self.document_uid = document_uid
         self.position_in_document = position_in_document
         
-    def sentence_rake_embed(self, stopwords, bpemb):
+    def sentence_rake_embed(self, stopwords, embedder):
         # rake
         # embedding
         sentence = rake(self.sentence, stopwords)
-        self.sentence_embeddings = np.concatenate([bpemb.embed(s) for s in sentence])
-        self.sentence_embeddings_summed = self.sentence_embeddings[0]
-        for cur in self.sentence_embeddings[1:]:
-            self.sentence_embeddings_summed += cur
+        #self.sentence_embeddings = np.concatenate([embedder.embed(s) for s in sentence])
+        self.sentence_embedding = embedder.embed(''.join(sentence))
+        
 
-    
+class SisterEmbedder:
+    def __init__(self, lang, tokenizer=None):
+        if tokenizer is None:
+            tokenizer = SimpleTokenizer()
+        self.embedder = sister.MeanEmbedding(lang=lang, tokenizer=tokenizer)
+
+    def embed(self, sentence):
+        return self.embedder(sentence)
+

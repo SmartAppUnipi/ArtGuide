@@ -12,7 +12,7 @@
 from concurrent.futures import ThreadPoolExecutor as PoolExecutor
 from .document_model import DocumentModel
 from .semantic_search import Semantic_Search, BERT_distance, BPEmb_Embedding_distance
-from .salient_sentences import from_document_to_salient
+from .salient_sentences import from_document_to_salient, SisterEmbedder
 from .policy import Policy
 from .summarization import ModelSummarizer
 from .transitions import transitions_handler
@@ -57,7 +57,7 @@ class DocumentsAdaptation():
             for l in self.languages
         }
         self.embedder = {
-            l: BPEmb(lang=l, dim=dim, vs=vs)
+            l: SisterEmbedder(lang=l)
             for l in self.languages
         }
         self.nlp = {
