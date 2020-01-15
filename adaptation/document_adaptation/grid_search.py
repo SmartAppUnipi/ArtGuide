@@ -16,6 +16,7 @@ from config import config
 from copy import deepcopy
 from pprint import pprint
 import json
+import glob
 import os
 
 # Variabili da cambiare per i test
@@ -50,7 +51,7 @@ def test_on_config(config, path):
 
 
 def main():
-    params_expertise_weight = [0]
+    params_expertise_weight = [0, 0.3, 0.5, 0.7, 1, 2]
     params_IR_score_weight = [0, 0.3, 0.5, 0.7, 1]
     params_affinity_weight = [0, 0.3, 0.5, 0.7, 1]
 
@@ -104,5 +105,13 @@ def main():
         with open(out_path, 'wt') as out:
             pprint(plain_text, stream=out)
 
+def test_all():
+    files = list(glob.glob('./data/ir_*.json')) 
+    print(files)
+    for path in files:
+        print(path)
+        test_on_config(config, path)
 
-main()
+
+#main()
+test_all()

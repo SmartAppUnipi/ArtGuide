@@ -4,7 +4,7 @@
     "id": 42,
     "tastes": [ "history", "biography" ],
     "expertiseLevel": 4,
-    "language": "it",
+    "language": "en",
     "commentTest": "Right version of the json"
   },	
 	"results": [{

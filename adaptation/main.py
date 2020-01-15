@@ -77,7 +77,7 @@ def tailored_text():
         req['adaptionError'] = {"userProfile incomplete"}
     
     # Body
-    user = User(req["userProfile"])
+    user = User(req["userProfile"], expand=True)
     
     document_adaptation.language_assertion(user.language)
 

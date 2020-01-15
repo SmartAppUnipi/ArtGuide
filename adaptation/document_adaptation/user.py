@@ -14,7 +14,7 @@ from copy import deepcopy
 
 class User():
     ''' User interface '''
-    def __init__(self, user_profile):
+    def __init__(self, user_profile, expand=False):
         """
         Instantiation of class User
         @param user_profile: dictionary of tastes, expLevel and lang
@@ -25,8 +25,9 @@ class User():
         self.tastes_embedded = {}
         if 'tastes' in user_profile:
             self.tastes = deepcopy(user_profile['tastes'])
-            if not 'introduction' in self.tastes:
-                self.tastes.insert(0,"Starting to talk about")
+            if expand:
+                if not 'introduction' in self.tastes:
+                    self.tastes.insert(0,"Starting to talk about")
         if 'expertiseLevel' in user_profile:
             self.expertise_level = int(user_profile['expertiseLevel'])
         if 'language' in user_profile:
