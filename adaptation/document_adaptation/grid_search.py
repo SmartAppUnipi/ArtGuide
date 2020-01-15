@@ -50,9 +50,9 @@ def test_on_config(config, path):
 
 
 def main():
-    params_expertise_weight = range(0, 11, 2)
-    params_IR_score_weight = range(0, 11, 2)
-    params_affinity_weight = range(0, 11, 2)
+    params_expertise_weight = [0]
+    params_IR_score_weight = [0, 0.3, 0.5, 0.7, 1]
+    params_affinity_weight = [0, 0.3, 0.5, 0.7, 1]
 
     results = []
     new_config = deepcopy(config)

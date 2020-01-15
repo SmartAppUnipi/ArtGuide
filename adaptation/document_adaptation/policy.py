@@ -104,7 +104,7 @@ class Policy:
             best = ""
             for taste in self.tastes:
                 x = np.array(self.user_taste_embedded[taste][0]).reshape(1, -1)
-                y = np.array(sentence.sentence_embeddings_summed).reshape(
+                y = np.array(sentence.sentence_embedding).reshape(
                     1, -1)
                 score = cosine_similarity(x, y)[0]
                 if score > max:
@@ -120,21 +120,6 @@ class Policy:
         for cluster in self.results:
             self.results[cluster] = sorted(self.results[cluster],
                                            key=lambda tup: tup[0])
-
-    def policy(self, x):
-        r = 1 / 2
-        s = 1 / 2
-        return (abs(x.readibility - self.user.expertise_level) *
-                r) + (self.calculate_similarity(x) * s)
-
-    def calculate_similarity(self, sentence):
-        sentence_embeddings = sentence.sentence_embeddings
-        sentence_embedded = sentence_embeddings[0]
-        for emb in sentence_embedded:
-            sentence_embedded = sentence_embedded + emb
-        x = np.array(sentence_embedded).reshape(1, -1)
-        y = np.array(self.user_taste_embedded_summed[0]).reshape(1, -1)
-        return cosine_similarity(x, y)
 
     def auto(self, debug=False, pca=False):
         self.eliminate_duplicates()
@@ -176,14 +161,14 @@ class Policy:
             metadata.append([taste, taste, -1, {}, True])
             total_points += 1
             for sentence in self.results[taste]:
-                vectors.append(sentence.sentence_embeddings_summed)
+                vectors.append(sentence.sentence_embedding)
                 metadata.append([taste, sentence.sentence, sentence.score, {'readability':sentence.readibility, 'ir_score':sentence.IR_score},  False])
                 total_points += 1
         # Adding other sentences with upperbound
         upperbound = 100
         for sentence in self.sentences:
-            if not any((sentence.sentence_embeddings_summed == x).all() for x in vectors):
-                vectors.append(sentence.sentence_embeddings_summed)
+            if not any((sentence.sentence_embedding == x).all() for x in vectors):
+                vectors.append(sentence.sentence_embedding)
                 metadata.append(["_None_", sentence.sentence, sentence.score, {'readability':sentence.readibility, 'ir_score':sentence.IR_score}, False])
                 total_points += 1
                 upperbound -= 1
@@ -195,8 +180,7 @@ class Policy:
 
     def PCA_dimention_reduction(self, n_components=2):
 
-        sentence_points = np.concatenate(
-            [s.sentence_embeddings for s in self.sentences])
+        sentence_points = s.sentence_embedding
         dim_reduction_model = PCA(n_components=n_components)
         dim_reduction_model.fit(sentence_points)
 
@@ -207,7 +191,7 @@ class Policy:
         for k in self.results:
             m = 0
             for s in self.results[k]:
-                sentence = dim_reduction_model.transform([s.sentence_embeddings_summed])
+                sentence = dim_reduction_model.transform([s.sentence_embedding])
                 ax.scatter(sentence[0][0], sentence[0][1], color=colors_name[i], marker=marker_type[m], alpha=0.3, label=s.sentence[:70])
                 m += 1
                 if m>9:
@@ -225,40 +209,3 @@ class Policy:
         ax.legend(loc='upper left')
         ax.grid(True)
         plt.show()
-
-''' OLD PCA REDUCTION
-        # decide if we want to do PCA or t-SNE
-        # all the sentences points
-        sentence_points = np.concatenate(
-            [s.sentence_embeddings for s in self.sentences])
-        dim_reduction_model = PCA(n_components=n_components)
-
-        dim_reduction_model.fit(sentence_points)
-        # for each keyword we create a new plot with PCA or t-SNE which represents the sentences and the keyword
-
-        # first plot all the sentences
-        plt.figure()
-        #fig.set_size_inches(13.5, 10.5)
-        colors = cm.rainbow(np.linspace(0, 1, len(self.sentences)))
-
-        for s, c in zip(self.sentences, colors):
-            sentences = dim_reduction_model.transform(s.sentence_embeddings)
-            plt.scatter(sentences[:, 0], sentences[:, 1], color=c)
-
-        for k in self.results:
-            # plot the sentence belonging to this cluster
-            # 1 newplot
-            plt.figure()
-            #ax1.set(xlim=(-3, 3), ylim=(-3, 3))
-            # predict each sentence
-            sentences = np.concatenate([
-                dim_reduction_model.transform(s.sentence_embeddings)
-                for s in self.results[k]
-            ])
-            # plot sentences
-            plt.scatter(sentences[:, 0], sentences[:, 1], color="red")
-            # predict the keyword
-            keyword = dim_reduction_model.transform(
-                self.results[k][0].keyword[k])
-            # plot the keyword
-            plt.scatter(keyword[:, 0], keyword[:, 1], color="blue")'''

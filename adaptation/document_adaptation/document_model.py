@@ -17,6 +17,7 @@ import os
 from .user import User
 from rake_nltk import Rake
 from gensim.summarization.summarizer import summarize
+import html
 
 
 class DocumentModel():
@@ -76,10 +77,14 @@ class DocumentModel():
 
     def normalize(self, text):
         """Function of cleaning text from JS and HTML tags"""
-        tm1 = re.sub('<pre>.*?</pre>', '', text, flags=re.DOTALL)
-        tm2 = re.sub('<code>.*?</code>', '', tm1, flags=re.DOTALL)
-        tm3 = re.sub('<[^>]+>©', '', tm1, flags=re.DOTALL)
-        return tm3.replace("\n", "")
+        text = re.sub('<pre>.*?</pre>', '', text, flags=re.DOTALL)
+        text = re.sub('<code>.*?</code>', '', text, flags=re.DOTALL)
+        text = re.sub('<[^>]+>©', '', text, flags=re.DOTALL)
+        text = re.sub('(?<=[.,])(?![0-9])', ' ', text, flags=re.DOTALL)
+        text = re.sub('\[.*?\]', '', text, flags=re.DOTALL)
+        text = re.sub('\[.*?\]', '-', text, flags=re.DOTALL)
+        text = ' '.join(text.splitlines())
+        return text
 
     def user_readability_score(self):
         """ 
@@ -90,14 +95,15 @@ class DocumentModel():
         """
         doc = self.nlp(self.plain_text)
 
-        score = doc._.coleman_liau_index
-        score = score / 90
-        if score > 1 or score < 0:
+        docscore = doc._.flesch_kincaid_reading_ease
+        docscore = docscore / 100
+        if docscore > 1 or docscore < 0:
             return 0
         level = self.user.expertise_level
         expertise_level = level / 4  # dettagli in input_phase2.json
+        score = 1 - abs(expertise_level-docscore)
         self.readability_score = score
-        return score  #  [0-1] senza contare utente
+        return score  #  [0-1] contando utente
 
     def rake(self, n_sentences=10):
         """

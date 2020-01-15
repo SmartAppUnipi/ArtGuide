@@ -1,14 +1,14 @@
 {
-    "languages": ["en","it"],
+    "languages": ["en", "it"],
     "log_file": "log.txt",
     "disclaimer_file": "disclaimer.json",
     "doc_api_file": "documentation/docs_api.html",
     "transition_data_path":"data",
-    "max_cluster_size": 80,
-    "max_sentences": 4,
+    "max_cluster_size": 40,
+    "max_sentences": 6,
     "debug": false,
     "expertize_levels": 4,
-    "expertise_weight": 0.8, 
-    "IR_score_weight": 0.5, 
+    "expertise_weight": 1.2,
+    "IR_score_weight": 0.7, 
     "affinity_weight": 1
 }
