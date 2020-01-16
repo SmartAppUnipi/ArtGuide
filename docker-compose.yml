@@ -1,39 +1,42 @@
 version: "3"
 
 services:
-
   ia:
     build:
-      context: ./
-      dockerfile: ia.dockerfile
+      context: ./image_analysis
     image: art/ia
     container_name: ia
     restart: always
     ports:
       - "2345:2345"
+    volumes:
+      - "./docker-routes.json:/art/routes.json"
     stdin_open: true
     tty: true
 
   ir:
     build:
-      context: ./
-      dockerfile: ir.dockerfile
+      context: ./ir
     image: art/ir
     container_name: ir
     restart: always
     ports:
       - "3000:3000"
+    volumes:
+      - "./docker-routes.json:/art/routes.json"
     stdin_open: true
     tty: true
 
   adaptation:
     build:
-      context: ./
-      dockerfile: adaptation.dockerfile
+      context: ./adaptation
     image: art/adaptation
     container_name: adaptation
     restart: always
     ports:
       - "6397:6397"
+    volumes:
+      - "./docker-routes.json:/art/routes.json"
+      - "./adaptation/sister_cache:/art/adaptation/sister_cache"
     stdin_open: true
     tty: true
