@@ -26,37 +26,26 @@ ENV variables with the API keys are needed, contact the teams to get them and pl
 ### Docker
 The [docker-compose.yml](docker-compose.yml) defines the containers settings.
 
-Before running docker change [routes.json](routes.json) as follows. Docker containers can access containers in the same network (automatically created by docker-compose) by using the container's name.
-```json
-{
-  "image" : "http://ia:2345/upload",
-  "opus" : "http://ir:3000/",
-  "text" : "http://adaptation:6397/tailored_text",
-  "keywords" : "http://adaptation:6397/keywords"
-}
-```
- Using `docker-compose`
+#### Using `docker-compose` (run the entire system)
 ```bash
 # start
 sudo docker-compose up --build
+
 # stop
 sudo docker-compose down
 ```
 
-Build and run images individually
+#### Build and run images individually (for debugging purposes)
 ```bash
 # build
-sudo docker build -t art/ir -f ir.dockerfile .
-sudo docker build -t art/ia -f ia.dockerfile .
-sudo docker build -t art/adaptation -f adaptation.dockerfile .
+cd <module>
+sudo docker build -t art/<module> .
 
 # run
-sudo docker run --name ir -p 3000:3000 art/ir
-sudo docker run --name ia -p 2345:2345 art/ia
-sudo docker run --name adaptation -p 6397:6397 art/adaptation
+sudo docker run --name <module> -p <port>:<port> -v ../routes.json art/<module>
 
 # stop
-sudo docker rm -f ir ia adaptation
+sudo docker rm -f <module>
 ```
 
 ## Test UI
