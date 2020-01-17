@@ -38,11 +38,10 @@ sudo docker-compose down
 #### Build and run images individually (for debugging purposes)
 ```bash
 # build
-cd <module>
-sudo docker build -t art/<module> .
+sudo docker build -t art/<module> <module>
 
 # run
-sudo docker run --name <module> -p <port>:<port> -v ../routes.json art/<module>
+sudo docker run --name <module> -p <port>:<port> -v routes.json:/art/routes.json art/<module>
 
 # stop
 sudo docker rm -f <module>
