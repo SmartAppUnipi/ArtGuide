@@ -1,4 +1,5 @@
 {
+  "webui": "http://webui:8000",
   "image": "http://ia:2345/upload",
   "opus": "http://ir:3000",
   "text": "http://adaptation:6397/tailored_text",

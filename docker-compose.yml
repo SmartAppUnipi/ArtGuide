@@ -1,6 +1,17 @@
 version: "3"
 
 services:
+  webui:
+    build:
+      context: ./webui
+    image: art/webui
+    container_name: webui
+    restart: always
+    ports:
+      - "8000:80"
+    stdin_open: true
+    tty: true
+
   ia:
     build:
       context: ./image_analysis
