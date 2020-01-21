@@ -13301,5 +13301,440 @@
         }
       }
     ]
+  },
+  "[Child:en]-Leaning Tower of Pisa art": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa art",
+          "totalResults": "42",
+          "searchTerms": "Leaning Tower of Pisa art",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa art",
+          "totalResults": "42",
+          "searchTerms": "Leaning Tower of Pisa art",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "context": {
+      "title": "Smartapps-Art-Kids"
+    },
+    "searchInformation": {
+      "searchTime": 0.421819,
+      "formattedSearchTime": "0.42",
+      "totalResults": "42",
+      "formattedTotalResults": "42"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa Facts for Kids",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The Leaning Tower of Pisa is a building in Pisa, Italy. ... 12th-century resident \nartist of Pisa, famous for his bronze casting, particularly in the Pisa Duomo. \nPisano ...",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b> is a building in Pisa, Italy. ... 12th-century resident <br>\n<b>artist</b> of Pisa, famous for his bronze casting, particularly in the Pisa Duomo. <br>\nPisano&nbsp;...",
+        "cacheId": "aIQM7TsJmDoJ",
+        "formattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/<b>Leaning</b>_<b>Tower_of_Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "178",
+              "height": "283",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFoRGKvvgMHc4MNLUX1apsOGqqELoJxvBnrxjfE2KQRdemOm69kpL-QXnh"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Leaning Tower of Pisa",
+              "label": "Tuscany",
+              "note": "Affiliation Roman Catholic"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/84/Leaning_Tower_of_Pisa_%28April_2012%29.jpg/250px-Leaning_Tower_of_Pisa_%28April_2012%29.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Archimedes' screw Facts for Kids",
+        "htmlTitle": "Archimedes&#39; screw Facts for Kids",
+        "link": "https://kids.kiddle.co/Archimedes%27_screw",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "With the bottom end in water, the screw lifts water up to the top, where it pours out \nof ... was used in the successful 2001 stabilization of the Leaning Tower of Pisa. \n... Archimedes screw as a form of art by Tony Cragg at 's-Hertogenbosch in the ...",
+        "htmlSnippet": "With the bottom end in water, the screw lifts water up to the top, where it pours out <br>\nof ... was used in the successful 2001 stabilization of the <b>Leaning Tower of Pisa</b>. <br>\n... Archimedes screw as a form of <b>art</b> by Tony Cragg at &#39;s-Hertogenbosch in the&nbsp;...",
+        "cacheId": "K_exM3XS7xkJ",
+        "formattedUrl": "https://kids.kiddle.co/Archimedes%27_screw",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Archimedes%27_screw",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "274",
+              "height": "184",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRwLjGCHiCgkqmR0FCzOWWt_JuxRTaNBmo2V6RPy5ULIk9-54gQeHIEeHp_"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/82/Archimedes_screw.JPG/300px-Archimedes_screw.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Italia Facts for Kids",
+        "htmlTitle": "Italia Facts for Kids",
+        "link": "https://kids.kiddle.co/Italia",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... The Italian Republic or Italy is a country in the south of Europe, consisting mainly \nof ... that further helped to shape European philosophy and art. ... among them \nthe leaning tower of Pisa and the Roman Colosseum, as well as ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> The Italian Republic or Italy is a country in the south of Europe, consisting mainly <br>\nof ... that further helped to shape European philosophy and <b>art</b>. ... among them <br>\nthe <b>leaning tower of Pisa</b> and the Roman Colosseum, as well as&nbsp;...",
+        "cacheId": "GRqHzp5h9S0J",
+        "formattedUrl": "https://kids.kiddle.co/Italia",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Italia",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "263",
+              "height": "192",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS-781a-b1M41veDtVJBkS3DIM9RdIQ1mDY1QM_ud4AAEEm12girnaHQgeq"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/5/5b/Italy_map_1584.jpg/300px-Italy_map_1584.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Pisa Facts for Kids",
+        "htmlTitle": "<b>Pisa</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... Pisa is a city and comune in Tuscany, central Italy, straddling the Arno just ... The \n\"Leaning Tower of Pisa\" is a famous landmark of Pisa. ... the most famous image \nof the city, it is one of many works of art and architecture in the ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> Pisa is a city and comune in Tuscany, central Italy, straddling the Arno just ... The <br>\n&quot;<b>Leaning Tower of Pisa</b>&quot; is a famous landmark of Pisa. ... the most famous image <br>\nof the city, it is one of many works of <b>art</b> and architecture in the&nbsp;...",
+        "cacheId": "YS6i6_8PBHwJ",
+        "formattedUrl": "https://kids.kiddle.co/Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/<b>Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "250",
+              "height": "197",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ0PT44o7eS2yNzQV_QsqkbXGhTI9KISHSgiLAhVnlAMv0L4-GY5DCuRZhG"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Pisa",
+              "category": "Comune"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/f/f4/Pisa_-_veduta_dall%27aereo_4.JPG/250px-Pisa_-_veduta_dall%27aereo_4.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "1990 Facts for Kids",
+        "htmlTitle": "1990 Facts for Kids",
+        "link": "https://kids.kiddle.co/1990",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... January 7 – The Leaning Tower of Pisa is closed due to safety concerns. ... the \nIsabella Stewart Gardner Museum in Boston, the biggest art theft ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> January 7 – The <b>Leaning Tower of Pisa</b> is closed due to safety concerns. ... the <br>\nIsabella Stewart Gardner Museum in Boston, the biggest <b>art</b> theft&nbsp;...",
+        "cacheId": "9XmnlZwmF7MJ",
+        "formattedUrl": "https://kids.kiddle.co/1990",
+        "htmlFormattedUrl": "https://kids.kiddle.co/1990",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bell tower Facts for Kids",
+        "htmlTitle": "Bell <b>tower</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Bell_tower",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The first to use a bell tower in a church was Paulinus of Nola, about the start of \nthe ... Leaning Tower of Pisa, campanile of the Duomo di Pisa, Italy (1173-1372).",
+        "htmlSnippet": "The first to use a bell tower in a church was Paulinus of Nola, about the start of <br>\nthe ... <b>Leaning Tower of Pisa</b>, campanile of the Duomo di Pisa, Italy (1173-1372).",
+        "cacheId": "FD6d6UnM_7gJ",
+        "formattedUrl": "https://kids.kiddle.co/Bell_tower",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Bell_<b>tower</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "182",
+              "height": "276",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQhxZNNbJZwNjS0bjRFsO_hIQ6l8cwcTUWldd2emLHTQugm8gGyTCBA71c"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/7/7e/Belfry_%28PSF%29.jpg/250px-Belfry_%28PSF%29.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "B of the Bang Facts for Kids",
+        "htmlTitle": "B of <b>the</b> Bang Facts for Kids",
+        "link": "https://kids.kiddle.co/B_of_the_Bang",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... Artist, Thomas Heatherwick. Year, 2005–2009 ... It was taller and leaned at a \ngreater angle than the Leaning Tower of Pisa. The sculpture took ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> <b>Artist</b>, Thomas Heatherwick. Year, 2005–2009 ... It was taller and leaned at a <br>\ngreater angle than the <b>Leaning Tower of Pisa</b>. The sculpture took&nbsp;...",
+        "cacheId": "sR7GJdyxXzsJ",
+        "formattedUrl": "https://kids.kiddle.co/B_of_the_Bang",
+        "htmlFormattedUrl": "https://kids.kiddle.co/B_of_<b>the</b>_Bang",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "250",
+              "height": "188",
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSXl55NP3TlC54gNuNXYSi5YEBfejqwiKes7vhLczuaGyKa5mWKKdseherb"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/5/5d/B_of_the_Bang_%28landscape%29.jpg/250px-B_of_the_Bang_%28landscape%29.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Scientific revolution Facts for Kids",
+        "htmlTitle": "Scientific revolution Facts for Kids",
+        "link": "https://kids.kiddle.co/Scientific_revolution",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... The scientific revolution was a time (1550-1700) during the Middle Ages when ... \none pound, the other a hundred) off the leaning tower of Pisa.",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> The scientific revolution was a time (1550-1700) during the Middle Ages when ... <br>\none pound, the other a hundred) off the <b>leaning tower of Pisa</b>.",
+        "cacheId": "XS5bJMqi4-gJ",
+        "formattedUrl": "https://kids.kiddle.co/Scientific_revolution",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Scientific_revolution",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "194",
+              "height": "260",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQj5mQJevXgJV2VXJcrwUeWBCE-ZgeVZsbNRV0up_8qow9cfq30EepPBneJ"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/a/a4/PeuerbachSuperioribus2.png/250px-PeuerbachSuperioribus2.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Nicola Pisano Facts for Kids",
+        "htmlTitle": "Nicola Pisano Facts for Kids",
+        "link": "https://kids.kiddle.co/Nicola_Pisano",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... At a time when most artists worked in the Gothic style, Nicola was influenced by \nthe Ancient Roman sculpture that he saw at Pisa, and copied ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> At a time when most artists worked in <b>the</b> Gothic style, Nicola was influenced by <br>\n<b>the</b> Ancient Roman sculpture that he saw at <b>Pisa</b>, and copied&nbsp;...",
+        "cacheId": "iN1RMwz3CkcJ",
+        "formattedUrl": "https://kids.kiddle.co/Nicola_Pisano",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Nicola_<b>Pisa</b>no",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "183",
+              "height": "275",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmxBEK2oUz15NZlXHQIiAwvb4QNXGDib2ljXgFplAC_ktUUxy9_7d76Qg"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/a/a1/Duomo_di_siena_pulpito_nicola_pisano.jpg/230px-Duomo_di_siena_pulpito_nicola_pisano.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Province of Pisa Facts for Kids",
+        "htmlTitle": "Province of <b>Pisa</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Province_of_Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The Province of Pisa (Italian: Provincia di Pisa) is a province in the Tuscany ... \nPisa, the provincial capital, is known for its Leaning Tower, and other historic ...",
+        "htmlSnippet": "<b>The</b> Province of <b>Pisa</b> (Italian: Provincia di <b>Pisa</b>) is a province in <b>the</b> Tuscany ... <br>\n<b>Pisa</b>, <b>the</b> provincial capital, is known for its <b>Leaning Tower</b>, and other historic&nbsp;...",
+        "cacheId": "4AjtuYMTgIwJ",
+        "formattedUrl": "https://kids.kiddle.co/Province_of_Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Province_of_<b>Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "204",
+              "height": "247",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTmieWQ7zhKtMD-f_K__lTMHQfnDiCBWFvzX7RcuwWZdhKT0Ggws28HJmkW"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Province of Pisa",
+              "nickname": "Pisa",
+              "category": "Province"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/f/ff/Pisa_posizione.png/250px-Pisa_posizione.png"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Child:en]-Bonanno Pisano art": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano art",
+          "totalResults": "1",
+          "searchTerms": "Bonanno Pisano art",
+          "count": 1,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "context": {
+      "title": "Smartapps-Art-Kids"
+    },
+    "searchInformation": {
+      "searchTime": 0.464926,
+      "formattedSearchTime": "0.46",
+      "totalResults": "1",
+      "formattedTotalResults": "1"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa Facts for Kids",
+        "htmlTitle": "Leaning Tower of Pisa Facts for Kids",
+        "link": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "For many years, the design was attributed to Guglielmo and Bonanno Pisano, a \nwell-known 12th-century resident artist of Pisa, famous for his bronze casting, ...",
+        "htmlSnippet": "For many years, the design was attributed to Guglielmo and <b>Bonanno Pisano</b>, a <br>\nwell-known 12th-century resident <b>artist</b> of Pisa, famous for his bronze casting,&nbsp;...",
+        "cacheId": "aIQM7TsJmDoJ",
+        "formattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "178",
+              "height": "283",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFoRGKvvgMHc4MNLUX1apsOGqqELoJxvBnrxjfE2KQRdemOm69kpL-QXnh"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Leaning Tower of Pisa",
+              "label": "Tuscany",
+              "note": "Affiliation Roman Catholic"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/84/Leaning_Tower_of_Pisa_%28April_2012%29.jpg/250px-Leaning_Tower_of_Pisa_%28April_2012%29.jpg"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

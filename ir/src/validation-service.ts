@@ -1,12 +1,6 @@
-import { PageResult, TailoredTextResponse } from "./models";
+import { PageResult, TailoredTextResponse, MetaEntity, Metadata } from "./models";
 import { escapeHtml, generateId, getRandomColor } from "./utils";
 import { text } from "body-parser";
-
-interface Metadata {
-    sentenceId: string;
-    text: string;
-    matchingPageResult: PageResult;
-}
 
 /**
  * @param tailoredText
@@ -54,7 +48,7 @@ export function appendValidation(tailoredTextResult: TailoredTextResponse) {
                         sentenceId: generateId(8),
                         matchingPageResult: pgMatch
                     };
-                } else { 
+                } else {
                     match = {
                         text: search,
                         sentenceId: null,

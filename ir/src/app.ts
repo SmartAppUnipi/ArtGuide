@@ -10,7 +10,7 @@ import { LoggerConfig } from "./environment";
 import packageJson from "../package.json";
 import path from "path";
 import { Search, CacheService } from "./search";
-import { ClassificationResult, Entity, ExpertizeLevelType, LogLevels, PageResult } from "./models";
+import { ClassificationResult, Entity, ExpertizeLevelType, LogLevels, PageResult, TailoredTextResponse } from "./models";
 import { reduceEntities, generateId } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
 
@@ -260,6 +260,9 @@ app.post("/", async (req, res) => {
         // call adaptation for summary and return the result to the caller
         return adaptation
             .getTailoredText(results, classificationResult.userProfile)
+            .then(response => {
+                return { ...response, knownInstance } as TailoredTextResponse
+            })
             .then(response => augmentWithValidation(response))
             .then(response => {
                 const dbService = new CacheService("ir-requests-db.json");
@@ -277,6 +280,68 @@ app.post("/", async (req, res) => {
             .status(500)
             .json({ message: ex.message, stack: ex.stack });
     }
+
+});
+
+app.post("/validation", async (req, res) => {
+    const { requestId, sentenceId, validation } = req.body;
+    const dbValidationService = new CacheService("ir-validation-db.json");
+    dbValidationService.set(generateId(16), {
+        date: new Date(),
+        sentenceId,
+        requestId,
+        validation
+    });
+
+    return res.status(204).send();
+});
+
+interface Validation {
+    date: Date;
+    sentenceId: string;
+    requestId: string,
+    validation: number
+}
+
+app.get("/validation", async (req, res) => {
+
+    const dbService = new CacheService("ir-requests-db.json");
+    const dbValidationService = new CacheService("ir-validation-db.json");
+
+    const userTastesValidation = new Map<string, number>();
+    const urlsValidation = new Map<string, number>();
+
+    for (const validationRecord of dbValidationService.getAll<Validation>()) {
+        const response = dbService.get<TailoredTextResponse>(validationRecord.requestId);
+
+        response?.userProfile.tastes.forEach(t => {
+            const oldScore = userTastesValidation.get(t) ?? 0;
+            const newScore = oldScore + validationRecord.validation;
+            userTastesValidation.set(t, newScore);
+        });
+
+        const validation = response?.validation.find(val => val.sentenceId == validationRecord.sentenceId);
+        if (validation) {
+            const url = validation.matchingPageResult.url;
+            const oldScore = urlsValidation.get(url) ?? 0;
+            const newScore = oldScore + validationRecord.validation;
+            urlsValidation.set(url, newScore);
+        }
+    }
+
+    const mapToObj = (m: Map<string, number>) => {
+        return Array.from(m).reduce((obj, [key, value]) => {
+            obj[key] = value;
+            return obj;
+        }, {});
+    };
+
+    return res.json({
+        urlsValidation: mapToObj(urlsValidation),
+        userTastesValidation: mapToObj(userTastesValidation)
+    });
+
+    
 
 });
 

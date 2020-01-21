@@ -63,6 +63,15 @@ export class CacheService {
     }
 
     /**
+     * Get all the cache.
+     * 
+     * @returns The items.
+     */
+    public getAll<T = any>(): Array<T> {
+        return Object.keys(this.cache).map(key => this.get<T>(key));
+    }
+
+    /**
      * Deletes the cache file form disk and empty the in-memory cache
      */
     public reset(): void {

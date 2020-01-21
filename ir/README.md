@@ -1,4 +1,4 @@
-# ArtGuide
+# Information Retrieval module
 
 ### Prerequisites
 
