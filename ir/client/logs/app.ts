@@ -1,6 +1,6 @@
 import { parse } from "./log-parser";
-import { Utils } from "./utils";
-import { LogLevels, Entity } from "src/models";
+import { LogLevels, Entity } from "../../src/models";
+import { escapeHtml } from "../../src/utils";
 
 interface ILog {
     level: LogLevels;
@@ -53,7 +53,7 @@ interface ILog {
             const currentColor: string = this.getAttribute("data-color");
 
             // populate classification
-            let classificationHtml = Utils.escapeHtml(JSON.stringify(lastReducedEntities, null, 2));
+            let classificationHtml = escapeHtml(JSON.stringify(lastReducedEntities, null, 2));
             const start = classificationHtml.indexOf(currentEntityId);
             const end = start + currentEntityId.length;
             const before = classificationHtml.substring(0, start);

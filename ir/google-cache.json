@@ -10775,5 +10775,2531 @@
         }
       }
     ]
+  },
+  "[Child:en]-Leaning Tower of Pisa science": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa science",
+          "totalResults": "9",
+          "searchTerms": "Leaning Tower of Pisa science",
+          "count": 9,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "context": {
+      "title": "Smartapps-Art-Kids"
+    },
+    "searchInformation": {
+      "searchTime": 0.492356,
+      "formattedSearchTime": "0.49",
+      "totalResults": "9",
+      "formattedTotalResults": "9"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Scientific revolution Facts for Kids",
+        "htmlTitle": "<b>Scientific</b> revolution Facts for Kids",
+        "link": "https://kids.kiddle.co/Scientific_revolution",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... The scientific revolution was a time (1550-1700) during the Middle Ages when ... \none pound, the other a hundred) off the leaning tower of Pisa.",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> The <b>scientific</b> revolution was a time (1550-1700) during the Middle Ages when ... <br>\none pound, the other a hundred) off the <b>leaning tower of Pisa</b>.",
+        "cacheId": "XS5bJMqi4-gJ",
+        "formattedUrl": "https://kids.kiddle.co/Scientific_revolution",
+        "htmlFormattedUrl": "https://kids.kiddle.co/<b>Scientific</b>_revolution",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQj5mQJevXgJV2VXJcrwUeWBCE-ZgeVZsbNRV0up_8qow9cfq30EepPBneJ",
+              "width": "194",
+              "height": "260"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/a/a4/PeuerbachSuperioribus2.png/250px-PeuerbachSuperioribus2.png"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Archimedes' screw Facts for Kids",
+        "htmlTitle": "Archimedes&#39; screw Facts for Kids",
+        "link": "https://kids.kiddle.co/Archimedes%27_screw",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "An Archimedes screw was used in the successful 2001 stabilization of the \nLeaning Tower of Pisa. Small amounts of subsoil saturated by groundwater \nremoved ...",
+        "htmlSnippet": "An Archimedes screw was used in the successful 2001 stabilization of the <br>\n<b>Leaning Tower of Pisa</b>. Small amounts of subsoil saturated by groundwater <br>\nremoved&nbsp;...",
+        "cacheId": "K_exM3XS7xkJ",
+        "formattedUrl": "https://kids.kiddle.co/Archimedes%27_screw",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Archimedes%27_screw",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRwLjGCHiCgkqmR0FCzOWWt_JuxRTaNBmo2V6RPy5ULIk9-54gQeHIEeHp_",
+              "width": "274",
+              "height": "184"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/82/Archimedes_screw.JPG/300px-Archimedes_screw.JPG"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Galileo Galilei Facts for Kids",
+        "htmlTitle": "Galileo Galilei Facts for Kids",
+        "link": "https://kids.kiddle.co/Galileo_Galilei",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... Galileo was born in Pisa (then part of the Duchy of Florence), Italy, in 1564, the \nfirst ... A legend says that he climbed the Leaning Tower of Pisa, and ... His \nscientific writing was usually in Latin for hundreds of scientists around ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> Galileo was born in Pisa (then part of the Duchy of Florence), Italy, in 1564, the <br>\nfirst ... A legend says that he climbed the <b>Leaning Tower of Pisa</b>, and ... His <br>\n<b>scientific</b> writing was usually in Latin for hundreds of scientists around&nbsp;...",
+        "cacheId": "spUwWpSKN64J",
+        "formattedUrl": "https://kids.kiddle.co/Galileo_Galilei",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Galileo_Galilei",
+        "pagemap": {
+          "hcard": [
+            {
+              "bday": "1564-02-15",
+              "fn": "Galileo Galilei",
+              "category": "Astronomy, physics, engineering, natural philosophy, mathematics"
+            }
+          ],
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRpsw1zP0D8nXLOcDP9wJLj15PaX_xelabsYDyLu-rtH6GW-RuvQ_2H5UE",
+              "width": "199",
+              "height": "253"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/a/a2/Galileo_Galilei_3.jpg/225px-Galileo_Galilei_3.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Italy Facts for Kids",
+        "htmlTitle": "Italy Facts for Kids",
+        "link": "https://kids.kiddle.co/Italy",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... Leaning Tower of Pisa. Before 1861, Italy was not a state. The area was made of \na group of independent states, ruled by other countries (such ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> <b>Leaning Tower of Pisa</b>. Before 1861, Italy was not a state. The area was made of <br>\na group of independent states, ruled by other countries (such&nbsp;...",
+        "cacheId": "0OBBzMJbZPgJ",
+        "formattedUrl": "https://kids.kiddle.co/Italy",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Italy",
+        "pagemap": {
+          "hcard": [
+            {
+              "fn": "Italian Republic"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "List of World Heritage Sites in Italy Facts for Kids",
+        "htmlTitle": "List of World Heritage Sites in Italy Facts for Kids",
+        "link": "https://kids.kiddle.co/List_of_World_Heritage_Sites_in_Italy",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... The United Nations Educational, Scientific and Cultural Organization ... Piazza \ndel Duomo, Pisa, White church, leaning tower and a circular ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> The United Nations Educational, <b>Scientific</b> and Cultural Organization ... Piazza <br>\ndel Duomo, <b>Pisa</b>, White church, <b>leaning tower</b> and a circular&nbsp;...",
+        "cacheId": "mrKeZMr_Q0kJ",
+        "formattedUrl": "https://kids.kiddle.co/List_of_World_Heritage_Sites_in_Italy",
+        "htmlFormattedUrl": "https://kids.kiddle.co/List_of_World_Heritage_Sites_in_Italy",
+        "pagemap": {
+          "hcard": [
+            {
+              "fn": "18th-Century Royal Palace at Caserta with the Park, the Aqueduct of Vanvitelli, and the San Leucio Complex"
+            },
+            {
+              "fn": "Arab-Norman Palermo and the Cathedral Churches of Cefalú and Monreale"
+            },
+            {
+              "fn": "Archaeological Area and the Patriarchal Basilica of Aquileia"
+            },
+            {
+              "fn": "Archaeological Area of Agrigento"
+            },
+            {
+              "fn": "Archaeological Areas of Pompei, Herculaneum and Torre Annunziata"
+            },
+            {
+              "fn": "Assisi, the Basilica of San Francesco and Other Franciscan Sites"
+            },
+            {
+              "fn": "Botanical Garden (Orto Botanico), Padua"
+            },
+            {
+              "fn": "Castel del Monte"
+            },
+            {
+              "fn": "Cathedral, Torre Civica and Piazza Grande, Modena"
+            },
+            {
+              "fn": "Church and Dominican Convent of Santa Maria delle Grazie with \"The Last Supper\" by Leonardo da Vinci"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "List of buildings Facts for Kids",
+        "htmlTitle": "List of buildings Facts for Kids",
+        "link": "https://kids.kiddle.co/List_of_buildings",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... Caguas Tower, Caguas, Puerto Rico; Caledonian Hotel, Edinburgh, United ... UK\n; Glasgow Science Centre, Glasgow, United Kingdom; Glasgow Tower, ... Krak \ndes Chevaliers, Homs, Syria · Leaning Tower of Pisa, Pisa, Italy ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> Caguas Tower, Caguas, Puerto Rico; Caledonian Hotel, Edinburgh, United ... UK<br>\n; Glasgow <b>Science</b> Centre, Glasgow, United Kingdom; Glasgow Tower, ... Krak <br>\ndes Chevaliers, Homs, Syria &middot; <b>Leaning Tower of Pisa</b>, Pisa, Italy&nbsp;...",
+        "cacheId": "OXwIto4gwZcJ",
+        "formattedUrl": "https://kids.kiddle.co/List_of_buildings",
+        "htmlFormattedUrl": "https://kids.kiddle.co/List_of_buildings",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Italia Facts for Kids",
+        "htmlTitle": "Italia Facts for Kids",
+        "link": "https://kids.kiddle.co/Italia",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... ... among them the leaning tower of Pisa and the Roman Colosseum, ... of \nmodern science, physics and observational astronomy;Guglielmo ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> ... among them the <b>leaning tower of Pisa</b> and the Roman Colosseum, ... of <br>\nmodern <b>science</b>, physics and observational astronomy;Guglielmo&nbsp;...",
+        "cacheId": "GRqHzp5h9S0J",
+        "formattedUrl": "https://kids.kiddle.co/Italia",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Italia",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS-781a-b1M41veDtVJBkS3DIM9RdIQ1mDY1QM_ud4AAEEm12girnaHQgeq",
+              "width": "263",
+              "height": "192"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/5/5b/Italy_map_1584.jpg/300px-Italy_map_1584.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "February 27 Facts for Kids",
+        "htmlTitle": "February 27 Facts for Kids",
+        "link": "https://kids.kiddle.co/February_27",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "... The Italian Government asks for help to keep the Leaning Tower of Pisa from ... \n2014 - Aaron Allston, American game designer and science fiction author (b.",
+        "htmlSnippet": "... The Italian Government asks for help to keep the <b>Leaning Tower of Pisa</b> from ... <br>\n2014 - Aaron Allston, American game designer and <b>science</b> fiction author (b.",
+        "cacheId": "U8C0RG_JAbUJ",
+        "formattedUrl": "https://kids.kiddle.co/February_27",
+        "htmlFormattedUrl": "https://kids.kiddle.co/February_27",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "December 15 Facts for Kids",
+        "htmlTitle": "December 15 Facts for Kids",
+        "link": "https://kids.kiddle.co/December_15",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "2001 – The Leaning Tower of Pisa is reopened to the public almost 12 years after \nit ... 1953 - Robert Charles Wilson, American-Canadian science fiction author ...",
+        "htmlSnippet": "2001 – The <b>Leaning Tower of Pisa</b> is reopened to the public almost 12 years after <br>\nit ... 1953 - Robert Charles Wilson, American-Canadian <b>science</b> fiction author&nbsp;...",
+        "cacheId": "BNzbSdkTfs8J",
+        "formattedUrl": "https://kids.kiddle.co/December_15",
+        "htmlFormattedUrl": "https://kids.kiddle.co/December_15",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Child:en]-Bonanno Pisano marble": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano marble",
+          "totalResults": "1",
+          "searchTerms": "Bonanno Pisano marble",
+          "count": 1,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "context": {
+      "title": "Smartapps-Art-Kids"
+    },
+    "searchInformation": {
+      "searchTime": 0.428992,
+      "formattedSearchTime": "0.43",
+      "totalResults": "1",
+      "formattedTotalResults": "1"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa Facts for Kids",
+        "htmlTitle": "Leaning Tower of Pisa Facts for Kids",
+        "link": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "For many years, the design was attributed to Guglielmo and Bonanno Pisano, ... \nWork on the ground floor of the white marble campanile began on August 14, ...",
+        "htmlSnippet": "For many years, the design was attributed to Guglielmo and <b>Bonanno Pisano</b>, ... <br>\nWork on the ground floor of the white <b>marble</b> campanile began on August 14,&nbsp;...",
+        "cacheId": "aIQM7TsJmDoJ",
+        "formattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "pagemap": {
+          "hcard": [
+            {
+              "note": "Affiliation Roman Catholic",
+              "fn": "Leaning Tower of Pisa",
+              "label": "Tuscany"
+            }
+          ],
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFoRGKvvgMHc4MNLUX1apsOGqqELoJxvBnrxjfE2KQRdemOm69kpL-QXnh",
+              "width": "178",
+              "height": "283"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/84/Leaning_Tower_of_Pisa_%28April_2012%29.jpg/250px-Leaning_Tower_of_Pisa_%28April_2012%29.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Child:en]-Bonanno Pisano science": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano science",
+          "searchTerms": "Bonanno Pisano science",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "searchInformation": {
+      "searchTime": 0.43405,
+      "formattedSearchTime": "0.43",
+      "totalResults": "0",
+      "formattedTotalResults": "0"
+    }
+  },
+  "[Child:en]-Leaning Tower of Pisa marble": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa marble",
+          "totalResults": "3",
+          "searchTerms": "Leaning Tower of Pisa marble",
+          "count": 3,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:h6msjcmpfwx"
+        }
+      ]
+    },
+    "context": {
+      "title": "Smartapps-Art-Kids"
+    },
+    "searchInformation": {
+      "searchTime": 0.441737,
+      "formattedSearchTime": "0.44",
+      "totalResults": "3",
+      "formattedTotalResults": "3"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa Facts for Kids",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> Facts for Kids",
+        "link": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "The Leaning Tower of Pisa is a building in Pisa, Italy. ... Work on the ground floor \nof the white marble campanile began on August 14, 1173 during a period of ...",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b> is a building in Pisa, Italy. ... Work on the ground floor <br>\nof the white <b>marble</b> campanile began on August 14, 1173 during a period of&nbsp;...",
+        "cacheId": "aIQM7TsJmDoJ",
+        "formattedUrl": "https://kids.kiddle.co/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://kids.kiddle.co/<b>Leaning</b>_<b>Tower_of_Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "178",
+              "height": "283",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSFoRGKvvgMHc4MNLUX1apsOGqqELoJxvBnrxjfE2KQRdemOm69kpL-QXnh"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "Leaning Tower of Pisa",
+              "label": "Tuscany",
+              "note": "Affiliation Roman Catholic"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/8/84/Leaning_Tower_of_Pisa_%28April_2012%29.jpg/250px-Leaning_Tower_of_Pisa_%28April_2012%29.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Nicola Pisano Facts for Kids",
+        "htmlTitle": "Nicola Pisano Facts for Kids",
+        "link": "https://kids.kiddle.co/Nicola_Pisano",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... The dome on the Baptistery at Pisa was designed by Nicola and the ... Around \nfive sides of the pulpit are white marble panels carved with ...",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> The dome on the Baptistery at <b>Pisa</b> was designed by Nicola and the ... Around <br>\nfive sides of the pulpit are white <b>marble</b> panels carved with&nbsp;...",
+        "cacheId": "iN1RMwz3CkcJ",
+        "formattedUrl": "https://kids.kiddle.co/Nicola_Pisano",
+        "htmlFormattedUrl": "https://kids.kiddle.co/Nicola_<b>Pisa</b>no",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "183",
+              "height": "275",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmxBEK2oUz15NZlXHQIiAwvb4QNXGDib2ljXgFplAC_ktUUxy9_7d76Qg"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://kids.kiddle.co/images/thumb/a/a1/Duomo_di_siena_pulpito_nicola_pisano.jpg/230px-Duomo_di_siena_pulpito_nicola_pisano.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "List of World Heritage Sites in Italy Facts for Kids",
+        "htmlTitle": "List of World Heritage Sites in Italy Facts for Kids",
+        "link": "https://kids.kiddle.co/List_of_World_Heritage_Sites_in_Italy",
+        "displayLink": "kids.kiddle.co",
+        "snippet": "Nov 21, 2019 ... Castel del Monte, Octagonal castle with a tower on each of the eight corners. ... \nPiazza del Duomo, Pisa, White church, leaning tower and a circular building. ... \n2006, The Marble Basin of Carrara, Tuscany · Carrara01.jpg.",
+        "htmlSnippet": "Nov 21, 2019 <b>...</b> Castel del Monte, Octagonal castle with a <b>tower</b> on each of the eight corners. ... <br>\nPiazza del Duomo, <b>Pisa</b>, White church, <b>leaning tower</b> and a circular building. ... <br>\n2006, The <b>Marble</b> Basin of Carrara, Tuscany &middot; Carrara01.jpg.",
+        "cacheId": "mrKeZMr_Q0kJ",
+        "formattedUrl": "https://kids.kiddle.co/List_of_World_Heritage_Sites_in_Italy",
+        "htmlFormattedUrl": "https://kids.kiddle.co/List_of_World_Heritage_Sites_in_Italy",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "18th-Century Royal Palace at Caserta with the Park, the Aqueduct of Vanvitelli, and the San Leucio Complex"
+            },
+            {
+              "fn": "Arab-Norman Palermo and the Cathedral Churches of Cefalú and Monreale"
+            },
+            {
+              "fn": "Archaeological Area and the Patriarchal Basilica of Aquileia"
+            },
+            {
+              "fn": "Archaeological Area of Agrigento"
+            },
+            {
+              "fn": "Archaeological Areas of Pompei, Herculaneum and Torre Annunziata"
+            },
+            {
+              "fn": "Assisi, the Basilica of San Francesco and Other Franciscan Sites"
+            },
+            {
+              "fn": "Botanical Garden (Orto Botanico), Padua"
+            },
+            {
+              "fn": "Castel del Monte"
+            },
+            {
+              "fn": "Cathedral, Torre Civica and Piazza Grande, Modena"
+            },
+            {
+              "fn": "Church and Dominican Convent of Santa Maria delle Grazie with \"The Last Supper\" by Leonardo da Vinci"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Expert:en]-Bonanno Pisano marble": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano marble",
+          "totalResults": "13900",
+          "searchTerms": "Bonanno Pisano marble",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano marble",
+          "totalResults": "13900",
+          "searchTerms": "Bonanno Pisano marble",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-EN"
+    },
+    "searchInformation": {
+      "searchTime": 0.532692,
+      "formattedSearchTime": "0.53",
+      "totalResults": "13900",
+      "formattedTotalResults": "13,900"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano - Wikipedia",
+        "htmlTitle": "<b>Bonanno Pisano</b> - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "Bonanno Pisano (Pisa), active in the 1170s and 1180s, was an Italian sculptor, \nmixing Byzantine and classical elements. Giorgio Vasari attributed the realization\n ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), active in the 1170s and 1180s, was an Italian sculptor, <br>\nmixing Byzantine and classical elements. Giorgio Vasari attributed the realization<br>\n&nbsp;...",
+        "cacheId": "Rnqp5tBSIqYJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6",
+              "width": "198",
+              "height": "255"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Giovanni Pisano | Italian sculptor | Britannica",
+        "htmlTitle": "Giovanni <b>Pisano</b> | Italian sculptor | Britannica",
+        "link": "https://www.britannica.com/biography/Giovanni-Pisano",
+        "displayLink": "www.britannica.com",
+        "snippet": "Pisano, Giovanni: Head of a Bearded ManHead of a Bearded Man, marble \nsculpture by Giovanni Pisano, 1312–14; in the National Gallery of Denmark, ...",
+        "htmlSnippet": "<b>Pisano</b>, Giovanni: Head of a Bearded ManHead of a Bearded Man, <b>marble</b> <br>\nsculpture by Giovanni <b>Pisano</b>, 1312–14; in the National Gallery of Denmark,&nbsp;...",
+        "cacheId": "NRI7a-PRAvgJ",
+        "formattedUrl": "https://www.britannica.com/biography/Giovanni-Pisano",
+        "htmlFormattedUrl": "https://www.britannica.com/biography/Giovanni-<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRM6llqcT7j_DDDCGwnkYKwLAbvXqKm0wtMHnGa8wyfJXGJTgZ2kWZ7uoku",
+              "width": "176",
+              "height": "286"
+            }
+          ],
+          "metatags": [
+            {
+              "p:domain_verify": "5247c07bac63b6b3250f68cfe355c9a2",
+              "og:image": "https://cdn.britannica.com/29/3529-004-B638AC9C/pulpit-Marble-church-Giovanni-Pisano-Pistoia-Italy.jpg",
+              "twitter:card": "summary_large_image",
+              "og:type": "ARTICLE",
+              "og:site_name": "Encyclopedia Britannica",
+              "og:title": "Giovanni Pisano | Italian sculptor",
+              "og:image:type": "image/jpeg",
+              "fb:pages": "74442380906",
+              "og:description": "Giovanni Pisano, sculptor, sometimes called the only true Gothic sculptor in Italy. He began his career under the classicist influence of his father, Nicola, and carried on this tradition after his father’s death, continuously reintegrating the antique style into more northerly and contemporary",
+              "twitter:image": "https://cdn.britannica.com/29/3529-004-B638AC9C/pulpit-Marble-church-Giovanni-Pisano-Pistoia-Italy.jpg",
+              "fb:app_id": "1887621861548296",
+              "twitter:site": "@britannica",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "twitter:description": "Giovanni Pisano, sculptor, sometimes called the only true Gothic sculptor in Italy. He began his career under the classicist influence of his father, Nicola, and carried on this tradition after his father’s death, continuously reintegrating the antique style into more northerly and contemporary",
+              "og:url": "https://www.britannica.com/biography/Giovanni-Pisano"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://cdn.britannica.com/29/3529-004-B638AC9C/pulpit-Marble-church-Giovanni-Pisano-Pistoia-Italy.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa - Wikipedia",
+        "htmlTitle": "Leaning Tower of Pisa - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "The Leaning Tower of Pisa or simply the Tower of Pisa is the campanile, or \nfreestanding bell ... For many years, the design was attributed to Guglielmo and \nBonanno Pisano, a well-known 12th-century resident artist ... di Simone, architect \nof the Camposanto, and 23 workers went to the mountains close to Pisa to cut \nmarble.",
+        "htmlSnippet": "The Leaning Tower of Pisa or simply the Tower of Pisa is the campanile, or <br>\nfreestanding bell ... For many years, the design was attributed to Guglielmo and <br>\n<b>Bonanno Pisano</b>, a well-known 12th-century resident artist ... di Simone, architect <br>\nof the Camposanto, and 23 workers went to the mountains close to Pisa to cut <br>\n<b>marble</b>.",
+        "cacheId": "-hbT4AUf35kJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFg_lO_n3FYnP7QLD1wMWybZWYe9DUGjM1SVktqLw39Hg2xvkoTsyFVs",
+              "width": "182",
+              "height": "277"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Tragedy Strikes Carrara Marble Quarry – Tuscan Trends",
+        "htmlTitle": "Tragedy Strikes Carrara <b>Marble</b> Quarry – Tuscan Trends",
+        "link": "http://www.tuscantrends.com/tragedy-strikes-carrara-marble-quarry/",
+        "displayLink": "www.tuscantrends.com",
+        "snippet": "Jul 12, 2018 ... A normal work day took a tragic turn when a block of marble fell on an ... of Pisa's \nLeaning Tower has been identified as Bonanno Pisano by [...] ...",
+        "htmlSnippet": "Jul 12, 2018 <b>...</b> A normal work day took a tragic turn when a block of <b>marble</b> fell on an ... of Pisa&#39;s <br>\nLeaning Tower has been identified as <b>Bonanno Pisano</b> by [...]&nbsp;...",
+        "cacheId": "Wi3rUgPeznwJ",
+        "formattedUrl": "www.tuscantrends.com/tragedy-strikes-carrara-marble-quarry/",
+        "htmlFormattedUrl": "www.tuscantrends.com/tragedy-strikes-carrara-<b>marble</b>-quarry/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSbylUpuT8yUuIz96IMMnI7J8svVP5zbr1ZFZH6YvqMXDlhwLRhxfPNzsA",
+              "width": "399",
+              "height": "126"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "http://www.tuscantrends.com/wp-content/uploads/2018/07/carrara.jpg",
+              "og:type": "article",
+              "article:section": "Top News Stories",
+              "article:published_time": "2018-07-12T12:44:43+00:00",
+              "og:image:width": "642",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "Tragedy Strikes Carrara Marble Quarry – Tuscan Trends",
+              "og:site_name": "Tuscan Trends",
+              "og:title": "Tragedy Strikes Carrara Marble Quarry – Tuscan Trends",
+              "og:image:height": "204",
+              "og:updated_time": "2018-07-17T04:43:42+00:00",
+              "msapplication-tileimage": "http://www.tuscantrends.com/wp-content/uploads/2016/04/cropped-tuscan-trends-logo-270x270.png",
+              "og:description": "A normal work day took a tragic turn when a block of marble fell on an unsuspecting employee. 37-year-old Luca Savio was working in a Carrara warehouse as 37-year-old Luca Savio was working in a Carrara warehouse as part of a six-day contract when a marble block unloaded above him, killing him on the job.",
+              "twitter:creator": "@VistaMagenta",
+              "article:publisher": "https://www.facebook.com/MagentaFlorence/",
+              "twitter:image": "http://www.tuscantrends.com/wp-content/uploads/2018/07/carrara.jpg",
+              "article:tag": "Carrara",
+              "twitter:site": "@VistaMagenta",
+              "article:modified_time": "2018-07-17T04:43:42+00:00",
+              "viewport": "width=device-width, initial-scale=1",
+              "twitter:description": "A normal work day took a tragic turn when a block of marble fell on an unsuspecting employee. 37-year-old Luca Savio was working in a Carrara warehouse as 37-year-old Luca Savio was working in a Carrara warehouse as part of a six-day contract when a marble block unloaded above him, killing him on the job.",
+              "og:locale": "en_US",
+              "og:url": "http://www.tuscantrends.com/tragedy-strikes-carrara-marble-quarry/"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "http://www.tuscantrends.com/wp-content/uploads/2018/07/carrara.jpg"
+            }
+          ],
+          "hatomfeed": [
+            {}
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Pisa Cathedral - Wikipedia",
+        "htmlTitle": "Pisa Cathedral - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Pisa_Cathedral",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "Pisa Cathedral is a medieval Roman Catholic cathedral dedicated to the \nAssumption of the ... The facade of grey and white marble, decorated with colored \nmarble inserts, was built by Master Rainaldo. ... This door was cast about 1180 by \nBonanno Pisano, and it is the only door not destroyed by the fire of 1595 that \nheavily ...",
+        "htmlSnippet": "Pisa Cathedral is a medieval Roman Catholic cathedral dedicated to the <br>\nAssumption of the ... The facade of grey and white <b>marble</b>, decorated with colored <br>\n<b>marble</b> inserts, was built by Master Rainaldo. ... This door was cast about 1180 by <br>\n<b>Bonanno Pisano</b>, and it is the only door not destroyed by the fire of 1595 that <br>\nheavily&nbsp;...",
+        "cacheId": "U4SDqceKW6kJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Pisa_Cathedral",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/Pisa_Cathedral",
+        "pagemap": {
+          "hcard": [
+            {
+              "url_text": "Official website",
+              "note": "Architect(s)Buscheto and Rainaldo",
+              "bday": "1118-09-26",
+              "fn": "Pisa Cathedral Primatial Metropolitan Cathedral of the Assumption of Mary",
+              "nickname": "Il Duomo di Santa Maria Assunta",
+              "label": "Pisa",
+              "category": "Italy",
+              "url": "Official website"
+            }
+          ],
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSgBHRkfJd_YVyxFY_Ys9g1z3NaPSmi2zJ0fejUJKSiEcdF3Kjzny-LZww",
+              "width": "248",
+              "height": "203"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Pisa_-_Cattedrale_da_Battistero_02.jpg/1200px-Pisa_-_Cattedrale_da_Battistero_02.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Pisa_-_Cattedrale_da_Battistero_02.jpg/1200px-Pisa_-_Cattedrale_da_Battistero_02.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa",
+        "htmlTitle": "Leaning Tower of Pisa",
+        "link": "http://www.getty.edu/cona/CONAFullSubject.aspx?subid=700000100",
+        "displayLink": "www.getty.edu",
+        "snippet": "Note: Vasari reports that the tower was begun by Bonanno Pisano, but modern ... \ncut stone construction, round plan, white marble inlaid on the exterior with ...",
+        "htmlSnippet": "Note: Vasari reports that the tower was begun by <b>Bonanno Pisano</b>, but modern ... <br>\ncut stone construction, round plan, white <b>marble</b> inlaid on the exterior with&nbsp;...",
+        "cacheId": "a2_1ssgY6PAJ",
+        "formattedUrl": "www.getty.edu/cona/CONAFullSubject.aspx?subid=700000100",
+        "htmlFormattedUrl": "www.getty.edu/cona/CONAFullSubject.aspx?subid=700000100"
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Art Centres - Web Gallery of Art",
+        "htmlTitle": "Art Centres - Web Gallery of Art",
+        "link": "https://www.wga.hu/database/glossary/cities/pisa.html",
+        "displayLink": "www.wga.hu",
+        "snippet": "Both the cathedral and the baptistery are built of white marble with strips of black \nin ... 1180) by Bonanno Pisano, which depicts biblical scenes, survives on the ...",
+        "htmlSnippet": "Both the cathedral and the baptistery are built of white <b>marble</b> with strips of black <br>\nin ... 1180) by <b>Bonanno Pisano</b>, which depicts biblical scenes, survives on the&nbsp;...",
+        "cacheId": "RUTIrPMgbkYJ",
+        "formattedUrl": "https://www.wga.hu/database/glossary/cities/pisa.html",
+        "htmlFormattedUrl": "https://www.wga.hu/database/glossary/cities/pisa.html",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSk4oTgo9_ExpHIMABU-ru7-kuAkj2z8HoXPXpgEInjF6WUXbqZZ_14mws",
+              "width": "180",
+              "height": "247"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://www.wga.hu/database/glossary/cities/pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano – Wikipédia, a enciclopédia livre",
+        "htmlTitle": "<b>Bonanno Pisano</b> – Wikipédia, a enciclopédia livre",
+        "link": "https://pt.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "pt.wikipedia.org",
+        "snippet": "Bonanno Pisano (Pisa), ativo nas décadas de 1170 e 1180, foi um escultor \nitaliano que misturou elementos bizantinos e clássicos. Giorgio Vasari atribuiu o\n ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), ativo nas décadas de 1170 e 1180, foi um escultor <br>\nitaliano que misturou elementos bizantinos e clássicos. Giorgio Vasari atribuiu o<br>\n&nbsp;...",
+        "cacheId": "gXP1xrk9Be4J",
+        "formattedUrl": "https://pt.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://pt.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6",
+              "width": "198",
+              "height": "255"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano - Wikipedia, la enciclopedia libre",
+        "htmlTitle": "<b>Bonanno Pisano</b> - Wikipedia, la enciclopedia libre",
+        "link": "https://es.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "es.wikipedia.org",
+        "snippet": "Bonanno Pisano (Pisa), fue un escultor italiano que trabajó en las décadas de \n1170 y 1180. Su estilo mezcla elementos de arte bizantino y de la Antigüedad ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), fue un escultor italiano que trabajó en las décadas de <br>\n1170 y 1180. Su estilo mezcla elementos de arte bizantino y de la Antigüedad&nbsp;...",
+        "cacheId": "k9g-LqpdVAwJ",
+        "formattedUrl": "https://es.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://es.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "hcard": [
+            {
+              "fn": "Bonanno Pisano.",
+              "category": "ItaliaItalia"
+            }
+          ],
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6",
+              "width": "198",
+              "height": "255"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Visit Pisa Guide - The Top 5 Things To Do & Must See Attractions in ...",
+        "htmlTitle": "Visit Pisa Guide - The Top 5 Things To Do &amp; Must See Attractions in ...",
+        "link": "https://www.viator.com/Pisa/d520",
+        "displayLink": "www.viator.com",
+        "snippet": "... 1178, before the architect, Bonanno Pisano, had completed the first three tiers. \n... The wedding cake white marble of the Pisa Baptistery, or Battistero, is one of ...",
+        "htmlSnippet": "... 1178, before the architect, <b>Bonanno Pisano</b>, had completed the first three tiers. <br>\n... The wedding cake white <b>marble</b> of the Pisa Baptistery, or Battistero, is one of&nbsp;...",
+        "cacheId": "-u_9bsMSIiwJ",
+        "formattedUrl": "https://www.viator.com/Pisa/d520",
+        "htmlFormattedUrl": "https://www.viator.com/Pisa/d520",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB8NlQ4GbOkKZH5lPIyC9NbqLtkjF9jn2S3dnCus9ozHVWXUOWFa4FwAk",
+              "width": "275",
+              "height": "183"
+            }
+          ],
+          "organization": [
+            {
+              "name": "Viator",
+              "logo": "https://www.viator.com/orion/images/logos/logo-viator-modern.svg",
+              "url": "https://www.viator.com/"
+            }
+          ],
+          "metatags": [
+            {
+              "_slice": "BF2,0|SCH3,0|REC1,0|REC2,0|LST3,0|DEFAULT,0|OTH1,0|SCH2,0|BF3,0|LST2,0|PDP2,0|OTH2,0|LST1,0|REC3,0|PDP1,0|BF1,0|TAP1,0|SCH1,0|CNT1,0|CNT2,0|OTH3,0|PDP3,0",
+              "totalitemcount": "8",
+              "_page_name": "attraction_list",
+              "viewport": "initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
+              "_csrf_header": "X-XSRF-TOKEN",
+              "_vm_name": "333220",
+              "_csrf": "861200f7-dfee-4fd9-bb78-3e78086d519d"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://media.tacdn.com/media/attractions-splice-spp-360x240/06/e7/18/97.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Expert:en]-Bonanno Pisano science": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano science",
+          "totalResults": "38200",
+          "searchTerms": "Bonanno Pisano science",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Bonanno Pisano science",
+          "totalResults": "38200",
+          "searchTerms": "Bonanno Pisano science",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-EN"
+    },
+    "searchInformation": {
+      "searchTime": 0.476392,
+      "formattedSearchTime": "0.48",
+      "totalResults": "38200",
+      "formattedTotalResults": "38,200"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano - Wikipedia",
+        "htmlTitle": "<b>Bonanno Pisano</b> - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "Bonanno Pisano (Pisa), active in the 1170s and 1180s, was an Italian sculptor, \nmixing Byzantine and classical elements. Giorgio Vasari attributed the realization\n ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), active in the 1170s and 1180s, was an Italian sculptor, <br>\nmixing Byzantine and classical elements. Giorgio Vasari attributed the realization<br>\n&nbsp;...",
+        "cacheId": "Rnqp5tBSIqYJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6",
+              "width": "198",
+              "height": "255"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa's architect is revealed as Bonanno Pisano ...",
+        "htmlTitle": "Leaning Tower of Pisa&#39;s architect is revealed as <b>Bonanno Pisano</b> ...",
+        "link": "https://www.dailymail.co.uk/sciencetech/article-7809335/Leaning-Tower-Pisas-architect-revealed-Bonanno-Pisano.html",
+        "displayLink": "www.dailymail.co.uk",
+        "snippet": "Dec 19, 2019 ... Bonanno Pisano was mortified when his project began sinking on one side ... \nsubmarine to combat rising sea levels is ridiculed by scientists.",
+        "htmlSnippet": "Dec 19, 2019 <b>...</b> <b>Bonanno Pisano</b> was mortified when his project began sinking on one side ... <br>\nsubmarine to combat rising sea levels is ridiculed by <b>scientists</b>.",
+        "cacheId": "QM4RpkE_RQgJ",
+        "formattedUrl": "https://www.dailymail.co.uk/sciencetech/.../Leaning-Tower-Pisas-architect- revealed-Bonanno-Pisano.html",
+        "htmlFormattedUrl": "https://www.dailymail.co.uk/<b>science</b>tech/.../Leaning-Tower-Pisas-architect- revealed-<b>Bonanno</b>-<b>Pisano</b>.html",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW2f1UXs2nQLenBcJd8L3CQXrH0TW_QGHy1ctV6B10MZigSL7jGhC7bCQ",
+              "width": "290",
+              "height": "174"
+            }
+          ],
+          "metatags": [
+            {
+              "og:image": "https://i.dailymail.co.uk/1s/2019/12/19/13/6953468-0-image-a-29_1576761153472.jpg",
+              "twitter:card": "summary_large_image",
+              "article:published_time": "2019-12-19T11:47:02+0000",
+              "og:image:width": "636",
+              "og:site_name": "Mail Online",
+              "twitter:url": "https://www.dailymail.co.uk/sciencetech/article-7809335/Leaning-Tower-Pisas-architect-revealed-Bonanno-Pisano.html",
+              "channel": "Science,Technology,Video Games,Space,Personal Technology,Internet,Geography,Environment,Computing,Science&Tech",
+              "articleid": "7809335",
+              "al:android:package": "com.dailymail.online",
+              "y_key": "1a7e912afbfcab2f",
+              "twitter:app:id:iphone": "384101264",
+              "al:ios:url": "dailymail-fb://article/7809335/",
+              "og:description": "The bizarre lean of the UNESCO World Heritage Site in the Italian city embarrassed its architect and was not finished until more than 100 years after his death.",
+              "twitter:image": "https://i.dailymail.co.uk/1s/2019/12/19/13/6953468-0-image-a-29_1576761153472.jpg",
+              "article:publisher": "https://www.facebook.com/DailyMail",
+              "al:ios:app_store_id": "384101264",
+              "divclasspage": "articlePage",
+              "article:modified_time": "2019-12-19T15:13:09+0000",
+              "news_keywords": "dailymail,sciencetech",
+              "mol:headline": "Leaning Tower of Pisa's architect is revealed: Bonanno Pisano designed the monument in the 12th century but was embarrassed by its tilt, experts claim",
+              "og:video:type": "video/mp4",
+              "og:video:height": "358",
+              "twitter:account_id": "15438913",
+              "twitter:title": "Leaning Tower of Pisa's architect is revealed as Bonanno Pisano",
+              "article:section": "Science",
+              "og:type": "article",
+              "al:ios:app_name": "MailOnline",
+              "msvalidate.01": "12E6B4B813EB44C9BFC8F6A21F1D01F5",
+              "author": "Joe Pinkstone",
+              "og:title": "Leaning Tower of Pisa's architect is revealed as Bonanno Pisano",
+              "twitter:app:id:ipad": "400442503",
+              "og:image:height": "382",
+              "app_store_id": "app-id=384101264",
+              "fb:pages": "1622758588037001,164305410295882",
+              "og:video:width": "636",
+              "article:author": "https://www.facebook.com/DailyMail",
+              "article:tag": "Leaning Tower Pisas architect revealed Bonanno Pisano",
+              "al:android:url": "dailymail-fb://article/7809335/",
+              "fb:app_id": "146202712090395",
+              "og:video": "https://videos.dailymail.co.uk/video/mol/2018/11/22/1056751665142346659/1024x576_MP4_1056751665142346659.mp4",
+              "viewport": "width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no",
+              "doc-class": "Living Document",
+              "twitter:description": "The bizarre lean of the UNESCO World Heritage Site in the Italian city embarrassed its architect and was not finished until more than 100 years after his death.",
+              "original-source": "https://www.dailymail.co.uk/sciencetech/article-7809335/Leaning-Tower-Pisas-architect-revealed-Bonanno-Pisano.html",
+              "mobile-web-app-capable": "yes",
+              "og:url": "https://www.dailymail.co.uk/sciencetech/article-7809335/Leaning-Tower-Pisas-architect-revealed-Bonanno-Pisano.html",
+              "al:android:app_name": "Daily Mail Online"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://i.dailymail.co.uk/1s/2019/12/19/13/6953468-0-image-a-29_1576761153472.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno - Wikipedia",
+        "htmlTitle": "<b>Bonanno</b> - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Bonanno",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "Bonanno is a Southern Italian surname. Notable people with the surname \ninclude: Bonanno ... Margaret Wander Bonanno (born 1950), science fiction \nauthor; Mike Bonanno, multimedia artist, leading member of The Yes ... Bonanno \nPisano ...",
+        "htmlSnippet": "Bonanno is a Southern Italian surname. Notable people with the surname <br>\ninclude: Bonanno ... Margaret Wander Bonanno (born 1950), <b>science</b> fiction <br>\nauthor; Mike Bonanno, multimedia artist, leading member of The Yes ... <b>Bonanno</b> <br>\n<b>Pisano</b>&nbsp;...",
+        "cacheId": "a2Rolpv0T1oJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Bonanno",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/<b>Bonanno</b>",
+        "pagemap": {
+          "metatags": [
+            {
+              "referrer": "origin"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Design of highly specific ligands of fibrin for therapeutic applications.",
+        "htmlTitle": "Design of highly specific ligands of fibrin for therapeutic applications.",
+        "link": "https://www.ncbi.nlm.nih.gov/pubmed/15503635",
+        "displayLink": "www.ncbi.nlm.nih.gov",
+        "snippet": "Author information: (1)Department of Pharmaceutical Science, University of Pisa, \nvia Bonanno Pisano 6, 56126 Pisa, Italy. The work presented here is aimed at ...",
+        "htmlSnippet": "Author information: (1)Department of Pharmaceutical <b>Science</b>, University of Pisa, <br>\nvia <b>Bonanno Pisano</b> 6, 56126 Pisa, Italy. The work presented here is aimed at&nbsp;...",
+        "formattedUrl": "https://www.ncbi.nlm.nih.gov/pubmed/15503635",
+        "htmlFormattedUrl": "https://www.ncbi.nlm.nih.gov/pubmed/15503635",
+        "pagemap": {
+          "metatags": [
+            {
+              "citation_firstpage": "1203",
+              "citation_title": "Design of highly specific ligands of fibrin for therapeutic applications.",
+              "citation_pmid": "15503635",
+              "citation_issn": "0920-5063",
+              "citation_publisher": "J Biomater Sci Polym Ed",
+              "citation_journal_title": "Journal of biomaterials science. Polymer edition",
+              "citation_date": "2004",
+              "citation_abstract_html_url": "https://www.ncbi.nlm.nih.gov/pubmed/15503635",
+              "citation_volume": "15",
+              "citation_issue": "9",
+              "citation_authors": "Bianucci AM; Massarelli I; Chiellini F; Eidelman C; Chiellini E"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Dynamical systems and computable information",
+        "htmlTitle": "Dynamical systems and computable information",
+        "link": "https://www.aimsciences.org/article/doi/10.3934/dcdsb.2004.4.935",
+        "displayLink": "www.aimsciences.org",
+        "snippet": "Vieri Benci 1, , C. Bonanno 2, , Stefano Galatolo 3, , G. Menconi 4, and M. Virgilio \n5, ... Dip. di Matematica Applicata, Università di Pisa, Via Bonanno Pisano 25/B.",
+        "htmlSnippet": "Vieri Benci <sup>1,</sup> , C. Bonanno <sup>2,</sup> , Stefano Galatolo <sup>3,</sup> , G. Menconi <sup>4,</sup> and M. Virgilio <br>\n<sup>5,</sup> ... Dip. di Matematica Applicata, Università di Pisa, Via <b>Bonanno Pisano</b> 25/B.",
+        "cacheId": "r34s1o1AjT4J",
+        "formattedUrl": "https://www.aimsciences.org/article/doi/10.3934/dcdsb.2004.4.935",
+        "htmlFormattedUrl": "https://www.aim<b>sciences</b>.org/article/doi/10.3934/dcdsb.2004.4.935",
+        "pagemap": {
+          "metatags": [
+            {
+              "dc.publisher": "Discrete & Continuous Dynamical Systems - B",
+              "citation_publication_date": "2004",
+              "citation_title": "Dynamical systems and computable information",
+              "citation_publisher": "American Institute of Mathematical Sciences",
+              "citation_journal_title": "Discrete & Continuous Dynamical Systems - B",
+              "dc.rights": "http://creativecommons.org/licenses/by/3.0/",
+              "dc.format": "application/pdf",
+              "title": "Dynamical systems and computable information",
+              "citation_online_date": "2004/08/01",
+              "dc.type": "37M25.",
+              "dc.source": "Discrete & Continuous Dynamical Systems - B2004, Volume 4, Pages 935-960",
+              "dc.creator": "Vieri Benci",
+              "citation_fulltext_html_url": "https://www.aimsciences.org/article/doi/10.3934/dcdsb.2004.4.935",
+              "citation_pdf_url": "https://www.aimsciences.org/article/exportPdf?id=b8d1976b-01a3-465e-9d70-57c7bbaf3fb8",
+              "dc.description": "We present some new results that relate information to chaotic\r\ndynamics. In our approach the quantity of information is measured by the\r\nAlgorithmic Information Content (Kolmogorov complexity) or by a sort of\r\ncomputable version of it (Computable Information Content) in which the information\r\nis measured by using a suitable universal data compression algorithm.\r\nWe apply these notions to the study of dynamical systems by considering the\r\nasymptotic behavior of the quantity of information necessary to describe their\r\norbits. When a system is ergodic, this method provides an indicator that equals\r\nthe Kolmogorov-Sinai entropy almost everywhere. Moreover, if the entropy is\r\nnull, our method gives new indicators that measure the unpredictability of the\r\nsystem and allows various kind of weak chaos to be classified. Actually, this\r\nis the main motivation of this work. The behavior of a 0-entropy dynamical\r\nsystem is far to be completely predictable except that in particular cases.\r\nIn fact there are 0-entropy sys",
+              "author": "Vieri Benci, C. Bonanno, Stefano Galatolo, G. Menconi, M. Virgilio",
+              "citation_author": "Vieri Benci",
+              "dc.date": "2004/08/01",
+              "citation_abstract_html_url": "https://www.aimsciences.org/article/doi/10.3934/dcdsb.2004.4.935",
+              "citation_issue": "4",
+              "citation_firstpage": "935",
+              "citation_doi": "10.3934/dcdsb.2004.4.935",
+              "dc.title": "Dynamical systems and computable information",
+              "dc.identifier": "10.3934/dcdsb.2004.4.935",
+              "dc.subject": "data compression.",
+              "citation_volume": "4",
+              "dc.language": "en"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Fun Leaning Tower of Pisa Facts for Kids - Science for Kids",
+        "htmlTitle": "Fun Leaning Tower of Pisa Facts for Kids - <b>Science</b> for Kids",
+        "link": "http://www.sciencekids.co.nz/sciencefacts/engineering/leaningtowerofpisa.html",
+        "displayLink": "www.sciencekids.co.nz",
+        "snippet": "The tower's design has widely been attributed to Guglielmo and Bonanno Pisano \nhowever recent studies suggest the architect Diotisalvi may have been ...",
+        "htmlSnippet": "The tower&#39;s design has widely been attributed to Guglielmo and <b>Bonanno Pisano</b> <br>\nhowever recent studies suggest the architect Diotisalvi may have been&nbsp;...",
+        "cacheId": "OspPBtppIzcJ",
+        "formattedUrl": "www.sciencekids.co.nz/sciencefacts/engineering/leaningtowerofpisa.html",
+        "htmlFormattedUrl": "www.<b>science</b>kids.co.nz/<b>science</b>facts/engineering/leaningtowerofpisa.html",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQY0RY2Alsi2Jlh85Endzaz94vtmVIxmvjMRpnCsyWdi9SoyaoWOOmAWUc",
+              "width": "149",
+              "height": "339"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "http://www.sciencekids.co.nz/images/facts/leaningtower220.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Adsorption of NGF and BDNF derived peptides on gold surfaces ...",
+        "htmlTitle": "Adsorption of NGF and BDNF derived peptides on gold surfaces ...",
+        "link": "https://pubs.rsc.org/en/content/articlehtml/2014/cp/c3cp52499j",
+        "displayLink": "pubs.rsc.org",
+        "snippet": "Nov 14, 2013 ... bCentre for Neural Science, New York University, Washington Place, 4, ... e\nDepartment of Pharmacy, University of Pisa, via Bonanno Pisano, 6, ...",
+        "htmlSnippet": "Nov 14, 2013 <b>...</b> <sup>b</sup>Centre for Neural <b>Science</b>, New York University, Washington Place, 4, ... <sup>e</sup><br>\nDepartment of Pharmacy, University of Pisa, via <b>Bonanno Pisano</b>, 6,&nbsp;...",
+        "formattedUrl": "https://pubs.rsc.org/en/content/articlehtml/2014/cp/c3cp52499j",
+        "htmlFormattedUrl": "https://pubs.rsc.org/en/content/articlehtml/2014/cp/c3cp52499j",
+        "pagemap": {
+          "metatags": [
+            {
+              "dc.publisher": "Royal Society of Chemistry",
+              "citation_title": "Adsorption of NGF and BDNF derived peptides on gold surfaces",
+              "citation_journal_title": "Physical Chemistry Chemical Physics",
+              "citation_author": "Giuseppe Forte",
+              "dc.date": "2013/12/18",
+              "citation_date": "2014",
+              "citation_abstract_html_url": "https://pubs.rsc.org/en/content/articlelanding/2014/cp/c3cp52499j",
+              "citation_issue": "4",
+              "citation_online_date": "2013/11/14",
+              "citation_firstpage": "1536",
+              "viewport": "width=device-width, initial-scale=1",
+              "dc.creator": "Giuseppe Forte",
+              "citation_doi": "10.1039/C3CP52499J",
+              "citation_fulltext_html_url": "https://pubs.rsc.org/en/content/articlehtml/2014/cp/c3cp52499j",
+              "dc.title": "Adsorption of NGF and BDNF derived peptides on gold surfaces",
+              "dc.identifier": "10.1039/C3CP52499J",
+              "citation_pdf_url": "https://pubs.rsc.org/en/content/articlepdf/2014/cp/c3cp52499j",
+              "citation_volume": "16",
+              "dc.language": "en",
+              "citation_lastpage": "1544"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "An elementary way to rigorously estimate convergence to ...",
+        "htmlTitle": "An elementary way to rigorously estimate convergence to ...",
+        "link": "http://www.aimsciences.org/article/doi/10.3934/jcd.2015.2.51",
+        "displayLink": "www.aimsciences.org",
+        "snippet": "Dipartimento di Matematica Applicata, Università di Pisa, Via Bonanno Pisano. 2. \nInstituto de Matemática, UFRJ Av. Athos da Silveira Ramos 149, Centro de ...",
+        "htmlSnippet": "Dipartimento di Matematica Applicata, Università di Pisa, Via <b>Bonanno Pisano</b>. 2. <br>\nInstituto de Matemática, UFRJ Av. Athos da Silveira Ramos 149, Centro de&nbsp;...",
+        "cacheId": "08Dinb7HEsUJ",
+        "formattedUrl": "www.aimsciences.org/article/doi/10.3934/jcd.2015.2.51",
+        "htmlFormattedUrl": "www.aim<b>sciences</b>.org/article/doi/10.3934/jcd.2015.2.51",
+        "pagemap": {
+          "metatags": [
+            {
+              "dc.publisher": "Journal of Computational Dynamics",
+              "dc.description": "We show an elementary method to obtain (finite time and asymptotic) computer assisted explicit upper bounds on convergence to equilibrium (decay of correlations) and escape rates for systems satisfying a Lasota Yorke inequality. The bounds are deduced from the ones of suitable approximations of the system's transfer operator. We also present some rigorous experiments on some nontrivial example.",
+              "author": "Stefano Galatolo, Isaia  Nisoli, Benoît Saussol",
+              "dc.rights": "http://creativecommons.org/licenses/by/3.0/",
+              "dc.format": "application/pdf",
+              "dc.date": "2015-08-01",
+              "title": "An elementary way to rigorously estimate convergence to equilibrium\r\nand escape rates",
+              "dc.type": "Primary: 37M25, 65G30.",
+              "dc.source": "Journal of Computational Dynamics2015, Volume 2, Pages 51-64",
+              "dc.creator": "Stefano Galatolo",
+              "dc.title": "An elementary way to rigorously estimate convergence to equilibrium\r\nand escape rates",
+              "dc.identifier": "10.3934/jcd.2015.2.51",
+              "dc.subject": "interval arithmetics",
+              "dc.language": "en"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Bonanno Pisano – Wikipédia, a enciclopédia livre",
+        "htmlTitle": "<b>Bonanno Pisano</b> – Wikipédia, a enciclopédia livre",
+        "link": "https://pt.wikipedia.org/wiki/Bonanno_Pisano",
+        "displayLink": "pt.wikipedia.org",
+        "snippet": "Bonanno Pisano (Pisa), ativo nas décadas de 1170 e 1180, foi um escultor \nitaliano que misturou elementos bizantinos e clássicos. Giorgio Vasari atribuiu o\n ...",
+        "htmlSnippet": "<b>Bonanno Pisano</b> (Pisa), ativo nas décadas de 1170 e 1180, foi um escultor <br>\nitaliano que misturou elementos bizantinos e clássicos. Giorgio Vasari atribuiu o<br>\n&nbsp;...",
+        "cacheId": "gXP1xrk9Be4J",
+        "formattedUrl": "https://pt.wikipedia.org/wiki/Bonanno_Pisano",
+        "htmlFormattedUrl": "https://pt.wikipedia.org/wiki/<b>Bonanno</b>_<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSjcBRI9t_W4BfQR52f5tjtTXRP0PArmhg3RsyZWz6jc33Na5pGMoXL3gG6",
+              "width": "198",
+              "height": "255"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/5/53/Brogi%2C_Carlo_%281850-1925%29_-_n._20504_-_Pisa_-_Cattedrale_-_Formella_della_porta_laterale_-_Bonanno_da_Pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Giovanni Pisano | Italian sculptor | Britannica",
+        "htmlTitle": "<b>Giovanni Pisano</b> | Italian sculptor | Britannica",
+        "link": "https://www.britannica.com/biography/Giovanni-Pisano",
+        "displayLink": "www.britannica.com",
+        "snippet": "Giovanni Pisano, sculptor, sometimes called the only true Gothic sculptor in Italy. \nHe began his career under the classicist influence of his father, Nicola, and ...",
+        "htmlSnippet": "<b>Giovanni Pisano</b>, sculptor, sometimes called the only true Gothic sculptor in Italy. <br>\nHe began his career under the classicist influence of his father, Nicola, and&nbsp;...",
+        "cacheId": "NRI7a-PRAvgJ",
+        "formattedUrl": "https://www.britannica.com/biography/Giovanni-Pisano",
+        "htmlFormattedUrl": "https://www.britannica.com/biography/<b>Giovanni</b>-<b>Pisano</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRM6llqcT7j_DDDCGwnkYKwLAbvXqKm0wtMHnGa8wyfJXGJTgZ2kWZ7uoku",
+              "width": "176",
+              "height": "286"
+            }
+          ],
+          "metatags": [
+            {
+              "p:domain_verify": "5247c07bac63b6b3250f68cfe355c9a2",
+              "og:image": "https://cdn.britannica.com/29/3529-004-B638AC9C/pulpit-Marble-church-Giovanni-Pisano-Pistoia-Italy.jpg",
+              "twitter:card": "summary_large_image",
+              "og:type": "ARTICLE",
+              "og:site_name": "Encyclopedia Britannica",
+              "og:title": "Giovanni Pisano | Italian sculptor",
+              "og:image:type": "image/jpeg",
+              "fb:pages": "74442380906",
+              "og:description": "Giovanni Pisano, sculptor, sometimes called the only true Gothic sculptor in Italy. He began his career under the classicist influence of his father, Nicola, and carried on this tradition after his father’s death, continuously reintegrating the antique style into more northerly and contemporary",
+              "twitter:image": "https://cdn.britannica.com/29/3529-004-B638AC9C/pulpit-Marble-church-Giovanni-Pisano-Pistoia-Italy.jpg",
+              "fb:app_id": "1887621861548296",
+              "twitter:site": "@britannica",
+              "viewport": "width=device-width, initial-scale=1.0",
+              "twitter:description": "Giovanni Pisano, sculptor, sometimes called the only true Gothic sculptor in Italy. He began his career under the classicist influence of his father, Nicola, and carried on this tradition after his father’s death, continuously reintegrating the antique style into more northerly and contemporary",
+              "og:url": "https://www.britannica.com/biography/Giovanni-Pisano"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://cdn.britannica.com/29/3529-004-B638AC9C/pulpit-Marble-church-Giovanni-Pisano-Pistoia-Italy.jpg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Expert:en]-Leaning Tower of Pisa marble": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa marble",
+          "totalResults": "394000",
+          "searchTerms": "Leaning Tower of Pisa marble",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa marble",
+          "totalResults": "394000",
+          "searchTerms": "Leaning Tower of Pisa marble",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-EN"
+    },
+    "searchInformation": {
+      "searchTime": 0.327883,
+      "formattedSearchTime": "0.33",
+      "totalResults": "394000",
+      "formattedTotalResults": "394,000"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "WHAT Materials is the Leaning Tower of Pisa made of? - Leaning ...",
+        "htmlTitle": "WHAT Materials is the <b>Leaning Tower of Pisa</b> made of? - Leaning ...",
+        "link": "https://leaningtowerpisa.com/facts/what-is-the-leaning-tower-of-pisa-made-of",
+        "displayLink": "leaningtowerpisa.com",
+        "snippet": "The Leaning Tower of Pisa is mainly made of white marble. This, together with its \nintricate pattern of columns, is what gives the Tower its characteristic and ...",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b> is mainly made of white <b>marble</b>. This, together with its <br>\nintricate pattern of columns, is what gives the Tower its characteristic and&nbsp;...",
+        "cacheId": "vNvjinvl7TcJ",
+        "formattedUrl": "https://leaningtowerpisa.com/facts/what-is-the-leaning-tower-of-pisa-made-of",
+        "htmlFormattedUrl": "https://<b>leaningtowerpisa</b>.com/facts/what-is-the-<b>leaning</b>-<b>tower-of-pisa</b>-made-of",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "318",
+              "height": "159",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRTbWj-xNEj7NyNxbpdj8gdBtYhLZ682Vk_J9LntOLqgeawIhymF7vjZwU"
+            }
+          ],
+          "metatags": [
+            {
+              "author": "Andrea Bronzini",
+              "og:title": "WHAT Materials is the Leaning Tower of Pisa made of?",
+              "og:type": "article",
+              "og:image": "https://leaningtowerpisa.com/images/articles/leaning-tower-pisa-north-east-view.jpg",
+              "og:url": "https://leaningtowerpisa.com/facts/what-is-the-leaning-tower-of-pisa-made-of",
+              "og:site_name": "Leaning Tower Pisa",
+              "og:description": "What is the Tower of Pisa made of? It is marble, yes... but there is more than that... The Tower was built over a period of 200 years, starting in 1173. At the time there was no machined and cut, transport, lift of stones was all done manually. A monumental work, if you think about it.",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+              "handheldfriendly": "true",
+              "apple-mobile-web-app-capable": "YES"
+            }
+          ],
+          "sitenavigationelement": [
+            {
+              "name": "Home",
+              "url": "Home"
+            },
+            {
+              "name": "Home",
+              "url": "Home"
+            },
+            {
+              "name": "Pisa",
+              "url": "Pisa"
+            }
+          ],
+          "article": [
+            {
+              "inlanguage": "en-GB",
+              "articlebody": "It is so white that from far it looks like a cotton candy. You would never say that all that stones amount to a weight of over 14000 tons! As you walk closer details come to life and you start..."
+            }
+          ],
+          "imageobject": [
+            {
+              "url": "https://leaningtowerpisa.com/images/articles/leaning-tower-pisa-north-east-view.jpg",
+              "height": "auto",
+              "width": "auto"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://leaningtowerpisa.com/images/articles/leaning-tower-pisa-north-east-view.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa - Wikipedia",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "The Leaning Tower of Pisa or simply the Tower of Pisa is the campanile, or \nfreestanding bell ... Work on the ground floor of the white marble campanile \nbegan on 14 August of the same year during a period of military success and \nprosperity.",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b> or simply the Tower of Pisa is the campanile, or <br>\nfreestanding bell ... Work on the ground floor of the white <b>marble</b> campanile <br>\nbegan on 14 August of the same year during a period of military success and <br>\nprosperity.",
+        "cacheId": "-hbT4AUf35kJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Leaning_Tower_of_Pisa",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/<b>Leaning</b>_<b>Tower_of_Pisa</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "182",
+              "height": "277",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFg_lO_n3FYnP7QLD1wMWybZWYe9DUGjM1SVktqLw39Hg2xvkoTsyFVs"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "A Construction Overview of the Leaning Tower of Pisa",
+        "htmlTitle": "A Construction Overview of the <b>Leaning Tower of Pisa</b>",
+        "link": "https://www.thebalancesmb.com/leaning-tower-pisa-construction-844359",
+        "displayLink": "www.thebalancesmb.com",
+        "snippet": "The original two levels of the Tower of Pisa didn't lean but the structure began to \n... Pisa was laid in 1173, constructed mainly of marble and lime; the tower was ...",
+        "htmlSnippet": "The original two levels of the <b>Tower of Pisa</b> didn&#39;t <b>lean</b> but the structure began to <br>\n... <b>Pisa</b> was laid in 1173, constructed mainly of <b>marble</b> and lime; the <b>tower</b> was&nbsp;...",
+        "cacheId": "h1jmuGc8pZAJ",
+        "formattedUrl": "https://www.thebalancesmb.com/leaning-tower-pisa-construction-844359",
+        "htmlFormattedUrl": "https://www.thebalancesmb.com/<b>leaning</b>-<b>tower</b>-<b>pisa</b>-construction-844359",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "262",
+              "height": "192",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXoH63PLZB945k2bPAUQfca-aWPlP_qcGxeuGfxrHesBmNFl_2qzaKXciJ"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "emailcontenttype": "STRUCTUREDCONTENT",
+              "emailvertical": "THEBALANCESMB",
+              "sailthru.author": "Juan Rodriguez",
+              "sailthru.tags": "small-business-industries,construction,construction-history",
+              "article:section": "The Balance",
+              "fb:app_id": "159081794784966",
+              "og:type": "article",
+              "og:site_name": "The Balance Small Business",
+              "og:url": "https://www.thebalancesmb.com/leaning-tower-pisa-construction-844359",
+              "og:title": "Construction Lessons From the Leaning Tower of Pisa",
+              "og:description": "These are the underlying reasons and construction factors that have caused the Leaning Tower of Pisa to slant and the methods to right it.",
+              "og:image": "https://www.thebalancesmb.com/thmb/LAKWsL5cGkUMgVAIN0-lBSqFtoo=/2019x1485/filters:fill(auto,1)/GettyImages-200403174-001-57a8b3993df78cf4591ab071.jpg",
+              "article:author": "https://www.facebook.com/thebalancecom",
+              "twitter:card": "summary",
+              "twitter:site": "@thebalance",
+              "twitter:title": "Construction Lessons From the Leaning Tower of Pisa",
+              "twitter:description": "These are the underlying reasons and construction factors that have caused the Leaning Tower of Pisa to slant and the methods to right it.",
+              "twitter:image": "https://www.thebalancesmb.com/thmb/LAKWsL5cGkUMgVAIN0-lBSqFtoo=/2019x1485/filters:fill(auto,1)/GettyImages-200403174-001-57a8b3993df78cf4591ab071.jpg",
+              "lotame:tax3": "balsmb_construction-history",
+              "lotame:tax2": "balsmb_construction",
+              "lotame:tax1": "balsmb_small-business-industries",
+              "lotame:tax0": "bal",
+              "msapplication-tilecolor": "#F4F4F4",
+              "msapplication-tileimage": "/static/3.90.0/icons/favicons/mstile-144x144.png",
+              "msapplication-square70x70logo": "/static/3.90.0/icons/favicons/mstile-70x70.png",
+              "msapplication-square150x150logo": "/static/3.90.0/icons/favicons/mstile-150x150.png",
+              "msapplication-square310x310logo": "/static/3.90.0/icons/favicons/mstile-310x310.png",
+              "msapplication-wide310x150logo": "/static/3.90.0/icons/favicons/mstile-310x150.png"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://www.thebalancesmb.com/thmb/LAKWsL5cGkUMgVAIN0-lBSqFtoo=/2019x1485/filters:fill(auto,1)/GettyImages-200403174-001-57a8b3993df78cf4591ab071.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Piazza dei Miracoli - Wikipedia",
+        "htmlTitle": "Piazza dei Miracoli - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Piazza_dei_Miracoli",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "The Piazza dei Miracoli formally known as Piazza del Duomo (English: Cathedral \nSquare), is a ... The façade, of grey marble and white stone set with discs of \ncoloured marble, was built by a master named ... The campanile (bell tower), \ncommonly known as the Leaning Tower of Pisa, is located behind the cathedral. \nThe last ...",
+        "htmlSnippet": "The Piazza dei Miracoli formally known as Piazza del Duomo (English: Cathedral <br>\nSquare), is a ... The façade, of grey <b>marble</b> and white stone set with discs of <br>\ncoloured <b>marble</b>, was built by a master named ... The campanile (bell tower), <br>\ncommonly known as the <b>Leaning Tower of Pisa</b>, is located behind the cathedral. <br>\nThe last&nbsp;...",
+        "cacheId": "CRzpPN9ug7oJ",
+        "formattedUrl": "https://en.wikipedia.org/wiki/Piazza_dei_Miracoli",
+        "htmlFormattedUrl": "https://en.wikipedia.org/wiki/Piazza_dei_Miracoli",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "220",
+              "height": "147",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcToPv_yHofZ9wixL5X7CDRqJh34AKQV0d_DnJKpILWBMWnz-NbSRLGnqMHd"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/CampodeiMiracoliPisa_edit.jpg/1200px-CampodeiMiracoliPisa_edit.jpg"
+            }
+          ],
+          "hcard": [
+            {
+              "fn": "UNESCO World Heritage Site",
+              "category": "Piazza del Duomo, Pisa"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/CampodeiMiracoliPisa_edit.jpg/220px-CampodeiMiracoliPisa_edit.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "The Worn Marble Steps at the Leaning Tower of Pisa",
+        "htmlTitle": "The Worn <b>Marble</b> Steps at the <b>Leaning Tower of Pisa</b>",
+        "link": "https://twistedsifter.com/2014/02/worn-marble-steps-at-the-leaning-tower-of-pisa/",
+        "displayLink": "twistedsifter.com",
+        "snippet": "Feb 24, 2014 ... An interior view of the Leaning Tower of Pisa you don't typically see, shows the \nworn marble steps that lead to the top of the famed tower.",
+        "htmlSnippet": "Feb 24, 2014 <b>...</b> An interior view of the <b>Leaning Tower of Pisa</b> you don&#39;t typically see, shows the <br>\nworn <b>marble</b> steps that lead to the top of the famed tower.",
+        "cacheId": "fPoE2GJfMMYJ",
+        "formattedUrl": "https://twistedsifter.com/.../worn-marble-steps-at-the-leaning-tower-of-pisa/",
+        "htmlFormattedUrl": "https://twistedsifter.com/.../worn-<b>marble</b>-steps-at-the-<b>leaning</b>-<b>tower-of-pisa</b>/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "194",
+              "height": "259",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcJ-cYqDhWuzpjctn_htjtas4Z-hIJDePNUJuhtNMq9obinFreXMcpH5m2"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1, maximum-scale=1",
+              "fb:pages": "110886161453",
+              "norton-safeweb-site-verification": "bsx0jssz3vjpd9epr22j65zw6klvgeadkztfs3q-aj8az0ieb8dmr5mwau28h2daz02h6esw2y6br39xulglcuouh7y6vxs3t215tqwnye6pdgg1unqsczzt3yp8melv",
+              "msvalidate.01": "04B3FA70468F09584AC78A169FCD0A16",
+              "og:type": "article",
+              "og:title": "Picture of the Day: The Worn Marble Steps at the Leaning Tower of Pisa",
+              "og:url": "https://twistedsifter.com/2014/02/worn-marble-steps-at-the-leaning-tower-of-pisa/",
+              "og:description": "  THE WORN MARBLE STEPS AT THE LEANING TOWER OF PISA   Photograph by SALENA LETTERA / THE DAILY RANT Website | Facebook | Twitter | Flickr | Instagram   Here’s an interior view…",
+              "article:published_time": "2014-02-24T21:21:23+00:00",
+              "article:modified_time": "2014-02-24T21:21:23+00:00",
+              "og:site_name": "TwistedSifter",
+              "og:image": "https://twistedsifter.files.wordpress.com/2014/02/worn-marble-steps-at-the-leaning-tower-of-pisa.jpg",
+              "og:image:width": "800",
+              "og:image:height": "1067",
+              "og:locale": "en_US",
+              "twitter:creator": "@TwistedSifter",
+              "twitter:site": "@TwistedSifter",
+              "twitter:text:title": "Picture of the Day: The Worn Marble Steps at the Leaning Tower of Pisa",
+              "twitter:image": "https://twistedsifter.files.wordpress.com/2014/02/worn-marble-steps-at-the-leaning-tower-of-pisa.jpg?w=640",
+              "twitter:card": "summary_large_image",
+              "article:publisher": "https://www.facebook.com/WordPresscom",
+              "og:app_id": "104433136268907",
+              "fb:app_id": "104433136268907",
+              "ia:markup_url": "https://twistedsifter.com/2014/02/worn-marble-steps-at-the-leaning-tower-of-pisa/?ia_markup=1",
+              "application-name": "TwistedSifter",
+              "msapplication-window": "width=device-width;height=device-height",
+              "msapplication-tooltip": "The Best of the visual Web, sifted, sorted and summarized",
+              "msapplication-task": "name=Subscribe;action-uri=https://twistedsifter.com/feed/;icon-uri=https://secure.gravatar.com/blavatar/8d1e90c6044387ff40a65a4120ade054?s=16"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://twistedsifter.files.wordpress.com/2014/02/worn-marble-steps-at-the-leaning-tower-of-pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Is the Leaning Tower of Pisa made of marble? - Quora",
+        "htmlTitle": "Is the <b>Leaning Tower of Pisa</b> made of <b>marble</b>? - Quora",
+        "link": "https://www.quora.com/Is-the-Leaning-Tower-of-Pisa-made-of-marble",
+        "displayLink": "www.quora.com",
+        "snippet": "According to history, the design is somewhat similar to the design of the Tower of \nBabel. The Tower of Pisa is 55 meters high with 284 steps and the bell tower ...",
+        "htmlSnippet": "According to history, the design is somewhat similar to the design of the <b>Tower</b> of <br>\nBabel. The <b>Tower of Pisa</b> is 55 meters high with 284 steps and the bell <b>tower</b>&nbsp;...",
+        "formattedUrl": "https://www.quora.com/Is-the-Leaning-Tower-of-Pisa-made-of-marble",
+        "htmlFormattedUrl": "https://www.quora.com/Is-the-<b>Leaning</b>-<b>Tower-of-Pisa</b>-made-of-<b>marble</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "318",
+              "height": "159",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRahdXOeUaHFLOeBUgr-8BQZspxRyLVKhtR5AU8UMSqqy4FlLW8FVx6tVI"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, minimum-scale=1",
+              "theme-color": "#b92b27",
+              "al:android:url": "intent://www.quora.com/Is-the-Leaning-Tower-of-Pisa-made-of-marble#Intent;scheme=qhttp;package=com.quora.android;S.market_referrer=launch_url=https%3A%2F%2Fwww.quora.com%2FIs-the-Leaning-Tower-of-Pisa-made-of-marble&logging_data=uid%3DNone;end",
+              "al:android:package": "com.quora.android",
+              "fb:pages": "255232486973"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://qph.fs.quoracdn.net/main-qimg-3f8102dc8af5403a826b998815958b04"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Why does the Leaning Tower of Pisa lean? - HISTORY",
+        "htmlTitle": "Why does the <b>Leaning Tower of Pisa</b> lean? - HISTORY",
+        "link": "https://www.history.com/news/why-does-the-leaning-tower-of-pisa-lean",
+        "displayLink": "www.history.com",
+        "snippet": "Dec 3, 2015 ... In 1173, construction began on a white marble bell tower for the cathedral \ncomplex in Pisa, located between the Arno and Serchio rivers in ...",
+        "htmlSnippet": "Dec 3, 2015 <b>...</b> In 1173, construction began on a white <b>marble</b> bell <b>tower</b> for the cathedral <br>\ncomplex in <b>Pisa</b>, located between the Arno and Serchio rivers in&nbsp;...",
+        "cacheId": "9J7lxEheHVoJ",
+        "formattedUrl": "https://www.history.com/news/why-does-the-leaning-tower-of-pisa-lean",
+        "htmlFormattedUrl": "https://www.history.com/news/why-does-the-<b>leaning</b>-<b>tower-of-pisa</b>-<b>lean</b>",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "265",
+              "height": "190",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaB3JA1BFvuQkREuDU5rc6ilideuAGYq5mlom1geEzBPB2cPVh5G7D040"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "unsafe-url",
+              "handheldfriendly": "True",
+              "mobileoptimized": "320",
+              "viewport": "width=device-width, initial-scale=1",
+              "apple-mobile-web-app-capable": "no",
+              "apple-mobile-web-app-status-bar-style": "black",
+              "format-detection": "telephone=no",
+              "pinterest": "nohover",
+              "author": "Sarah Pruitt",
+              "section": "Stories",
+              "pagetype": "article",
+              "item-id": "ci0230e5db700126df",
+              "published": "2015-12-03T21:53:29Z",
+              "modified": "2018-08-23T03:49:46Z",
+              "dcterms.rightsholder": "A&E Television Networks, LLC. All Rights Reserved.",
+              "dcterms.datecopyrighted": "2020",
+              "twitter:card": "summary_large_image",
+              "twitter:url": "https://www.history.com/news/why-does-the-leaning-tower-of-pisa-lean",
+              "twitter:image": "https://www.history.com/.image/t_share/MTU3ODc4Njg1Mzg3NTk3MTI5/gettyimages-113177711-2.jpg",
+              "twitter:description": "Pick any day in the Piazza del Duomo in the Italian city of Pisa, and you will undoubtedly spot a bunch of tourists posing for the same photo: hands",
+              "twitter:domain": "www.history.com",
+              "og:type": "article",
+              "og:url": "https://www.history.com/news/why-does-the-leaning-tower-of-pisa-lean",
+              "og:title": "Why does the Leaning Tower of Pisa lean?",
+              "og:description": "Pick any day in the Piazza del Duomo in the Italian city of Pisa, and you will undoubtedly spot a bunch of tourists posing for the same photo: hands",
+              "og:image": "https://www.history.com/.image/t_share/MTU3ODc4Njg1Mzg3NTk3MTI5/gettyimages-113177711-2.jpg",
+              "og:site_name": "HISTORY",
+              "fb:pages": "8429246183",
+              "pinterest-rich-pin": "true",
+              "apple-mobile-web-app-title": "HISTORY",
+              "parsely-title": "Why does the Leaning Tower of Pisa lean? - HISTORY",
+              "parsely-link": "https://www.history.com/news/why-does-the-leaning-tower-of-pisa-lean",
+              "parsely-image-url": "https://www.history.com/.image/c_fill%2Ccs_srgb%2Cfl_progressive%2Ch_400%2Cq_auto:good%2Cw_620/MTU3ODc4Njg1Mzg3NTk3MTI5/gettyimages-113177711-2.jpg",
+              "parsely-post-id": "ci0230e5db700126df",
+              "parsely-pub-date": "2015-12-03T21:53:29Z",
+              "parsely-section": "Stories",
+              "parsely-author": "Sarah Pruitt",
+              "parsely-tags": "Italy,Engineering,Stories",
+              "sailthru.title": "Why does the Leaning Tower of Pisa lean?",
+              "sailthru.image.full": "https://www.history.com/.image/t_share/MTU3ODc4Njg1Mzg3NTk3MTI5/gettyimages-113177711-2.jpg",
+              "sailthru.date": "2015-12-03T21:53:29Z",
+              "sailthru.author": "Sarah Pruitt",
+              "sailthru.tags": "Italy,Engineering,Stories",
+              "sailthru.description": "Pick any day in the Piazza del Duomo in the Italian city of Pisa, and you will undoubtedly spot a bunch of tourists posing for the same photo: hands",
+              "phx:content-item-id": "ci0230e5db700126df",
+              "phx:content-object-type": "ContentArticle"
+            }
+          ],
+          "article": [
+            {
+              "inlanguage": "en",
+              "datemodified": "2018-08-22T23:49:46-04:00",
+              "mainentityofpage": "https://www.history.com/news/why-does-the-leaning-tower-of-pisa-lean",
+              "datepublished": "2015-12-03T16:53:29-05:00",
+              "headline": "Why does the Leaning Tower of Pisa lean?",
+              "author": "Sarah Pruitt",
+              "articlebody": "Pick any day in the Piazza del Duomo in the Italian city of Pisa, and you will undoubtedly spot a bunch of tourists posing for the same photo: hands outstretched towards the cathedral’s conspicuo...",
+              "keywords": "ItalyEngineering"
+            }
+          ],
+          "imageobject": [
+            {
+              "url": "https://www.history.com/.image/t_share/MTU3ODc4Njg1Mzg3NTk3MTI5/gettyimages-113177711-2.jpg",
+              "width": "1200",
+              "height": "859"
+            }
+          ],
+          "organization": [
+            {
+              "name": "A&E Television Networks"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://www.history.com/.image/t_share/MTU3ODc4Njg1Mzg3NTk3MTI5/gettyimages-113177711-2.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa – The Guide to the World's Most Famous Tower",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> – The Guide to the World&#39;s Most Famous Tower",
+        "link": "http://www.towerofpisa.org/",
+        "displayLink": "www.towerofpisa.org",
+        "snippet": "The Leaning Tower of Pisa: all the facts and informations about the famous ... \nwas the cathedral, or Duomo di Pisa, which rests on a white marble pavement \nand ...",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b>: all the facts and informations about the famous ... <br>\nwas the cathedral, or Duomo di Pisa, which rests on a white <b>marble</b> pavement <br>\nand&nbsp;...",
+        "cacheId": "cjZkMf_Fw2YJ",
+        "formattedUrl": "www.towerofpisa.org/",
+        "htmlFormattedUrl": "www.<b>towerofpisa</b>.org/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "276",
+              "height": "183",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTpOnVOpoaAL8K76Wwu58V4dTXG-RwYAmAgqXQwDGnGnx2p1aFUXdIkCvNw"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width,initial-scale=1.0",
+              "og:locale": "en_US",
+              "og:type": "website",
+              "og:title": "Leaning Tower of Pisa, Italy: Guide to the Tower of Pisa",
+              "og:description": "The Leaning Tower of Pisa: all the facts and informations about the famous tower in Italy. Tickets and Guided Tours reservation, Book now & Skip the Line.",
+              "og:url": "http://www.towerofpisa.org/",
+              "og:site_name": "Leaning Tower of Pisa",
+              "og:image": "http://towerofpisa.info/wp-content/uploads/2015/04/Campo-dei-Miracoli-300x199.jpg",
+              "twitter:card": "summary",
+              "twitter:description": "The Leaning Tower of Pisa: all the facts and informations about the famous tower in Italy. Tickets and Guided Tours reservation, Book now & Skip the Line.",
+              "twitter:title": "Leaning Tower of Pisa, Italy: Guide to the Tower of Pisa",
+              "twitter:domain": "Leaning Tower of Pisa",
+              "twitter:image:src": "http://towerofpisa.info/wp-content/uploads/2015/04/Campo-dei-Miracoli-300x199.jpg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "http://towerofpisa.info/wp-content/uploads/2015/04/Campo-dei-Miracoli-300x199.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Tower of Pisa clean but still leans | Arts | DW | 28.06.2011",
+        "htmlTitle": "<b>Tower of Pisa</b> clean but still <b>leans</b> | Arts | DW | 28.06.2011",
+        "link": "https://www.dw.com/en/tower-of-pisa-clean-but-still-leans/a-15193933",
+        "displayLink": "www.dw.com",
+        "snippet": "Jun 28, 2011 ... After more than 800 years, the tower still leans - but now it's cleaner and ... The \ntower with its gleaming white marble seems to be stretching to ...",
+        "htmlSnippet": "Jun 28, 2011 <b>...</b> After more than 800 years, the <b>tower</b> still <b>leans</b> - but now it&#39;s cleaner and ... The <br>\n<b>tower</b> with its gleaming white <b>marble</b> seems to be stretching to&nbsp;...",
+        "cacheId": "GIUMb0Tw9RIJ",
+        "formattedUrl": "https://www.dw.com/en/tower-of-pisa-clean-but-still-leans/a-15193933",
+        "htmlFormattedUrl": "https://www.dw.com/en/<b>tower-of-pisa</b>-c<b>lean</b>-but-still-<b>leans</b>/a-15193933",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "261",
+              "height": "193",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQVH2calNF44oUnSTlSVUTX0uC1TojZGEP4h0LdGDdREXhVe2EN2rlMx1T5"
+            }
+          ],
+          "metatags": [
+            {
+              "publisher": "Deutsche Welle (www.dw.com)",
+              "copyright": "© 2019 Deutsche Welle (www.dw.com)",
+              "author": "Deutsche Welle (www.dw.com)",
+              "apple-itunes-app": "app-id=498833085",
+              "google-play-app": "app-id=com.idmedia.android.newsportal",
+              "language": "en_GB",
+              "fb:pages": "146634408702997"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://www.dw.com/image/3602696_4.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Marble Quarries + The Leaning Tower of Pisa – J-term Abroad ...",
+        "htmlTitle": "<b>Marble</b> Quarries + The <b>Leaning Tower of Pisa</b> – J-term Abroad ...",
+        "link": "https://blogs.stthomas.edu/RomeENGR271/2017/01/25/marble-quarries-the-leaning-tower-of-pisa/",
+        "displayLink": "blogs.stthomas.edu",
+        "snippet": "Jan 25, 2017 ... Marble Quarries + The Leaning Tower of Pisa. Hello to everybody back home! \nOnly a couple more days until we will be reunited! Our last few ...",
+        "htmlSnippet": "Jan 25, 2017 <b>...</b> <b>Marble</b> Quarries + The <b>Leaning Tower of Pisa</b>. Hello to everybody back home! <br>\nOnly a couple more days until we will be reunited! Our last few&nbsp;...",
+        "cacheId": "Tezw3GGzPCIJ",
+        "formattedUrl": "https://blogs.stthomas.edu/.../01/.../marble-quarries-the-leaning-tower-of-pisa/",
+        "htmlFormattedUrl": "https://blogs.stthomas.edu/.../01/.../<b>marble</b>-quarries-the-<b>leaning</b>-<b>tower-of-pisa</b>/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "194",
+              "height": "260",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsesXG67fq6YZ4tXGAofakEb-2dAHahTwcmf3D4bKJjqFKZ2lB7Qt4Wo0c"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1.0",
+              "msapplication-tilecolor": "#510C76",
+              "msapplication-tileimage": "/ms-icon-144x144.png",
+              "theme-color": "#510C76",
+              "msapplication-navbutton-color": "#510C76",
+              "apple-mobile-web-app-status-bar-style": "#510C76"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://blogs.stthomas.edu/RomeENGR271/files/2017/01/quarry.jpeg"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "[Expert:en]-Leaning Tower of Pisa science": {
+    "kind": "customsearch#search",
+    "url": {
+      "type": "application/json",
+      "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+    },
+    "queries": {
+      "request": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa science",
+          "totalResults": "1900000",
+          "searchTerms": "Leaning Tower of Pisa science",
+          "count": 10,
+          "startIndex": 1,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ],
+      "nextPage": [
+        {
+          "title": "Google Custom Search - Leaning Tower of Pisa science",
+          "totalResults": "1900000",
+          "searchTerms": "Leaning Tower of Pisa science",
+          "count": 10,
+          "startIndex": 11,
+          "inputEncoding": "utf8",
+          "outputEncoding": "utf8",
+          "safe": "off",
+          "cx": "017483280596283358881:4kthdl9fjjp"
+        }
+      ]
+    },
+    "context": {
+      "title": "SmartApps-Art-EN"
+    },
+    "searchInformation": {
+      "searchTime": 0.806069,
+      "formattedSearchTime": "0.81",
+      "totalResults": "1900000",
+      "formattedTotalResults": "1,900,000"
+    },
+    "items": [
+      {
+        "kind": "customsearch#result",
+        "title": "Galileo's Leaning Tower of Pisa experiment - Wikipedia",
+        "htmlTitle": "Galileo&#39;s <b>Leaning Tower of Pisa</b> experiment - Wikipedia",
+        "link": "https://en.wikipedia.org/wiki/Galileo%27s_Leaning_Tower_of_Pisa_experiment",
+        "displayLink": "en.wikipedia.org",
+        "snippet": "Between 1589–92, the Italian scientist Galileo Galilei is said to have dropped two \nspheres of ... The two sciences were the science of motion, which became the \nfoundation-stone of physics, and the science of materials and construction, an ...",
+        "htmlSnippet": "Between 1589–92, the Italian scientist Galileo Galilei is said to have dropped two <br>\nspheres of ... The two sciences were the <b>science</b> of motion, which became the <br>\nfoundation-stone of physics, and the <b>science</b> of materials and construction, an&nbsp;...",
+        "cacheId": "pgBEoe6e0ssJ",
+        "formattedUrl": "https://en.wikipedia.org/.../Galileo%27s_Leaning_Tower_of_Pisa_experiment",
+        "htmlFormattedUrl": "https://en.wikipedia.org/.../Galileo%27s_<b>Leaning</b>_<b>Tower_of_Pisa</b>_experiment",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "182",
+              "height": "277",
+              "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYFg_lO_n3FYnP7QLD1wMWybZWYe9DUGjM1SVktqLw39Hg2xvkoTsyFVs"
+            }
+          ],
+          "metatags": [
+            {
+              "referrer": "origin",
+              "og:image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg/1200px-The_Leaning_Tower_of_Pisa_SB.jpeg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Why Does The Leaning Tower Of Pisa Lean? » Science ABC",
+        "htmlTitle": "Why Does The <b>Leaning Tower Of Pisa</b> Lean? » <b>Science</b> ABC",
+        "link": "https://www.scienceabc.com/eyeopeners/why-does-the-leaning-tower-of-pisa-lean.html",
+        "displayLink": "www.scienceabc.com",
+        "snippet": "May 19, 2015 ... The Leaning Tower of Pisa is not straight/tilted because at the time of its \nconstruction, the foundation of this tower was only 3 meters deep and ...",
+        "htmlSnippet": "May 19, 2015 <b>...</b> The <b>Leaning Tower of Pisa</b> is not straight/tilted because at the time of its <br>\nconstruction, the foundation of this tower was only 3 meters deep and&nbsp;...",
+        "cacheId": "GKHllLAx9JYJ",
+        "formattedUrl": "https://www.scienceabc.com/.../why-does-the-leaning-tower-of-pisa-lean.html",
+        "htmlFormattedUrl": "https://www.<b>science</b>abc.com/.../why-does-the-<b>leaning</b>-<b>tower-of-pisa</b>-lean.html",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQjgDU5eQYHNtG6wA26oh5lLausCeczZ59AR6YyN2U7_DOhoktBOewvp6M"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1",
+              "apple-mobile-web-app-capable": "yes",
+              "apple-mobile-web-app-status-bar-style": "black",
+              "theme-color": "#ffffff",
+              "og:locale": "en_US",
+              "og:type": "article",
+              "og:title": "Why Does The Leaning Tower Of Pisa Lean?",
+              "og:description": "The Leaning Tower of Pisa is not straight/tilted because at the time of its construction, the foundation of this tower was only 3 meters deep and even that foundation was built on a dense clay mixture of soil that",
+              "og:url": "https://www.scienceabc.com/eyeopeners/why-does-the-leaning-tower-of-pisa-lean.html",
+              "og:site_name": "Science ABC",
+              "article:publisher": "https://www.facebook.com/pages/Science-ABC/882772208427568",
+              "article:tag": "Physics",
+              "article:section": "Eye Openers",
+              "article:published_time": "2015-05-19T07:12:10+00:00",
+              "article:modified_time": "2019-01-20T05:43:17+00:00",
+              "og:updated_time": "2019-01-20T05:43:17+00:00",
+              "fb:app_id": "983407345016262",
+              "og:image": "https://www.scienceabc.com/wp-content/uploads/2015/05/leaning-tower-of-pisa.jpg",
+              "og:image:secure_url": "https://www.scienceabc.com/wp-content/uploads/2015/05/leaning-tower-of-pisa.jpg",
+              "og:image:width": "1000",
+              "og:image:height": "667",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "The Leaning Tower of Pisa is not straight/tilted because at the time of its construction, the foundation of this tower was only 3 meters deep and even that foundation was built on a dense clay mixture of soil that",
+              "twitter:title": "Why Does The Leaning Tower Of Pisa Lean?",
+              "twitter:site": "@abc_science",
+              "twitter:image": "https://www.scienceabc.com/wp-content/uploads/2015/05/leaning-tower-of-pisa.jpg",
+              "twitter:creator": "@abc_science",
+              "onesignal": "wordpress-plugin",
+              "twitter:url": "https://www.scienceabc.com/eyeopeners/why-does-the-leaning-tower-of-pisa-lean.html",
+              "al:android:url": "scienceabc://posts/268",
+              "al:android:app_name": "ScienceABC",
+              "al:android:package": "com.ionicframework.scienceabc"
+            }
+          ],
+          "Breadcrumb": [
+            {
+              "title": "Home",
+              "url": "Home"
+            },
+            {
+              "title": "Eye Openers",
+              "url": "Eye Openers"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://www.scienceabc.com/wp-content/uploads/2015/05/leaning-tower-of-pisa.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Will the Leaning Tower of Pisa ever fall? - Science | HowStuffWorks",
+        "htmlTitle": "Will the <b>Leaning Tower of Pisa</b> ever fall? - <b>Science</b> | HowStuffWorks",
+        "link": "https://science.howstuffworks.com/engineering/structural/will-leaning-tower-of-pisa-fall.htm",
+        "displayLink": "science.howstuffworks.com",
+        "snippet": "Will the Leaning Tower of Pisa ever fall? Will the peculiarly enduring tower ever \nvanish from the Italian skyline? Click on to learn more.",
+        "htmlSnippet": "Will the <b>Leaning Tower of Pisa</b> ever fall? Will the peculiarly enduring tower ever <br>\nvanish from the Italian skyline? Click on to learn more.",
+        "cacheId": "3qsHo_BDtREJ",
+        "formattedUrl": "https://science.howstuffworks.com/.../will-leaning-tower-of-pisa-fall.htm",
+        "htmlFormattedUrl": "https://<b>science</b>.howstuffworks.com/.../will-<b>leaning</b>-<b>tower-of-pisa</b>-fall.htm",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "275",
+              "height": "183",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQKJSY5FYaoFwNki13OOMEHmxg3YO_3GKR9UpFUTcwILmob5b2GXUAJcUU"
+            }
+          ],
+          "metatags": [
+            {
+              "template": "Article",
+              "viewport": "width=device-width,initial-scale=1",
+              "twitter:dnt": "on",
+              "og:title": "Will the Leaning Tower of Pisa ever fall?",
+              "og:url": "https://science.howstuffworks.com/engineering/structural/will-leaning-tower-of-pisa-fall.htm",
+              "og:site_name": "HowStuffWorks",
+              "og:description": "Pisa without its precariously tilted landmark is like San Francisco without the Golden Gate or London without Buckingham Palace. Will the peculiarly enduring tower ever vanish from the Italian skyline?",
+              "fb:admins": "100001675325868",
+              "fb:app_id": "508246805972410",
+              "fb:pages": "20767777944",
+              "og:image": "https://cdn.hswstatic.com/gif/leaning-tower-pisa-1.jpg",
+              "og:image:width": "360",
+              "og:image:height": "240",
+              "og:type": "article",
+              "article:publisher": "https://www.howstuffworks.com",
+              "article:published_time": "2011-03-16T03:00:00-04:00",
+              "article:author": "https://www.howstuffworks.com/",
+              "can-recommend": "true",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "howstuffworks",
+              "twitter:image": "https://resize.hswstatic.com/u_0/w_480/gif/leaning-tower-pisa-1.jpg",
+              "msapplication-config": "//cdn.hswstatic.com/en-us/hsw/img/browserconfig.xml",
+              "msapplication-tilecolor": "#da532c",
+              "msapplication-tileimage": "//cdn.hswstatic.com/en-us/hsw/img/mstile-144x144.png",
+              "theme-color": "#ffffff"
+            }
+          ],
+          "sitenavigationelement": [
+            {
+              "url": "Health",
+              "name": "Health"
+            }
+          ],
+          "listitem": [
+            {
+              "item": "HowStuffWorks",
+              "name": "HowStuffWorks",
+              "position": "1"
+            },
+            {
+              "item": "Science",
+              "name": "Science",
+              "position": "2"
+            },
+            {
+              "item": "Engineering",
+              "name": "Engineering",
+              "position": "3"
+            },
+            {
+              "item": "Structural Engineering",
+              "name": "Structural Engineering",
+              "position": "4"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://cdn.hswstatic.com/gif/leaning-tower-pisa-1.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "When Will the Leaning Tower of Pisa Fall Over? | Live Science",
+        "htmlTitle": "When Will the <b>Leaning Tower of Pisa</b> Fall Over? | Live <b>Science</b>",
+        "link": "https://www.livescience.com/33379-leaning-tower-pisa-fall-over.html",
+        "displayLink": "www.livescience.com",
+        "snippet": "Jul 5, 2011 ... Experts say the famous tower at Pisa will lean for at least another 200 years. It \nmay even stay upright well, almost upright forever. That's all ...",
+        "htmlSnippet": "Jul 5, 2011 <b>...</b> Experts say the famous <b>tower</b> at <b>Pisa</b> will lean for at least another 200 years. It <br>\nmay even stay upright well, almost upright forever. That&#39;s all&nbsp;...",
+        "cacheId": "FkK5TQygqVoJ",
+        "formattedUrl": "https://www.livescience.com/33379-leaning-tower-pisa-fall-over.html",
+        "htmlFormattedUrl": "https://www.live<b>science</b>.com/33379-<b>leaning</b>-<b>tower</b>-<b>pisa</b>-fall-over.html",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "193",
+              "height": "261",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSsD6abUUh5OXLvVfoP9jFXfq376Teu_eqITJaGVG-b8tfCjafZ95N5vQph"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width,minimum-scale=1,initial-scale=1",
+              "pub_date": "2011-07-05T20:50:58+00:00",
+              "msapplication-tilecolor": "#000000",
+              "msapplication-tileimage": "https://vanilla.futurecdn.net/livescience/155177/apple-touch-icon.png",
+              "og:title": "When Will the Leaning Tower of Pisa Fall Over?",
+              "og:site_name": "livescience.com",
+              "og:url": "https://www.livescience.com/33379-leaning-tower-pisa-fall-over.html",
+              "og:image": "https://cdn.mos.cms.futurecdn.net/RUczgzQ95mNZ7jhK77fR6d-1200-80.jpg",
+              "og:image:width": "1200",
+              "og:type": "article",
+              "article:publisher": "https://www.facebook.com/livescience?cmpid=556687",
+              "article:author": "https://www.facebook.com/livescience?cmpid=556687",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@LiveScience",
+              "twitter:title": "When Will the Leaning Tower of Pisa Fall Over?",
+              "twitter:creator": "@LiveScience",
+              "twitter:image": "https://cdn.mos.cms.futurecdn.net/RUczgzQ95mNZ7jhK77fR6d-1200-80.jpg",
+              "twitter:account_id": "9696142",
+              "taboola:url": "https://www.livescience.com/33379-leaning-tower-pisa-fall-over.html",
+              "botify-site-verification": "Bvex9ErUud910tVAIquqUVU7RH2if7uS",
+              "parsely-type": "post",
+              "parsely-pub-date": "2011-07-05T20:50:58+00:00",
+              "parsely-title": "When Will the Leaning Tower of Pisa Fall Over?",
+              "parsely-link": "https://www.livescience.com/33379-leaning-tower-pisa-fall-over.html",
+              "parsely-image-url": "https://cdn.mos.cms.futurecdn.net/RUczgzQ95mNZ7jhK77fR6d.jpg",
+              "parsely-author": "Live Science Staff",
+              "parsely-section": "Life's Little Mysteries",
+              "parsely-tags": "llm,lifes-little-mysteries"
+            }
+          ],
+          "imageobject": [
+            {
+              "url": "https://cdn.mos.cms.futurecdn.net/RUczgzQ95mNZ7jhK77fR6d.jpg",
+              "height": "602",
+              "width": "370"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://cdn.mos.cms.futurecdn.net/RUczgzQ95mNZ7jhK77fR6d-1200-80.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "WHY the Leaning Tower of Pisa does not Fall?",
+        "htmlTitle": "WHY the <b>Leaning Tower of Pisa</b> does not Fall?",
+        "link": "https://leaningtowerpisa.com/facts/why-pisa-leaning-tower-does-not-fall",
+        "displayLink": "leaningtowerpisa.com",
+        "snippet": "The Leaning Tower of Pisa has been leaning for over 800 years and, despite ... to \ncarry on his experiments and write an important page of history and science.",
+        "htmlSnippet": "The <b>Leaning Tower of Pisa</b> has been leaning for over 800 years and, despite ... to <br>\ncarry on his experiments and write an important page of history and <b>science</b>.",
+        "cacheId": "ar1-Irn1CfwJ",
+        "formattedUrl": "https://leaningtowerpisa.com/facts/why-pisa-leaning-tower-does-not-fall",
+        "htmlFormattedUrl": "https://<b>leaningtowerpisa</b>.com/facts/why-<b>pisa</b>-<b>leaning</b>-<b>tower</b>-does-not-fall",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "318",
+              "height": "159",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSDOetzk9IvfIiYyso2fK1qZp5jz9ybDq0M_Z3bvWd9WOvp4cHb-4F6B8sT"
+            }
+          ],
+          "metatags": [
+            {
+              "author": "Andrea Bronzini",
+              "og:title": "WHY the Leaning Tower of Pisa does not Fall?",
+              "og:type": "article",
+              "og:image": "https://leaningtowerpisa.com/images/main/leaning-tower-pisa-stands.jpg",
+              "og:url": "https://leaningtowerpisa.com/facts/why-pisa-leaning-tower-does-not-fall",
+              "og:site_name": "Leaning Tower Pisa",
+              "og:description": "It is all about geometry. Despite earthquakes, storms and wars, the Tower has been standing for over 800 years. Here is how...",
+              "viewport": "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+              "handheldfriendly": "true",
+              "apple-mobile-web-app-capable": "YES"
+            }
+          ],
+          "sitenavigationelement": [
+            {
+              "name": "Home",
+              "url": "Home"
+            },
+            {
+              "name": "Home",
+              "url": "Home"
+            },
+            {
+              "name": "Pisa",
+              "url": "Pisa"
+            }
+          ],
+          "article": [
+            {
+              "inlanguage": "en-GB",
+              "articlebody": "The Leaning Tower of Pisa has been leaning for over 800 years and, despite earthquakes, storms and wars, it is still standing. However, a Team of engineers is constantly monitoring its inclination..."
+            }
+          ],
+          "imageobject": [
+            {
+              "url": "https://leaningtowerpisa.com/images/main/leaning-tower-pisa-stands.jpg",
+              "height": "auto",
+              "width": "auto"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://leaningtowerpisa.com/images/main/leaning-tower-pisa-stands.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Leaning Tower of Pisa Corrects Itself... a Little - Scientific American",
+        "htmlTitle": "<b>Leaning Tower of Pisa</b> Corrects Itself... a Little - <b>Scientific</b> American",
+        "link": "https://www.scientificamerican.com/article/leaning-tower-of-pisa-corrects-itself-a-little/",
+        "displayLink": "www.scientificamerican.com",
+        "snippet": "Nov 30, 2018 ... Once every year, engineers measure the Leaning Tower of Pisa's precarious tilt. \nLast week they announced that the tower had been ...",
+        "htmlSnippet": "Nov 30, 2018 <b>...</b> Once every year, engineers measure the <b>Leaning Tower of Pisa&#39;s</b> precarious tilt. <br>\nLast week they announced that the tower had been&nbsp;...",
+        "cacheId": "l-3KRsp_g_sJ",
+        "formattedUrl": "https://www.scientificamerican.com/.../leaning-tower-of-pisa-corrects-itself-a- little/",
+        "htmlFormattedUrl": "https://www.<b>scientific</b>american.com/.../<b>leaning</b>-<b>tower-of-pisa</b>-corrects-itself-a- little/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "283",
+              "height": "178",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSwAtKFVZUFv7kAO441IigTPWkg2o2vADiHWGOvTgu8EwqUTfxFmyDLynK6"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1, shrink-to-fit=no",
+              "msapplication-tileimage": "/public/resources/favicons/favicon-196-f10395ba7ecf07756e4b5a82c4795b61.png",
+              "referrer": "unsafe-url",
+              "com.silverpop.brandeddomains": "www.pages04.net,www.scientificamerican.com",
+              "com.silverpop.cothost": "pod4.ibmmarketingcloud.com",
+              "theme-color": "#093969",
+              "og:site_name": "Scientific American",
+              "og:type": "article",
+              "og:title": "Leaning Tower of Pisa Corrects Itself... a Little",
+              "og:description": "Four centimeters of bonus straightening have occurred since engineering to lessen the list concluded in 2001",
+              "og:image": "https://static.scientificamerican.com/sciam/cache/file/57291A02-C847-4247-95766E4E003F02ED.jpg",
+              "og:image:width": "790",
+              "og:image:height": "496",
+              "og:url": "https://www.scientificamerican.com/article/leaning-tower-of-pisa-corrects-itself-a-little/",
+              "twitter:card": "summary_large_image",
+              "twitter:site": "@sciam",
+              "twitter:title": "Leaning Tower of Pisa Corrects Itself... a Little",
+              "author": "Barbie Latza Nadeau",
+              "fb:pages": "340704949293332"
+            }
+          ],
+          "article": [
+            {
+              "image": "https://static.scientificamerican.com/sciam/cache/file/57291A02-C847-4247-95766E4E003F02ED.jpg",
+              "articlesection": "Physics",
+              "headline": "Leaning Tower of Pisa Corrects Itself... a Little",
+              "datepublished": "November 30, 2018",
+              "articlebody": "Once every year, engineers measure the Leaning Tower of Pisa’s precarious tilt. Last week they announced that the tower had been self-correcting for more than a decade and had finally stopped...."
+            }
+          ],
+          "imageobject": [
+            {
+              "url": "https://static.scientificamerican.com/sciam/assets/Image/newsletter/salogo.png"
+            },
+            {
+              "url": "https://static.scientificamerican.com/sciam/cache/file/57291A02-C847-4247-95766E4E003F02ED_source.jpg?w=590&h=800&CB186A27-C07C-44D9-92691F2D13E8A361",
+              "caption": "Credit: Pinghung Chen Getty Images",
+              "description": "Credit: Pinghung Chen Getty Images"
+            }
+          ],
+          "person": [
+            {
+              "name": "Barbie Latza Nadeau"
+            },
+            {
+              "name": "Barbie Latza Nadeau"
+            }
+          ],
+          "organization": [
+            {
+              "url": "Scientific American",
+              "name": "Scientific American"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://static.scientificamerican.com/sciam/cache/file/57291A02-C847-4247-95766E4E003F02ED.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "Fun Leaning Tower of Pisa Facts for Kids - Science for Kids",
+        "htmlTitle": "Fun <b>Leaning Tower of Pisa</b> Facts for Kids - <b>Science</b> for Kids",
+        "link": "http://www.sciencekids.co.nz/sciencefacts/engineering/leaningtowerofpisa.html",
+        "displayLink": "www.sciencekids.co.nz",
+        "snippet": "Leaning Tower of Pisa Facts. Enjoy our fun Leaning Tower of Pisa facts for kids. \nFind a wide range of interesting trivia and information related to one of the most ...",
+        "htmlSnippet": "<b>Leaning Tower of Pisa</b> Facts. Enjoy our fun <b>Leaning Tower of Pisa</b> facts for kids. <br>\nFind a wide range of interesting trivia and information related to one of the most&nbsp;...",
+        "cacheId": "OspPBtppIzcJ",
+        "formattedUrl": "www.sciencekids.co.nz/sciencefacts/engineering/leaningtowerofpisa.html",
+        "htmlFormattedUrl": "www.<b>science</b>kids.co.nz/<b>science</b>facts/engineering/<b>leaningtowerofpisa</b>.html",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "149",
+              "height": "339",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQY0RY2Alsi2Jlh85Endzaz94vtmVIxmvjMRpnCsyWdi9SoyaoWOOmAWUc"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "http://www.sciencekids.co.nz/images/facts/leaningtower220.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "The Leaning Tower of Pisa stays up for the same reason it leans ...",
+        "htmlTitle": "The <b>Leaning Tower of Pisa</b> stays up for the same reason it leans ...",
+        "link": "https://www.popsci.com/leaning-tower-pisa-soil/",
+        "displayLink": "www.popsci.com",
+        "snippet": "May 9, 2018 ... Earthquakes, Mussolini, two hundred years of construction misadventures—the \nLeaning Tower of Pisa has kept standing through it all.",
+        "htmlSnippet": "May 9, 2018 <b>...</b> Earthquakes, Mussolini, two hundred years of construction misadventures—the <br>\n<b>Leaning Tower of Pisa</b> has kept standing through it all.",
+        "cacheId": "uxqGkpHeryQJ",
+        "formattedUrl": "https://www.popsci.com/leaning-tower-pisa-soil/",
+        "htmlFormattedUrl": "https://www.popsci.com/<b>leaning</b>-<b>tower</b>-<b>pisa</b>-soil/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "311",
+              "height": "162",
+              "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTiT05JIJTG83s3OadQ5VH1C9Jhipz2FSC4TAc1pf_-iNT41QqNBUSPsXs"
+            }
+          ],
+          "metatags": [
+            {
+              "fb:app_id": "580686128943941",
+              "fb:pages": "60342206410",
+              "twitter:card": "summary_large_image",
+              "twitter:title": "The Leaning Tower of Pisa stays up for the same reason it leans",
+              "twitter:site": "@popsci",
+              "twitter:url": "https://www.popsci.com/leaning-tower-pisa-soil/",
+              "twitter:image": "https://www.popsci.com/resizer/9suPKFhXKwQrwMj0rLvOg73tSxY=/1200x628/smart/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/WLKZXFEM4OUZ6S6K2CAMFJ4YH4.jpg",
+              "og:image": "https://www.popsci.com/resizer/9suPKFhXKwQrwMj0rLvOg73tSxY=/1200x628/smart/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/WLKZXFEM4OUZ6S6K2CAMFJ4YH4.jpg",
+              "og:type": "article",
+              "og:title": "The Leaning Tower of Pisa stays up for the same reason it leans",
+              "og:site_name": "Popular Science",
+              "og:url": "https://www.popsci.com/leaning-tower-pisa-soil/",
+              "og:description": "Earthquakes, Mussolini, two hundred years of construction misadventures—the Leaning Tower of Pisa has kept standing through it all. New research from a European team of engineers sheds light on why.",
+              "viewport": "width=device-width, initial-scale=1",
+              "fb:admins": "https://www.facebook.com/auddev.bonniercorp"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://www.popsci.com/resizer/9suPKFhXKwQrwMj0rLvOg73tSxY=/1200x628/smart/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/WLKZXFEM4OUZ6S6K2CAMFJ4YH4.jpg"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "500-year-old Leaning Tower of Pisa mystery unveiled by engineers ...",
+        "htmlTitle": "500-year-old <b>Leaning Tower of Pisa</b> mystery unveiled by engineers ...",
+        "link": "https://www.sciencedaily.com/releases/2018/05/180509105004.htm",
+        "displayLink": "www.sciencedaily.com",
+        "snippet": "May 9, 2018 ... Why has the Leaning Tower of Pisa survived the strong earthquakes that have hit \nthe region since the middle ages? This is a long-standing ...",
+        "htmlSnippet": "May 9, 2018 <b>...</b> Why has the <b>Leaning Tower of Pisa</b> survived the strong earthquakes that have hit <br>\nthe region since the middle ages? This is a long-standing&nbsp;...",
+        "cacheId": "RvAI4DnZWaQJ",
+        "formattedUrl": "https://www.sciencedaily.com/releases/2018/05/180509105004.htm",
+        "htmlFormattedUrl": "https://www.<b>science</b>daily.com/releases/2018/05/180509105004.htm",
+        "pagemap": {
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1",
+              "last-modified": "Tue, 21 Jan 2020 04:12:26 GMT",
+              "expires": "Tue, 21 Jan 2020 05:12:26 GMT",
+              "og:title": "500-year-old Leaning Tower of Pisa mystery unveiled by engineers",
+              "og:type": "article",
+              "og:url": "https://www.sciencedaily.com/releases/2018/05/180509105004.htm",
+              "og:description": "Why has the Leaning Tower of Pisa survived the strong earthquakes that have hit the region since the middle ages? This is a long-standing question that experts in earthquake engineering and soil-structure interaction have now solved..",
+              "og:site_name": "ScienceDaily"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "customsearch#result",
+        "title": "The legend of the leaning tower – Physics World",
+        "htmlTitle": "The legend of the <b>leaning tower</b> – Physics World",
+        "link": "https://physicsworld.com/a/the-legend-of-the-leaning-tower/",
+        "displayLink": "physicsworld.com",
+        "snippet": "Feb 4, 2003 ... One is the story of how Galileo climbed the Leaning Tower of Pisa and ... Science \nhistorians find Galileo's early experiments with falling bodies ...",
+        "htmlSnippet": "Feb 4, 2003 <b>...</b> One is the story of how Galileo climbed the <b>Leaning Tower of Pisa</b> and ... <b>Science</b> <br>\nhistorians find Galileo&#39;s early experiments with falling bodies&nbsp;...",
+        "cacheId": "9TO5DNOpdcgJ",
+        "formattedUrl": "https://physicsworld.com/a/the-legend-of-the-leaning-tower/",
+        "htmlFormattedUrl": "https://physicsworld.com/a/the-legend-of-the-<b>leaning</b>-<b>tower</b>/",
+        "pagemap": {
+          "cse_thumbnail": [
+            {
+              "width": "171",
+              "height": "294",
+              "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSSmM4eg1_3-gPkImpmApiIR78EKETS4xY1N72BiZLYOzD3KroTn8CtNg8A"
+            }
+          ],
+          "metatags": [
+            {
+              "viewport": "width=device-width, initial-scale=1",
+              "og:locale": "en_GB",
+              "og:type": "article",
+              "og:title": "The legend of the leaning tower – Physics World",
+              "og:description": "What did Galileo really do in Pisa?",
+              "og:url": "https://physicsworld.com/a/the-legend-of-the-leaning-tower/",
+              "og:site_name": "Physics World",
+              "article:publisher": "https://www.facebook.com/physicsworld/",
+              "article:section": "History",
+              "article:published_time": "2003-02-04T14:09:48+00:00",
+              "article:modified_time": "2018-02-12T16:14:48+00:00",
+              "og:updated_time": "2018-02-12T16:14:48+00:00",
+              "og:image": "https://physicsworld.com/wp-content/uploads/2003/02/pwcrit1a_02-03.jpg",
+              "og:image:secure_url": "https://physicsworld.com/wp-content/uploads/2003/02/pwcrit1a_02-03.jpg",
+              "og:image:width": "350",
+              "og:image:height": "600",
+              "og:image:alt": "Leaning Tower of Pisa",
+              "twitter:card": "summary_large_image",
+              "twitter:description": "What did Galileo really do in Pisa?",
+              "twitter:title": "The legend of the leaning tower – Physics World",
+              "twitter:site": "@PhysicsWorld",
+              "twitter:image": "https://physicsworld.com/wp-content/uploads/2003/02/pwcrit1a_02-03.jpg",
+              "twitter:creator": "@PhysicsWorld",
+              "iop.index.volume": "16",
+              "iop.index.issue": "2",
+              "oas:article-type": "opinion-reviews",
+              "oas:sub-category": "history",
+              "oas:article-id": "35212",
+              "onesignal": "wordpress-plugin"
+            }
+          ],
+          "cse_image": [
+            {
+              "src": "https://physicsworld.com/wp-content/uploads/2003/02/pwcrit1a_02-03.jpg"
+            }
+          ]
+        }
+      }
+    ]
   }
 }

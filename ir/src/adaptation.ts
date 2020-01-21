@@ -9,6 +9,7 @@ import {
     TailoredTextResponse,
     UserProfile
 } from "./models";
+import { generateId } from "./utils";
 
 
 /**
@@ -62,6 +63,7 @@ export class Adaptation {
             AdaptationEndpoint.text,
             { userProfile, results } as TailoredTextRequest
         ).then(adaptationResponse => {
+            adaptationResponse.requestId = generateId(16);
             logger.debug("[adaptation.ts] Adaptation text response", { adaptationResponse });
             return adaptationResponse;
         });

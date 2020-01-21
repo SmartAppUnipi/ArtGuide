@@ -16,3 +16,4 @@ coverage
 tmpCache.json
 .log
 trace.*
+*db.json

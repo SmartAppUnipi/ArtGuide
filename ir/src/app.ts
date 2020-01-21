@@ -1,5 +1,7 @@
+import * as childProcess from "child_process";
 import * as config from "../config.json";
 import { Adaptation } from "./adaptation";
+import { appendValidation as augmentWithValidation } from "./validation-service";
 import bodyParser from "body-parser";
 import express from "express";
 import fs from "fs";
@@ -7,10 +9,24 @@ import logger from "./logger";
 import { LoggerConfig } from "./environment";
 import packageJson from "../package.json";
 import path from "path";
-import { Search } from "./search";
+import { Search, CacheService } from "./search";
 import { ClassificationResult, Entity, ExpertizeLevelType, LogLevels, PageResult } from "./models";
-import { getLastCommitHash, reduceEntities } from "./utils";
+import { reduceEntities, generateId } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
+
+/**
+ * Return the last commit hash on the local repository
+ * 
+ * @returns The hash of the last commit on the local machine.
+ */
+export function getLastCommitHash(): string {
+    const latestCommit = childProcess
+        .execSync("git rev-parse HEAD")
+        .toString()
+        .replace(/\n/, "");
+
+    return latestCommit;
+}
 
 
 /** Express application instance */
@@ -192,7 +208,7 @@ app.post("/", async (req, res) => {
         } else {
             // BRANCH B: not a known entity
             logger.debug("[app.ts] Not a known instance.",
-                         { reducedClassificationEntities: classificationResult.classification.entities });
+                { reducedClassificationEntities: classificationResult.classification.entities });
 
             // 6. remove unwanted entity (not art)
             const filteredEntities = await wikidata.filterNotArtRelatedResult(metaEntities);
@@ -241,10 +257,16 @@ app.post("/", async (req, res) => {
          * END OF MAIN FLOW
          */
 
-
         // call adaptation for summary and return the result to the caller
         return adaptation
             .getTailoredText(results, classificationResult.userProfile)
+            .then(response => augmentWithValidation(response))
+            .then(response => {
+                const dbService = new CacheService("ir-requests-db.json");
+                dbService.set(response.requestId, response);
+
+                return response;
+            })
             .then(adaptationResponse => res.send(adaptationResponse));
 
         // Catch any error and inform the caller

@@ -1,5 +1,5 @@
-import { Utils } from "./utils";
-import { PageResult } from "src/models";
+import { PageResult } from "../../src/models";
+import { escapeHtml, getRandomColor, generateId } from "../../src/utils";
 
 /**
  * @param tailoredText
@@ -7,7 +7,7 @@ import { PageResult } from "src/models";
  */
 export function parse(tailoredText: string, pageResults: Array<PageResult>) {
 
-    tailoredText = Utils.escapeHtml(tailoredText);
+    tailoredText = escapeHtml(tailoredText);
 
     // create the return object 
     const result: {
@@ -15,7 +15,7 @@ export function parse(tailoredText: string, pageResults: Array<PageResult>) {
         htmlAdaptation: string
     } = { htmlAdaptation: "", htmlIr: "" };
 
-    let pageResultsJson = Utils.escapeHtml(JSON.stringify(pageResults, null, 2))
+    let pageResultsJson = escapeHtml(JSON.stringify(pageResults, null, 2))
 
     const matches: Array<{
         ir: { start: number, end: number },
@@ -42,18 +42,18 @@ export function parse(tailoredText: string, pageResults: Array<PageResult>) {
             if (position >= 0) {
 
                 const pgMatch = pageResults.find(pg =>
-                    Utils.escapeHtml(pg?.title).includes(search) ||
-                    Utils.escapeHtml(pg?.summary).includes(search) ||
+                    escapeHtml(pg?.title).includes(search) ||
+                    escapeHtml(pg?.summary).includes(search) ||
                     pg.sections?.some(section =>
-                        Utils.escapeHtml(section?.title)?.includes(search) ||
-                        Utils.escapeHtml(section?.content)?.includes(search)
+                        escapeHtml(section?.title)?.includes(search) ||
+                        escapeHtml(section?.content)?.includes(search)
                     )
                 );
 
                 match = {
                     text: search,
-                    spanId: Utils.generateId(8),
-                    color: Utils.getRandomColor(),
+                    spanId: generateId(8),
+                    color: getRandomColor(),
                     ir: {
                         start: position,
                         end: position + search.length
