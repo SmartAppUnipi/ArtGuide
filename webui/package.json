@@ -1,0 +1,40 @@
+{
+  "name": "@smart-apps-unipi/web-ui",
+  "description": "Web UI for the ArtGuide project",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "sapper dev -p 8000",
+    "build": "sapper build",
+    "export": "sapper export",
+    "start": "node __sapper__/build"
+  },
+  "authors": [
+    {
+      "name": "Aldo D'Aquino",
+      "email": "a.daquino@studenti.unipi.it",
+      "url": "ald.ooo"
+    },
+    {
+      "name": "Giacomo De Liberali",
+      "email": "deliberali.giacomo@gmail.com",
+      "url": "giacomodeliberali.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SmartAppUnipi/ArtGuide/tree/webui"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "compression": "^1.7.1",
+    "express": "^4.17.1",
+    "sirv": "^0.4.0"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "sapper": "^0.27.0",
+    "svelte": "^3.0.0",
+    "svelte-loader": "^2.9.0",
+    "webpack": "^4.7.0"
+  }
+}
