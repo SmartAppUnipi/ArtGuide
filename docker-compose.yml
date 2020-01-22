@@ -35,6 +35,8 @@ services:
       - "3000:3000"
     volumes:
       - "./docker-routes.json:/art/routes.json"
+      - "./ir/ir-requests-db.json:/art/ir/ir-requests-db.json"
+      - "./ir/ir-validation-db.json:/art/ir/ir-validation-db.json"
     stdin_open: true
     tty: true
 
