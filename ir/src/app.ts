@@ -287,14 +287,20 @@ app.post("/", async (req, res) => {
 app.post("/validation", async (req, res) => {
     const { requestId, sentenceId, validation } = req.body;
     const dbValidationService = new CacheService("ir-validation-db.json");
-    dbValidationService.set(generateId(16), {
+
+    const key = `${requestId}-${sentenceId}`;
+
+    const validationObj = {
+        key,
         date: new Date(),
         sentenceId,
         requestId,
         validation
-    });
+    }
 
-    return res.status(204).send();
+    dbValidationService.set(key, validationObj);
+
+    return res.json(validationObj);
 });
 
 interface Validation {
@@ -342,7 +348,7 @@ app.get("/validation", async (req, res) => {
         userTastesValidation: mapToObj(userTastesValidation)
     });
 
-    
+
 
 });
 

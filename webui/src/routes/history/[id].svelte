@@ -43,11 +43,11 @@
         Accept: "application/json",
         "Content-Type": "application/json"
       },
-      body: {
+      body: JSON.stringify({
         requestId: response.requestId,
         sentenceId: sentence.sentenceId,
         validation: like ? 1 : -1
-      }
+      })
     }).then(() => {
       console.log("Done");
     });
