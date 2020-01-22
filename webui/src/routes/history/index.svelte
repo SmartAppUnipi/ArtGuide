@@ -13,7 +13,9 @@
 
 <h1>History</h1>
 {#each history as item}
-  <a href="history/{item}">{item}</a>
+  <div>
+    <a href="history/{item}">{item}</a>
+  </div>
 {:else}
   <span>History is empty. The scanned artworks will appear here.</span>
 {/each}

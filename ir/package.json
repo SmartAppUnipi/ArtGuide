@@ -77,13 +77,14 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsdom": "^15.2.1",
     "node-fetch": "^2.6.0",
+    "rake-js": "0.1.1",
     "wikibase-sdk": "^7.2.0",
     "wikidata-sdk": "^7.2.0",
-    "rake-js": "0.1.1",
     "wikijs": "^6.0.1",
     "winston": "^3.2.1"
   },

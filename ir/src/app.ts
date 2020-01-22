@@ -3,6 +3,7 @@ import * as config from "../config.json";
 import { Adaptation } from "./adaptation";
 import { appendValidation as augmentWithValidation } from "./validation-service";
 import bodyParser from "body-parser";
+import cors from "cors";
 import express from "express";
 import fs from "fs";
 import logger from "./logger";
@@ -13,7 +14,6 @@ import { Search, CacheService } from "./search";
 import { ClassificationResult, Entity, ExpertizeLevelType, LogLevels, PageResult, TailoredTextResponse } from "./models";
 import { reduceEntities, generateId } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
-
 /**
  * Return the last commit hash on the local repository
  * 
@@ -34,6 +34,7 @@ const app: express.Application = express();
 // Encode json bodies in requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cors());
 
 // Error handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
