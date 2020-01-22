@@ -40,7 +40,7 @@
         history.push(response.requestId);
         localStorage.setItem("history", JSON.stringify(history));
         // push the response in the local storage
-        localStorage.setItem(response.requestId, JSON.stringify(response))
+        localStorage.setItem(response.requestId, JSON.stringify(response));
         // navigate to the latest response
         goto("history/latest");
       })

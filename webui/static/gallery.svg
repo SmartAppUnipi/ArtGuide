@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title" aria-describedby="desc" role="img" 
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Images</title>
+  <path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M10 46H2V2h44v8" stroke-linejoin="round" stroke-linecap="round"></path>
+  <path data-name="layer2" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M18 54h-8V10h44v8" stroke-linejoin="round" stroke-linecap="round"></path>
+  <path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M18 18h44v44H18zm0 34h44" stroke-linejoin="round" stroke-linecap="round"></path>
+  <circle data-name="layer1" cx="28" cy="28" r="4" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></circle>
+  <path data-name="layer1" d="M24 52c0-2.8.6-14 7.3-14s4.1 6 6.7 6 .6-16 8-16 10 21.8 10 24" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+</svg>

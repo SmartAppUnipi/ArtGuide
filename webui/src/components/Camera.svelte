@@ -2,8 +2,23 @@
   import { onMount, createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
-  const submit = d => dispatch("data", d);
 
+  let width = 0;
+  let height = 0;
+
+  // handle data from camera or gallery
+  function submit(data) {
+    // freeze the camera with the current data
+    photo.setAttribute("src", data);
+    // show the photo and hide the camera
+    photo.style.display = "block";
+    camera.style.display = "none";
+    picture.style.marginTop = photo.offsetHeight + "px"
+    // send data to parent component
+    dispatch("data", data);
+  }
+
+  // encode an image file into a base 64
   function toBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -13,22 +28,38 @@
     });
   }
 
+  // handle gallery upload
   function uploadFromGallery() {
-    console.log("Picked from gallery")
-    const image = document.getElementById("image").files[0];
-    toBase64(image).then(data => submit(data))
+    console.log("Picked from gallery");
+    const image = document.getElementById("file-picker").files[0];
+    toBase64(image).then(data => submit(data));
+  }
+
+  function pickFile() {
+    document.getElementById("file-picker").click();
+  }
+
+  // handle the shot button
+  function takePhoto(event) {
+    event.preventDefault();
+    // draw current video frame in the canvas
+    canvas.width = width;
+    canvas.height = height;
+    canvas.getContext("2d").drawImage(video, 0, 0, width, height);
+    // get base64
+    const data = canvas.toDataURL("image/png");
+    submit(data);
   }
 
   onMount(() => {
     const camera = document.getElementById("camera");
     const video = document.getElementById("video");
+    const actions = document.getElementById("actions");
     const canvas = document.getElementById("canvas");
+    const picture = document.getElementById("picture");
     const photo = document.getElementById("photo");
-    const startbutton = document.getElementById("startbutton");
 
     // scale the video to max width
-    let width = 0;
-    let height = 0; // will be computed later
     let streaming = false;
     video.addEventListener(
       "canplay",
@@ -36,7 +67,8 @@
         if (!streaming) {
           width = document.body.clientWidth;
           height = video.videoHeight / (video.videoWidth / width);
-
+          actions.style.marginTop =
+            video.offsetHeight - actions.offsetTop - 42 + "px";
           video.setAttribute("width", width);
           video.setAttribute("height", height);
           canvas.setAttribute("width", width);
@@ -57,26 +89,6 @@
       .catch(function(err) {
         console.error("An error occurred: " + err);
       });
-
-    // take the picture on button click
-    startbutton.addEventListener(
-      "click",
-      function(ev) {
-        // draw current video frame in the canvas
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext("2d").drawImage(video, 0, 0, width, height);
-        // set as image src the canvas data
-        const data = canvas.toDataURL("image/png");
-        photo.setAttribute("src", data);
-        submit(data);
-        // show the photo and hide the camera
-        photo.style.display = "block";
-        camera.style.display = "none";
-        ev.preventDefault();
-      },
-      false
-    );
   });
 </script>
 
@@ -87,23 +99,36 @@
     width: 100%;
   }
 
+  #video,
+  #photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   #canvas,
   #photo {
     display: none;
   }
 
-  #startbutton {
-    display: block;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    bottom: 32px;
-    background-color: rgba(0, 150, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
-    font-size: 14px;
-    font-family: "Lucida Grande", "Arial", sans-serif;
-    color: rgba(255, 255, 255, 1);
+  #file-picker {
+    display: none;
+  }
+
+  #camera-button,
+  #gallery-button {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background: #fff;
+  }
+
+  #gallery-button {
+    left: 10px;
+  }
+
+  #camera-button {
+    right: 10px;
   }
 </style>
 
@@ -113,9 +138,27 @@
 
 <div id="camera">
   <video id="video">Video stream not available.</video>
-  <input type="file" id="image" accept="image/*" on:change={uploadFromGallery} />
-  <br />
-  <button id="startbutton">Take photo</button>
+  <div id="actions">
+    <input
+      id="file-picker"
+      type="file"
+      accept="image/*"
+      on:change={uploadFromGallery} />
+    <input
+      id="gallery-button"
+      type="image"
+      src="gallery.svg"
+      alt="Upload from gallery"
+      on:click={pickFile} />
+    <input
+      id="camera-button"
+      type="image"
+      src="camera.svg"
+      alt="Take a photo"
+      on:click={takePhoto} />
+  </div>
 </div>
 <canvas id="canvas" />
-<img id="photo" alt="The screen capture will appear in this box." />
+<div id="picture">
+  <img id="photo" alt="The screen capture will appear in this box." />
+</div>
