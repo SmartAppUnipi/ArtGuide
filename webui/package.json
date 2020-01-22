@@ -3,10 +3,10 @@
   "description": "Web UI for the ArtGuide project",
   "version": "1.0.0",
   "scripts": {
-    "dev": "sapper dev -p 8000",
+    "dev": "PORT=8000 sapper dev",
     "build": "sapper build",
     "export": "sapper export",
-    "start": "node __sapper__/build"
+    "start": "PORT=8000 node __sapper__/build"
   },
   "authors": [
     {
