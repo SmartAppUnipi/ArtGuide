@@ -32,7 +32,7 @@
     updateLikeButtonsUI(like, sentence.sentenceId);
 
     const endpoint = new URL(localStorage.getItem("endpoint"));
-    const validationApiUrl = `${endpoint.protocol}//${endpoint.hostname}:3000/validation`;
+    const validationApiUrl = `${endpoint.protocol}//ir.${endpoint.hostname}/validation`;
 
     console.log(response, sentence, like);
 

@@ -2,15 +2,16 @@
   import { writable } from "svelte/store";
 
   // get settings from local storage
-  const userId = writable(localStorage.getItem("userId") || 42);
+  const userId = writable(localStorage.getItem("userId") || Math.round(Math.random() * 100000, 0));
   const userLanguage = writable(localStorage.getItem("userLanguage") || "en");
-  const userTastes = writable(localStorage.getItem("userTastes") || "");
+  const userTastes = writable(localStorage.getItem("userTastes") || "style");
   const userExpertiseLevel = writable(
-    localStorage.getItem("userExpertiseLevel") || 2
+    localStorage.getItem("userExpertiseLevel") || "2"
   );
+  const location = new URL(window.location.href);
   const endpoint = writable(
     localStorage.getItem("endpoint") ||
-      `http://${window.location.hostname}:2345/upload`
+      `${location.protocol}//${location.hostname}`
   );
 
   // update whenever them changes
@@ -33,23 +34,20 @@ Username:
 <br />
 Language:
 <select bind:value={$userLanguage}>
-  <option value="en" selected>English</option>
+  <option value="en">English</option>
   <option value="it">Italian</option>
 </select>
 <br />
 Expertise level:
 <select bind:value={$userExpertiseLevel}>
   <option value="1">Child</option>
-  <option value="2" selected>Novice</option>
+  <option value="2">Novice</option>
   <option value="3">Knowledgeable</option>
   <option value="4">Expert</option>
 </select>
 <br />
 Tastes:
-<input type="text" bind:value={$userTastes} value="history" />
+<input type="text" bind:value={$userTastes} />
 <br />
 Endpoint:
-<input
-  type="text"
-  bind:value={$endpoint}
-  value="http://localhost:2345/upload" />
+<input type="text" bind:value={$endpoint} />

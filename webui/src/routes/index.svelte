@@ -3,8 +3,6 @@
   import Camera from "../components/Camera.svelte";
 
   function post(b64image) {
-    const endpoint = localStorage.getItem("endpoint");
-
     const body = {
       userProfile: {
         id: parseInt(localStorage.getItem("userId")),
@@ -20,7 +18,10 @@
       image: b64image
     };
 
-    return fetch(endpoint, {
+    const endpoint = new URL(localStorage.getItem("endpoint"));
+    const classificationApiUrl = `${endpoint.protocol}//ia.${endpoint.hostname}/upload`;
+
+    return fetch(classificationApiUrl, {
       method: "POST",
       cache: "no-cache",
       headers: {
