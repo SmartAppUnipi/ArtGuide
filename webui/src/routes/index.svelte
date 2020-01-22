@@ -1,4 +1,5 @@
 <script>
+  import { goto } from "@sapper/app";
   import Camera from "../components/Camera.svelte";
 
   function post(b64image) {
@@ -23,7 +24,7 @@
       method: "POST",
       cache: "no-cache",
       headers: {
-				"Accept": "application/json",
+        Accept: "application/json",
         "Content-Type": "application/json"
       },
       body: JSON.stringify(body)
@@ -31,25 +32,38 @@
   }
 
   function handleSubmit(data) {
-    console.log("Uploading...");
-    const container = document.getElementById("container");
-
+    document.getElementById("container").style.display = "block";
     post(data.detail)
       .then(response => {
-        console.log(response);
-        container.innerText = response.tailoredText;
-        container.style.background = "none";
+        // append the responseId to the responses array
+        const history = JSON.parse(localStorage.getItem("history")) || [];
+        history.push(response.requestId);
+        localStorage.setItem("history", JSON.stringify(history));
+        // push the response in the local storage
+        localStorage.setItem(response.requestId, JSON.stringify(response))
+        // navigate to the latest response
+        goto("history/latest");
       })
       .catch(ex => console.error(ex));
   }
 </script>
 
 <style>
-
+  #container {
+    display: none;
+  }
 </style>
 
 <svelte:head>
   <title>ArtGuide</title>
 </svelte:head>
+
 <Camera on:data={handleSubmit} />
-<div id="container" />
+<div id="container">
+  Uploading... It could take a while, even one or two minutes.
+  <br />
+  We swear it's worth it.
+  <br />
+  Oh, really, who are we kidding! Just wait please.
+  <br />
+</div>
