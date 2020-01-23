@@ -271,11 +271,16 @@ app.post("/", async (req, res) => {
 
                 return response;
             })
-            .then(adaptationResponse => res.send(adaptationResponse));
+            .then(adaptationResponse => res.send(adaptationResponse))
+            .catch(err => {
+                logger.error("[app.ts] Error while getting tailored text.", { exception: err });
+                /* istanbul ignore next */
+                return res.status(500).json({ message: err.message, stack: err.stack });
+            });
 
         // Catch any error and inform the caller
     } catch (ex) {
-        logger.error("[app.ts] ", ex);
+        logger.error("[app.ts] Unhandled error in main flow", { exception: ex });
         /* istanbul ignore next */
         return res
             .status(500)

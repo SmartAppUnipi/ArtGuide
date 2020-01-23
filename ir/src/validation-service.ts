@@ -29,7 +29,6 @@ export function appendValidation(tailoredTextResult: TailoredTextResponse) {
 
             const position = pageResultsJson.indexOf(search);
             if (position >= 0) {
-
                 const pgMatch: PageResult = JSON.parse(JSON.stringify(tailoredTextResult.results.find(pg =>
                     escapeHtml(pg?.title).includes(search) ||
                     escapeHtml(pg?.summary).includes(search) ||
@@ -39,8 +38,10 @@ export function appendValidation(tailoredTextResult: TailoredTextResponse) {
                     )
                 ) ?? null));
 
-                // filter out section not containing the sentence
-                pgMatch.sections = pgMatch.sections.filter(sec => sec.title.includes(search) || sec.content.includes(search));
+                if (pgMatch) {
+                    // filter out section not containing the sentence
+                    pgMatch.sections = pgMatch.sections.filter(sec => sec.title?.includes(search) || sec.content?.includes(search));
+                }
 
                 if (search.length > 15) {
                     match = {
