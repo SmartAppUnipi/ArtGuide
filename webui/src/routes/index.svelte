@@ -1,10 +1,13 @@
 <script>
+  import { onMount } from "svelte";
   import { goto } from "@sapper/app";
   import Camera from "../components/Camera.svelte";
   import Progress from "../components/Progress.svelte";
   import { init } from "./settings.svelte";
 
-  init();
+  onMount(() => {
+    init();
+  });
 
   let isLoading = false;
 
@@ -54,7 +57,7 @@
         goto("history/latest");
       })
       .catch(ex => console.error(ex))
-      .then(() => isLoading = false);
+      .then(() => (isLoading = false));
   }
 </script>
 
