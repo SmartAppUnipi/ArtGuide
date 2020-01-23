@@ -1,9 +1,12 @@
 <script>
   import { goto } from "@sapper/app";
   import Camera from "../components/Camera.svelte";
+  import Progress from "../components/Progress.svelte";
   import { init } from "./settings.svelte";
 
   init();
+
+  let isLoading = false;
 
   function post(b64image) {
     const body = {
@@ -36,6 +39,7 @@
   }
 
   function handleSubmit(data) {
+    isLoading = true;
     document.getElementById("container").style.display = "block";
     post(data.detail)
       .then(response => {
@@ -70,4 +74,8 @@
   <br />
   Oh, really, who are we kidding! Just wait please.
   <br />
+  <br />
+  {#if isLoading}
+    <Progress />
+  {/if}
 </div>

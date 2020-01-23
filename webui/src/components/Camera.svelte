@@ -10,10 +10,14 @@
   function submit(data) {
     // freeze the camera with the current data
     photo.setAttribute("src", data);
+    photo.addEventListener(
+      "load",
+      () => (picture.style.marginTop = photo.offsetHeight + "px"),
+      false
+    );
     // show the photo and hide the camera
     photo.style.display = "block";
     camera.style.display = "none";
-    picture.style.marginTop = photo.offsetHeight + "px"
     // send data to parent component
     dispatch("data", data);
   }
