@@ -71,9 +71,17 @@
       navigator.mediaDevices.getUserMedia;
 
     if (videoAvailable) {
+      // IMPORTANT: call that before navigator.mediaDevices.getUserMedia
+      video.setAttribute("autoplay", "");
+      video.setAttribute("muted", "true");
+      video.setAttribute("playsinline", "");
+
       // get and show the video streaming
       navigator.mediaDevices
-        .getUserMedia({ video: true, audio: false })
+        .getUserMedia({
+          video: { facingMode: "environment" },
+          audio: false
+        })
         .then(function(stream) {
           video.srcObject = stream;
           video.play();
