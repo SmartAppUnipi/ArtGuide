@@ -3,6 +3,8 @@
 
   const dispatch = createEventDispatcher();
 
+  let videoAvailable = true;
+
   let width = 0;
   let height = 0;
 
@@ -63,36 +65,43 @@
     const picture = document.getElementById("picture");
     const photo = document.getElementById("photo");
 
-    // scale the video to max width
-    let streaming = false;
-    video.addEventListener(
-      "canplay",
-      function(ev) {
-        if (!streaming) {
-          width = document.body.clientWidth;
-          height = video.videoHeight / (video.videoWidth / width);
-          actions.style.marginTop =
-            video.offsetHeight - actions.offsetTop - 42 + "px";
-          video.setAttribute("width", width);
-          video.setAttribute("height", height);
-          canvas.setAttribute("width", width);
-          canvas.setAttribute("height", height);
-          streaming = true;
-        }
-      },
-      false
-    );
+    videoAvailable =
+      navigator &&
+      navigator.mediaDevices &&
+      navigator.mediaDevices.getUserMedia;
 
-    // get and show the video streaming
-    navigator.mediaDevices
-      .getUserMedia({ video: true, audio: false })
-      .then(function(stream) {
-        video.srcObject = stream;
-        video.play();
-      })
-      .catch(function(err) {
-        console.error("An error occurred: " + err);
-      });
+    if (videoAvailable) {
+      // get and show the video streaming
+      navigator.mediaDevices
+        .getUserMedia({ video: true, audio: false })
+        .then(function(stream) {
+          video.srcObject = stream;
+          video.play();
+        })
+        .catch(function(err) {
+          console.error("An error occurred: " + err);
+        });
+
+      // scale the video to max width
+      let streaming = false;
+      video.addEventListener(
+        "canplay",
+        function(ev) {
+          if (!streaming) {
+            width = document.body.clientWidth;
+            height = video.videoHeight / (video.videoWidth / width);
+            actions.style.marginTop =
+              video.offsetHeight - actions.offsetTop - 42 + "px";
+            video.setAttribute("width", width);
+            video.setAttribute("height", height);
+            canvas.setAttribute("width", width);
+            canvas.setAttribute("height", height);
+            streaming = true;
+          }
+        },
+        false
+      );
+    }
   });
 </script>
 
@@ -134,6 +143,13 @@
   #camera-button {
     right: 10px;
   }
+
+  #large-gallery-button {
+    width: 75px;
+    height: 75px;
+    display: block;
+    margin: auto;
+  }
 </style>
 
 <svelte:head>
@@ -141,7 +157,9 @@
 </svelte:head>
 
 <div id="camera">
-  <video id="video">Video stream not available.</video>
+  {#if videoAvailable}
+    <video id="video">Video stream not available.</video>
+  {/if}
   <div id="actions">
     <input
       id="file-picker"
@@ -149,17 +167,19 @@
       accept="image/*"
       on:change={uploadFromGallery} />
     <input
-      id="gallery-button"
+      id="{videoAvailable ? '' : 'large-'}gallery-button"
       type="image"
       src="gallery.svg"
       alt="Upload from gallery"
       on:click={pickFile} />
-    <input
-      id="camera-button"
-      type="image"
-      src="camera.svg"
-      alt="Take a photo"
-      on:click={takePhoto} />
+    {#if videoAvailable}
+      <input
+        id="camera-button"
+        type="image"
+        src="camera.svg"
+        alt="Take a photo"
+        on:click={takePhoto} />
+    {/if}
   </div>
 </div>
 <canvas id="canvas" />

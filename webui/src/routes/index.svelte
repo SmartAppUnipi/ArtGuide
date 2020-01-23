@@ -49,10 +49,12 @@
         localStorage.setItem("history", JSON.stringify(history));
         // push the response in the local storage
         localStorage.setItem(response.requestId, JSON.stringify(response));
+        isLoading = false;
         // navigate to the latest response
         goto("history/latest");
       })
-      .catch(ex => console.error(ex));
+      .catch(ex => console.error(ex))
+      .then(() => isLoading = false);
   }
 </script>
 
