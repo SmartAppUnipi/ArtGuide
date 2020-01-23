@@ -1,6 +1,9 @@
 <script>
   import { goto } from "@sapper/app";
   import Camera from "../components/Camera.svelte";
+  import { init } from "./settings.svelte";
+
+  init();
 
   function post(b64image) {
     const body = {

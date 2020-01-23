@@ -1,8 +1,30 @@
+<script context="module">
+export function init() {
+    // get settings from local storage
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      localStorage.setItem("userId", Math.round(Math.random() * 100000, 0) + 1);
+      localStorage.setItem("userLanguage", "en");
+      localStorage.setItem("userTastes", "style");
+      localStorage.setItem("userExpertiseLevel", "2");
+      const location = new URL(window.location.href);
+      localStorage.setItem(
+        "endpoint",
+        `${location.protocol}//${location.hostname}`
+      );
+      console.log("Settings initialized.")
+    }
+  }
+</script>
+
 <script>
   import { writable } from "svelte/store";
+  init();
 
   // get settings from local storage
-  const userId = writable(localStorage.getItem("userId") || Math.round(Math.random() * 100000, 0));
+  const userId = writable(
+    localStorage.getItem("userId") || Math.round(Math.random() * 100000, 0)
+  );
   const userLanguage = writable(localStorage.getItem("userLanguage") || "en");
   const userTastes = writable(localStorage.getItem("userTastes") || "style");
   const userExpertiseLevel = writable(
