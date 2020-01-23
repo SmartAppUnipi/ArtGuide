@@ -266,7 +266,7 @@ app.post("/", async (req, res) => {
             })
             .then(response => augmentWithValidation(response))
             .then(response => {
-                const dbService = new CacheService("ir-requests-db.json");
+                const dbService = new CacheService(path.join("db", "ir-requests-db.json"));
                 dbService.set(response.requestId, response);
 
                 return response;
@@ -286,7 +286,7 @@ app.post("/", async (req, res) => {
 
 app.post("/validation", async (req, res) => {
     const { requestId, sentenceId, validation } = req.body;
-    const dbValidationService = new CacheService("ir-validation-db.json");
+    const dbValidationService = new CacheService(path.join("db", "ir-validation-db.json"));
 
     const key = `${requestId}-${sentenceId}`;
 
@@ -312,8 +312,8 @@ interface Validation {
 
 app.get("/validation", async (req, res) => {
 
-    const dbService = new CacheService("ir-requests-db.json");
-    const dbValidationService = new CacheService("ir-validation-db.json");
+    const dbService = new CacheService(path.join("db", "ir-requests-db.json"));
+    const dbValidationService = new CacheService(path.join("db", "ir-validation-db.json"));
 
     const userTastesValidation = new Map<string, number>();
     const urlsValidation = new Map<string, number>();

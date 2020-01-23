@@ -9,6 +9,8 @@ services:
     restart: always
     ports:
       - "8000:8000"
+    volumes:
+      - "./docker-routes.json:/art/routes.json"
     stdin_open: true
     tty: true
 
@@ -35,8 +37,7 @@ services:
       - "3000:3000"
     volumes:
       - "./docker-routes.json:/art/routes.json"
-      - "./ir/ir-requests-db.json:/art/ir/ir-requests-db.json"
-      - "./ir/ir-validation-db.json:/art/ir/ir-validation-db.json"
+      - "./ir/db:/art/ir/db"
     stdin_open: true
     tty: true
 
