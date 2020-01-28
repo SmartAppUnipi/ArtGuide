@@ -163,7 +163,14 @@ export class WikiData {
         const url = wd.getEntities([wikidataId]);
         return fetch(url)
             .then(r => r.json())
-            .then(content => content.entities[wikidataId].sitelinks[`${lang}wiki`].title);
+            .then(content => {
+                let currentLangTitle = content.entities[wikidataId]?.sitelinks[`${lang}wiki`]?.title;
+
+                if (!currentLangTitle)
+                    currentLangTitle = content.entities[wikidataId]?.sitelinks[`enwiki`]?.title;
+
+                return currentLangTitle ?? "";
+            });
     }
 
     /**
