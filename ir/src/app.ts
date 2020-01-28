@@ -1,7 +1,7 @@
 import * as childProcess from "child_process";
 import * as config from "../config.json";
 import { Adaptation } from "./adaptation";
-import { appendValidation as augmentWithValidation } from "./validation-service";
+import { appendValidation as augmentWithValidation, router as validationRouter } from "./validation";
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
@@ -10,9 +10,9 @@ import logger from "./logger";
 import { LoggerConfig } from "./environment";
 import packageJson from "../package.json";
 import path from "path";
+import { reduceEntities } from "./utils";
 import { Search, CacheService } from "./search";
 import { ClassificationResult, Entity, ExpertizeLevelType, LogLevels, PageResult, TailoredTextResponse } from "./models";
-import { reduceEntities, generateId } from "./utils";
 import { WikiData, Wikipedia } from "./wiki";
 /**
  * Return the last commit hash on the local repository
@@ -60,6 +60,8 @@ app.get("/", (req, res) => {
 app.use("/docs", express.static(path.join(__dirname, "../docs")));
 app.use("/coverage", express.static(path.join(__dirname, "../coverage/lcov-report/")));
 app.use("/ui", express.static(path.join(__dirname, "../client/ui")));
+app.use("/validation", validationRouter);
+
 
 // Serve trace log
 if (LoggerConfig.file) {
@@ -286,74 +288,6 @@ app.post("/", async (req, res) => {
             .status(500)
             .json({ message: ex.message, stack: ex.stack });
     }
-
-});
-
-app.post("/validation", async (req, res) => {
-    const { requestId, sentenceId, validation } = req.body;
-    const dbValidationService = new CacheService(path.join("db", "ir-validation-db.json"));
-
-    const key = `${requestId}-${sentenceId}`;
-
-    const validationObj = {
-        key,
-        date: new Date(),
-        sentenceId,
-        requestId,
-        validation
-    }
-
-    dbValidationService.set(key, validationObj);
-
-    return res.json(validationObj);
-});
-
-interface Validation {
-    date: Date;
-    sentenceId: string;
-    requestId: string,
-    validation: number
-}
-
-app.get("/validation", async (req, res) => {
-
-    const dbService = new CacheService(path.join("db", "ir-requests-db.json"));
-    const dbValidationService = new CacheService(path.join("db", "ir-validation-db.json"));
-
-    const userTastesValidation = new Map<string, number>();
-    const urlsValidation = new Map<string, number>();
-
-    for (const validationRecord of dbValidationService.getAll<Validation>()) {
-        const response = dbService.get<TailoredTextResponse>(validationRecord.requestId);
-
-        response?.userProfile.tastes.forEach(t => {
-            const oldScore = userTastesValidation.get(t) ?? 0;
-            const newScore = oldScore + validationRecord.validation;
-            userTastesValidation.set(t, newScore);
-        });
-
-        const validation = response?.validation.find(val => val.sentenceId == validationRecord.sentenceId);
-        if (validation) {
-            const url = validation.matchingPageResult.url;
-            const oldScore = urlsValidation.get(url) ?? 0;
-            const newScore = oldScore + validationRecord.validation;
-            urlsValidation.set(url, newScore);
-        }
-    }
-
-    const mapToObj = (m: Map<string, number>) => {
-        return Array.from(m).reduce((obj, [key, value]) => {
-            obj[key] = value;
-            return obj;
-        }, {});
-    };
-
-    return res.json({
-        urlsValidation: mapToObj(urlsValidation),
-        userTastesValidation: mapToObj(userTastesValidation)
-    });
-
-
 
 });
 

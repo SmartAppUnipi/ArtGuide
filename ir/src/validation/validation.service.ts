@@ -1,6 +1,5 @@
-import { PageResult, TailoredTextResponse, MetaEntity, Metadata } from "./models";
-import { escapeHtml, generateId, getRandomColor } from "./utils";
-import { text } from "body-parser";
+import { PageResult, TailoredTextResponse, Metadata } from "../models";
+import { escapeHtml, generateId } from "../utils";
 
 /**
  * @param tailoredText

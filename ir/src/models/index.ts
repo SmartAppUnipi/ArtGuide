@@ -6,6 +6,7 @@ import { ExpertizeLevelType, UserProfile } from "./user-profile.model";
 import { PageResult, PageSection } from "./page-result.model";
 import { Query, QueryExpansionRequest, QueryExpansionResponse } from "./query.models";
 import { TailoredTextRequest, TailoredTextResponse, Metadata } from "./tailored-text.model";
+import { Validation, VoteCount } from "./validation.models"
 
 export {
     ClassificationResult,
@@ -28,5 +29,8 @@ export {
 
     TailoredTextRequest,
     TailoredTextResponse,
-    Metadata
+    Metadata,
+
+    Validation,
+    VoteCount
 };

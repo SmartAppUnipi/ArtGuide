@@ -13,7 +13,8 @@ coverage
 # Environment
 *.env
 
+# Logs and database
 tmpCache.json
 .log
 trace.*
-*db.json
+db

@@ -11,7 +11,7 @@ export interface TailoredTextResponse {
     results: Array<PageResult>;
     tailoredText: string;
     requestId: string;
-    knwonInstance: MetaEntity;
+    knownInstance: MetaEntity;
     validation: Array<Metadata>;
 }
 
